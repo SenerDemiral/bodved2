@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bodved2", "bodved2\bodved2.csproj", "{71543797-814E-42D6-B7F4-4F5DD415A757}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDB2", "BDB2\BDB2.csproj", "{6D890CC0-6597-4009-B1CD-5D3F8531BC27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{71543797-814E-42D6-B7F4-4F5DD415A757}.Debug|x64.Build.0 = Debug|x64
 		{71543797-814E-42D6-B7F4-4F5DD415A757}.Release|x64.ActiveCfg = Release|x64
 		{71543797-814E-42D6-B7F4-4F5DD415A757}.Release|x64.Build.0 = Release|x64
+		{6D890CC0-6597-4009-B1CD-5D3F8531BC27}.Debug|x64.ActiveCfg = Debug|x64
+		{6D890CC0-6597-4009-B1CD-5D3F8531BC27}.Debug|x64.Build.0 = Debug|x64
+		{6D890CC0-6597-4009-B1CD-5D3F8531BC27}.Release|x64.ActiveCfg = Release|x64
+		{6D890CC0-6597-4009-B1CD-5D3F8531BC27}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
