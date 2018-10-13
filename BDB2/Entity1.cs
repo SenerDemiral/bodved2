@@ -14,6 +14,7 @@ namespace BDB2
         public int RnkBaz { get; set; }
         public int RnkSon { get; set; }
         public int RnkIdx { get; set; }     // RnkSon'a gore dizildiginde Sirasi
+        public int ActLvl { get; set; }     // Aktif ise 0, degilse > 0 (Global listede en altta goster)
     }
 
     [Database]
@@ -26,16 +27,20 @@ namespace BDB2
         public bool isRnkd { get; set; }    // Rank hesaplnacak mi?
     }
 
+    // Takim devre icinde diskalifiye edilebilir, bu durumdan sonraki Musabakalarinda Hukmen maglup olur
     [Database]
     public class CT   // Takimlar
     {
         public CC CC { get; set; }
         public string Ad { get; set; }
+        public string Info { get; set; }
+        public bool isDsk { get; set; }     // Diskalifiye/Ihrac
 
-        public int EG { get; set; }         // Event sayisi Galibiyet
-        public int EM { get; set; }         //              Malubiyet
-        public int EB { get; set; }         //              Beraberlik
-        public int ET => EG + EM + EB;      //              Toplam
+        public int NG { get; set; }         // Nof Galibiyet
+        public int NM { get; set; }         //     Malubiyet
+        public int NB { get; set; }         //     Beraberlik
+        public int NT => NG + NM + NB;      //     Toplam
+        public int NX { get; set; }         //     Oynamadi/Gelmedi
 
         public int KA { get; set; }         // sKor Aldigi
         public int KV { get; set; }         //      Verdigi
@@ -43,15 +48,16 @@ namespace BDB2
 
         public int PW { get; set; }         // Puan
 
+        // Diskalifiye edildikten sonraki Eventlerini update
         // Yaptigi Eventleri toplayarak Sonuclari update
         public static void RefreshSonuc(CT ct)
         {
-            int EG = 0,
-                EM = 0,
-                EB = 0,
+            int NG = 0,
+                NM = 0,
+                NB = 0,
+                NX = 0,
                 KA = 0,
                 KV = 0,
-                KF = 0,
                 PW = 0;
 
             Db.TransactAsync(() =>
@@ -64,13 +70,16 @@ namespace BDB2
                     KV += cet.gKW;
 
                     if (cet.hPW > cet.gPW)
-                        EG++;
+                        NG++;
                     else if (cet.hPW < cet.gPW)
-                        EM++;
+                        NM++;
                     else
-                        EB++;
+                        NB++;
 
                     PW += cet.hPW;
+
+                    if (cet.Drm == "hX")
+                        NX++;
                 }
 
                 // Guest oldugu Events
@@ -81,18 +90,22 @@ namespace BDB2
                     KV += cet.hKW;
 
                     if (cet.hPW < cet.gPW)
-                        EG++;
+                        NG++;
                     else if (cet.hPW > cet.gPW)
-                        EM++;
+                        NM++;
                     else
-                        EB++;
+                        NB++;
 
                     PW += cet.gPW;
+
+                    if (cet.Drm == "gX")
+                        NX++;
                 }
                 // Update CT
-                ct.EG = EG; // NofEvents
-                ct.EM = EM;
-                ct.EB = EB;
+                ct.NG = NG; // NofGalibiyet
+                ct.NM = NM; //    Malub
+                ct.NB = NB; //    Beraberlik
+                ct.NX = NX; //    MacaCikmadi
                 ct.KA = KA; // sKor
                 ct.KV = KV;
                 ct.PW = PW; // Puan
@@ -106,7 +119,50 @@ namespace BDB2
         public CC CC { get; set; }
         public CT CT { get; set; }
         public PP PP { get; set; }
-    }
+
+        public int RnkBas { get; set; } // Takima girdiginde hesaplanir
+        public int RnkBit { get; set; } // Lig bittiginde hesaplanir
+        public int NG { get; set; }     // Nof Galibiyet
+        public int NM { get; set; }     //     Malubiyet
+        public int NT => NG + NM;       //     Toplam
+        public int NX { get; set; }     //     Oynamadi/HukmenMalubiyet
+
+
+        // Takimdaki Oyuncularin Yaptigi Maclari toplayarak Sonuclari update
+        public static void RefreshSonuc(CT ct)
+        {
+            int NG, NM, NX;
+
+            Db.TransactAsync(() =>
+            {
+                var ctps = Db.SQL<CTP>("select r from CTP r where r.CT = ?", ct);
+                foreach (var ctp in ctps)
+                {
+                    NG = 0;
+                    NM = 0;
+                    NX = 0;
+                    // Home olarak yaptiklari
+                    var hmacs = Db.SQL<MAC>("select r from MAC r where r.hPP = ?", ctp.PP);
+                    foreach (var mac in hmacs)
+                    {
+                        NG += mac.hMW;
+                        NM += mac.gMW;
+                        if (mac.Drm == "hX")
+                            NX++;
+                    }
+                    // Guest olarak yaptiklari
+                    var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP = ?", ctp.PP);
+                    foreach (var mac in gmacs)
+                    {
+                        NG += mac.gMW;
+                        NM += mac.hMW;
+                        if (mac.Drm == "gX")
+                            NX++;
+                    }
+                }
+            });
+        }
+     }
 
     [Database]
     public class CF    // TurnuvaFertleri
@@ -124,7 +180,7 @@ namespace BDB2
     {
         public CC CC { get; set; }
         public DateTime Trh { get; set; }
-        public string Drm { get; set; }      // Iptal,hGelmedi,gGelmedi,Oynandi
+        public string Drm { get; set; }      // Iptal, h/gX: Gelmedi, h/gD: Diskalifiye, OK: Oynandi
         public string Yer { get; set; }
 
         public int hSSW { get; set; }        // Home Kazandigi Single Set
@@ -209,11 +265,19 @@ namespace BDB2
                         gPW = 1;
                     }
                 }
-                else if (cet.Drm == "hHM")  // Home Hukmen Maglup
+                else if (cet.Drm == "hX")  // Home Gelmedi/Cikmadi
                 {
 
                 }
-                else if (cet.Drm == "gHM")  // Guest Hukmen Maglup
+                else if (cet.Drm == "gX")  // Guest Gelmedi/Cikmadi
+                {
+
+                }
+                else if (cet.Drm == "hD")  // Home Diskalifiye
+                {
+
+                }
+                else if (cet.Drm == "gD")  // Guest Diskalifiye
                 {
 
                 }
@@ -257,9 +321,9 @@ namespace BDB2
         public CC CC { get; set; }
         public CEB CEB { get; set; }        // CET/CEF
 
-        public int Idx { get; set; }        // Mac Sirasi CET ise
+        public int Idx { get; set; }        // Mac Sirasi (CET ise)
         public DateTime Trh { get; set; }
-        public string Drm { get; set; }     // Iptal I,h/g Gelmedi h/gHM,h/g SiralamaHatasi h/gSH, Oynandi OK
+        public string Drm { get; set; }     // Iptal I,h/g Gelmedi h/gHM,h/g SiralamaHatasi h/gSH, Oynandi OK  hX:Cikmadi, hZ:SiralamaHatasi/Diskalifiye
         public string Yer { get; set; }
         public string Hakem { get; set; }
         public string Info { get; set; }
