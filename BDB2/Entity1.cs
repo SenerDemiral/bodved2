@@ -8,19 +8,107 @@ using System.IO;
 namespace BDB2
 {
     [Database]
-    public class PP   // Players
+    public class BB   // Base
     {
+        public ulong PK { get; set; }
         public string Ad { get; set; }
+        public string Info { get; set; }
+    }
+
+    [Database]
+    public class PP : BB   // Players
+    {
+        public string Sex { get; set; }
+        public string Tel { get; set; }
         public int RnkBaz { get; set; }
         public int RnkSon { get; set; }
         public int RnkIdx { get; set; }     // RnkSon'a gore dizildiginde Sirasi
         public int ActLvl { get; set; }     // Aktif ise 0, degilse > 0 (Global listede en altta goster)
+
+        public int SST => SSW + SSL;
+        public int SSW { get; set; }
+        public int SSL { get; set; }
+
+        public int SMT => SMW + SML;
+        public int SMW { get; set; }
+        public int SML { get; set; }
+
+        public int DST => DSW + DSL;
+        public int DSW { get; set; }
+        public int DSL { get; set; }
+
+        public int DMT => DMW + DML;
+        public int DMW { get; set; }
+        public int DML { get; set; }
+
+        public static void RefreshStat()
+        {
+            var pps = Db.SQL<PP>("select r from PP r");
+            foreach(var pp in pps)
+            {
+                RefreshStat(pp);
+            }
+        }
+
+        public static void RefreshStat(PP pp)
+        {
+            int SSW = 0, DSW = 0, SMW = 0, DMW = 0;
+            int SSL = 0, DSL = 0, SML = 0, DML = 0;
+
+            var hmacs = Db.SQL<MAC>("select r from MAC r where r.hPP1 = ? or r.hPP2 = ?", pp, pp);
+            foreach (var mac in hmacs)
+            {
+                if (mac.SoD == "S")
+                {
+                    SSW += mac.hSW;     // Single Set Win
+                    SSL += mac.gSW;     //            Lost
+                    SMW += mac.hMW;     //        Mac
+                    SML += mac.gMW;
+                }
+                if (mac.SoD == "D")
+                {
+                    DSW += mac.hSW;
+                    DSL += mac.gSW;
+                    DMW += mac.hMW;
+                    DML += mac.gMW;
+                }
+            }
+            var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP1 = ? or r.gPP2 = ?", pp, pp);
+            foreach (var mac in gmacs)
+            {
+                if (mac.SoD == "S")
+                {
+                    SSW += mac.gSW;
+                    SSL += mac.hSW;
+                    SMW += mac.gMW;
+                    SML += mac.hMW;
+                }
+                if (mac.SoD == "D")
+                {
+                    DSW += mac.gSW;
+                    DSL += mac.hSW;
+                    DMW += mac.gMW;
+                    DML += mac.hMW;
+                }
+            }
+            Db.TransactAsync(() =>
+            {
+                pp.SSW = SSW;
+                pp.SSL = SSL;
+                pp.SMW = SMW;
+                pp.SML = SML;
+                pp.DSW = DSW;
+                pp.DSL = DSL;
+                pp.DMW = DMW;
+                pp.DML = DML;
+            });
+        }
+
     }
 
     [Database]
-    public class CC   // Competitions
+    public class CC : BB  // Competitions
     {
-        public string Ad { get; set; }
         public string Skl { get; set; }     // Takim/Ferdi
         public bool isRun { get; set; }     // Cari, Devam eden (False:Bitti)
         public string Grp { get; set; }     // Ligdeki Grup oyuncularini bilmek icin
@@ -29,11 +117,13 @@ namespace BDB2
 
     // Takim devre icinde diskalifiye edilebilir, bu durumdan sonraki Musabakalarinda Hukmen maglup olur
     [Database]
-    public class CT   // Takimlar
+    public class CT : BB  // Takimlar
     {
         public CC CC { get; set; }
-        public string Ad { get; set; }
-        public string Info { get; set; }
+        public string Adres { get; set; }     // Takim/Ferdi
+        public PP K1 { get; set; }
+        public PP K2 { get; set; }
+
         public bool isDsk { get; set; }     // Diskalifiye/Ihrac
 
         public int NG { get; set; }         // Nof Galibiyet
@@ -47,6 +137,9 @@ namespace BDB2
         public int KF => KA - KV;           //      Fark = Alidigi - Verdigi
 
         public int PW { get; set; }         // Puan
+
+        public string K1Ad => K1 == null ? "-" : $"{K1.Ad} ({K1.Tel})";
+        public string K2Ad => K2 == null ? "-" : $"{K2.Ad} ({K2.Tel})";
 
         // Diskalifiye edildikten sonraki Eventlerini update
         // Yaptigi Eventleri toplayarak Sonuclari update
@@ -114,11 +207,12 @@ namespace BDB2
     }
 
     [Database]
-    public class CTP    // TakimOyunculari
+    public class CTP : BB   // TakimOyunculari
     {
         public CC CC { get; set; }
         public CT CT { get; set; }
         public PP PP { get; set; }
+        public int Idx { get; set; }    // 
 
         public int RnkBas { get; set; } // Takima girdiginde hesaplanir
         public int RnkBit { get; set; } // Lig bittiginde hesaplanir
@@ -127,6 +221,8 @@ namespace BDB2
         public int NT => NG + NM;       //     Toplam
         public int NX { get; set; }     //     Oynamadi/HukmenMalubiyet
 
+        public string CTAd => CT == null ? "-" : $"{CT.Ad}";
+        public string PPAd => PP == null ? "-" : $"{PP.Ad}";
 
         // Takimdaki Oyuncularin Yaptigi Maclari toplayarak Sonuclari update
         public static void RefreshSonuc(CT ct)
@@ -165,7 +261,7 @@ namespace BDB2
      }
 
     [Database]
-    public class CF    // TurnuvaFertleri
+    public class CF : BB   // TurnuvaFertleri
     {
         public CC CC { get; set; }
         public PP PP { get; set; }
@@ -176,7 +272,7 @@ namespace BDB2
     }
 
     [Database]
-    public class CEB    // EventBase, Takim/Ferdi
+    public class CEB : BB   // EventBase, Takim/Ferdi
     {
         public CC CC { get; set; }
         public DateTime Trh { get; set; }
@@ -316,7 +412,7 @@ namespace BDB2
     }
 
     [Database]
-    public class MAC    // Mac
+    public class MAC : BB   // Mac
     {
         public CC CC { get; set; }
         public CEB CEB { get; set; }        // CET/CEF
@@ -326,7 +422,6 @@ namespace BDB2
         public string Drm { get; set; }     // Iptal I,h/g Gelmedi h/gHM,h/g SiralamaHatasi h/gSH, Oynandi OK  hX:Cikmadi, hZ:SiralamaHatasi/Diskalifiye
         public string Yer { get; set; }
         public string Hakem { get; set; }
-        public string Info { get; set; }
 
         public string SoD { get; set; }     // SingleOrDouble
         public PP hPP1 { get; set; }
@@ -506,7 +601,7 @@ namespace BDB2
                 }
 
                 // Sadece Single Maclar Rank uretir
-                foreach (var mac in Db.SQL<MAC>("select m from MAC m where order by m.Trh"))    
+                foreach (var mac in Db.SQL<MAC>("select m from MAC m order by m.Trh"))    
                 //foreach (var mac in Db.SQL<BDB.MAC>("select m from MAC m where m.SoD = ? order by m.Trh", "S"))
                 {
                     if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
@@ -522,7 +617,7 @@ namespace BDB2
 
                     hPX = 0;
                     if (mac.CC.isRnkd)  // Rank hesaplanacak ise
-                        if (mac.Drm == "OK" )
+                        if (mac.Drm == "OK" && hpRnk != 0 && gpRnk != 0)
                             hPX = compHomeRnkPX(mac.hMW == 0 ? false : true, hpRnk, gpRnk);
 
                     // Update MAC
@@ -535,6 +630,12 @@ namespace BDB2
                     // Update dictionary
                     ppDic[hPPoNo] = hpRnk + hPX;
                     ppDic[gPPoNo] = gpRnk - hPX;
+                }
+
+
+                foreach (var p in Db.SQL<PP>("select p from PP p where p.SMT = ?", 0))
+                {
+                    ppDic[p.GetObjectNo()] = 0;
                 }
 
                 // Rank'e gore Sira verip PP update
