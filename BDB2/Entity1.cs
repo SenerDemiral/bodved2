@@ -142,7 +142,7 @@ namespace BDB2
         public string K2Ad => K2 == null ? "-" : $"{K2.Ad} ({K2.Tel})";
 
         // Diskalifiye edildikten sonraki Eventlerini update
-        // Yaptigi Eventleri toplayarak Sonuclari update
+        // Takimin Yaptigi Eventleri toplayarak Sonuclari update
         public static void RefreshSonuc(CT ct)
         {
             int NG = 0,
@@ -156,8 +156,8 @@ namespace BDB2
             Db.TransactAsync(() =>
             {
                 // Home oldugu Events
-                var cets = Db.SQL<CET>("select r from CET r where r.hCT = ?", ct);
-                foreach (var cet in cets)
+                var hcets = Db.SQL<CET>("select r from CET r where r.hCT = ?", ct);
+                foreach (var cet in hcets)
                 {
                     KA += cet.hKW;
                     KV += cet.gKW;
@@ -176,8 +176,8 @@ namespace BDB2
                 }
 
                 // Guest oldugu Events
-                cets = Db.SQL<CET>("select r from CET r where r.gCT = ?", ct);
-                foreach (var cet in cets)
+                var gcets = Db.SQL<CET>("select r from CET r where r.gCT = ?", ct);
+                foreach (var cet in gcets)
                 {
                     KA += cet.gKW;
                     KV += cet.hKW;
@@ -212,49 +212,120 @@ namespace BDB2
         public CC CC { get; set; }
         public CT CT { get; set; }
         public PP PP { get; set; }
-        public int Idx { get; set; }    // 
+        public int Idx { get; set; }    // Takim icindeki sirasi
 
         public int RnkBas { get; set; } // Takima girdiginde hesaplanir
         public int RnkBit { get; set; } // Lig bittiginde hesaplanir
-        public int NG { get; set; }     // Nof Galibiyet
-        public int NM { get; set; }     //     Malubiyet
-        public int NT => NG + NM;       //     Toplam
-        public int NX { get; set; }     //     Oynamadi/HukmenMalubiyet
+
+        public int SMT => SMW + SML;    // Single Mac Total
+        public int SMW { get; set; }    //            Win
+        public int SML { get; set; }    //            Lost
+        public int SMX { get; set; }    //            HukmenMaglup
+
+        public int DMT => DMW + DML;    // Double Mac Total
+        public int DMW { get; set; }
+        public int DML { get; set; }
+        public int DMX { get; set; }    //            HukmenMaglup
 
         public string CTAd => CT == null ? "-" : $"{CT.Ad}";
         public string PPAd => PP == null ? "-" : $"{PP.Ad}";
 
+        public static void RefreshSonuc()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            var ccs = Db.SQL<CC>("select r from CC r where r.Skl = ?", "T");
+            foreach (var cc in ccs)
+            {
+                RefreshSonuc(cc);
+            }
+            watch.Stop();
+            Console.WriteLine($"CTP.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void RefreshSonuc(CC cc)
+        {
+            var cts = Db.SQL<CT>("select r from CT r where r.CC = ?", cc);
+            foreach (var ct in cts)
+            {
+                RefreshSonuc(ct);
+            }
+        }
+
         // Takimdaki Oyuncularin Yaptigi Maclari toplayarak Sonuclari update
         public static void RefreshSonuc(CT ct)
         {
-            int NG, NM, NX;
+            int SMW, SML, SMX, DMW, DML, DMX;
 
             Db.TransactAsync(() =>
             {
                 var ctps = Db.SQL<CTP>("select r from CTP r where r.CT = ?", ct);
+
+                ulong ctONO = ct.GetObjectNo();
+                ulong ctpppONO = 0;
                 foreach (var ctp in ctps)
                 {
-                    NG = 0;
-                    NM = 0;
-                    NX = 0;
-                    // Home olarak yaptiklari
-                    var hmacs = Db.SQL<MAC>("select r from MAC r where r.hPP = ?", ctp.PP);
+                    //ctpppONO = ctp.PP.GetObjectNo();
+                    SMW = 0;
+                    SML = 0;
+                    SMX = 0;
+                    DMW = 0;
+                    DML = 0;
+                    DMX = 0;
+                    // Home olarak bu Takimda yaptiklari
+                    var hmacs = Db.SQL<MAC>("select r from MAC r where (r.hPP1 = ? or r.hPP2 = ?) and CAST(r.CEB AS BDB2.CET).hCT = ?", ctp.PP, ctp.PP, ct);
+                    //var hmacs = Db.SQL<MAC>("select r from MAC r where r.hPP1 = ? or r.hPP2 = ?", ctp.PP, ctp.PP);
+                    //var hmacs = Db.SQL<MAC>("select r from MAC r where CAST(r.CEB AS BDB2.CET).hCT = ?", ct);
                     foreach (var mac in hmacs)
                     {
-                        NG += mac.hMW;
-                        NM += mac.gMW;
-                        if (mac.Drm == "hX")
-                            NX++;
+                        //if (mac.hPP1.GetObjectNo() == ctpppONO || mac.hPP2?.GetObjectNo() == ctpppONO)
+                        //if ((mac.CEB as CEF)?.hPP.GetObjectNo() == ctONO)
+                        {
+                            if (mac.SoD == "S")
+                            {
+                                SMW += mac.hMW;
+                                SML += mac.gMW;
+                                if (mac.Drm == "hX")
+                                    SMX++;
+                            }
+                            else
+                            {
+                                DMW += mac.hMW;
+                                DML += mac.gMW;
+                                if (mac.Drm == "hX")
+                                    DMX++;
+                            }
+                        }
                     }
                     // Guest olarak yaptiklari
-                    var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP = ?", ctp.PP);
+                    var gmacs = Db.SQL<MAC>("select r from MAC r where (r.gPP1 = ? or r.gPP2 = ?) and CAST(r.CEB AS BDB2.CET).gCT = ?", ctp.PP, ctp.PP, ct);
+                    //var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP1 = ? or r.gPP2 = ?", ctp.PP, ctp.PP);
+                    //var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP1 = ? ", ctp.PP);
                     foreach (var mac in gmacs)
                     {
-                        NG += mac.gMW;
-                        NM += mac.hMW;
-                        if (mac.Drm == "gX")
-                            NX++;
+                        if (mac.SoD == "S")
+                        {
+                            SMW += mac.gMW;
+                            SML += mac.hMW;
+                            if (mac.Drm == "gX")
+                                SMX++;
+                        }
+                        else
+                        {
+                            DMW += mac.gMW;
+                            DML += mac.hMW;
+                            if (mac.Drm == "gX")
+                                DMX++;
+                        }
                     }
+                    
+                    ctp.SMW = SMW;
+                    ctp.SML = SML;
+                    ctp.SMX = SMX;
+                    ctp.DMW = DMW;
+                    ctp.DML = DML;
+                    ctp.DMX = DMX;
+                    
                 }
             });
         }
@@ -412,16 +483,18 @@ namespace BDB2
     }
 
     [Database]
-    public class MAC : BB   // Mac
+    public class MAC   // Mac
     {
         public CC CC { get; set; }
         public CEB CEB { get; set; }        // CET/CEF
+        public string CEBtyp => CEB?.GetType().Name;
 
-        public int Idx { get; set; }        // Mac Sirasi (CET ise)
+        public int Idx { get; set; }        // CET Mac Sirasi, CEF de 0
         public DateTime Trh { get; set; }
         public string Drm { get; set; }     // Iptal I,h/g Gelmedi h/gHM,h/g SiralamaHatasi h/gSH, Oynandi OK  hX:Cikmadi, hZ:SiralamaHatasi/Diskalifiye
         public string Yer { get; set; }
         public string Hakem { get; set; }
+        public string Info { get; set; }
 
         public string SoD { get; set; }     // SingleOrDouble
         public PP hPP1 { get; set; }
@@ -582,6 +655,119 @@ namespace BDB2
             return hPX;
         }
 
+        public static void deneme()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            Dictionary<string, MacStat> dnm = new Dictionary<string, MacStat>();    // Players
+/*
+            foreach (var p in Db.SQL<PP>("select p from PP p"))
+            {
+                dnm[p.GetObjectNo().ToString()] = new MacStat
+                {
+                    SSW = 0,
+                    SSL = 0,
+                    SMW = 0,
+                    SML = 0,
+                    DSW = 0,
+                    DSL = 0,
+                    DMW = 0,
+                    DML = 0,
+                };
+            }*/
+            string hPPoNo, gPPoNo;
+            string hPP2oNo, gPP2oNo;
+            MacStat hMS, gMS;
+            foreach (var mac in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
+            {
+                nor++;
+                var hCT = (mac.CEB as CET).hCT.GetObjectNo().ToString();
+                var gCT = (mac.CEB as CET).hCT.GetObjectNo().ToString();
+
+                hPPoNo = $"{mac.hPP1.GetObjectNo()} {hCT}";
+                gPPoNo = $"{mac.gPP1.GetObjectNo()} {gCT}";
+                //gPPoNo = mac.gPP1.GetObjectNo().ToString() + gCT;
+
+                if (!dnm.ContainsKey(hPPoNo))
+                    dnm[hPPoNo] = new MacStat();
+                if (!dnm.ContainsKey(gPPoNo))
+                    dnm[gPPoNo] = new MacStat();
+
+                if (mac.SoD == "S")
+                {
+                    hMS = dnm[hPPoNo];
+                    hMS.SSW += mac.hSW;
+                    hMS.SSL += mac.gSW;
+                    hMS.SMW += mac.hMW;
+                    hMS.SML += mac.gMW;
+                    dnm[hPPoNo] = hMS;
+
+                    gMS = dnm[gPPoNo];
+                    gMS.SSW += mac.gSW;
+                    gMS.SSL += mac.hSW;
+                    gMS.SMW += mac.gMW;
+                    gMS.SML += mac.hMW;
+                    dnm[gPPoNo] = gMS;
+                }
+                
+                else
+                {
+                    hMS = dnm[hPPoNo];
+                    hMS.DSW += mac.hSW;
+                    hMS.DSL += mac.gSW;
+                    hMS.DMW += mac.hMW;
+                    hMS.DML += mac.gMW;
+                    dnm[hPPoNo] = hMS;
+
+                    gMS = dnm[gPPoNo];
+                    gMS.DSW += mac.gSW;
+                    gMS.DSL += mac.hSW;
+                    gMS.DMW += mac.gMW;
+                    gMS.DML += mac.hMW;
+                    dnm[gPPoNo] = gMS;
+
+                    //hPP2oNo = mac.hPP2.GetObjectNo().ToString() + hCT;
+                    //gPP2oNo = mac.gPP2.GetObjectNo().ToString() + gCT;
+                    hPP2oNo = $"{mac.hPP2.GetObjectNo()} {hCT}";
+                    gPP2oNo = $"{mac.gPP2.GetObjectNo()} {gCT}";
+                    if (!dnm.ContainsKey(hPP2oNo))
+                        dnm[hPP2oNo] = new MacStat();
+                    if (!dnm.ContainsKey(gPP2oNo))
+                        dnm[gPP2oNo] = new MacStat();
+
+                    hMS = dnm[hPP2oNo];
+                    hMS.DSW += mac.hSW;
+                    hMS.DSL += mac.gSW;
+                    hMS.DMW += mac.hMW;
+                    hMS.DML += mac.gMW;
+                    dnm[hPP2oNo] = hMS;
+
+                    gMS = dnm[gPP2oNo];
+                    gMS.DSW += mac.gSW;
+                    gMS.DSL += mac.hSW;
+                    gMS.DMW += mac.gMW;
+                    gMS.DML += mac.hMW;
+                    dnm[gPP2oNo] = gMS;
+
+                }
+                
+            }
+            string[] k;
+            ulong pp, ct;
+            MacStat ms;
+            foreach(var pair in dnm)
+            {
+                k = pair.Key.Split(new Char[] { ' ' });
+                pp = ulong.Parse(k[0]);
+                ct = ulong.Parse(k[1]);
+                ms = pair.Value;
+            }
+            watch.Stop();
+            Console.WriteLine($"deneme {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
         public static void RefreshGlobalRank()
         {
             Stopwatch watch = new Stopwatch();
@@ -656,6 +842,18 @@ namespace BDB2
             watch.Stop();
             Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
+    }
 
+    public class MacStat
+    {
+        public int SSW;
+        public int SSL;
+        public int SMW;
+        public int SML;
+
+        public int DSW;
+        public int DSL;
+        public int DMW;
+        public int DML;
     }
 }
