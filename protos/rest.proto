@@ -1,0 +1,485 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";	// null kullanabilmek icin https://stackoverflow.com/questions/42622015/how-to-define-an-optional-field-in-protobuf-3
+package rest;		// namespace
+
+
+// The CRUDs service definition.
+service CRUDs {
+  rpc TblaFill (QryProxy) returns (stream TblaProxy) {}
+  rpc TblaUpdate (TblaProxy) returns (TblaProxy) {}
+
+  ///// ACC /////
+  // BillKind
+  rpc ABKfill (QryProxy) returns (stream ABKproxy) {}
+  rpc ABKupdate (ABKproxy) returns (ABKproxy) {}
+
+  // VoucherKind
+  rpc AVKfill (QryProxy) returns (stream AVKproxy) {}
+  rpc AVKupdate (AVKproxy) returns (AVKproxy) {}
+
+  // Ne->Hsp NeHesapKarsiliklari 
+  rpc AN2Hfill (QryProxy) returns (stream AN2Hproxy) {}
+  rpc AN2Hupdate (AN2Hproxy) returns (AN2Hproxy) {}
+
+  // HesapPlani
+  rpc AHPfill (QryProxy) returns (stream AHPproxy) {}
+  rpc AHPupdate (AHPproxy) returns (AHPproxy) {}
+
+  // Voucher
+  rpc AVMfill (QryProxy) returns (stream AVMproxy) {}
+  rpc AVMupdate (AVMproxy) returns (AVMproxy) {}
+  rpc AVDfill (QryMDproxy) returns (stream AVDproxy) {}
+  rpc AVDupdate (AVDproxy) returns (AVDproxy) {}
+
+  // Bill
+  rpc ABMfill (QryProxy) returns (stream ABMproxy) {}
+  rpc ABMupdate (ABMproxy) returns (ABMproxy) {}
+  rpc ABDfill (QryMDproxy) returns (stream ABDproxy) {}
+  rpc ABDupdate (ABDproxy) returns (ABDproxy) {}
+
+  // Order/Siparis
+  rpc TOOfill (QryProxy) returns (stream TOOproxy) {}
+  rpc TOOupdate (TOOproxy) returns (TOOproxy) {}
+
+  // Waybill/Irsaliye
+  rpc TWMfill (QryProxy) returns (stream TWMproxy) {}
+  rpc TWMupdate (TWMproxy) returns (TWMproxy) {}
+  rpc TWDfill (QryMDproxy) returns (stream TWDproxy) {}
+  rpc TWDupdate (TWDproxy) returns (TWDproxy) {}
+
+  ///// GNL /////
+  rpc XGTfill (QryProxy) returns (stream XGTproxy) {}
+  rpc XGTupdate (XGTproxy) returns (XGTproxy) {}
+
+  rpc XDKfill (QryProxy) returns (stream XDKproxy) {}
+  rpc XDKupdate (XDKproxy) returns (XDKproxy) {}
+
+  // Ne
+  rpc NNTfill (QryProxy) returns (stream NNTproxy) {}
+  rpc NNTupdate (NNTproxy) returns (NNTproxy) {}
+  rpc NNRfill (PKproxy) returns (stream NNRproxy) {}
+  rpc NNRupdate (NNRproxy) returns (NNRproxy) {}
+  rpc NeParentsFill (PKproxy) returns (stream NeParentsProxy) {}	// PKproxy.PK = 0 ise hepsi
+
+  rpc NeUpFill (QryProxy) returns (stream NeTreeProxy) {}
+  rpc NeDownFill (QryProxy) returns (stream NeTreeProxy) {}
+  rpc NodesInParentsFill (QryProxy) returns (stream NodesInParentsProxy) {}
+
+  ///// Kim /////
+  // FirmaTanim
+  rpc KFTfill (QryProxy) returns (stream KFTproxy) {}
+  rpc KFTupdate (KFTproxy) returns (KFTproxy) {}
+
+  // PersonelTanim
+  rpc KPTfill (QryMDproxy) returns (stream KPTproxy) {}
+  rpc KPTupdate (KPTproxy) returns (KPTproxy) {}
+
+  // DepartmanTanim
+  rpc KDTfill (QryProxy) returns (stream KDTproxy) {}
+  rpc KDTupdate (KDTproxy) returns (KDTproxy) {}
+  rpc KDTtreeDownFill (QryProxy) returns (stream KDTtreeProxy) {}
+
+  // HaberlesmeTanim
+  rpc KHTfill (QryPproxy) returns (stream KHTproxy) {}
+  rpc KHTupdate (KHTproxy) returns (KHTproxy) {}
+
+  // BaseRelation
+  rpc BRfill (QryBRproxy) returns (stream BRproxy) {}
+  rpc BRupdate (BRproxy) returns (BRproxy) {}
+  rpc BRparentsFill (PKproxy) returns (stream BRparentsProxy) {}	// PKproxy.PK = 0 ise hepsi
+
+}
+
+message PKproxy {
+  uint64 PK = 1;
+}
+
+message QryBRproxy {
+  uint64 M = 1;
+  string Mtyp = 2;
+  string Dtyp = 3;
+}
+
+message QryMDproxy {
+  uint64 M = 1;
+  string Mtyp = 2;
+}
+
+
+message QryPproxy {
+  uint64 P = 1;
+  string Ptyp = 2;
+}
+
+message QryProxy {
+  string query = 1;
+  string param = 2;
+}
+
+message NeTreeProxy {
+	int32 L = 1;
+	uint64 P = 2;
+	uint64 K = 3;
+	string A = 4;
+	uint64 N = 5;
+	double M = 6;
+	double MT = 7;
+	double F = 8;
+	bool HasKid = 9;	// HasKid
+	string Ureten = 10;
+}
+
+message NodesInParentsProxy {
+	uint64 KNo = 1;
+	uint64 PNo = 2;
+	string KAd = 3;
+	string PAd = 4;
+	double M = 5;
+}
+
+// Deneme
+message TblaProxy {
+  string row_state = 1;	// Inserted/Modified/Deleted/Unchanged
+  string row_err = 2;
+  uint64 row_pk = 3;
+
+  string fldStr = 4;
+  int32 fldInt = 5;
+  double fldDbl = 6;
+  double fldDcm = 7;	// String olabilir
+  int64 fldDate = 8;	// DateTime.Ticks olarak UInt64 de tut. new DateTime(fldDate) => DateTime 
+}
+
+// Base
+message BaseRow {
+  string State = 1;	// Inserted/Modified/Deleted/Unchanged
+  string Err = 2;
+  uint64 Usr = 3;
+}
+
+/////////////////// ACC ////////////////////////
+
+// Acc BillKind/FaturaTuru
+message ABKproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	google.protobuf.StringValue Kd = 5;
+	google.protobuf.StringValue Ad = 6;
+	google.protobuf.StringValue Info = 7;
+	bool IsBrc = 8;
+}
+
+// Acc VoucherKind/FisTuru
+message AVKproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	google.protobuf.StringValue Kd = 5;
+	google.protobuf.StringValue Ad = 6;
+	google.protobuf.StringValue Info = 7;
+}
+
+// Acc Ne->Hsp NeHesapKarsiliklari
+message AN2Hproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 NNT = 5;
+	uint64 ABK = 6;
+	uint64 AHP = 7;
+}
+
+// Muhasebe Hesap Plani
+message AHPproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 P = 5;
+	google.protobuf.StringValue Kd = 6;
+	google.protobuf.StringValue Ad = 7;
+	google.protobuf.StringValue Info = 8;
+	string HspNo = 9;
+	double Brc = 10;
+	double Alc = 11;
+	bool IsW = 12;
+	bool HasH = 13;
+}
+
+// Muhasebe Voucher/Fisleri
+message AVMproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 ORG = 5;
+	int64 Trh = 6;
+	uint64 AVK = 7;
+	string Drm = 8;
+	google.protobuf.StringValue Kd = 9;
+	google.protobuf.StringValue Ad = 10;
+	google.protobuf.StringValue Info = 11;
+	double Brc = 12;
+	double Alc = 13;
+}
+
+// Muhasebe Voucher/Fis Detaylari
+message AVDproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 AVM = 5;
+	uint64 AHP = 6;
+	google.protobuf.StringValue Kd = 7;
+	google.protobuf.StringValue Ad = 8;
+	google.protobuf.StringValue Info = 9;
+	double Tut = 10;
+	uint64 DVT = 11;
+	float Kur = 12;
+	double TutTL = 13;
+}
+
+// Muhasebe Bill/Fatura Master
+message ABMproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	int64 Trh = 5;
+	uint64 ABK = 6;
+	string Drm = 7;
+	uint64 KFT = 8;
+	string BA = 9;
+	uint64 DVT = 10;
+	float Kur = 11;
+	double Tut = 12;
+	google.protobuf.StringValue Kd = 13;
+	google.protobuf.StringValue Ad = 14;
+	google.protobuf.StringValue Info = 15;
+}
+
+// Muhasebe Bill/Fatura Detay
+message ABDproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 ABM = 5;
+	uint64 NNT = 6;
+	uint64 AHP = 7;
+	double Fyt = 8;
+	uint64 DVT = 9;
+	double Mik = 10;
+	float Kur = 11;
+	int32 KDY = 12;
+	google.protobuf.StringValue Kd = 13;
+	google.protobuf.StringValue Ad = 14;
+	google.protobuf.StringValue Info = 15;
+}
+
+////////////////////TRNSFR////////////////////
+
+// TransferOrderMaster
+message TOOproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 KND = 5;
+	int64 Trh = 6;
+	string Drm = 7;
+	uint64 ORG = 8;
+	uint64 DST = 9;
+	uint64 NNT = 10;
+	double Mik = 11;
+	double Fyt = 12;
+	uint64 DVT = 13;
+
+	google.protobuf.StringValue Kd = 14;
+	google.protobuf.StringValue Ad = 15;
+	google.protobuf.StringValue info = 16;
+}
+
+// TransferWaybillMaster
+message TWMproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	int64 Trh = 5;
+	uint64 KND = 6;
+	string Drm = 7;
+	google.protobuf.StringValue Kd = 8;
+	google.protobuf.StringValue Ad = 9;
+	google.protobuf.StringValue info = 10;
+}
+
+// TransferWaybillDety
+message TWDproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 TWM = 5;
+	google.protobuf.StringValue Kd = 6;
+	google.protobuf.StringValue Ad = 7;
+	google.protobuf.StringValue info = 8;
+}
+
+////////////////////NE/////////////////////////
+
+// NNT Ne
+message NNTproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	google.protobuf.StringValue Kd = 5;
+	google.protobuf.StringValue Ad = 6;
+	google.protobuf.StringValue Info = 7;
+	uint64 BRM = 8;
+	double Fyt = 9;
+}
+
+// NNR NeRelation
+message NNRproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 NP = 5;
+	uint64 NC = 6;
+	double Mik = 7;
+}
+
+message NeParentsProxy {
+	uint64 Ne = 1;
+	string Parents = 2;
+}
+
+// BR BaseRelation
+message BRproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 P = 5;
+	uint64 C = 6;
+	string Others = 7;
+}
+
+message BRparentsProxy {
+	uint64 Node = 1;
+	string Parents = 2;
+}
+
+////////////////////KIM/////////////////////////
+
+message KFTproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	google.protobuf.StringValue Kd = 5;
+	google.protobuf.StringValue Ad = 6;
+	google.protobuf.StringValue Info = 7;
+	google.protobuf.StringValue Tel = 8;
+	google.protobuf.StringValue Adres = 9;
+	google.protobuf.StringValue Sorumlu = 10;
+	google.protobuf.StringValue VrgDN = 11;
+	uint64 AHPbrc = 12;
+	uint64 AHPalc = 13;
+}
+
+// KimPersonelTanim
+message KPTproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 KFT = 5;	// KFT=1 Sirket
+	google.protobuf.StringValue Kd = 6;
+	google.protobuf.StringValue Ad = 7;
+	google.protobuf.StringValue info = 8;
+	int32 YtkStsNo = 9;
+	int32 YtkAlsNo = 10;
+	int32 YtkTrnNo = 11;
+	string Pwd = 12;
+}
+
+// KHT Master -> KimHaberlesmeTanim
+message KHTproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 M = 5;	// Masters are KDT,KPT,KFT,
+	google.protobuf.StringValue Kd = 6;
+	google.protobuf.StringValue Ad = 7;
+	google.protobuf.StringValue info = 8;
+}
+
+// KimDepartmanTanim
+message KDTproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	google.protobuf.StringValue Kd = 5;
+	google.protobuf.StringValue Ad = 6;
+	google.protobuf.StringValue info = 7;
+}
+
+message KDTtreeProxy {
+	int32 L = 1;
+	uint64 P = 2;
+	uint64 K = 3;
+	string A = 4;
+	uint64 N = 5;
+}
+
+////////////////////GENEL///////////////////////
+
+// GenelTanimlari
+message XGTproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 P = 5;
+	string Kd = 6;
+	string Ad = 7;
+}
+
+// DovizKurlari
+message XDKproxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	int64 Trh = 5;
+	uint64 DVT = 6;
+	float Kur = 7;	// Dovizin TRL karsiligi
+	string Dvz = 8;
+}
+
+

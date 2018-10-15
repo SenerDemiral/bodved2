@@ -1,0 +1,15 @@
+syntax = "proto3";
+package rest;
+
+service ActionService {
+	rpc Login (LoginProxy) returns (LoginProxy) {}
+}
+
+// Usr returns Dpts
+// Usr+Dpt returns true/false
+message LoginProxy {
+	uint64 Usr = 1;
+	string Dpts = 2;
+	string Pwd = 3;
+	bool Ok = 4;
+}

@@ -64,7 +64,7 @@ namespace BDB2
                                 Ad = ra[2],
                                 Skl = ra[3],
 
-                                isRnkd = true,
+                                IsRnkd = true,
                             };
                         }
                     }

@@ -18,8 +18,9 @@ namespace bodved2
             PP.RefreshStat();
             MAC.RefreshGlobalRank();
 
+            MAC.deneme2();
             //CTP.RefreshSonuc();
-            MAC.deneme();
+            CTP.RefreshSonucNew();
         }
     }
 }

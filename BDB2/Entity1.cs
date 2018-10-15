@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Data;
 using Starcounter;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
-using System.IO;
 
 namespace BDB2
 {
@@ -110,9 +110,9 @@ namespace BDB2
     public class CC : BB  // Competitions
     {
         public string Skl { get; set; }     // Takim/Ferdi
-        public bool isRun { get; set; }     // Cari, Devam eden (False:Bitti)
         public string Grp { get; set; }     // Ligdeki Grup oyuncularini bilmek icin
-        public bool isRnkd { get; set; }    // Rank hesaplnacak mi?
+        public bool IsRun { get; set; }     // Cari, Devam eden (False:Bitti)
+        public bool IsRnkd { get; set; }    // Rank hesaplnacak mi?
     }
 
     // Takim devre icinde diskalifiye edilebilir, bu durumdan sonraki Musabakalarinda Hukmen maglup olur
@@ -230,6 +230,214 @@ namespace BDB2
         public string CTAd => CT == null ? "-" : $"{CT.Ad}";
         public string PPAd => PP == null ? "-" : $"{PP.Ad}";
 
+        public static void RefreshSonucNew()
+        {
+            // RefreshSonuc'dan 5 kat hizli
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+            ulong cc, cet, hct, gct, hpp, gpp;
+            int hsw, gsw, hmw, gmw, hmx, gmx;
+            string sod;
+
+            List<Maclar> MacList = new List<Maclar>();
+            foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
+            {
+                nor++;
+
+                cc = m.CC.GetObjectNo();
+                cet = m.CEB.GetObjectNo();
+                var ceto = m.CEB as CET;
+                hct = ceto.hCT.GetObjectNo();
+                gct = ceto.gCT.GetObjectNo();
+                hpp = m.hPP1.GetObjectNo();
+                gpp = m.gPP1.GetObjectNo();
+
+                hsw = m.hSW;
+                gsw = m.gSW;
+                hmw = m.hMW;
+                gmw = m.gMW;
+                hmx = m.hMX;
+                gmx = m.gMX;
+                sod = m.SoD;
+
+                MacList.Add(new Maclar
+                {
+                    CC = cc,
+                    CET = cet,
+                    CT = hct,
+                    PP = hpp,
+                    SoD = sod,
+                    SW = hsw,
+                    SL = gsw,
+                    MW = hmw,
+                    ML = gmw,
+                    MX = hmx,
+                });
+
+                MacList.Add(new Maclar
+                {
+                    CC = cc,
+                    CET = cet,
+                    CT = gct,
+                    PP = gpp,
+                    SoD = sod,
+                    SW = gsw,
+                    SL = hsw,
+                    MW = gmw,
+                    ML = hmw,
+                    MX = gmx,
+                });
+
+                if (sod == "D")
+                {
+                    hpp = m.hPP2.GetObjectNo();
+                    gpp = m.gPP2.GetObjectNo();
+
+                    MacList.Add(new Maclar
+                    {
+                        CC = cc,
+                        CET = cet,
+                        CT = hct,
+                        PP = hpp,
+                        SoD = sod,
+                        SW = hsw,
+                        SL = gsw,
+                        MW = hmw,
+                        ML = gmw,
+                        MX = hmx,
+                    });
+
+                    MacList.Add(new Maclar
+                    {
+                        CC = cc,
+                        CET = cet,
+                        CT = gct,
+                        PP = gpp,
+                        SoD = sod,
+                        SW = gsw,
+                        SL = hsw,
+                        MW = gmw,
+                        ML = hmw,
+                        MX = gmx,
+                    });
+                }
+            }
+
+            /*
+            var invoiceSum =
+            DSZoho.Tables["Invoices"].AsEnumerable()
+            .Select (x => 
+                new {  
+                    InvNumber = x["invoice number"],
+                    InvTotal = x["item price"],
+                    Contact = x["customer name"],
+                    InvDate = x["invoice date"],
+                    DueDate = x["due date"],
+                    Balance = x["balance"],
+                    }
+            )
+             .GroupBy (s => new {s.InvNumber, s.Contact, s.InvDate, s.DueDate} )
+             .Select (g => 
+                    new {
+                        InvNumber = g.Key.InvNumber,
+                        InvDate = g.Key.InvDate,
+                        DueDate = g.Key.DueDate,
+                        Contact = g.Key.Contact,
+                        InvTotal = g.Sum (x => Math.Round(Convert.ToDecimal(x.InvTotal), 2)),
+                        Balance = g.Sum (x => Math.Round(Convert.ToDecimal(x.Balance), 2)),
+                        } 
+             );
+            */
+            /*
+            var groupedResult4 = ml
+                .Select(x =>
+                   new
+                   {
+                       acc = x.CC,
+                       acet = x.CET,
+                       act = x.CT,
+                       asod = x.SoD,
+                       aSW = x.SW,
+                       aMW = x.MW,
+                   }
+                )
+                .OrderBy(x => x.act)//.ThenBy(x => x.asod)
+                .GroupBy(s => new { s.act, s.asod })
+             .Select(g =>
+                   new
+                   {
+                       gact = g.Key.act,
+                       gasod = g.Key.asod,
+                       tSW = g.Sum(x => x.aSW),
+                       tMW = g.Sum(x => x.aMW),
+                   }
+             );*/
+            /*
+            var groupedResult3 = from s in ml
+                                group s by new { ct = s.CT, SoD = s.SoD } into grp
+                                select new
+                                {
+                                    Key = grp.Key,
+                                    ssw = grp.Sum(r => r.SW),
+                                    ssl = grp.Sum(r => r.SL),
+                                    smw = grp.Sum(r => r.MW),
+                                    sml = grp.Sum(r => r.ML),
+                                };
+*/
+            var groupedResult = MacList
+                .OrderBy(x => x.CT).ThenBy(x => x.PP).ThenBy(x => x.SoD)
+                .GroupBy(s => new { s.CT, s.PP, s.SoD })
+                .Select(g => new
+                {
+                    gct = g.Key.CT,
+                    gpp = g.Key.PP,
+                    gsod = g.Key.SoD,
+                    tSW = g.Sum(x => x.SW),
+                    tSL = g.Sum(x => x.SL),
+                    tMW = g.Sum(x => x.MW),
+                    tML = g.Sum(x => x.ML),
+                    tMX = g.Sum(x => x.MX),
+                });
+
+            //iterate each group 
+            ulong pct = 0, ppp = 0;
+            CTP ctp = null;
+            Db.TransactAsync(() =>
+            {
+                foreach (var gr in groupedResult)
+                {
+                    if (pct != gr.gct || ppp != gr.gpp) // ctp yi bir kere okusun
+                    {
+                        ctp = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ? and r.PP.ObjectNo = ?", gr.gct, gr.gpp).FirstOrDefault();
+                        pct = gr.gct;
+                        ppp = gr.gpp;
+                    }
+                    if (ctp != null)
+                    {
+                        if (gr.gsod == "S")
+                        {
+                            //ssw = gr.tSW;
+                            //ssl = gr.tSL;
+                            ctp.SMW = gr.tMW;
+                            ctp.SML = gr.tML;
+                            ctp.SMX = gr.tMX;
+                        }
+                        else if (gr.gsod == "D")
+                        {
+                            //dsw = gr.tSW;
+                            //dsl = gr.tSL;
+                            ctp.DMW = gr.tMW;
+                            ctp.DML = gr.tML;
+                            ctp.DMX = gr.tMX;
+                        }
+                    }
+                }
+            });
+            watch.Stop();
+            Console.WriteLine($"CTP.RefreshSonucNew() #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
         public static void RefreshSonuc()
         {
             Stopwatch watch = new Stopwatch();
@@ -262,7 +470,7 @@ namespace BDB2
                 var ctps = Db.SQL<CTP>("select r from CTP r where r.CT = ?", ct);
 
                 ulong ctONO = ct.GetObjectNo();
-                ulong ctpppONO = 0;
+                //ulong ctpppONO = 0;
                 foreach (var ctp in ctps)
                 {
                     //ctpppONO = ctp.PP.GetObjectNo();
@@ -524,6 +732,9 @@ namespace BDB2
         public int hMW { get; set; }        // Home Aldigi Mac 0/1
         public int gMW { get; set; }        // Guest Aldigi Mac 0/1
 
+        public int hMX { get; set; }        // Home Diskalifiye
+        public int gMX { get; set; }        // Guest 
+
         public int hRnk { get; set; }       // Maca basladigindaki Rank
         public int hRnkPX { get; set; }     // Rank Point Exchange
         public int gRnk { get; set; }
@@ -534,41 +745,57 @@ namespace BDB2
             // Compute Aldigi Setler
             int hSW = 0, gSW = 0;
             int hMW = 0, gMW = 0;
+            int hMX = 0, gMX = 0;
 
-            if (mac.h1W > mac.g1W)
-                hSW++;
-            else if (mac.h1W < mac.g1W)
-                gSW++;
-            if (mac.h2W > mac.g2W)
-                hSW++;
-            else if (mac.h2W < mac.g2W)
-                gSW++;
-            if (mac.h3W > mac.g3W)
-                hSW++;
-            else if (mac.h3W < mac.g3W)
-                gSW++;
-            if (mac.h4W > mac.g4W)
-                hSW++;
-            else if (mac.h4W < mac.g4W)
-                gSW++;
-            if (mac.h5W > mac.g5W)
-                hSW++;
-            else if (mac.h5W < mac.g5W)
-                gSW++;
-            if (mac.h6W > mac.g6W)
-                hSW++;
-            else if (mac.h6W < mac.g6W)
-                gSW++;
-            if (mac.h7W > mac.g7W)
-                hSW++;
-            else if (mac.h7W < mac.g7W)
-                gSW++;
+            if (mac.Drm == "OK")
+            {
+                if (mac.h1W > mac.g1W)
+                    hSW++;
+                else if (mac.h1W < mac.g1W)
+                    gSW++;
+                if (mac.h2W > mac.g2W)
+                    hSW++;
+                else if (mac.h2W < mac.g2W)
+                    gSW++;
+                if (mac.h3W > mac.g3W)
+                    hSW++;
+                else if (mac.h3W < mac.g3W)
+                    gSW++;
+                if (mac.h4W > mac.g4W)
+                    hSW++;
+                else if (mac.h4W < mac.g4W)
+                    gSW++;
+                if (mac.h5W > mac.g5W)
+                    hSW++;
+                else if (mac.h5W < mac.g5W)
+                    gSW++;
+                if (mac.h6W > mac.g6W)
+                    hSW++;
+                else if (mac.h6W < mac.g6W)
+                    gSW++;
+                if (mac.h7W > mac.g7W)
+                    hSW++;
+                else if (mac.h7W < mac.g7W)
+                    gSW++;
 
-            // Compute Aldigi Mac 0/1
-            if (hSW > gSW)
-                hMW++;
-            else if (hSW < gSW)
-                gMW++;
+                // Compute Aldigi Mac 0/1
+                if (hSW > gSW)
+                    hMW++;
+                else if (hSW < gSW)
+                    gMW++;
+            }
+            else if (mac.Drm == "hX")
+            {
+                hMX = 1;
+                hMW = 0;
+                gMW = 1;
+            }
+            else if (mac.Drm == "gX")
+            {
+                gMX = 1;
+                hMW = 1;
+                gMW = 0;
+            }
 
             Db.Transact(() =>
             {
@@ -576,6 +803,8 @@ namespace BDB2
                 mac.gSW = gSW;
                 mac.hMW = hMW;
                 mac.gMW = gMW;
+                mac.hMX = hMX;
+                mac.gMX = gMX;
             });
         }
 
@@ -655,12 +884,176 @@ namespace BDB2
             return hPX;
         }
 
-        public static void deneme()
+        public static void deneme2()
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
             int nor = 0;
 
+            // Bu sadece PP icin dogru olur, SoD secerek 
+            DataTable table = new DataTable();
+            table.Columns.Add("CC", typeof(ulong));
+            table.Columns.Add("CET", typeof(ulong));
+            table.Columns.Add("CT", typeof(ulong));
+            table.Columns.Add("PP", typeof(ulong));
+            table.Columns.Add("SoD", typeof(string));
+            table.Columns.Add("SW", typeof(int));
+            table.Columns.Add("SL", typeof(int));
+            table.Columns.Add("MW", typeof(int));
+            table.Columns.Add("ML", typeof(int));
+
+            ulong cc, cet, hct, gct, hpp, gpp;
+            int hsw, gsw, hmw, gmw;
+
+            // Takim Maclari PP
+            foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
+            {
+                nor++;
+
+                cc = m.CC.GetObjectNo();
+                cet = m.CEB.GetObjectNo();
+                var ceto = m.CEB as CET;
+                hct = ceto.hCT.GetObjectNo();
+                gct = ceto.gCT.GetObjectNo();
+
+                hsw = m.hSW;
+                gsw = m.gSW;
+                hmw = m.hMW;
+                gmw = m.gMW;
+
+                if (m.SoD == "S")
+                {
+                    hpp = m.hPP1.GetObjectNo();
+                    gpp = m.gPP1.GetObjectNo();
+                    // Home
+                    table.Rows.Add(cc, cet, hct, hpp, "S", hsw, gsw, hmw, gmw);
+                    table.Rows.Add(cc, cet, gct, gpp, "S", gsw, hsw, gmw, hmw);
+                }
+                if (m.SoD == "D")
+                {
+                    hpp = m.hPP2.GetObjectNo();
+                    gpp = m.gPP2.GetObjectNo();
+                    table.Rows.Add(cc, cet, hct, hpp, "D", hsw, gsw, hmw, gmw);
+                    table.Rows.Add(cc, cet, gct, gpp, "D", gsw, hsw, gmw, hmw);
+                }
+            }
+
+            //table.Compute("")
+
+            // CT her CC icin ayri tanimladigindan unique
+            // CT Single Maclari
+            /*
+            var result = from row in table.AsEnumerable()
+                         where row.Field<string>("SoD") == "S"
+                         group row by row.Field<ulong>("CT") into grp
+                         select new
+                         {
+                             ctID = grp.Key,
+                             macCount = grp.Count(),
+                             ssw = grp.Sum(r => r.Field<int>("SSW")),
+                             ssl = grp.Sum(r => r.Field<int>("SSL")),
+                             smw = grp.Sum(r => r.Field<int>("SMW")),
+                             sml = grp.Sum(r => r.Field<int>("SML")),
+
+                             dsw = grp.Sum(r => r.Field<int>("DSW")),
+                             dsl = grp.Sum(r => r.Field<int>("DSL")),
+                             dmw = grp.Sum(r => r.Field<int>("DMW")),
+                             dml = grp.Sum(r => r.Field<int>("DML")),
+                         };
+            // PP Single Maclari
+            var SinglesPP = from row in table.AsEnumerable()
+                            where row.Field<string>("SoD") == "S"
+                            group row by row.Field<ulong>("PP") into grp
+                            select new
+                            {
+                                ctID = grp.Key,
+                                macCount = grp.Count(),
+                                sw = grp.Sum(r => r.Field<int>("SW")),
+                                sl = grp.Sum(r => r.Field<int>("SL")),
+                                mw = grp.Sum(r => r.Field<int>("MW")),
+                                ml = grp.Sum(r => r.Field<int>("ML")),
+                            };
+            var DoublesPP = from row in table.AsEnumerable()
+                            where row.Field<string>("SoD") == "D"
+                            group row by row.Field<ulong>("PP") into grp
+                            select new
+                            {
+                                ctID = grp.Key,
+                                macCount = grp.Count(),
+                                sw = grp.Sum(r => r.Field<int>("SW")),
+                                sl = grp.Sum(r => r.Field<int>("SL")),
+                                mw = grp.Sum(r => r.Field<int>("MW")),
+                                ml = grp.Sum(r => r.Field<int>("ML")),
+                            };
+*/
+            var qryLatestInterview = from rows in table.AsEnumerable()
+                                     orderby rows["CT"], rows["PP"] 
+                                     group rows by new { ct = rows["CT"], pp = rows["PP"], SoD = rows["SoD"] } into grp
+                                     select new
+                                     {
+                                         key = grp.Key,
+                                         ssw = grp.Sum(r => r.Field<int>("SW")),
+                                         ssl = grp.Sum(r => r.Field<int>("SL")),
+                                         smw = grp.Sum(r => r.Field<int>("MW")),
+                                         sml = grp.Sum(r => r.Field<int>("ML")),
+
+                                     };
+            //select grp.First();
+
+            foreach (var r in qryLatestInterview)
+            {
+                var aaa = r.key.ct;
+                var bbb = r.key.pp;
+                var ccc = r.key.SoD;
+                var ctp = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ? and r.PP.ObjectNo = ?", aaa, bbb).FirstOrDefault();
+
+            }
+
+            //var dtPositionInterviews = qryLatestInterview.CopyToDataTable();
+
+            /*
+            var myLinqQuery = table.AsEnumerable()
+                         .GroupBy(r1 => r1.Field<int>("ID1"), r2 => r2.Field<int>("ID2"))
+                         .Select(g =>
+                         {
+                             var row = table.NewRow();
+
+                             row["ID1"] = g.Select(r => r.Field<int>("ID1"));
+                             row["ID2"] = g.Select(r => r.Field<int>("ID2"));
+                             row["Value1"] = g.Select(r => r.Field<string>("Value1"));
+                             row["Value2"] = g.Max<string>(r => r.Field<string>("Value2"));
+
+                             return row;
+                         }).CopyToDataTable();
+                         */
+            /*
+            var dt = table.AsEnumerable()
+                .GroupBy(r => new { Col1 = r["CT"], Col2 = r["SoD"] })
+                .Select(g => g.OrderBy(r => r["CT"]).First())
+                .CopyToDataTable();
+*/
+            /*
+            foreach (var t in result)
+                Console.WriteLine(t.TeamID + " " + t.MemberCount);
+
+
+            var query = (from DataRow data in table.Rows
+                         select data).ToList();
+
+            foreach(var r in query)
+            {
+                
+            }
+            */
+            watch.Stop();
+            Console.WriteLine($"deneme2 #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void deneme()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
             Dictionary<string, MacStat> dnm = new Dictionary<string, MacStat>();    // Players
 /*
             foreach (var p in Db.SQL<PP>("select p from PP p"))
@@ -765,7 +1158,7 @@ namespace BDB2
                 ms = pair.Value;
             }
             watch.Stop();
-            Console.WriteLine($"deneme {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"deneme #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshGlobalRank()
@@ -802,7 +1195,7 @@ namespace BDB2
                     gpRnk = ppDic[gPPoNo];
 
                     hPX = 0;
-                    if (mac.CC.isRnkd)  // Rank hesaplanacak ise
+                    if (mac.CC.IsRnkd)  // Rank hesaplanacak ise
                         if (mac.Drm == "OK" && hpRnk != 0 && gpRnk != 0)
                             hPX = compHomeRnkPX(mac.hMW == 0 ? false : true, hpRnk, gpRnk);
 
@@ -842,6 +1235,21 @@ namespace BDB2
             watch.Stop();
             Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
+    }
+
+    public class Maclar
+    {
+        public ulong CC;
+        public ulong CET;
+        public ulong CT;
+        public ulong PP;
+        public string SoD;
+
+        public int SW;
+        public int SL;
+        public int MW;
+        public int ML;
+        public int MX;
     }
 
     public class MacStat
