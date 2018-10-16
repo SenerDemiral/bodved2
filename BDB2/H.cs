@@ -33,7 +33,8 @@ namespace BDB2
                                 RnkBaz = Convert.ToInt32(ra[1]),
                                 Sex = ra[2],
                                 Ad = ra[4],
-                                Tel = ra[6]
+                                Tel = ra[6],
+                                IsRun = true,
                             };
                         }
                     }
@@ -65,6 +66,16 @@ namespace BDB2
                                 Skl = ra[3],
 
                                 IsRnkd = true,
+                                TNSM = 8,   // Takim Single Mac Sayisi
+                                TNDM = 3,   //       Double
+                                TNSS = 5,   // Takim Single kac set uzerinden
+                                TNDS = 5,   //       Double
+                                TSMK = 2,   // Takim SingleMac Skoru
+                                TDMK = 3,   //         DoubleMac 
+                                TEGP = 2,   //       Event Galiibiyet Puan
+                                TEMP = 1,   //      
+                                TEBP = 0,
+                                TEXP = -1,
                             };
                         }
                     }
@@ -103,6 +114,7 @@ namespace BDB2
                                 PK = Convert.ToUInt64(ra[1]),
                                 Ad = ra[2],
                                 Adres = ra[3],
+                                
                             };
                         }
                     }
@@ -143,7 +155,8 @@ namespace BDB2
                                 CC = cc,
                                 CT = ct,
                                 PP = pp,
-                                Idx = int.Parse(ra[3])
+                                Idx = int.Parse(ra[3]),
+                                IsRun = true,
                             };
                         }
                     }

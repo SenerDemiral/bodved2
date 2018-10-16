@@ -17,12 +17,49 @@ package RestLib;		// namespace
 
 // The CRUDs service definition.
 service CRUDs {
+  rpc PPFill (QryProxy) returns (stream PPProxy) {}
+  rpc PPUpdate (PPProxy) returns (PPProxy) {}
+
   rpc CCFill (QryProxy) returns (stream CCProxy) {}
   rpc CCUpdate (CCProxy) returns (CCProxy) {}
+
+  rpc CTFill (QryProxy) returns (stream CTProxy) {}
+  rpc CTUpdate (CTProxy) returns (CTProxy) {}
 }
 message QryProxy {
   string query = 1;
   string param = 2;
+}
+
+// Players
+message PPProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+  string Ad = 5;
+	string Info = 6;
+	string Sex = 7;
+	string Tel = 8;
+	bool IsRun = 9;
+
+	int32 RnkBaz = 10;
+	int32 RnkSon = 11;
+	int32 RnkIdx = 12;
+
+	int32 SST = 13;
+	int32 SSW = 14;
+	int32 SSL = 15;
+	int32 SMT = 16;
+	int32 SMW = 17;
+	int32 SML = 18;
+	int32 DST = 19;
+	int32 DSW = 20;
+	int32 DSL = 21;
+	int32 DMT = 22;
+	int32 DMW = 23;
+	int32 DML = 24;
 }
 
 // Competitions
@@ -36,7 +73,49 @@ message CCProxy {
   string Skl = 6;
 	string Grp = 7;
 	string Info = 8;
-	bool isRun = 9;
-	bool isRnkd = 10;
+	bool IsRun = 9;
+	bool IsRnkd = 10;
+	
+	int32 TNSM = 11;
+	int32 TNDM = 12;
+	int32 TNSS = 13;
+	int32 TNDS = 14;
+	int32 TSMK = 15;
+	int32 TDMK = 16;
+	int32 TEGP = 17;
+	int32 TEMP = 18;
+	int32 TEBP = 19;
+	int32 TEXP = 20;
+	
+}
+
+// Competition Teams
+message CTProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 K1 = 6;
+	uint64 K2 = 7;
+
+  string Ad = 8;
+	string Info = 9;
+	string Adres = 10;
+	
+	int32 NG = 11;
+	int32 NM = 12;
+	int32 NB = 13;
+	int32 NT = 14;
+	int32 NX = 15;
+	
+	int32 KA = 16;
+	int32 KV = 17;
+	int32 KF = 18;
+
+	int32 PW = 19;
+
+	bool IsRun = 20;
 }
 

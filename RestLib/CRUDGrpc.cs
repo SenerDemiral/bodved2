@@ -31,7 +31,23 @@ namespace RestLib {
     static readonly string __ServiceName = "RestLib.CRUDs";
 
     static readonly grpc::Marshaller<global::RestLib.QryProxy> __Marshaller_RestLib_QryProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.QryProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.PPProxy> __Marshaller_RestLib_PPProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.PPProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CCProxy> __Marshaller_RestLib_CCProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CCProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.CTProxy> __Marshaller_RestLib_CTProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CTProxy.Parser.ParseFrom);
+
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.PPProxy> __Method_PPFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.PPProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "PPFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_PPProxy);
+
+    static readonly grpc::Method<global::RestLib.PPProxy, global::RestLib.PPProxy> __Method_PPUpdate = new grpc::Method<global::RestLib.PPProxy, global::RestLib.PPProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "PPUpdate",
+        __Marshaller_RestLib_PPProxy,
+        __Marshaller_RestLib_PPProxy);
 
     static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.CCProxy> __Method_CCFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.CCProxy>(
         grpc::MethodType.ServerStreaming,
@@ -47,6 +63,20 @@ namespace RestLib {
         __Marshaller_RestLib_CCProxy,
         __Marshaller_RestLib_CCProxy);
 
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.CTProxy> __Method_CTFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.CTProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "CTFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_CTProxy);
+
+    static readonly grpc::Method<global::RestLib.CTProxy, global::RestLib.CTProxy> __Method_CTUpdate = new grpc::Method<global::RestLib.CTProxy, global::RestLib.CTProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CTUpdate",
+        __Marshaller_RestLib_CTProxy,
+        __Marshaller_RestLib_CTProxy);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -56,12 +86,32 @@ namespace RestLib {
     /// <summary>Base class for server-side implementations of CRUDs</summary>
     public abstract partial class CRUDsBase
     {
+      public virtual global::System.Threading.Tasks.Task PPFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.PPProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.PPProxy> PPUpdate(global::RestLib.PPProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       public virtual global::System.Threading.Tasks.Task CCFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.CCProxy> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       public virtual global::System.Threading.Tasks.Task<global::RestLib.CCProxy> CCUpdate(global::RestLib.CCProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task CTFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.CTProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.CTProxy> CTUpdate(global::RestLib.CTProxy request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -91,6 +141,30 @@ namespace RestLib {
       {
       }
 
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPProxy> PPFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PPFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPProxy> PPFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_PPFill, null, options, request);
+      }
+      public virtual global::RestLib.PPProxy PPUpdate(global::RestLib.PPProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PPUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.PPProxy PPUpdate(global::RestLib.PPProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_PPUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.PPProxy> PPUpdateAsync(global::RestLib.PPProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PPUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.PPProxy> PPUpdateAsync(global::RestLib.PPProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_PPUpdate, null, options, request);
+      }
       public virtual grpc::AsyncServerStreamingCall<global::RestLib.CCProxy> CCFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return CCFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -115,6 +189,30 @@ namespace RestLib {
       {
         return CallInvoker.AsyncUnaryCall(__Method_CCUpdate, null, options, request);
       }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CTProxy> CTFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CTFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CTProxy> CTFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_CTFill, null, options, request);
+      }
+      public virtual global::RestLib.CTProxy CTUpdate(global::RestLib.CTProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CTUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.CTProxy CTUpdate(global::RestLib.CTProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CTUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CTProxy> CTUpdateAsync(global::RestLib.CTProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CTUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CTProxy> CTUpdateAsync(global::RestLib.CTProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CTUpdate, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CRUDsClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -127,8 +225,12 @@ namespace RestLib {
     public static grpc::ServerServiceDefinition BindService(CRUDsBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_PPFill, serviceImpl.PPFill)
+          .AddMethod(__Method_PPUpdate, serviceImpl.PPUpdate)
           .AddMethod(__Method_CCFill, serviceImpl.CCFill)
-          .AddMethod(__Method_CCUpdate, serviceImpl.CCUpdate).Build();
+          .AddMethod(__Method_CCUpdate, serviceImpl.CCUpdate)
+          .AddMethod(__Method_CTFill, serviceImpl.CTFill)
+          .AddMethod(__Method_CTUpdate, serviceImpl.CTUpdate).Build();
     }
 
   }

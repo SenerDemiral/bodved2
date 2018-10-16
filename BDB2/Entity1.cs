@@ -23,7 +23,7 @@ namespace BDB2
         public int RnkBaz { get; set; }
         public int RnkSon { get; set; }
         public int RnkIdx { get; set; }     // RnkSon'a gore dizildiginde Sirasi
-        public int ActLvl { get; set; }     // Aktif ise 0, degilse > 0 (Global listede en altta goster)
+        public bool IsRun { get; set; }     // Aktif
 
         public int SST => SSW + SSL;
         public int SSW { get; set; }
@@ -113,6 +113,20 @@ namespace BDB2
         public string Grp { get; set; }     // Ligdeki Grup oyuncularini bilmek icin
         public bool IsRun { get; set; }     // Cari, Devam eden (False:Bitti)
         public bool IsRnkd { get; set; }    // Rank hesaplnacak mi?
+
+        public int TNSM { get; set; }        // Takim Nof Single Mac
+        public int TNDM { get; set; }        //           Double
+        public int TNSS { get; set; }        // Takim Nof Single Set
+        public int TNDS { get; set; }        //           Double
+
+        public int TSMK { get; set; }        // Takim SingleMac Skoru 2
+        public int TDMK { get; set; }        //       Double 3
+
+        public int TEGP { get; set; }         // Takim Event Galibiyet Puani
+        public int TEMP { get; set; }         //            Malubiyet
+        public int TEBP { get; set; }         //            Beraberlik
+        public int TEXP { get; set; }         //            Cikmadi
+
     }
 
     // Takim devre icinde diskalifiye edilebilir, bu durumdan sonraki Musabakalarinda Hukmen maglup olur
@@ -121,10 +135,10 @@ namespace BDB2
     {
         public CC CC { get; set; }
         public string Adres { get; set; }     // Takim/Ferdi
-        public PP K1 { get; set; }
+        public PP K1 { get; set; }            // 1.Kaptan
         public PP K2 { get; set; }
 
-        public bool isDsk { get; set; }     // Diskalifiye/Ihrac
+        public bool IsRun { get; set; }     // Aktif oynuyor mu?
 
         public int NG { get; set; }         // Nof Galibiyet
         public int NM { get; set; }         //     Malubiyet
@@ -143,6 +157,24 @@ namespace BDB2
 
         // Diskalifiye edildikten sonraki Eventlerini update
         // Takimin Yaptigi Eventleri toplayarak Sonuclari update
+        public static void RefreshSonuc()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            var ccs = Db.SQL<CC>("select r from CC r where r.Skl = ?", "T");
+            foreach (var cc in ccs)
+            {
+                var cts = Db.SQL<CT>("select r from CT r where r.CC = ?", cc);
+                foreach (var ct in cts)
+                {
+                    RefreshSonuc(ct);
+                }
+            }
+            watch.Stop();
+            Console.WriteLine($"CT.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+
+        }
+
         public static void RefreshSonuc(CT ct)
         {
             int NG = 0,
@@ -213,6 +245,7 @@ namespace BDB2
         public CT CT { get; set; }
         public PP PP { get; set; }
         public int Idx { get; set; }    // Takim icindeki sirasi
+        public bool IsRun { get; set; }     // Aktif oynuyor mu?
 
         public int RnkBas { get; set; } // Takima girdiginde hesaplanir
         public int RnkBit { get; set; } // Lig bittiginde hesaplanir
@@ -386,7 +419,7 @@ namespace BDB2
                                 };
 */
             var groupedResult = MacList
-                .OrderBy(x => x.CT).ThenBy(x => x.PP).ThenBy(x => x.SoD)
+                .OrderBy(x => x.CT).ThenBy(x => x.PP) //.ThenBy(x => x.SoD)
                 .GroupBy(s => new { s.CT, s.PP, s.SoD })
                 .Select(g => new
                 {
@@ -584,6 +617,20 @@ namespace BDB2
         public CT hCT { get; set; }     // Home Takim
         public CT gCT { get; set; }     // Guest Takim
 
+        public static void RefreshSonuc()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            var cets = Db.SQL<CET>("select r from CET r");
+            foreach (var cet in cets)
+            {
+                RefreshSonuc(cet);
+            }
+            watch.Stop();
+            Console.WriteLine($"CET.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+
+        }
+
         public static void RefreshSonuc(CET cet)
         {
             int hSMW = 0, 
@@ -598,6 +645,14 @@ namespace BDB2
                 gKW = 0, 
                 hPW = 0,
                 gPW = 0;
+
+            int TSMK = cet.CC.TSMK;
+            int TDMK = cet.CC.TDMK;
+
+            int TEGP = cet.CC.TEGP;
+            int TEMP = cet.CC.TEMP;
+            int TEBP = cet.CC.TEBP;
+            int TEXP = cet.CC.TEXP;
 
             Db.TransactAsync(() =>
             {
@@ -621,23 +676,23 @@ namespace BDB2
                             gDMW += mac.gMW;
                         }
                     }
-                    hKW = hSMW * 2 + hDMW * 3;
-                    gKW = gSMW * 2 + gDMW * 3;
+                    hKW = hSMW * TSMK + hDMW * TDMK;
+                    gKW = gSMW * TSMK + gDMW * TDMK;
 
                     if (hKW > gKW)
                     {
-                        hPW = 3;
-                        gPW = 1;
+                        hPW = TEGP;
+                        gPW = TEMP;
                     }
                     else if (hKW < gKW)
                     {
-                        hPW = 1;
-                        gPW = 3;
+                        hPW = TEMP;
+                        gPW = TEGP;
                     }
                     else
                     {
-                        hPW = 1;
-                        gPW = 1;
+                        hPW = TEBP;
+                        gPW = TEBP;
                     }
                 }
                 else if (cet.Drm == "hX")  // Home Gelmedi/Cikmadi

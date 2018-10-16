@@ -20,6 +20,7 @@ namespace bodved2
 
             MAC.deneme2();
             //CTP.RefreshSonuc();
+
             CTP.RefreshSonucNew();
         }
     }
