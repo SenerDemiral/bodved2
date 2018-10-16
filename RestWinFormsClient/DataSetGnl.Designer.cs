@@ -864,21 +864,27 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnK2;
             
-            private global::System.Data.DataColumn columnNG;
+            private global::System.Data.DataColumn columnSMW;
             
-            private global::System.Data.DataColumn columnNM;
+            private global::System.Data.DataColumn columnSML;
             
-            private global::System.Data.DataColumn columnNB;
+            private global::System.Data.DataColumn columnDMW;
             
-            private global::System.Data.DataColumn columnNT;
+            private global::System.Data.DataColumn columnDML;
             
-            private global::System.Data.DataColumn columnNX;
+            private global::System.Data.DataColumn columnKW;
             
-            private global::System.Data.DataColumn columnKA;
-            
-            private global::System.Data.DataColumn columnKV;
+            private global::System.Data.DataColumn columnKL;
             
             private global::System.Data.DataColumn columnKF;
+            
+            private global::System.Data.DataColumn columnEW;
+            
+            private global::System.Data.DataColumn columnEL;
+            
+            private global::System.Data.DataColumn columnEB;
+            
+            private global::System.Data.DataColumn columnEX;
             
             private global::System.Data.DataColumn columnPW;
             
@@ -981,57 +987,49 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NGColumn {
+            public global::System.Data.DataColumn SMWColumn {
                 get {
-                    return this.columnNG;
+                    return this.columnSMW;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NMColumn {
+            public global::System.Data.DataColumn SMLColumn {
                 get {
-                    return this.columnNM;
+                    return this.columnSML;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NBColumn {
+            public global::System.Data.DataColumn DMWColumn {
                 get {
-                    return this.columnNB;
+                    return this.columnDMW;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NTColumn {
+            public global::System.Data.DataColumn DMLColumn {
                 get {
-                    return this.columnNT;
+                    return this.columnDML;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NXColumn {
+            public global::System.Data.DataColumn KWColumn {
                 get {
-                    return this.columnNX;
+                    return this.columnKW;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn KAColumn {
+            public global::System.Data.DataColumn KLColumn {
                 get {
-                    return this.columnKA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn KVColumn {
-                get {
-                    return this.columnKV;
+                    return this.columnKL;
                 }
             }
             
@@ -1040,6 +1038,38 @@ namespace RestWinFormsClient {
             public global::System.Data.DataColumn KFColumn {
                 get {
                     return this.columnKF;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EWColumn {
+                get {
+                    return this.columnEW;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ELColumn {
+                get {
+                    return this.columnEL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EBColumn {
+                get {
+                    return this.columnEB;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EXColumn {
+                get {
+                    return this.columnEX;
                 }
             }
             
@@ -1097,14 +1127,17 @@ namespace RestWinFormsClient {
                         ulong CC, 
                         ulong K1, 
                         ulong K2, 
-                        int NG, 
-                        int NM, 
-                        int NB, 
-                        int NT, 
-                        int NX, 
-                        int KA, 
-                        int KV, 
+                        int SMW, 
+                        int SML, 
+                        int DMW, 
+                        int DML, 
+                        int KW, 
+                        int KL, 
                         int KF, 
+                        int EW, 
+                        int EL, 
+                        int EB, 
+                        int EX, 
                         int PW) {
                 CTRow rowCTRow = ((CTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1116,14 +1149,17 @@ namespace RestWinFormsClient {
                         CC,
                         K1,
                         K2,
-                        NG,
-                        NM,
-                        NB,
-                        NT,
-                        NX,
-                        KA,
-                        KV,
+                        SMW,
+                        SML,
+                        DMW,
+                        DML,
+                        KW,
+                        KL,
                         KF,
+                        EW,
+                        EL,
+                        EB,
+                        EX,
                         PW};
                 rowCTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCTRow);
@@ -1162,14 +1198,17 @@ namespace RestWinFormsClient {
                 this.columnCC = base.Columns["CC"];
                 this.columnK1 = base.Columns["K1"];
                 this.columnK2 = base.Columns["K2"];
-                this.columnNG = base.Columns["NG"];
-                this.columnNM = base.Columns["NM"];
-                this.columnNB = base.Columns["NB"];
-                this.columnNT = base.Columns["NT"];
-                this.columnNX = base.Columns["NX"];
-                this.columnKA = base.Columns["KA"];
-                this.columnKV = base.Columns["KV"];
+                this.columnSMW = base.Columns["SMW"];
+                this.columnSML = base.Columns["SML"];
+                this.columnDMW = base.Columns["DMW"];
+                this.columnDML = base.Columns["DML"];
+                this.columnKW = base.Columns["KW"];
+                this.columnKL = base.Columns["KL"];
                 this.columnKF = base.Columns["KF"];
+                this.columnEW = base.Columns["EW"];
+                this.columnEL = base.Columns["EL"];
+                this.columnEB = base.Columns["EB"];
+                this.columnEX = base.Columns["EX"];
                 this.columnPW = base.Columns["PW"];
             }
             
@@ -1192,22 +1231,28 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnK1);
                 this.columnK2 = new global::System.Data.DataColumn("K2", typeof(ulong), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnK2);
-                this.columnNG = new global::System.Data.DataColumn("NG", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNG);
-                this.columnNM = new global::System.Data.DataColumn("NM", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNM);
-                this.columnNB = new global::System.Data.DataColumn("NB", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNB);
-                this.columnNT = new global::System.Data.DataColumn("NT", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNT);
-                this.columnNX = new global::System.Data.DataColumn("NX", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNX);
-                this.columnKA = new global::System.Data.DataColumn("KA", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKA);
-                this.columnKV = new global::System.Data.DataColumn("KV", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKV);
+                this.columnSMW = new global::System.Data.DataColumn("SMW", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSMW);
+                this.columnSML = new global::System.Data.DataColumn("SML", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSML);
+                this.columnDMW = new global::System.Data.DataColumn("DMW", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDMW);
+                this.columnDML = new global::System.Data.DataColumn("DML", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDML);
+                this.columnKW = new global::System.Data.DataColumn("KW", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKW);
+                this.columnKL = new global::System.Data.DataColumn("KL", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKL);
                 this.columnKF = new global::System.Data.DataColumn("KF", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKF);
+                this.columnEW = new global::System.Data.DataColumn("EW", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEW);
+                this.columnEL = new global::System.Data.DataColumn("EL", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEL);
+                this.columnEB = new global::System.Data.DataColumn("EB", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEB);
+                this.columnEX = new global::System.Data.DataColumn("EX", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEX);
                 this.columnPW = new global::System.Data.DataColumn("PW", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPW);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -2512,113 +2557,97 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int NG {
+            public int SMW {
                 get {
                     try {
-                        return ((int)(this[this.tableCT.NGColumn]));
+                        return ((int)(this[this.tableCT.SMWColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NG\' in table \'CT\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SMW\' in table \'CT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCT.NGColumn] = value;
+                    this[this.tableCT.SMWColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int NM {
+            public int SML {
                 get {
                     try {
-                        return ((int)(this[this.tableCT.NMColumn]));
+                        return ((int)(this[this.tableCT.SMLColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NM\' in table \'CT\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SML\' in table \'CT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCT.NMColumn] = value;
+                    this[this.tableCT.SMLColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int NB {
+            public int DMW {
                 get {
                     try {
-                        return ((int)(this[this.tableCT.NBColumn]));
+                        return ((int)(this[this.tableCT.DMWColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NB\' in table \'CT\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DMW\' in table \'CT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCT.NBColumn] = value;
+                    this[this.tableCT.DMWColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int NT {
+            public int DML {
                 get {
                     try {
-                        return ((int)(this[this.tableCT.NTColumn]));
+                        return ((int)(this[this.tableCT.DMLColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NT\' in table \'CT\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DML\' in table \'CT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCT.NTColumn] = value;
+                    this[this.tableCT.DMLColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int NX {
+            public int KW {
                 get {
                     try {
-                        return ((int)(this[this.tableCT.NXColumn]));
+                        return ((int)(this[this.tableCT.KWColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NX\' in table \'CT\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'KW\' in table \'CT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCT.NXColumn] = value;
+                    this[this.tableCT.KWColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int KA {
+            public int KL {
                 get {
                     try {
-                        return ((int)(this[this.tableCT.KAColumn]));
+                        return ((int)(this[this.tableCT.KLColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'KA\' in table \'CT\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'KL\' in table \'CT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCT.KAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int KV {
-                get {
-                    try {
-                        return ((int)(this[this.tableCT.KVColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'KV\' in table \'CT\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCT.KVColumn] = value;
+                    this[this.tableCT.KLColumn] = value;
                 }
             }
             
@@ -2635,6 +2664,70 @@ namespace RestWinFormsClient {
                 }
                 set {
                     this[this.tableCT.KFColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int EW {
+                get {
+                    try {
+                        return ((int)(this[this.tableCT.EWColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EW\' in table \'CT\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCT.EWColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int EL {
+                get {
+                    try {
+                        return ((int)(this[this.tableCT.ELColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EL\' in table \'CT\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCT.ELColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int EB {
+                get {
+                    try {
+                        return ((int)(this[this.tableCT.EBColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EB\' in table \'CT\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCT.EBColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int EX {
+                get {
+                    try {
+                        return ((int)(this[this.tableCT.EXColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EX\' in table \'CT\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCT.EXColumn] = value;
                 }
             }
             
@@ -2740,86 +2833,74 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsNGNull() {
-                return this.IsNull(this.tableCT.NGColumn);
+            public bool IsSMWNull() {
+                return this.IsNull(this.tableCT.SMWColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetNGNull() {
-                this[this.tableCT.NGColumn] = global::System.Convert.DBNull;
+            public void SetSMWNull() {
+                this[this.tableCT.SMWColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsNMNull() {
-                return this.IsNull(this.tableCT.NMColumn);
+            public bool IsSMLNull() {
+                return this.IsNull(this.tableCT.SMLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetNMNull() {
-                this[this.tableCT.NMColumn] = global::System.Convert.DBNull;
+            public void SetSMLNull() {
+                this[this.tableCT.SMLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsNBNull() {
-                return this.IsNull(this.tableCT.NBColumn);
+            public bool IsDMWNull() {
+                return this.IsNull(this.tableCT.DMWColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetNBNull() {
-                this[this.tableCT.NBColumn] = global::System.Convert.DBNull;
+            public void SetDMWNull() {
+                this[this.tableCT.DMWColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsNTNull() {
-                return this.IsNull(this.tableCT.NTColumn);
+            public bool IsDMLNull() {
+                return this.IsNull(this.tableCT.DMLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetNTNull() {
-                this[this.tableCT.NTColumn] = global::System.Convert.DBNull;
+            public void SetDMLNull() {
+                this[this.tableCT.DMLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsNXNull() {
-                return this.IsNull(this.tableCT.NXColumn);
+            public bool IsKWNull() {
+                return this.IsNull(this.tableCT.KWColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetNXNull() {
-                this[this.tableCT.NXColumn] = global::System.Convert.DBNull;
+            public void SetKWNull() {
+                this[this.tableCT.KWColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsKANull() {
-                return this.IsNull(this.tableCT.KAColumn);
+            public bool IsKLNull() {
+                return this.IsNull(this.tableCT.KLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetKANull() {
-                this[this.tableCT.KAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsKVNull() {
-                return this.IsNull(this.tableCT.KVColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetKVNull() {
-                this[this.tableCT.KVColumn] = global::System.Convert.DBNull;
+            public void SetKLNull() {
+                this[this.tableCT.KLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2832,6 +2913,54 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetKFNull() {
                 this[this.tableCT.KFColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEWNull() {
+                return this.IsNull(this.tableCT.EWColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEWNull() {
+                this[this.tableCT.EWColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsELNull() {
+                return this.IsNull(this.tableCT.ELColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetELNull() {
+                this[this.tableCT.ELColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEBNull() {
+                return this.IsNull(this.tableCT.EBColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEBNull() {
+                this[this.tableCT.EBColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEXNull() {
+                return this.IsNull(this.tableCT.EXColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEXNull() {
+                this[this.tableCT.EXColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

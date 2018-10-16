@@ -25,19 +25,20 @@ namespace BDB2
         public int RnkIdx { get; set; }     // RnkSon'a gore dizildiginde Sirasi
         public bool IsRun { get; set; }     // Aktif
 
-        public int SST => SSW + SSL;
+        public int SST => SSW + SSL;    // Single Set Total/Win/Lost
         public int SSW { get; set; }
         public int SSL { get; set; }
 
-        public int SMT => SMW + SML;
+        public int SMT => SMW + SML;    // Single Mac Total/Win/Lost
         public int SMW { get; set; }
         public int SML { get; set; }
+        public int SMX { get; set; }    //            HukmenMaglup
 
-        public int DST => DSW + DSL;
+        public int DST => DSW + DSL;    // Double Set
         public int DSW { get; set; }
         public int DSL { get; set; }
 
-        public int DMT => DMW + DML;
+        public int DMT => DMW + DML;    // Double Mac
         public int DMW { get; set; }
         public int DML { get; set; }
 
@@ -140,17 +141,23 @@ namespace BDB2
 
         public bool IsRun { get; set; }     // Aktif oynuyor mu?
 
-        public int NG { get; set; }         // Nof Galibiyet
-        public int NM { get; set; }         //     Malubiyet
-        public int NB { get; set; }         //     Beraberlik
-        public int NT => NG + NM + NB;      //     Toplam
-        public int NX { get; set; }         //     Oynamadi/Gelmedi
+        //--------
+        public int SMW { get; set; }        // Single Mac Win
+        public int SML { get; set; }        //            Lost
+        public int DMW { get; set; }        // Double Mac Win
+        public int DML { get; set; }
 
-        public int KA { get; set; }         // sKor Aldigi
-        public int KV { get; set; }         //      Verdigi
-        public int KF => KA - KV;           //      Fark = Alidigi - Verdigi
+        public int KW { get; set; }         // sKor  Win
+        public int KL { get; set; }         //       Lost
+        public int KF => KW - KL;           //       Fark
 
-        public int PW { get; set; }         // Puan
+        public int EW { get; set; }         // Event Win
+        public int EL { get; set; }         //       Lost
+        public int EB { get; set; }         //       Bereberlik
+        public int EX { get; set; }         //       Diskalifiye
+
+        public int PW { get; set; }         // Puan Win
+        //--------
 
         public string K1Ad => K1 == null ? "-" : $"{K1.Ad} ({K1.Tel})";
         public string K2Ad => K2 == null ? "-" : $"{K2.Ad} ({K2.Tel})";
@@ -177,63 +184,84 @@ namespace BDB2
 
         public static void RefreshSonuc(CT ct)
         {
-            int NG = 0,
-                NM = 0,
-                NB = 0,
-                NX = 0,
-                KA = 0,
-                KV = 0,
+            int SMW = 0,
+                SML = 0,
+                DMW = 0,
+                DML = 0,
+                KW = 0,
+                KL = 0,
+                EW = 0,
+                EL = 0,
+                EB = 0,
+                EX = 0,
                 PW = 0;
 
+
             Db.TransactAsync(() =>
-            {
+            { 
                 // Home oldugu Events
                 var hcets = Db.SQL<CET>("select r from CET r where r.hCT = ?", ct);
                 foreach (var cet in hcets)
                 {
-                    KA += cet.hKW;
-                    KV += cet.gKW;
+                    KW += cet.hKW;
+                    KL += cet.gKW;
 
                     if (cet.hPW > cet.gPW)
-                        NG++;
+                        EW++;
                     else if (cet.hPW < cet.gPW)
-                        NM++;
+                        EL++;
                     else
-                        NB++;
+                        EB++;
 
                     PW += cet.hPW;
 
                     if (cet.Drm == "hX")
-                        NX++;
+                        EX++;
+
+                    SMW += cet.hSMW;
+                    SML += cet.gSMW;    // Kaybettigi digerinin Kazandigi
+                    DMW += cet.hDMW;
+                    DML += cet.gDMW;
                 }
 
                 // Guest oldugu Events
                 var gcets = Db.SQL<CET>("select r from CET r where r.gCT = ?", ct);
                 foreach (var cet in gcets)
                 {
-                    KA += cet.gKW;
-                    KV += cet.hKW;
+                    KW += cet.gKW;
+                    KL += cet.hKW;
 
                     if (cet.hPW < cet.gPW)
-                        NG++;
+                        EW++;
                     else if (cet.hPW > cet.gPW)
-                        NM++;
+                        EL++;
                     else
-                        NB++;
+                        EB++;
 
                     PW += cet.gPW;
 
                     if (cet.Drm == "gX")
-                        NX++;
+                        EX++;
+
+                    SMW += cet.gSMW;
+                    SML += cet.hSMW;    // Kaybettigi digerinin Kazandigi
+                    DMW += cet.gDMW;
+                    DML += cet.hDMW;
                 }
+
                 // Update CT
-                ct.NG = NG; // NofGalibiyet
-                ct.NM = NM; //    Malub
-                ct.NB = NB; //    Beraberlik
-                ct.NX = NX; //    MacaCikmadi
-                ct.KA = KA; // sKor
-                ct.KV = KV;
-                ct.PW = PW; // Puan
+                ct.SMW = SMW;   // Single Mac Win/Lost
+                ct.SML = SML;
+                ct.DMW = DMW;
+                ct.DML = DML;
+
+                ct.EW = EW;     // Evet Win/Lost/Berabere/Event'e cikmadi
+                ct.EL = EL;
+                ct.EB = EB;
+                ct.EX = EX;
+                ct.KW = KW;     // sKor Win
+                ct.KL = KL;
+                ct.PW = PW;     // Puan Win
             });
         }
     }
@@ -591,19 +619,19 @@ namespace BDB2
         public string Drm { get; set; }      // Iptal, h/gX: Gelmedi, h/gD: Diskalifiye, OK: Oynandi
         public string Yer { get; set; }
 
-        public int hSSW { get; set; }        // Home Kazandigi Single Set
+        public int hSSW { get; set; }        // Home Single Set Win
         public int gSSW { get; set; }
 
-        public int hDSW { get; set; }        // Home Kazandigi Double Set
+        public int hDSW { get; set; }        // Home Double Set Win
         public int gDSW { get; set; }
 
-        public int hSMW { get; set; }        // Home Kazandigi Single Mac
+        public int hSMW { get; set; }        // Home Single Mac Win
         public int gSMW { get; set; }
 
-        public int hDMW { get; set; }        // Home Kazandigi Double Mac
+        public int hDMW { get; set; }        // Home Double Mac Win
         public int gDMW { get; set; }
 
-        public int hKW { get; set; }         // Home Kazandigi sKor
+        public int hKW { get; set; }         // Home sKor Win
         public int gKW { get; set; }
 
         public int hPW { get; set; }         // Home Kazandigi Puan
@@ -621,14 +649,15 @@ namespace BDB2
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
+
             var cets = Db.SQL<CET>("select r from CET r");
             foreach (var cet in cets)
             {
                 RefreshSonuc(cet);
             }
+
             watch.Stop();
             Console.WriteLine($"CET.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
-
         }
 
         public static void RefreshSonuc(CET cet)
@@ -712,12 +741,20 @@ namespace BDB2
 
                 }
 
+                // Update CET
                 cet.hSSW = hSSW;
                 cet.gSSW = gSSW;
                 cet.hDSW = hDSW;
                 cet.gDSW = gDSW;
+
+                cet.hSMW = hSMW;
+                cet.gSMW = gSMW;
+                cet.hDMW = hDMW;
+                cet.gDMW = gDMW;
+
                 cet.hKW = hKW;
                 cet.gKW = gKW;
+
                 cet.hPW = hPW;
                 cet.gPW = gPW;
             });
@@ -781,11 +818,11 @@ namespace BDB2
         public int g6W { get; set; }
         public int g7W { get; set; }
 
-        public int hSW { get; set; }        // Home Aldigi Set
-        public int gSW { get; set; }        // Guest Aldigi Set
+        public int hSW { get; set; }        // Home Set Win
+        public int gSW { get; set; }        // Guest 
 
-        public int hMW { get; set; }        // Home Aldigi Mac 0/1
-        public int gMW { get; set; }        // Guest Aldigi Mac 0/1
+        public int hMW { get; set; }        // Home Mac Win
+        public int gMW { get; set; }        // Guest 
 
         public int hMX { get; set; }        // Home Diskalifiye
         public int gMX { get; set; }        // Guest 
@@ -794,6 +831,19 @@ namespace BDB2
         public int hRnkPX { get; set; }     // Rank Point Exchange
         public int gRnk { get; set; }
         public int gRnkPX { get; set; }
+
+        public static void RefreshSonuc()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            var macs = Db.SQL<MAC>("select r from MAC r");
+            foreach (var mac in macs)
+                RefreshSonuc(mac);
+
+            watch.Stop();
+            Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
 
         public static void RefreshSonuc(MAC mac)
         {
@@ -852,7 +902,7 @@ namespace BDB2
                 gMW = 0;
             }
 
-            Db.Transact(() =>
+            Db.TransactAsync(() =>
             {
                 mac.hSW = hSW;
                 mac.gSW = gSW;
@@ -1267,7 +1317,7 @@ namespace BDB2
                 }
 
 
-                foreach (var p in Db.SQL<PP>("select p from PP p where p.SMT = ?", 0))
+                foreach (var p in Db.SQL<PP>("select p from PP p where p.SMT = ? or p.IsRun = ?", 0, false))
                 {
                     ppDic[p.GetObjectNo()] = 0;
                 }

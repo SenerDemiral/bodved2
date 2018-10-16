@@ -58,6 +58,7 @@ namespace RestStarcounterServer
             H.PopCET();
             H.PopMAC();
 
+            MAC.RefreshSonuc();
             CET.RefreshSonuc();
             CT.RefreshSonuc();
             CTP.RefreshSonucNew();

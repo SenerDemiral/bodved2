@@ -114,7 +114,7 @@ namespace BDB2
                                 PK = Convert.ToUInt64(ra[1]),
                                 Ad = ra[2],
                                 Adres = ra[3],
-                                
+                                IsRun = true
                             };
                         }
                     }
@@ -263,8 +263,6 @@ namespace BDB2
 
                                 Drm = "OK"
                             };
-
-                            MAC.RefreshSonuc(m);
                         }
                     }
                 });

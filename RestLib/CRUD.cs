@@ -39,28 +39,29 @@ namespace RestLib {
             "CCABKAkSDQoFSXNSdW4YCSABKAgSDgoGSXNSbmtkGAogASgIEgwKBFROU00Y",
             "CyABKAUSDAoEVE5ETRgMIAEoBRIMCgRUTlNTGA0gASgFEgwKBFRORFMYDiAB",
             "KAUSDAoEVFNNSxgPIAEoBRIMCgRURE1LGBAgASgFEgwKBFRFR1AYESABKAUS",
-            "DAoEVEVNUBgSIAEoBRIMCgRURUJQGBMgASgFEgwKBFRFWFAYFCABKAUikQIK",
+            "DAoEVEVNUBgSIAEoBRIMCgRURUJQGBMgASgFEgwKBFRFWFAYFCABKAUiuQIK",
             "B0NUUHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIOCgZS",
             "b3dVc3IYAyABKAQSDgoGUm93S2V5GAQgASgEEgoKAkNDGAUgASgEEgoKAksx",
             "GAYgASgEEgoKAksyGAcgASgEEgoKAkFkGAggASgJEgwKBEluZm8YCSABKAkS",
-            "DQoFQWRyZXMYCiABKAkSCgoCTkcYCyABKAUSCgoCTk0YDCABKAUSCgoCTkIY",
-            "DSABKAUSCgoCTlQYDiABKAUSCgoCTlgYDyABKAUSCgoCS0EYECABKAUSCgoC",
-            "S1YYESABKAUSCgoCS0YYEiABKAUSCgoCUFcYEyABKAUSDQoFSXNSdW4YFCAB",
-            "KAgytgIKBUNSVURzEjEKBlBQRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaEC5S",
-            "ZXN0TGliLlBQUHJveHkiADABEjAKCFBQVXBkYXRlEhAuUmVzdExpYi5QUFBy",
-            "b3h5GhAuUmVzdExpYi5QUFByb3h5IgASMQoGQ0NGaWxsEhEuUmVzdExpYi5R",
-            "cnlQcm94eRoQLlJlc3RMaWIuQ0NQcm94eSIAMAESMAoIQ0NVcGRhdGUSEC5S",
-            "ZXN0TGliLkNDUHJveHkaEC5SZXN0TGliLkNDUHJveHkiABIxCgZDVEZpbGwS",
-            "ES5SZXN0TGliLlFyeVByb3h5GhAuUmVzdExpYi5DVFByb3h5IgAwARIwCghD",
-            "VFVwZGF0ZRIQLlJlc3RMaWIuQ1RQcm94eRoQLlJlc3RMaWIuQ1RQcm94eSIA",
-            "YgZwcm90bzM="));
+            "DQoFQWRyZXMYCiABKAkSDQoFSXNSdW4YCyABKAgSCwoDU01XGAwgASgFEgsK",
+            "A1NNTBgNIAEoBRILCgNETVcYDiABKAUSCwoDRE1MGA8gASgFEgoKAktXGBAg",
+            "ASgFEgoKAktMGBEgASgFEgoKAktGGBIgASgFEgoKAkVXGBMgASgFEgoKAkVM",
+            "GBQgASgFEgoKAkVCGBUgASgFEgoKAkVYGBYgASgFEgoKAlBXGBcgASgFMrYC",
+            "CgVDUlVEcxIxCgZQUEZpbGwSES5SZXN0TGliLlFyeVByb3h5GhAuUmVzdExp",
+            "Yi5QUFByb3h5IgAwARIwCghQUFVwZGF0ZRIQLlJlc3RMaWIuUFBQcm94eRoQ",
+            "LlJlc3RMaWIuUFBQcm94eSIAEjEKBkNDRmlsbBIRLlJlc3RMaWIuUXJ5UHJv",
+            "eHkaEC5SZXN0TGliLkNDUHJveHkiADABEjAKCENDVXBkYXRlEhAuUmVzdExp",
+            "Yi5DQ1Byb3h5GhAuUmVzdExpYi5DQ1Byb3h5IgASMQoGQ1RGaWxsEhEuUmVz",
+            "dExpYi5RcnlQcm94eRoQLlJlc3RMaWIuQ1RQcm94eSIAMAESMAoIQ1RVcGRh",
+            "dGUSEC5SZXN0TGliLkNUUHJveHkaEC5SZXN0TGliLkNUUHJveHkiAGIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.QryProxy), global::RestLib.QryProxy.Parser, new[]{ "Query", "Param" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.PPProxy), global::RestLib.PPProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Ad", "Info", "Sex", "Tel", "IsRun", "RnkBaz", "RnkSon", "RnkIdx", "SST", "SSW", "SSL", "SMT", "SMW", "SML", "DST", "DSW", "DSL", "DMT", "DMW", "DML" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CCProxy), global::RestLib.CCProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Ad", "Skl", "Grp", "Info", "IsRun", "IsRnkd", "TNSM", "TNDM", "TNSS", "TNDS", "TSMK", "TDMK", "TEGP", "TEMP", "TEBP", "TEXP" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTProxy), global::RestLib.CTProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "K1", "K2", "Ad", "Info", "Adres", "NG", "NM", "NB", "NT", "NX", "KA", "KV", "KF", "PW", "IsRun" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTProxy), global::RestLib.CTProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "K1", "K2", "Ad", "Info", "Adres", "IsRun", "SMW", "SML", "DMW", "DML", "KW", "KL", "KF", "EW", "EL", "EB", "EX", "PW" }, null, null, null)
           }));
     }
     #endregion
@@ -1702,16 +1703,19 @@ namespace RestLib {
       ad_ = other.ad_;
       info_ = other.info_;
       adres_ = other.adres_;
-      nG_ = other.nG_;
-      nM_ = other.nM_;
-      nB_ = other.nB_;
-      nT_ = other.nT_;
-      nX_ = other.nX_;
-      kA_ = other.kA_;
-      kV_ = other.kV_;
-      kF_ = other.kF_;
-      pW_ = other.pW_;
       isRun_ = other.isRun_;
+      sMW_ = other.sMW_;
+      sML_ = other.sML_;
+      dMW_ = other.dMW_;
+      dML_ = other.dML_;
+      kW_ = other.kW_;
+      kL_ = other.kL_;
+      kF_ = other.kF_;
+      eW_ = other.eW_;
+      eL_ = other.eL_;
+      eB_ = other.eB_;
+      eX_ = other.eX_;
+      pW_ = other.pW_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1830,80 +1834,80 @@ namespace RestLib {
       }
     }
 
-    /// <summary>Field number for the "NG" field.</summary>
-    public const int NGFieldNumber = 11;
-    private int nG_;
+    /// <summary>Field number for the "IsRun" field.</summary>
+    public const int IsRunFieldNumber = 11;
+    private bool isRun_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int NG {
-      get { return nG_; }
+    public bool IsRun {
+      get { return isRun_; }
       set {
-        nG_ = value;
+        isRun_ = value;
       }
     }
 
-    /// <summary>Field number for the "NM" field.</summary>
-    public const int NMFieldNumber = 12;
-    private int nM_;
+    /// <summary>Field number for the "SMW" field.</summary>
+    public const int SMWFieldNumber = 12;
+    private int sMW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int NM {
-      get { return nM_; }
+    public int SMW {
+      get { return sMW_; }
       set {
-        nM_ = value;
+        sMW_ = value;
       }
     }
 
-    /// <summary>Field number for the "NB" field.</summary>
-    public const int NBFieldNumber = 13;
-    private int nB_;
+    /// <summary>Field number for the "SML" field.</summary>
+    public const int SMLFieldNumber = 13;
+    private int sML_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int NB {
-      get { return nB_; }
+    public int SML {
+      get { return sML_; }
       set {
-        nB_ = value;
+        sML_ = value;
       }
     }
 
-    /// <summary>Field number for the "NT" field.</summary>
-    public const int NTFieldNumber = 14;
-    private int nT_;
+    /// <summary>Field number for the "DMW" field.</summary>
+    public const int DMWFieldNumber = 14;
+    private int dMW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int NT {
-      get { return nT_; }
+    public int DMW {
+      get { return dMW_; }
       set {
-        nT_ = value;
+        dMW_ = value;
       }
     }
 
-    /// <summary>Field number for the "NX" field.</summary>
-    public const int NXFieldNumber = 15;
-    private int nX_;
+    /// <summary>Field number for the "DML" field.</summary>
+    public const int DMLFieldNumber = 15;
+    private int dML_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int NX {
-      get { return nX_; }
+    public int DML {
+      get { return dML_; }
       set {
-        nX_ = value;
+        dML_ = value;
       }
     }
 
-    /// <summary>Field number for the "KA" field.</summary>
-    public const int KAFieldNumber = 16;
-    private int kA_;
+    /// <summary>Field number for the "KW" field.</summary>
+    public const int KWFieldNumber = 16;
+    private int kW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int KA {
-      get { return kA_; }
+    public int KW {
+      get { return kW_; }
       set {
-        kA_ = value;
+        kW_ = value;
       }
     }
 
-    /// <summary>Field number for the "KV" field.</summary>
-    public const int KVFieldNumber = 17;
-    private int kV_;
+    /// <summary>Field number for the "KL" field.</summary>
+    public const int KLFieldNumber = 17;
+    private int kL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int KV {
-      get { return kV_; }
+    public int KL {
+      get { return kL_; }
       set {
-        kV_ = value;
+        kL_ = value;
       }
     }
 
@@ -1918,25 +1922,58 @@ namespace RestLib {
       }
     }
 
+    /// <summary>Field number for the "EW" field.</summary>
+    public const int EWFieldNumber = 19;
+    private int eW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int EW {
+      get { return eW_; }
+      set {
+        eW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EL" field.</summary>
+    public const int ELFieldNumber = 20;
+    private int eL_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int EL {
+      get { return eL_; }
+      set {
+        eL_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EB" field.</summary>
+    public const int EBFieldNumber = 21;
+    private int eB_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int EB {
+      get { return eB_; }
+      set {
+        eB_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EX" field.</summary>
+    public const int EXFieldNumber = 22;
+    private int eX_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int EX {
+      get { return eX_; }
+      set {
+        eX_ = value;
+      }
+    }
+
     /// <summary>Field number for the "PW" field.</summary>
-    public const int PWFieldNumber = 19;
+    public const int PWFieldNumber = 23;
     private int pW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int PW {
       get { return pW_; }
       set {
         pW_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "IsRun" field.</summary>
-    public const int IsRunFieldNumber = 20;
-    private bool isRun_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool IsRun {
-      get { return isRun_; }
-      set {
-        isRun_ = value;
       }
     }
 
@@ -1963,16 +2000,19 @@ namespace RestLib {
       if (Ad != other.Ad) return false;
       if (Info != other.Info) return false;
       if (Adres != other.Adres) return false;
-      if (NG != other.NG) return false;
-      if (NM != other.NM) return false;
-      if (NB != other.NB) return false;
-      if (NT != other.NT) return false;
-      if (NX != other.NX) return false;
-      if (KA != other.KA) return false;
-      if (KV != other.KV) return false;
-      if (KF != other.KF) return false;
-      if (PW != other.PW) return false;
       if (IsRun != other.IsRun) return false;
+      if (SMW != other.SMW) return false;
+      if (SML != other.SML) return false;
+      if (DMW != other.DMW) return false;
+      if (DML != other.DML) return false;
+      if (KW != other.KW) return false;
+      if (KL != other.KL) return false;
+      if (KF != other.KF) return false;
+      if (EW != other.EW) return false;
+      if (EL != other.EL) return false;
+      if (EB != other.EB) return false;
+      if (EX != other.EX) return false;
+      if (PW != other.PW) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1989,16 +2029,19 @@ namespace RestLib {
       if (Ad.Length != 0) hash ^= Ad.GetHashCode();
       if (Info.Length != 0) hash ^= Info.GetHashCode();
       if (Adres.Length != 0) hash ^= Adres.GetHashCode();
-      if (NG != 0) hash ^= NG.GetHashCode();
-      if (NM != 0) hash ^= NM.GetHashCode();
-      if (NB != 0) hash ^= NB.GetHashCode();
-      if (NT != 0) hash ^= NT.GetHashCode();
-      if (NX != 0) hash ^= NX.GetHashCode();
-      if (KA != 0) hash ^= KA.GetHashCode();
-      if (KV != 0) hash ^= KV.GetHashCode();
-      if (KF != 0) hash ^= KF.GetHashCode();
-      if (PW != 0) hash ^= PW.GetHashCode();
       if (IsRun != false) hash ^= IsRun.GetHashCode();
+      if (SMW != 0) hash ^= SMW.GetHashCode();
+      if (SML != 0) hash ^= SML.GetHashCode();
+      if (DMW != 0) hash ^= DMW.GetHashCode();
+      if (DML != 0) hash ^= DML.GetHashCode();
+      if (KW != 0) hash ^= KW.GetHashCode();
+      if (KL != 0) hash ^= KL.GetHashCode();
+      if (KF != 0) hash ^= KF.GetHashCode();
+      if (EW != 0) hash ^= EW.GetHashCode();
+      if (EL != 0) hash ^= EL.GetHashCode();
+      if (EB != 0) hash ^= EB.GetHashCode();
+      if (EX != 0) hash ^= EX.GetHashCode();
+      if (PW != 0) hash ^= PW.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2052,45 +2095,57 @@ namespace RestLib {
         output.WriteRawTag(82);
         output.WriteString(Adres);
       }
-      if (NG != 0) {
+      if (IsRun != false) {
         output.WriteRawTag(88);
-        output.WriteInt32(NG);
+        output.WriteBool(IsRun);
       }
-      if (NM != 0) {
+      if (SMW != 0) {
         output.WriteRawTag(96);
-        output.WriteInt32(NM);
+        output.WriteInt32(SMW);
       }
-      if (NB != 0) {
+      if (SML != 0) {
         output.WriteRawTag(104);
-        output.WriteInt32(NB);
+        output.WriteInt32(SML);
       }
-      if (NT != 0) {
+      if (DMW != 0) {
         output.WriteRawTag(112);
-        output.WriteInt32(NT);
+        output.WriteInt32(DMW);
       }
-      if (NX != 0) {
+      if (DML != 0) {
         output.WriteRawTag(120);
-        output.WriteInt32(NX);
+        output.WriteInt32(DML);
       }
-      if (KA != 0) {
+      if (KW != 0) {
         output.WriteRawTag(128, 1);
-        output.WriteInt32(KA);
+        output.WriteInt32(KW);
       }
-      if (KV != 0) {
+      if (KL != 0) {
         output.WriteRawTag(136, 1);
-        output.WriteInt32(KV);
+        output.WriteInt32(KL);
       }
       if (KF != 0) {
         output.WriteRawTag(144, 1);
         output.WriteInt32(KF);
       }
-      if (PW != 0) {
+      if (EW != 0) {
         output.WriteRawTag(152, 1);
-        output.WriteInt32(PW);
+        output.WriteInt32(EW);
       }
-      if (IsRun != false) {
+      if (EL != 0) {
         output.WriteRawTag(160, 1);
-        output.WriteBool(IsRun);
+        output.WriteInt32(EL);
+      }
+      if (EB != 0) {
+        output.WriteRawTag(168, 1);
+        output.WriteInt32(EB);
+      }
+      if (EX != 0) {
+        output.WriteRawTag(176, 1);
+        output.WriteInt32(EX);
+      }
+      if (PW != 0) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt32(PW);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2130,35 +2185,44 @@ namespace RestLib {
       if (Adres.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Adres);
       }
-      if (NG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NG);
+      if (IsRun != false) {
+        size += 1 + 1;
       }
-      if (NM != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NM);
+      if (SMW != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SMW);
       }
-      if (NB != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NB);
+      if (SML != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SML);
       }
-      if (NT != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NT);
+      if (DMW != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DMW);
       }
-      if (NX != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NX);
+      if (DML != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DML);
       }
-      if (KA != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(KA);
+      if (KW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(KW);
       }
-      if (KV != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(KV);
+      if (KL != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(KL);
       }
       if (KF != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(KF);
       }
+      if (EW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(EW);
+      }
+      if (EL != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(EL);
+      }
+      if (EB != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(EB);
+      }
+      if (EX != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(EX);
+      }
       if (PW != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(PW);
-      }
-      if (IsRun != false) {
-        size += 2 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2201,35 +2265,44 @@ namespace RestLib {
       if (other.Adres.Length != 0) {
         Adres = other.Adres;
       }
-      if (other.NG != 0) {
-        NG = other.NG;
+      if (other.IsRun != false) {
+        IsRun = other.IsRun;
       }
-      if (other.NM != 0) {
-        NM = other.NM;
+      if (other.SMW != 0) {
+        SMW = other.SMW;
       }
-      if (other.NB != 0) {
-        NB = other.NB;
+      if (other.SML != 0) {
+        SML = other.SML;
       }
-      if (other.NT != 0) {
-        NT = other.NT;
+      if (other.DMW != 0) {
+        DMW = other.DMW;
       }
-      if (other.NX != 0) {
-        NX = other.NX;
+      if (other.DML != 0) {
+        DML = other.DML;
       }
-      if (other.KA != 0) {
-        KA = other.KA;
+      if (other.KW != 0) {
+        KW = other.KW;
       }
-      if (other.KV != 0) {
-        KV = other.KV;
+      if (other.KL != 0) {
+        KL = other.KL;
       }
       if (other.KF != 0) {
         KF = other.KF;
       }
+      if (other.EW != 0) {
+        EW = other.EW;
+      }
+      if (other.EL != 0) {
+        EL = other.EL;
+      }
+      if (other.EB != 0) {
+        EB = other.EB;
+      }
+      if (other.EX != 0) {
+        EX = other.EX;
+      }
       if (other.PW != 0) {
         PW = other.PW;
-      }
-      if (other.IsRun != false) {
-        IsRun = other.IsRun;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2283,31 +2356,31 @@ namespace RestLib {
             break;
           }
           case 88: {
-            NG = input.ReadInt32();
+            IsRun = input.ReadBool();
             break;
           }
           case 96: {
-            NM = input.ReadInt32();
+            SMW = input.ReadInt32();
             break;
           }
           case 104: {
-            NB = input.ReadInt32();
+            SML = input.ReadInt32();
             break;
           }
           case 112: {
-            NT = input.ReadInt32();
+            DMW = input.ReadInt32();
             break;
           }
           case 120: {
-            NX = input.ReadInt32();
+            DML = input.ReadInt32();
             break;
           }
           case 128: {
-            KA = input.ReadInt32();
+            KW = input.ReadInt32();
             break;
           }
           case 136: {
-            KV = input.ReadInt32();
+            KL = input.ReadInt32();
             break;
           }
           case 144: {
@@ -2315,11 +2388,23 @@ namespace RestLib {
             break;
           }
           case 152: {
-            PW = input.ReadInt32();
+            EW = input.ReadInt32();
             break;
           }
           case 160: {
-            IsRun = input.ReadBool();
+            EL = input.ReadInt32();
+            break;
+          }
+          case 168: {
+            EB = input.ReadInt32();
+            break;
+          }
+          case 176: {
+            EX = input.ReadInt32();
+            break;
+          }
+          case 184: {
+            PW = input.ReadInt32();
             break;
           }
         }

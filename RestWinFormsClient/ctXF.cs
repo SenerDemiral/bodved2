@@ -16,6 +16,12 @@ namespace RestWinFormsClient
         public ctXF()
         {
             InitializeComponent();
+
+            cTGridControl.ExternalRepository = Program.MF.persistentRepository;
+            colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
+            colK1.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
+            colK2.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
+
         }
         private void ctXF_Load(object sender, EventArgs e)
         {
@@ -68,5 +74,12 @@ namespace RestWinFormsClient
             return dr;
         }
 
+        private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            gridView1.SetFocusedRowCellValue(colRowKey, 0);
+            gridView1.SetFocusedRowCellValue(colCC, 0);
+            gridView1.SetFocusedRowCellValue(colK1, 0);
+            gridView1.SetFocusedRowCellValue(colK2, 0);
+        }
     }
 }

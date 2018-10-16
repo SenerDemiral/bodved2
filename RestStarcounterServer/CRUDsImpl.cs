@@ -112,8 +112,8 @@ namespace RestStarcounterServer
             {
                 foreach (var row in Db.SQL<CC>("select r from CC r"))
                 {
-                    //proxy = CRUDsHelper.ToProxy<CCProxy, CC>(row);
-                    
+                    proxy = CRUDsHelper.ToProxy<CCProxy, CC>(row);
+                    /*
                     proxy = new CCProxy
                     {
                         RowKey = row.GetObjectNo(),
@@ -124,7 +124,7 @@ namespace RestStarcounterServer
                         IsRun = row.IsRun,
                         IsRnkd = row.IsRnkd,
                     };
-                    
+                    */
                     proxyList.Add(proxy);
                 }
             });
@@ -182,7 +182,8 @@ namespace RestStarcounterServer
                 foreach (var row in Db.SQL<CT>("select r from CT r"))
                 {
                     //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
-
+                    proxy = CRUDsHelper.ToProxy<CTProxy, CT>(row);
+                    /*
                     proxy = new CTProxy
                     {
                         RowKey = row.GetObjectNo(),
@@ -205,7 +206,7 @@ namespace RestStarcounterServer
                         
                         IsRun = row.IsRun,
                     };
-
+                    */
                     proxyList.Add(proxy);
                 }
             });

@@ -100,22 +100,21 @@ message CTProxy {
 	uint64 K1 = 6;
 	uint64 K2 = 7;
 
-  string Ad = 8;
-	string Info = 9;
+  string Ad    = 8;
+	string Info  = 9;
 	string Adres = 10;
+	bool IsRun   = 11;
 	
-	int32 NG = 11;
-	int32 NM = 12;
-	int32 NB = 13;
-	int32 NT = 14;
-	int32 NX = 15;
-	
-	int32 KA = 16;
-	int32 KV = 17;
-	int32 KF = 18;
-
-	int32 PW = 19;
-
-	bool IsRun = 20;
+	int32 SMW = 12;
+	int32 SML = 13;
+	int32 DMW = 14;
+	int32 DML = 15;
+  int32 KW  = 16;
+  int32 KL  = 17;
+  int32 KF  = 18;
+  int32 EW  = 19;
+  int32 EL  = 20;
+  int32 EB  = 21;
+  int32 EX  = 22;
+  int32 PW  = 23;
 }
-

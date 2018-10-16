@@ -30,12 +30,15 @@ namespace RestStarcounterServer
                 {
                     object value = dbP.GetValue(row);
 
-                    if (value != null && dbP.PropertyType.GetTypeInfo().IsClass && dbP.PropertyType != typeof(string))
-                        proxyProperty.SetValue(proxy, value.GetObjectNo()); //v.GetObjectNo());  //Db.FromId(2));
-                    else
+                    if (value != null)
                     {
-                        value = ConvertToProxyValue(dbP.PropertyType, value);
-                        proxyProperty.SetValue(proxy, value);
+                        if (value != null && dbP.PropertyType.GetTypeInfo().IsClass && dbP.PropertyType != typeof(string))
+                            proxyProperty.SetValue(proxy, value.GetObjectNo()); //v.GetObjectNo());  //Db.FromId(2));
+                        else
+                        {
+                            value = ConvertToProxyValue(dbP.PropertyType, value);
+                            proxyProperty.SetValue(proxy, value);
+                        }
                     }
                 }
             }
