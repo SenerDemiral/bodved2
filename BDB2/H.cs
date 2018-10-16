@@ -198,8 +198,8 @@ namespace BDB2
                                 CC = cc,
                                 PK = rPK,
                                 Trh = DateTime.Parse(ra[4]),
-                                hCT = hct,
-                                gCT = gct,
+                                HCT = hct,
+                                GCT = gct,
 
                                 Drm = "OK"
                             };
@@ -240,26 +240,26 @@ namespace BDB2
                             {
                                 CC = cc,
                                 CEB = cet,
-                                hPP1 = hPP1, 
-                                hPP2 = hPP2, 
-                                gPP1 = gPP1, 
-                                gPP2 = gPP2,
+                                HPP1 = hPP1, 
+                                HPP2 = hPP2, 
+                                GPP1 = gPP1, 
+                                GPP2 = gPP2,
 
                                 Trh = DateTime.Parse(ra[6]),
                                 SoD = ra[7],
                                 Idx = int.Parse(ra[8]),
 
-                                h1W = int.Parse(ra[9]),
-                                h2W = int.Parse(ra[10]),
-                                h3W = int.Parse(ra[11]),
-                                h4W = int.Parse(ra[12]),
-                                h5W = int.Parse(ra[13]),
+                                H1W = int.Parse(ra[9]),
+                                H2W = int.Parse(ra[10]),
+                                H3W = int.Parse(ra[11]),
+                                H4W = int.Parse(ra[12]),
+                                H5W = int.Parse(ra[13]),
 
-                                g1W = int.Parse(ra[14]),
-                                g2W = int.Parse(ra[15]),
-                                g3W = int.Parse(ra[16]),
-                                g4W = int.Parse(ra[17]),
-                                g5W = int.Parse(ra[18]),
+                                G1W = int.Parse(ra[14]),
+                                G2W = int.Parse(ra[15]),
+                                G3W = int.Parse(ra[16]),
+                                G4W = int.Parse(ra[17]),
+                                G5W = int.Parse(ra[18]),
 
                                 Drm = "OK"
                             };

@@ -56,40 +56,40 @@ namespace BDB2
             int SSW = 0, DSW = 0, SMW = 0, DMW = 0;
             int SSL = 0, DSL = 0, SML = 0, DML = 0;
 
-            var hmacs = Db.SQL<MAC>("select r from MAC r where r.hPP1 = ? or r.hPP2 = ?", pp, pp);
+            var hmacs = Db.SQL<MAC>("select r from MAC r where r.HPP1 = ? or r.HPP2 = ?", pp, pp);
             foreach (var mac in hmacs)
             {
                 if (mac.SoD == "S")
                 {
-                    SSW += mac.hSW;     // Single Set Win
-                    SSL += mac.gSW;     //            Lost
-                    SMW += mac.hMW;     //        Mac
-                    SML += mac.gMW;
+                    SSW += mac.HSW;     // Single Set Win
+                    SSL += mac.GSW;     //            Lost
+                    SMW += mac.HMW;     //        Mac
+                    SML += mac.GMW;
                 }
                 if (mac.SoD == "D")
                 {
-                    DSW += mac.hSW;
-                    DSL += mac.gSW;
-                    DMW += mac.hMW;
-                    DML += mac.gMW;
+                    DSW += mac.HSW;
+                    DSL += mac.GSW;
+                    DMW += mac.HMW;
+                    DML += mac.GMW;
                 }
             }
-            var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP1 = ? or r.gPP2 = ?", pp, pp);
+            var gmacs = Db.SQL<MAC>("select r from MAC r where r.GPP1 = ? or r.GPP2 = ?", pp, pp);
             foreach (var mac in gmacs)
             {
                 if (mac.SoD == "S")
                 {
-                    SSW += mac.gSW;
-                    SSL += mac.hSW;
-                    SMW += mac.gMW;
-                    SML += mac.hMW;
+                    SSW += mac.GSW;
+                    SSL += mac.HSW;
+                    SMW += mac.GMW;
+                    SML += mac.HMW;
                 }
                 if (mac.SoD == "D")
                 {
-                    DSW += mac.gSW;
-                    DSL += mac.hSW;
-                    DMW += mac.gMW;
-                    DML += mac.hMW;
+                    DSW += mac.GSW;
+                    DSL += mac.HSW;
+                    DMW += mac.GMW;
+                    DML += mac.HMW;
                 }
             }
             Db.TransactAsync(() =>
@@ -200,53 +200,53 @@ namespace BDB2
             Db.TransactAsync(() =>
             { 
                 // Home oldugu Events
-                var hcets = Db.SQL<CET>("select r from CET r where r.hCT = ?", ct);
+                var hcets = Db.SQL<CET>("select r from CET r where r.HCT = ?", ct);
                 foreach (var cet in hcets)
                 {
-                    KW += cet.hKW;
-                    KL += cet.gKW;
+                    KW += cet.HKW;
+                    KL += cet.GKW;
 
-                    if (cet.hPW > cet.gPW)
+                    if (cet.HPW > cet.GPW)
                         EW++;
-                    else if (cet.hPW < cet.gPW)
+                    else if (cet.HPW < cet.GPW)
                         EL++;
                     else
                         EB++;
 
-                    PW += cet.hPW;
+                    PW += cet.HPW;
 
                     if (cet.Drm == "hX")
                         EX++;
 
-                    SMW += cet.hSMW;
-                    SML += cet.gSMW;    // Kaybettigi digerinin Kazandigi
-                    DMW += cet.hDMW;
-                    DML += cet.gDMW;
+                    SMW += cet.HSMW;
+                    SML += cet.GSMW;    // Kaybettigi digerinin Kazandigi
+                    DMW += cet.HDMW;
+                    DML += cet.GDMW;
                 }
 
                 // Guest oldugu Events
-                var gcets = Db.SQL<CET>("select r from CET r where r.gCT = ?", ct);
+                var gcets = Db.SQL<CET>("select r from CET r where r.GCT = ?", ct);
                 foreach (var cet in gcets)
                 {
-                    KW += cet.gKW;
-                    KL += cet.hKW;
+                    KW += cet.GKW;
+                    KL += cet.HKW;
 
-                    if (cet.hPW < cet.gPW)
+                    if (cet.HPW < cet.GPW)
                         EW++;
-                    else if (cet.hPW > cet.gPW)
+                    else if (cet.HPW > cet.GPW)
                         EL++;
                     else
                         EB++;
 
-                    PW += cet.gPW;
+                    PW += cet.GPW;
 
                     if (cet.Drm == "gX")
                         EX++;
 
-                    SMW += cet.gSMW;
-                    SML += cet.hSMW;    // Kaybettigi digerinin Kazandigi
-                    DMW += cet.gDMW;
-                    DML += cet.hDMW;
+                    SMW += cet.GSMW;
+                    SML += cet.HSMW;    // Kaybettigi digerinin Kazandigi
+                    DMW += cet.GDMW;
+                    DML += cet.HDMW;
                 }
 
                 // Update CT
@@ -309,17 +309,17 @@ namespace BDB2
                 cc = m.CC.GetObjectNo();
                 cet = m.CEB.GetObjectNo();
                 var ceto = m.CEB as CET;
-                hct = ceto.hCT.GetObjectNo();
-                gct = ceto.gCT.GetObjectNo();
-                hpp = m.hPP1.GetObjectNo();
-                gpp = m.gPP1.GetObjectNo();
+                hct = ceto.HCT.GetObjectNo();
+                gct = ceto.GCT.GetObjectNo();
+                hpp = m.HPP1.GetObjectNo();
+                gpp = m.GPP1.GetObjectNo();
 
-                hsw = m.hSW;
-                gsw = m.gSW;
-                hmw = m.hMW;
-                gmw = m.gMW;
-                hmx = m.hMX;
-                gmx = m.gMX;
+                hsw = m.HSW;
+                gsw = m.GSW;
+                hmw = m.HMW;
+                gmw = m.GMW;
+                hmx = m.HMX;
+                gmx = m.GMX;
                 sod = m.SoD;
 
                 MacList.Add(new Maclar
@@ -352,8 +352,8 @@ namespace BDB2
 
                 if (sod == "D")
                 {
-                    hpp = m.hPP2.GetObjectNo();
-                    gpp = m.gPP2.GetObjectNo();
+                    hpp = m.HPP2.GetObjectNo();
+                    gpp = m.GPP2.GetObjectNo();
 
                     MacList.Add(new Maclar
                     {
@@ -542,9 +542,9 @@ namespace BDB2
                     DML = 0;
                     DMX = 0;
                     // Home olarak bu Takimda yaptiklari
-                    var hmacs = Db.SQL<MAC>("select r from MAC r where (r.hPP1 = ? or r.hPP2 = ?) and CAST(r.CEB AS BDB2.CET).hCT = ?", ctp.PP, ctp.PP, ct);
+                    var hmacs = Db.SQL<MAC>("select r from MAC r where (r.HPP1 = ? or r.HPP2 = ?) and CAST(r.CEB AS BDB2.CET).HCT = ?", ctp.PP, ctp.PP, ct);
                     //var hmacs = Db.SQL<MAC>("select r from MAC r where r.hPP1 = ? or r.hPP2 = ?", ctp.PP, ctp.PP);
-                    //var hmacs = Db.SQL<MAC>("select r from MAC r where CAST(r.CEB AS BDB2.CET).hCT = ?", ct);
+                    //var hmacs = Db.SQL<MAC>("select r from MAC r where CAST(r.CEB AS BDB2.CET).HCT = ?", ct);
                     foreach (var mac in hmacs)
                     {
                         //if (mac.hPP1.GetObjectNo() == ctpppONO || mac.hPP2?.GetObjectNo() == ctpppONO)
@@ -552,37 +552,37 @@ namespace BDB2
                         {
                             if (mac.SoD == "S")
                             {
-                                SMW += mac.hMW;
-                                SML += mac.gMW;
+                                SMW += mac.HMW;
+                                SML += mac.GMW;
                                 if (mac.Drm == "hX")
                                     SMX++;
                             }
                             else
                             {
-                                DMW += mac.hMW;
-                                DML += mac.gMW;
+                                DMW += mac.HMW;
+                                DML += mac.GMW;
                                 if (mac.Drm == "hX")
                                     DMX++;
                             }
                         }
                     }
                     // Guest olarak yaptiklari
-                    var gmacs = Db.SQL<MAC>("select r from MAC r where (r.gPP1 = ? or r.gPP2 = ?) and CAST(r.CEB AS BDB2.CET).gCT = ?", ctp.PP, ctp.PP, ct);
-                    //var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP1 = ? or r.gPP2 = ?", ctp.PP, ctp.PP);
-                    //var gmacs = Db.SQL<MAC>("select r from MAC r where r.gPP1 = ? ", ctp.PP);
+                    var gmacs = Db.SQL<MAC>("select r from MAC r where (r.GPP1 = ? or r.GPP2 = ?) and CAST(r.CEB AS BDB2.CET).GCT = ?", ctp.PP, ctp.PP, ct);
+                    //var gmacs = Db.SQL<MAC>("select r from MAC r where r.GPP1 = ? or r.GPP2 = ?", ctp.PP, ctp.PP);
+                    //var gmacs = Db.SQL<MAC>("select r from MAC r where r.GPP1 = ? ", ctp.PP);
                     foreach (var mac in gmacs)
                     {
                         if (mac.SoD == "S")
                         {
-                            SMW += mac.gMW;
-                            SML += mac.hMW;
+                            SMW += mac.GMW;
+                            SML += mac.HMW;
                             if (mac.Drm == "gX")
                                 SMX++;
                         }
                         else
                         {
-                            DMW += mac.gMW;
-                            DML += mac.hMW;
+                            DMW += mac.GMW;
+                            DML += mac.HMW;
                             if (mac.Drm == "gX")
                                 DMX++;
                         }
@@ -619,31 +619,31 @@ namespace BDB2
         public string Drm { get; set; }      // Iptal, h/gX: Gelmedi, h/gD: Diskalifiye, OK: Oynandi
         public string Yer { get; set; }
 
-        public int hSSW { get; set; }        // Home Single Set Win
-        public int gSSW { get; set; }
+        public int HSSW { get; set; }        // Home Single Set Win
+        public int GSSW { get; set; }
 
-        public int hDSW { get; set; }        // Home Double Set Win
-        public int gDSW { get; set; }
+        public int HDSW { get; set; }        // Home Double Set Win
+        public int GDSW { get; set; }
 
-        public int hSMW { get; set; }        // Home Single Mac Win
-        public int gSMW { get; set; }
+        public int HSMW { get; set; }        // Home Single Mac Win
+        public int GSMW { get; set; }
 
-        public int hDMW { get; set; }        // Home Double Mac Win
-        public int gDMW { get; set; }
+        public int HDMW { get; set; }        // Home Double Mac Win
+        public int GDMW { get; set; }
 
-        public int hKW { get; set; }         // Home sKor Win
-        public int gKW { get; set; }
+        public int HKW { get; set; }         // Home sKor Win
+        public int GKW { get; set; }
 
-        public int hPW { get; set; }         // Home Kazandigi Puan
-        public int gPW { get; set; }
+        public int HPW { get; set; }         // Home Kazandigi Puan
+        public int GPW { get; set; }
 
     }
 
     [Database]
     public class CET : CEB    // EventTakim
     {
-        public CT hCT { get; set; }     // Home Takim
-        public CT gCT { get; set; }     // Guest Takim
+        public CT HCT { get; set; }     // Home Takim
+        public CT GCT { get; set; }     // Guest Takim
 
         public static void RefreshSonuc()
         {
@@ -692,17 +692,17 @@ namespace BDB2
                     {
                         if (mac.SoD == "S")
                         {
-                            hSSW += mac.hSW;
-                            gSSW += mac.gSW;
-                            hSMW += mac.hMW;
-                            gSMW += mac.gMW;
+                            hSSW += mac.HSW;
+                            gSSW += mac.GSW;
+                            hSMW += mac.HMW;
+                            gSMW += mac.GMW;
                         }
                         else if (mac.SoD == "D")
                         {
-                            hDSW += mac.hSW;
-                            gDSW += mac.gSW;
-                            hDMW += mac.hMW;
-                            gDMW += mac.gMW;
+                            hDSW += mac.HSW;
+                            gDSW += mac.GSW;
+                            hDMW += mac.HMW;
+                            gDMW += mac.GMW;
                         }
                     }
                     hKW = hSMW * TSMK + hDMW * TDMK;
@@ -742,21 +742,21 @@ namespace BDB2
                 }
 
                 // Update CET
-                cet.hSSW = hSSW;
-                cet.gSSW = gSSW;
-                cet.hDSW = hDSW;
-                cet.gDSW = gDSW;
+                cet.HSSW = hSSW;
+                cet.GSSW = gSSW;
+                cet.HDSW = hDSW;
+                cet.GDSW = gDSW;
 
-                cet.hSMW = hSMW;
-                cet.gSMW = gSMW;
-                cet.hDMW = hDMW;
-                cet.gDMW = gDMW;
+                cet.HSMW = hSMW;
+                cet.GSMW = gSMW;
+                cet.HDMW = hDMW;
+                cet.GDMW = gDMW;
 
-                cet.hKW = hKW;
-                cet.gKW = gKW;
+                cet.HKW = hKW;
+                cet.GKW = gKW;
 
-                cet.hPW = hPW;
-                cet.gPW = gPW;
+                cet.HPW = hPW;
+                cet.GPW = gPW;
             });
         }
     }
@@ -769,17 +769,17 @@ namespace BDB2
 
         public string SoD { get; set; }     // SingleOrDouble
         public int Idx { get; set; }        // Mac Sirasi
-        public PP hPP1 { get; set; }        // Home Oyuncu 1
-        public PP hPP2 { get; set; }
-        public PP gPP1 { get; set; }
-        public PP gPP2 { get; set; }
+        public PP HPP1 { get; set; }        // Home Oyuncu 1
+        public PP HPP2 { get; set; }
+        public PP GPP1 { get; set; }
+        public PP GPP2 { get; set; }
     }
 
     [Database]
     public class CEF : CEB    // EventFerdi
     {
-        public PP hPP { get; set; }
-        public PP gPP { get; set; }
+        public PP HPP { get; set; }
+        public PP GPP { get; set; }
     }
 
     [Database]
@@ -797,40 +797,40 @@ namespace BDB2
         public string Info { get; set; }
 
         public string SoD { get; set; }     // SingleOrDouble
-        public PP hPP1 { get; set; }
-        public PP hPP2 { get; set; }
-        public PP gPP1 { get; set; }
-        public PP gPP2 { get; set; }
+        public PP HPP1 { get; set; }
+        public PP HPP2 { get; set; }
+        public PP GPP1 { get; set; }
+        public PP GPP2 { get; set; }
 
-        public int h1W { get; set; }       // Home 1.Set aldigi Sayi    
-        public int h2W { get; set; }
-        public int h3W { get; set; }
-        public int h4W { get; set; }
-        public int h5W { get; set; }
-        public int h6W { get; set; }
-        public int h7W { get; set; }
+        public int H1W { get; set; }       // Home 1.Set aldigi Sayi    
+        public int H2W { get; set; }
+        public int H3W { get; set; }
+        public int H4W { get; set; }
+        public int H5W { get; set; }
+        public int H6W { get; set; }
+        public int H7W { get; set; }
 
-        public int g1W { get; set; }       // Guest 1.Set aldigi Sayi   
-        public int g2W { get; set; }
-        public int g3W { get; set; }
-        public int g4W { get; set; }
-        public int g5W { get; set; }
-        public int g6W { get; set; }
-        public int g7W { get; set; }
+        public int G1W { get; set; }       // Guest 1.Set aldigi Sayi   
+        public int G2W { get; set; }
+        public int G3W { get; set; }
+        public int G4W { get; set; }
+        public int G5W { get; set; }
+        public int G6W { get; set; }
+        public int G7W { get; set; }
 
-        public int hSW { get; set; }        // Home Set Win
-        public int gSW { get; set; }        // Guest 
+        public int HSW { get; set; }        // Home Set Win
+        public int GSW { get; set; }        // Guest 
 
-        public int hMW { get; set; }        // Home Mac Win
-        public int gMW { get; set; }        // Guest 
+        public int HMW { get; set; }        // Home Mac Win
+        public int GMW { get; set; }        // Guest 
 
-        public int hMX { get; set; }        // Home Diskalifiye
-        public int gMX { get; set; }        // Guest 
+        public int HMX { get; set; }        // Home Diskalifiye
+        public int GMX { get; set; }        // Guest 
 
-        public int hRnk { get; set; }       // Maca basladigindaki Rank
-        public int hRnkPX { get; set; }     // Rank Point Exchange
-        public int gRnk { get; set; }
-        public int gRnkPX { get; set; }
+        public int HRnk { get; set; }       // Maca basladigindaki Rank
+        public int HRnkPX { get; set; }     // Rank Point Exchange
+        public int GRnk { get; set; }
+        public int GRnkPX { get; set; }
 
         public static void RefreshSonuc()
         {
@@ -854,33 +854,33 @@ namespace BDB2
 
             if (mac.Drm == "OK")
             {
-                if (mac.h1W > mac.g1W)
+                if (mac.H1W > mac.G1W)
                     hSW++;
-                else if (mac.h1W < mac.g1W)
+                else if (mac.H1W < mac.G1W)
                     gSW++;
-                if (mac.h2W > mac.g2W)
+                if (mac.H2W > mac.G2W)
                     hSW++;
-                else if (mac.h2W < mac.g2W)
+                else if (mac.H2W < mac.G2W)
                     gSW++;
-                if (mac.h3W > mac.g3W)
+                if (mac.H3W > mac.G3W)
                     hSW++;
-                else if (mac.h3W < mac.g3W)
+                else if (mac.H3W < mac.G3W)
                     gSW++;
-                if (mac.h4W > mac.g4W)
+                if (mac.H4W > mac.G4W)
                     hSW++;
-                else if (mac.h4W < mac.g4W)
+                else if (mac.H4W < mac.G4W)
                     gSW++;
-                if (mac.h5W > mac.g5W)
+                if (mac.H5W > mac.G5W)
                     hSW++;
-                else if (mac.h5W < mac.g5W)
+                else if (mac.H5W < mac.G5W)
                     gSW++;
-                if (mac.h6W > mac.g6W)
+                if (mac.H6W > mac.G6W)
                     hSW++;
-                else if (mac.h6W < mac.g6W)
+                else if (mac.H6W < mac.G6W)
                     gSW++;
-                if (mac.h7W > mac.g7W)
+                if (mac.H7W > mac.G7W)
                     hSW++;
-                else if (mac.h7W < mac.g7W)
+                else if (mac.H7W < mac.G7W)
                     gSW++;
 
                 // Compute Aldigi Mac 0/1
@@ -904,12 +904,12 @@ namespace BDB2
 
             Db.TransactAsync(() =>
             {
-                mac.hSW = hSW;
-                mac.gSW = gSW;
-                mac.hMW = hMW;
-                mac.gMW = gMW;
-                mac.hMX = hMX;
-                mac.gMX = gMX;
+                mac.HSW = hSW;
+                mac.GSW = gSW;
+                mac.HMW = hMW;
+                mac.GMW = gMW;
+                mac.HMX = hMX;
+                mac.GMX = gMX;
             });
         }
 
@@ -1018,26 +1018,26 @@ namespace BDB2
                 cc = m.CC.GetObjectNo();
                 cet = m.CEB.GetObjectNo();
                 var ceto = m.CEB as CET;
-                hct = ceto.hCT.GetObjectNo();
-                gct = ceto.gCT.GetObjectNo();
+                hct = ceto.HCT.GetObjectNo();
+                gct = ceto.GCT.GetObjectNo();
 
-                hsw = m.hSW;
-                gsw = m.gSW;
-                hmw = m.hMW;
-                gmw = m.gMW;
+                hsw = m.HSW;
+                gsw = m.GSW;
+                hmw = m.HMW;
+                gmw = m.GMW;
 
                 if (m.SoD == "S")
                 {
-                    hpp = m.hPP1.GetObjectNo();
-                    gpp = m.gPP1.GetObjectNo();
+                    hpp = m.HPP1.GetObjectNo();
+                    gpp = m.GPP1.GetObjectNo();
                     // Home
                     table.Rows.Add(cc, cet, hct, hpp, "S", hsw, gsw, hmw, gmw);
                     table.Rows.Add(cc, cet, gct, gpp, "S", gsw, hsw, gmw, hmw);
                 }
                 if (m.SoD == "D")
                 {
-                    hpp = m.hPP2.GetObjectNo();
-                    gpp = m.gPP2.GetObjectNo();
+                    hpp = m.HPP2.GetObjectNo();
+                    gpp = m.GPP2.GetObjectNo();
                     table.Rows.Add(cc, cet, hct, hpp, "D", hsw, gsw, hmw, gmw);
                     table.Rows.Add(cc, cet, gct, gpp, "D", gsw, hsw, gmw, hmw);
                 }
@@ -1181,11 +1181,11 @@ namespace BDB2
             foreach (var mac in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
             {
                 nor++;
-                var hCT = (mac.CEB as CET).hCT.GetObjectNo().ToString();
-                var gCT = (mac.CEB as CET).hCT.GetObjectNo().ToString();
+                var hCT = (mac.CEB as CET).HCT.GetObjectNo().ToString();
+                var gCT = (mac.CEB as CET).GCT.GetObjectNo().ToString();
 
-                hPPoNo = $"{mac.hPP1.GetObjectNo()} {hCT}";
-                gPPoNo = $"{mac.gPP1.GetObjectNo()} {gCT}";
+                hPPoNo = $"{mac.HPP1.GetObjectNo()} {hCT}";
+                gPPoNo = $"{mac.GPP1.GetObjectNo()} {gCT}";
                 //gPPoNo = mac.gPP1.GetObjectNo().ToString() + gCT;
 
                 if (!dnm.ContainsKey(hPPoNo))
@@ -1196,57 +1196,57 @@ namespace BDB2
                 if (mac.SoD == "S")
                 {
                     hMS = dnm[hPPoNo];
-                    hMS.SSW += mac.hSW;
-                    hMS.SSL += mac.gSW;
-                    hMS.SMW += mac.hMW;
-                    hMS.SML += mac.gMW;
+                    hMS.SSW += mac.HSW;
+                    hMS.SSL += mac.GSW;
+                    hMS.SMW += mac.HMW;
+                    hMS.SML += mac.GMW;
                     dnm[hPPoNo] = hMS;
 
                     gMS = dnm[gPPoNo];
-                    gMS.SSW += mac.gSW;
-                    gMS.SSL += mac.hSW;
-                    gMS.SMW += mac.gMW;
-                    gMS.SML += mac.hMW;
+                    gMS.SSW += mac.GSW;
+                    gMS.SSL += mac.HSW;
+                    gMS.SMW += mac.GMW;
+                    gMS.SML += mac.HMW;
                     dnm[gPPoNo] = gMS;
                 }
                 
                 else
                 {
                     hMS = dnm[hPPoNo];
-                    hMS.DSW += mac.hSW;
-                    hMS.DSL += mac.gSW;
-                    hMS.DMW += mac.hMW;
-                    hMS.DML += mac.gMW;
+                    hMS.DSW += mac.HSW;
+                    hMS.DSL += mac.GSW;
+                    hMS.DMW += mac.HMW;
+                    hMS.DML += mac.GMW;
                     dnm[hPPoNo] = hMS;
 
                     gMS = dnm[gPPoNo];
-                    gMS.DSW += mac.gSW;
-                    gMS.DSL += mac.hSW;
-                    gMS.DMW += mac.gMW;
-                    gMS.DML += mac.hMW;
+                    gMS.DSW += mac.GSW;
+                    gMS.DSL += mac.HSW;
+                    gMS.DMW += mac.GMW;
+                    gMS.DML += mac.HMW;
                     dnm[gPPoNo] = gMS;
 
                     //hPP2oNo = mac.hPP2.GetObjectNo().ToString() + hCT;
                     //gPP2oNo = mac.gPP2.GetObjectNo().ToString() + gCT;
-                    hPP2oNo = $"{mac.hPP2.GetObjectNo()} {hCT}";
-                    gPP2oNo = $"{mac.gPP2.GetObjectNo()} {gCT}";
+                    hPP2oNo = $"{mac.HPP2.GetObjectNo()} {hCT}";
+                    gPP2oNo = $"{mac.GPP2.GetObjectNo()} {gCT}";
                     if (!dnm.ContainsKey(hPP2oNo))
                         dnm[hPP2oNo] = new MacStat();
                     if (!dnm.ContainsKey(gPP2oNo))
                         dnm[gPP2oNo] = new MacStat();
 
                     hMS = dnm[hPP2oNo];
-                    hMS.DSW += mac.hSW;
-                    hMS.DSL += mac.gSW;
-                    hMS.DMW += mac.hMW;
-                    hMS.DML += mac.gMW;
+                    hMS.DSW += mac.HSW;
+                    hMS.DSL += mac.GSW;
+                    hMS.DMW += mac.HMW;
+                    hMS.DML += mac.GMW;
                     dnm[hPP2oNo] = hMS;
 
                     gMS = dnm[gPP2oNo];
-                    gMS.DSW += mac.gSW;
-                    gMS.DSL += mac.hSW;
-                    gMS.DMW += mac.gMW;
-                    gMS.DML += mac.hMW;
+                    gMS.DSW += mac.GSW;
+                    gMS.DSL += mac.HSW;
+                    gMS.DMW += mac.GMW;
+                    gMS.DML += mac.HMW;
                     dnm[gPP2oNo] = gMS;
 
                 }
@@ -1293,8 +1293,8 @@ namespace BDB2
 
                     nor++;
 
-                    hPPoNo = mac.hPP1.GetObjectNo();
-                    gPPoNo = mac.gPP1.GetObjectNo();
+                    hPPoNo = mac.HPP1.GetObjectNo();
+                    gPPoNo = mac.GPP1.GetObjectNo();
 
                     hpRnk = ppDic[hPPoNo];
                     gpRnk = ppDic[gPPoNo];
@@ -1302,14 +1302,14 @@ namespace BDB2
                     hPX = 0;
                     if (mac.CC.IsRnkd)  // Rank hesaplanacak ise
                         if (mac.Drm == "OK" && hpRnk != 0 && gpRnk != 0)
-                            hPX = compHomeRnkPX(mac.hMW == 0 ? false : true, hpRnk, gpRnk);
+                            hPX = compHomeRnkPX(mac.HMW == 0 ? false : true, hpRnk, gpRnk);
 
                     // Update MAC
-                    mac.hRnkPX = hPX;
-                    mac.hRnk   = hpRnk;
+                    mac.HRnkPX = hPX;
+                    mac.HRnk   = hpRnk;
 
-                    mac.gRnkPX = -hPX;
-                    mac.gRnk   = gpRnk;
+                    mac.GRnkPX = -hPX;
+                    mac.GRnk   = gpRnk;
 
                     // Update dictionary
                     ppDic[hPPoNo] = hpRnk + hPX;

@@ -13,6 +13,7 @@ namespace RestStarcounterServer
 {
     class CRUDsImpl : RestLib.CRUDs.CRUDsBase
     {
+        // Players
         public override async Task PPFill(QryProxy request, IServerStreamWriter<PPProxy> responseStream, ServerCallContext context)
         {
             PPProxy proxy = new PPProxy();
@@ -169,6 +170,7 @@ namespace RestStarcounterServer
             return Task.FromResult(request);
         }
 
+        // Teams
         public override async Task CTFill(QryProxy request, IServerStreamWriter<CTProxy> responseStream, ServerCallContext context)
         {
             CTProxy proxy = new CTProxy();
@@ -250,5 +252,171 @@ namespace RestStarcounterServer
 
             return Task.FromResult(request);
         }
+
+        // Team Players
+        public override async Task CTPFill(QryProxy request, IServerStreamWriter<CTPProxy> responseStream, ServerCallContext context)
+        {
+            CTPProxy proxy = new CTPProxy();
+            List<CTPProxy> proxyList = new List<CTPProxy>();
+
+            Type proxyType = typeof(CTPProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                foreach (var row in Db.SQL<CTP>("select r from CTP r"))
+                {
+                    proxy = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
+                    /*
+                    proxy = new CTProxy
+                    {
+                        RowKey = row.GetObjectNo(),
+                        CC = row.CC == null ? 0 : row.CC.GetObjectNo(),
+                        K1 = row.K1 == null ? 0 : row.K1.GetObjectNo(),
+                        K2 = row.K2 == null ? 0 : row.K1.GetObjectNo(),
+
+                        Ad = row.Ad,
+                        Adres = row.Adres ?? "",
+                        Info = row.Info ?? "",
+                        NG = row.NG,
+                        NM = row.NM,
+                        NB = row.NB,
+                        NT = row.NT,
+                        NX = row.NX,
+                        KA = row.KA,
+                        KV = row.KV,
+                        KF = row.KF,
+                        PW = row.PW,
+                        
+                        IsRun = row.IsRun,
+                    };
+                    */
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+        public override Task<CTPProxy> CTPUpdate(CTPProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                // RowSte: Added, Modified, Deletede, Unchanged
+                Db.Transact(() =>
+                {
+                    if (request.RowSte == "A" || request.RowSte == "M")
+                    {
+                        if (request.RowErr == string.Empty)
+                        {
+                            CTP row = CRUDsHelper.FromProxy<CTPProxy, CTP>(request);
+                            //XUT.Append(request.RowUsr, row, request.RowSte);
+                            request = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
+                        }
+
+                    }
+                    else if (request.RowSte == "D")
+                    {
+                        var row = (CTP)Db.FromId(request.RowKey);
+                        if (row == null)
+                        {
+                            request.RowErr = "CTP Rec not found";
+                        }
+                        else
+                        {
+                            request.RowErr = $"Silemezsiniz";
+                        }
+                    }
+                });
+            }).Wait();
+
+            return Task.FromResult(request);
+        }
+
+        // Event Team
+        public override async Task CETFill(QryProxy request, IServerStreamWriter<CETProxy> responseStream, ServerCallContext context)
+        {
+            CETProxy proxy = new CETProxy();
+            List<CETProxy> proxyList = new List<CETProxy>();
+
+            Type proxyType = typeof(CETProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                foreach (var row in Db.SQL<CET>("select r from CET r"))
+                {
+                    //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
+                    proxy = CRUDsHelper.ToProxy<CETProxy, CET>(row);
+                    /*
+                    proxy = new CTProxy
+                    {
+                        RowKey = row.GetObjectNo(),
+                        CC = row.CC == null ? 0 : row.CC.GetObjectNo(),
+                        K1 = row.K1 == null ? 0 : row.K1.GetObjectNo(),
+                        K2 = row.K2 == null ? 0 : row.K1.GetObjectNo(),
+
+                        Ad = row.Ad,
+                        Adres = row.Adres ?? "",
+                        Info = row.Info ?? "",
+                        NG = row.NG,
+                        NM = row.NM,
+                        NB = row.NB,
+                        NT = row.NT,
+                        NX = row.NX,
+                        KA = row.KA,
+                        KV = row.KV,
+                        KF = row.KF,
+                        PW = row.PW,
+                        
+                        IsRun = row.IsRun,
+                    };
+                    */
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+        public override Task<CETProxy> CETUpdate(CETProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                // RowSte: Added, Modified, Deletede, Unchanged
+                Db.Transact(() =>
+                {
+                    if (request.RowSte == "A" || request.RowSte == "M")
+                    {
+                        if (request.RowErr == string.Empty)
+                        {
+                            CET row = CRUDsHelper.FromProxy<CETProxy, CET>(request);
+                            //XUT.Append(request.RowUsr, row, request.RowSte);
+                            request = CRUDsHelper.ToProxy<CETProxy, CET>(row);
+                        }
+
+                    }
+                    else if (request.RowSte == "D")
+                    {
+                        var row = (CET)Db.FromId(request.RowKey);
+                        if (row == null)
+                        {
+                            request.RowErr = "CET Rec not found";
+                        }
+                        else
+                        {
+                            request.RowErr = $"Silemezsiniz";
+                        }
+                    }
+                });
+            }).Wait();
+
+            return Task.FromResult(request);
+        }
+
     }
 }

@@ -25,6 +25,8 @@ namespace RestStarcounterServer
 
             Console.WriteLine("Rest server listening on port " + Port);
 
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_CC").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX MAC_CC ON MAC (CC)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_CEB").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX MAC_CEB ON MAC (CEB)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_Trh").FirstOrDefault() == null)
@@ -38,6 +40,8 @@ namespace RestStarcounterServer
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_gPP2").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX MAC_gPP2 ON MAC (gPP2)");
 
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CTP_CC").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX CTP_CC ON CTP (CC)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CTP_CT").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX CTP_CT ON CTP (CT)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CTP_PP").FirstOrDefault() == null)

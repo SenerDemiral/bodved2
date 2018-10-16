@@ -16,9 +16,11 @@ namespace RestWinFormsClient
     {
         Stopwatch sw = new Stopwatch();
         int nor = 0;
+
+        ppXF frmPP;
         ccXF frmCC;
         ctXF frmCT;
-        ppXF frmPP;
+        cetXF frmCET;
 
         public MainXF()
         {
@@ -43,21 +45,6 @@ namespace RestWinFormsClient
             }).ContinueWith((t) => {
                 toolStripStatusLabel1.Text = $"recs read in {sw.ElapsedMilliseconds:n0} msec (1/1000sec)";
             });
-
-        }
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            var doc = documentManager1.GetDocument(frmCC);
-            if (doc != null)
-                tabbedView1.Controller.Activate(doc);
-            else
-            {
-                frmCC = new ccXF
-                {
-                    MdiParent = this
-                };
-                frmCC.Show();
-            }
 
         }
 
@@ -95,6 +82,37 @@ namespace RestWinFormsClient
                 frmPP.Show();
             }
 
+        }
+
+        private void CCnavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            var doc = documentManager1.GetDocument(frmCC);
+            if (doc != null)
+                tabbedView1.Controller.Activate(doc);
+            else
+            {
+                frmCC = new ccXF
+                {
+                    MdiParent = this
+                };
+                frmCC.Show();
+            }
+
+        }
+
+        private void CETnavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            var doc = documentManager1.GetDocument(frmCET);
+            if (doc != null)
+                tabbedView1.Controller.Activate(doc);
+            else
+            {
+                frmCET = new cetXF
+                {
+                    MdiParent = this
+                };
+                frmCET.Show();
+            }
         }
     }
 }

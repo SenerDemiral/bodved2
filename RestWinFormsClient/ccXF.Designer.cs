@@ -310,6 +310,7 @@
             // 
             this.colIsRun.FieldName = "IsRun";
             this.colIsRun.Name = "colIsRun";
+            this.colIsRun.ToolTip = "Devam ediyor mu?";
             this.colIsRun.Visible = true;
             this.colIsRun.VisibleIndex = 5;
             // 
@@ -317,6 +318,7 @@
             // 
             this.colIsRnkd.FieldName = "IsRnkd";
             this.colIsRnkd.Name = "colIsRnkd";
+            this.colIsRnkd.ToolTip = "Rank hesaplanacak mı?";
             this.colIsRnkd.Visible = true;
             this.colIsRnkd.VisibleIndex = 6;
             // 
@@ -324,6 +326,7 @@
             // 
             this.colTNSM.FieldName = "TNSM";
             this.colTNSM.Name = "colTNSM";
+            this.colTNSM.ToolTip = "Takım Müsabaka Single Maç Sayısı";
             this.colTNSM.Visible = true;
             this.colTNSM.VisibleIndex = 7;
             // 
@@ -331,6 +334,7 @@
             // 
             this.colTNDM.FieldName = "TNDM";
             this.colTNDM.Name = "colTNDM";
+            this.colTNDM.ToolTip = "Takım Müsabaka Double Maç Sayısı";
             this.colTNDM.Visible = true;
             this.colTNDM.VisibleIndex = 8;
             // 
@@ -338,6 +342,7 @@
             // 
             this.colTNSS.FieldName = "TNSS";
             this.colTNSS.Name = "colTNSS";
+            this.colTNSS.ToolTip = "Takım Müsabaka Single Set Sayısı";
             this.colTNSS.Visible = true;
             this.colTNSS.VisibleIndex = 9;
             // 
@@ -345,6 +350,7 @@
             // 
             this.colTNDS.FieldName = "TNDS";
             this.colTNDS.Name = "colTNDS";
+            this.colTNDS.ToolTip = "Takım Müsabaka Double Set Sayısı";
             this.colTNDS.Visible = true;
             this.colTNDS.VisibleIndex = 10;
             // 
@@ -352,6 +358,7 @@
             // 
             this.colTSMK.FieldName = "TSMK";
             this.colTSMK.Name = "colTSMK";
+            this.colTSMK.ToolTip = "Takım Müsabaka Single Maç Skor";
             this.colTSMK.Visible = true;
             this.colTSMK.VisibleIndex = 11;
             // 
@@ -359,6 +366,7 @@
             // 
             this.colTDMK.FieldName = "TDMK";
             this.colTDMK.Name = "colTDMK";
+            this.colTDMK.ToolTip = "Takım Müsabaka Double Maç Skor";
             this.colTDMK.Visible = true;
             this.colTDMK.VisibleIndex = 12;
             // 
@@ -366,6 +374,7 @@
             // 
             this.colTEGP.FieldName = "TEGP";
             this.colTEGP.Name = "colTEGP";
+            this.colTEGP.ToolTip = "Takım Müsabaka Galibiyet Puanı";
             this.colTEGP.Visible = true;
             this.colTEGP.VisibleIndex = 13;
             // 
@@ -373,6 +382,7 @@
             // 
             this.colTEMP.FieldName = "TEMP";
             this.colTEMP.Name = "colTEMP";
+            this.colTEMP.ToolTip = "Takım Müsabaka Malubiyet Puanı";
             this.colTEMP.Visible = true;
             this.colTEMP.VisibleIndex = 14;
             // 
@@ -380,6 +390,7 @@
             // 
             this.colTEBP.FieldName = "TEBP";
             this.colTEBP.Name = "colTEBP";
+            this.colTEBP.ToolTip = "Takım Müsabaka Beraberlik Puanı";
             this.colTEBP.Visible = true;
             this.colTEBP.VisibleIndex = 15;
             // 
@@ -387,6 +398,7 @@
             // 
             this.colTEXP.FieldName = "TEXP";
             this.colTEXP.Name = "colTEXP";
+            this.colTEXP.ToolTip = "Takım Müsabaka Diskalifiye Puanı";
             this.colTEXP.Visible = true;
             this.colTEXP.VisibleIndex = 16;
             // 

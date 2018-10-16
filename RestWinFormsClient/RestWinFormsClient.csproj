@@ -110,6 +110,12 @@
     <Compile Include="ccXF.Designer.cs">
       <DependentUpon>ccXF.cs</DependentUpon>
     </Compile>
+    <Compile Include="cetXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cetXF.Designer.cs">
+      <DependentUpon>cetXF.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctXF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     <Compile Include="ProxyHelper.cs" />
     <EmbeddedResource Include="ccXF.resx">
       <DependentUpon>ccXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cetXF.resx">
+      <DependentUpon>cetXF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctXF.resx">
       <DependentUpon>ctXF.cs</DependentUpon>

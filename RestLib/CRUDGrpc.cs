@@ -31,9 +31,19 @@ namespace RestLib {
     static readonly string __ServiceName = "RestLib.CRUDs";
 
     static readonly grpc::Marshaller<global::RestLib.QryProxy> __Marshaller_RestLib_QryProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.QryProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.RefreshSonucProxy> __Marshaller_RestLib_RefreshSonucProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.RefreshSonucProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.PPProxy> __Marshaller_RestLib_PPProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.PPProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CCProxy> __Marshaller_RestLib_CCProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CCProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CTProxy> __Marshaller_RestLib_CTProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CTProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.CTPProxy> __Marshaller_RestLib_CTPProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CTPProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.CETProxy> __Marshaller_RestLib_CETProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CETProxy.Parser.ParseFrom);
+
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.RefreshSonucProxy> __Method_RefreshSonuc = new grpc::Method<global::RestLib.QryProxy, global::RestLib.RefreshSonucProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RefreshSonuc",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_RefreshSonucProxy);
 
     static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.PPProxy> __Method_PPFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.PPProxy>(
         grpc::MethodType.ServerStreaming,
@@ -77,6 +87,34 @@ namespace RestLib {
         __Marshaller_RestLib_CTProxy,
         __Marshaller_RestLib_CTProxy);
 
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.CTPProxy> __Method_CTPFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.CTPProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "CTPFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_CTPProxy);
+
+    static readonly grpc::Method<global::RestLib.CTPProxy, global::RestLib.CTPProxy> __Method_CTPUpdate = new grpc::Method<global::RestLib.CTPProxy, global::RestLib.CTPProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CTPUpdate",
+        __Marshaller_RestLib_CTPProxy,
+        __Marshaller_RestLib_CTPProxy);
+
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.CETProxy> __Method_CETFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.CETProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "CETFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_CETProxy);
+
+    static readonly grpc::Method<global::RestLib.CETProxy, global::RestLib.CETProxy> __Method_CETUpdate = new grpc::Method<global::RestLib.CETProxy, global::RestLib.CETProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CETUpdate",
+        __Marshaller_RestLib_CETProxy,
+        __Marshaller_RestLib_CETProxy);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -86,6 +124,11 @@ namespace RestLib {
     /// <summary>Base class for server-side implementations of CRUDs</summary>
     public abstract partial class CRUDsBase
     {
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.RefreshSonucProxy> RefreshSonuc(global::RestLib.QryProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       public virtual global::System.Threading.Tasks.Task PPFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.PPProxy> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -116,6 +159,26 @@ namespace RestLib {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task CTPFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.CTPProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.CTPProxy> CTPUpdate(global::RestLib.CTPProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task CETFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.CETProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.CETProxy> CETUpdate(global::RestLib.CETProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Client for CRUDs</summary>
@@ -141,6 +204,22 @@ namespace RestLib {
       {
       }
 
+      public virtual global::RestLib.RefreshSonucProxy RefreshSonuc(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RefreshSonuc(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.RefreshSonucProxy RefreshSonuc(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_RefreshSonuc, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.RefreshSonucProxy> RefreshSonucAsync(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RefreshSonucAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.RefreshSonucProxy> RefreshSonucAsync(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RefreshSonuc, null, options, request);
+      }
       public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPProxy> PPFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return PPFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -213,6 +292,54 @@ namespace RestLib {
       {
         return CallInvoker.AsyncUnaryCall(__Method_CTUpdate, null, options, request);
       }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CTPProxy> CTPFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CTPFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CTPProxy> CTPFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_CTPFill, null, options, request);
+      }
+      public virtual global::RestLib.CTPProxy CTPUpdate(global::RestLib.CTPProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CTPUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.CTPProxy CTPUpdate(global::RestLib.CTPProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CTPUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CTPProxy> CTPUpdateAsync(global::RestLib.CTPProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CTPUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CTPProxy> CTPUpdateAsync(global::RestLib.CTPProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CTPUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CETProxy> CETFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CETFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CETProxy> CETFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_CETFill, null, options, request);
+      }
+      public virtual global::RestLib.CETProxy CETUpdate(global::RestLib.CETProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CETUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.CETProxy CETUpdate(global::RestLib.CETProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CETUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CETProxy> CETUpdateAsync(global::RestLib.CETProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CETUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CETProxy> CETUpdateAsync(global::RestLib.CETProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CETUpdate, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CRUDsClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -225,12 +352,17 @@ namespace RestLib {
     public static grpc::ServerServiceDefinition BindService(CRUDsBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_RefreshSonuc, serviceImpl.RefreshSonuc)
           .AddMethod(__Method_PPFill, serviceImpl.PPFill)
           .AddMethod(__Method_PPUpdate, serviceImpl.PPUpdate)
           .AddMethod(__Method_CCFill, serviceImpl.CCFill)
           .AddMethod(__Method_CCUpdate, serviceImpl.CCUpdate)
           .AddMethod(__Method_CTFill, serviceImpl.CTFill)
-          .AddMethod(__Method_CTUpdate, serviceImpl.CTUpdate).Build();
+          .AddMethod(__Method_CTUpdate, serviceImpl.CTUpdate)
+          .AddMethod(__Method_CTPFill, serviceImpl.CTPFill)
+          .AddMethod(__Method_CTPUpdate, serviceImpl.CTPUpdate)
+          .AddMethod(__Method_CETFill, serviceImpl.CETFill)
+          .AddMethod(__Method_CETUpdate, serviceImpl.CETUpdate).Build();
     }
 
   }

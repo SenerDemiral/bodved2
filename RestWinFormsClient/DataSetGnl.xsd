@@ -88,6 +88,35 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="CTP" msprop:Generator_TableClassName="CTPDataTable" msprop:Generator_TableVarName="tableCTP" msprop:Generator_RowChangedName="CTPRowChanged" msprop:Generator_TablePropName="CTP" msprop:Generator_RowDeletingName="CTPRowDeleting" msprop:Generator_RowChangingName="CTPRowChanging" msprop:Generator_RowEvHandlerName="CTPRowChangeEventHandler" msprop:Generator_RowDeletedName="CTPRowDeleted" msprop:Generator_RowClassName="CTPRow" msprop:Generator_UserTableName="CTP" msprop:Generator_RowEvArgName="CTPRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowKey" msprop:Generator_ColumnVarNameInTable="columnRowKey" msprop:Generator_ColumnPropNameInRow="RowKey" msprop:Generator_ColumnPropNameInTable="RowKeyColumn" msprop:Generator_UserColumnName="RowKey" type="xs:unsignedLong" />
+              <xs:element name="CC" msdata:Caption="Skl" msprop:Generator_ColumnVarNameInTable="columnCC" msprop:Generator_ColumnPropNameInRow="CC" msprop:Generator_ColumnPropNameInTable="CCColumn" msprop:Generator_UserColumnName="CC" type="xs:unsignedLong" minOccurs="0" />
+              <xs:element name="CT" msdata:Caption="Grp" msprop:Generator_ColumnVarNameInTable="columnCT" msprop:Generator_ColumnPropNameInRow="CT" msprop:Generator_ColumnPropNameInTable="CTColumn" msprop:Generator_UserColumnName="CT" type="xs:unsignedLong" minOccurs="0" />
+              <xs:element name="PP" msdata:Caption="Ad" msprop:Generator_ColumnVarNameInTable="columnPP" msprop:Generator_ColumnPropNameInRow="PP" msprop:Generator_ColumnPropNameInTable="PPColumn" msprop:Generator_UserColumnName="PP" type="xs:unsignedLong" minOccurs="0" />
+              <xs:element name="Idx" msdata:Caption="Info" msprop:Generator_ColumnVarNameInTable="columnIdx" msprop:Generator_ColumnPropNameInRow="Idx" msprop:Generator_ColumnPropNameInTable="IdxColumn" msprop:Generator_UserColumnName="Idx" type="xs:int" minOccurs="0" />
+              <xs:element name="IsRun" msprop:Generator_ColumnVarNameInTable="columnIsRun" msprop:Generator_ColumnPropNameInRow="IsRun" msprop:Generator_ColumnPropNameInTable="IsRunColumn" msprop:Generator_UserColumnName="IsRun" type="xs:boolean" minOccurs="0" />
+              <xs:element name="RnkBas" msprop:Generator_ColumnVarNameInTable="columnRnkBas" msprop:Generator_ColumnPropNameInRow="RnkBas" msprop:Generator_ColumnPropNameInTable="RnkBasColumn" msprop:Generator_UserColumnName="RnkBas" type="xs:int" minOccurs="0" />
+              <xs:element name="RnkBit" msprop:Generator_ColumnVarNameInTable="columnRnkBit" msprop:Generator_ColumnPropNameInRow="RnkBit" msprop:Generator_ColumnPropNameInTable="RnkBitColumn" msprop:Generator_UserColumnName="RnkBit" type="xs:int" minOccurs="0" />
+              <xs:element name="Info" msprop:Generator_ColumnVarNameInTable="columnInfo" msprop:Generator_ColumnPropNameInRow="Info" msprop:Generator_ColumnPropNameInTable="InfoColumn" msprop:Generator_UserColumnName="Info" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CET" msprop:Generator_TableClassName="CETDataTable" msprop:Generator_TableVarName="tableCET" msprop:Generator_RowChangedName="CETRowChanged" msprop:Generator_TablePropName="CET" msprop:Generator_RowDeletingName="CETRowDeleting" msprop:Generator_RowChangingName="CETRowChanging" msprop:Generator_RowEvHandlerName="CETRowChangeEventHandler" msprop:Generator_RowDeletedName="CETRowDeleted" msprop:Generator_RowClassName="CETRow" msprop:Generator_UserTableName="CET" msprop:Generator_RowEvArgName="CETRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowKey" msprop:Generator_ColumnVarNameInTable="columnRowKey" msprop:Generator_ColumnPropNameInRow="RowKey" msprop:Generator_ColumnPropNameInTable="RowKeyColumn" msprop:Generator_UserColumnName="RowKey" type="xs:unsignedLong" />
+              <xs:element name="CC" msprop:Generator_ColumnVarNameInTable="columnCC" msprop:Generator_ColumnPropNameInRow="CC" msprop:Generator_ColumnPropNameInTable="CCColumn" msprop:Generator_UserColumnName="CC" type="xs:unsignedLong" minOccurs="0" />
+              <xs:element name="HCT" msdata:Caption="hCT" msprop:Generator_ColumnVarNameInTable="columnHCT" msprop:Generator_ColumnPropNameInRow="HCT" msprop:Generator_ColumnPropNameInTable="HCTColumn" msprop:Generator_UserColumnName="HCT" type="xs:unsignedLong" minOccurs="0" />
+              <xs:element name="GCT" msdata:Caption="gCT" msprop:Generator_ColumnVarNameInTable="columnGCT" msprop:Generator_ColumnPropNameInRow="GCT" msprop:Generator_ColumnPropNameInTable="GCTColumn" msprop:Generator_UserColumnName="GCT" type="xs:unsignedLong" minOccurs="0" />
+              <xs:element name="Trh" msprop:Generator_ColumnVarNameInTable="columnTrh" msprop:Generator_ColumnPropNameInRow="Trh" msprop:Generator_ColumnPropNameInTable="TrhColumn" msprop:Generator_UserColumnName="Trh" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Drm" msprop:Generator_ColumnVarNameInTable="columnDrm" msprop:Generator_ColumnPropNameInRow="Drm" msprop:Generator_ColumnPropNameInTable="DrmColumn" msprop:Generator_UserColumnName="Drm" type="xs:string" minOccurs="0" />
+              <xs:element name="Yer" msprop:Generator_ColumnVarNameInTable="columnYer" msprop:Generator_ColumnPropNameInRow="Yer" msprop:Generator_ColumnPropNameInTable="YerColumn" msprop:Generator_UserColumnName="Yer" type="xs:string" minOccurs="0" />
+              <xs:element name="Info" msprop:Generator_ColumnVarNameInTable="columnInfo" msprop:Generator_ColumnPropNameInRow="Info" msprop:Generator_ColumnPropNameInTable="InfoColumn" msprop:Generator_UserColumnName="Info" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -100,6 +129,14 @@
     </xs:unique>
     <xs:unique name="PP_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:PP" />
+      <xs:field xpath="mstns:RowKey" />
+    </xs:unique>
+    <xs:unique name="CTP_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CTP" />
+      <xs:field xpath="mstns:RowKey" />
+    </xs:unique>
+    <xs:unique name="CET_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CET" />
       <xs:field xpath="mstns:RowKey" />
     </xs:unique>
   </xs:element>

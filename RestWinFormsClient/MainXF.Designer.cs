@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -39,8 +38,9 @@
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.CCnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.PPnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.persistentRepository = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.PPrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -49,6 +49,7 @@
             this.cCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CTrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.cTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -64,15 +65,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CTrepositoryItemLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(79, 119);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "simpleButton1";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // documentManager1
             // 
@@ -127,12 +119,10 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanel1.Size = new System.Drawing.Size(200, 482);
-            this.dockPanel1.Text = "dockPanel1";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.navBarControl1);
-            this.dockPanel1_Container.Controls.Add(this.simpleButton1);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(191, 455);
@@ -141,38 +131,49 @@
             // navBarControl1
             // 
             this.navBarControl1.ActiveGroup = this.navBarGroup1;
+            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroup1});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.CTnavBarItem,
-            this.PPnavBarItem});
-            this.navBarControl1.Location = new System.Drawing.Point(33, 218);
+            this.PPnavBarItem,
+            this.CCnavBarItem,
+            this.CETnavBarItem});
+            this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
-            this.navBarControl1.Size = new System.Drawing.Size(140, 194);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 191;
+            this.navBarControl1.Size = new System.Drawing.Size(191, 455);
             this.navBarControl1.TabIndex = 1;
             this.navBarControl1.Text = "navBarControl1";
             // 
             // navBarGroup1
             // 
-            this.navBarGroup1.Caption = "navBarGroup1";
+            this.navBarGroup1.Caption = "Menü";
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.CCnavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.PPnavBarItem),
             new DevExpress.XtraNavBar.NavBarItemLink(this.CTnavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.PPnavBarItem)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.CETnavBarItem)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // CTnavBarItem
+            // CCnavBarItem
             // 
-            this.CTnavBarItem.Caption = "CT";
-            this.CTnavBarItem.Name = "CTnavBarItem";
-            this.CTnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CTnavBarItem_LinkClicked);
+            this.CCnavBarItem.Caption = "Competitions";
+            this.CCnavBarItem.Name = "CCnavBarItem";
+            this.CCnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CCnavBarItem_LinkClicked);
             // 
             // PPnavBarItem
             // 
-            this.PPnavBarItem.Caption = "PP";
+            this.PPnavBarItem.Caption = "Players";
             this.PPnavBarItem.Name = "PPnavBarItem";
             this.PPnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.PPnavBarItem_LinkClicked);
+            // 
+            // CTnavBarItem
+            // 
+            this.CTnavBarItem.Caption = "Competition Teams";
+            this.CTnavBarItem.Name = "CTnavBarItem";
+            this.CTnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CTnavBarItem_LinkClicked);
             // 
             // dataSetGnl
             // 
@@ -246,6 +247,12 @@
             this.cTBindingSource.DataMember = "CT";
             this.cTBindingSource.DataSource = this.dataSetGnl;
             // 
+            // CETnavBarItem
+            // 
+            this.CETnavBarItem.Caption = "CET";
+            this.CETnavBarItem.Name = "CETnavBarItem";
+            this.CETnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CETnavBarItem_LinkClicked);
+            // 
             // MainXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,7 +262,7 @@
             this.Controls.Add(this.statusStrip1);
             this.IsMdiContainer = true;
             this.Name = "MainXF";
-            this.Text = "MainXF";
+            this.Text = "BodVeD [MainXF]";
             this.Load += new System.EventHandler(this.MainXF_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
@@ -278,8 +285,6 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -299,5 +304,7 @@
         private System.Windows.Forms.BindingSource cCBindingSource;
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit CTrepositoryItemLookUpEdit;
         private System.Windows.Forms.BindingSource cTBindingSource;
+        private DevExpress.XtraNavBar.NavBarItem CCnavBarItem;
+        private DevExpress.XtraNavBar.NavBarItem CETnavBarItem;
     }
 }

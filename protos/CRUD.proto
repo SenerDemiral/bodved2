@@ -17,6 +17,8 @@ package RestLib;		// namespace
 
 // The CRUDs service definition.
 service CRUDs {
+  rpc RefreshSonuc (QryProxy) returns (RefreshSonucProxy) {}
+
   rpc PPFill (QryProxy) returns (stream PPProxy) {}
   rpc PPUpdate (PPProxy) returns (PPProxy) {}
 
@@ -25,8 +27,21 @@ service CRUDs {
 
   rpc CTFill (QryProxy) returns (stream CTProxy) {}
   rpc CTUpdate (CTProxy) returns (CTProxy) {}
+
+  rpc CTPFill (QryProxy) returns (stream CTPProxy) {}
+  rpc CTPUpdate (CTPProxy) returns (CTPProxy) {}
+
+  rpc CETFill (QryProxy) returns (stream CETProxy) {}
+  rpc CETUpdate (CETProxy) returns (CETProxy) {}
+
 }
+
 message QryProxy {
+  string query = 1;
+  string param = 2;
+}
+
+message RefreshSonucProxy {
   string query = 1;
   string param = 2;
 }
@@ -117,4 +132,38 @@ message CTProxy {
   int32 EB  = 21;
   int32 EX  = 22;
   int32 PW  = 23;
+}
+
+// Competition Team Players
+message CTPProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 CT = 6;
+	uint64 PP = 7;
+	int32 Idx  = 8;
+	bool IsRun = 9;
+	int32 RnkBas = 10;
+	int32 RnkBit = 11;
+	string Info  = 12;
+}
+
+// Competition Team Events
+message CETProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 HCT = 6;
+	uint64 GCT = 7;
+	
+	int64 Trh = 8;
+	string Drm  = 9;
+	string Yer  = 10;
+	string Info  = 11;
 }
