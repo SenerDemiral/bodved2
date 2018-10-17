@@ -13,6 +13,47 @@ namespace RestStarcounterServer
 {
     class CRUDsImpl : RestLib.CRUDs.CRUDsBase
     {
+        // Lookuo Players
+        public override async Task PPlookUp(QryProxy request, IServerStreamWriter<PPlookUpProxy> responseStream, ServerCallContext context)
+        {
+            PPlookUpProxy proxy = new PPlookUpProxy();
+            List<PPlookUpProxy> proxyList = new List<PPlookUpProxy>();
+
+            Type proxyType = typeof(PPlookUpProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                foreach (var row in Db.SQL<PP>("select r from PP r"))
+                {
+                    proxy = new PPlookUpProxy
+                    {
+                        RowKey = row.GetObjectNo(),
+                        Ad = row.Ad,
+                        Sex = row.Sex ?? "",
+                        Tel = row.Tel ?? "",
+                        IsRun = row.IsRun,
+
+                    };
+                    if (proxy.IsRun)
+                    {
+                        foreach(var ctp in Db.SQL<CTP>("select r from CTP r where r.PP = ?", row))
+                        {
+                            if (ctp.IsRun)
+                                proxy.CTs += "<" + ctp.CT.GetObjectNo() + ">";
+                        }
+                    }
+
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+
         // Players
         public override async Task PPFill(QryProxy request, IServerStreamWriter<PPProxy> responseStream, ServerCallContext context)
         {
@@ -335,7 +376,7 @@ namespace RestStarcounterServer
             return Task.FromResult(request);
         }
 
-        // Event Team
+        // Team Events
         public override async Task CETFill(QryProxy request, IServerStreamWriter<CETProxy> responseStream, ServerCallContext context)
         {
             CETProxy proxy = new CETProxy();
@@ -406,6 +447,95 @@ namespace RestStarcounterServer
                         if (row == null)
                         {
                             request.RowErr = "CET Rec not found";
+                        }
+                        else
+                        {
+                            request.RowErr = $"Silemezsiniz";
+                        }
+                    }
+                });
+            }).Wait();
+
+            return Task.FromResult(request);
+        }
+
+        // Maclar
+        public override async Task MACFill(QryProxy request, IServerStreamWriter<MACProxy> responseStream, ServerCallContext context)
+        {
+            MACProxy proxy = new MACProxy();
+            List<MACProxy> proxyList = new List<MACProxy>();
+
+            Type proxyType = typeof(MACProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                IEnumerable<MAC> rows = null;// = Db.SQL<MAC>("select r from MAC r");
+                if (request.Query == "CEB")
+                {
+                    rows = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ?", ulong.Parse(request.Param));
+                }
+
+                foreach (var row in rows)
+                {
+                    //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
+                    proxy = CRUDsHelper.ToProxy<MACProxy, MAC>(row);
+                    /*
+                    proxy = new CTProxy
+                    {
+                        RowKey = row.GetObjectNo(),
+                        CC = row.CC == null ? 0 : row.CC.GetObjectNo(),
+                        K1 = row.K1 == null ? 0 : row.K1.GetObjectNo(),
+                        K2 = row.K2 == null ? 0 : row.K1.GetObjectNo(),
+
+                        Ad = row.Ad,
+                        Adres = row.Adres ?? "",
+                        Info = row.Info ?? "",
+                        NG = row.NG,
+                        NM = row.NM,
+                        NB = row.NB,
+                        NT = row.NT,
+                        NX = row.NX,
+                        KA = row.KA,
+                        KV = row.KV,
+                        KF = row.KF,
+                        PW = row.PW,
+                        
+                        IsRun = row.IsRun,
+                    };
+                    */
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+        public override Task<MACProxy> MACUpdate(MACProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                // RowSte: Added, Modified, Deletede, Unchanged
+                Db.Transact(() =>
+                {
+                    if (request.RowSte == "A" || request.RowSte == "M")
+                    {
+                        if (request.RowErr == string.Empty)
+                        {
+                            MAC row = CRUDsHelper.FromProxy<MACProxy, MAC>(request);
+                            //XUT.Append(request.RowUsr, row, request.RowSte);
+                            request = CRUDsHelper.ToProxy<MACProxy, MAC>(row);
+                        }
+
+                    }
+                    else if (request.RowSte == "D")
+                    {
+                        var row = (MAC)Db.FromId(request.RowKey);
+                        if (row == null)
+                        {
+                            request.RowErr = "MAC Rec not found";
                         }
                         else
                         {

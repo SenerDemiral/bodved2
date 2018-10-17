@@ -41,15 +41,19 @@
             this.CCnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.PPnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.MACnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.persistentRepository = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.PPrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pPluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CCrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.cCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CTrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.cTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PPrepositoryItemGridLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -59,11 +63,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemLookUpEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPluBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CCrepositoryItemLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CTrepositoryItemLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemGridLookUpEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // documentManager1
@@ -119,6 +126,7 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanel1.Size = new System.Drawing.Size(200, 482);
+            this.dockPanel1.Text = "Menü";
             // 
             // dockPanel1_Container
             // 
@@ -138,7 +146,8 @@
             this.CTnavBarItem,
             this.PPnavBarItem,
             this.CCnavBarItem,
-            this.CETnavBarItem});
+            this.CETnavBarItem,
+            this.MACnavBarItem});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 191;
@@ -148,13 +157,14 @@
             // 
             // navBarGroup1
             // 
-            this.navBarGroup1.Caption = "Menü";
+            this.navBarGroup1.Caption = "Tanımlar";
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.CCnavBarItem),
             new DevExpress.XtraNavBar.NavBarItemLink(this.PPnavBarItem),
             new DevExpress.XtraNavBar.NavBarItemLink(this.CTnavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.CETnavBarItem)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.CETnavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MACnavBarItem)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
             // CCnavBarItem
@@ -175,6 +185,18 @@
             this.CTnavBarItem.Name = "CTnavBarItem";
             this.CTnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CTnavBarItem_LinkClicked);
             // 
+            // CETnavBarItem
+            // 
+            this.CETnavBarItem.Caption = "CET";
+            this.CETnavBarItem.Name = "CETnavBarItem";
+            this.CETnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CETnavBarItem_LinkClicked);
+            // 
+            // MACnavBarItem
+            // 
+            this.MACnavBarItem.Caption = "MAC";
+            this.MACnavBarItem.Name = "MACnavBarItem";
+            this.MACnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MACnavBarItem_LinkClicked);
+            // 
             // dataSetGnl
             // 
             this.dataSetGnl.DataSetName = "DataSetGnl";
@@ -185,31 +207,29 @@
             this.persistentRepository.Items.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.PPrepositoryItemLookUpEdit,
             this.CCrepositoryItemLookUpEdit,
-            this.CTrepositoryItemLookUpEdit});
+            this.CTrepositoryItemLookUpEdit,
+            this.PPrepositoryItemGridLookUpEdit});
             // 
             // PPrepositoryItemLookUpEdit
             // 
             this.PPrepositoryItemLookUpEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PPrepositoryItemLookUpEdit.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RowKey", "Row Key", 65, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ad", "Ad", 23, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Info", "Info", 30, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Sex", "Sex", 28, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Tel", "Tel", 24, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsRun", "Is Run", 41, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RnkBaz", "Rnk Baz", 48, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RnkSon", "Rnk Son", 49, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RnkIdx", "Rnk Idx", 47, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far)});
-            this.PPrepositoryItemLookUpEdit.DataSource = this.pPBindingSource;
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CTs", "CTs", 28, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RowKey", "Row Key", 65, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far)});
+            this.PPrepositoryItemLookUpEdit.DataSource = this.pPluBindingSource;
             this.PPrepositoryItemLookUpEdit.DisplayMember = "Ad";
             this.PPrepositoryItemLookUpEdit.Name = "PPrepositoryItemLookUpEdit";
             this.PPrepositoryItemLookUpEdit.ValueMember = "RowKey";
             // 
-            // pPBindingSource
+            // pPluBindingSource
             // 
-            this.pPBindingSource.DataMember = "PP";
-            this.pPBindingSource.DataSource = this.dataSetGnl;
+            this.pPluBindingSource.DataMember = "PPlu";
+            this.pPluBindingSource.DataSource = this.dataSetGnl;
             // 
             // CCrepositoryItemLookUpEdit
             // 
@@ -247,11 +267,28 @@
             this.cTBindingSource.DataMember = "CT";
             this.cTBindingSource.DataSource = this.dataSetGnl;
             // 
-            // CETnavBarItem
+            // pPBindingSource
             // 
-            this.CETnavBarItem.Caption = "CET";
-            this.CETnavBarItem.Name = "CETnavBarItem";
-            this.CETnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CETnavBarItem_LinkClicked);
+            this.pPBindingSource.DataMember = "PP";
+            this.pPBindingSource.DataSource = this.dataSetGnl;
+            // 
+            // PPrepositoryItemGridLookUpEdit
+            // 
+            this.PPrepositoryItemGridLookUpEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PPrepositoryItemGridLookUpEdit.DataSource = this.pPluBindingSource;
+            this.PPrepositoryItemGridLookUpEdit.DisplayMember = "Ad";
+            this.PPrepositoryItemGridLookUpEdit.Name = "PPrepositoryItemGridLookUpEdit";
+            this.PPrepositoryItemGridLookUpEdit.ValueMember = "RowKey";
+            this.PPrepositoryItemGridLookUpEdit.View = this.repositoryItemGridLookUpEdit1View;
+            this.PPrepositoryItemGridLookUpEdit.QueryCloseUp += new System.ComponentModel.CancelEventHandler(this.PPrepositoryItemGridLookUpEdit_QueryCloseUp);
+            // 
+            // repositoryItemGridLookUpEdit1View
+            // 
+            this.repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
+            this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // MainXF
             // 
@@ -274,11 +311,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemLookUpEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPluBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CCrepositoryItemLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CTrepositoryItemLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemGridLookUpEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,7 +334,6 @@
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
         private DevExpress.XtraNavBar.NavBarItem CTnavBarItem;
-        private DataSetGnl dataSetGnl;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private DevExpress.XtraNavBar.NavBarItem PPnavBarItem;
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit PPrepositoryItemLookUpEdit;
@@ -306,5 +345,10 @@
         private System.Windows.Forms.BindingSource cTBindingSource;
         private DevExpress.XtraNavBar.NavBarItem CCnavBarItem;
         private DevExpress.XtraNavBar.NavBarItem CETnavBarItem;
+        private DevExpress.XtraNavBar.NavBarItem MACnavBarItem;
+        private System.Windows.Forms.BindingSource pPluBindingSource;
+        public DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit PPrepositoryItemGridLookUpEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
+        public DataSetGnl dataSetGnl;
     }
 }

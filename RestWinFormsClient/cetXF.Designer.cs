@@ -62,6 +62,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.maclarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingNavigator)).BeginInit();
@@ -75,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataSetGnl
@@ -215,6 +218,7 @@
             // 
             // cETGridControl
             // 
+            this.cETGridControl.ContextMenuStrip = this.contextMenuStrip;
             this.cETGridControl.DataSource = this.cETBindingSource;
             this.cETGridControl.Location = new System.Drawing.Point(12, 46);
             this.cETGridControl.MainView = this.gridView1;
@@ -236,68 +240,65 @@
             this.colYer,
             this.colInfo});
             this.gridView1.GridControl = this.cETGridControl;
-            this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowFixedGroups = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colCC, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colRowKey
             // 
             this.colRowKey.FieldName = "RowKey";
             this.colRowKey.Name = "colRowKey";
             this.colRowKey.Visible = true;
-            this.colRowKey.VisibleIndex = 0;
+            this.colRowKey.VisibleIndex = 1;
             // 
             // colCC
             // 
             this.colCC.FieldName = "CC";
             this.colCC.Name = "colCC";
             this.colCC.Visible = true;
-            this.colCC.VisibleIndex = 1;
+            this.colCC.VisibleIndex = 0;
             // 
             // colHCT
             // 
             this.colHCT.FieldName = "HCT";
             this.colHCT.Name = "colHCT";
             this.colHCT.Visible = true;
-            this.colHCT.VisibleIndex = 1;
+            this.colHCT.VisibleIndex = 2;
             // 
             // colGCT
             // 
             this.colGCT.FieldName = "GCT";
             this.colGCT.Name = "colGCT";
             this.colGCT.Visible = true;
-            this.colGCT.VisibleIndex = 2;
+            this.colGCT.VisibleIndex = 3;
             // 
             // colTrh
             // 
             this.colTrh.FieldName = "Trh";
             this.colTrh.Name = "colTrh";
             this.colTrh.Visible = true;
-            this.colTrh.VisibleIndex = 3;
+            this.colTrh.VisibleIndex = 4;
             // 
             // colDrm
             // 
             this.colDrm.FieldName = "Drm";
             this.colDrm.Name = "colDrm";
             this.colDrm.Visible = true;
-            this.colDrm.VisibleIndex = 4;
+            this.colDrm.VisibleIndex = 5;
             // 
             // colYer
             // 
             this.colYer.FieldName = "Yer";
             this.colYer.Name = "colYer";
             this.colYer.Visible = true;
-            this.colYer.VisibleIndex = 5;
+            this.colYer.VisibleIndex = 6;
             // 
             // colInfo
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 6;
+            this.colInfo.VisibleIndex = 7;
             // 
             // layoutControl1
             // 
@@ -370,6 +371,20 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.maclarToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 48);
+            // 
+            // maclarToolStripMenuItem
+            // 
+            this.maclarToolStripMenuItem.Name = "maclarToolStripMenuItem";
+            this.maclarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.maclarToolStripMenuItem.Text = "Maçlar";
+            this.maclarToolStripMenuItem.Click += new System.EventHandler(this.maclarToolStripMenuItem_Click);
+            // 
             // cetXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,6 +409,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -432,5 +448,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDrm;
         private DevExpress.XtraGrid.Columns.GridColumn colYer;
         private DevExpress.XtraGrid.Columns.GridColumn colInfo;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem maclarToolStripMenuItem;
     }
 }

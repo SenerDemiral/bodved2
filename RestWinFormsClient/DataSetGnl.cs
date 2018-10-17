@@ -368,5 +368,102 @@ namespace RestWinFormsClient
             return sb.ToString();
         }
 
+        public async Task<string> MACFill(string qry, ulong prm)
+        {
+            var dt = MAC;
+            DataRow row;
+            int nor = 0;
+            Stopwatch sw = new Stopwatch();
+
+            dt.BeginLoadData();
+            sw.Start();
+            using (var response = grpcService.ClientCRUDs.MACFill(new QryProxy { Query = qry, Param = prm.ToString() }))
+            {
+                while (await response.ResponseStream.MoveNext(new CancellationToken()))
+                {
+                    row = dt.NewRow();
+
+                    ProxyHelper.ProxyToRow(dt, row, response.ResponseStream.Current);
+                    dt.Rows.Add(row);
+
+                    nor++;
+                }
+            }
+            sw.Stop();
+            dt.AcceptChanges();
+            dt.EndLoadData();
+            return $"{nor:n0} records retrieved in {sw.ElapsedMilliseconds:n0} ms";
+        }
+        public string MACUpdate()
+        {
+            StringBuilder sb = new StringBuilder();
+            var dt = MAC;
+            var request = new MACProxy();
+            string rs = "";
+
+            // Unchanged disindakileri gonder, deleted disindakileri reply ile guncelle, hata yoksa her rec icin AcceptChanges
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+
+                // States: Added, Modified, Deletede, Unchanged
+                rs = dt.Rows[i].RowState.ToString().Substring(0, 1);
+
+                if (rs == "A" || rs == "M" || rs == "D")
+                {
+                    dt.Rows[i].ClearErrors();
+                    request.RowSte = rs;
+                    //request.RowUsr = Program.ObjUsr;
+
+                    if (rs == "D")
+                        request.RowKey = (ulong)dt.Rows[i]["RowKey", DataRowVersion.Original];
+                    else
+                        ProxyHelper.RowToProxy(dt, dt.Rows[i], request);
+
+                    var reply = grpcService.ClientCRUDs.MACUpdate(request);  // --------->
+
+                    if (string.IsNullOrEmpty(reply.RowErr))
+                    {
+                        if (rs != "D")
+                            ProxyHelper.ProxyToRow(dt, dt.Rows[i], reply);
+                        dt.Rows[i].AcceptChanges();
+                    }
+                    else
+                    {
+                        dt.Rows[i].RowError = reply.RowErr;
+                        sb.AppendLine(reply.RowErr);
+                        dt.Rows[i].RejectChanges();
+
+                    }
+                }
+            }
+            return sb.ToString();
+        }
+
+        public async Task<string> PPlookUp()
+        {
+            var dt = PPlu;
+            DataRow row;
+            int nor = 0;
+            Stopwatch sw = new Stopwatch();
+
+            dt.BeginLoadData();
+            sw.Start();
+            using (var response = grpcService.ClientCRUDs.PPlookUp(new QryProxy { Query = "", Param = "" }))
+            {
+                while (await response.ResponseStream.MoveNext(new CancellationToken()))
+                {
+                    row = dt.NewRow();
+
+                    ProxyHelper.ProxyToRow(dt, row, response.ResponseStream.Current);
+                    dt.Rows.Add(row);
+
+                    nor++;
+                }
+            }
+            sw.Stop();
+            dt.AcceptChanges();
+            dt.EndLoadData();
+            return $"{nor:n0} records retrieved in {sw.ElapsedMilliseconds:n0} ms";
+        }
     }
 }

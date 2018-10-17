@@ -34,6 +34,10 @@ service CRUDs {
   rpc CETFill (QryProxy) returns (stream CETProxy) {}
   rpc CETUpdate (CETProxy) returns (CETProxy) {}
 
+  rpc MACFill (QryProxy) returns (stream MACProxy) {}
+  rpc MACUpdate (MACProxy) returns (MACProxy) {}
+
+  rpc PPlookUp (QryProxy) returns (stream PPlookUpProxy) {}
 }
 
 message QryProxy {
@@ -41,9 +45,21 @@ message QryProxy {
   string param = 2;
 }
 
+
 message RefreshSonucProxy {
   string query = 1;
   string param = 2;
+}
+
+// Players
+message PPlookUpProxy {
+	uint64 RowKey = 1;
+
+  string Ad = 2;
+	string Sex = 3;
+	string Tel = 4;
+	string CTs = 5;
+	bool IsRun = 6;
 }
 
 // Players
@@ -166,4 +182,60 @@ message CETProxy {
 	string Drm  = 9;
 	string Yer  = 10;
 	string Info  = 11;
+}
+
+// Mac
+message MACProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC  = 5;
+	uint64 CEB = 6;
+
+	uint64 HPP1 = 7;
+	uint64 HPP2 = 8;
+	uint64 GPP1 = 9;
+	uint64 GPP2 = 10;
+	
+	string SoD   = 11;
+	int32  Idx   = 12;
+	int64  Trh   = 13;
+	
+	string Drm   = 14;
+	string Yer   = 15;
+	string Hakem = 16;
+	string Info  = 17;
+	
+	int32 H1W = 18;
+	int32 H2W = 19;
+	int32 H3W = 20;
+	int32 H4W = 21;
+	int32 H5W = 22;
+	int32 H6W = 23;
+	int32 H7W = 24;
+	
+	int32 G1W = 25;
+	int32 G2W = 26;
+	int32 G3W = 27;
+	int32 G4W = 28;
+	int32 G5W = 29;
+	int32 G6W = 30;
+	int32 G7W = 31;
+	
+	int32 HSW = 32;
+	int32 GSW = 33;
+
+	int32 HMW = 34;
+	int32 GMW = 35;
+
+	int32 HXW = 36;
+	int32 GXW = 37;
+	
+	int32 HRnk   = 38;
+	int32 HRnkPX = 39;
+	
+	int32 GRnk   = 40;
+	int32 GRnkPX = 41;
 }

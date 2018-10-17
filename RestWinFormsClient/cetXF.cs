@@ -83,5 +83,14 @@ namespace RestWinFormsClient
 
         }
 
+        private void maclarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            macXF frm = new macXF();
+            frm.qry = "CEB";
+            frm.prm = (ulong)gridView1.GetFocusedRowCellValue(colRowKey);
+            frm.hctNO = (ulong)gridView1.GetFocusedRowCellValue(colHCT);
+            frm.gctNO = (ulong)gridView1.GetFocusedRowCellValue(colGCT);
+            frm.ShowDialog();
+        }
     }
 }

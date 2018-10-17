@@ -20,10 +20,16 @@ namespace BDB2
     {
         public string Sex { get; set; }
         public string Tel { get; set; }
+        public int RnkIlk { get; set; }
         public int RnkBaz { get; set; }
         public int RnkSon { get; set; }
         public int RnkIdx { get; set; }     // RnkSon'a gore dizildiginde Sirasi
         public bool IsRun { get; set; }     // Aktif
+
+        // Simdilik Eski Lig Rankleri
+        public int Rnk1 { get; set; }
+        public int Rnk2 { get; set; }
+        public int Rnk3 { get; set; }
 
         public int SST => SSW + SSL;    // Single Set Total/Win/Lost
         public int SSW { get; set; }
@@ -301,7 +307,7 @@ namespace BDB2
             int hsw, gsw, hmw, gmw, hmx, gmx;
             string sod;
 
-            List<Maclar> MacList = new List<Maclar>();
+            List<DictMaclar> MacList = new List<DictMaclar>();
             foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
             {
                 nor++;
@@ -322,7 +328,7 @@ namespace BDB2
                 gmx = m.GMX;
                 sod = m.SoD;
 
-                MacList.Add(new Maclar
+                MacList.Add(new DictMaclar
                 {
                     CC = cc,
                     CET = cet,
@@ -336,7 +342,7 @@ namespace BDB2
                     MX = hmx,
                 });
 
-                MacList.Add(new Maclar
+                MacList.Add(new DictMaclar
                 {
                     CC = cc,
                     CET = cet,
@@ -355,7 +361,7 @@ namespace BDB2
                     hpp = m.HPP2.GetObjectNo();
                     gpp = m.GPP2.GetObjectNo();
 
-                    MacList.Add(new Maclar
+                    MacList.Add(new DictMaclar
                     {
                         CC = cc,
                         CET = cet,
@@ -369,7 +375,7 @@ namespace BDB2
                         MX = hmx,
                     });
 
-                    MacList.Add(new Maclar
+                    MacList.Add(new DictMaclar
                     {
                         CC = cc,
                         CET = cet,
@@ -1159,7 +1165,7 @@ namespace BDB2
             Stopwatch watch = new Stopwatch();
             watch.Start();
             int nor = 0;
-            Dictionary<string, MacStat> dnm = new Dictionary<string, MacStat>();    // Players
+            Dictionary<string, DictMacStat> dnm = new Dictionary<string, DictMacStat>();    // Players
 /*
             foreach (var p in Db.SQL<PP>("select p from PP p"))
             {
@@ -1177,7 +1183,7 @@ namespace BDB2
             }*/
             string hPPoNo, gPPoNo;
             string hPP2oNo, gPP2oNo;
-            MacStat hMS, gMS;
+            DictMacStat hMS, gMS;
             foreach (var mac in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
             {
                 nor++;
@@ -1189,9 +1195,9 @@ namespace BDB2
                 //gPPoNo = mac.gPP1.GetObjectNo().ToString() + gCT;
 
                 if (!dnm.ContainsKey(hPPoNo))
-                    dnm[hPPoNo] = new MacStat();
+                    dnm[hPPoNo] = new DictMacStat();
                 if (!dnm.ContainsKey(gPPoNo))
-                    dnm[gPPoNo] = new MacStat();
+                    dnm[gPPoNo] = new DictMacStat();
 
                 if (mac.SoD == "S")
                 {
@@ -1231,9 +1237,9 @@ namespace BDB2
                     hPP2oNo = $"{mac.HPP2.GetObjectNo()} {hCT}";
                     gPP2oNo = $"{mac.GPP2.GetObjectNo()} {gCT}";
                     if (!dnm.ContainsKey(hPP2oNo))
-                        dnm[hPP2oNo] = new MacStat();
+                        dnm[hPP2oNo] = new DictMacStat();
                     if (!dnm.ContainsKey(gPP2oNo))
-                        dnm[gPP2oNo] = new MacStat();
+                        dnm[gPP2oNo] = new DictMacStat();
 
                     hMS = dnm[hPP2oNo];
                     hMS.DSW += mac.HSW;
@@ -1254,7 +1260,7 @@ namespace BDB2
             }
             string[] k;
             ulong pp, ct;
-            MacStat ms;
+            DictMacStat ms;
             foreach(var pair in dnm)
             {
                 k = pair.Key.Split(new Char[] { ' ' });
@@ -1286,7 +1292,7 @@ namespace BDB2
 
                 // Sadece Single Maclar Rank uretir
                 foreach (var mac in Db.SQL<MAC>("select m from MAC m order by m.Trh"))    
-                //foreach (var mac in Db.SQL<BDB.MAC>("select m from MAC m where m.SoD = ? order by m.Trh", "S"))
+                //foreach (var mac in Db.SQL<MAC>("select m from MAC m where m.SoD = ? order by m.Trh", "S"))
                 {
                     if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
                         continue;
@@ -1310,6 +1316,82 @@ namespace BDB2
 
                     mac.GRnkPX = -hPX;
                     mac.GRnk   = gpRnk;
+
+                    // Update dictionary
+                    ppDic[hPPoNo] = hpRnk + hPX;
+                    ppDic[gPPoNo] = gpRnk - hPX;
+                }
+
+                // Hic mac yapmamislari ve Ayrilmis olanlari Adina gore sirala
+                int dc = 0;
+                foreach (var p in Db.SQL<PP>("select p from PP p where p.SMT = ? or p.IsRun = ? order by p.Ad", 0, false))
+                {
+                    ppDic[p.GetObjectNo()] = dc--;
+                }
+
+                // Rank'e gore Sira verip PP update
+                var items = from pair in ppDic
+                            orderby pair.Value descending
+                            select pair;
+
+                int idx = 1;
+                PP pp;
+                foreach (var pair in items)
+                {
+                    pp = Db.FromId<PP>(pair.Key);
+                    //pp.RnkSon = pair.Value;   // Siralamayi yukarda yaptin RnkSon sifirlama
+                    pp.RnkIdx = idx++;
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void RefreshGlobalRank(DateTime trh)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            ulong hPPoNo, gPPoNo;
+            int hpRnk, gpRnk;
+            int hPX = 0;
+            Dictionary<ulong, int> ppDic = new Dictionary<ulong, int>();    // Players
+
+            Db.TransactAsync(() =>
+            {
+                foreach (var p in Db.SQL<PP>("select p from PP p"))
+                {
+                    ppDic[p.GetObjectNo()] = p.RnkSon;  // p.RnkBaz
+                }
+
+                // Sadece Single Maclar Rank uretir
+                foreach (var mac in Db.SQL<MAC>("select m from MAC m where m.Trh > ? order by m.Trh", trh))
+                //foreach (var mac in Db.SQL<BDB.MAC>("select m from MAC m where m.SoD = ? order by m.Trh", "S"))
+                {
+                    if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
+                        continue;
+
+                    nor++;
+
+                    hPPoNo = mac.HPP1.GetObjectNo();
+                    gPPoNo = mac.GPP1.GetObjectNo();
+
+                    hpRnk = ppDic[hPPoNo];
+                    gpRnk = ppDic[gPPoNo];
+
+                    hPX = 0;
+                    if (mac.CC.IsRnkd)  // Rank hesaplanacak ise
+                        if (mac.Drm == "OK" && hpRnk != 0 && gpRnk != 0)
+                            hPX = compHomeRnkPX(mac.HMW == 0 ? false : true, hpRnk, gpRnk);
+
+                    // Update MAC
+                    mac.HRnkPX = hPX;
+                    mac.HRnk = hpRnk;
+
+                    mac.GRnkPX = -hPX;
+                    mac.GRnk = gpRnk;
 
                     // Update dictionary
                     ppDic[hPPoNo] = hpRnk + hPX;
@@ -1342,7 +1424,7 @@ namespace BDB2
         }
     }
 
-    public class Maclar
+    public class DictMaclar
     {
         public ulong CC;
         public ulong CET;
@@ -1357,7 +1439,7 @@ namespace BDB2
         public int MX;
     }
 
-    public class MacStat
+    public class DictMacStat
     {
         public int SSW;
         public int SSL;

@@ -21,6 +21,7 @@ namespace RestWinFormsClient
         ccXF frmCC;
         ctXF frmCT;
         cetXF frmCET;
+        macXF frmMAC;
 
         public MainXF()
         {
@@ -36,14 +37,15 @@ namespace RestWinFormsClient
                 sw.Restart();
                 //watcher.Start();
 
-                await dataSetGnl.PPFill();
+                await dataSetGnl.PPlookUp();
                 await dataSetGnl.CCFill();
                 await dataSetGnl.CTFill();
 
                 sw.Stop();
                 //InitLookups();
             }).ContinueWith((t) => {
-                toolStripStatusLabel1.Text = $"recs read in {sw.ElapsedMilliseconds:n0} msec (1/1000sec)";
+                
+                toolStripStatusLabel1.Text = $"Lookup recs read in {sw.ElapsedMilliseconds:n0} milisec [{sw.Elapsed}]";
             });
 
         }
@@ -113,6 +115,29 @@ namespace RestWinFormsClient
                 };
                 frmCET.Show();
             }
+        }
+
+        private void MACnavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            var doc = documentManager1.GetDocument(frmMAC);
+            if (doc != null)
+                tabbedView1.Controller.Activate(doc);
+            else
+            {
+                frmMAC = new macXF
+                {
+                    MdiParent = this
+                };
+                frmMAC.Show();
+            }
+        }
+
+        private void PPrepositoryItemGridLookUpEdit_QueryCloseUp(object sender, CancelEventArgs e)
+        {
+            var view = (sender as GridLookUpEdit).Properties.View;
+            bool isRun = (bool)view.GetFocusedRowCellValue("IsRun");    // Availability
+            e.Cancel = !isRun;
+
         }
     }
 }

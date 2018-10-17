@@ -37,6 +37,8 @@ namespace RestLib {
     static readonly grpc::Marshaller<global::RestLib.CTProxy> __Marshaller_RestLib_CTProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CTProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CTPProxy> __Marshaller_RestLib_CTPProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CTPProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CETProxy> __Marshaller_RestLib_CETProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CETProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.MACProxy> __Marshaller_RestLib_MACProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.MACProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.PPlookUpProxy> __Marshaller_RestLib_PPlookUpProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.PPlookUpProxy.Parser.ParseFrom);
 
     static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.RefreshSonucProxy> __Method_RefreshSonuc = new grpc::Method<global::RestLib.QryProxy, global::RestLib.RefreshSonucProxy>(
         grpc::MethodType.Unary,
@@ -115,6 +117,27 @@ namespace RestLib {
         __Marshaller_RestLib_CETProxy,
         __Marshaller_RestLib_CETProxy);
 
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.MACProxy> __Method_MACFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.MACProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "MACFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_MACProxy);
+
+    static readonly grpc::Method<global::RestLib.MACProxy, global::RestLib.MACProxy> __Method_MACUpdate = new grpc::Method<global::RestLib.MACProxy, global::RestLib.MACProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "MACUpdate",
+        __Marshaller_RestLib_MACProxy,
+        __Marshaller_RestLib_MACProxy);
+
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.PPlookUpProxy> __Method_PPlookUp = new grpc::Method<global::RestLib.QryProxy, global::RestLib.PPlookUpProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "PPlookUp",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_PPlookUpProxy);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -175,6 +198,21 @@ namespace RestLib {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::RestLib.CETProxy> CETUpdate(global::RestLib.CETProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task MACFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.MACProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.MACProxy> MACUpdate(global::RestLib.MACProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task PPlookUp(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.PPlookUpProxy> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -340,6 +378,38 @@ namespace RestLib {
       {
         return CallInvoker.AsyncUnaryCall(__Method_CETUpdate, null, options, request);
       }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.MACProxy> MACFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MACFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.MACProxy> MACFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_MACFill, null, options, request);
+      }
+      public virtual global::RestLib.MACProxy MACUpdate(global::RestLib.MACProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MACUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.MACProxy MACUpdate(global::RestLib.MACProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_MACUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.MACProxy> MACUpdateAsync(global::RestLib.MACProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MACUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.MACProxy> MACUpdateAsync(global::RestLib.MACProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_MACUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPlookUpProxy> PPlookUp(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PPlookUp(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPlookUpProxy> PPlookUp(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_PPlookUp, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CRUDsClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -362,7 +432,10 @@ namespace RestLib {
           .AddMethod(__Method_CTPFill, serviceImpl.CTPFill)
           .AddMethod(__Method_CTPUpdate, serviceImpl.CTPUpdate)
           .AddMethod(__Method_CETFill, serviceImpl.CETFill)
-          .AddMethod(__Method_CETUpdate, serviceImpl.CETUpdate).Build();
+          .AddMethod(__Method_CETUpdate, serviceImpl.CETUpdate)
+          .AddMethod(__Method_MACFill, serviceImpl.MACFill)
+          .AddMethod(__Method_MACUpdate, serviceImpl.MACUpdate)
+          .AddMethod(__Method_PPlookUp, serviceImpl.PPlookUp).Build();
     }
 
   }

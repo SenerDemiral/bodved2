@@ -25,6 +25,11 @@ namespace RestStarcounterServer
 
             Console.WriteLine("Rest server listening on port " + Port);
 
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PP_Ad").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX PP_Ad ON PP (Ad)");
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PP_RnkIdx").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX PP_RnkIdx ON PP (RnkIdx)");
+
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_CC").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX MAC_CC ON MAC (CC)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_CEB").FirstOrDefault() == null)
@@ -62,13 +67,17 @@ namespace RestStarcounterServer
             H.PopCET();
             H.PopMAC();
 
+            
             MAC.RefreshSonuc();
             CET.RefreshSonuc();
             CT.RefreshSonuc();
             CTP.RefreshSonucNew();
             PP.RefreshStat();
-            MAC.RefreshGlobalRank();
 
+            MAC.RefreshGlobalRank();
+            // Sadece Yeni DB ilk calistiginda yap
+            //H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
+            //MAC.RefreshGlobalRank();    // RnkBaz == RnkSon olmali, cunki CC.IsRnkd = false (Rank hesaplanmayacak)
 
         }
     }

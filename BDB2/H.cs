@@ -15,7 +15,7 @@ namespace BDB2
             if (Db.SQL<PP>("select r from PP r").FirstOrDefault() != null)
                 return; // Kayit var yapma
 
-            // 0:PK,1:RnkBaz,2:Sex,3:DgmTrh,4:Ad,5:eMail,6:Tel
+            // 0:PK,1:RnkBaz,2:Sex,3:DgmTrh,4:Ad,5:eMail,6:Tel,7:Rnk1,8:Rnk2,9:Rnk3
             using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-PP.txt", System.Text.Encoding.UTF8))
             {
                 string line;
@@ -30,11 +30,17 @@ namespace BDB2
                             new PP
                             {
                                 PK = Convert.ToUInt64(ra[0]),
+                                RnkIlk = Convert.ToInt32(ra[1]),
                                 RnkBaz = Convert.ToInt32(ra[1]),
                                 Sex = ra[2],
                                 Ad = ra[4],
                                 Tel = ra[6],
                                 IsRun = true,
+
+                                Rnk1 = Convert.ToInt32(ra[7]),
+                                Rnk2 = Convert.ToInt32(ra[8]),
+                                Rnk3 = Convert.ToInt32(ra[9]),
+
                             };
                         }
                     }
@@ -268,6 +274,44 @@ namespace BDB2
                 });
             }
 
+        }
+
+        public static void PPbaz2ilk()
+        {
+            /*
+            Db.TransactAsync(() =>
+            {
+                var pps = Db.SQL<PP>("select r from PP r");
+                foreach (var pp in pps)
+                {
+                    pp.RnkIlk = pp.RnkBaz;
+                }
+            });*/
+        }
+        public static void PPmove2baz()
+        {
+            Db.TransactAsync(() =>
+            {
+                var pps = Db.SQL<PP>("select r from PP r");
+                foreach (var pp in pps)
+                {
+                    if (pp.Rnk1 > 0)
+                        pp.RnkBaz = pp.Rnk1;
+                    else if (pp.Rnk2 > 0)
+                        pp.RnkBaz = pp.Rnk2;
+                    else if (pp.Rnk3 > 0)
+                        pp.RnkBaz = pp.Rnk3;
+
+                    pp.RnkSon = 0;
+                }
+
+                // eski CC ler Rank Uretmesin
+                var ccs = Db.SQL<CC>("select r from CC r");
+                foreach (var cc in ccs)
+                {
+                    cc.IsRnkd = false;
+                }
+            });
         }
     }
 

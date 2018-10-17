@@ -130,6 +130,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetGnl.xsd</DependentUpon>
     </Compile>
+    <Compile Include="macXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="macXF.Designer.cs">
+      <DependentUpon>macXF.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainXF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctXF.resx">
       <DependentUpon>ctXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="macXF.resx">
+      <DependentUpon>macXF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainXF.resx">
       <DependentUpon>MainXF.cs</DependentUpon>
