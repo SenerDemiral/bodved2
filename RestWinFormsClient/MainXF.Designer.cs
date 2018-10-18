@@ -51,9 +51,11 @@
             this.cCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CTrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.cTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PPrepositoryItemGridLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.TRHrepositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -68,9 +70,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CTrepositoryItemLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemGridLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoDrepositoryItemImageComboBox)).BeginInit();
             this.SuspendLayout();
             // 
             // documentManager1
@@ -208,7 +213,9 @@
             this.PPrepositoryItemLookUpEdit,
             this.CCrepositoryItemLookUpEdit,
             this.CTrepositoryItemLookUpEdit,
-            this.PPrepositoryItemGridLookUpEdit});
+            this.PPrepositoryItemGridLookUpEdit,
+            this.TRHrepositoryItemDateEdit,
+            this.SoDrepositoryItemImageComboBox});
             // 
             // PPrepositoryItemLookUpEdit
             // 
@@ -267,11 +274,6 @@
             this.cTBindingSource.DataMember = "CT";
             this.cTBindingSource.DataSource = this.dataSetGnl;
             // 
-            // pPBindingSource
-            // 
-            this.pPBindingSource.DataMember = "PP";
-            this.pPBindingSource.DataSource = this.dataSetGnl;
-            // 
             // PPrepositoryItemGridLookUpEdit
             // 
             this.PPrepositoryItemGridLookUpEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -289,6 +291,32 @@
             this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
             this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // TRHrepositoryItemDateEdit
+            // 
+            this.TRHrepositoryItemDateEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TRHrepositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TRHrepositoryItemDateEdit.DisplayFormat.FormatString = "dd.MM.yy";
+            this.TRHrepositoryItemDateEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.TRHrepositoryItemDateEdit.Mask.EditMask = "g";
+            this.TRHrepositoryItemDateEdit.Name = "TRHrepositoryItemDateEdit";
+            this.TRHrepositoryItemDateEdit.ShowWeekNumbers = true;
+            // 
+            // pPBindingSource
+            // 
+            this.pPBindingSource.DataMember = "PP";
+            this.pPBindingSource.DataSource = this.dataSetGnl;
+            // 
+            // SoDrepositoryItemImageComboBox
+            // 
+            this.SoDrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SoDrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("S", "S", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("D", "D", -1)});
+            this.SoDrepositoryItemImageComboBox.Name = "SoDrepositoryItemImageComboBox";
             // 
             // MainXF
             // 
@@ -316,9 +344,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CTrepositoryItemLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemGridLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoDrepositoryItemImageComboBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,5 +381,7 @@
         public DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit PPrepositoryItemGridLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
         public DataSetGnl dataSetGnl;
+        public DevExpress.XtraEditors.Repository.RepositoryItemDateEdit TRHrepositoryItemDateEdit;
+        public DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox SoDrepositoryItemImageComboBox;
     }
 }

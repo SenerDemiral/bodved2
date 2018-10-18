@@ -155,7 +155,7 @@ namespace RestWinFormsClient
             return sb.ToString();
         }
 
-        public async Task<string> CTFill()
+        public async Task<string> CTFill(string qry, ulong prm)
         {
             var dt = CT;
             DataRow row;
@@ -164,7 +164,7 @@ namespace RestWinFormsClient
 
             dt.BeginLoadData();
             sw.Start();
-            using (var response = grpcService.ClientCRUDs.CTFill(new QryProxy { Query = "", Param = "" }))
+            using (var response = grpcService.ClientCRUDs.CTFill(new QryProxy { Query = qry, Param = prm.ToString() }))
             {
                 while (await response.ResponseStream.MoveNext(new CancellationToken()))
                 {
@@ -226,7 +226,7 @@ namespace RestWinFormsClient
             return sb.ToString();
         }
 
-        public async Task<string> CTPFill()
+        public async Task<string> CTPFill(string qry, ulong prm)
         {
             var dt = CTP;
             DataRow row;
@@ -235,7 +235,7 @@ namespace RestWinFormsClient
 
             dt.BeginLoadData();
             sw.Start();
-            using (var response = grpcService.ClientCRUDs.CTPFill(new QryProxy { Query = "", Param = "" }))
+            using (var response = grpcService.ClientCRUDs.CTPFill(new QryProxy { Query = qry, Param = prm.ToString() }))
             {
                 while (await response.ResponseStream.MoveNext(new CancellationToken()))
                 {
@@ -297,7 +297,7 @@ namespace RestWinFormsClient
             return sb.ToString();
         }
 
-        public async Task<string> CETFill()
+        public async Task<string> CETFill(string qry, ulong prm)
         {
             var dt = CET;
             DataRow row;
@@ -306,7 +306,7 @@ namespace RestWinFormsClient
 
             dt.BeginLoadData();
             sw.Start();
-            using (var response = grpcService.ClientCRUDs.CETFill(new QryProxy { Query = "", Param = "" }))
+            using (var response = grpcService.ClientCRUDs.CETFill(new QryProxy { Query = qry, Param = prm.ToString() }))
             {
                 while (await response.ResponseStream.MoveNext(new CancellationToken()))
                 {

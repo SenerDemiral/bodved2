@@ -31,6 +31,8 @@ namespace RestWinFormsClient
             Task.Run(async () => { res = await dataSetGnl.PPFill(); }).Wait();
             toolStripStatusLabel1.Text = res;
             pPGridControl.DataSource = pPBindingSource;
+
+            gridView1.BestFitColumns();
         }
 
         private void pPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -72,6 +74,20 @@ namespace RestWinFormsClient
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
+
+        }
+
+        private void playersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            macXF frm = new macXF();
+            frm.PPRow = (DataSetGnl.PPRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Matches [macXF]";
+            frm.ShowDialog();
+
+        }
+
+        private void pPGridControl_Click(object sender, EventArgs e)
+        {
 
         }
     }

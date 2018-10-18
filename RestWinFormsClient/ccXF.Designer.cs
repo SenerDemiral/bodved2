@@ -47,6 +47,9 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cCBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cCGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSkl = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,12 +68,14 @@
             this.colTEMP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTEBP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTEXP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SKLrepositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -78,7 +83,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cCGridControl)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SKLrepositoryItemImageComboBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -238,14 +245,40 @@
             // 
             // cCGridControl
             // 
+            this.cCGridControl.ContextMenuStrip = this.contextMenuStrip;
             this.cCGridControl.DataSource = this.cCBindingSource;
             this.cCGridControl.Location = new System.Drawing.Point(12, 46);
             this.cCGridControl.MainView = this.gridView1;
             this.cCGridControl.Name = "cCGridControl";
+            this.cCGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.SKLrepositoryItemImageComboBox1});
             this.cCGridControl.Size = new System.Drawing.Size(1174, 314);
             this.cCGridControl.TabIndex = 5;
             this.cCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.teamsToolStripMenuItem,
+            this.eventsToolStripMenuItem,
+            this.matchesToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(120, 70);
+            // 
+            // teamsToolStripMenuItem
+            // 
+            this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
+            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teamsToolStripMenuItem.Text = "Teams";
+            this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
+            // 
+            // eventsToolStripMenuItem
+            // 
+            this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
+            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eventsToolStripMenuItem.Text = "Events";
+            this.eventsToolStripMenuItem.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
             // 
             // gridView1
             // 
@@ -269,28 +302,39 @@
             this.colTEXP});
             this.gridView1.GridControl = this.cCGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey
             // 
             this.colRowKey.FieldName = "RowKey";
             this.colRowKey.Name = "colRowKey";
+            this.colRowKey.OptionsColumn.AllowEdit = false;
+            this.colRowKey.OptionsColumn.AllowFocus = false;
+            this.colRowKey.OptionsColumn.FixedWidth = true;
             this.colRowKey.Visible = true;
             this.colRowKey.VisibleIndex = 0;
+            this.colRowKey.Width = 60;
             // 
             // colSkl
             // 
+            this.colSkl.AppearanceCell.Options.UseTextOptions = true;
+            this.colSkl.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSkl.FieldName = "Skl";
             this.colSkl.Name = "colSkl";
+            this.colSkl.OptionsColumn.FixedWidth = true;
             this.colSkl.Visible = true;
             this.colSkl.VisibleIndex = 1;
+            this.colSkl.Width = 40;
             // 
             // colGrp
             // 
             this.colGrp.FieldName = "Grp";
             this.colGrp.Name = "colGrp";
+            this.colGrp.OptionsColumn.FixedWidth = true;
             this.colGrp.Visible = true;
             this.colGrp.VisibleIndex = 2;
+            this.colGrp.Width = 50;
             // 
             // colAd
             // 
@@ -298,6 +342,7 @@
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 3;
+            this.colAd.Width = 263;
             // 
             // colInfo
             // 
@@ -305,102 +350,158 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 4;
+            this.colInfo.Width = 263;
             // 
             // colIsRun
             // 
             this.colIsRun.FieldName = "IsRun";
             this.colIsRun.Name = "colIsRun";
+            this.colIsRun.OptionsColumn.FixedWidth = true;
             this.colIsRun.ToolTip = "Devam ediyor mu?";
             this.colIsRun.Visible = true;
             this.colIsRun.VisibleIndex = 5;
+            this.colIsRun.Width = 40;
             // 
             // colIsRnkd
             // 
+            this.colIsRnkd.Caption = "Rnkd";
             this.colIsRnkd.FieldName = "IsRnkd";
             this.colIsRnkd.Name = "colIsRnkd";
+            this.colIsRnkd.OptionsColumn.FixedWidth = true;
             this.colIsRnkd.ToolTip = "Rank hesaplanacak mı?";
             this.colIsRnkd.Visible = true;
             this.colIsRnkd.VisibleIndex = 6;
+            this.colIsRnkd.Width = 40;
             // 
             // colTNSM
             // 
+            this.colTNSM.AppearanceCell.Options.UseTextOptions = true;
+            this.colTNSM.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTNSM.FieldName = "TNSM";
             this.colTNSM.Name = "colTNSM";
+            this.colTNSM.OptionsColumn.FixedWidth = true;
             this.colTNSM.ToolTip = "Takım Müsabaka Single Maç Sayısı";
             this.colTNSM.Visible = true;
             this.colTNSM.VisibleIndex = 7;
+            this.colTNSM.Width = 40;
             // 
             // colTNDM
             // 
+            this.colTNDM.AppearanceCell.Options.UseTextOptions = true;
+            this.colTNDM.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTNDM.FieldName = "TNDM";
             this.colTNDM.Name = "colTNDM";
+            this.colTNDM.OptionsColumn.FixedWidth = true;
             this.colTNDM.ToolTip = "Takım Müsabaka Double Maç Sayısı";
             this.colTNDM.Visible = true;
             this.colTNDM.VisibleIndex = 8;
+            this.colTNDM.Width = 40;
             // 
             // colTNSS
             // 
+            this.colTNSS.AppearanceCell.Options.UseTextOptions = true;
+            this.colTNSS.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTNSS.FieldName = "TNSS";
             this.colTNSS.Name = "colTNSS";
+            this.colTNSS.OptionsColumn.FixedWidth = true;
             this.colTNSS.ToolTip = "Takım Müsabaka Single Set Sayısı";
             this.colTNSS.Visible = true;
             this.colTNSS.VisibleIndex = 9;
+            this.colTNSS.Width = 40;
             // 
             // colTNDS
             // 
+            this.colTNDS.AppearanceCell.Options.UseTextOptions = true;
+            this.colTNDS.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTNDS.FieldName = "TNDS";
             this.colTNDS.Name = "colTNDS";
+            this.colTNDS.OptionsColumn.FixedWidth = true;
             this.colTNDS.ToolTip = "Takım Müsabaka Double Set Sayısı";
             this.colTNDS.Visible = true;
             this.colTNDS.VisibleIndex = 10;
+            this.colTNDS.Width = 40;
             // 
             // colTSMK
             // 
+            this.colTSMK.AppearanceCell.Options.UseTextOptions = true;
+            this.colTSMK.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTSMK.FieldName = "TSMK";
             this.colTSMK.Name = "colTSMK";
+            this.colTSMK.OptionsColumn.FixedWidth = true;
             this.colTSMK.ToolTip = "Takım Müsabaka Single Maç Skor";
             this.colTSMK.Visible = true;
             this.colTSMK.VisibleIndex = 11;
+            this.colTSMK.Width = 40;
             // 
             // colTDMK
             // 
+            this.colTDMK.AppearanceCell.Options.UseTextOptions = true;
+            this.colTDMK.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTDMK.FieldName = "TDMK";
             this.colTDMK.Name = "colTDMK";
+            this.colTDMK.OptionsColumn.FixedWidth = true;
             this.colTDMK.ToolTip = "Takım Müsabaka Double Maç Skor";
             this.colTDMK.Visible = true;
             this.colTDMK.VisibleIndex = 12;
+            this.colTDMK.Width = 40;
             // 
             // colTEGP
             // 
+            this.colTEGP.AppearanceCell.Options.UseTextOptions = true;
+            this.colTEGP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTEGP.FieldName = "TEGP";
             this.colTEGP.Name = "colTEGP";
+            this.colTEGP.OptionsColumn.FixedWidth = true;
             this.colTEGP.ToolTip = "Takım Müsabaka Galibiyet Puanı";
             this.colTEGP.Visible = true;
             this.colTEGP.VisibleIndex = 13;
+            this.colTEGP.Width = 40;
             // 
             // colTEMP
             // 
+            this.colTEMP.AppearanceCell.Options.UseTextOptions = true;
+            this.colTEMP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTEMP.FieldName = "TEMP";
             this.colTEMP.Name = "colTEMP";
+            this.colTEMP.OptionsColumn.FixedWidth = true;
             this.colTEMP.ToolTip = "Takım Müsabaka Malubiyet Puanı";
             this.colTEMP.Visible = true;
             this.colTEMP.VisibleIndex = 14;
+            this.colTEMP.Width = 40;
             // 
             // colTEBP
             // 
+            this.colTEBP.AppearanceCell.Options.UseTextOptions = true;
+            this.colTEBP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTEBP.FieldName = "TEBP";
             this.colTEBP.Name = "colTEBP";
+            this.colTEBP.OptionsColumn.FixedWidth = true;
             this.colTEBP.ToolTip = "Takım Müsabaka Beraberlik Puanı";
             this.colTEBP.Visible = true;
             this.colTEBP.VisibleIndex = 15;
+            this.colTEBP.Width = 40;
             // 
             // colTEXP
             // 
+            this.colTEXP.AppearanceCell.Options.UseTextOptions = true;
+            this.colTEXP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTEXP.FieldName = "TEXP";
             this.colTEXP.Name = "colTEXP";
+            this.colTEXP.OptionsColumn.FixedWidth = true;
             this.colTEXP.ToolTip = "Takım Müsabaka Diskalifiye Puanı";
             this.colTEXP.Visible = true;
             this.colTEXP.VisibleIndex = 16;
+            this.colTEXP.Width = 40;
+            // 
+            // SKLrepositoryItemImageComboBox1
+            // 
+            this.SKLrepositoryItemImageComboBox1.AutoHeight = false;
+            this.SKLrepositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SKLrepositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("T", "T", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("F", "F", -1)});
+            this.SKLrepositoryItemImageComboBox1.Name = "SKLrepositoryItemImageComboBox1";
             // 
             // statusStrip1
             // 
@@ -462,6 +563,13 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
+            // matchesToolStripMenuItem
+            // 
+            this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
+            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.matchesToolStripMenuItem.Text = "Matches";
+            this.matchesToolStripMenuItem.Click += new System.EventHandler(this.matchesToolStripMenuItem_Click);
+            // 
             // ccXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -479,7 +587,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cCGridControl)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SKLrepositoryItemImageComboBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -533,5 +643,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTEMP;
         private DevExpress.XtraGrid.Columns.GridColumn colTEBP;
         private DevExpress.XtraGrid.Columns.GridColumn colTEXP;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem teamsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventsToolStripMenuItem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox SKLrepositoryItemImageComboBox1;
+        private System.Windows.Forms.ToolStripMenuItem matchesToolStripMenuItem;
     }
 }

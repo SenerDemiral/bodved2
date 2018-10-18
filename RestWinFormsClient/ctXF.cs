@@ -8,11 +8,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Columns;
 
 namespace RestWinFormsClient
 {
     public partial class ctXF : DevExpress.XtraEditors.XtraForm
     {
+        public DataSetGnl.CCRow CCRow = null;
+        private string qry;
+        private ulong prm;
+
         public ctXF()
         {
             InitializeComponent();
@@ -23,8 +28,30 @@ namespace RestWinFormsClient
             colK2.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
 
         }
+
         private void ctXF_Load(object sender, EventArgs e)
         {
+            qry = "";
+            prm = 0;
+
+            if (CCRow == null)
+            {
+                gridView1.OptionsBehavior.Editable = false;
+
+                gridView1.SortInfo.ClearAndAddRange(new[] {
+                    new GridColumnSortInfo(colPW, DevExpress.Data.ColumnSortOrder.Descending),
+                    new GridColumnSortInfo(colKF, DevExpress.Data.ColumnSortOrder.Descending)
+                });
+
+                //colCC.GroupIndex = 0; Sasiriyor
+            }
+            else
+            {
+                qry = "CC";
+                prm = CCRow.RowKey;
+                colCC.Visible = false;
+            }
+
             FillDB();
         }
 
@@ -33,9 +60,11 @@ namespace RestWinFormsClient
             string res = "";
             cTGridControl.DataSource = null;
             dataSetGnl.CC.Rows.Clear();
-            Task.Run(async () => { res = await dataSetGnl.CTFill(); }).Wait();
+            Task.Run(async () => { res = await dataSetGnl.CTFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
             cTGridControl.DataSource = cTBindingSource;
+
+            gridView1.BestFitColumns();
         }
 
         private void cTBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -77,9 +106,17 @@ namespace RestWinFormsClient
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
-            gridView1.SetFocusedRowCellValue(colCC, 0);
+            gridView1.SetFocusedRowCellValue(colCC, CCRow.RowKey);
             gridView1.SetFocusedRowCellValue(colK1, 0);
             gridView1.SetFocusedRowCellValue(colK2, 0);
+        }
+
+        private void playersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ctpXF frm = new ctpXF();
+            frm.CTRow = (DataSetGnl.CTRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Players [ctpXF]";
+            frm.ShowDialog();
         }
     }
 }

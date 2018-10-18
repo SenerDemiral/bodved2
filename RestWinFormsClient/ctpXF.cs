@@ -8,39 +8,46 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Columns;
 
 namespace RestWinFormsClient
 {
-    public partial class cetXF : DevExpress.XtraEditors.XtraForm
+    public partial class ctpXF : DevExpress.XtraEditors.XtraForm
     {
-        public DataSetGnl.CCRow CCRow = null;
+        public DataSetGnl.CTRow CTRow = null;
         private string qry;
         private ulong prm;
 
-        public cetXF()
+        public ctpXF()
         {
             InitializeComponent();
 
-            cETGridControl.ExternalRepository = Program.MF.persistentRepository;
+            cTPGridControl.ExternalRepository = Program.MF.persistentRepository;
             colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
-            colHCT.ColumnEdit = Program.MF.CTrepositoryItemLookUpEdit;
-            colGCT.ColumnEdit = Program.MF.CTrepositoryItemLookUpEdit;
-            colTrh.ColumnEdit = Program.MF.TRHrepositoryItemDateEdit;
+            colPP.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
         }
 
-        private void cetXF_Load(object sender, EventArgs e)
+        private void ctpXF_Load(object sender, EventArgs e)
         {
             qry = "";
             prm = 0;
 
-            if (CCRow == null)
+            if (CTRow == null)
+            {
                 gridView1.OptionsBehavior.Editable = false;
+
+                gridView1.SortInfo.ClearAndAddRange(new[] {
+                    new GridColumnSortInfo(colIdx, DevExpress.Data.ColumnSortOrder.Ascending)
+                });
+
+                //colCC.GroupIndex = 0; Sasiriyor
+            }
             else
             {
-                qry = "CC";
-                prm = CCRow.RowKey;
-
+                qry = "CT";
+                prm = CTRow.RowKey;
                 colCC.Visible = false;
+                colCT.Visible = false;
             }
 
             FillDB();
@@ -49,16 +56,14 @@ namespace RestWinFormsClient
         private void FillDB()
         {
             string res = "";
-            cETGridControl.DataSource = null;
-            dataSetGnl.CC.Rows.Clear();
-            Task.Run(async () => { res = await dataSetGnl.CETFill(qry, prm); }).Wait();
+            cTPGridControl.DataSource = null;
+            dataSetGnl.CTP.Rows.Clear();
+            Task.Run(async () => { res = await dataSetGnl.CTPFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
-            cETGridControl.DataSource = cETBindingSource;
-
-            gridView1.BestFitColumns();
+            cTPGridControl.DataSource = cTPBindingSource;
         }
 
-        private void cETBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void cTPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             UpdateDB();
         }
@@ -67,7 +72,7 @@ namespace RestWinFormsClient
         {
             if (!Validate())
                 return DialogResult.Cancel;
-            cETBindingSource.EndEdit();
+            cTPBindingSource.EndEdit();
 
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
@@ -83,7 +88,7 @@ namespace RestWinFormsClient
                 dr = XtraMessageBox.Show("Değişiklik var. Kaydetmek istiyormusunuz?", "Update", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Yes)
                 {
-                    string err = dataSetGnl.CETUpdate();
+                    string err = dataSetGnl.CTPUpdate();
                     if (err != string.Empty)
                     {
                         MessageBox.Show(err);
@@ -97,18 +102,10 @@ namespace RestWinFormsClient
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
-            gridView1.SetFocusedRowCellValue(colCC, CCRow.RowKey);
-            gridView1.SetFocusedRowCellValue(colHCT, 0);
-            gridView1.SetFocusedRowCellValue(colGCT, 0);
-
+            gridView1.SetFocusedRowCellValue(colCC, CTRow.CC);
+            gridView1.SetFocusedRowCellValue(colCT, CTRow.RowKey);
+            gridView1.SetFocusedRowCellValue(colPP, 0);
         }
 
-        private void maclarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            macXF frm = new macXF();
-            frm.CETRow = (DataSetGnl.CETRow)gridView1.GetFocusedDataRow();
-            frm.Text = $"{gridView1.GetFocusedRowCellDisplayText(colHCT)} >< {gridView1.GetFocusedRowCellDisplayText(colGCT)} Matches [macXF]";
-            frm.ShowDialog();
-        }
     }
 }

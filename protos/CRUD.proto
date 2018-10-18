@@ -51,13 +51,12 @@ message RefreshSonucProxy {
   string param = 2;
 }
 
-// Players
+// PlayersLookup
 message PPlookUpProxy {
 	uint64 RowKey = 1;
 
   string Ad = 2;
 	string Sex = 3;
-	string Tel = 4;
 	string CTs = 5;
 	bool IsRun = 6;
 }

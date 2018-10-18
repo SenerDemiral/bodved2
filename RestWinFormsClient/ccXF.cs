@@ -31,6 +31,8 @@ namespace RestWinFormsClient
             Task.Run(async () => { res = await dataSetGnl.CCFill(); }).Wait();
             toolStripStatusLabel1.Text = res;
             cCGridControl.DataSource = cCBindingSource;
+
+            gridView1.BestFitColumns();
         }
 
         private void cCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -73,6 +75,31 @@ namespace RestWinFormsClient
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
 
+        }
+
+        private void teamsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ctXF frm = new ctXF();
+            frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Teams [ctXF]";
+            frm.ShowDialog();
+        }
+
+        private void eventsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // CC.Skl ine gore T/F
+            cetXF frm = new cetXF();
+            frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cetXF]";
+            frm.ShowDialog();
+        }
+
+        private void matchesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            macXF frm = new macXF();
+            frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Matches [macXF]";
+            frm.ShowDialog();
         }
     }
 }

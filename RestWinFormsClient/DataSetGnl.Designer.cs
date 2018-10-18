@@ -925,6 +925,7 @@ namespace RestWinFormsClient {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
+                this.columnIsRun.Caption = "Run";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1469,6 +1470,7 @@ namespace RestWinFormsClient {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
+                this.columnIsRun.Caption = "Run";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2028,6 +2030,7 @@ namespace RestWinFormsClient {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
+                this.columnIsRun.Caption = "Run";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2398,10 +2401,7 @@ namespace RestWinFormsClient {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
-                this.columnCC.Caption = "Skl";
-                this.columnCT.Caption = "Grp";
-                this.columnPP.Caption = "Ad";
-                this.columnIdx.Caption = "Info";
+                this.columnIsRun.Caption = "Run";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3698,8 +3698,6 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnSex;
             
-            private global::System.Data.DataColumn columnTel;
-            
             private global::System.Data.DataColumn columnIsRun;
             
             private global::System.Data.DataColumn columnCTs;
@@ -3763,14 +3761,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TelColumn {
-                get {
-                    return this.columnTel;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn IsRunColumn {
                 get {
                     return this.columnIsRun;
@@ -3822,13 +3812,12 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PPluRow AddPPluRow(ulong RowKey, string Ad, string Sex, string Tel, bool IsRun, string CTs) {
+            public PPluRow AddPPluRow(ulong RowKey, string Ad, string Sex, bool IsRun, string CTs) {
                 PPluRow rowPPluRow = ((PPluRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowKey,
                         Ad,
                         Sex,
-                        Tel,
                         IsRun,
                         CTs};
                 rowPPluRow.ItemArray = columnValuesArray;
@@ -3863,7 +3852,6 @@ namespace RestWinFormsClient {
                 this.columnRowKey = base.Columns["RowKey"];
                 this.columnAd = base.Columns["Ad"];
                 this.columnSex = base.Columns["Sex"];
-                this.columnTel = base.Columns["Tel"];
                 this.columnIsRun = base.Columns["IsRun"];
                 this.columnCTs = base.Columns["CTs"];
             }
@@ -3877,8 +3865,6 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnAd);
                 this.columnSex = new global::System.Data.DataColumn("Sex", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSex);
-                this.columnTel = new global::System.Data.DataColumn("Tel", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTel);
                 this.columnIsRun = new global::System.Data.DataColumn("IsRun", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsRun);
                 this.columnCTs = new global::System.Data.DataColumn("CTs", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3887,6 +3873,7 @@ namespace RestWinFormsClient {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
+                this.columnIsRun.Caption = "Run";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4026,8 +4013,6 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnSex;
             
-            private global::System.Data.DataColumn columnTel;
-            
             private global::System.Data.DataColumn columnIsRun;
             
             private global::System.Data.DataColumn columnCTs;
@@ -4091,14 +4076,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TelColumn {
-                get {
-                    return this.columnTel;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn IsRunColumn {
                 get {
                     return this.columnIsRun;
@@ -4150,13 +4127,12 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public hPPluRow AddhPPluRow(ulong RowKey, string Ad, string Sex, string Tel, bool IsRun, string CTs) {
+            public hPPluRow AddhPPluRow(ulong RowKey, string Ad, string Sex, bool IsRun, string CTs) {
                 hPPluRow rowhPPluRow = ((hPPluRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowKey,
                         Ad,
                         Sex,
-                        Tel,
                         IsRun,
                         CTs};
                 rowhPPluRow.ItemArray = columnValuesArray;
@@ -4191,7 +4167,6 @@ namespace RestWinFormsClient {
                 this.columnRowKey = base.Columns["RowKey"];
                 this.columnAd = base.Columns["Ad"];
                 this.columnSex = base.Columns["Sex"];
-                this.columnTel = base.Columns["Tel"];
                 this.columnIsRun = base.Columns["IsRun"];
                 this.columnCTs = base.Columns["CTs"];
             }
@@ -4205,8 +4180,6 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnAd);
                 this.columnSex = new global::System.Data.DataColumn("Sex", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSex);
-                this.columnTel = new global::System.Data.DataColumn("Tel", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTel);
                 this.columnIsRun = new global::System.Data.DataColumn("IsRun", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsRun);
                 this.columnCTs = new global::System.Data.DataColumn("CTs", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4215,6 +4188,7 @@ namespace RestWinFormsClient {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
+                this.columnIsRun.Caption = "Run";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4354,8 +4328,6 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnSex;
             
-            private global::System.Data.DataColumn columnTel;
-            
             private global::System.Data.DataColumn columnIsRun;
             
             private global::System.Data.DataColumn columnCTs;
@@ -4419,14 +4391,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TelColumn {
-                get {
-                    return this.columnTel;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn IsRunColumn {
                 get {
                     return this.columnIsRun;
@@ -4478,13 +4442,12 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public gPPluRow AddgPPluRow(ulong RowKey, string Ad, string Sex, string Tel, bool IsRun, string CTs) {
+            public gPPluRow AddgPPluRow(ulong RowKey, string Ad, string Sex, bool IsRun, string CTs) {
                 gPPluRow rowgPPluRow = ((gPPluRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowKey,
                         Ad,
                         Sex,
-                        Tel,
                         IsRun,
                         CTs};
                 rowgPPluRow.ItemArray = columnValuesArray;
@@ -4519,7 +4482,6 @@ namespace RestWinFormsClient {
                 this.columnRowKey = base.Columns["RowKey"];
                 this.columnAd = base.Columns["Ad"];
                 this.columnSex = base.Columns["Sex"];
-                this.columnTel = base.Columns["Tel"];
                 this.columnIsRun = base.Columns["IsRun"];
                 this.columnCTs = base.Columns["CTs"];
             }
@@ -4533,8 +4495,6 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnAd);
                 this.columnSex = new global::System.Data.DataColumn("Sex", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSex);
-                this.columnTel = new global::System.Data.DataColumn("Tel", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTel);
                 this.columnIsRun = new global::System.Data.DataColumn("IsRun", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsRun);
                 this.columnCTs = new global::System.Data.DataColumn("CTs", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4543,6 +4503,7 @@ namespace RestWinFormsClient {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
+                this.columnIsRun.Caption = "Run";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7852,22 +7813,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Tel {
-                get {
-                    try {
-                        return ((string)(this[this.tablePPlu.TelColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Tel\' in table \'PPlu\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePPlu.TelColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsRun {
                 get {
                     try {
@@ -7920,18 +7865,6 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSexNull() {
                 this[this.tablePPlu.SexColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTelNull() {
-                return this.IsNull(this.tablePPlu.TelColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTelNull() {
-                this[this.tablePPlu.TelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8018,22 +7951,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Tel {
-                get {
-                    try {
-                        return ((string)(this[this.tablehPPlu.TelColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Tel\' in table \'hPPlu\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablehPPlu.TelColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsRun {
                 get {
                     try {
@@ -8086,18 +8003,6 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSexNull() {
                 this[this.tablehPPlu.SexColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTelNull() {
-                return this.IsNull(this.tablehPPlu.TelColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTelNull() {
-                this[this.tablehPPlu.TelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8184,22 +8089,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Tel {
-                get {
-                    try {
-                        return ((string)(this[this.tablegPPlu.TelColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Tel\' in table \'gPPlu\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablegPPlu.TelColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsRun {
                 get {
                     try {
@@ -8252,18 +8141,6 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSexNull() {
                 this[this.tablegPPlu.SexColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTelNull() {
-                return this.IsNull(this.tablegPPlu.TelColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTelNull() {
-                this[this.tablegPPlu.TelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

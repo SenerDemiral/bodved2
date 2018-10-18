@@ -8,16 +8,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Columns;
 
 namespace RestWinFormsClient
 {
     public partial class macXF : DevExpress.XtraEditors.XtraForm
     {
-        public ulong ccNO = 0;
-        public ulong cebNO = 0;
-        public ulong hctNO = 596, gctNO = 0, ppNO = 0;
-        public string qry = "CEB";
-        public ulong prm = 1472;
+        public DataSetGnl.PPRow PPRow = null;
+        public DataSetGnl.CCRow CCRow = null;
+        public DataSetGnl.CETRow CETRow = null;
+        private string qry;
+        private ulong prm;
 
         public macXF()
         {
@@ -25,45 +26,84 @@ namespace RestWinFormsClient
 
             mACGridControl.ExternalRepository = Program.MF.persistentRepository;
             colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
-            //colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-            //colHPP2.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
-            //colGPP1.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
-            //colGPP2.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
+            colTrh.ColumnEdit = Program.MF.TRHrepositoryItemDateEdit;
+            colSoD.ColumnEdit = Program.MF.SoDrepositoryItemImageComboBox;
+
         }
 
         private void macXF_Load(object sender, EventArgs e)
         {
-            if (qry == "CEB")
-                cebNO = prm;
-            if (qry == "PP")
-                ppNO = prm;
+            qry = "";
+            prm = 0;
 
+            if (CETRow != null)
+            {
+                qry = "CET";
+                prm = CETRow.RowKey;
+
+                colCC.Visible = false;
+                gridView1.SortInfo.ClearAndAddRange(new[] {
+                new GridColumnSortInfo(colSoD, DevExpress.Data.ColumnSortOrder.Descending),
+                new GridColumnSortInfo(colIdx, DevExpress.Data.ColumnSortOrder.Ascending)
+                });
+            }
+            else
+            {
+                gridView1.OptionsBehavior.Editable = false;
+                colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                gridView1.ClearSorting();
+                if (CCRow != null)
+                {
+                    qry = "CC";
+                    prm = CCRow.RowKey;
+                    colCC.Visible = false;
+                    colTrh.GroupIndex = 0;
+                }
+                else if (PPRow != null)
+                {
+                    qry = "PP";
+                    prm = PPRow.RowKey;
+                    colTrh.GroupIndex = 0;
+                }
+            }
 
             FillDB();
+
+            PrepareLookups();
+
+            gridView1.FocusedRowHandle = 0;
+        }
+
+        private void PrepareLookups()
+        {
+            if (CETRow == null)
+                return;
+
             DataSetGnl.hPPluRow hRow;
             DataSetGnl.gPPluRow gRow;
 
-            DataSetGnl.PPluRow[] pps = (DataSetGnl.PPluRow[])Program.MF.dataSetGnl.PPlu.Select($"CTs LIKE '*<{hctNO}>*'");
-            foreach(var pp in pps)
+            DataSetGnl.PPluRow[] pps = (DataSetGnl.PPluRow[])Program.MF.dataSetGnl.PPlu.Select($"CTs LIKE '*<{CETRow.HCT}>*'");
+            foreach (var pp in pps)
             {
                 hRow = dataSetGnl.hPPlu.NewhPPluRow();
                 hRow.RowKey = pp.RowKey;
                 hRow.Ad = pp.Ad;
                 hRow.Sex = pp.Sex;
-                hRow.Tel = pp.Tel;
                 hRow.CTs = pp.CTs;
                 hRow.IsRun = pp.IsRun;
 
                 dataSetGnl.hPPlu.Rows.Add(hRow);
             }
-            pps = (DataSetGnl.PPluRow[])Program.MF.dataSetGnl.PPlu.Select($"CTs LIKE '*<{gctNO}>*'");
+            pps = (DataSetGnl.PPluRow[])Program.MF.dataSetGnl.PPlu.Select($"CTs LIKE '*<{CETRow.GCT}>*'");
             foreach (var pp in pps)
             {
                 gRow = dataSetGnl.gPPlu.NewgPPluRow();
                 gRow.RowKey = pp.RowKey;
                 gRow.Ad = pp.Ad;
                 gRow.Sex = pp.Sex;
-                gRow.Tel = pp.Tel;
                 gRow.CTs = pp.CTs;
                 gRow.IsRun = pp.IsRun;
 
@@ -81,7 +121,6 @@ namespace RestWinFormsClient
                     hRow.RowKey = sRow.RowKey;
                     hRow.Ad = "▼ " + sRow.Ad;
                     hRow.Sex = sRow.Sex;
-                    hRow.Tel = sRow.Tel;
                     hRow.CTs = sRow.CTs;
                     hRow.IsRun = false;
 
@@ -95,7 +134,6 @@ namespace RestWinFormsClient
                     hRow.RowKey = sRow.RowKey;
                     hRow.Ad = "▼ " + sRow.Ad;
                     hRow.Sex = sRow.Sex;
-                    hRow.Tel = sRow.Tel;
                     hRow.CTs = sRow.CTs;
                     hRow.IsRun = false;
 
@@ -110,7 +148,6 @@ namespace RestWinFormsClient
                     gRow.RowKey = sRow.RowKey;
                     gRow.Ad = "▼ " + sRow.Ad;
                     gRow.Sex = sRow.Sex;
-                    gRow.Tel = sRow.Tel;
                     gRow.CTs = sRow.CTs;
                     gRow.IsRun = false;
 
@@ -124,15 +161,12 @@ namespace RestWinFormsClient
                     gRow.RowKey = sRow.RowKey;
                     gRow.Ad = "▼ " + sRow.Ad;
                     gRow.Sex = sRow.Sex;
-                    gRow.Tel = sRow.Tel;
                     gRow.CTs = sRow.CTs;
                     gRow.IsRun = false;
 
                     dataSetGnl.gPPlu.Rows.Add(gRow);
                 }
             }
-            //dataSetGnl.hPPlu.Rows. = Program.MF.dataSetGnl.PPlu.Select($"CTs LIKE '*<{hctNO}>*'").CopyToDataTable();
-            //hPPluBindingSource.DataSource = abc;
         }
 
         private void FillDB()
@@ -143,11 +177,21 @@ namespace RestWinFormsClient
             Task.Run(async () => { res = await dataSetGnl.MACFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
             mACGridControl.DataSource = mACBindingSource;
+
+            gridView1.BestFitColumns();
         }
 
         private void macBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             UpdateDB();
+        }
+
+        private void gridView1_ShowingEditor(object sender, CancelEventArgs e)
+        {
+            if (gridView1.FocusedColumn == colHPP2 || gridView1.FocusedColumn == colGPP2)
+                if (gridView1.GetFocusedRowCellValue(colSoD).ToString() == "S")
+                    e.Cancel = true;
+
         }
 
         private DialogResult UpdateDB()
@@ -170,7 +214,7 @@ namespace RestWinFormsClient
                 dr = XtraMessageBox.Show("Değişiklik var. Kaydetmek istiyormusunuz?", "Update", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Yes)
                 {
-                    string err = dataSetGnl.CCUpdate();
+                    string err = dataSetGnl.MACUpdate();
                     if (err != string.Empty)
                     {
                         MessageBox.Show(err);
@@ -184,8 +228,8 @@ namespace RestWinFormsClient
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
-            gridView1.SetFocusedRowCellValue(colCC, ccNO);
-            gridView1.SetFocusedRowCellValue(colCEB, cebNO);
+            gridView1.SetFocusedRowCellValue(colCC, CETRow.CC);
+            gridView1.SetFocusedRowCellValue(colCEB, CETRow.RowKey);
             gridView1.SetFocusedRowCellValue(colHPP1, 0);
             gridView1.SetFocusedRowCellValue(colHPP2, 0);
             gridView1.SetFocusedRowCellValue(colGPP1, 0);

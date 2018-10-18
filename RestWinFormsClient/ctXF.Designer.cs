@@ -46,6 +46,8 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cTBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cTGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAd = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,6 +63,7 @@
             this.colDML = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKL = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKF = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEB = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,12 +76,12 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colKF = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTBindingNavigator)).BeginInit();
             this.cTBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cTGridControl)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -227,6 +230,7 @@
             // 
             // cTGridControl
             // 
+            this.cTGridControl.ContextMenuStrip = this.contextMenuStrip;
             this.cTGridControl.DataSource = this.cTBindingSource;
             this.cTGridControl.Location = new System.Drawing.Point(12, 46);
             this.cTGridControl.MainView = this.gridView1;
@@ -235,6 +239,20 @@
             this.cTGridControl.TabIndex = 1;
             this.cTGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playersToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(112, 26);
+            // 
+            // playersToolStripMenuItem
+            // 
+            this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
+            this.playersToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.playersToolStripMenuItem.Text = "Players";
+            this.playersToolStripMenuItem.Click += new System.EventHandler(this.playersToolStripMenuItem_Click);
             // 
             // gridView1
             // 
@@ -261,55 +279,65 @@
             this.colPW});
             this.gridView1.GridControl = this.cTGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView1.OptionsView.AutoCalcPreviewLineCount = true;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.PreviewFieldName = "Info";
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey
             // 
             this.colRowKey.FieldName = "RowKey";
             this.colRowKey.Name = "colRowKey";
+            this.colRowKey.OptionsColumn.AllowEdit = false;
+            this.colRowKey.OptionsColumn.AllowFocus = false;
+            this.colRowKey.OptionsColumn.FixedWidth = true;
             this.colRowKey.Visible = true;
-            this.colRowKey.VisibleIndex = 0;
-            this.colRowKey.Width = 52;
+            this.colRowKey.VisibleIndex = 1;
+            this.colRowKey.Width = 60;
             // 
             // colAd
             // 
             this.colAd.FieldName = "Ad";
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
-            this.colAd.VisibleIndex = 1;
-            this.colAd.Width = 52;
+            this.colAd.VisibleIndex = 2;
+            this.colAd.Width = 58;
             // 
             // colAdres
             // 
             this.colAdres.FieldName = "Adres";
             this.colAdres.Name = "colAdres";
             this.colAdres.Visible = true;
-            this.colAdres.VisibleIndex = 2;
-            this.colAdres.Width = 52;
+            this.colAdres.VisibleIndex = 3;
+            this.colAdres.Width = 58;
             // 
             // colInfo
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 3;
-            this.colInfo.Width = 52;
+            this.colInfo.VisibleIndex = 4;
+            this.colInfo.Width = 58;
             // 
             // colIsRun
             // 
             this.colIsRun.FieldName = "IsRun";
             this.colIsRun.Name = "colIsRun";
+            this.colIsRun.OptionsColumn.FixedWidth = true;
             this.colIsRun.Visible = true;
-            this.colIsRun.VisibleIndex = 4;
-            this.colIsRun.Width = 34;
+            this.colIsRun.VisibleIndex = 5;
+            this.colIsRun.Width = 36;
             // 
             // colCC
             // 
             this.colCC.FieldName = "CC";
             this.colCC.Name = "colCC";
+            this.colCC.OptionsColumn.AllowEdit = false;
+            this.colCC.OptionsColumn.AllowFocus = false;
             this.colCC.Visible = true;
-            this.colCC.VisibleIndex = 5;
-            this.colCC.Width = 56;
+            this.colCC.VisibleIndex = 0;
+            this.colCC.Width = 63;
             // 
             // colK1
             // 
@@ -317,7 +345,7 @@
             this.colK1.Name = "colK1";
             this.colK1.Visible = true;
             this.colK1.VisibleIndex = 6;
-            this.colK1.Width = 56;
+            this.colK1.Width = 85;
             // 
             // colK2
             // 
@@ -325,7 +353,7 @@
             this.colK2.Name = "colK2";
             this.colK2.Visible = true;
             this.colK2.VisibleIndex = 7;
-            this.colK2.Width = 86;
+            this.colK2.Width = 91;
             // 
             // colSMW
             // 
@@ -393,6 +421,19 @@
             this.colKL.VisibleIndex = 11;
             this.colKL.Width = 40;
             // 
+            // colKF
+            // 
+            this.colKF.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.colKF.AppearanceCell.Options.UseForeColor = true;
+            this.colKF.AppearanceCell.Options.UseTextOptions = true;
+            this.colKF.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colKF.FieldName = "KF";
+            this.colKF.Name = "colKF";
+            this.colKF.OptionsColumn.FixedWidth = true;
+            this.colKF.Visible = true;
+            this.colKF.VisibleIndex = 9;
+            this.colKF.Width = 40;
+            // 
             // colEW
             // 
             this.colEW.AppearanceCell.Options.UseTextOptions = true;
@@ -402,7 +443,7 @@
             this.colEW.OptionsColumn.FixedWidth = true;
             this.colEW.Visible = true;
             this.colEW.VisibleIndex = 12;
-            this.colEW.Width = 40;
+            this.colEW.Width = 30;
             // 
             // colEL
             // 
@@ -413,7 +454,7 @@
             this.colEL.OptionsColumn.FixedWidth = true;
             this.colEL.Visible = true;
             this.colEL.VisibleIndex = 13;
-            this.colEL.Width = 40;
+            this.colEL.Width = 30;
             // 
             // colEB
             // 
@@ -424,7 +465,7 @@
             this.colEB.OptionsColumn.FixedWidth = true;
             this.colEB.Visible = true;
             this.colEB.VisibleIndex = 14;
-            this.colEB.Width = 40;
+            this.colEB.Width = 30;
             // 
             // colEX
             // 
@@ -435,7 +476,7 @@
             this.colEX.OptionsColumn.FixedWidth = true;
             this.colEX.Visible = true;
             this.colEX.VisibleIndex = 15;
-            this.colEX.Width = 40;
+            this.colEX.Width = 30;
             // 
             // colPW
             // 
@@ -524,19 +565,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // colKF
-            // 
-            this.colKF.AppearanceCell.ForeColor = System.Drawing.Color.Red;
-            this.colKF.AppearanceCell.Options.UseForeColor = true;
-            this.colKF.AppearanceCell.Options.UseTextOptions = true;
-            this.colKF.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colKF.FieldName = "KF";
-            this.colKF.Name = "colKF";
-            this.colKF.OptionsColumn.FixedWidth = true;
-            this.colKF.Visible = true;
-            this.colKF.VisibleIndex = 9;
-            this.colKF.Width = 40;
-            // 
             // ctXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,6 +580,7 @@
             this.cTBindingNavigator.ResumeLayout(false);
             this.cTBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cTGridControl)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -611,5 +640,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEX;
         private DevExpress.XtraGrid.Columns.GridColumn colPW;
         private DevExpress.XtraGrid.Columns.GridColumn colKF;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
     }
 }

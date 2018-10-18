@@ -308,7 +308,7 @@ namespace BDB2
             string sod;
 
             List<DictMaclar> MacList = new List<DictMaclar>();
-            foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
+            foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CC IS NOT NULL and m.CEB IS BDB2.CET"))
             {
                 nor++;
 

@@ -64,6 +64,7 @@
             this.colIdx = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDrm = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colYer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInfo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colH1W = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -162,6 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gPPrepositoryItemGridLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gPPluBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
@@ -369,8 +371,9 @@
             this.mACGridControl.Name = "mACGridControl";
             this.mACGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.hPPrepositoryItemGridLookUpEdit,
-            this.gPPrepositoryItemGridLookUpEdit});
-            this.mACGridControl.Size = new System.Drawing.Size(1017, 408);
+            this.gPPrepositoryItemGridLookUpEdit,
+            this.DRMrepositoryItemImageComboBox});
+            this.mACGridControl.Size = new System.Drawing.Size(1025, 408);
             this.mACGridControl.TabIndex = 1;
             this.mACGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -417,18 +420,20 @@
             this.colGRnkPX});
             this.gridView1.GridControl = this.mACGridControl;
             this.gridView1.Name = "gridView1";
-            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colSoD, DevExpress.Data.ColumnSortOrder.Ascending),
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colIdx, DevExpress.Data.ColumnSortOrder.Descending)});
+            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView1_ShowingEditor);
+            this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey
             // 
             this.colRowKey.FieldName = "RowKey";
             this.colRowKey.Name = "colRowKey";
+            this.colRowKey.OptionsColumn.AllowEdit = false;
+            this.colRowKey.OptionsColumn.AllowFocus = false;
             this.colRowKey.OptionsColumn.FixedWidth = true;
-            this.colRowKey.OptionsColumn.ReadOnly = true;
             this.colRowKey.Visible = true;
-            this.colRowKey.VisibleIndex = 2;
+            this.colRowKey.VisibleIndex = 1;
             this.colRowKey.Width = 50;
             // 
             // colCC
@@ -436,27 +441,28 @@
             this.colCC.FieldName = "CC";
             this.colCC.Name = "colCC";
             this.colCC.OptionsColumn.ReadOnly = true;
-            this.colCC.Visible = true;
-            this.colCC.VisibleIndex = 0;
             this.colCC.Width = 94;
             // 
             // colCEB
             // 
             this.colCEB.FieldName = "CEB";
             this.colCEB.Name = "colCEB";
-            this.colCEB.OptionsColumn.ReadOnly = true;
+            this.colCEB.OptionsColumn.AllowEdit = false;
+            this.colCEB.OptionsColumn.AllowFocus = false;
+            this.colCEB.OptionsColumn.FixedWidth = true;
             this.colCEB.Visible = true;
-            this.colCEB.VisibleIndex = 1;
-            this.colCEB.Width = 94;
+            this.colCEB.VisibleIndex = 0;
+            this.colCEB.Width = 69;
             // 
             // colHPP1
             // 
+            this.colHPP1.Caption = "Home Player 1";
             this.colHPP1.ColumnEdit = this.hPPrepositoryItemGridLookUpEdit;
             this.colHPP1.FieldName = "HPP1";
             this.colHPP1.Name = "colHPP1";
             this.colHPP1.Visible = true;
-            this.colHPP1.VisibleIndex = 3;
-            this.colHPP1.Width = 94;
+            this.colHPP1.VisibleIndex = 5;
+            this.colHPP1.Width = 133;
             // 
             // hPPrepositoryItemGridLookUpEdit
             // 
@@ -483,21 +489,23 @@
             // 
             // colHPP2
             // 
+            this.colHPP2.Caption = "Home Player 2";
             this.colHPP2.ColumnEdit = this.hPPrepositoryItemGridLookUpEdit;
             this.colHPP2.FieldName = "HPP2";
             this.colHPP2.Name = "colHPP2";
             this.colHPP2.Visible = true;
-            this.colHPP2.VisibleIndex = 4;
-            this.colHPP2.Width = 94;
+            this.colHPP2.VisibleIndex = 6;
+            this.colHPP2.Width = 133;
             // 
             // colGPP1
             // 
+            this.colGPP1.Caption = "Guest Player 1";
             this.colGPP1.ColumnEdit = this.gPPrepositoryItemGridLookUpEdit;
             this.colGPP1.FieldName = "GPP1";
             this.colGPP1.Name = "colGPP1";
             this.colGPP1.Visible = true;
-            this.colGPP1.VisibleIndex = 5;
-            this.colGPP1.Width = 94;
+            this.colGPP1.VisibleIndex = 7;
+            this.colGPP1.Width = 133;
             // 
             // gPPrepositoryItemGridLookUpEdit
             // 
@@ -524,68 +532,82 @@
             // 
             // colGPP2
             // 
+            this.colGPP2.Caption = "Guest Player 2";
             this.colGPP2.ColumnEdit = this.gPPrepositoryItemGridLookUpEdit;
             this.colGPP2.FieldName = "GPP2";
             this.colGPP2.Name = "colGPP2";
             this.colGPP2.Visible = true;
-            this.colGPP2.VisibleIndex = 6;
-            this.colGPP2.Width = 94;
+            this.colGPP2.VisibleIndex = 8;
+            this.colGPP2.Width = 133;
             // 
             // colSoD
             // 
+            this.colSoD.AppearanceCell.Options.UseTextOptions = true;
+            this.colSoD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSoD.Caption = "S/D";
             this.colSoD.FieldName = "SoD";
             this.colSoD.Name = "colSoD";
             this.colSoD.OptionsColumn.FixedWidth = true;
             this.colSoD.Visible = true;
-            this.colSoD.VisibleIndex = 7;
+            this.colSoD.VisibleIndex = 3;
             this.colSoD.Width = 40;
             // 
             // colIdx
             // 
+            this.colIdx.AppearanceCell.Options.UseTextOptions = true;
+            this.colIdx.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colIdx.FieldName = "Idx";
             this.colIdx.Name = "colIdx";
             this.colIdx.OptionsColumn.FixedWidth = true;
             this.colIdx.Visible = true;
-            this.colIdx.VisibleIndex = 8;
+            this.colIdx.VisibleIndex = 4;
             this.colIdx.Width = 40;
             // 
             // colTrh
             // 
-            this.colTrh.DisplayFormat.FormatString = "dd.MM.yy";
+            this.colTrh.DisplayFormat.FormatString = "dd.MM.yy HH:mm";
             this.colTrh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colTrh.FieldName = "Trh";
             this.colTrh.Name = "colTrh";
             this.colTrh.OptionsColumn.FixedWidth = true;
-            this.colTrh.OptionsColumn.ReadOnly = true;
             this.colTrh.Visible = true;
             this.colTrh.VisibleIndex = 9;
-            this.colTrh.Width = 70;
+            this.colTrh.Width = 88;
             // 
             // colDrm
             // 
+            this.colDrm.ColumnEdit = this.DRMrepositoryItemImageComboBox;
             this.colDrm.FieldName = "Drm";
             this.colDrm.Name = "colDrm";
             this.colDrm.OptionsColumn.FixedWidth = true;
             this.colDrm.Visible = true;
-            this.colDrm.VisibleIndex = 10;
+            this.colDrm.VisibleIndex = 2;
             this.colDrm.Width = 40;
+            // 
+            // DRMrepositoryItemImageComboBox
+            // 
+            this.DRMrepositoryItemImageComboBox.AutoHeight = false;
+            this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
+            this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
             // 
             // colYer
             // 
             this.colYer.FieldName = "Yer";
             this.colYer.Name = "colYer";
-            this.colYer.Visible = true;
-            this.colYer.VisibleIndex = 11;
-            this.colYer.Width = 95;
+            this.colYer.Width = 99;
             // 
             // colInfo
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 12;
-            this.colInfo.Width = 100;
+            this.colInfo.VisibleIndex = 10;
+            this.colInfo.Width = 140;
             // 
             // colH1W
             // 
@@ -749,10 +771,10 @@
             this.dataLayoutControl1.Controls.Add(this.GRnkTextEdit);
             this.dataLayoutControl1.Controls.Add(this.GRnkPXTextEdit);
             this.dataLayoutControl1.DataSource = this.mACBindingSource;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(1033, 46);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(1041, 46);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup2;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(216, 408);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(208, 408);
             this.dataLayoutControl1.TabIndex = 3;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -761,12 +783,14 @@
             this.H1WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "H1W", true));
             this.H1WTextEdit.Location = new System.Drawing.Point(40, 12);
             this.H1WTextEdit.Name = "H1WTextEdit";
+            this.H1WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.H1WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H1WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H1WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.H1WTextEdit.Properties.Mask.EditMask = "N0";
             this.H1WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H1WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.H1WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.H1WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H1WTextEdit.StyleController = this.dataLayoutControl1;
             this.H1WTextEdit.TabIndex = 4;
             // 
@@ -775,12 +799,14 @@
             this.H2WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "H2W", true));
             this.H2WTextEdit.Location = new System.Drawing.Point(40, 36);
             this.H2WTextEdit.Name = "H2WTextEdit";
+            this.H2WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.H2WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H2WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H2WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.H2WTextEdit.Properties.Mask.EditMask = "N0";
             this.H2WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H2WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.H2WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.H2WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H2WTextEdit.StyleController = this.dataLayoutControl1;
             this.H2WTextEdit.TabIndex = 5;
             // 
@@ -789,12 +815,14 @@
             this.H3WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "H3W", true));
             this.H3WTextEdit.Location = new System.Drawing.Point(40, 60);
             this.H3WTextEdit.Name = "H3WTextEdit";
+            this.H3WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.H3WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H3WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H3WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.H3WTextEdit.Properties.Mask.EditMask = "N0";
             this.H3WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H3WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.H3WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.H3WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H3WTextEdit.StyleController = this.dataLayoutControl1;
             this.H3WTextEdit.TabIndex = 6;
             // 
@@ -803,12 +831,14 @@
             this.H4WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "H4W", true));
             this.H4WTextEdit.Location = new System.Drawing.Point(40, 84);
             this.H4WTextEdit.Name = "H4WTextEdit";
+            this.H4WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.H4WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H4WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H4WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.H4WTextEdit.Properties.Mask.EditMask = "N0";
             this.H4WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H4WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.H4WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.H4WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H4WTextEdit.StyleController = this.dataLayoutControl1;
             this.H4WTextEdit.TabIndex = 7;
             // 
@@ -817,12 +847,14 @@
             this.H5WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "H5W", true));
             this.H5WTextEdit.Location = new System.Drawing.Point(40, 108);
             this.H5WTextEdit.Name = "H5WTextEdit";
+            this.H5WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.H5WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H5WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H5WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.H5WTextEdit.Properties.Mask.EditMask = "N0";
             this.H5WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H5WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.H5WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.H5WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H5WTextEdit.StyleController = this.dataLayoutControl1;
             this.H5WTextEdit.TabIndex = 8;
             // 
@@ -831,12 +863,14 @@
             this.H6WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "H6W", true));
             this.H6WTextEdit.Location = new System.Drawing.Point(40, 132);
             this.H6WTextEdit.Name = "H6WTextEdit";
+            this.H6WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.H6WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H6WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H6WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.H6WTextEdit.Properties.Mask.EditMask = "N0";
             this.H6WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H6WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.H6WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.H6WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H6WTextEdit.StyleController = this.dataLayoutControl1;
             this.H6WTextEdit.TabIndex = 9;
             // 
@@ -845,260 +879,296 @@
             this.H7WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "H7W", true));
             this.H7WTextEdit.Location = new System.Drawing.Point(40, 156);
             this.H7WTextEdit.Name = "H7WTextEdit";
+            this.H7WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.H7WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H7WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H7WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.H7WTextEdit.Properties.Mask.EditMask = "N0";
             this.H7WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H7WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.H7WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.H7WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H7WTextEdit.StyleController = this.dataLayoutControl1;
             this.H7WTextEdit.TabIndex = 10;
             // 
             // G1WTextEdit
             // 
             this.G1WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "G1W", true));
-            this.G1WTextEdit.Location = new System.Drawing.Point(138, 12);
+            this.G1WTextEdit.Location = new System.Drawing.Point(134, 12);
             this.G1WTextEdit.Name = "G1WTextEdit";
+            this.G1WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.G1WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G1WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G1WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.G1WTextEdit.Properties.Mask.EditMask = "N0";
             this.G1WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G1WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.G1WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.G1WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G1WTextEdit.StyleController = this.dataLayoutControl1;
             this.G1WTextEdit.TabIndex = 11;
             // 
             // G2WTextEdit
             // 
             this.G2WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "G2W", true));
-            this.G2WTextEdit.Location = new System.Drawing.Point(138, 36);
+            this.G2WTextEdit.Location = new System.Drawing.Point(134, 36);
             this.G2WTextEdit.Name = "G2WTextEdit";
+            this.G2WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.G2WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G2WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G2WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.G2WTextEdit.Properties.Mask.EditMask = "N0";
             this.G2WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G2WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.G2WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.G2WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G2WTextEdit.StyleController = this.dataLayoutControl1;
             this.G2WTextEdit.TabIndex = 12;
             // 
             // G3WTextEdit
             // 
             this.G3WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "G3W", true));
-            this.G3WTextEdit.Location = new System.Drawing.Point(138, 60);
+            this.G3WTextEdit.Location = new System.Drawing.Point(134, 60);
             this.G3WTextEdit.Name = "G3WTextEdit";
+            this.G3WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.G3WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G3WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G3WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.G3WTextEdit.Properties.Mask.EditMask = "N0";
             this.G3WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G3WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.G3WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.G3WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G3WTextEdit.StyleController = this.dataLayoutControl1;
             this.G3WTextEdit.TabIndex = 13;
             // 
             // G4WTextEdit
             // 
             this.G4WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "G4W", true));
-            this.G4WTextEdit.Location = new System.Drawing.Point(138, 84);
+            this.G4WTextEdit.Location = new System.Drawing.Point(134, 84);
             this.G4WTextEdit.Name = "G4WTextEdit";
+            this.G4WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.G4WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G4WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G4WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.G4WTextEdit.Properties.Mask.EditMask = "N0";
             this.G4WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G4WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.G4WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.G4WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G4WTextEdit.StyleController = this.dataLayoutControl1;
             this.G4WTextEdit.TabIndex = 14;
             // 
             // G5WTextEdit
             // 
             this.G5WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "G5W", true));
-            this.G5WTextEdit.Location = new System.Drawing.Point(138, 108);
+            this.G5WTextEdit.Location = new System.Drawing.Point(134, 108);
             this.G5WTextEdit.Name = "G5WTextEdit";
+            this.G5WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.G5WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G5WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G5WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.G5WTextEdit.Properties.Mask.EditMask = "N0";
             this.G5WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G5WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.G5WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.G5WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G5WTextEdit.StyleController = this.dataLayoutControl1;
             this.G5WTextEdit.TabIndex = 15;
             // 
             // G6WTextEdit
             // 
             this.G6WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "G6W", true));
-            this.G6WTextEdit.Location = new System.Drawing.Point(138, 132);
+            this.G6WTextEdit.Location = new System.Drawing.Point(134, 132);
             this.G6WTextEdit.Name = "G6WTextEdit";
+            this.G6WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.G6WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G6WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G6WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.G6WTextEdit.Properties.Mask.EditMask = "N0";
             this.G6WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G6WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.G6WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.G6WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G6WTextEdit.StyleController = this.dataLayoutControl1;
             this.G6WTextEdit.TabIndex = 16;
             // 
             // G7WTextEdit
             // 
             this.G7WTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "G7W", true));
-            this.G7WTextEdit.Location = new System.Drawing.Point(138, 156);
+            this.G7WTextEdit.Location = new System.Drawing.Point(134, 156);
             this.G7WTextEdit.Name = "G7WTextEdit";
+            this.G7WTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.G7WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G7WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G7WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.G7WTextEdit.Properties.Mask.EditMask = "N0";
             this.G7WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G7WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.G7WTextEdit.Size = new System.Drawing.Size(66, 20);
+            this.G7WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G7WTextEdit.StyleController = this.dataLayoutControl1;
             this.G7WTextEdit.TabIndex = 17;
             // 
             // HSWTextEdit
             // 
             this.HSWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "HSW", true));
-            this.HSWTextEdit.Enabled = false;
             this.HSWTextEdit.Location = new System.Drawing.Point(52, 210);
             this.HSWTextEdit.Name = "HSWTextEdit";
+            this.HSWTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HSWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HSWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HSWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.HSWTextEdit.Properties.Mask.EditMask = "N0";
             this.HSWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.HSWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.HSWTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.HSWTextEdit.Properties.ReadOnly = true;
+            this.HSWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HSWTextEdit.StyleController = this.dataLayoutControl1;
             this.HSWTextEdit.TabIndex = 18;
             // 
             // GSWTextEdit
             // 
             this.GSWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "GSW", true));
-            this.GSWTextEdit.Enabled = false;
-            this.GSWTextEdit.Location = new System.Drawing.Point(138, 210);
+            this.GSWTextEdit.Location = new System.Drawing.Point(134, 210);
             this.GSWTextEdit.Name = "GSWTextEdit";
+            this.GSWTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.GSWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GSWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GSWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GSWTextEdit.Properties.Mask.EditMask = "N0";
             this.GSWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.GSWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.GSWTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.GSWTextEdit.Properties.ReadOnly = true;
+            this.GSWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GSWTextEdit.StyleController = this.dataLayoutControl1;
             this.GSWTextEdit.TabIndex = 19;
             // 
             // HMWTextEdit
             // 
             this.HMWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "HMW", true));
-            this.HMWTextEdit.Enabled = false;
             this.HMWTextEdit.Location = new System.Drawing.Point(52, 234);
             this.HMWTextEdit.Name = "HMWTextEdit";
+            this.HMWTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HMWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HMWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HMWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.HMWTextEdit.Properties.Mask.EditMask = "N0";
             this.HMWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.HMWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.HMWTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.HMWTextEdit.Properties.ReadOnly = true;
+            this.HMWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HMWTextEdit.StyleController = this.dataLayoutControl1;
             this.HMWTextEdit.TabIndex = 20;
             // 
             // GMWTextEdit
             // 
             this.GMWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "GMW", true));
-            this.GMWTextEdit.Enabled = false;
-            this.GMWTextEdit.Location = new System.Drawing.Point(138, 234);
+            this.GMWTextEdit.Location = new System.Drawing.Point(134, 234);
             this.GMWTextEdit.Name = "GMWTextEdit";
+            this.GMWTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.GMWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GMWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GMWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GMWTextEdit.Properties.Mask.EditMask = "N0";
             this.GMWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.GMWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.GMWTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.GMWTextEdit.Properties.ReadOnly = true;
+            this.GMWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GMWTextEdit.StyleController = this.dataLayoutControl1;
             this.GMWTextEdit.TabIndex = 21;
             // 
             // HXWTextEdit
             // 
             this.HXWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "HXW", true));
-            this.HXWTextEdit.Enabled = false;
             this.HXWTextEdit.Location = new System.Drawing.Point(52, 258);
             this.HXWTextEdit.Name = "HXWTextEdit";
+            this.HXWTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HXWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HXWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HXWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.HXWTextEdit.Properties.Mask.EditMask = "N0";
             this.HXWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.HXWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.HXWTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.HXWTextEdit.Properties.ReadOnly = true;
+            this.HXWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HXWTextEdit.StyleController = this.dataLayoutControl1;
             this.HXWTextEdit.TabIndex = 22;
             // 
             // GXWTextEdit
             // 
             this.GXWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "GXW", true));
-            this.GXWTextEdit.Enabled = false;
-            this.GXWTextEdit.Location = new System.Drawing.Point(138, 258);
+            this.GXWTextEdit.Location = new System.Drawing.Point(134, 258);
             this.GXWTextEdit.Name = "GXWTextEdit";
+            this.GXWTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.GXWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GXWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GXWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GXWTextEdit.Properties.Mask.EditMask = "N0";
             this.GXWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.GXWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.GXWTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.GXWTextEdit.Properties.ReadOnly = true;
+            this.GXWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GXWTextEdit.StyleController = this.dataLayoutControl1;
             this.GXWTextEdit.TabIndex = 23;
             // 
             // HRnkTextEdit
             // 
             this.HRnkTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "HRnk", true));
-            this.HRnkTextEdit.Enabled = false;
             this.HRnkTextEdit.Location = new System.Drawing.Point(52, 282);
             this.HRnkTextEdit.Name = "HRnkTextEdit";
+            this.HRnkTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HRnkTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HRnkTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HRnkTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.HRnkTextEdit.Properties.Mask.EditMask = "N0";
             this.HRnkTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.HRnkTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.HRnkTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.HRnkTextEdit.Properties.ReadOnly = true;
+            this.HRnkTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HRnkTextEdit.StyleController = this.dataLayoutControl1;
             this.HRnkTextEdit.TabIndex = 24;
             // 
             // HRnkPXTextEdit
             // 
             this.HRnkPXTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "HRnkPX", true));
-            this.HRnkPXTextEdit.Enabled = false;
             this.HRnkPXTextEdit.Location = new System.Drawing.Point(52, 306);
             this.HRnkPXTextEdit.Name = "HRnkPXTextEdit";
+            this.HRnkPXTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HRnkPXTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HRnkPXTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HRnkPXTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.HRnkPXTextEdit.Properties.Mask.EditMask = "N0";
             this.HRnkPXTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.HRnkPXTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.HRnkPXTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.HRnkPXTextEdit.Properties.ReadOnly = true;
+            this.HRnkPXTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HRnkPXTextEdit.StyleController = this.dataLayoutControl1;
             this.HRnkPXTextEdit.TabIndex = 25;
             // 
             // GRnkTextEdit
             // 
             this.GRnkTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "GRnk", true));
-            this.GRnkTextEdit.Enabled = false;
-            this.GRnkTextEdit.Location = new System.Drawing.Point(138, 282);
+            this.GRnkTextEdit.Location = new System.Drawing.Point(134, 282);
             this.GRnkTextEdit.Name = "GRnkTextEdit";
+            this.GRnkTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.GRnkTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GRnkTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GRnkTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GRnkTextEdit.Properties.Mask.EditMask = "N0";
             this.GRnkTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.GRnkTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.GRnkTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.GRnkTextEdit.Properties.ReadOnly = true;
+            this.GRnkTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GRnkTextEdit.StyleController = this.dataLayoutControl1;
             this.GRnkTextEdit.TabIndex = 26;
             // 
             // GRnkPXTextEdit
             // 
             this.GRnkPXTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mACBindingSource, "GRnkPX", true));
-            this.GRnkPXTextEdit.Enabled = false;
-            this.GRnkPXTextEdit.Location = new System.Drawing.Point(138, 306);
+            this.GRnkPXTextEdit.Location = new System.Drawing.Point(134, 306);
             this.GRnkPXTextEdit.Name = "GRnkPXTextEdit";
+            this.GRnkPXTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.GRnkPXTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GRnkPXTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GRnkPXTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GRnkPXTextEdit.Properties.Mask.EditMask = "N0";
             this.GRnkPXTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.GRnkPXTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.GRnkPXTextEdit.Size = new System.Drawing.Size(54, 20);
+            this.GRnkPXTextEdit.Properties.ReadOnly = true;
+            this.GRnkPXTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GRnkPXTextEdit.StyleController = this.dataLayoutControl1;
             this.GRnkPXTextEdit.TabIndex = 27;
             // 
@@ -1110,7 +1180,7 @@
             this.layoutControlGroup3});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(216, 408);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(208, 408);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlGroup3
@@ -1135,15 +1205,16 @@
             this.layoutControlGroup4});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(196, 388);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(188, 388);
             // 
             // ItemForH1W
             // 
             this.ItemForH1W.Control = this.H1WTextEdit;
             this.ItemForH1W.Location = new System.Drawing.Point(0, 0);
             this.ItemForH1W.Name = "ItemForH1W";
-            this.ItemForH1W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForH1W.Size = new System.Drawing.Size(94, 24);
             this.ItemForH1W.Text = "H1W";
+            this.ItemForH1W.TextLocation = DevExpress.Utils.Locations.Left;
             this.ItemForH1W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForH2W
@@ -1151,7 +1222,7 @@
             this.ItemForH2W.Control = this.H2WTextEdit;
             this.ItemForH2W.Location = new System.Drawing.Point(0, 24);
             this.ItemForH2W.Name = "ItemForH2W";
-            this.ItemForH2W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForH2W.Size = new System.Drawing.Size(94, 24);
             this.ItemForH2W.Text = "H2W";
             this.ItemForH2W.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1160,7 +1231,7 @@
             this.ItemForH3W.Control = this.H3WTextEdit;
             this.ItemForH3W.Location = new System.Drawing.Point(0, 48);
             this.ItemForH3W.Name = "ItemForH3W";
-            this.ItemForH3W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForH3W.Size = new System.Drawing.Size(94, 24);
             this.ItemForH3W.Text = "H3W";
             this.ItemForH3W.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1169,7 +1240,7 @@
             this.ItemForH4W.Control = this.H4WTextEdit;
             this.ItemForH4W.Location = new System.Drawing.Point(0, 72);
             this.ItemForH4W.Name = "ItemForH4W";
-            this.ItemForH4W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForH4W.Size = new System.Drawing.Size(94, 24);
             this.ItemForH4W.Text = "H4W";
             this.ItemForH4W.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1178,7 +1249,7 @@
             this.ItemForH5W.Control = this.H5WTextEdit;
             this.ItemForH5W.Location = new System.Drawing.Point(0, 96);
             this.ItemForH5W.Name = "ItemForH5W";
-            this.ItemForH5W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForH5W.Size = new System.Drawing.Size(94, 24);
             this.ItemForH5W.Text = "H5W";
             this.ItemForH5W.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1187,7 +1258,7 @@
             this.ItemForH6W.Control = this.H6WTextEdit;
             this.ItemForH6W.Location = new System.Drawing.Point(0, 120);
             this.ItemForH6W.Name = "ItemForH6W";
-            this.ItemForH6W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForH6W.Size = new System.Drawing.Size(94, 24);
             this.ItemForH6W.Text = "H6W";
             this.ItemForH6W.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1196,70 +1267,70 @@
             this.ItemForH7W.Control = this.H7WTextEdit;
             this.ItemForH7W.Location = new System.Drawing.Point(0, 144);
             this.ItemForH7W.Name = "ItemForH7W";
-            this.ItemForH7W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForH7W.Size = new System.Drawing.Size(94, 24);
             this.ItemForH7W.Text = "H7W";
             this.ItemForH7W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG1W
             // 
             this.ItemForG1W.Control = this.G1WTextEdit;
-            this.ItemForG1W.Location = new System.Drawing.Point(98, 0);
+            this.ItemForG1W.Location = new System.Drawing.Point(94, 0);
             this.ItemForG1W.Name = "ItemForG1W";
-            this.ItemForG1W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForG1W.Size = new System.Drawing.Size(94, 24);
             this.ItemForG1W.Text = "G1W";
             this.ItemForG1W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG2W
             // 
             this.ItemForG2W.Control = this.G2WTextEdit;
-            this.ItemForG2W.Location = new System.Drawing.Point(98, 24);
+            this.ItemForG2W.Location = new System.Drawing.Point(94, 24);
             this.ItemForG2W.Name = "ItemForG2W";
-            this.ItemForG2W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForG2W.Size = new System.Drawing.Size(94, 24);
             this.ItemForG2W.Text = "G2W";
             this.ItemForG2W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG3W
             // 
             this.ItemForG3W.Control = this.G3WTextEdit;
-            this.ItemForG3W.Location = new System.Drawing.Point(98, 48);
+            this.ItemForG3W.Location = new System.Drawing.Point(94, 48);
             this.ItemForG3W.Name = "ItemForG3W";
-            this.ItemForG3W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForG3W.Size = new System.Drawing.Size(94, 24);
             this.ItemForG3W.Text = "G3W";
             this.ItemForG3W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG4W
             // 
             this.ItemForG4W.Control = this.G4WTextEdit;
-            this.ItemForG4W.Location = new System.Drawing.Point(98, 72);
+            this.ItemForG4W.Location = new System.Drawing.Point(94, 72);
             this.ItemForG4W.Name = "ItemForG4W";
-            this.ItemForG4W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForG4W.Size = new System.Drawing.Size(94, 24);
             this.ItemForG4W.Text = "G4W";
             this.ItemForG4W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG5W
             // 
             this.ItemForG5W.Control = this.G5WTextEdit;
-            this.ItemForG5W.Location = new System.Drawing.Point(98, 96);
+            this.ItemForG5W.Location = new System.Drawing.Point(94, 96);
             this.ItemForG5W.Name = "ItemForG5W";
-            this.ItemForG5W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForG5W.Size = new System.Drawing.Size(94, 24);
             this.ItemForG5W.Text = "G5W";
             this.ItemForG5W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG6W
             // 
             this.ItemForG6W.Control = this.G6WTextEdit;
-            this.ItemForG6W.Location = new System.Drawing.Point(98, 120);
+            this.ItemForG6W.Location = new System.Drawing.Point(94, 120);
             this.ItemForG6W.Name = "ItemForG6W";
-            this.ItemForG6W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForG6W.Size = new System.Drawing.Size(94, 24);
             this.ItemForG6W.Text = "G6W";
             this.ItemForG6W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG7W
             // 
             this.ItemForG7W.Control = this.G7WTextEdit;
-            this.ItemForG7W.Location = new System.Drawing.Point(98, 144);
+            this.ItemForG7W.Location = new System.Drawing.Point(94, 144);
             this.ItemForG7W.Name = "ItemForG7W";
-            this.ItemForG7W.Size = new System.Drawing.Size(98, 24);
+            this.ItemForG7W.Size = new System.Drawing.Size(94, 24);
             this.ItemForG7W.Text = "G7W";
             this.ItemForG7W.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1278,32 +1349,33 @@
             this.ItemForHRnkPX});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 168);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(196, 220);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(188, 220);
+            this.layoutControlGroup4.Text = "Statistics";
             // 
             // ItemForHSW
             // 
             this.ItemForHSW.Control = this.HSWTextEdit;
             this.ItemForHSW.Location = new System.Drawing.Point(0, 0);
             this.ItemForHSW.Name = "ItemForHSW";
-            this.ItemForHSW.Size = new System.Drawing.Size(86, 24);
+            this.ItemForHSW.Size = new System.Drawing.Size(82, 24);
             this.ItemForHSW.Text = "HSW";
             this.ItemForHSW.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForGSW
             // 
             this.ItemForGSW.Control = this.GSWTextEdit;
-            this.ItemForGSW.Location = new System.Drawing.Point(86, 0);
+            this.ItemForGSW.Location = new System.Drawing.Point(82, 0);
             this.ItemForGSW.Name = "ItemForGSW";
-            this.ItemForGSW.Size = new System.Drawing.Size(86, 24);
+            this.ItemForGSW.Size = new System.Drawing.Size(82, 24);
             this.ItemForGSW.Text = "GSW";
             this.ItemForGSW.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForGMW
             // 
             this.ItemForGMW.Control = this.GMWTextEdit;
-            this.ItemForGMW.Location = new System.Drawing.Point(86, 24);
+            this.ItemForGMW.Location = new System.Drawing.Point(82, 24);
             this.ItemForGMW.Name = "ItemForGMW";
-            this.ItemForGMW.Size = new System.Drawing.Size(86, 24);
+            this.ItemForGMW.Size = new System.Drawing.Size(82, 24);
             this.ItemForGMW.Text = "GMW";
             this.ItemForGMW.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1312,25 +1384,25 @@
             this.ItemForHMW.Control = this.HMWTextEdit;
             this.ItemForHMW.Location = new System.Drawing.Point(0, 24);
             this.ItemForHMW.Name = "ItemForHMW";
-            this.ItemForHMW.Size = new System.Drawing.Size(86, 24);
+            this.ItemForHMW.Size = new System.Drawing.Size(82, 24);
             this.ItemForHMW.Text = "HMW";
             this.ItemForHMW.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForGXW
             // 
             this.ItemForGXW.Control = this.GXWTextEdit;
-            this.ItemForGXW.Location = new System.Drawing.Point(86, 48);
+            this.ItemForGXW.Location = new System.Drawing.Point(82, 48);
             this.ItemForGXW.Name = "ItemForGXW";
-            this.ItemForGXW.Size = new System.Drawing.Size(86, 24);
+            this.ItemForGXW.Size = new System.Drawing.Size(82, 24);
             this.ItemForGXW.Text = "GXW";
             this.ItemForGXW.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForGRnkPX
             // 
             this.ItemForGRnkPX.Control = this.GRnkPXTextEdit;
-            this.ItemForGRnkPX.Location = new System.Drawing.Point(86, 96);
+            this.ItemForGRnkPX.Location = new System.Drawing.Point(82, 96);
             this.ItemForGRnkPX.Name = "ItemForGRnkPX";
-            this.ItemForGRnkPX.Size = new System.Drawing.Size(86, 82);
+            this.ItemForGRnkPX.Size = new System.Drawing.Size(82, 82);
             this.ItemForGRnkPX.Text = "GPX";
             this.ItemForGRnkPX.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1339,7 +1411,7 @@
             this.ItemForHRnk.Control = this.HRnkTextEdit;
             this.ItemForHRnk.Location = new System.Drawing.Point(0, 72);
             this.ItemForHRnk.Name = "ItemForHRnk";
-            this.ItemForHRnk.Size = new System.Drawing.Size(86, 24);
+            this.ItemForHRnk.Size = new System.Drawing.Size(82, 24);
             this.ItemForHRnk.Text = "HRnk";
             this.ItemForHRnk.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1348,16 +1420,16 @@
             this.ItemForHXW.Control = this.HXWTextEdit;
             this.ItemForHXW.Location = new System.Drawing.Point(0, 48);
             this.ItemForHXW.Name = "ItemForHXW";
-            this.ItemForHXW.Size = new System.Drawing.Size(86, 24);
+            this.ItemForHXW.Size = new System.Drawing.Size(82, 24);
             this.ItemForHXW.Text = "HXW";
             this.ItemForHXW.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForGRnk
             // 
             this.ItemForGRnk.Control = this.GRnkTextEdit;
-            this.ItemForGRnk.Location = new System.Drawing.Point(86, 72);
+            this.ItemForGRnk.Location = new System.Drawing.Point(82, 72);
             this.ItemForGRnk.Name = "ItemForGRnk";
-            this.ItemForGRnk.Size = new System.Drawing.Size(86, 24);
+            this.ItemForGRnk.Size = new System.Drawing.Size(82, 24);
             this.ItemForGRnk.Text = "GRnk";
             this.ItemForGRnk.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1366,7 +1438,7 @@
             this.ItemForHRnkPX.Control = this.HRnkPXTextEdit;
             this.ItemForHRnkPX.Location = new System.Drawing.Point(0, 96);
             this.ItemForHRnkPX.Name = "ItemForHRnkPX";
-            this.ItemForHRnkPX.Size = new System.Drawing.Size(86, 82);
+            this.ItemForHRnkPX.Size = new System.Drawing.Size(82, 82);
             this.ItemForHRnkPX.Text = "HPX";
             this.ItemForHRnkPX.TextSize = new System.Drawing.Size(25, 13);
             // 
@@ -1407,7 +1479,7 @@
             this.layoutControlItem1.Control = this.mACGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1021, 412);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1029, 412);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1432,9 +1504,9 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.dataLayoutControl1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1021, 34);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1029, 34);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(220, 412);
+            this.layoutControlItem4.Size = new System.Drawing.Size(212, 412);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -1460,6 +1532,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gPPrepositoryItemGridLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gPPluBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
@@ -1648,5 +1721,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit gPPrepositoryItemGridLookUpEdit;
         private System.Windows.Forms.BindingSource gPPluBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox DRMrepositoryItemImageComboBox;
     }
 }

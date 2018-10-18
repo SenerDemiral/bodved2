@@ -31,9 +31,7 @@ namespace RestStarcounterServer
                         RowKey = row.GetObjectNo(),
                         Ad = row.Ad,
                         Sex = row.Sex ?? "",
-                        Tel = row.Tel ?? "",
                         IsRun = row.IsRun,
-
                     };
                     if (proxy.IsRun)
                     {
@@ -222,7 +220,13 @@ namespace RestStarcounterServer
 
             await Scheduling.RunTask(() =>
             {
-                foreach (var row in Db.SQL<CT>("select r from CT r"))
+                IEnumerable<CT> rows = null;
+                if (request.Query == "CC")
+                    rows = Db.SQL<CT>("select r from CT r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
+                else
+                    rows = Db.SQL<CT>("select r from CT r ");
+
+                foreach (var row in rows)
                 {
                     //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
                     proxy = CRUDsHelper.ToProxy<CTProxy, CT>(row);
@@ -305,7 +309,13 @@ namespace RestStarcounterServer
 
             await Scheduling.RunTask(() =>
             {
-                foreach (var row in Db.SQL<CTP>("select r from CTP r"))
+                IEnumerable<CTP> rows = null;
+                if (request.Query == "CT")
+                    rows = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ?", ulong.Parse(request.Param));
+                else
+                    rows = Db.SQL<CTP>("select r from CTP r ");
+
+                foreach (var row in rows)
                 {
                     proxy = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
                     /*
@@ -387,7 +397,13 @@ namespace RestStarcounterServer
 
             await Scheduling.RunTask(() =>
             {
-                foreach (var row in Db.SQL<CET>("select r from CET r"))
+                IEnumerable<CET> rows = null;
+                if (request.Query == "CC")
+                    rows = Db.SQL<CET>("select r from CET r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
+                else
+                    rows = Db.SQL<CET>("select r from CET r");
+
+                foreach (var row in rows)
                 {
                     //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
                     proxy = CRUDsHelper.ToProxy<CETProxy, CET>(row);
@@ -471,10 +487,17 @@ namespace RestStarcounterServer
             await Scheduling.RunTask(() =>
             {
                 IEnumerable<MAC> rows = null;// = Db.SQL<MAC>("select r from MAC r");
-                if (request.Query == "CEB")
-                {
+                if (request.Query == "CET")
                     rows = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ?", ulong.Parse(request.Param));
+                else if (request.Query == "CC")
+                    rows = Db.SQL<MAC>("select r from MAC r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
+                else if (request.Query == "PP")
+                {
+                    ulong pp = ulong.Parse(request.Param);
+                    rows = Db.SQL<MAC>("select r from MAC r where r.HPP1.ObjectNo = ? or r.HPP2.ObjectNo = ? or r.GPP1.ObjectNo = ? or r.GPP2.ObjectNo = ?", pp, pp, pp, pp);
                 }
+                else
+                    rows = Db.SQL<MAC>("select r from MAC r ");
 
                 foreach (var row in rows)
                 {

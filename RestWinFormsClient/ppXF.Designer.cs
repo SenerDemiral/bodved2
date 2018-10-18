@@ -46,6 +46,8 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.pPBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.pPGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAd = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingNavigator)).BeginInit();
             this.pPBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pPGridControl)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -128,7 +131,7 @@
             this.pPBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.pPBindingNavigator.Name = "pPBindingNavigator";
             this.pPBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.pPBindingNavigator.Size = new System.Drawing.Size(836, 30);
+            this.pPBindingNavigator.Size = new System.Drawing.Size(1115, 30);
             this.pPBindingNavigator.TabIndex = 0;
             this.pPBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -228,14 +231,30 @@
             // 
             // pPGridControl
             // 
+            this.pPGridControl.ContextMenuStrip = this.contextMenuStrip;
             this.pPGridControl.DataSource = this.pPBindingSource;
             this.pPGridControl.Location = new System.Drawing.Point(12, 46);
             this.pPGridControl.MainView = this.gridView1;
             this.pPGridControl.Name = "pPGridControl";
-            this.pPGridControl.Size = new System.Drawing.Size(836, 240);
+            this.pPGridControl.Size = new System.Drawing.Size(1115, 240);
             this.pPGridControl.TabIndex = 1;
             this.pPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.pPGridControl.Click += new System.EventHandler(this.pPGridControl_Click);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playersToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(98, 26);
+            // 
+            // playersToolStripMenuItem
+            // 
+            this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
+            this.playersToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.playersToolStripMenuItem.Text = "Mac";
+            this.playersToolStripMenuItem.Click += new System.EventHandler(this.playersToolStripMenuItem_Click);
             // 
             // gridView1
             // 
@@ -271,6 +290,7 @@
             this.colRowKey.Name = "colRowKey";
             this.colRowKey.Visible = true;
             this.colRowKey.VisibleIndex = 0;
+            this.colRowKey.Width = 89;
             // 
             // colAd
             // 
@@ -278,139 +298,176 @@
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 114;
             // 
             // colInfo
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 2;
+            this.colInfo.VisibleIndex = 4;
+            this.colInfo.Width = 106;
             // 
             // colSex
             // 
             this.colSex.FieldName = "Sex";
             this.colSex.Name = "colSex";
+            this.colSex.OptionsColumn.FixedWidth = true;
             this.colSex.Visible = true;
-            this.colSex.VisibleIndex = 3;
+            this.colSex.VisibleIndex = 2;
+            this.colSex.Width = 40;
             // 
             // colTel
             // 
             this.colTel.FieldName = "Tel";
             this.colTel.Name = "colTel";
             this.colTel.Visible = true;
-            this.colTel.VisibleIndex = 4;
+            this.colTel.VisibleIndex = 3;
+            this.colTel.Width = 108;
             // 
             // colIsRun
             // 
             this.colIsRun.FieldName = "IsRun";
             this.colIsRun.Name = "colIsRun";
+            this.colIsRun.OptionsColumn.FixedWidth = true;
             this.colIsRun.Visible = true;
             this.colIsRun.VisibleIndex = 5;
+            this.colIsRun.Width = 40;
             // 
             // colRnkBaz
             // 
             this.colRnkBaz.FieldName = "RnkBaz";
             this.colRnkBaz.Name = "colRnkBaz";
+            this.colRnkBaz.OptionsColumn.FixedWidth = true;
             this.colRnkBaz.Visible = true;
             this.colRnkBaz.VisibleIndex = 6;
+            this.colRnkBaz.Width = 40;
             // 
             // colRnkSon
             // 
             this.colRnkSon.FieldName = "RnkSon";
             this.colRnkSon.Name = "colRnkSon";
+            this.colRnkSon.OptionsColumn.FixedWidth = true;
             this.colRnkSon.Visible = true;
             this.colRnkSon.VisibleIndex = 7;
+            this.colRnkSon.Width = 40;
             // 
             // colRnkIdx
             // 
             this.colRnkIdx.FieldName = "RnkIdx";
             this.colRnkIdx.Name = "colRnkIdx";
+            this.colRnkIdx.OptionsColumn.FixedWidth = true;
             this.colRnkIdx.Visible = true;
             this.colRnkIdx.VisibleIndex = 8;
+            this.colRnkIdx.Width = 40;
             // 
             // colSST
             // 
             this.colSST.FieldName = "SST";
             this.colSST.Name = "colSST";
+            this.colSST.OptionsColumn.FixedWidth = true;
             this.colSST.Visible = true;
             this.colSST.VisibleIndex = 9;
+            this.colSST.Width = 40;
             // 
             // colSSW
             // 
             this.colSSW.FieldName = "SSW";
             this.colSSW.Name = "colSSW";
+            this.colSSW.OptionsColumn.FixedWidth = true;
             this.colSSW.Visible = true;
             this.colSSW.VisibleIndex = 10;
+            this.colSSW.Width = 40;
             // 
             // colSSL
             // 
             this.colSSL.FieldName = "SSL";
             this.colSSL.Name = "colSSL";
+            this.colSSL.OptionsColumn.FixedWidth = true;
             this.colSSL.Visible = true;
             this.colSSL.VisibleIndex = 11;
+            this.colSSL.Width = 40;
             // 
             // colSMT
             // 
             this.colSMT.FieldName = "SMT";
             this.colSMT.Name = "colSMT";
+            this.colSMT.OptionsColumn.FixedWidth = true;
             this.colSMT.Visible = true;
             this.colSMT.VisibleIndex = 12;
+            this.colSMT.Width = 40;
             // 
             // colSMW
             // 
             this.colSMW.FieldName = "SMW";
             this.colSMW.Name = "colSMW";
+            this.colSMW.OptionsColumn.FixedWidth = true;
             this.colSMW.Visible = true;
             this.colSMW.VisibleIndex = 13;
+            this.colSMW.Width = 40;
             // 
             // colSML
             // 
             this.colSML.FieldName = "SML";
             this.colSML.Name = "colSML";
+            this.colSML.OptionsColumn.FixedWidth = true;
             this.colSML.Visible = true;
             this.colSML.VisibleIndex = 14;
+            this.colSML.Width = 40;
             // 
             // colDST
             // 
             this.colDST.FieldName = "DST";
             this.colDST.Name = "colDST";
+            this.colDST.OptionsColumn.FixedWidth = true;
             this.colDST.Visible = true;
             this.colDST.VisibleIndex = 15;
+            this.colDST.Width = 40;
             // 
             // colDSW
             // 
             this.colDSW.FieldName = "DSW";
             this.colDSW.Name = "colDSW";
+            this.colDSW.OptionsColumn.FixedWidth = true;
             this.colDSW.Visible = true;
             this.colDSW.VisibleIndex = 16;
+            this.colDSW.Width = 40;
             // 
             // colDSL
             // 
             this.colDSL.FieldName = "DSL";
             this.colDSL.Name = "colDSL";
+            this.colDSL.OptionsColumn.FixedWidth = true;
             this.colDSL.Visible = true;
             this.colDSL.VisibleIndex = 17;
+            this.colDSL.Width = 40;
             // 
             // colDMT
             // 
             this.colDMT.FieldName = "DMT";
             this.colDMT.Name = "colDMT";
+            this.colDMT.OptionsColumn.FixedWidth = true;
             this.colDMT.Visible = true;
             this.colDMT.VisibleIndex = 18;
+            this.colDMT.Width = 40;
             // 
             // colDMW
             // 
             this.colDMW.FieldName = "DMW";
             this.colDMW.Name = "colDMW";
+            this.colDMW.OptionsColumn.FixedWidth = true;
             this.colDMW.Visible = true;
             this.colDMW.VisibleIndex = 19;
+            this.colDMW.Width = 40;
             // 
             // colDML
             // 
             this.colDML.FieldName = "DML";
             this.colDML.Name = "colDML";
+            this.colDML.OptionsColumn.FixedWidth = true;
             this.colDML.Visible = true;
             this.colDML.VisibleIndex = 20;
+            this.colDML.Width = 40;
             // 
             // layoutControl1
             // 
@@ -421,7 +478,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(860, 330);
+            this.layoutControl1.Size = new System.Drawing.Size(1139, 330);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -433,7 +490,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 290);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(836, 28);
+            this.statusStrip1.Size = new System.Drawing.Size(1115, 28);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -453,7 +510,7 @@
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(860, 330);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1139, 330);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -461,7 +518,7 @@
             this.layoutControlItem1.Control = this.pPGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(840, 244);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1119, 244);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -470,7 +527,7 @@
             this.layoutControlItem2.Control = this.pPBindingNavigator;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(840, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1119, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -479,7 +536,7 @@
             this.layoutControlItem3.Control = this.statusStrip1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 278);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(840, 32);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1119, 32);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -487,7 +544,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 330);
+            this.ClientSize = new System.Drawing.Size(1139, 330);
             this.Controls.Add(this.layoutControl1);
             this.Name = "ppXF";
             this.Text = "ppXF";
@@ -498,6 +555,7 @@
             this.pPBindingNavigator.ResumeLayout(false);
             this.pPBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pPGridControl)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -558,5 +616,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDMT;
         private DevExpress.XtraGrid.Columns.GridColumn colDMW;
         private DevExpress.XtraGrid.Columns.GridColumn colDML;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
     }
 }

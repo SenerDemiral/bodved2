@@ -39,7 +39,7 @@ namespace RestWinFormsClient
 
                 await dataSetGnl.PPlookUp();
                 await dataSetGnl.CCFill();
-                await dataSetGnl.CTFill();
+                await dataSetGnl.CTFill("",0);
 
                 sw.Stop();
                 //InitLookups();
