@@ -30,6 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cetXF));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            this.colHCT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGCT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.cETBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cETBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -51,12 +59,21 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHCT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGCT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDrm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInfo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHSSW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGSSW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHDSW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGDSW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHSMW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGSMW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHDMW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGDMW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHPW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGPW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -71,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cETGridControl)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -79,6 +97,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colHCT
+            // 
+            this.colHCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHCT.AppearanceCell.Options.UseBackColor = true;
+            this.colHCT.FieldName = "HCT";
+            this.colHCT.Name = "colHCT";
+            this.colHCT.Visible = true;
+            this.colHCT.VisibleIndex = 3;
+            this.colHCT.Width = 77;
+            // 
+            // colGCT
+            // 
+            this.colGCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGCT.AppearanceCell.Options.UseBackColor = true;
+            this.colGCT.FieldName = "GCT";
+            this.colGCT.Name = "colGCT";
+            this.colGCT.Visible = true;
+            this.colGCT.VisibleIndex = 6;
+            this.colGCT.Width = 77;
             // 
             // dataSetGnl
             // 
@@ -118,7 +156,7 @@
             this.cETBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.cETBindingNavigator.Name = "cETBindingNavigator";
             this.cETBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.cETBindingNavigator.Size = new System.Drawing.Size(799, 30);
+            this.cETBindingNavigator.Size = new System.Drawing.Size(1054, 30);
             this.cETBindingNavigator.TabIndex = 0;
             this.cETBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -223,7 +261,9 @@
             this.cETGridControl.Location = new System.Drawing.Point(12, 46);
             this.cETGridControl.MainView = this.gridView1;
             this.cETGridControl.Name = "cETGridControl";
-            this.cETGridControl.Size = new System.Drawing.Size(799, 261);
+            this.cETGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.DRMrepositoryItemImageComboBox});
+            this.cETGridControl.Size = new System.Drawing.Size(1054, 261);
             this.cETGridControl.TabIndex = 2;
             this.cETGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -252,7 +292,41 @@
             this.colTrh,
             this.colDrm,
             this.colYer,
-            this.colInfo});
+            this.colInfo,
+            this.colHSSW,
+            this.colGSSW,
+            this.colHDSW,
+            this.colGDSW,
+            this.colHSMW,
+            this.colGSMW,
+            this.colHDMW,
+            this.colGDMW,
+            this.colHPW,
+            this.colGPW});
+            gridFormatRule1.Column = this.colHCT;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            formatConditionRuleValue1.Appearance.Options.UseFont = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Expression;
+            formatConditionRuleValue1.Expression = "[HPW] > [GPW]";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            gridFormatRule2.Column = this.colGCT;
+            gridFormatRule2.Name = "Format1";
+            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            formatConditionRuleValue2.Appearance.Options.UseFont = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Expression;
+            formatConditionRuleValue2.Expression = "[HPW] < [GPW]";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Name = "Format2";
+            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Red;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Expression;
+            formatConditionRuleValue3.Expression = "[HPW] = [GPW] And [Drm] = \'OK\'";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
+            this.gridView1.FormatRules.Add(gridFormatRule2);
+            this.gridView1.FormatRules.Add(gridFormatRule3);
             this.gridView1.GridControl = this.cETGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowFixedGroups = DevExpress.Utils.DefaultBoolean.True;
@@ -279,39 +353,24 @@
             this.colCC.OptionsColumn.AllowFocus = false;
             this.colCC.Visible = true;
             this.colCC.VisibleIndex = 0;
-            this.colCC.Width = 97;
-            // 
-            // colHCT
-            // 
-            this.colHCT.FieldName = "HCT";
-            this.colHCT.Name = "colHCT";
-            this.colHCT.Visible = true;
-            this.colHCT.VisibleIndex = 2;
-            this.colHCT.Width = 101;
-            // 
-            // colGCT
-            // 
-            this.colGCT.FieldName = "GCT";
-            this.colGCT.Name = "colGCT";
-            this.colGCT.Visible = true;
-            this.colGCT.VisibleIndex = 3;
-            this.colGCT.Width = 101;
+            this.colCC.Width = 77;
             // 
             // colTrh
             // 
             this.colTrh.FieldName = "Trh";
             this.colTrh.Name = "colTrh";
             this.colTrh.Visible = true;
-            this.colTrh.VisibleIndex = 4;
-            this.colTrh.Width = 80;
+            this.colTrh.VisibleIndex = 2;
+            this.colTrh.Width = 77;
             // 
             // colDrm
             // 
+            this.colDrm.ColumnEdit = this.DRMrepositoryItemImageComboBox;
             this.colDrm.FieldName = "Drm";
             this.colDrm.Name = "colDrm";
             this.colDrm.OptionsColumn.FixedWidth = true;
             this.colDrm.Visible = true;
-            this.colDrm.VisibleIndex = 5;
+            this.colDrm.VisibleIndex = 7;
             this.colDrm.Width = 60;
             // 
             // colYer
@@ -319,16 +378,178 @@
             this.colYer.FieldName = "Yer";
             this.colYer.Name = "colYer";
             this.colYer.Visible = true;
-            this.colYer.VisibleIndex = 6;
-            this.colYer.Width = 107;
+            this.colYer.VisibleIndex = 16;
+            this.colYer.Width = 52;
             // 
             // colInfo
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 7;
-            this.colInfo.Width = 120;
+            this.colInfo.VisibleIndex = 17;
+            this.colInfo.Width = 156;
+            // 
+            // colHSSW
+            // 
+            this.colHSSW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHSSW.AppearanceCell.Options.UseBackColor = true;
+            this.colHSSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHSSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHSSW.FieldName = "HSSW";
+            this.colHSSW.Name = "colHSSW";
+            this.colHSSW.OptionsColumn.AllowEdit = false;
+            this.colHSSW.OptionsColumn.AllowFocus = false;
+            this.colHSSW.OptionsColumn.FixedWidth = true;
+            this.colHSSW.Visible = true;
+            this.colHSSW.VisibleIndex = 12;
+            this.colHSSW.Width = 40;
+            // 
+            // colGSSW
+            // 
+            this.colGSSW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGSSW.AppearanceCell.Options.UseBackColor = true;
+            this.colGSSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGSSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGSSW.FieldName = "GSSW";
+            this.colGSSW.Name = "colGSSW";
+            this.colGSSW.OptionsColumn.AllowEdit = false;
+            this.colGSSW.OptionsColumn.AllowFocus = false;
+            this.colGSSW.OptionsColumn.FixedWidth = true;
+            this.colGSSW.Visible = true;
+            this.colGSSW.VisibleIndex = 13;
+            this.colGSSW.Width = 40;
+            // 
+            // colHDSW
+            // 
+            this.colHDSW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHDSW.AppearanceCell.Options.UseBackColor = true;
+            this.colHDSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHDSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHDSW.FieldName = "HDSW";
+            this.colHDSW.Name = "colHDSW";
+            this.colHDSW.OptionsColumn.AllowEdit = false;
+            this.colHDSW.OptionsColumn.AllowFocus = false;
+            this.colHDSW.OptionsColumn.FixedWidth = true;
+            this.colHDSW.Visible = true;
+            this.colHDSW.VisibleIndex = 14;
+            this.colHDSW.Width = 40;
+            // 
+            // colGDSW
+            // 
+            this.colGDSW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGDSW.AppearanceCell.Options.UseBackColor = true;
+            this.colGDSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGDSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGDSW.FieldName = "GDSW";
+            this.colGDSW.Name = "colGDSW";
+            this.colGDSW.OptionsColumn.AllowEdit = false;
+            this.colGDSW.OptionsColumn.AllowFocus = false;
+            this.colGDSW.OptionsColumn.FixedWidth = true;
+            this.colGDSW.Visible = true;
+            this.colGDSW.VisibleIndex = 15;
+            this.colGDSW.Width = 40;
+            // 
+            // colHSMW
+            // 
+            this.colHSMW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHSMW.AppearanceCell.Options.UseBackColor = true;
+            this.colHSMW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHSMW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHSMW.FieldName = "HSMW";
+            this.colHSMW.Name = "colHSMW";
+            this.colHSMW.OptionsColumn.AllowEdit = false;
+            this.colHSMW.OptionsColumn.AllowFocus = false;
+            this.colHSMW.OptionsColumn.FixedWidth = true;
+            this.colHSMW.Visible = true;
+            this.colHSMW.VisibleIndex = 8;
+            this.colHSMW.Width = 40;
+            // 
+            // colGSMW
+            // 
+            this.colGSMW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGSMW.AppearanceCell.Options.UseBackColor = true;
+            this.colGSMW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGSMW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGSMW.FieldName = "GSMW";
+            this.colGSMW.Name = "colGSMW";
+            this.colGSMW.OptionsColumn.AllowEdit = false;
+            this.colGSMW.OptionsColumn.AllowFocus = false;
+            this.colGSMW.OptionsColumn.FixedWidth = true;
+            this.colGSMW.Visible = true;
+            this.colGSMW.VisibleIndex = 9;
+            this.colGSMW.Width = 40;
+            // 
+            // colHDMW
+            // 
+            this.colHDMW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHDMW.AppearanceCell.Options.UseBackColor = true;
+            this.colHDMW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHDMW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHDMW.FieldName = "HDMW";
+            this.colHDMW.Name = "colHDMW";
+            this.colHDMW.OptionsColumn.AllowEdit = false;
+            this.colHDMW.OptionsColumn.AllowFocus = false;
+            this.colHDMW.OptionsColumn.FixedWidth = true;
+            this.colHDMW.Visible = true;
+            this.colHDMW.VisibleIndex = 10;
+            this.colHDMW.Width = 40;
+            // 
+            // colGDMW
+            // 
+            this.colGDMW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGDMW.AppearanceCell.Options.UseBackColor = true;
+            this.colGDMW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGDMW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGDMW.FieldName = "GDMW";
+            this.colGDMW.Name = "colGDMW";
+            this.colGDMW.OptionsColumn.AllowEdit = false;
+            this.colGDMW.OptionsColumn.AllowFocus = false;
+            this.colGDMW.OptionsColumn.FixedWidth = true;
+            this.colGDMW.Visible = true;
+            this.colGDMW.VisibleIndex = 11;
+            this.colGDMW.Width = 40;
+            // 
+            // colHPW
+            // 
+            this.colHPW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHPW.AppearanceCell.Options.UseBackColor = true;
+            this.colHPW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHPW.FieldName = "HPW";
+            this.colHPW.Name = "colHPW";
+            this.colHPW.OptionsColumn.AllowEdit = false;
+            this.colHPW.OptionsColumn.AllowFocus = false;
+            this.colHPW.OptionsColumn.FixedWidth = true;
+            this.colHPW.Visible = true;
+            this.colHPW.VisibleIndex = 4;
+            this.colHPW.Width = 40;
+            // 
+            // colGPW
+            // 
+            this.colGPW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGPW.AppearanceCell.Options.UseBackColor = true;
+            this.colGPW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGPW.FieldName = "GPW";
+            this.colGPW.Name = "colGPW";
+            this.colGPW.OptionsColumn.AllowEdit = false;
+            this.colGPW.OptionsColumn.AllowFocus = false;
+            this.colGPW.OptionsColumn.FixedWidth = true;
+            this.colGPW.Visible = true;
+            this.colGPW.VisibleIndex = 5;
+            this.colGPW.Width = 40;
+            // 
+            // DRMrepositoryItemImageComboBox
+            // 
+            this.DRMrepositoryItemImageComboBox.AutoHeight = false;
+            this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("-", "-", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
+            this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
             // 
             // layoutControl1
             // 
@@ -339,7 +560,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(823, 343);
+            this.layoutControl1.Size = new System.Drawing.Size(1078, 343);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -351,7 +572,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 311);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(799, 20);
+            this.statusStrip1.Size = new System.Drawing.Size(1054, 20);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -371,7 +592,7 @@
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(823, 343);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1078, 343);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -379,7 +600,7 @@
             this.layoutControlItem1.Control = this.cETGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(803, 265);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1058, 265);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -388,7 +609,7 @@
             this.layoutControlItem2.Control = this.cETBindingNavigator;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(803, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1058, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -397,7 +618,7 @@
             this.layoutControlItem3.Control = this.statusStrip1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 299);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(803, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1058, 24);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -405,7 +626,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 343);
+            this.ClientSize = new System.Drawing.Size(1078, 343);
             this.Controls.Add(this.layoutControl1);
             this.Name = "cetXF";
             this.Text = "cetXF";
@@ -418,6 +639,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cETGridControl)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
@@ -466,5 +688,16 @@
         private DevExpress.XtraGrid.Columns.GridColumn colInfo;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem maclarToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colHSSW;
+        private DevExpress.XtraGrid.Columns.GridColumn colGSSW;
+        private DevExpress.XtraGrid.Columns.GridColumn colHSMW;
+        private DevExpress.XtraGrid.Columns.GridColumn colGSMW;
+        private DevExpress.XtraGrid.Columns.GridColumn colHDMW;
+        private DevExpress.XtraGrid.Columns.GridColumn colGDMW;
+        private DevExpress.XtraGrid.Columns.GridColumn colHPW;
+        private DevExpress.XtraGrid.Columns.GridColumn colGPW;
+        private DevExpress.XtraGrid.Columns.GridColumn colHDSW;
+        private DevExpress.XtraGrid.Columns.GridColumn colGDSW;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox DRMrepositoryItemImageComboBox;
     }
 }

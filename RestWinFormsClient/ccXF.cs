@@ -16,6 +16,8 @@ namespace RestWinFormsClient
         public ccXF()
         {
             InitializeComponent();
+
+            
         }
 
         private void ccXF_Load(object sender, EventArgs e)

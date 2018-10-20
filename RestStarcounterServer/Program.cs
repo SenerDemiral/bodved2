@@ -79,6 +79,9 @@ namespace RestStarcounterServer
             //H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
             //MAC.RefreshGlobalRank();    // RnkBaz == RnkSon olmali, cunki CC.IsRnkd = false (Rank hesaplanmayacak)
 
+
+
+
         }
     }
 }

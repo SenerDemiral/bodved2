@@ -1,0 +1,38 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <p>Table Info</p>
+                </div>
+                <div class="gridTbl_main">
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col style="width:var(--w-PlyrAd)" />
+                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Idx)" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Oyuncu</th>
+                                <th>Rank</th>
+                                <th>Sıra</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.PPs}}">
+                                <tr>
+                                    <td>{{item.Ad}}</td>
+                                    <td>{{item.RnkSon}}</td>
+                                    <td>{{item.RnkIdx}}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+</template>

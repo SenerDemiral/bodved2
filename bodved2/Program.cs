@@ -1,6 +1,9 @@
 ﻿using System;
 using Starcounter;
 using BDB2;
+using bodved2.ViewModels;
+using bodved2.Api;
+//using bodved2.Helpers;
 
 namespace bodved2
 {
@@ -8,20 +11,26 @@ namespace bodved2
     {
         static void Main()
         {
-            H.PopPP();
-            H.PopCC();
-            H.PopCT();
-            H.PopCTP();
-            H.PopCET();
-            H.PopMAC();
+            IHandler[] handlers = new IHandler[]
+            {
+                new MainHandlers(),
+                //new ContentHandlers(),
+                //new CommitHooks(),
+                new PartialHandlers()
+            };
 
-            PP.RefreshStat();
-            MAC.RefreshGlobalRank();
+            foreach (IHandler handler in handlers)
+            {
+                handler.Register();
+            }
 
-            MAC.deneme2();
-            //CTP.RefreshSonuc();
-
+            MAC.RefreshSonuc();
+            CET.RefreshSonuc();
+            CT.RefreshSonuc();
             CTP.RefreshSonucNew();
+            PP.RefreshStat();
+
+            MAC.RefreshGlobalRank();
         }
     }
 }

@@ -1,0 +1,16 @@
+{
+  "Html": "/Bodved/viewmodels/CTPsPage.html",
+
+  "CTPs": [
+    {
+      "PPAd": "",
+      "SMT": 0,
+      "SMW": 0,
+      "SML": 0,
+      "SMX": 0,
+      "DMT": 0,
+      "DMW": 0,
+      "DML": 0,
+    }
+  ]
+}

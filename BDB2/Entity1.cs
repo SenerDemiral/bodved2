@@ -145,18 +145,23 @@ namespace BDB2
         public PP K1 { get; set; }            // 1.Kaptan
         public PP K2 { get; set; }
 
+        public int Idx { get; set; }     // Single Mac Total
         public bool IsRun { get; set; }     // Aktif oynuyor mu?
 
         //--------
+        public int SMT => SMW + SML;        // Single Mac Total
         public int SMW { get; set; }        // Single Mac Win
         public int SML { get; set; }        //            Lost
+
+        public int DMT => DMW + DML;    // Single Mac Total
         public int DMW { get; set; }        // Double Mac Win
         public int DML { get; set; }
 
+        public int KF => KW - KL;           //       Fark
         public int KW { get; set; }         // sKor  Win
         public int KL { get; set; }         //       Lost
-        public int KF => KW - KL;           //       Fark
 
+        public int ET => EW + EL + EB + EX;        // Single Mac Total
         public int EW { get; set; }         // Event Win
         public int EL { get; set; }         //       Lost
         public int EB { get; set; }         //       Bereberlik
@@ -182,6 +187,18 @@ namespace BDB2
                 {
                     RefreshSonuc(ct);
                 }
+
+                // Sort for CC
+                Db.TransactAsync(() =>
+                {
+                    cts = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC = ? order by r.PW DESC, r.KF DESC", cc);
+                    int idx = 1;
+                    foreach (var ct in cts)
+                    {
+                        ct.Idx = idx++;
+                    }
+                });
+
             }
             watch.Stop();
             Console.WriteLine($"CT.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");

@@ -1,0 +1,83 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div style="display:grid">
+                <p>{{model.ccAd}}</p>
+                <table class="fixTbl sngLine">
+                    <colgroup>
+                        <col style="width:var(--w-PlyrAd)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                        <col style="width:var(--w-Rnk)" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Team</th>
+
+                            <th>PW</th>
+
+                            <th>KF</th>
+                            <th>KW</th>
+                            <th>KL</th>
+
+                            <th>ET</th>
+                            <th>EW</th>
+                            <th>EL</th>
+                            <th>EB</th>
+                            <th>EX</th>
+
+                            <th>SO</th>
+                            <th>SG</th>
+                            <th>SM</th>
+
+                            <th>DO</th>
+                            <th>DG</th>
+                            <th>DM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template is="dom-repeat" items="{{model.CTs}}">
+                            <tr>
+                                <td>{{item.Ad}}</td>
+
+                                <td>{{item.PW}}</td>
+
+                                <td>{{item.KF}}</td>
+                                <td>{{item.KW}}</td>
+                                <td>{{item.KL}}</td>
+
+                                <td>{{item.ET}}</td>
+                                <td>{{item.EW}}</td>
+                                <td>{{item.EL}}</td>
+                                <td>{{item.EB}}</td>
+                                <td>{{item.EX}}</td>
+
+                                <td>{{item.SMT}}</td>
+                                <td>{{item.SMW}}</td>
+                                <td>{{item.SML}}</td>
+
+                                <td>{{item.DMT}}</td>
+                                <td>{{item.DMW}}</td>
+                                <td>{{item.DML}}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+    </dom-bind>
+</template>

@@ -181,6 +181,19 @@ message CETProxy {
 	string Drm  = 9;
 	string Yer  = 10;
 	string Info  = 11;
+
+	int32 HSSW = 12;
+	int32 GSSW = 13; 
+	int32 HDSW = 14; 
+	int32 GDSW = 15; 
+	
+	int32 HSMW = 16; 
+	int32 GSMW = 17; 
+	int32 HDMW = 18; 
+	int32 GDMW = 19; 
+	
+	int32 HPW  = 20;
+	int32 GPW  = 21;
 }
 
 // Mac

@@ -1,0 +1,17 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="stylesheet" href="/sys/bodved2.css">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="grid">
+                <header class="grid_header">
+                    <p>Header</p>
+                </header>
+                <main class="grid_main">
+                    <starcounter-include view-model="{{model.CurrentPage}}"></starcounter-include>
+                </main>
+            </div>
+        </template>
+    </dom-bind>
+</template>

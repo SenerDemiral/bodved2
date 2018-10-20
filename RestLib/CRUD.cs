@@ -54,40 +54,43 @@ namespace RestLib {
             "DgoGUm93VXNyGAMgASgEEg4KBlJvd0tleRgEIAEoBBIKCgJDQxgFIAEoBBIK",
             "CgJDVBgGIAEoBBIKCgJQUBgHIAEoBBILCgNJZHgYCCABKAUSDQoFSXNSdW4Y",
             "CSABKAgSDgoGUm5rQmFzGAogASgFEg4KBlJua0JpdBgLIAEoBRIMCgRJbmZv",
-            "GAwgASgJIqUBCghDRVRQcm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJy",
+            "GAwgASgJIq8CCghDRVRQcm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJy",
             "GAIgASgJEg4KBlJvd1VzchgDIAEoBBIOCgZSb3dLZXkYBCABKAQSCgoCQ0MY",
             "BSABKAQSCwoDSENUGAYgASgEEgsKA0dDVBgHIAEoBBILCgNUcmgYCCABKAMS",
-            "CwoDRHJtGAkgASgJEgsKA1llchgKIAEoCRIMCgRJbmZvGAsgASgJIrkECghN",
-            "QUNQcm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJyGAIgASgJEg4KBlJv",
-            "d1VzchgDIAEoBBIOCgZSb3dLZXkYBCABKAQSCgoCQ0MYBSABKAQSCwoDQ0VC",
-            "GAYgASgEEgwKBEhQUDEYByABKAQSDAoESFBQMhgIIAEoBBIMCgRHUFAxGAkg",
-            "ASgEEgwKBEdQUDIYCiABKAQSCwoDU29EGAsgASgJEgsKA0lkeBgMIAEoBRIL",
-            "CgNUcmgYDSABKAMSCwoDRHJtGA4gASgJEgsKA1llchgPIAEoCRINCgVIYWtl",
-            "bRgQIAEoCRIMCgRJbmZvGBEgASgJEgsKA0gxVxgSIAEoBRILCgNIMlcYEyAB",
-            "KAUSCwoDSDNXGBQgASgFEgsKA0g0VxgVIAEoBRILCgNINVcYFiABKAUSCwoD",
-            "SDZXGBcgASgFEgsKA0g3VxgYIAEoBRILCgNHMVcYGSABKAUSCwoDRzJXGBog",
-            "ASgFEgsKA0czVxgbIAEoBRILCgNHNFcYHCABKAUSCwoDRzVXGB0gASgFEgsK",
-            "A0c2VxgeIAEoBRILCgNHN1cYHyABKAUSCwoDSFNXGCAgASgFEgsKA0dTVxgh",
-            "IAEoBRILCgNITVcYIiABKAUSCwoDR01XGCMgASgFEgsKA0hYVxgkIAEoBRIL",
-            "CgNHWFcYJSABKAUSDAoESFJuaxgmIAEoBRIOCgZIUm5rUFgYJyABKAUSDAoE",
-            "R1JuaxgoIAEoBRIOCgZHUm5rUFgYKSABKAUy8AUKBUNSVURzEj8KDFJlZnJl",
-            "c2hTb251YxIRLlJlc3RMaWIuUXJ5UHJveHkaGi5SZXN0TGliLlJlZnJlc2hT",
-            "b251Y1Byb3h5IgASMQoGUFBGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoQLlJl",
-            "c3RMaWIuUFBQcm94eSIAMAESMAoIUFBVcGRhdGUSEC5SZXN0TGliLlBQUHJv",
-            "eHkaEC5SZXN0TGliLlBQUHJveHkiABIxCgZDQ0ZpbGwSES5SZXN0TGliLlFy",
-            "eVByb3h5GhAuUmVzdExpYi5DQ1Byb3h5IgAwARIwCghDQ1VwZGF0ZRIQLlJl",
-            "c3RMaWIuQ0NQcm94eRoQLlJlc3RMaWIuQ0NQcm94eSIAEjEKBkNURmlsbBIR",
-            "LlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkNUUHJveHkiADABEjAKCENU",
-            "VXBkYXRlEhAuUmVzdExpYi5DVFByb3h5GhAuUmVzdExpYi5DVFByb3h5IgAS",
-            "MwoHQ1RQRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaES5SZXN0TGliLkNUUFBy",
-            "b3h5IgAwARIzCglDVFBVcGRhdGUSES5SZXN0TGliLkNUUFByb3h5GhEuUmVz",
-            "dExpYi5DVFBQcm94eSIAEjMKB0NFVEZpbGwSES5SZXN0TGliLlFyeVByb3h5",
-            "GhEuUmVzdExpYi5DRVRQcm94eSIAMAESMwoJQ0VUVXBkYXRlEhEuUmVzdExp",
-            "Yi5DRVRQcm94eRoRLlJlc3RMaWIuQ0VUUHJveHkiABIzCgdNQUNGaWxsEhEu",
-            "UmVzdExpYi5RcnlQcm94eRoRLlJlc3RMaWIuTUFDUHJveHkiADABEjMKCU1B",
-            "Q1VwZGF0ZRIRLlJlc3RMaWIuTUFDUHJveHkaES5SZXN0TGliLk1BQ1Byb3h5",
-            "IgASOQoIUFBsb29rVXASES5SZXN0TGliLlFyeVByb3h5GhYuUmVzdExpYi5Q",
-            "UGxvb2tVcFByb3h5IgAwAWIGcHJvdG8z"));
+            "CwoDRHJtGAkgASgJEgsKA1llchgKIAEoCRIMCgRJbmZvGAsgASgJEgwKBEhT",
+            "U1cYDCABKAUSDAoER1NTVxgNIAEoBRIMCgRIRFNXGA4gASgFEgwKBEdEU1cY",
+            "DyABKAUSDAoESFNNVxgQIAEoBRIMCgRHU01XGBEgASgFEgwKBEhETVcYEiAB",
+            "KAUSDAoER0RNVxgTIAEoBRILCgNIUFcYFCABKAUSCwoDR1BXGBUgASgFIrkE",
+            "CghNQUNQcm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJyGAIgASgJEg4K",
+            "BlJvd1VzchgDIAEoBBIOCgZSb3dLZXkYBCABKAQSCgoCQ0MYBSABKAQSCwoD",
+            "Q0VCGAYgASgEEgwKBEhQUDEYByABKAQSDAoESFBQMhgIIAEoBBIMCgRHUFAx",
+            "GAkgASgEEgwKBEdQUDIYCiABKAQSCwoDU29EGAsgASgJEgsKA0lkeBgMIAEo",
+            "BRILCgNUcmgYDSABKAMSCwoDRHJtGA4gASgJEgsKA1llchgPIAEoCRINCgVI",
+            "YWtlbRgQIAEoCRIMCgRJbmZvGBEgASgJEgsKA0gxVxgSIAEoBRILCgNIMlcY",
+            "EyABKAUSCwoDSDNXGBQgASgFEgsKA0g0VxgVIAEoBRILCgNINVcYFiABKAUS",
+            "CwoDSDZXGBcgASgFEgsKA0g3VxgYIAEoBRILCgNHMVcYGSABKAUSCwoDRzJX",
+            "GBogASgFEgsKA0czVxgbIAEoBRILCgNHNFcYHCABKAUSCwoDRzVXGB0gASgF",
+            "EgsKA0c2VxgeIAEoBRILCgNHN1cYHyABKAUSCwoDSFNXGCAgASgFEgsKA0dT",
+            "VxghIAEoBRILCgNITVcYIiABKAUSCwoDR01XGCMgASgFEgsKA0hYVxgkIAEo",
+            "BRILCgNHWFcYJSABKAUSDAoESFJuaxgmIAEoBRIOCgZIUm5rUFgYJyABKAUS",
+            "DAoER1JuaxgoIAEoBRIOCgZHUm5rUFgYKSABKAUy8AUKBUNSVURzEj8KDFJl",
+            "ZnJlc2hTb251YxIRLlJlc3RMaWIuUXJ5UHJveHkaGi5SZXN0TGliLlJlZnJl",
+            "c2hTb251Y1Byb3h5IgASMQoGUFBGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoQ",
+            "LlJlc3RMaWIuUFBQcm94eSIAMAESMAoIUFBVcGRhdGUSEC5SZXN0TGliLlBQ",
+            "UHJveHkaEC5SZXN0TGliLlBQUHJveHkiABIxCgZDQ0ZpbGwSES5SZXN0TGli",
+            "LlFyeVByb3h5GhAuUmVzdExpYi5DQ1Byb3h5IgAwARIwCghDQ1VwZGF0ZRIQ",
+            "LlJlc3RMaWIuQ0NQcm94eRoQLlJlc3RMaWIuQ0NQcm94eSIAEjEKBkNURmls",
+            "bBIRLlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkNUUHJveHkiADABEjAK",
+            "CENUVXBkYXRlEhAuUmVzdExpYi5DVFByb3h5GhAuUmVzdExpYi5DVFByb3h5",
+            "IgASMwoHQ1RQRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaES5SZXN0TGliLkNU",
+            "UFByb3h5IgAwARIzCglDVFBVcGRhdGUSES5SZXN0TGliLkNUUFByb3h5GhEu",
+            "UmVzdExpYi5DVFBQcm94eSIAEjMKB0NFVEZpbGwSES5SZXN0TGliLlFyeVBy",
+            "b3h5GhEuUmVzdExpYi5DRVRQcm94eSIAMAESMwoJQ0VUVXBkYXRlEhEuUmVz",
+            "dExpYi5DRVRQcm94eRoRLlJlc3RMaWIuQ0VUUHJveHkiABIzCgdNQUNGaWxs",
+            "EhEuUmVzdExpYi5RcnlQcm94eRoRLlJlc3RMaWIuTUFDUHJveHkiADABEjMK",
+            "CU1BQ1VwZGF0ZRIRLlJlc3RMaWIuTUFDUHJveHkaES5SZXN0TGliLk1BQ1By",
+            "b3h5IgASOQoIUFBsb29rVXASES5SZXN0TGliLlFyeVByb3h5GhYuUmVzdExp",
+            "Yi5QUGxvb2tVcFByb3h5IgAwAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -98,7 +101,7 @@ namespace RestLib {
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CCProxy), global::RestLib.CCProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Ad", "Skl", "Grp", "Info", "IsRun", "IsRnkd", "TNSM", "TNDM", "TNSS", "TNDS", "TSMK", "TDMK", "TEGP", "TEMP", "TEBP", "TEXP" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTProxy), global::RestLib.CTProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "K1", "K2", "Ad", "Info", "Adres", "IsRun", "SMW", "SML", "DMW", "DML", "KW", "KL", "KF", "EW", "EL", "EB", "EX", "PW" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTPProxy), global::RestLib.CTPProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "CT", "PP", "Idx", "IsRun", "RnkBas", "RnkBit", "Info" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CETProxy), global::RestLib.CETProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HCT", "GCT", "Trh", "Drm", "Yer", "Info" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CETProxy), global::RestLib.CETProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HCT", "GCT", "Trh", "Drm", "Yer", "Info", "HSSW", "GSSW", "HDSW", "GDSW", "HSMW", "GSMW", "HDMW", "GDMW", "HPW", "GPW" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.MACProxy), global::RestLib.MACProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "CEB", "HPP1", "HPP2", "GPP1", "GPP2", "SoD", "Idx", "Trh", "Drm", "Yer", "Hakem", "Info", "H1W", "H2W", "H3W", "H4W", "H5W", "H6W", "H7W", "G1W", "G2W", "G3W", "G4W", "G5W", "G6W", "G7W", "HSW", "GSW", "HMW", "GMW", "HXW", "GXW", "HRnk", "HRnkPX", "GRnk", "GRnkPX" }, null, null, null)
           }));
     }
@@ -3331,6 +3334,16 @@ namespace RestLib {
       drm_ = other.drm_;
       yer_ = other.yer_;
       info_ = other.info_;
+      hSSW_ = other.hSSW_;
+      gSSW_ = other.gSSW_;
+      hDSW_ = other.hDSW_;
+      gDSW_ = other.gDSW_;
+      hSMW_ = other.hSMW_;
+      gSMW_ = other.gSMW_;
+      hDMW_ = other.hDMW_;
+      gDMW_ = other.gDMW_;
+      hPW_ = other.hPW_;
+      gPW_ = other.gPW_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3460,6 +3473,116 @@ namespace RestLib {
       }
     }
 
+    /// <summary>Field number for the "HSSW" field.</summary>
+    public const int HSSWFieldNumber = 12;
+    private int hSSW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int HSSW {
+      get { return hSSW_; }
+      set {
+        hSSW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GSSW" field.</summary>
+    public const int GSSWFieldNumber = 13;
+    private int gSSW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GSSW {
+      get { return gSSW_; }
+      set {
+        gSSW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HDSW" field.</summary>
+    public const int HDSWFieldNumber = 14;
+    private int hDSW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int HDSW {
+      get { return hDSW_; }
+      set {
+        hDSW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GDSW" field.</summary>
+    public const int GDSWFieldNumber = 15;
+    private int gDSW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GDSW {
+      get { return gDSW_; }
+      set {
+        gDSW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HSMW" field.</summary>
+    public const int HSMWFieldNumber = 16;
+    private int hSMW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int HSMW {
+      get { return hSMW_; }
+      set {
+        hSMW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GSMW" field.</summary>
+    public const int GSMWFieldNumber = 17;
+    private int gSMW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GSMW {
+      get { return gSMW_; }
+      set {
+        gSMW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HDMW" field.</summary>
+    public const int HDMWFieldNumber = 18;
+    private int hDMW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int HDMW {
+      get { return hDMW_; }
+      set {
+        hDMW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GDMW" field.</summary>
+    public const int GDMWFieldNumber = 19;
+    private int gDMW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GDMW {
+      get { return gDMW_; }
+      set {
+        gDMW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HPW" field.</summary>
+    public const int HPWFieldNumber = 20;
+    private int hPW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int HPW {
+      get { return hPW_; }
+      set {
+        hPW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GPW" field.</summary>
+    public const int GPWFieldNumber = 21;
+    private int gPW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GPW {
+      get { return gPW_; }
+      set {
+        gPW_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as CETProxy);
@@ -3484,6 +3607,16 @@ namespace RestLib {
       if (Drm != other.Drm) return false;
       if (Yer != other.Yer) return false;
       if (Info != other.Info) return false;
+      if (HSSW != other.HSSW) return false;
+      if (GSSW != other.GSSW) return false;
+      if (HDSW != other.HDSW) return false;
+      if (GDSW != other.GDSW) return false;
+      if (HSMW != other.HSMW) return false;
+      if (GSMW != other.GSMW) return false;
+      if (HDMW != other.HDMW) return false;
+      if (GDMW != other.GDMW) return false;
+      if (HPW != other.HPW) return false;
+      if (GPW != other.GPW) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3501,6 +3634,16 @@ namespace RestLib {
       if (Drm.Length != 0) hash ^= Drm.GetHashCode();
       if (Yer.Length != 0) hash ^= Yer.GetHashCode();
       if (Info.Length != 0) hash ^= Info.GetHashCode();
+      if (HSSW != 0) hash ^= HSSW.GetHashCode();
+      if (GSSW != 0) hash ^= GSSW.GetHashCode();
+      if (HDSW != 0) hash ^= HDSW.GetHashCode();
+      if (GDSW != 0) hash ^= GDSW.GetHashCode();
+      if (HSMW != 0) hash ^= HSMW.GetHashCode();
+      if (GSMW != 0) hash ^= GSMW.GetHashCode();
+      if (HDMW != 0) hash ^= HDMW.GetHashCode();
+      if (GDMW != 0) hash ^= GDMW.GetHashCode();
+      if (HPW != 0) hash ^= HPW.GetHashCode();
+      if (GPW != 0) hash ^= GPW.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3558,6 +3701,46 @@ namespace RestLib {
         output.WriteRawTag(90);
         output.WriteString(Info);
       }
+      if (HSSW != 0) {
+        output.WriteRawTag(96);
+        output.WriteInt32(HSSW);
+      }
+      if (GSSW != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(GSSW);
+      }
+      if (HDSW != 0) {
+        output.WriteRawTag(112);
+        output.WriteInt32(HDSW);
+      }
+      if (GDSW != 0) {
+        output.WriteRawTag(120);
+        output.WriteInt32(GDSW);
+      }
+      if (HSMW != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(HSMW);
+      }
+      if (GSMW != 0) {
+        output.WriteRawTag(136, 1);
+        output.WriteInt32(GSMW);
+      }
+      if (HDMW != 0) {
+        output.WriteRawTag(144, 1);
+        output.WriteInt32(HDMW);
+      }
+      if (GDMW != 0) {
+        output.WriteRawTag(152, 1);
+        output.WriteInt32(GDMW);
+      }
+      if (HPW != 0) {
+        output.WriteRawTag(160, 1);
+        output.WriteInt32(HPW);
+      }
+      if (GPW != 0) {
+        output.WriteRawTag(168, 1);
+        output.WriteInt32(GPW);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3598,6 +3781,36 @@ namespace RestLib {
       }
       if (Info.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Info);
+      }
+      if (HSSW != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(HSSW);
+      }
+      if (GSSW != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(GSSW);
+      }
+      if (HDSW != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(HDSW);
+      }
+      if (GDSW != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(GDSW);
+      }
+      if (HSMW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(HSMW);
+      }
+      if (GSMW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(GSMW);
+      }
+      if (HDMW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(HDMW);
+      }
+      if (GDMW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(GDMW);
+      }
+      if (HPW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(HPW);
+      }
+      if (GPW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(GPW);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3642,6 +3855,36 @@ namespace RestLib {
       }
       if (other.Info.Length != 0) {
         Info = other.Info;
+      }
+      if (other.HSSW != 0) {
+        HSSW = other.HSSW;
+      }
+      if (other.GSSW != 0) {
+        GSSW = other.GSSW;
+      }
+      if (other.HDSW != 0) {
+        HDSW = other.HDSW;
+      }
+      if (other.GDSW != 0) {
+        GDSW = other.GDSW;
+      }
+      if (other.HSMW != 0) {
+        HSMW = other.HSMW;
+      }
+      if (other.GSMW != 0) {
+        GSMW = other.GSMW;
+      }
+      if (other.HDMW != 0) {
+        HDMW = other.HDMW;
+      }
+      if (other.GDMW != 0) {
+        GDMW = other.GDMW;
+      }
+      if (other.HPW != 0) {
+        HPW = other.HPW;
+      }
+      if (other.GPW != 0) {
+        GPW = other.GPW;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3696,6 +3939,46 @@ namespace RestLib {
           }
           case 90: {
             Info = input.ReadString();
+            break;
+          }
+          case 96: {
+            HSSW = input.ReadInt32();
+            break;
+          }
+          case 104: {
+            GSSW = input.ReadInt32();
+            break;
+          }
+          case 112: {
+            HDSW = input.ReadInt32();
+            break;
+          }
+          case 120: {
+            GDSW = input.ReadInt32();
+            break;
+          }
+          case 128: {
+            HSMW = input.ReadInt32();
+            break;
+          }
+          case 136: {
+            GSMW = input.ReadInt32();
+            break;
+          }
+          case 144: {
+            HDMW = input.ReadInt32();
+            break;
+          }
+          case 152: {
+            GDMW = input.ReadInt32();
+            break;
+          }
+          case 160: {
+            HPW = input.ReadInt32();
+            break;
+          }
+          case 168: {
+            GPW = input.ReadInt32();
             break;
           }
         }

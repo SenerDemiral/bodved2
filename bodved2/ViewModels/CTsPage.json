@@ -1,0 +1,30 @@
+{
+  "Html": "/Bodved/viewmodels/CTsPage.html",
+  "ccAd": "",
+
+  "CTs": [
+    {
+      "Ad": "",
+
+      "PW": 0,
+
+      "KF": 0,
+      "KW": 0,
+      "KL": 0,
+
+      "ET": 0,
+      "EW": 0,
+      "EL": 0,
+      "EB": 0,
+      "EX": 0,
+
+      "SMT": 0,
+      "SMW": 0,
+      "SML": 0,
+
+      "DMT": 0,
+      "DMW": 0,
+      "DML": 0
+    }
+  ]
+}

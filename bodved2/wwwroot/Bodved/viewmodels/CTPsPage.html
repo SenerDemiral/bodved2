@@ -1,0 +1,46 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <table class="fixTbl sngLine">
+                <colgroup>
+                    <col style="width:var(--w-PlyrAd)" />
+                    <col style="width:var(--w-Rnk)" />
+                    <col style="width:var(--w-Rnk)" />
+                    <col style="width:var(--w-Rnk)" />
+                    <col style="width:var(--w-Rnk)" />
+                    <col style="width:var(--w-Rnk)" />
+                    <col style="width:var(--w-Rnk)" />
+                    <col style="width:var(--w-Rnk)" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Oyuncu</th>
+                        <th>SO</th>
+                        <th>SG</th>
+                        <th>SM</th>
+                        <th>SX</th>
+                        <th>DO</th>
+                        <th>DG</th>
+                        <th>DM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template is="dom-repeat" items="{{model.CTPs}}">
+                        <tr>
+                            <td>{{item.PPAd}}</td>
+                            <td>{{item.SMT}}</td>
+                            <td>{{item.SMW}}</td>
+                            <td>{{item.SML}}</td>
+                            <td>{{item.SMX}}</td>
+                            <td>{{item.DMT}}</td>
+                            <td>{{item.DMW}}</td>
+                            <td>{{item.DML}}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+    </dom-bind>
+</template>
