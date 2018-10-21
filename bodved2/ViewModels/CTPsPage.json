@@ -1,16 +1,21 @@
 {
   "Html": "/Bodved/viewmodels/CTPsPage.html",
-
+  "CTAd": "",
+  
   "CTPs": [
     {
       "PPAd": "",
+      "IsRun": true,
+      "RnkBas": 0,
+      "RnkBit": 0,
+      "Idx": 0,
       "SMT": 0,
       "SMW": 0,
       "SML": 0,
       "SMX": 0,
       "DMT": 0,
       "DMW": 0,
-      "DML": 0,
+      "DML": 0
     }
   ]
 }

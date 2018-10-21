@@ -621,6 +621,22 @@ namespace BDB2
                 }
             });
         }
+
+        public static void UpdateRnkBas()
+        {
+            // PP.RnkSon -> CTP.RnkBas 
+            Db.TransactAsync(() =>
+            {
+                var ctps = Db.SQL<CTP>("select r from CTP r");
+                foreach(var ctp in ctps)
+                {
+                    ctp.IsRun = ctp.PP.IsRun;
+                    ctp.RnkBas = ctp.PP.RnkIlk;
+                    ctp.RnkBit = ctp.PP.RnkSon;
+                }
+
+            });
+        }
      }
 
     [Database]
@@ -660,6 +676,15 @@ namespace BDB2
         public int HPW { get; set; }         // Home Kazandigi Puan
         public int GPW { get; set; }
 
+        public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
+        public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
+
+        public string HK => $"{HSMW}S + {HDMW}D -> {HKW}";
+        public string GK => $"{GSMW}S + {GDMW}D -> {GKW}";
+
+        public string HR => $"{HPW}/{HKW}:{HSMW}/{HDMW}";
+        public string GR => $"{GPW}/{GKW}:{GSMW}/{GDMW}";
+
     }
 
     [Database]
@@ -667,6 +692,11 @@ namespace BDB2
     {
         public CT HCT { get; set; }     // Home Takim
         public CT GCT { get; set; }     // Guest Takim
+
+        public string HCTAd => HCT?.Ad;
+        public string GCTAd => GCT?.Ad;
+        public string Tarih => $"{Trh:dd.MM.yy ddd}";
+
 
         public static void RefreshSonuc()
         {
@@ -854,6 +884,12 @@ namespace BDB2
         public int HRnkPX { get; set; }     // Rank Point Exchange
         public int GRnk { get; set; }
         public int GRnkPX { get; set; }
+
+        public string HPP1Ad => HPP1?.Ad;
+        public string HPP2Ad => HPP2?.Ad;
+        public string GPP1Ad => GPP1?.Ad;
+        public string GPP2Ad => GPP2?.Ad;
+
 
         public static void RefreshSonuc()
         {

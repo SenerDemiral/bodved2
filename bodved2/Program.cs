@@ -31,6 +31,9 @@ namespace bodved2
             PP.RefreshStat();
 
             MAC.RefreshGlobalRank();
+
+            //CTP.UpdateRnkBas(); //Yeni doneme basinda (bodved2 ye gecis)
+            //CTP.UpdateRnkBit(); //Yeni doneme bitiminde
         }
     }
 }

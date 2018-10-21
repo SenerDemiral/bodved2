@@ -29,8 +29,8 @@ namespace bodved2.Api
             {
                 var page = new CTsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.ccAd = $"{CC.Ad} Takım Puanları"; 
-                page.CTs.Data = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC.ObjectNo = ? order by r.Idx", cc);
+                page.CCAd = $"{CC.Ad} Takım Puanları"; 
+                page.CTs.Data = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC = ? order by r.Idx", CC);
                 return page;
 
             });
@@ -38,10 +38,32 @@ namespace bodved2.Api
             Handle.GET("/bodved/partials/CTPs/{?}", (ulong ct) =>
             {
                 var page = new CTPsPage();
-                page.CTPs.Data = Db.SQL<CTP>("SELECT r FROM CTP r WHERE r.CT.ObjectNo = ?", ct);
+                CT CT = Db.FromId<CT>(ct);
+                page.CTAd = $"{CT.Ad} Takım Oyuncuları";
+                page.CTPs.Data = Db.SQL<CTP>("SELECT r FROM CTP r WHERE r.CT.ObjectNo = ? order by r.Idx", ct);
                 return page;
             });
 
+            Handle.GET("/bodved/partials/CETs/{?}", (ulong cc) =>
+            {
+                var page = new CETsPage();
+                CC CC = Db.FromId<CC>(cc);
+                page.CCAd = $"{CC.Ad} Fikstür";
+                page.CETs.Data = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC = ? order by r.Trh", CC);
+                return page;
+
+            });
+
+            Handle.GET("/bodved/partials/CET2MACs/{?}", (ulong cet) =>
+            {
+                var page = new CET2MACsPage();
+                CET CET = Db.FromId<CET>(cet);
+                page.HCTAd = $"{CET.HCT.Ad}";
+                page.GCTAd = $"{CET.GCT.Ad}";
+                page.Trh = $"{CET.Trh}";
+                page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");
+                return page;
+            });
         }
     }
 }

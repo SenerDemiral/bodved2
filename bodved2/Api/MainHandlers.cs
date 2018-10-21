@@ -81,6 +81,29 @@ namespace bodved2.Api
                 }
                 return master;
             });
+
+            Handle.GET("/bodved/CETs/{?}", (ulong cc) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is CTsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CETs/{cc}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
+            Handle.GET("/bodved/CET2MACs/{?}", (ulong cet) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is CET2MACsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CET2MACs/{cet}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
         }
 
         private static Json GetLauncherPage(string url, bool dbScope = false)

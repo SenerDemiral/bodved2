@@ -5,7 +5,9 @@
         <template is="dom-bind">
             <div class="gridTbl">
                 <div class="gridTbl_header">
-                    <div>[[model.CTAd]]</div>
+                    <div>[[model.HCTAd]]</div>
+                    <div>[[model.GCTAd]]</div>
+                    <div>[[model.Trh]]</div>
                 </div>
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
@@ -40,26 +42,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <template is="dom-repeat" items="{{model.CTPs}}">
+                            <template is="dom-repeat" items="{{model.Sngls}}">
                                 <tr>
-                                    <td class="colPlyr">{{item.PPAd}}</td>
-                                    <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
-                                    <td>{{item.RnkBas}}</td>
-                                    <td>{{item.RnkBit}}</td>
+                                    <td class="colPlyr">{{item.HPP1Ad}}</td>
+                                    <td class="colPlyr">{{item.GPP1Ad}}</td>
+                                    <td>{{item.SoD}}</td>
                                     <td>{{item.Idx}}</td>
-                                    <td>{{item.SMT}}</td>
-                                    <td>{{item.SMW}}</td>
-                                    <td>{{item.SML}}</td>
-                                    <td>{{item.SMX}}</td>
-                                    <td>{{item.DMT}}</td>
-                                    <td>{{item.DMW}}</td>
-                                    <td>{{item.DML}}</td>
+                                    <td>{{item.H1W}}</td>
                                 </tr>
                             </template>
                         </tbody>
                     </table>
                 </div>
-             </div>
+            </div>
         </template>
     </dom-bind>
 </template>

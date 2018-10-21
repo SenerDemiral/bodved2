@@ -1,0 +1,46 @@
+{
+  "Html": "/Bodved/viewmodels/CET2MACsPage.html",
+  "CEToNo": 0,
+  "HCTAd": "",
+  "GCTAd": "",
+  "Trh": "",
+  "Info": "",
+
+  "Sngls": [
+    {
+      "HPP1Ad": "",
+      "GPP1Ad": "",
+      "SoD": "",
+      "Idx": 0,
+      "H1W": 0,
+      "H2W": 0,
+      "H3W": 0,
+      "H4W": 0,
+      "H5W": 0,
+      "H6W": 0,
+      "H7W": 0,
+      "G1W": 0,
+      "G2W": 0,
+      "G3W": 0,
+      "G4W": 0,
+      "G5W": 0,
+      "G6W": 0,
+      "G7W": 0,
+
+      "HSW": 0,
+      "GSW": 0,
+      "HMW": 0,
+      "GMW": 0
+    }
+  ],
+
+  "Dobls": [
+    {
+      "HPP1Ad": "",
+      "HPP2Ad": "",
+      "GPP1Ad": "",
+      "GPP2Ad": ""
+
+    }
+  ]
+}

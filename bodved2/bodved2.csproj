@@ -58,6 +58,12 @@
     <Compile Include="ViewModels\CCsPage.json.cs">
       <DependentUpon>CCsPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CET2MACsPage.json.cs">
+      <DependentUpon>CET2MACsPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CETsPage.json.cs">
+      <DependentUpon>CETsPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CTPsPage.json.cs">
       <DependentUpon>CTPsPage.json</DependentUpon>
     </Compile>
@@ -101,6 +107,12 @@
     <TypedJSON Include="ViewModels\CTsPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <TypedJSON Include="ViewModels\CET2MACsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\CETsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\Bodved\viewmodels\MasterPage.html" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +128,8 @@
     <None Include="wwwroot\Bodved\viewmodels\PPsPage.html" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="wwwroot\Bodved\viewmodels\CET2MACsPage.html" />
+    <None Include="wwwroot\Bodved\viewmodels\CETsPage.html" />
     <Content Include="wwwroot\sys\app-shell\app-shell.html" />
     <Content Include="wwwroot\sys\bodved.css" />
     <Content Include="wwwroot\sys\bodved2.css" />
