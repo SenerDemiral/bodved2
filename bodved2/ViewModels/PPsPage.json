@@ -3,8 +3,26 @@
   "PPs": [
     {
       "Ad": "",
+      "RnkBaz": 0,
       "RnkSon": 0,
-      "RnkIdx": 0
+      "RnkIdx": 0,
+
+      "SST": 0,
+      "SSW": 0,
+      "SSL": 0,
+
+      "SMT": 0,
+      "SMW": 0,
+      "SML": 0,
+      "SMX": 0,
+
+      "DST": 0,
+      "DSW": 0,
+      "DSL": 0,
+
+      "DMT": 0,
+      "DMW": 0,
+      "DML": 0
     }
   ]
 }

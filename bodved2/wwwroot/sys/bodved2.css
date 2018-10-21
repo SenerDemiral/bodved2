@@ -1,12 +1,20 @@
 ﻿:root {
-    --w-PlyrAd: 10rem;
+    --w-Team: 8rem;
+    --w-Plyr: 10rem;
     --w-Rnk: 4rem;
     --w-Idx: 3rem;
+    --w-Skr: 4rem;
+    --w-Snc: 3rem;
+    --w-Mac: 3rem;
+    --w-Evn: 3rem;
     --g-Grd: 5px;
     --h-GrdHdr: 60px;
     --h-GrdMain: calc(100vh - calc(var(--h-GrdHdr) + var(--g-Grd) + 5px));
-    --h-GrdTblHdr: 30px;
-    --h-GrdTblMain: calc(var(--h-GrdMain) - var(--h-GrdTblHdr) - var(--g-Grd));
+    --h-GrdTblHdr: 40px;
+    --h-GrdTblMain: calc(var(--h-GrdMain) - var(--h-GrdTblHdr) - 10px);
+    --h-GrdTbl2Hdr: 40px;
+    --h-GrdTbl2Ftr: 40px;
+    --h-GrdTbl2Main: calc(var(--h-GrdMain) - var(--h-GrdTblHdr) - var(--h-GrdTblFtr) - var(--g-Grd) - 5px);
 }
 
 body {
@@ -21,7 +29,7 @@ body {
     grid-template-rows: var(--h-GrdHdr) var(--h-GrdMain); /*75px calc(100vh - 80px);*/
     grid-gap: var(--g-Grd);
 }
-
+/*
 .grid > * {
     display: grid;
 }
@@ -30,8 +38,14 @@ body {
     justify-self: center;
     align-self: center;
  }
-
+    */
 .grid_header {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    overflow-x: auto;
     background-color: #FEBAC5;
     grid-area: header;
 }
@@ -57,8 +71,6 @@ body {
     grid-area: footer;
 }
 
-
-
 .gridTbl {
     display: grid;
     grid-template-areas: "headerTbl" "mainTbl";
@@ -66,26 +78,59 @@ body {
     grid-template-rows: var(--h-GrdTblHdr) var(--h-GrdTblMain); /*75px calc(100vh - 80px);*/
     grid-gap: var(--g-Grd);
 }
-
-.gridTbl > * {
-    display: grid;
-}
-.gridTbl p {
-    justify-self: center;
-    align-self: center;
-}
-
 .gridTbl_header {
-    background-color: #FEBAC5;
+    background-color: #C2EAE9;
     grid-area: headerTbl;
+    display: grid;
+    justify-items: left;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    margin: 0 5px;
 }
-
 .gridTbl_main {
     /*background-color: #C2EAE9;*/
     grid-area: mainTbl;
     overflow: auto;
 }
+/*
+.gridTbl > * {
+    display: grid;
+}
+*/
 
+.gridTbl2 {
+    display: grid;
+    grid-template-areas: "headerTbl2" "mainTbl2" "footerTbl2";
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--h-GrdTblHdr) var(--h-GrdTblMain) var(--h-GrdTblFtr);
+    grid-gap: var(--g-Grd);
+}
+
+.gridTbl2 > * {
+    display: grid;
+}
+
+.gridTbl2 p {
+    justify-self: center;
+    align-self: center;
+}
+
+.gridTbl2_header {
+    background-color: #FEBAC5;
+    grid-area: headerTbl2;
+}
+
+.gridTbl2_main {
+    /*background-color: #C2EAE9;*/
+    grid-area: mainTbl2;
+    overflow: auto;
+}
+
+.gridTbl2_footer {
+    background-color: yellow;
+    grid-area: footerTbl2;
+}
 
 
 .fixTbl {
@@ -101,6 +146,8 @@ body {
 
     .fixTbl, th, td {
         padding: 0 5px;
+        text-align: center;
+        border: .1rem solid #f7e6e6;
     }
 
     .fixTbl td {
@@ -111,4 +158,53 @@ body {
 
 .sngLine {
     white-space: nowrap;
+}
+
+.colTeam {
+    width: var(--w-Team);
+    text-align: left;
+}
+
+.colPlyr {
+    width: var(--w-Plyr);
+    text-align: left;
+}
+
+.colRnkBaz {
+    width: var(--w-Rnk);
+    /*background-color: #f6e7ea;*/
+}
+
+.colRnkSon {
+    width: var(--w-Rnk);
+    /*background-color: #f6e7ea;*/
+}
+
+.colRnkIdx {
+    width: var(--w-Idx);
+    /*background-color: yellow;*/
+}
+
+.colSng {
+    width: var(--w-Snc);
+    /*background-color: powderblue;*/
+}
+
+.colDbl {
+    width: var(--w-Snc);
+    /*background-color: bisque;*/
+}
+
+.colSet {
+    width: var(--w-Snc);
+    /*background-color: #e0fcb4;*/
+}
+
+.colMac {
+    width: var(--w-Snc);
+    /*background-color: #bdd598;*/
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2
 }

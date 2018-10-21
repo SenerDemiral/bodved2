@@ -29,7 +29,7 @@ namespace bodved2.Api
             {
                 var page = new CTsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.ccAd = CC.Ad; 
+                page.ccAd = $"{CC.Ad} Takım Puanları"; 
                 page.CTs.Data = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC.ObjectNo = ? order by r.Idx", cc);
                 return page;
 
