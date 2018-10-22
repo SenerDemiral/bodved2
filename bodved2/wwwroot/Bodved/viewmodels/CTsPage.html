@@ -10,13 +10,14 @@
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
                         <colgroup>
+                            <col style="width:var(--w-Idx)" />
                             <col style="width:var(--w-Team)" />
                             <col style="width:var(--w-Rnk)" />
 
                             <col style="width:var(--w-Skr)" />
                             <col style="width:var(--w-Skr)" />
                             <col style="width:var(--w-Skr)" />
-                            
+
                             <col style="width:var(--w-Evn)" />
                             <col style="width:var(--w-Evn)" />
                             <col style="width:var(--w-Evn)" />
@@ -32,6 +33,7 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th rowspan="3">Sıra</th>
                                 <th rowspan="3">Oyuncu</th>
                                 <th rowspan="3">Puan</th>
                                 <th rowspan="2" colspan="3">Skor</th>
@@ -65,6 +67,7 @@
                         <tbody>
                             <template is="dom-repeat" items="{{model.CTs}}">
                                 <tr>
+                                    <td>{{item.Idx}}</td>
                                     <td class="colTeam">{{item.Ad}}</td>
 
                                     <td>{{item.PW}}</td>

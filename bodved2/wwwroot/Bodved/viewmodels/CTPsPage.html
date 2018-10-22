@@ -42,7 +42,7 @@
                         <tbody>
                             <template is="dom-repeat" items="{{model.CTPs}}">
                                 <tr>
-                                    <td class="colPlyr">{{item.PPAd}}</td>
+                                    <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
                                     <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
                                     <td>{{item.RnkBas}}</td>
                                     <td>{{item.RnkBit}}</td>

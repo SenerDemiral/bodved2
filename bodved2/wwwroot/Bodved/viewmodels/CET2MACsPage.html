@@ -5,53 +5,74 @@
         <template is="dom-bind">
             <div class="gridTbl">
                 <div class="gridTbl_header">
-                    <div>[[model.HCTAd]]</div>
-                    <div>[[model.GCTAd]]</div>
-                    <div>[[model.Trh]]</div>
+                    <div>[[model.Tarih]]</div>
                 </div>
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
                         <colgroup>
+                            <col style="width:2rem" />
                             <col style="width:var(--w-Plyr)" />
                             <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-SncTxt)" />
+                            <col style="width:var(--w-Plyr)" />
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>Oyuncu</th>
-                                <th>Run</th>
-                                <th>RnkBaş</th>
-                                <th>RnkBit</th>
-                                <th>Idx</th>
-                                <th>SO</th>
-                                <th>SG</th>
-                                <th>SM</th>
-                                <th>SX</th>
-                                <th>DO</th>
-                                <th>DG</th>
-                                <th>DM</th>
+                                <th>#</th>
+                                <th>[[model.HCTAd]]</th>
+                                <th>Maç</th>
+                                <th>[[model.GCTAd]]</th>
+                                <th>Skor: [[model.HKW]] - [[model.GKW]]</th>
+                                <th>Rank/PX</th>
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="{{model.Sngls}}">
                                 <tr>
-                                    <td class="colPlyr">{{item.HPP1Ad}}</td>
-                                    <td class="colPlyr">{{item.GPP1Ad}}</td>
-                                    <td>{{item.SoD}}</td>
                                     <td>{{item.Idx}}</td>
-                                    <td>{{item.H1W}}</td>
+                                    <td data-WL$="[[item.HWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.HPP1oNo]]">[[item.HPP1Ad]]</a></td>
+                                    <td>{{item.SncMac}}</td>
+                                    <td data-WL$="[[item.GWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.GPP1oNo]]">[[item.GPP1Ad]]</a></td>
+                                    <td class="colSncTxt">{{item.SncSet}}</td>
+                                    <td class="colPlyr">[[item.HRnk]]/[[item.HRnkPX]] - [[item.GRnk]]/[[item.GRnkPX]]</td>
                                 </tr>
                             </template>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="font-weight:bold">[[model.HSMW]]-[[model.GSMW]]</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col style="width:2rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-SncTxt)" />
+                        </colgroup>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.Dbls}}">
+                                <tr>
+                                    <td>{{item.Idx}}</td>
+                                    <td class="colPlyr">{{item.HPP1Ad}}<br />{{item.HPP2Ad}}</td>
+                                    <td>{{item.SncMac}}</td>
+                                    <td class="colPlyr">{{item.GPP1Ad}}<br />{{item.GPP2Ad}}</td>
+                                    <td class="colSncTxt">{{item.SncSet}}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="font-weight:bold">[[model.HDMW]]-[[model.GDMW]]</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

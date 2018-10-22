@@ -2,6 +2,7 @@
   "Html": "/Bodved/viewmodels/PPsPage.html",
   "PPs": [
     {
+      "PPoNo": 0,
       "Ad": "",
       "RnkBaz": 0,
       "RnkSon": 0,

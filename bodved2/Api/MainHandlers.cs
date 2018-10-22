@@ -104,6 +104,16 @@ namespace bodved2.Api
                 return master;
             });
 
+            Handle.GET("/bodved/PP2MACs/{?}", (ulong pp) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                //if (!(master.CurrentPage is PP2MACsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/PP2MACs/{pp}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
         }
 
         private static Json GetLauncherPage(string url, bool dbScope = false)

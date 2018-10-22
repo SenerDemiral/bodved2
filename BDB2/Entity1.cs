@@ -18,6 +18,7 @@ namespace BDB2
     [Database]
     public class PP : BB   // Players
     {
+        public ulong PPoNo => this.GetObjectNo();
         public string Sex { get; set; }
         public string Tel { get; set; }
         public int RnkIlk { get; set; }
@@ -116,6 +117,8 @@ namespace BDB2
     [Database]
     public class CC : BB  // Competitions
     {
+        public ulong CCoNo => this.GetObjectNo();
+        public int Idx { get; set; } 
         public string Skl { get; set; }     // Takim/Ferdi
         public string Grp { get; set; }     // Ligdeki Grup oyuncularini bilmek icin
         public bool IsRun { get; set; }     // Cari, Devam eden (False:Bitti)
@@ -311,6 +314,8 @@ namespace BDB2
         public int DML { get; set; }
         public int DMX { get; set; }    //            HukmenMaglup
 
+        public ulong CToNo => CT?.GetObjectNo() ?? 0;
+        public ulong PPoNo => PP?.GetObjectNo() ?? 0;
         public string CTAd => CT == null ? "-" : $"{CT.Ad}";
         public string PPAd => PP == null ? "-" : $"{PP.Ad}";
 
@@ -679,8 +684,8 @@ namespace BDB2
         public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
         public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
 
-        public string HK => $"{HSMW}S + {HDMW}D -> {HKW}";
-        public string GK => $"{GSMW}S + {GDMW}D -> {GKW}";
+        public string HK => $"{HSMW}S+{HDMW}D ►{HKW}";
+        public string GK => $"{GSMW}S+{GDMW}D ►{GKW}";
 
         public string HR => $"{HPW}/{HKW}:{HSMW}/{HDMW}";
         public string GR => $"{GPW}/{GKW}:{GSMW}/{GDMW}";
@@ -690,9 +695,12 @@ namespace BDB2
     [Database]
     public class CET : CEB    // EventTakim
     {
+        public ulong CEToNo => this.GetObjectNo();
         public CT HCT { get; set; }     // Home Takim
         public CT GCT { get; set; }     // Guest Takim
 
+        public ulong HCToNo => HCT?.GetObjectNo() ?? 0;
+        public ulong GCToNo => GCT?.GetObjectNo() ?? 0;
         public string HCTAd => HCT?.Ad;
         public string GCTAd => GCT?.Ad;
         public string Tarih => $"{Trh:dd.MM.yy ddd}";
@@ -838,6 +846,7 @@ namespace BDB2
     [Database]
     public class MAC   // Mac
     {
+        public ulong MACoNo => this.GetObjectNo();
         public CC CC { get; set; }
         public CEB CEB { get; set; }        // CET/CEF
         public string CEBtyp => CEB?.GetType().Name;
@@ -885,11 +894,63 @@ namespace BDB2
         public int GRnk { get; set; }
         public int GRnkPX { get; set; }
 
+        public string HWL => HMW == GMW ? "?" : HMW > GMW ? "W" : "L";
+        public string GWL => HMW == GMW ? "?" : HMW < GMW ? "W" : "L";
+
+        public ulong HPP1oNo => HPP1?.GetObjectNo() ?? 0;
+        public ulong HPP2oNo => HPP2?.GetObjectNo() ?? 0;
+        public ulong GPP1oNo => GPP1?.GetObjectNo() ?? 0;
+        public ulong GPP2oNo => GPP2?.GetObjectNo() ?? 0;
+
         public string HPP1Ad => HPP1?.Ad;
         public string HPP2Ad => HPP2?.Ad;
         public string GPP1Ad => GPP1?.Ad;
         public string GPP2Ad => GPP2?.Ad;
+        public string Tarih => $"{Trh:dd.MM.yy}";
 
+        public string HCTAd => CEB is CET ? (CEB as CET).HCT.Ad : "";
+        public string GCTAd => CEB is CET ? (CEB as CET).GCT.Ad : "";
+
+        public string SncMac
+        {
+            get
+            {
+                if ((HSW + GSW) == 0)
+                    return "";
+                return $"{HSW}-{GSW}";
+            }
+        }
+
+        public string SncSet {
+            get
+            {
+                if ((H1W + G1W) == 0)
+                    return "";
+
+                string rtr = $"{H1W}-{G1W} ● {H2W}-{G2W}";
+                if ((H3W + G3W) != 0)
+                {
+                    rtr += $" ● {H3W}-{G3W}";
+                    if ((H4W + G4W) != 0)
+                    {
+                        rtr += $" ● {H4W}-{G4W}";
+                        if ((H5W + G5W) != 0)
+                        {
+                            rtr += $" ● {H5W}-{G5W}";
+                            if ((H6W + G6W) != 0)
+                            {
+                                rtr += $" ● {H6W}-{G6W}";
+                                if ((H7W + G7W) != 0)
+                                    rtr += $" ● {H7W}-{G7W}";
+                            }
+                        }
+                    }
+                }
+                //rtr += $" [{GSW}] ";
+
+                return rtr;
+            }
+        }
 
         public static void RefreshSonuc()
         {

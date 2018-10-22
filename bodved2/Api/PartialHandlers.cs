@@ -22,7 +22,9 @@ namespace bodved2.Api
 
             Handle.GET("/bodved/partials/CCs", () =>
             {
-                return new CCsPage();
+                var page = new CCsPage();
+                page.CCs.Data = Db.SQL<CC>("SELECT r FROM CC r order by r.Idx");
+                return page;
             });
 
             Handle.GET("/bodved/partials/CTs/{?}", (ulong cc) =>
@@ -60,10 +62,30 @@ namespace bodved2.Api
                 CET CET = Db.FromId<CET>(cet);
                 page.HCTAd = $"{CET.HCT.Ad}";
                 page.GCTAd = $"{CET.GCT.Ad}";
-                page.Trh = $"{CET.Trh}";
+                page.Takimlar = $"Home: {CET.HCT.Ad} ● Guest: {CET.GCT.Ad} Tarih: {CET.Trh:dd.MM.yy ddd}";
+                page.Tarih = $"{CET.CC.Ad} Takım Maçları {CET.Trh:dd.MM.yy ddd}";
+                page.HSMW = CET.HSMW;
+                page.GSMW = CET.GSMW;
+                page.HDMW = CET.HDMW;
+                page.GDMW = CET.GDMW;
+                page.HKW = CET.HKW;
+                page.GKW = CET.GKW;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");
+                page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "D");
                 return page;
             });
+
+            Handle.GET("/bodved/partials/PP2MACs/{?}", (ulong pp) =>
+            {
+                var page = new PP2MACsPage();
+                PP PP = Db.FromId<PP>(pp);
+                page.Head1 = PP.Ad;
+                page.Pp.Data = PP;
+                page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", PP, PP);
+                return page;
+
+            });
+
         }
     }
 }

@@ -99,23 +99,24 @@ message CCProxy {
 	uint64 RowUsr = 3;
 	uint64 RowKey = 4;
 
-  string Ad = 5;
-  string Skl = 6;
-	string Grp = 7;
-	string Info = 8;
-	bool IsRun = 9;
-	bool IsRnkd = 10;
+	int32 Idx = 5;
+  string Ad = 6;
+  string Skl = 7;
+	string Grp = 8;
+	string Info = 9;
+	bool IsRun = 10;
+	bool IsRnkd = 11;
 	
-	int32 TNSM = 11;
-	int32 TNDM = 12;
-	int32 TNSS = 13;
-	int32 TNDS = 14;
-	int32 TSMK = 15;
-	int32 TDMK = 16;
-	int32 TEGP = 17;
-	int32 TEMP = 18;
-	int32 TEBP = 19;
-	int32 TEXP = 20;
+	int32 TNSM = 12;
+	int32 TNDM = 13;
+	int32 TNSS = 14;
+	int32 TNDS = 15;
+	int32 TSMK = 16;
+	int32 TDMK = 17;
+	int32 TEGP = 18;
+	int32 TEMP = 19;
+	int32 TEBP = 20;
+	int32 TEXP = 21;
 	
 }
 

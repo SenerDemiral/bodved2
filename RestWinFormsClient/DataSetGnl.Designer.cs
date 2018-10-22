@@ -561,6 +561,8 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnRowKey;
             
+            private global::System.Data.DataColumn columnIdx;
+            
             private global::System.Data.DataColumn columnSkl;
             
             private global::System.Data.DataColumn columnGrp;
@@ -631,6 +633,14 @@ namespace RestWinFormsClient {
             public global::System.Data.DataColumn RowKeyColumn {
                 get {
                     return this.columnRowKey;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IdxColumn {
+                get {
+                    return this.columnIdx;
                 }
             }
             
@@ -801,6 +811,7 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CCRow AddCCRow(
                         ulong RowKey, 
+                        int Idx, 
                         string Skl, 
                         string Grp, 
                         string Ad, 
@@ -820,6 +831,7 @@ namespace RestWinFormsClient {
                 CCRow rowCCRow = ((CCRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowKey,
+                        Idx,
                         Skl,
                         Grp,
                         Ad,
@@ -866,6 +878,7 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnRowKey = base.Columns["RowKey"];
+                this.columnIdx = base.Columns["Idx"];
                 this.columnSkl = base.Columns["Skl"];
                 this.columnGrp = base.Columns["Grp"];
                 this.columnAd = base.Columns["Ad"];
@@ -889,6 +902,8 @@ namespace RestWinFormsClient {
             private void InitClass() {
                 this.columnRowKey = new global::System.Data.DataColumn("RowKey", typeof(ulong), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRowKey);
+                this.columnIdx = new global::System.Data.DataColumn("Idx", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdx);
                 this.columnSkl = new global::System.Data.DataColumn("Skl", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSkl);
                 this.columnGrp = new global::System.Data.DataColumn("Grp", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4815,6 +4830,22 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Idx {
+                get {
+                    try {
+                        return ((int)(this[this.tableCC.IdxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Idx\' in table \'CC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCC.IdxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Skl {
                 get {
                     try {
@@ -5067,6 +5098,18 @@ namespace RestWinFormsClient {
                 set {
                     this[this.tableCC.TEXPColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIdxNull() {
+                return this.IsNull(this.tableCC.IdxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIdxNull() {
+                this[this.tableCC.IdxColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

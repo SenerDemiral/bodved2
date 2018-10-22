@@ -1,0 +1,174 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>[[model.Head1]]</div>
+                </div>
+                <div class="gridTbl_main">
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col class="colRnkBaz" />
+                            <col class="colRnkSon" />
+                            <col class="colRnkIdx" />
+
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colSet" />
+                            <col class="colSet" />
+                            <col class="colSet" />
+
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colSet" />
+                            <col class="colSet" />
+                            <col class="colSet" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th rowspan="2" colspan="3">Rank</th>
+                                <th colspan="7" class="colSng">Single</th>
+                                <th colspan="6" class="colDbl">Double</th>
+                            </tr>
+                            <tr>
+                                <th colspan="4">Mac</th>
+                                <th colspan="3" class="colSnc">Set</th>
+                                <th colspan="3">Mac</th>
+                                <th colspan="3">Set</th>
+                            </tr>
+                            <tr>
+                                <th>Baz</th>
+                                <th>Son</th>
+                                <th>Sıra</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+                                <th>x</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{model.Pp.RnkBaz}}</td>
+                                <td>{{model.Pp.RnkSon}}</td>
+                                <td style="font-weight:bold">{{model.Pp.RnkIdx}}</td>
+
+                                <td title="SMO">{{model.Pp.SMT}}</td>
+                                <td title="SMG">{{model.Pp.SMW}}</td>
+                                <td title="SMM">{{model.Pp.SML}}</td>
+                                <td title="SMX">{{model.Pp.SMX}}</td>
+                                
+                                <td title="SSO">{{model.Pp.SST}}</td>
+                                <td title="SSG">{{model.Pp.SSW}}</td>
+                                <td title="SSM">{{model.Pp.SSL}}</td>
+
+                                <td title="DMO">{{model.Pp.DMT}}</td>
+                                <td title="DMG">{{model.Pp.DMW}}</td>
+                                <td title="DMM">{{model.Pp.DML}}</td>
+                                
+                                <td title="DSO">{{model.Pp.DST}}</td>
+                                <td title="DSG">{{model.Pp.DSW}}</td>
+                                <td title="DSM">{{model.Pp.DSL}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col style="width:6rem" />
+                            <col style="width:2rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-SncTxt)" />
+                            <col style="width:9rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:5rem" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>#</th>
+                                <th>Home</th>
+                                <th>Maç</th>
+                                <th>Guest</th>
+                                <th>Set</th>
+                                <th>Rank/PX</th>
+                                <th>Home Takım</th>
+                                <th>Guest Takım</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.Sngls}}">
+                                <tr>
+                                    <td>{{item.Tarih}}</td>
+                                    <td>{{item.Idx}}</td>
+                                    <td data-WL$="[[item.HWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.HPP1oNo]]">[[item.HPP1Ad]]</a></td>
+                                    <td>{{item.SncMac}}</td>
+                                    <td data-WL$="[[item.GWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.GPP1oNo]]">[[item.GPP1Ad]]</a></td>
+                                    <td class="colSncTxt">{{item.SncSet}}</td>
+                                    <td class="colSncTxt">[[item.HRnk]]/[[item.HRnkPX]] - [[item.GRnk]]/[[item.GRnkPX]]</td>
+                                    <td class="colPlyr">[[item.HCTAd]]</td>
+                                    <td class="colPlyr">[[item.GCTAd]]</td>
+                                    <td class="colPlyr">[[item.MACoNo]]</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="font-weight:bold">[[model.HSMW]]-[[model.GSMW]]</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col style="width:2rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-SncTxt)" />
+                        </colgroup>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.Dbls}}">
+                                <tr>
+                                    <td>{{item.Idx}}</td>
+                                    <td class="colPlyr">{{item.HPP1Ad}}<br />{{item.HPP2Ad}}</td>
+                                    <td>{{item.SncMac}}</td>
+                                    <td class="colPlyr">{{item.GPP1Ad}}<br />{{item.GPP2Ad}}</td>
+                                    <td class="colSncTxt">{{item.SncSet}}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="font-weight:bold">[[model.HDMW]]-[[model.GDMW]]</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+</template>

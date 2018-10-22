@@ -1,4 +1,14 @@
 {
   "Html": "/Bodved/viewmodels/CCsPage.html",
   "ShowMenu": true,
+  "CCs": [
+    {
+      "CCoNo": 0,
+      "Ad": "",
+      "Skl": "",
+      "IsRun": true,
+      "IsRnkd": true
+
+    }
+  ]
 }

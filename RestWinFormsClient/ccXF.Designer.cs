@@ -50,6 +50,7 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSkl = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -75,7 +76,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colIdx = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -269,21 +270,29 @@
             // teamsToolStripMenuItem
             // 
             this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.teamsToolStripMenuItem.Text = "Teams";
             this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
             // 
             // eventsToolStripMenuItem
             // 
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
-            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.eventsToolStripMenuItem.Text = "Events";
             this.eventsToolStripMenuItem.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
+            // 
+            // matchesToolStripMenuItem
+            // 
+            this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
+            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.matchesToolStripMenuItem.Text = "Matches";
+            this.matchesToolStripMenuItem.Click += new System.EventHandler(this.matchesToolStripMenuItem_Click);
             // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
+            this.colIdx,
             this.colSkl,
             this.colGrp,
             this.colAd,
@@ -324,7 +333,7 @@
             this.colSkl.Name = "colSkl";
             this.colSkl.OptionsColumn.FixedWidth = true;
             this.colSkl.Visible = true;
-            this.colSkl.VisibleIndex = 1;
+            this.colSkl.VisibleIndex = 2;
             this.colSkl.Width = 40;
             // 
             // colGrp
@@ -333,7 +342,7 @@
             this.colGrp.Name = "colGrp";
             this.colGrp.OptionsColumn.FixedWidth = true;
             this.colGrp.Visible = true;
-            this.colGrp.VisibleIndex = 2;
+            this.colGrp.VisibleIndex = 3;
             this.colGrp.Width = 50;
             // 
             // colAd
@@ -341,7 +350,7 @@
             this.colAd.FieldName = "Ad";
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
-            this.colAd.VisibleIndex = 3;
+            this.colAd.VisibleIndex = 4;
             this.colAd.Width = 263;
             // 
             // colInfo
@@ -349,7 +358,7 @@
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 4;
+            this.colInfo.VisibleIndex = 5;
             this.colInfo.Width = 263;
             // 
             // colIsRun
@@ -359,7 +368,7 @@
             this.colIsRun.OptionsColumn.FixedWidth = true;
             this.colIsRun.ToolTip = "Devam ediyor mu?";
             this.colIsRun.Visible = true;
-            this.colIsRun.VisibleIndex = 5;
+            this.colIsRun.VisibleIndex = 6;
             this.colIsRun.Width = 40;
             // 
             // colIsRnkd
@@ -370,7 +379,7 @@
             this.colIsRnkd.OptionsColumn.FixedWidth = true;
             this.colIsRnkd.ToolTip = "Rank hesaplanacak mı?";
             this.colIsRnkd.Visible = true;
-            this.colIsRnkd.VisibleIndex = 6;
+            this.colIsRnkd.VisibleIndex = 7;
             this.colIsRnkd.Width = 40;
             // 
             // colTNSM
@@ -382,7 +391,7 @@
             this.colTNSM.OptionsColumn.FixedWidth = true;
             this.colTNSM.ToolTip = "Takım Müsabaka Single Maç Sayısı";
             this.colTNSM.Visible = true;
-            this.colTNSM.VisibleIndex = 7;
+            this.colTNSM.VisibleIndex = 8;
             this.colTNSM.Width = 40;
             // 
             // colTNDM
@@ -394,7 +403,7 @@
             this.colTNDM.OptionsColumn.FixedWidth = true;
             this.colTNDM.ToolTip = "Takım Müsabaka Double Maç Sayısı";
             this.colTNDM.Visible = true;
-            this.colTNDM.VisibleIndex = 8;
+            this.colTNDM.VisibleIndex = 9;
             this.colTNDM.Width = 40;
             // 
             // colTNSS
@@ -406,7 +415,7 @@
             this.colTNSS.OptionsColumn.FixedWidth = true;
             this.colTNSS.ToolTip = "Takım Müsabaka Single Set Sayısı";
             this.colTNSS.Visible = true;
-            this.colTNSS.VisibleIndex = 9;
+            this.colTNSS.VisibleIndex = 10;
             this.colTNSS.Width = 40;
             // 
             // colTNDS
@@ -418,7 +427,7 @@
             this.colTNDS.OptionsColumn.FixedWidth = true;
             this.colTNDS.ToolTip = "Takım Müsabaka Double Set Sayısı";
             this.colTNDS.Visible = true;
-            this.colTNDS.VisibleIndex = 10;
+            this.colTNDS.VisibleIndex = 11;
             this.colTNDS.Width = 40;
             // 
             // colTSMK
@@ -430,7 +439,7 @@
             this.colTSMK.OptionsColumn.FixedWidth = true;
             this.colTSMK.ToolTip = "Takım Müsabaka Single Maç Skor";
             this.colTSMK.Visible = true;
-            this.colTSMK.VisibleIndex = 11;
+            this.colTSMK.VisibleIndex = 12;
             this.colTSMK.Width = 40;
             // 
             // colTDMK
@@ -442,7 +451,7 @@
             this.colTDMK.OptionsColumn.FixedWidth = true;
             this.colTDMK.ToolTip = "Takım Müsabaka Double Maç Skor";
             this.colTDMK.Visible = true;
-            this.colTDMK.VisibleIndex = 12;
+            this.colTDMK.VisibleIndex = 13;
             this.colTDMK.Width = 40;
             // 
             // colTEGP
@@ -454,7 +463,7 @@
             this.colTEGP.OptionsColumn.FixedWidth = true;
             this.colTEGP.ToolTip = "Takım Müsabaka Galibiyet Puanı";
             this.colTEGP.Visible = true;
-            this.colTEGP.VisibleIndex = 13;
+            this.colTEGP.VisibleIndex = 14;
             this.colTEGP.Width = 40;
             // 
             // colTEMP
@@ -466,7 +475,7 @@
             this.colTEMP.OptionsColumn.FixedWidth = true;
             this.colTEMP.ToolTip = "Takım Müsabaka Malubiyet Puanı";
             this.colTEMP.Visible = true;
-            this.colTEMP.VisibleIndex = 14;
+            this.colTEMP.VisibleIndex = 15;
             this.colTEMP.Width = 40;
             // 
             // colTEBP
@@ -478,7 +487,7 @@
             this.colTEBP.OptionsColumn.FixedWidth = true;
             this.colTEBP.ToolTip = "Takım Müsabaka Beraberlik Puanı";
             this.colTEBP.Visible = true;
-            this.colTEBP.VisibleIndex = 15;
+            this.colTEBP.VisibleIndex = 16;
             this.colTEBP.Width = 40;
             // 
             // colTEXP
@@ -490,7 +499,7 @@
             this.colTEXP.OptionsColumn.FixedWidth = true;
             this.colTEXP.ToolTip = "Takım Müsabaka Diskalifiye Puanı";
             this.colTEXP.Visible = true;
-            this.colTEXP.VisibleIndex = 16;
+            this.colTEXP.VisibleIndex = 17;
             this.colTEXP.Width = 40;
             // 
             // SKLrepositoryItemImageComboBox1
@@ -563,12 +572,12 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // matchesToolStripMenuItem
+            // colIdx
             // 
-            this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
-            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.matchesToolStripMenuItem.Text = "Matches";
-            this.matchesToolStripMenuItem.Click += new System.EventHandler(this.matchesToolStripMenuItem_Click);
+            this.colIdx.FieldName = "Idx";
+            this.colIdx.Name = "colIdx";
+            this.colIdx.Visible = true;
+            this.colIdx.VisibleIndex = 1;
             // 
             // ccXF
             // 
@@ -648,5 +657,6 @@
         private System.Windows.Forms.ToolStripMenuItem eventsToolStripMenuItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox SKLrepositoryItemImageComboBox1;
         private System.Windows.Forms.ToolStripMenuItem matchesToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdx;
     }
 }

@@ -5,7 +5,7 @@
         <template is="dom-bind">
             <div class="gridTbl">
                 <div class="gridTbl_header">
-                    <div>Players</div>
+                    <div>Oyuncular</div>
                 </div>
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
@@ -53,8 +53,8 @@
                                 <th>M</th>
 
                                 <th>O</th>
-                                <th>M</th>
                                 <th>G</th>
+                                <th>M</th>
                                 <th>x</th>
 
                                 <th>O</th>
@@ -68,7 +68,7 @@
                         <tbody>
                             <template is="dom-repeat" items="{{model.PPs}}">
                                 <tr>
-                                    <td class="colPlyr">{{item.Ad}}</td>
+                                    <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.Ad]]</a></td>
                                     <td>{{item.RnkBaz}}</td>
                                     <td>{{item.RnkSon}}</td>
                                     <td style="font-weight:bold">{{item.RnkIdx}}</td>
