@@ -10,83 +10,38 @@
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
                         <colgroup>
-                            <col style="width:var(--w-Team)" />
-                            <col style="width:var(--w-Skr)" />
-                            <col style="width:var(--w-Skr)" />
                             <col style="width:var(--w-Tarih)" />
                             <col style="width:var(--w-Skr)" />
+                            <col style="width:var(--w-Team)" />
+                            <col style="width:7rem" />
                             <col style="width:var(--w-Skr)" />
                             <col style="width:var(--w-Team)" />
-
-                            <col style="width:var(--w-Skr)" />
-
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
-
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
-
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
-
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
-
-                            <col style="width:10rem" />
-                            <col style="width:10rem" />
+                            <col style="width:7rem" />
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>Tarih</th>
+                                <th>Drm</th>
                                 <th>Home</th>
                                 <th>Skor</th>
                                 <th>Puan</th>
-                                <th>Tarih</th>
-                                <th>Puan</th>
-                                <th>Skor</th>
                                 <th>Guest</th>
+                                <th>Skor</th>
 
-                                <th>Drm</th>
-
-                                <th>HSMW</th>
-                                <th>GSMW</th>
-
-                                <th>HDMW</th>
-                                <th>GDMW</th>
-
-                                <th>HSSW</th>
-                                <th>GSSW</th>
-
-                                <th>HDSW</th>
-                                <th>GDSW</th>
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="{{model.CETs}}">
                                 <tr>
-                                    <td class="colTeam">{{item.HCTAd}}</td>
-                                    <td>{{item.HKW}}</td>
-                                    <td>{{item.HPW}}</td>
                                     <td class="colTeam"><a href="/bodved/CET2MACs/[[item.CEToNo]]">[[item.Tarih]]</a></td>
-                                    <td>{{item.GPW}}</td>
-                                    <td>{{item.GKW}}</td>
-                                    <td class="colTeam">{{item.GCTAd}}</td>
-
                                     <td>{{item.Drm}}</td>
 
-                                    <td>{{item.HSMW}}</td>
-                                    <td>{{item.GSMW}}</td>
-
-                                    <td>{{item.HDMW}}</td>
-                                    <td>{{item.GDMW}}</td>
-
-                                    <td>{{item.HSSW}}</td>
-                                    <td>{{item.GSSW}}</td>
-
-                                    <td>{{item.HDSW}}</td>
-                                    <td>{{item.GDSW}}</td>
-
+                                    <td class="colTeam"><a href="/bodved/CTPs/[[item.HCToNo]]">[[item.HCTAd]]</a></td>
                                     <td>{{item.HK}}</td>
+                                    <td>{{item.HPW}} - {{item.GPW}}</td>
+                                    <td class="colTeam"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
                                     <td>{{item.GK}}</td>
+
                                 </tr>
                             </template>
                         </tbody>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using bodved2.ViewModels;
 using Starcounter;
+using BDB2;
 
 namespace bodved2.Api
 {
@@ -60,14 +61,33 @@ namespace bodved2.Api
                 return master;
             });
 
-            Handle.GET("/bodved/CTs/{?}", (ulong cc) =>
+            Handle.GET("/bodved/CE/{?}", (ulong cc) =>
             {
+                // Event? CET/CEF neye gidecegini bul
+                CC CC = Db.FromId<CC>(cc);
+
                 MasterPage master = GetMasterPageFromSession();
-                if (!(master.CurrentPage is CTsPage))
-                {
+
+                if (CC.Skl == "T")
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CETs/{cc}");
+                else if (CC.Skl == "F")
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CEFs/{cc}");
+
+                return master;
+            });
+
+            Handle.GET("/bodved/CK/{?}", (ulong cc) =>
+            {
+                // Katilanlar? CT/CF neye gidecegini bul
+                CC CC = Db.FromId<CC>(cc);
+
+                MasterPage master = GetMasterPageFromSession();
+
+                if (CC.Skl == "T")
                     master.CurrentPage = GetLauncherPage($"/bodved/partials/CTs/{cc}");
-                    //(master.CurrentPage as CCsPage).Init();
-                }
+                else if (CC.Skl == "F")
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CFs/{cc}");
+
                 return master;
             });
 
@@ -114,6 +134,7 @@ namespace bodved2.Api
                 }
                 return master;
             });
+
         }
 
         private static Json GetLauncherPage(string url, bool dbScope = false)
@@ -128,9 +149,18 @@ namespace bodved2.Api
         {
             var session = Session.Ensure();
 
-            var master = session.Store[nameof(MasterPage)] as MasterPage ?? new MasterPage();
-
-            session.Store[nameof(MasterPage)] = master;
+            MasterPage master = null; // session.Store[nameof(MasterPage)] as MasterPage ?? new MasterPage();
+            if (session.Store[nameof(MasterPage)] == null)
+            {
+                master = new MasterPage();
+                session.Store[nameof(MasterPage)] = master;
+                // increment site entry counter
+                master.EntCnt = BDB2.STAT.UpdEntCnt();
+            }
+            else
+            {
+                master = session.Store[nameof(MasterPage)] as MasterPage;
+            }
 
             master.ShowMenu = true;
             return master;

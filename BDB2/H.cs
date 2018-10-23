@@ -10,6 +10,14 @@ namespace BDB2
 {
     public static class H
     {
+        public static void Write2Log(string Msg)
+        {
+            using (StreamWriter sw = new StreamWriter(@"C:\Starcounter\MyLog\BodVed-Log.txt", true))
+            {
+                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + Msg);
+            }
+        }
+
         public static void PopPP()
         {
             if (Db.SQL<PP>("select r from PP r").FirstOrDefault() != null)

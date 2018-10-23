@@ -8,6 +8,47 @@ using System.Diagnostics;
 namespace BDB2
 {
     [Database]
+    public class STAT
+    {
+        public int ID { get; set; }
+        public int IdVal { get; set; }
+
+        public STAT()
+        {
+            ID = 1;
+            IdVal = 4230;
+        }
+
+        public static int UpdEntCnt()
+        {
+            H.Write2Log($"Enter: {Session.Current.SessionId}");
+
+            int EntCnt = 0;
+            Db.Transact(() =>
+            {
+                var s = Db.SQL<STAT>("select s from STAT s where s.ID = ?", 1).FirstOrDefault();
+                if (s == null)
+                {
+                    new STAT()
+                    {
+                        ID = 1,
+                        IdVal = 32000
+                    };
+                    EntCnt = 32000; // Bodved2 baslangic
+                }
+                else
+                {
+                    s.IdVal += 1;
+                    EntCnt = s.IdVal;
+                }
+
+            });
+            return EntCnt;
+        }
+
+    }
+
+    [Database]
     public class BB   // Base
     {
         public ulong PK { get; set; }
@@ -143,6 +184,7 @@ namespace BDB2
     [Database]
     public class CT : BB  // Takimlar
     {
+        public ulong CToNo => this.GetObjectNo();
         public CC CC { get; set; }
         public string Adres { get; set; }     // Takim/Ferdi
         public PP K1 { get; set; }            // 1.Kaptan

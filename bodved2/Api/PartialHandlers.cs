@@ -82,6 +82,7 @@ namespace bodved2.Api
                 page.Head1 = PP.Ad;
                 page.Pp.Data = PP;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", PP, PP);
+                page.Dbls.Data  = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ? or r.HPP2 = ? or r.GPP2 = ?) order by r.Trh DESC", "D", PP, PP, PP, PP);
                 return page;
 
             });

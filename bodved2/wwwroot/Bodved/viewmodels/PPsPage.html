@@ -8,7 +8,7 @@
                     <div>Oyuncular</div>
                 </div>
                 <div class="gridTbl_main">
-                    <table class="fixTbl sngLine">
+                    <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
                         <colgroup>
                             <col class="colPlyr" />
                             <col class="colRnkBaz" />
@@ -38,10 +38,10 @@
                                 <th colspan="6" class="colDbl">Double</th>
                             </tr>
                             <tr>
-                                <th colspan="3" class="colSnc">Set</th>
                                 <th colspan="4">Mac</th>
-                                <th colspan="3">Set</th>
+                                <th colspan="3" class="colSnc">Set</th>
                                 <th colspan="3">Mac</th>
+                                <th colspan="3">Set</th>
                             </tr>
                             <tr>
                                 <th>Baz</th>
@@ -51,15 +51,16 @@
                                 <th>O</th>
                                 <th>G</th>
                                 <th>M</th>
-
-                                <th>O</th>
-                                <th>G</th>
-                                <th>M</th>
                                 <th>x</th>
 
                                 <th>O</th>
                                 <th>G</th>
                                 <th>M</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+
                                 <th>O</th>
                                 <th>G</th>
                                 <th>M</th>
@@ -73,20 +74,23 @@
                                     <td>{{item.RnkSon}}</td>
                                     <td style="font-weight:bold">{{item.RnkIdx}}</td>
 
-                                    <td title="SSO">{{item.SST}}</td>
-                                    <td title="SSG">{{item.SSW}}</td>
-                                    <td title="SSM">{{item.SSL}}</td>
                                     <td title="SMO">{{item.SMT}}</td>
                                     <td title="SMG">{{item.SMW}}</td>
                                     <td title="SMM">{{item.SML}}</td>
                                     <td title="SMX">{{item.SMX}}</td>
 
-                                    <td title="DSO">{{item.DST}}</td>
-                                    <td title="DSG">{{item.DSW}}</td>
-                                    <td title="DSM">{{item.DSL}}</td>
+                                    <td title="SSO">{{item.SST}}</td>
+                                    <td title="SSG">{{item.SSW}}</td>
+                                    <td title="SSM">{{item.SSL}}</td>
+
                                     <td title="DMO">{{item.DMT}}</td>
                                     <td title="DMG">{{item.DMW}}</td>
                                     <td title="DMM">{{item.DML}}</td>
+
+                                    <td title="DSO">{{item.DST}}</td>
+                                    <td title="DSG">{{item.DSW}}</td>
+                                    <td title="DSM">{{item.DSL}}</td>
+
                                 </tr>
                             </template>
                         </tbody>
@@ -95,4 +99,28 @@
             </div>
         </template>
     </dom-bind>
+
+    <script>
+        (function () {
+            var curRowIndex = -1;
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.MyFnc = function (e) {
+                var tr = e.target.closest("tr");
+                if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
+                    return;
+
+                if (tr.rowIndex > 0) {     // Mark current Row
+                    if (curRowIndex !== -1) {
+                        ppTbl.rows[curRowIndex].classList.remove("curRow");
+                    }
+
+                    curRowIndex = tr.rowIndex;
+                    tr.classList.add("curRow");
+                }
+            };
+        })();
+    </script>
+
 </template>

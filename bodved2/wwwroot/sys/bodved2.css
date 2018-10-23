@@ -1,4 +1,5 @@
 ﻿:root {
+    --w-Lnk: 6rem;
     --w-SncTxt: 20rem;
     --w-Tarih: 8rem;
     --w-Team: 8rem;
@@ -208,6 +209,11 @@ body {
     /*background-color: #bdd598;*/
 }
 
+.colLnk {
+    width: var(--w-Lnk);
+    /*background-color: #bdd598;*/
+}
+
 .colSncTxt {
     width: var(--w-SncTxt);
     text-align: left;
@@ -220,3 +226,9 @@ tbody tr:nth-child(even) {
 [data-WL="W"] {
     font-weight: bold;
 }
+
+.curRow {
+    background-color: orange !important;
+    color: white;
+}
+

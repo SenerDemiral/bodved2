@@ -11,12 +11,16 @@
                     <table class="fixTbl sngLine">
                         <colgroup>
                             <col style="width:var(--w-Team)" />
+                            <col style="width:var(--w-Lnk)" />
+                            <col style="width:var(--w-Lnk)" />
                             <col style="width:4rem" />
                             <col style="width:4rem" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>Ad</th>
+                                <th>Fikstür</th>
+                                <th>Katılımcılar</th>
                                 <th>Run</th>
                                 <th>Ranked</th>
                             </tr>
@@ -24,7 +28,9 @@
                         <tbody>
                             <template is="dom-repeat" items="{{model.CCs}}">
                                 <tr>
-                                    <td class="colTeam"><a href="/bodved/CETs/[[item.CCoNo]]">[[item.Ad]]</a></td>
+                                    <td class="colTeam">[[item.Ad]]</a></td>
+                                    <td class="colLnk"><a href="/bodved/CE/[[item.CCoNo]]">►►</a></td>
+                                    <td class="colLnk"><a href="/bodved/CK/[[item.CCoNo]]">►►</a></td>
                                     <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
                                     <td><input type="checkbox" checked="{{item.IsRnkd::change}}" disabled></td>
                                 </tr>

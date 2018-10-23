@@ -15,7 +15,7 @@ namespace bodved2
             {
                 new MainHandlers(),
                 //new ContentHandlers(),
-                //new CommitHooks(),
+                new HookHandlers(),
                 new PartialHandlers()
             };
 

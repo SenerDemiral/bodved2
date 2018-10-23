@@ -50,6 +50,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\HookHandlers.cs" />
     <Compile Include="Api\IHandler.cs" />
     <Compile Include="Api\MainHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
