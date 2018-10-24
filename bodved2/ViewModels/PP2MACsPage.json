@@ -1,8 +1,9 @@
 {
   "Html": "/Bodved/viewmodels/PP2MACsPage.html",
-  "Head1": "",
+  "Hdr": "",
+  "PPoNo": 0,
 
-  "Pp": {
+  "PP": {
     "Ad": "",
     "RnkBaz": 0,
     "RnkSon": 0,
@@ -28,25 +29,26 @@
 
   "Sngls": [
     {
+      "CEBoNo": 0,
       "MACoNo": 0,
       "Tarih": "",
-      "HPP1oNo": 0,
-      "GPP1oNo": 0,
-      "HPP1Ad": "",
-      "GPP1Ad": "",
       "SoD": "",
       "Idx": 0,
+
+      "Rnk": 0,
+      "RnkPX": 0,
+      "CToNo": 0,
+      "CTAd": "",
       "SncMac": "",
       "SncSet": "",
-      "HRnk": 0,
-      "HRnkPX": 0,
-      "GRnk": 0,
-      "GRnkPX": 0,
-      "HCTAd": "",
-      "GCTAd": "",
-      "HWL": "",
-      "GWL": "",
+      "WL": "",
 
+      "RkpPPoNo": 0,
+      "RkpPPAd": "",
+      "RkpRnk": 0,
+      "RkpRnkPX": 0,
+      "RkpCToNo": 0,
+      "RkpCTAd": "",
     }
   ],
 

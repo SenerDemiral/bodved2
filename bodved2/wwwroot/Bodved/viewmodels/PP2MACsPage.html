@@ -5,7 +5,7 @@
         <template is="dom-bind">
             <div class="gridTbl">
                 <div class="gridTbl_header">
-                    <div>[[model.Head1]]</div>
+                    <div>[[model.Hdr]]</div>
                 </div>
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
@@ -65,26 +65,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{model.Pp.RnkBaz}}</td>
-                                <td>{{model.Pp.RnkSon}}</td>
-                                <td style="font-weight:bold">{{model.Pp.RnkIdx}}</td>
+                                <td>{{model.PP.RnkBaz}}</td>
+                                <td>{{model.PP.RnkSon}}</td>
+                                <td style="font-weight:bold">{{model.PP.RnkIdx}}</td>
 
-                                <td title="SMO">{{model.Pp.SMT}}</td>
-                                <td title="SMG">{{model.Pp.SMW}}</td>
-                                <td title="SMM">{{model.Pp.SML}}</td>
-                                <td title="SMX">{{model.Pp.SMX}}</td>
+                                <td title="SMO">{{model.PP.SMT}}</td>
+                                <td title="SMG">{{model.PP.SMW}}</td>
+                                <td title="SMM">{{model.PP.SML}}</td>
+                                <td title="SMX">{{model.PP.SMX}}</td>
                                 
-                                <td title="SSO">{{model.Pp.SST}}</td>
-                                <td title="SSG">{{model.Pp.SSW}}</td>
-                                <td title="SSM">{{model.Pp.SSL}}</td>
+                                <td title="SSO">{{model.PP.SST}}</td>
+                                <td title="SSG">{{model.PP.SSW}}</td>
+                                <td title="SSM">{{model.PP.SSL}}</td>
 
-                                <td title="DMO">{{model.Pp.DMT}}</td>
-                                <td title="DMG">{{model.Pp.DMW}}</td>
-                                <td title="DMM">{{model.Pp.DML}}</td>
+                                <td title="DMO">{{model.PP.DMT}}</td>
+                                <td title="DMG">{{model.PP.DMW}}</td>
+                                <td title="DMM">{{model.PP.DML}}</td>
                                 
-                                <td title="DSO">{{model.Pp.DST}}</td>
-                                <td title="DSG">{{model.Pp.DSW}}</td>
-                                <td title="DSM">{{model.Pp.DSL}}</td>
+                                <td title="DSO">{{model.PP.DST}}</td>
+                                <td title="DSG">{{model.PP.DSW}}</td>
+                                <td title="DSM">{{model.PP.DSL}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -93,42 +93,41 @@
                         <colgroup>
                             <col style="width:5rem" />
                             <col style="width:2rem" />
+
                             <col style="width:var(--w-Plyr)" />
-                            <col style="width:var(--w-Idx)" />
-                            <col style="width:var(--w-Plyr)" />
-                            <col style="width:var(--w-SncTxt)" />
-                            <col style="width:9rem" />
-                            <col style="width:var(--w-Plyr)" />
-                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:10rem" />
+                            <col style="width:14rem" />
+
+                            <col style="width:15rem" />
+
                             <col style="width:5rem" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>Tarih</th>
                                 <th>#</th>
-                                <th>Home</th>
-                                <th>Maç</th>
-                                <th>Guest</th>
-                                <th>Set</th>
+
+                                <th>Rakip</th>
                                 <th>Rank/PX</th>
-                                <th>Home Takım</th>
-                                <th>Guest Takım</th>
+                                <th>Set</th>
+
+                                <th>Takım</th>
+
                                 <th>ID</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <template is="dom-repeat" items="{{model.Sngls}}">
+                            <template is="dom-repeat" items="[[model.Sngls]]">
                                 <tr>
-                                    <td>{{item.Tarih}}</td>
-                                    <td>{{item.Idx}}</td>
-                                    <td data-WL$="[[item.HWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.HPP1oNo]]">[[item.HPP1Ad]]</a></td>
-                                    <td>{{item.SncMac}}</td>
-                                    <td data-WL$="[[item.GWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.GPP1oNo]]">[[item.GPP1Ad]]</a></td>
-                                    <td class="colSncTxt">{{item.SncSet}}</td>
-                                    <td class="colSncTxt">[[item.HRnk]]/[[item.HRnkPX]] - [[item.GRnk]]/[[item.GRnkPX]]</td>
-                                    <td class="colPlyr">[[item.HCTAd]]</td>
-                                    <td class="colPlyr">[[item.GCTAd]]</td>
-                                    <td class="colPlyr">[[item.MACoNo]]</td>
+                                    <td>[[item.Tarih]]</td>
+                                    <td>[[item.Idx]]</td>
+
+                                    <td class="txtLeft"><a href="/bodved/PP2MACs/[[item.RkpPPoNo]]">[[item.RkpPPAd]]</a></td>
+                                    <td class="txtLeft">[[item.RkpRnk]]/[[item.RkpRnkPX]] - [[item.Rnk]]/[[item.RnkPX]]</td>
+                                    <td data-CWL$="[[item.WL]]" class="txtLeft">[[item.SncSet]]</td>
+                                    <td class="txtLeft">[[item.RkpCTAd]] - [[item.CTAd]]</td>
+
+                                    <td class="txtLeft">[[item.MACoNo]]</td>
                                 </tr>
                             </template>
                         </tbody>

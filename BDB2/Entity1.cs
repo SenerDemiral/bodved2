@@ -4,6 +4,7 @@ using Starcounter;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace BDB2
 {
@@ -745,8 +746,9 @@ namespace BDB2
         public ulong GCToNo => GCT?.GetObjectNo() ?? 0;
         public string HCTAd => HCT?.Ad;
         public string GCTAd => GCT?.Ad;
-        public string Tarih => $"{Trh:dd.MM.yy ddd}";
-
+        //public string Tarih => $"{Trh:dd.MM.yy ddd}"; // Burda Turkce gosteremiyor, ama RefreshSonuc da gosteriyor!!
+        //public string Tarih => string.Format(CultureInfo.CreateSpecificCulture("tr-TR"), "{0:dd.MM.yy ddd}", Trh);
+        public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
 
         public static void RefreshSonuc()
         {
@@ -761,6 +763,7 @@ namespace BDB2
 
             watch.Stop();
             Console.WriteLine($"CET.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
         }
 
         public static void RefreshSonuc(CET cet)
@@ -950,6 +953,8 @@ namespace BDB2
         public string GPP2Ad => GPP2?.Ad;
         public string Tarih => $"{Trh:dd.MM.yy}";
 
+        public ulong HCToNo => CEB is CET ? (CEB as CET).HCT.GetObjectNo() : 0;
+        public ulong GCToNo => CEB is CET ? (CEB as CET).GCT.GetObjectNo() : 0;
         public string HCTAd => CEB is CET ? (CEB as CET).HCT.Ad : "";
         public string GCTAd => CEB is CET ? (CEB as CET).GCT.Ad : "";
 
@@ -963,36 +968,143 @@ namespace BDB2
             }
         }
 
-        public string SncSet {
+        public string SncSet
+        {
             get
             {
-                if ((H1W + G1W) == 0)
-                    return "";
-
-                string rtr = $"{H1W}-{G1W} ● {H2W}-{G2W}";
-                if ((H3W + G3W) != 0)
+                /*
+                if (hR > gR)
+                    rS = $"◀-{gR}";
+                else if (hR < gR)
+                    rS = $"{hR}-▶";
+                */
+                string rtr = "";
+                if ((H1W + G1W) != 0)
                 {
-                    rtr += $" ● {H3W}-{G3W}";
-                    if ((H4W + G4W) != 0)
+                    rtr = H1W > G1W ? $"●{G1W}" : $"{H1W}●";
+                    if ((H2W + G2W) != 0)
                     {
-                        rtr += $" ● {H4W}-{G4W}";
-                        if ((H5W + G5W) != 0)
+                        rtr += H2W > G2W ? $"│●{G2W}" : $"│{H2W}●";
+                        if ((H3W + G3W) != 0)
                         {
-                            rtr += $" ● {H5W}-{G5W}";
-                            if ((H6W + G6W) != 0)
+                            rtr += H3W > G3W ? $"│●{G3W}" : $"│{H3W}●";
+                            if ((H4W + G4W) != 0)
                             {
-                                rtr += $" ● {H6W}-{G6W}";
-                                if ((H7W + G7W) != 0)
-                                    rtr += $" ● {H7W}-{G7W}";
+                                rtr += H4W > G4W ? $"│●{G4W}" : $"│{H4W}●";
+                                if ((H5W + G5W) != 0)
+                                {
+                                    rtr += H5W > G5W ? $"│●{G5W}" : $"│{H5W}●";
+                                    if ((H6W + G6W) != 0)
+                                    {
+                                        rtr += H6W > G6W ? $"│●{G6W}" : $"│{H6W}●";
+                                        if ((H7W + G7W) != 0)
+                                        {
+                                            rtr += H7W > G7W ? $"│●{G7W}" : $"│{H7W}●";
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
-                //rtr += $" [{GSW}] ";
-
+                /*
+                if ((H1W + G1W) == 0)
+                    return "";
+                rtr = $"{H1W}-{G1W}│{H2W}-{G2W}";
+                if ((H3W + G3W) != 0)
+                {
+                    rtr += $"●{H3W}-{G3W}";
+                    if ((H4W + G4W) != 0)
+                    {
+                        rtr += $"●{H4W}-{G4W}";
+                        if ((H5W + G5W) != 0)
+                        {
+                            rtr += $"●{H5W}-{G5W}";
+                            if ((H6W + G6W) != 0)
+                            {
+                                rtr += $"●{H6W}-{G6W}";
+                                if ((H7W + G7W) != 0)
+                                    rtr += $"●{H7W}.{G7W}";
+                            }
+                        }
+                    }
+                }*/
                 return rtr;
             }
         }
+
+        public string SncMacRvrs
+        {
+            get
+            {
+                if ((HSW + GSW) == 0)
+                    return "";
+                return $"{GSW}-{HSW}";
+            }
+        }
+
+        public string SncSetRvrs
+        {
+            get
+            {
+                string rtr = "";
+                if ((H1W + G1W) != 0)
+                {
+                    rtr = H1W > G1W ? $"{G1W}●" : $"●{H1W}";
+                    if ((H2W + G2W) != 0)
+                    {
+                        rtr += H2W > G2W ? $"│{G2W}●" : $"│●{H2W}";
+                        if ((H3W + G3W) != 0)
+                        {
+                            rtr += H3W > G3W ? $"│{G3W}●" : $"│●{H3W}";
+                            if ((H4W + G4W) != 0)
+                            {
+                                rtr += H4W > G4W ? $"│{G4W}●" : $"│●{H4W}";
+                                if ((H5W + G5W) != 0)
+                                {
+                                    rtr += H5W > G5W ? $"│{G5W}●" : $"│●{H5W}";
+                                    if ((H6W + G6W) != 0)
+                                    {
+                                        rtr += H6W > G6W ? $"│{G6W}●" : $"│●{H6W}";
+                                        if ((H7W + G7W) != 0)
+                                        {
+                                            rtr += H7W > G7W ? $"│{G7W}●" : $"│●{H7W}";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                /*
+                if ((H1W + G1W) == 0)
+                    return "";
+
+                string rtr = $"{G1W}-{H1W}●{G2W}-{H2W}";
+                if ((H3W + G3W) != 0)
+                {
+                    rtr += $"●{G3W}-{H3W}";
+                    if ((H4W + G4W) != 0)
+                    {
+                        rtr += $"●{G4W}-{H4W}";
+                        if ((H5W + G5W) != 0)
+                        {
+                            rtr += $"●{G5W}-{H5W}";
+                            if ((H6W + G6W) != 0)
+                            {
+                                rtr += $"●{G6W}-{H6W}";
+                                if ((H7W + G7W) != 0)
+                                    rtr += $"●{G7W}-{H7W}";
+                            }
+                        }
+                    }
+                }*/
+                return rtr;
+            }
+        }
+
+
 
         public static void RefreshSonuc()
         {
@@ -1506,6 +1618,7 @@ namespace BDB2
 
         public static void RefreshGlobalRank(DateTime trh)
         {
+
             Stopwatch watch = new Stopwatch();
             watch.Start();
             int nor = 0;

@@ -5,25 +5,25 @@
         <template is="dom-bind">
             <div class="gridTbl">
                 <div class="gridTbl_header">
-                    <div>[[model.Tarih]]</div>
+                    <div>[[model.Hdr]]</div>
                 </div>
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
                         <colgroup>
                             <col style="width:2rem" />
                             <col style="width:var(--w-Plyr)" />
-                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:3rem" />
                             <col style="width:var(--w-Plyr)" />
-                            <col style="width:var(--w-SncTxt)" />
-                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:20rem" />
+                            <col style="width:10rem" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>[[model.HCTAd]]</th>
+                                <th>[[model.CET.HCTAd]]</th>
                                 <th>Maç</th>
-                                <th>[[model.GCTAd]]</th>
-                                <th>Skor: [[model.HKW]] - [[model.GKW]]</th>
+                                <th>[[model.CET.GCTAd]]</th>
+                                <th>Skor: [[model.CET.HKW]] - [[model.CET.GKW]]</th>
                                 <th>Rank/PX</th>
                             </tr>
                         </thead>
@@ -31,18 +31,18 @@
                             <template is="dom-repeat" items="{{model.Sngls}}">
                                 <tr>
                                     <td>{{item.Idx}}</td>
-                                    <td data-WL$="[[item.HWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.HPP1oNo]]">[[item.HPP1Ad]]</a></td>
+                                    <td data-WL$="[[item.HWL]]" class="txtLeft"><a href="/bodved/PP2MACs/[[item.HPP1oNo]]">[[item.HPP1Ad]]</a></td>
                                     <td>{{item.SncMac}}</td>
-                                    <td data-WL$="[[item.GWL]]" class="colPlyr"><a href="/bodved/PP2MACs/[[item.GPP1oNo]]">[[item.GPP1Ad]]</a></td>
-                                    <td class="colSncTxt">{{item.SncSet}}</td>
-                                    <td class="colPlyr">[[item.HRnk]]/[[item.HRnkPX]] - [[item.GRnk]]/[[item.GRnkPX]]</td>
+                                    <td data-WL$="[[item.GWL]]" class="txtLeft"><a href="/bodved/PP2MACs/[[item.GPP1oNo]]">[[item.GPP1Ad]]</a></td>
+                                    <td class="txtLeft">{{item.SncSet}}</td>
+                                    <td class="txtLeft">[[item.HRnk]]/[[item.HRnkPX]] - [[item.GRnk]]/[[item.GRnkPX]]</td>
                                 </tr>
                             </template>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2"></td>
-                                <td style="font-weight:bold">[[model.HSMW]]-[[model.GSMW]]</td>
+                                <td style="font-weight:bold">[[model.CET.HSMW]]-[[model.CET.GSMW]]</td>
                                 <td colspan="2"></td>
                             </tr>
                         </tfoot>
@@ -51,25 +51,25 @@
                         <colgroup>
                             <col style="width:2rem" />
                             <col style="width:var(--w-Plyr)" />
-                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:3rem" />
                             <col style="width:var(--w-Plyr)" />
-                            <col style="width:var(--w-SncTxt)" />
+                            <col style="width:20rem" />
                         </colgroup>
                         <tbody>
                             <template is="dom-repeat" items="{{model.Dbls}}">
                                 <tr>
                                     <td>{{item.Idx}}</td>
-                                    <td class="colPlyr">{{item.HPP1Ad}}<br />{{item.HPP2Ad}}</td>
+                                    <td class="txtLeft">{{item.HPP1Ad}}<br />{{item.HPP2Ad}}</td>
                                     <td>{{item.SncMac}}</td>
-                                    <td class="colPlyr">{{item.GPP1Ad}}<br />{{item.GPP2Ad}}</td>
-                                    <td class="colSncTxt">{{item.SncSet}}</td>
+                                    <td class="txtLeft">{{item.GPP1Ad}}<br />{{item.GPP2Ad}}</td>
+                                    <td class="txtLeft">{{item.SncSet}}</td>
                                 </tr>
                             </template>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2"></td>
-                                <td style="font-weight:bold">[[model.HDMW]]-[[model.GDMW]]</td>
+                                <td style="font-weight:bold">[[model.CET.HDMW]]-[[model.CET.GDMW]]</td>
                                 <td colspan="2"></td>
                             </tr>
                         </tfoot>

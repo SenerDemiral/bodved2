@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using bodved2.ViewModels;
 using Starcounter;
+using BDB2;
 
 namespace bodved2.Api
 {
@@ -14,12 +15,18 @@ namespace bodved2.Api
         public void Register()
         {
             /*
-            Hook<BDB2.STAT>.CommitUpdate += (p, obj) =>
+            Hook<CET>.CommitUpdate += (p, obj) =>
             {
                 Session.RunTaskForAll((s, id) =>
                 {
+                    s.CalculatePatchAndPushOnWebSocket();
+                });
+            };
 
-                    (s.Store[nameof(MasterPage)] as MasterPage).Data = null;
+            Hook<MAC>.CommitUpdate += (p, obj) =>
+            {
+                Session.RunTaskForAll((s, id) =>
+                {
                     s.CalculatePatchAndPushOnWebSocket();
                 });
             };

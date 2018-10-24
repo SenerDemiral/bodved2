@@ -3,6 +3,8 @@ using Starcounter;
 using BDB2;
 using bodved2.ViewModels;
 using bodved2.Api;
+using System.Globalization;
+using System.Threading;
 //using bodved2.Helpers;
 
 namespace bodved2
@@ -11,6 +13,14 @@ namespace bodved2
     {
         static void Main()
         {
+            
+            CultureInfo culture;
+            culture = CultureInfo.CreateSpecificCulture("tr-TR");
+            //Console.WriteLine($"{DateTime.Now:dd.MM.yy ddd}");  // Ingilizce
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+            //Console.WriteLine($"{DateTime.Now:dd.MM.yy ddd}");  // Turkce, BDB2.Entity de olmuyor!!
+
             IHandler[] handlers = new IHandler[]
             {
                 new MainHandlers(),

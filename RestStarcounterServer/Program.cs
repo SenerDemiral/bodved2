@@ -59,6 +59,16 @@ namespace RestStarcounterServer
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CET_gCT").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX CET_gCT ON CET (gCT)");
 
+
+            /*
+            Hook<CC>.CommitUpdate += (p, obj) =>
+            {
+                Session.RunTaskForAll((s, id) =>
+                {
+                    s.CalculatePatchAndPushOnWebSocket();
+                });
+            };*/
+
             //MAC.deneme();
             H.PopPP();
             H.PopCC();
@@ -67,7 +77,7 @@ namespace RestStarcounterServer
             H.PopCET();
             H.PopMAC();
 
-            
+            /*
             MAC.RefreshSonuc();
             CET.RefreshSonuc();
             CT.RefreshSonuc();
@@ -75,6 +85,7 @@ namespace RestStarcounterServer
             PP.RefreshStat();
 
             MAC.RefreshGlobalRank();
+            */
             // Sadece Yeni DB ilk calistiginda yap
             //H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
             //MAC.RefreshGlobalRank();    // RnkBaz == RnkSon olmali, cunki CC.IsRnkd = false (Rank hesaplanmayacak)

@@ -1,17 +1,22 @@
 ﻿:root {
+    --w-Skr: 4rem;
+    --w-EvntSkr: 7rem;
+    --w-EvntPnt: 4rem;
+    --w-Evn: 3rem;
     --w-Lnk: 6rem;
-    --w-SncTxt: 20rem;
-    --w-Tarih: 8rem;
     --w-Team: 8rem;
-    --w-Plyr: 10rem;
+    --w-Plyr: 9rem;
+    --w-Tarih: 7rem;
+    --w-Drm: 4rem;
+    --w-TF: 3rem;
+    --w-MacSet: 20rem;
+    --w-SncTxt: 20rem;
     --w-Rnk: 4rem;
     --w-Idx: 3rem;
-    --w-Skr: 4rem;
     --w-Snc: 3rem;
     --w-Mac: 3rem;
-    --w-Evn: 3rem;
     --g-Grd: 5px;
-    --h-GrdHdr: 60px;
+    --h-GrdHdr: 40px;
     --h-GrdMain: calc(100vh - calc(var(--h-GrdHdr) + var(--g-Grd) + 5px));
     --h-GrdTblHdr: 40px;
     --h-GrdTblMain: calc(var(--h-GrdMain) - var(--h-GrdTblHdr) - 10px);
@@ -44,13 +49,13 @@ body {
     */
 .grid_header {
     display: grid;
-    justify-items: center;
     align-items: center;
     grid-auto-flow: column;
     grid-gap: 1rem;
     overflow-x: auto;
-    background-color: #FEBAC5;
+    background-color: #fca47b;
     grid-area: header;
+    padding-left: 5px;
 }
 
 .grid_main {
@@ -164,6 +169,10 @@ body {
     white-space: nowrap;
 }
 
+.txtLeft {
+    text-align: left;
+}
+
 .colTeam {
     width: var(--w-Team);
     text-align: left;
@@ -225,6 +234,12 @@ tbody tr:nth-child(even) {
 
 [data-WL="W"] {
     font-weight: bold;
+}
+[data-CWL="W"] {
+    color: green;
+}
+[data-CWL="L"] {
+    color: red;
 }
 
 .curRow {

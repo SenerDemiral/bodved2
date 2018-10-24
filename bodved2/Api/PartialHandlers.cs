@@ -24,6 +24,7 @@ namespace bodved2.Api
             {
                 var page = new CCsPage();
                 page.CCs.Data = Db.SQL<CC>("SELECT r FROM CC r order by r.Idx");
+                //page.Data = null;
                 return page;
             });
 
@@ -50,7 +51,7 @@ namespace bodved2.Api
             {
                 var page = new CETsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.CCAd = $"{CC.Ad} Fikstür";
+                page.Hdr = $"{CC.Ad} Fikstür";
                 page.CETs.Data = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC = ? order by r.Trh", CC);
                 return page;
 
@@ -60,29 +61,28 @@ namespace bodved2.Api
             {
                 var page = new CET2MACsPage();
                 CET CET = Db.FromId<CET>(cet);
-                page.HCTAd = $"{CET.HCT.Ad}";
-                page.GCTAd = $"{CET.GCT.Ad}";
-                page.Takimlar = $"Home: {CET.HCT.Ad} ● Guest: {CET.GCT.Ad} Tarih: {CET.Trh:dd.MM.yy ddd}";
-                page.Tarih = $"{CET.CC.Ad} Takım Maçları {CET.Trh:dd.MM.yy ddd}";
-                page.HSMW = CET.HSMW;
-                page.GSMW = CET.GSMW;
-                page.HDMW = CET.HDMW;
-                page.GDMW = CET.GDMW;
-                page.HKW = CET.HKW;
-                page.GKW = CET.GKW;
+
+                page.Hdr = $"{CET.CC.Ad} Takım Maçları {CET.Trh:dd.MM.yy ddd}";
+
+                page.CET.Data = CET;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");
                 page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "D");
                 return page;
             });
 
-            Handle.GET("/bodved/partials/PP2MACs/{?}", (ulong pp) =>
+            Handle.GET("/bodved/partials/PP2MACs/{?}", (long pp) =>
             {
                 var page = new PP2MACsPage();
+                /*
                 PP PP = Db.FromId<PP>(pp);
-                page.Head1 = PP.Ad;
-                page.Pp.Data = PP;
+                page.Hdr = PP.Ad;
+                page.PP.Data = PP;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", PP, PP);
                 page.Dbls.Data  = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ? or r.HPP2 = ? or r.GPP2 = ?) order by r.Trh DESC", "D", PP, PP, PP, PP);
+                */
+
+                page.PPoNo = pp;
+                page.Data = null;
                 return page;
 
             });

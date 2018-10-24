@@ -206,6 +206,11 @@ namespace RestStarcounterServer
                 });
             }).Wait();
 
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
+
             return Task.FromResult(request);
         }
 
@@ -295,6 +300,11 @@ namespace RestStarcounterServer
                 });
             }).Wait();
 
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
+
             return Task.FromResult(request);
         }
 
@@ -382,6 +392,11 @@ namespace RestStarcounterServer
                     }
                 });
             }).Wait();
+
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
 
             return Task.FromResult(request);
         }
@@ -471,6 +486,11 @@ namespace RestStarcounterServer
                     }
                 });
             }).Wait();
+
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
 
             return Task.FromResult(request);
         }
@@ -567,6 +587,11 @@ namespace RestStarcounterServer
                     }
                 });
             }).Wait();
+
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
 
             return Task.FromResult(request);
         }

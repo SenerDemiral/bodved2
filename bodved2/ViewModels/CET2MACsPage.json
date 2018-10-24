@@ -1,17 +1,21 @@
 {
   "Html": "/Bodved/viewmodels/CET2MACsPage.html",
-  "CEToNo": 0,
-  "HCTAd": "",
-  "GCTAd": "",
-  "Takimlar": "",
-  "Tarih": "",
-  "Info": "",
-  "HSMW": 0,
-  "GSMW": 0,
-  "HDMW": 0,
-  "GDMW": 0,
-  "HKW": 0,
-  "GKW": 0,
+
+  "Hdr": "",
+
+  "CET": {
+    "CEToNo": 0,
+    "HCTAd": "",
+    "GCTAd": "",
+    "Tarih": "",
+    "Info": "",
+    "HSMW": 0,
+    "GSMW": 0,
+    "HDMW": 0,
+    "GDMW": 0,
+    "HKW": 0,
+    "GKW": 0
+  },
 
   "Sngls": [
     {

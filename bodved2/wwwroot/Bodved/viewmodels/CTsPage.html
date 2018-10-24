@@ -10,30 +10,30 @@
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
                         <colgroup>
-                            <col style="width:var(--w-Idx)" />
+                            <col style="width:2rem" />
                             <col style="width:var(--w-Team)" />
-                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:3rem" />
 
-                            <col style="width:var(--w-Skr)" />
-                            <col style="width:var(--w-Skr)" />
-                            <col style="width:var(--w-Skr)" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
 
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
-                            <col style="width:var(--w-Evn)" />
+                            <col style="width:2rem" />
+                            <col style="width:2rem" />
+                            <col style="width:2rem" />
+                            <col style="width:2rem" />
+                            <col style="width:2rem" />
 
-                            <col style="width:var(--w-Mac)" />
-                            <col style="width:var(--w-Mac)" />
-                            <col style="width:var(--w-Mac)" />
-                            <col style="width:var(--w-Mac)" />
-                            <col style="width:var(--w-Mac)" />
-                            <col style="width:var(--w-Mac)" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
                         </colgroup>
                         <thead>
                             <tr>
-                                <th rowspan="3">Sıra</th>
+                                <th rowspan="3">#</th>
                                 <th rowspan="3">Takım</th>
                                 <th rowspan="3">Puan</th>
                                 <th rowspan="2" colspan="3">Skor</th>
@@ -68,7 +68,7 @@
                             <template is="dom-repeat" items="{{model.CTs}}">
                                 <tr>
                                     <td>{{item.Idx}}</td>
-                                    <td class="colTeam"><a href="/bodved/CTPs/[[item.CToNo]]">[[item.Ad]]</a></td>
+                                    <td class="txtLeft"><a href="/bodved/CTPs/[[item.CToNo]]">[[item.Ad]]</a></td>
 
                                     <td>{{item.PW}}</td>
 
