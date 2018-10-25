@@ -11,22 +11,22 @@
                     <table class="fixTbl sngLine">
                         <colgroup>
                             <col style="width:var(--w-Tarih)" />
-                            <col style="width:var(--w-Drm)" />
                             <col style="width:var(--w-Team)" />
-                            <col style="width:var(--w-EvntSkr)" />
                             <col style="width:var(--w-EvntPnt)" />
                             <col style="width:var(--w-Team)" />
                             <col style="width:var(--w-EvntSkr)" />
+                            <col style="width:var(--w-EvntSkr)" />
+                            <col style="width:var(--w-Drm)" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>Tarih</th>
-                                <th>Drm</th>
                                 <th>Home</th>
-                                <th>Skor</th>
                                 <th>Puan</th>
                                 <th>Guest</th>
-                                <th>Skor</th>
+                                <th>H.Skor</th>
+                                <th>G.Skor</th>
+                                <th>Drm</th>
 
                             </tr>
                         </thead>
@@ -34,12 +34,12 @@
                             <template is="dom-repeat" items="{{model.CETs}}">
                                 <tr>
                                     <td class="txtLeft"><a href="/bodved/CET2MACs/[[item.CEToNo]]">[[item.Tarih]]</a></td>
-                                    <td>{{item.Drm}}</td>
-                                    <td class="txtLeft"><a href="/bodved/CTPs/[[item.HCToNo]]">[[item.HCTAd]]</a></td>
-                                    <td class="txtLeft">{{item.HK}}</td>
+                                    <td class="txtLeft" data-WL$="[[item.HWL]]"><a href="/bodved/CTPs/[[item.HCToNo]]">[[item.HCTAd]]</a></td>
                                     <td>{{item.HPW}} - {{item.GPW}}</td>
-                                    <td class="txtLeft"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
+                                    <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
+                                    <td class="txtLeft">{{item.HK}}</td>
                                     <td class="txtLeft">{{item.GK}}</td>
+                                    <td>{{item.Drm}}</td>
 
                                 </tr>
                             </template>

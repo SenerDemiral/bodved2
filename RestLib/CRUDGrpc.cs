@@ -37,6 +37,8 @@ namespace RestLib {
     static readonly grpc::Marshaller<global::RestLib.CTProxy> __Marshaller_RestLib_CTProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CTProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CTPProxy> __Marshaller_RestLib_CTPProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CTPProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CETProxy> __Marshaller_RestLib_CETProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CETProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.CFProxy> __Marshaller_RestLib_CFProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CFProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.CEFProxy> __Marshaller_RestLib_CEFProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CEFProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.MACProxy> __Marshaller_RestLib_MACProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.MACProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.PPlookUpProxy> __Marshaller_RestLib_PPlookUpProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.PPlookUpProxy.Parser.ParseFrom);
 
@@ -116,6 +118,34 @@ namespace RestLib {
         "CETUpdate",
         __Marshaller_RestLib_CETProxy,
         __Marshaller_RestLib_CETProxy);
+
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.CFProxy> __Method_CFFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.CFProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "CFFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_CFProxy);
+
+    static readonly grpc::Method<global::RestLib.CFProxy, global::RestLib.CFProxy> __Method_CFUpdate = new grpc::Method<global::RestLib.CFProxy, global::RestLib.CFProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CFUpdate",
+        __Marshaller_RestLib_CFProxy,
+        __Marshaller_RestLib_CFProxy);
+
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.CEFProxy> __Method_CEFFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.CEFProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "CEFFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_CEFProxy);
+
+    static readonly grpc::Method<global::RestLib.CEFProxy, global::RestLib.CEFProxy> __Method_CEFUpdate = new grpc::Method<global::RestLib.CEFProxy, global::RestLib.CEFProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CEFUpdate",
+        __Marshaller_RestLib_CEFProxy,
+        __Marshaller_RestLib_CEFProxy);
 
     static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.MACProxy> __Method_MACFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.MACProxy>(
         grpc::MethodType.ServerStreaming,
@@ -198,6 +228,26 @@ namespace RestLib {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::RestLib.CETProxy> CETUpdate(global::RestLib.CETProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task CFFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.CFProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.CFProxy> CFUpdate(global::RestLib.CFProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task CEFFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.CEFProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.CEFProxy> CEFUpdate(global::RestLib.CEFProxy request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -378,6 +428,54 @@ namespace RestLib {
       {
         return CallInvoker.AsyncUnaryCall(__Method_CETUpdate, null, options, request);
       }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CFProxy> CFFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CFFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CFProxy> CFFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_CFFill, null, options, request);
+      }
+      public virtual global::RestLib.CFProxy CFUpdate(global::RestLib.CFProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CFUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.CFProxy CFUpdate(global::RestLib.CFProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CFUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CFProxy> CFUpdateAsync(global::RestLib.CFProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CFUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CFProxy> CFUpdateAsync(global::RestLib.CFProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CFUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CEFProxy> CEFFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CEFFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.CEFProxy> CEFFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_CEFFill, null, options, request);
+      }
+      public virtual global::RestLib.CEFProxy CEFUpdate(global::RestLib.CEFProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CEFUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.CEFProxy CEFUpdate(global::RestLib.CEFProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CEFUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CEFProxy> CEFUpdateAsync(global::RestLib.CEFProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CEFUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.CEFProxy> CEFUpdateAsync(global::RestLib.CEFProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CEFUpdate, null, options, request);
+      }
       public virtual grpc::AsyncServerStreamingCall<global::RestLib.MACProxy> MACFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return MACFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -433,6 +531,10 @@ namespace RestLib {
           .AddMethod(__Method_CTPUpdate, serviceImpl.CTPUpdate)
           .AddMethod(__Method_CETFill, serviceImpl.CETFill)
           .AddMethod(__Method_CETUpdate, serviceImpl.CETUpdate)
+          .AddMethod(__Method_CFFill, serviceImpl.CFFill)
+          .AddMethod(__Method_CFUpdate, serviceImpl.CFUpdate)
+          .AddMethod(__Method_CEFFill, serviceImpl.CEFFill)
+          .AddMethod(__Method_CEFUpdate, serviceImpl.CEFUpdate)
           .AddMethod(__Method_MACFill, serviceImpl.MACFill)
           .AddMethod(__Method_MACUpdate, serviceImpl.MACUpdate)
           .AddMethod(__Method_PPlookUp, serviceImpl.PPlookUp).Build();

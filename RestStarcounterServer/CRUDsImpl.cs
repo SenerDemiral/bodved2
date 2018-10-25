@@ -495,6 +495,144 @@ namespace RestStarcounterServer
             return Task.FromResult(request);
         }
 
+        // Ferdi Players
+        public override async Task CFFill(QryProxy request, IServerStreamWriter<CFProxy> responseStream, ServerCallContext context)
+        {
+            CFProxy proxy = new CFProxy();
+            List<CFProxy> proxyList = new List<CFProxy>();
+
+            Type proxyType = typeof(CFProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                IEnumerable<CF> rows = null;
+                if (request.Query == "CC")
+                    rows = Db.SQL<CF>("select r from CF r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
+                else
+                    rows = Db.SQL<CF>("select r from CF r");
+
+                foreach (var row in rows)
+                {
+                    proxy = CRUDsHelper.ToProxy<CFProxy, CF>(row);
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+        public override Task<CFProxy> CFUpdate(CFProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                // RowSte: Added, Modified, Deletede, Unchanged
+                Db.Transact(() =>
+                {
+                    if (request.RowSte == "A" || request.RowSte == "M")
+                    {
+                        if (request.RowErr == string.Empty)
+                        {
+                            CF row = CRUDsHelper.FromProxy<CFProxy, CF>(request);
+                            //XUT.Append(request.RowUsr, row, request.RowSte);
+                            request = CRUDsHelper.ToProxy<CFProxy, CF>(row);
+                        }
+
+                    }
+                    else if (request.RowSte == "D")
+                    {
+                        var row = (CF)Db.FromId(request.RowKey);
+                        if (row == null)
+                        {
+                            request.RowErr = "CF Rec not found";
+                        }
+                        else
+                        {
+                            request.RowErr = $"Silemezsiniz";
+                        }
+                    }
+                });
+            }).Wait();
+
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
+
+            return Task.FromResult(request);
+        }
+
+        // Ferdi Events
+        public override async Task CEFFill(QryProxy request, IServerStreamWriter<CEFProxy> responseStream, ServerCallContext context)
+        {
+            CEFProxy proxy = new CEFProxy();
+            List<CEFProxy> proxyList = new List<CEFProxy>();
+
+            Type proxyType = typeof(CEFProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                IEnumerable<CEF> rows = null;
+                if (request.Query == "CC")
+                    rows = Db.SQL<CEF>("select r from CEF r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
+                else
+                    rows = Db.SQL<CEF>("select r from CEF r");
+
+                foreach (var row in rows)
+                {
+                    proxy = CRUDsHelper.ToProxy<CEFProxy, CEF>(row);
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+        public override Task<CEFProxy> CEFUpdate(CEFProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                // RowSte: Added, Modified, Deletede, Unchanged
+                Db.Transact(() =>
+                {
+                    if (request.RowSte == "A" || request.RowSte == "M")
+                    {
+                        if (request.RowErr == string.Empty)
+                        {
+                            CEF row = CRUDsHelper.FromProxy<CEFProxy, CEF>(request);
+                            //XUT.Append(request.RowUsr, row, request.RowSte);
+                            request = CRUDsHelper.ToProxy<CEFProxy, CEF>(row);
+                        }
+
+                    }
+                    else if (request.RowSte == "D")
+                    {
+                        var row = (CEF)Db.FromId(request.RowKey);
+                        if (row == null)
+                        {
+                            request.RowErr = "CEF Rec not found";
+                        }
+                        else
+                        {
+                            request.RowErr = $"Silemezsiniz";
+                        }
+                    }
+                });
+            }).Wait();
+
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
+
+            return Task.FromResult(request);
+        }
+
         // Maclar
         public override async Task MACFill(QryProxy request, IServerStreamWriter<MACProxy> responseStream, ServerCallContext context)
         {

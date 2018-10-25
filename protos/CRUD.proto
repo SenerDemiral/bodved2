@@ -34,6 +34,12 @@ service CRUDs {
   rpc CETFill (QryProxy) returns (stream CETProxy) {}
   rpc CETUpdate (CETProxy) returns (CETProxy) {}
 
+  rpc CFFill (QryProxy) returns (stream CFProxy) {}
+  rpc CFUpdate (CFProxy) returns (CFProxy) {}
+
+  rpc CEFFill (QryProxy) returns (stream CEFProxy) {}
+  rpc CEFUpdate (CEFProxy) returns (CEFProxy) {}
+
   rpc MACFill (QryProxy) returns (stream MACProxy) {}
   rpc MACUpdate (MACProxy) returns (MACProxy) {}
 
@@ -195,6 +201,39 @@ message CETProxy {
 	
 	int32 HPW  = 20;
 	int32 GPW  = 21;
+}
+
+// Competition Ferdi
+message CFProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 PP = 6;
+	int32 Idx  = 7;
+	bool IsRun = 8;
+	int32 RnkBas = 9;
+	int32 RnkBit = 10;
+	string Info  = 11;
+}
+
+// Competition Ferdi Events
+message CEFProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 HPP = 6;
+	uint64 GPP = 7;
+	
+	int64 Trh = 8;
+	string Drm  = 9;
+	string Yer  = 10;
+	string Info  = 11;
 }
 
 // Mac

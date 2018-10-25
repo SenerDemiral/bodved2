@@ -191,27 +191,27 @@ namespace BDB2
         public PP K1 { get; set; }            // 1.Kaptan
         public PP K2 { get; set; }
 
-        public int Idx { get; set; }     // Single Mac Total
+        public int Idx { get; set; }
         public bool IsRun { get; set; }     // Aktif oynuyor mu?
 
         //--------
-        public int SMT => SMW + SML;        // Single Mac Total
-        public int SMW { get; set; }        // Single Mac Win
-        public int SML { get; set; }        //            Lost
+        public int SMT => SMW + SML;        // Single Mac Total, Win, Lost
+        public int SMW { get; set; }
+        public int SML { get; set; }
 
-        public int DMT => DMW + DML;    // Single Mac Total
-        public int DMW { get; set; }        // Double Mac Win
+        public int DMT => DMW + DML;        // Double Mac Total, Win, Lost
+        public int DMW { get; set; }
         public int DML { get; set; }
 
-        public int KF => KW - KL;           //       Fark
-        public int KW { get; set; }         // sKor  Win
-        public int KL { get; set; }         //       Lost
+        public int KF => KW - KL;           // sKor Fark, Win, Lost
+        public int KW { get; set; }
+        public int KL { get; set; }
 
-        public int ET => EW + EL + EB + EX;        // Single Mac Total
-        public int EW { get; set; }         // Event Win
-        public int EL { get; set; }         //       Lost
-        public int EB { get; set; }         //       Bereberlik
-        public int EX { get; set; }         //       Diskalifiye
+        public int ET => EW + EL + EB + EX;        // Event  Total, Win, Lost, Beraber, Diskalifiye
+        public int EW { get; set; }
+        public int EL { get; set; }
+        public int EB { get; set; }
+        public int EX { get; set; }
 
         public int PW { get; set; }         // Puan Win
         //--------
@@ -347,10 +347,10 @@ namespace BDB2
         public int RnkBas { get; set; } // Takima girdiginde hesaplanir
         public int RnkBit { get; set; } // Lig bittiginde hesaplanir
 
-        public int SMT => SMW + SML;    // Single Mac Total
-        public int SMW { get; set; }    //            Win
-        public int SML { get; set; }    //            Lost
-        public int SMX { get; set; }    //            HukmenMaglup
+        public int SMT => SMW + SML;    // Single Mac Total, Win, Lost, Diskalifiye
+        public int SMW { get; set; }
+        public int SML { get; set; }
+        public int SMX { get; set; }
 
         public int DMT => DMW + DML;    // Double Mac Total
         public int DMW { get; set; }
@@ -692,10 +692,13 @@ namespace BDB2
     {
         public CC CC { get; set; }
         public PP PP { get; set; }
-        public int Rnk { get; set; }
-        public int RnkIdx { get; set; }
-        //public int SonRnk => PP?.SonRnk == null ? 0 : PP.SonRnk == 0 ? PP.BazRnk : PP.SonRnk;
+        public int Idx { get; set; }
+        public bool IsRun { get; set; }     // Aktif oynuyor mu?
+        public int RnkBas { get; set; }     // Takima girdiginde hesaplanir
+        public int RnkBit { get; set; }     // Lig bittiginde hesaplanir
 
+        public int Rnk { get; set; }    // ??????
+        public int RnkIdx { get; set; } // ??????
     }
 
     [Database]
@@ -868,7 +871,7 @@ namespace BDB2
     }
 
     [Database]
-    public class CETP   // EventTakimOyunculari
+    public class CETP   // EventTakimOyunculari  KULLANILMIYOR
     {
         public CC CC { get; set; }
         public CET CET { get; set; }

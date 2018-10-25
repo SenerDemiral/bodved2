@@ -59,11 +59,17 @@
     <Compile Include="ViewModels\CCsPage.json.cs">
       <DependentUpon>CCsPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CEFsPage.json.cs">
+      <DependentUpon>CEFsPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CET2MACsPage.json.cs">
       <DependentUpon>CET2MACsPage.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CETsPage.json.cs">
       <DependentUpon>CETsPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CFsPage.json.cs">
+      <DependentUpon>CFsPage.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CTPsPage.json.cs">
       <DependentUpon>CTPsPage.json</DependentUpon>
@@ -118,6 +124,12 @@
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <TypedJSON Include="ViewModels\PP2MACsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\CFsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\CEFsPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\Bodved\viewmodels\MasterPage.html" />

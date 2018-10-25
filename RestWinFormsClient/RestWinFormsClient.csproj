@@ -110,11 +110,23 @@
     <Compile Include="ccXF.Designer.cs">
       <DependentUpon>ccXF.cs</DependentUpon>
     </Compile>
+    <Compile Include="cefXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cefXF.Designer.cs">
+      <DependentUpon>cefXF.cs</DependentUpon>
+    </Compile>
     <Compile Include="cetXF.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cetXF.Designer.cs">
       <DependentUpon>cetXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cfXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cfXF.Designer.cs">
+      <DependentUpon>cfXF.cs</DependentUpon>
     </Compile>
     <Compile Include="ctpXF.cs">
       <SubType>Form</SubType>
@@ -160,8 +172,14 @@
     <EmbeddedResource Include="ccXF.resx">
       <DependentUpon>ccXF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cefXF.resx">
+      <DependentUpon>cefXF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cetXF.resx">
       <DependentUpon>cetXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cfXF.resx">
+      <DependentUpon>cfXF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctpXF.resx">
       <DependentUpon>ctpXF.cs</DependentUpon>

@@ -62,7 +62,7 @@ namespace bodved2.Api
                 var page = new CET2MACsPage();
                 CET CET = Db.FromId<CET>(cet);
 
-                page.Hdr = $"{CET.CC.Ad} Takım Maçları {CET.Trh:dd.MM.yy ddd}";
+                page.Hdr = $"{CET.CC.Ad} Takım Maçları {CET.Trh:dd.MM.yy}";
 
                 page.CET.Data = CET;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");

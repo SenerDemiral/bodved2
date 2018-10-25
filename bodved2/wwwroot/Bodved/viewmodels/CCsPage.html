@@ -8,13 +8,14 @@
                     <div>Turnuvalar</div>
                 </div>
                 <div class="gridTbl_main">
-                    <table class="fixTbl sngLine">
+                    <table class="fixTbl">
                         <colgroup>
                             <col style="width:var(--w-Team)" />
                             <col style="width:var(--w-Lnk)" />
                             <col style="width:var(--w-Lnk)" />
                             <col style="width:4rem" />
                             <col style="width:4rem" />
+                            <col style="width:20rem" />
                         </colgroup>
                         <thead>
                             <tr>
@@ -23,16 +24,18 @@
                                 <th>Katılımcılar</th>
                                 <th>Run</th>
                                 <th>Ranked</th>
+                                <th>Info</th>
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="{{model.CCs}}">
                                 <tr>
-                                    <td class="colTeam">[[item.Ad]]</a></td>
+                                    <td class="txtLeft" data-CCSkl$="[[item.Skl]]">[[item.Ad]]</td>
                                     <td class="colLnk"><a href="/bodved/CE/[[item.CCoNo]]">►►</a></td>
                                     <td class="colLnk"><a href="/bodved/CK/[[item.CCoNo]]">►►</a></td>
                                     <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
                                     <td><input type="checkbox" checked="{{item.IsRnkd::change}}" disabled></td>
+                                    <td class="txtLeft">[[item.Info]]</td>
                                 </tr>
                             </template>
                         </tbody>

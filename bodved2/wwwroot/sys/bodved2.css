@@ -7,7 +7,7 @@
     --w-Team: 8rem;
     --w-Plyr: 9rem;
     --w-Tarih: 7rem;
-    --w-Drm: 4rem;
+    --w-Drm: 3rem;
     --w-TF: 3rem;
     --w-MacSet: 20rem;
     --w-SncTxt: 20rem;
@@ -240,6 +240,11 @@ tbody tr:nth-child(even) {
 }
 [data-CWL="L"] {
     color: red;
+}
+
+[data-CCSkl="F"] {
+    font-style:italic;
+    text-align:right;
 }
 
 .curRow {

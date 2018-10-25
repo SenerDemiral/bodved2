@@ -38,7 +38,10 @@
       "HSW": 0,
       "GSW": 0,
       "HMW": 0,
-      "GMW": 0
+      "GMW": 0,
+
+      "Hakem": "",
+      "Info": "",
     }
   ],
 
@@ -55,8 +58,10 @@
       "SoD": "",
       "Idx": 0,
       "SncMac": "",
-      "SncSet": ""
+      "SncSet": "",
 
+      "Hakem": "",
+      "Info": ""
     }
   ]
 }

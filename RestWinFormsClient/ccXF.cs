@@ -81,19 +81,39 @@ namespace RestWinFormsClient
 
         private void teamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ctXF frm = new ctXF();
-            frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
-            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Teams [ctXF]";
-            frm.ShowDialog();
+            if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "T")
+            {
+                ctXF frm = new ctXF();
+                frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
+                frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Teams [ctXF]";
+                frm.ShowDialog();
+            }
+            else if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "F")
+            {
+                cfXF frm = new cfXF();
+                frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
+                frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Players [cfXF]";
+                frm.ShowDialog();
+            }
         }
 
         private void eventsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // CC.Skl ine gore T/F
-            cetXF frm = new cetXF();
-            frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
-            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cetXF]";
-            frm.ShowDialog();
+            if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "T")
+            {
+                cetXF frm = new cetXF();
+                frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
+                frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cetXF]";
+                frm.ShowDialog();
+            }
+            else if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "F")
+            {
+                cefXF frm = new cefXF();
+                frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
+                frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cefXF]";
+                frm.ShowDialog();
+            }
         }
 
         private void matchesToolStripMenuItem_Click(object sender, EventArgs e)

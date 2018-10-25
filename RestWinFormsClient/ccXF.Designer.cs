@@ -53,6 +53,7 @@
             this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdx = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSkl = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrp = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAd = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -76,7 +77,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colIdx = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -265,26 +265,26 @@
             this.eventsToolStripMenuItem,
             this.matchesToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(120, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 92);
             // 
             // teamsToolStripMenuItem
             // 
             this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.teamsToolStripMenuItem.Text = "Teams";
+            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teamsToolStripMenuItem.Text = "Teams/Players";
             this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
             // 
             // eventsToolStripMenuItem
             // 
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
-            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eventsToolStripMenuItem.Text = "Events";
             this.eventsToolStripMenuItem.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
             // 
             // matchesToolStripMenuItem
             // 
             this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
-            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.matchesToolStripMenuItem.Text = "Matches";
             this.matchesToolStripMenuItem.Click += new System.EventHandler(this.matchesToolStripMenuItem_Click);
             // 
@@ -324,6 +324,13 @@
             this.colRowKey.Visible = true;
             this.colRowKey.VisibleIndex = 0;
             this.colRowKey.Width = 60;
+            // 
+            // colIdx
+            // 
+            this.colIdx.FieldName = "Idx";
+            this.colIdx.Name = "colIdx";
+            this.colIdx.Visible = true;
+            this.colIdx.VisibleIndex = 1;
             // 
             // colSkl
             // 
@@ -571,13 +578,6 @@
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // colIdx
-            // 
-            this.colIdx.FieldName = "Idx";
-            this.colIdx.Name = "colIdx";
-            this.colIdx.Visible = true;
-            this.colIdx.VisibleIndex = 1;
             // 
             // ccXF
             // 
