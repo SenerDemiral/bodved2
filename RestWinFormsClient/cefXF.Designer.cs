@@ -53,6 +53,10 @@
             this.PPrepositoryItemGridLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.cfPPluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colAdPP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSexPP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsRunPP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRowKeyPP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGPP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDrm = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,10 +73,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colRowKeyPP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAdPP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSexPP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsRunPP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.maclarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingNavigator)).BeginInit();
@@ -90,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataSetGnl
@@ -230,6 +233,7 @@
             // 
             // cEFGridControl
             // 
+            this.cEFGridControl.ContextMenuStrip = this.contextMenuStrip;
             this.cEFGridControl.DataSource = this.cEFBindingSource;
             this.cEFGridControl.Location = new System.Drawing.Point(12, 46);
             this.cEFGridControl.MainView = this.gridView1;
@@ -321,6 +325,41 @@
             this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
             this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colAdPP
+            // 
+            this.colAdPP.FieldName = "Ad";
+            this.colAdPP.Name = "colAdPP";
+            this.colAdPP.Visible = true;
+            this.colAdPP.VisibleIndex = 0;
+            this.colAdPP.Width = 204;
+            // 
+            // colSexPP
+            // 
+            this.colSexPP.Caption = "Sex";
+            this.colSexPP.FieldName = "Sex";
+            this.colSexPP.Name = "colSexPP";
+            this.colSexPP.Visible = true;
+            this.colSexPP.VisibleIndex = 1;
+            this.colSexPP.Width = 63;
+            // 
+            // colIsRunPP
+            // 
+            this.colIsRunPP.Caption = "Run";
+            this.colIsRunPP.FieldName = "IsRun";
+            this.colIsRunPP.Name = "colIsRunPP";
+            this.colIsRunPP.Visible = true;
+            this.colIsRunPP.VisibleIndex = 2;
+            this.colIsRunPP.Width = 67;
+            // 
+            // colRowKeyPP
+            // 
+            this.colRowKeyPP.Caption = "Key";
+            this.colRowKeyPP.FieldName = "RowKey";
+            this.colRowKeyPP.Name = "colRowKeyPP";
+            this.colRowKeyPP.Visible = true;
+            this.colRowKeyPP.VisibleIndex = 3;
+            this.colRowKeyPP.Width = 50;
             // 
             // colGPP
             // 
@@ -472,40 +511,19 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // colRowKeyPP
+            // contextMenuStrip
             // 
-            this.colRowKeyPP.Caption = "Key";
-            this.colRowKeyPP.FieldName = "RowKey";
-            this.colRowKeyPP.Name = "colRowKeyPP";
-            this.colRowKeyPP.Visible = true;
-            this.colRowKeyPP.VisibleIndex = 3;
-            this.colRowKeyPP.Width = 50;
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.maclarToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 48);
             // 
-            // colAdPP
+            // maclarToolStripMenuItem
             // 
-            this.colAdPP.FieldName = "Ad";
-            this.colAdPP.Name = "colAdPP";
-            this.colAdPP.Visible = true;
-            this.colAdPP.VisibleIndex = 0;
-            this.colAdPP.Width = 204;
-            // 
-            // colSexPP
-            // 
-            this.colSexPP.Caption = "Sex";
-            this.colSexPP.FieldName = "Sex";
-            this.colSexPP.Name = "colSexPP";
-            this.colSexPP.Visible = true;
-            this.colSexPP.VisibleIndex = 1;
-            this.colSexPP.Width = 63;
-            // 
-            // colIsRunPP
-            // 
-            this.colIsRunPP.Caption = "Run";
-            this.colIsRunPP.FieldName = "IsRun";
-            this.colIsRunPP.Name = "colIsRunPP";
-            this.colIsRunPP.Visible = true;
-            this.colIsRunPP.VisibleIndex = 2;
-            this.colIsRunPP.Width = 67;
+            this.maclarToolStripMenuItem.Name = "maclarToolStripMenuItem";
+            this.maclarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.maclarToolStripMenuItem.Text = "Maçlar";
+            this.maclarToolStripMenuItem.Click += new System.EventHandler(this.maclarToolStripMenuItem_Click);
             // 
             // cefXF
             // 
@@ -535,6 +553,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -584,5 +603,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSexPP;
         private DevExpress.XtraGrid.Columns.GridColumn colIsRunPP;
         private DevExpress.XtraGrid.Columns.GridColumn colRowKeyPP;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem maclarToolStripMenuItem;
     }
 }

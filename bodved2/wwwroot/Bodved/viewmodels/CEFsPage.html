@@ -1,0 +1,50 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>[[model.Hdr]]</div>
+                </div>
+                <div class="gridTbl_main">
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col style="width:var(--w-Tarih)" />
+                            <col style="width:var(--w-Team)" />
+                            <col style="width:var(--w-EvntPnt)" />
+                            <col style="width:var(--w-Team)" />
+                            <col style="width:var(--w-EvntSkr)" />
+                            <col style="width:var(--w-EvntSkr)" />
+                            <col style="width:var(--w-Drm)" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Home</th>
+                                <th>Puan</th>
+                                <th>Guest</th>
+                                <th>H.Skor</th>
+                                <th>G.Skor</th>
+                                <th>Drm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.CEFs}}">
+                                <tr>
+                                    <td class="txtLeft"><a href="/bodved/CEF2MACs/[[item.CEFoNo]]">[[item.Tarih]]</a></td>
+                                    <td class="txtLeft" data-WL$="[[item.HWL]]"><a href="/bodved/PP2MACs/[[item.HPPoNo]]">[[item.HPPAd]]</a></td>
+                                    <td>{{item.HPW}} - {{item.GPW}}</td>
+                                    <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/PP2MACs/[[item.GPPoNo]]">[[item.GPPAd]]</a></td>
+                                    <td class="txtLeft">{{item.HK}}</td>
+                                    <td class="txtLeft">{{item.GK}}</td>
+                                    <td>{{item.Drm}}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+</template>

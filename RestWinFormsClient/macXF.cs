@@ -17,6 +17,9 @@ namespace RestWinFormsClient
         public DataSetGnl.PPRow PPRow = null;
         public DataSetGnl.CCRow CCRow = null;
         public DataSetGnl.CETRow CETRow = null;
+        public DataSetGnl.CEFRow CEFRow = null;
+        private ulong CC, CEB, HPP, GPP;
+        private DateTime Trh;
         private string qry;
         private ulong prm;
 
@@ -28,6 +31,10 @@ namespace RestWinFormsClient
             colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
             colTrh.ColumnEdit = Program.MF.TRHrepositoryItemDateEdit;
             colSoD.ColumnEdit = Program.MF.SoDrepositoryItemImageComboBox;
+            colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+            colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+            colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+            colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
 
         }
 
@@ -36,10 +43,36 @@ namespace RestWinFormsClient
             qry = "";
             prm = 0;
 
-            if (CETRow != null)
+            if (CETRow != null)     // Takim
             {
                 qry = "CET";
                 prm = CETRow.RowKey;
+                CC = CETRow.CC;
+                CEB = CETRow.RowKey;
+                Trh = CETRow.Trh;
+                HPP = 0;
+                GPP = 0;
+
+                colCC.Visible = false;
+                gridView1.SortInfo.ClearAndAddRange(new[] {
+                new GridColumnSortInfo(colSoD, DevExpress.Data.ColumnSortOrder.Descending),
+                new GridColumnSortInfo(colIdx, DevExpress.Data.ColumnSortOrder.Ascending)
+                });
+            }
+            else if (CEFRow != null)    // Ferdi
+            {
+                qry = "CEF";
+                prm = CEFRow.RowKey;
+                CC = CEFRow.CC;
+                CEB = CEFRow.RowKey;
+                Trh = CEFRow.Trh;
+                HPP = CEFRow.HPP;
+                GPP = CEFRow.GPP;
+
+                colHPP1.OptionsColumn.ReadOnly = true;
+                colHPP2.OptionsColumn.ReadOnly = true;
+                colGPP1.OptionsColumn.ReadOnly = true;
+                colGPP2.OptionsColumn.ReadOnly = true;
 
                 colCC.Visible = false;
                 gridView1.SortInfo.ClearAndAddRange(new[] {
@@ -50,10 +83,6 @@ namespace RestWinFormsClient
             else
             {
                 gridView1.OptionsBehavior.Editable = false;
-                colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-                colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-                colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-                colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
                 gridView1.ClearSorting();
                 if (CCRow != null)
                 {
@@ -171,12 +200,18 @@ namespace RestWinFormsClient
 
         private void FillDB()
         {
+            dataLayoutControl1.DataSource = null;
+            dataLayoutControl1.BeginInit();
+
             string res = "";
             mACGridControl.DataSource = null;
             dataSetGnl.CC.Rows.Clear();
             Task.Run(async () => { res = await dataSetGnl.MACFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
+
             mACGridControl.DataSource = mACBindingSource;
+            dataLayoutControl1.EndInit();
+            dataLayoutControl1.DataSource = mACBindingSource;
 
             gridView1.BestFitColumns();
         }
@@ -228,12 +263,13 @@ namespace RestWinFormsClient
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
-            gridView1.SetFocusedRowCellValue(colCC, CETRow.CC);
-            gridView1.SetFocusedRowCellValue(colCEB, CETRow.RowKey);
-            gridView1.SetFocusedRowCellValue(colHPP1, 0);
+            gridView1.SetFocusedRowCellValue(colCC, CC);
+            gridView1.SetFocusedRowCellValue(colCEB, CEB);
+            gridView1.SetFocusedRowCellValue(colHPP1, HPP);
             gridView1.SetFocusedRowCellValue(colHPP2, 0);
-            gridView1.SetFocusedRowCellValue(colGPP1, 0);
+            gridView1.SetFocusedRowCellValue(colGPP1, GPP);
             gridView1.SetFocusedRowCellValue(colGPP2, 0);
+            gridView1.SetFocusedRowCellValue(colTrh, Trh);
 
         }
 

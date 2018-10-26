@@ -124,6 +124,17 @@ namespace bodved2.Api
                 return master;
             });
 
+            Handle.GET("/bodved/CEF2MACs/{?}", (ulong cet) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is CEF2MACsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CEF2MACs/{cet}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
             Handle.GET("/bodved/PP2MACs/{?}", (ulong pp) =>
             {
                 MasterPage master = GetMasterPageFromSession();

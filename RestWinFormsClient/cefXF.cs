@@ -134,5 +134,14 @@ namespace RestWinFormsClient
         {
 
         }
+
+        private void maclarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            macXF frm = new macXF();
+            frm.CEFRow = (DataSetGnl.CEFRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellDisplayText(colHPP)} >< {gridView1.GetFocusedRowCellDisplayText(colGPP)} Matches [macXF]";
+            frm.ShowDialog();
+
+        }
     }
 }

@@ -34,7 +34,7 @@
                         <thead>
                             <tr>
                                 <th rowspan="3">#</th>
-                                <th rowspan="3">Takım</th>
+                                <th rowspan="3">Oyuncu</th>
                                 <th rowspan="3">Puan</th>
                                 <th rowspan="2" colspan="3">Skor</th>
                                 <th rowspan="2" colspan="5">Müsabaka</th>
@@ -65,10 +65,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <template is="dom-repeat" items="{{model.CTs}}">
+                            <template is="dom-repeat" items="{{model.CFs}}">
                                 <tr>
                                     <td>{{item.Idx}}</td>
-                                    <td class="txtLeft"><a href="/bodved/CTPs/[[item.CToNo]]">[[item.Ad]]</a></td>
+                                    <td class="txtLeft"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
 
                                     <td>{{item.PW}}</td>
 

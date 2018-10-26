@@ -1,0 +1,81 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>[[model.Hdr]]</div>
+                </div>
+                <div class="gridTbl_main">
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col style="width:2rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:3rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:20rem" />
+                            <col style="width:10rem" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>[[model.CEF.HPPAd]]</th>
+                                <th>Maç</th>
+                                <th>[[model.CEF.GPPAd]]</th>
+                                <th>Skor: [[model.CEF.HKW]] - [[model.CEF.GKW]]</th>
+                                <th>Rank/PX</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.Sngls}}">
+                                <tr>
+                                    <td>{{item.Idx}}</td>
+                                    <td data-WL$="[[item.HWL]]" class="txtLeft"><a href="/bodved/PP2MACs/[[item.HPP1oNo]]">[[item.HPP1Ad]]</a></td>
+                                    <td>{{item.SncMac}}</td>
+                                    <td data-WL$="[[item.GWL]]" class="txtLeft"><a href="/bodved/PP2MACs/[[item.GPP1oNo]]">[[item.GPP1Ad]]</a></td>
+                                    <td class="txtLeft">{{item.SncSet}}</td>
+                                    <td class="txtLeft">[[item.HRnk]]/[[item.HRnkPX]] - [[item.GRnk]]/[[item.GRnkPX]]</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="font-weight:bold">[[model.CEF.HSMW]]-[[model.CEF.GSMW]]</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <table class="fixTbl sngLine">
+                        <colgroup>
+                            <col style="width:2rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:3rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:20rem" />
+                        </colgroup>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.Dbls}}">
+                                <tr>
+                                    <td>{{item.Idx}}</td>
+                                    <td class="txtLeft">{{item.HPP1Ad}}<br />{{item.HPP2Ad}}</td>
+                                    <td>{{item.SncMac}}</td>
+                                    <td class="txtLeft">{{item.GPP1Ad}}<br />{{item.GPP2Ad}}</td>
+                                    <td class="txtLeft">{{item.SncSet}}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="font-weight:bold">[[model.CEF.HDMW]]-[[model.CEF.GDMW]]</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+</template>

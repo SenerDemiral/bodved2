@@ -647,6 +647,8 @@ namespace RestStarcounterServer
                 IEnumerable<MAC> rows = null;// = Db.SQL<MAC>("select r from MAC r");
                 if (request.Query == "CET")
                     rows = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ?", ulong.Parse(request.Param));
+                else if (request.Query == "CEF")
+                    rows = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ?", ulong.Parse(request.Param));
                 else if (request.Query == "CC")
                     rows = Db.SQL<MAC>("select r from MAC r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
                 else if (request.Query == "PP")

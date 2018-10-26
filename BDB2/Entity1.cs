@@ -677,6 +677,7 @@ namespace BDB2
                                     sml = grp.Sum(r => r.ML),
                                 };
 */
+
             var groupedResult = MacList
                 .OrderBy(x => x.CT).ThenBy(x => x.PP) //.ThenBy(x => x.SoD)
                 .GroupBy(s => new { s.CT, s.PP, s.SoD })
@@ -691,7 +692,7 @@ namespace BDB2
                     tML = g.Sum(x => x.ML),
                     tMX = g.Sum(x => x.MX),
                 });
-
+            
             //iterate each group 
             ulong pct = 0, ppp = 0;
             CTP ctp = null;
@@ -850,6 +851,7 @@ namespace BDB2
     [Database]
     public class CF : BB   // TurnuvaFertleri
     {
+        public ulong CFoNo => this.GetObjectNo();
         public CC CC { get; set; }
         public PP PP { get; set; }
         public int Idx { get; set; }
@@ -859,6 +861,8 @@ namespace BDB2
 
         public int Rnk { get; set; }    // ??????
         public int RnkIdx { get; set; } // ??????
+        public ulong PPoNo => PP?.GetObjectNo() ?? 0;
+        public string PPAd => PP?.Ad;
     }
 
     [Database]
@@ -1047,8 +1051,16 @@ namespace BDB2
     [Database]
     public class CEF : CEB    // EventFerdi
     {
+        public ulong CEFoNo => this.GetObjectNo();
         public PP HPP { get; set; }
         public PP GPP { get; set; }
+
+        public ulong HPPoNo => HPP?.GetObjectNo() ?? 0;
+        public ulong GPPoNo => GPP?.GetObjectNo() ?? 0;
+        public string HPPAd => HPP?.Ad;
+        public string GPPAd => GPP?.Ad;
+
+        public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
     }
 
     [Database]

@@ -32,17 +32,25 @@ namespace bodved2.Api
             {
                 var page = new CTsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.CCAd = $"{CC.Ad} Takım Puanları"; 
+                page.Hdr = $"{CC.Ad} Takım Puanları"; 
                 page.CTs.Data = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC = ? order by r.Idx", CC);
                 return page;
+            });
 
+            Handle.GET("/bodved/partials/CFs/{?}", (ulong cc) =>
+            {
+                var page = new CFsPage();
+                CC CC = Db.FromId<CC>(cc);
+                page.Hdr = $"{CC.Ad} Ferdi Puanları";
+                page.CFs.Data = Db.SQL<CF>("SELECT r FROM CF r WHERE r.CC = ? order by r.Idx", CC);
+                return page;
             });
 
             Handle.GET("/bodved/partials/CTPs/{?}", (ulong ct) =>
             {
                 var page = new CTPsPage();
                 CT CT = Db.FromId<CT>(ct);
-                page.CTAd = $"{CT.Ad} Takım Oyuncuları";
+                page.Hdr = $"{CT.Ad} Takım Oyuncuları";
                 page.CTPs.Data = Db.SQL<CTP>("SELECT r FROM CTP r WHERE r.CT.ObjectNo = ? order by r.Idx", ct);
                 return page;
             });
@@ -54,7 +62,15 @@ namespace bodved2.Api
                 page.Hdr = $"{CC.Ad} Fikstür";
                 page.CETs.Data = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC = ? order by r.Trh", CC);
                 return page;
+            });
 
+            Handle.GET("/bodved/partials/CEFs/{?}", (ulong cc) =>
+            {
+                var page = new CEFsPage();
+                CC CC = Db.FromId<CC>(cc);
+                page.Hdr = $"{CC.Ad} Fikstür";
+                page.CEFs.Data = Db.SQL<CEF>("SELECT r FROM CEF r WHERE r.CC = ? order by r.Trh", CC);
+                return page;
             });
 
             Handle.GET("/bodved/partials/CET2MACs/{?}", (ulong cet) =>
@@ -67,6 +83,19 @@ namespace bodved2.Api
                 page.CET.Data = CET;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");
                 page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "D");
+                return page;
+            });
+
+            Handle.GET("/bodved/partials/CEF2MACs/{?}", (ulong cet) =>
+            {
+                var page = new CEF2MACsPage();
+                CEF CEF = Db.FromId<CEF>(cet);
+
+                page.Hdr = $"{CEF.CC.Ad} Ferdi Maçları {CEF.Trh:dd.MM.yy}";
+
+                page.CEF.Data = CEF;
+                page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB.ObjectNo = ? and r.SoD = ? order by r.Idx", CEF.CEFoNo, "S");
+                page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB.ObjectNo = ? and r.SoD = ? order by r.Idx", CEF.CEFoNo, "D");
                 return page;
             });
 

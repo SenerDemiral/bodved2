@@ -1,0 +1,67 @@
+{
+  "Html": "/Bodved/viewmodels/CEF2MACsPage.html",
+
+  "Hdr": "",
+
+  "CEF": {
+    "CEFoNo": 0,
+    "HPPAd": "",
+    "GPPAd": "",
+    "Tarih": "",
+    "Info": "",
+    "HSMW": 0,
+    "GSMW": 0,
+    "HDMW": 0,
+    "GDMW": 0,
+    "HKW": 0,
+    "GKW": 0
+  },
+
+  "Sngls": [
+    {
+      "HPP1oNo": 0,
+      "GPP1oNo": 0,
+      "HPP1Ad": "",
+      "GPP1Ad": "",
+      "SoD": "",
+      "Idx": 0,
+      "SncMac": "",
+      "SncSet": "",
+      "HRnk": 0,
+      "HRnkPX": 0,
+      "GRnk": 0,
+      "GRnkPX": 0,
+
+      "HWL": "",
+      "GWL": "",
+
+      "HSW": 0,
+      "GSW": 0,
+      "HMW": 0,
+      "GMW": 0,
+
+      "Hakem": "",
+      "Info": ""
+    }
+  ],
+
+  "Dbls": [
+    {
+      "HPP1oNo": 0,
+      "GPP1oNo": 0,
+      "HPP2oNo": 0,
+      "GPP2oNo": 0,
+      "HPP1Ad": "",
+      "HPP2Ad": "",
+      "GPP1Ad": "",
+      "GPP2Ad": "",
+      "SoD": "",
+      "Idx": 0,
+      "SncMac": "",
+      "SncSet": "",
+
+      "Hakem": "",
+      "Info": ""
+    }
+  ]
+}
