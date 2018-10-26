@@ -38,7 +38,7 @@ namespace bodved2
             CET.RefreshSonuc();
             CT.RefreshSonuc();
             CTP.RefreshSonucNew();
-            PP.RefreshStat();
+            PP.RefreshSonuc();
 
             MAC.RefreshGlobalRank();
 

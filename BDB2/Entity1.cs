@@ -91,16 +91,176 @@ namespace BDB2
         public int DMW { get; set; }
         public int DML { get; set; }
 
-        public static void RefreshStat()
+
+        public static void RefreshSonuc()   // Tum oyuncular icin
         {
-            var pps = Db.SQL<PP>("select r from PP r");
-            foreach(var pp in pps)
+            Dictionary<ulong, DictMacStat> dnm = new Dictionary<ulong, DictMacStat>();    // Players
+            ulong hPPoNo, gPPoNo;
+            DictMacStat hMS, gMS;
+
+            int norPP = 0, norMAC = 0;
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            var macs = Db.SQL<MAC>("select r from MAC r");
+            foreach (var mac in macs)
             {
-                RefreshStat(pp);
+                norMAC++;
+                hPPoNo = mac.HPP1oNo;
+                gPPoNo = mac.GPP1oNo;
+
+                if (!dnm.ContainsKey(hPPoNo))
+                    dnm[hPPoNo] = new DictMacStat();
+                if (!dnm.ContainsKey(gPPoNo))
+                    dnm[gPPoNo] = new DictMacStat();
+                
+                if (mac.SoD == "S")
+                {
+                    /*
+                    dnm[hPPoNo].SSW += mac.HSW;
+                    dnm[hPPoNo].SSL += mac.GSW;
+                    dnm[hPPoNo].SMW += mac.HMW;
+                    dnm[hPPoNo].SML += mac.GMW;
+
+                    dnm[gPPoNo].SSW += mac.GSW;
+                    dnm[gPPoNo].SSL += mac.HSW;
+                    dnm[gPPoNo].SMW += mac.GMW;
+                    dnm[gPPoNo].SML += mac.HMW;
+                    */
+                    hMS = dnm[hPPoNo];
+                    hMS.SSW += mac.HSW;
+                    hMS.SSL += mac.GSW;
+                    hMS.SMW += mac.HMW;
+                    hMS.SML += mac.GMW;
+                    dnm[hPPoNo] = hMS;
+
+                    gMS = dnm[gPPoNo];
+                    gMS.SSW += mac.GSW;
+                    gMS.SSL += mac.HSW;
+                    gMS.SMW += mac.GMW;
+                    gMS.SML += mac.HMW;
+                    dnm[gPPoNo] = gMS;
+
+                }
+                else
+                {
+                    /*
+                    dnm[hPPoNo].DSW += mac.HSW;
+                    dnm[hPPoNo].DSL += mac.GSW;
+                    dnm[hPPoNo].DMW += mac.HMW;
+                    dnm[hPPoNo].DML += mac.GMW;
+
+                    dnm[gPPoNo].DSW += mac.GSW;
+                    dnm[gPPoNo].DSL += mac.HSW;
+                    dnm[gPPoNo].DMW += mac.GMW;
+                    dnm[gPPoNo].DML += mac.HMW;
+
+                    hPPoNo = mac.HPP2oNo;
+                    gPPoNo = mac.GPP2oNo;
+                    if (!dnm.ContainsKey(hPPoNo))
+                        dnm[hPPoNo] = new DictMacStat();
+                    if (!dnm.ContainsKey(gPPoNo))
+                        dnm[gPPoNo] = new DictMacStat();
+
+                    dnm[hPPoNo].DSW += mac.HSW;
+                    dnm[hPPoNo].DSL += mac.GSW;
+                    dnm[hPPoNo].DMW += mac.HMW;
+                    dnm[hPPoNo].DML += mac.GMW;
+
+                    dnm[gPPoNo].DSW += mac.GSW;
+                    dnm[gPPoNo].DSL += mac.HSW;
+                    dnm[gPPoNo].DMW += mac.GMW;
+                    dnm[gPPoNo].DML += mac.HMW;
+                    */
+                    
+                    hMS = dnm[hPPoNo];
+                    hMS.DSW += mac.HSW;
+                    hMS.DSL += mac.GSW;
+                    hMS.DMW += mac.HMW;
+                    hMS.DML += mac.GMW;
+                    dnm[hPPoNo] = hMS;
+
+                    gMS = dnm[gPPoNo];
+                    gMS.DSW += mac.GSW;
+                    gMS.DSL += mac.HSW;
+                    gMS.DMW += mac.GMW;
+                    gMS.DML += mac.HMW;
+                    dnm[gPPoNo] = gMS;
+
+                
+                    hPPoNo = mac.HPP2oNo;
+                    gPPoNo = mac.GPP2oNo;
+
+                    if (!dnm.ContainsKey(hPPoNo))
+                        dnm[hPPoNo] = new DictMacStat();
+                    if (!dnm.ContainsKey(gPPoNo))
+                        dnm[gPPoNo] = new DictMacStat();
+
+                    hMS = dnm[hPPoNo];
+                    hMS.DSW += mac.HSW;
+                    hMS.DSL += mac.GSW;
+                    hMS.DMW += mac.HMW;
+                    hMS.DML += mac.GMW;
+                    dnm[hPPoNo] = hMS;
+
+                    gMS = dnm[gPPoNo];
+                    gMS.DSW += mac.GSW;
+                    gMS.DSL += mac.HSW;
+                    gMS.DMW += mac.GMW;
+                    gMS.DML += mac.HMW;
+                    dnm[gPPoNo] = gMS;
+
+                }
+
             }
+            
+            Db.TransactAsync(() =>
+            {
+                var pps = Db.SQL<PP>("select r from PP r");
+                foreach (var pp in pps)
+                {
+                    if (dnm.ContainsKey(pp.PPoNo))
+                    {
+                        norPP++;
+                        hMS = dnm[pp.PPoNo];
+                        pp.SSW = hMS.SSW;
+                        pp.SSL = hMS.SSL;
+                        pp.SMW = hMS.SMW;
+                        pp.SML = hMS.SML;
+                        pp.DSW = hMS.DSW;
+                        pp.DSL = hMS.DSL;
+                        pp.DMW = hMS.DMW;
+                        pp.DML = hMS.DML;
+                    }
+                    // Mac'i olmayan oyuncunun sonuclari sifirlanabilir
+                }
+            });
+
+
+            watch.Stop();
+            Console.WriteLine($"PP.RefreshSonuc(): MAC:{norMAC}, PP:{norPP} {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
-        public static void RefreshStat(PP pp)
+        public static void RefreshSonuc(MAC mac)    // Mactaki oyuncular icin yap
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            Db.TransactAsync(() =>
+            {
+                var pps = Db.SQL<PP>("select r from PP r");
+
+                RefreshSonuc(mac.HPP1);
+                RefreshSonuc(mac.GPP1);
+                RefreshSonuc(mac.HPP2);
+                RefreshSonuc(mac.GPP2);
+            });
+
+            watch.Stop();
+            Console.WriteLine($"PP.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void RefreshSonuc(PP pp)  // Bir oyuncu
         {
             int SSW = 0, DSW = 0, SMW = 0, DMW = 0;
             int SSL = 0, DSL = 0, SML = 0, DML = 0;
@@ -141,8 +301,8 @@ namespace BDB2
                     DML += mac.HMW;
                 }
             }
-            Db.TransactAsync(() =>
-            {
+            //Db.TransactAsync(() =>
+            //{
                 pp.SSW = SSW;
                 pp.SSL = SSL;
                 pp.SMW = SMW;
@@ -151,7 +311,7 @@ namespace BDB2
                 pp.DSL = DSL;
                 pp.DMW = DMW;
                 pp.DML = DML;
-            });
+            //});
         }
 
     }
@@ -1114,9 +1274,11 @@ namespace BDB2
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            var macs = Db.SQL<MAC>("select r from MAC r");
-            foreach (var mac in macs)
-                RefreshSonuc(mac);
+            Db.TransactAsync(() => {
+                var macs = Db.SQL<MAC>("select r from MAC r");
+                foreach (var mac in macs)
+                    RefreshSonuc(mac);
+            });
 
             watch.Stop();
             Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
@@ -1179,15 +1341,15 @@ namespace BDB2
                 gMW = 0;
             }
 
-            Db.TransactAsync(() =>
-            {
+            //Db.TransactAsync(() =>
+            //{
                 mac.HSW = hSW;
                 mac.GSW = gSW;
                 mac.HMW = hMW;
                 mac.GMW = gMW;
                 mac.HMX = hMX;
                 mac.GMX = gMX;
-            });
+            //});
         }
 
         public static int compHomeRnkPX(bool isHomeWin, int hRnk, int gRnk)
@@ -1717,6 +1879,7 @@ namespace BDB2
         public int SSL;
         public int SMW;
         public int SML;
+        public int SMX;     // Diskalifiye
 
         public int DSW;
         public int DSL;
