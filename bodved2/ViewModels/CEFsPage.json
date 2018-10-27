@@ -5,12 +5,6 @@
   "CEFs": [
     {
       "CEFoNo": 0,
-      "HWL": "",
-      "GWL": "",
-      "HR": "",
-      "GR": "",
-      "HK": "",
-      "GK": "",
 
       "HPPoNo": 0,
       "GPPoNo": 0,
@@ -20,22 +14,11 @@
       "Drm": "",
       "Info": "",
 
-      "HSSW": 0,
-      "GSSW": 0,
-      "HSMW": 0,
-      "GSMW": 0,
-
-      "HDSW": 0,
-      "GDSW": 0,
-      "HDMW": 0,
-      "GDMW": 0,
-
-      "HKW": 0,
-      "GKW": 0,
-
+      "HWL": "",
+      "GWL": "",
       "HPW": 0,
-      "GPW": 0
-
+      "GPW": 0,
+      "SncOzt": ""
     }
   ]
 }

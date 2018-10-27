@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.Globalization;
+using System.Collections;
 
 namespace BDB2
 {
@@ -950,6 +951,38 @@ namespace BDB2
                 }
             });
         }
+
+        public static void CreateCEFs(ulong CCoNo)
+        {
+            ArrayList al = new ArrayList();
+            DateTime Trh = DateTime.Today;
+            CC cc = Db.FromId<CC>(CCoNo);
+
+            var cfs = Db.SQL<CF>("select r from CF r where r.CC = ? order by r.PP.Ad", cc);
+            foreach (var cf in cfs)
+            {
+                al.Add(cf.PP.GetObjectNo());
+            }
+            int cnt = al.Count;
+
+            Db.TransactAsync(() =>
+            {
+                for (int i = 0; i < cnt; i++)
+                {
+                    for (int k = i+1; k < cnt; k++)
+                    {
+                        new CEF
+                        {
+                            CC = cc,
+                            Trh = Trh,
+                            HPP = Db.FromId<PP>((ulong)al[i]),
+                            GPP = Db.FromId<PP>((ulong)al[k]),
+                        };
+                        Trh = Trh.AddDays(1);
+                    }
+                }
+            });
+        }
     }
 
     [Database]
@@ -977,6 +1010,10 @@ namespace BDB2
 
         public int HPW { get; set; }         // Home Kazandigi Puan
         public int GPW { get; set; }
+
+        //public string Tarih => $"{Trh:dd.MM.yy ddd}"; // Burda Turkce gosteremiyor, ama RefreshSonuc da gosteriyor!!
+        //public string Tarih => string.Format(CultureInfo.CreateSpecificCulture("tr-TR"), "{0:dd.MM.yy ddd}", Trh);
+        public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
 
         public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
         public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
@@ -1115,9 +1152,9 @@ namespace BDB2
         public ulong GCToNo => GCT?.GetObjectNo() ?? 0;
         public string HCTAd => HCT?.Ad;
         public string GCTAd => GCT?.Ad;
-        //public string Tarih => $"{Trh:dd.MM.yy ddd}"; // Burda Turkce gosteremiyor, ama RefreshSonuc da gosteriyor!!
-        //public string Tarih => string.Format(CultureInfo.CreateSpecificCulture("tr-TR"), "{0:dd.MM.yy ddd}", Trh);
-        public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
+
+        public string HRI => $"{HSMW}s+{HDMW}d►{HKW,2:D2}► {HPW}";
+        public string GRI => $"{GPW} ◄{GKW,2:D2}◄{GSMW}s+{GDMW}d";
 
         public static void RefreshSonucCET()
         {
@@ -1262,7 +1299,19 @@ namespace BDB2
         public string HPPAd => HPP?.Ad;
         public string GPPAd => GPP?.Ad;
 
-        public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
+        // Bir maci olur
+        public string SncOzt
+        {
+            get
+            {
+                var mac = Db.SQL<MAC>("select r from BDB2.MAC r where r.CEB.ObjectNo = ?", this.GetObjectNo()).FirstOrDefault();
+                if (mac == null)
+                    return "";
+
+                return $"({mac.SncMac}) {mac.SncSet}";
+            }
+        } 
+
     }
 
     [Database]

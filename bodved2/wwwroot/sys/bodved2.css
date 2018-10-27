@@ -165,12 +165,24 @@ body {
         word-wrap: break-word
     }
 
+    .fixTbl tfoot td{
+        border-color:transparent;
+    }
+
 .sngLine {
     white-space: nowrap;
 }
 
 .txtLeft {
     text-align: left;
+}
+
+.txtRight {
+    text-align: right;
+}
+
+.txtMonoSpace {
+    font-family: monospace;
 }
 
 .colTeam {

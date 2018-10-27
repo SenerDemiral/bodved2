@@ -166,7 +166,7 @@ namespace bodved2.Api
                 master = new MasterPage();
                 session.Store[nameof(MasterPage)] = master;
                 // increment site entry counter
-                master.EntCnt = BDB2.STAT.UpdEntCnt();
+                master.EntCntFrmtd = $"{BDB2.STAT.UpdEntCnt():n0}";
             }
             else
             {
