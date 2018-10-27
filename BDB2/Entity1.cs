@@ -863,6 +863,93 @@ namespace BDB2
         public int RnkIdx { get; set; } // ??????
         public ulong PPoNo => PP?.GetObjectNo() ?? 0;
         public string PPAd => PP?.Ad;
+
+        public int ST => SW + SL;        // Set Total, Win, Lost
+        public int SW { get; set; }
+        public int SL { get; set; }
+
+        public int MT => MW + ML;        // Mac Total, Win, Lost
+        public int MW { get; set; }
+        public int ML { get; set; }
+
+        public int KF => KW - KL;        // sKor Fark, Win, Lost
+        public int KW { get; set; }
+        public int KL { get; set; }
+
+        public int PW { get; set; }      // Puan Win
+
+        public static void RefreshSonuc()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            var ccs = Db.SQL<CC>("select r from CC r where r.Skl = ?", "F");
+            foreach (var cc in ccs)
+            {
+                RefreshSonuc(cc);
+            }
+
+            watch.Stop();
+            Console.WriteLine($"CF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void RefreshSonuc(CC cc)
+        {
+            Dictionary<ulong, DictFerdiStat> dnm = new Dictionary<ulong, DictFerdiStat>();    // Players
+            ulong hPPoNo, gPPoNo, PPoNo;
+
+            // CCnin CF lerindeki Players
+            var cfs = Db.SQL<CF>("select r from CF r where r.CC = ?", cc);
+            foreach(var cf in cfs)
+            {
+                dnm[cf.PPoNo] = new DictFerdiStat();
+            }
+
+            Db.TransactAsync(() =>
+            {
+                var hcefs = Db.SQL<CEF>("select r from CEF r where r.CC = ?", cc);
+                foreach (var cef in hcefs)
+                {
+                    hPPoNo = cef.HPP.GetObjectNo();
+                    gPPoNo = cef.GPP.GetObjectNo();
+
+                    // Home
+                    dnm[hPPoNo].SW += cef.HSSW;
+                    dnm[hPPoNo].SL += cef.GSSW;    // Kaybettigi digerinin Kazandigi
+                    dnm[hPPoNo].MW += cef.HSMW;
+                    dnm[hPPoNo].ML += cef.GSMW;    // Kaybettigi digerinin Kazandigi
+                    dnm[hPPoNo].KW += cef.HKW;
+                    dnm[hPPoNo].KL += cef.GKW;
+                    dnm[hPPoNo].PW += cef.HPW;
+
+                    // Guest
+                    dnm[gPPoNo].SW += cef.GSSW;
+                    dnm[gPPoNo].SL += cef.HSSW;    // Kaybettigi digerinin Kazandigi
+                    dnm[gPPoNo].MW += cef.GSMW;
+                    dnm[gPPoNo].ML += cef.HSMW;    // Kaybettigi digerinin Kazandigi
+                    dnm[gPPoNo].KW += cef.GKW;
+                    dnm[gPPoNo].KL += cef.HKW;
+                    dnm[gPPoNo].PW += cef.GPW;
+
+                    //if (cef.Drm == "hX")
+                    //    EX++;
+
+                }
+                // Update
+                cfs = Db.SQL<CF>("select r from CF r where r.CC = ?", cc);
+                foreach (var cf in cfs)
+                {
+                    PPoNo = cf.PP.GetObjectNo();
+                    cf.SW = dnm[PPoNo].SW;
+                    cf.SL = dnm[PPoNo].SL;
+                    cf.MW = dnm[PPoNo].MW;
+                    cf.ML = dnm[PPoNo].ML;
+                    cf.KW = dnm[PPoNo].KW;
+                    cf.KL = dnm[PPoNo].KL;
+                    cf.PW = dnm[PPoNo].PW;
+                }
+            });
+        }
     }
 
     [Database]
@@ -900,6 +987,121 @@ namespace BDB2
         public string HR => $"{HPW}/{HKW}:{HSMW}/{HDMW}";
         public string GR => $"{GPW}/{GKW}:{GSMW}/{GDMW}";
 
+        public static void RefreshSonuc()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            var cebs = Db.SQL<CEB>("select r from CEB r");
+            foreach (var ceb in cebs)
+            {
+                RefreshSonuc(ceb);
+            }
+
+            watch.Stop();
+            Console.WriteLine($"CEB.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
+        }
+
+        public static void RefreshSonuc(CEB ceb)
+        {
+            int hSMW = 0,
+                hSSW = 0,
+                gSMW = 0,
+                gSSW = 0,
+                hDMW = 0,
+                hDSW = 0,
+                gDMW = 0,
+                gDSW = 0,
+                hKW = 0,
+                gKW = 0,
+                hPW = 0,
+                gPW = 0;
+
+            int TSMK = ceb.CC.TSMK;
+            int TDMK = ceb.CC.TDMK;
+
+            int TEGP = ceb.CC.TEGP;
+            int TEMP = ceb.CC.TEMP;
+            int TEBP = ceb.CC.TEBP;
+            int TEXP = ceb.CC.TEXP;
+
+            Db.TransactAsync(() =>
+            {
+                if (ceb.Drm == "OK")
+                {
+                    var macs = Db.SQL<MAC>("select m from MAC m where m.CEB.ObjectNo = ?", ceb.GetObjectNo());
+                    foreach (var mac in macs)
+                    {
+                        if (mac.SoD == "S")
+                        {
+                            hSSW += mac.HSW;
+                            gSSW += mac.GSW;
+                            hSMW += mac.HMW;
+                            gSMW += mac.GMW;
+                        }
+                        else if (mac.SoD == "D")
+                        {
+                            hDSW += mac.HSW;
+                            gDSW += mac.GSW;
+                            hDMW += mac.HMW;
+                            gDMW += mac.GMW;
+                        }
+                    }
+                    hKW = hSMW * TSMK + hDMW * TDMK;
+                    gKW = gSMW * TSMK + gDMW * TDMK;
+
+                    if (hKW > gKW)
+                    {
+                        hPW = TEGP;
+                        gPW = TEMP;
+                    }
+                    else if (hKW < gKW)
+                    {
+                        hPW = TEMP;
+                        gPW = TEGP;
+                    }
+                    else
+                    {
+                        hPW = TEBP;
+                        gPW = TEBP;
+                    }
+                }
+                else if (ceb.Drm == "hX")  // Home Gelmedi/Cikmadi
+                {
+
+                }
+                else if (ceb.Drm == "gX")  // Guest Gelmedi/Cikmadi
+                {
+
+                }
+                else if (ceb.Drm == "hD")  // Home Diskalifiye
+                {
+
+                }
+                else if (ceb.Drm == "gD")  // Guest Diskalifiye
+                {
+
+                }
+
+                // Update CET
+                ceb.HSSW = hSSW;
+                ceb.GSSW = gSSW;
+                ceb.HDSW = hDSW;
+                ceb.GDSW = gDSW;
+
+                ceb.HSMW = hSMW;
+                ceb.GSMW = gSMW;
+                ceb.HDMW = hDMW;
+                ceb.GDMW = gDMW;
+
+                ceb.HKW = hKW;
+                ceb.GKW = gKW;
+
+                ceb.HPW = hPW;
+                ceb.GPW = gPW;
+            });
+        }
     }
 
     [Database]
@@ -917,7 +1119,7 @@ namespace BDB2
         //public string Tarih => string.Format(CultureInfo.CreateSpecificCulture("tr-TR"), "{0:dd.MM.yy ddd}", Trh);
         public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
 
-        public static void RefreshSonuc()
+        public static void RefreshSonucCET()
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -925,7 +1127,7 @@ namespace BDB2
             var cets = Db.SQL<CET>("select r from CET r");
             foreach (var cet in cets)
             {
-                RefreshSonuc(cet);
+                RefreshSonucCET(cet);
             }
 
             watch.Stop();
@@ -933,7 +1135,7 @@ namespace BDB2
             //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
         }
 
-        public static void RefreshSonuc(CET cet)
+        public static void RefreshSonucCET(CET cet)
         {
             int hSMW = 0, 
                 hSSW = 0,
@@ -1897,5 +2099,18 @@ namespace BDB2
         public int DSL;
         public int DMW;
         public int DML;
+    }
+
+    public class DictFerdiStat
+    {
+        public int SW;
+        public int SL;
+        public int MW;
+        public int ML;
+
+        public int KW;
+        public int KL;
+
+        public int PW;
     }
 }

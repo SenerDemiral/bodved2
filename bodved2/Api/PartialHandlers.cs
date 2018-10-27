@@ -86,10 +86,10 @@ namespace bodved2.Api
                 return page;
             });
 
-            Handle.GET("/bodved/partials/CEF2MACs/{?}", (ulong cet) =>
+            Handle.GET("/bodved/partials/CEF2MACs/{?}", (ulong cef) =>
             {
                 var page = new CEF2MACsPage();
-                CEF CEF = Db.FromId<CEF>(cet);
+                CEF CEF = Db.FromId<CEF>(cef);
 
                 page.Hdr = $"{CEF.CC.Ad} Ferdi Maçları {CEF.Trh:dd.MM.yy}";
 
