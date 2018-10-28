@@ -314,7 +314,8 @@ namespace BDB2
                     else if (pp.Rnk3 > 0)
                         pp.RnkBaz = pp.Rnk3;
 
-                    pp.RnkSon = 0;
+                    //pp.RnkSon = 0;
+                    pp.RnkSon = pp.RnkBaz;
                 }
 
                 // eski CC ler Rank Uretmesin

@@ -32,7 +32,7 @@ namespace bodved2.Api
             {
                 var page = new CTsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.Hdr = $"{CC.Ad} Takım Puanları"; 
+                page.Hdr = $"{CC.Ad} ► Takım Puanları"; 
                 page.CTs.Data = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC = ? order by r.Idx", CC);
                 return page;
             });
@@ -41,7 +41,7 @@ namespace bodved2.Api
             {
                 var page = new CFsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.Hdr = $"{CC.Ad} Ferdi Puanları";
+                page.Hdr = $"{CC.Ad} ► Ferdi Puanları";
                 page.CFs.Data = Db.SQL<CF>("SELECT r FROM CF r WHERE r.CC = ? order by r.Idx", CC);
                 return page;
             });
@@ -50,7 +50,7 @@ namespace bodved2.Api
             {
                 var page = new CTPsPage();
                 CT CT = Db.FromId<CT>(ct);
-                page.Hdr = $"{CT.Ad} Takım Oyuncuları";
+                page.Hdr = $"{CT.CC.Ad} ► {CT.Ad} ► Takım Oyuncuları";
                 page.CTPs.Data = Db.SQL<CTP>("SELECT r FROM CTP r WHERE r.CT.ObjectNo = ? order by r.Idx", ct);
                 return page;
             });
@@ -59,7 +59,7 @@ namespace bodved2.Api
             {
                 var page = new CETsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.Hdr = $"{CC.Ad} Fikstür";
+                page.Hdr = $"{CC.Ad} ► Takım Fikstür";
                 page.CETs.Data = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC = ? order by r.Trh", CC);
                 return page;
             });
@@ -68,7 +68,7 @@ namespace bodved2.Api
             {
                 var page = new CEFsPage();
                 CC CC = Db.FromId<CC>(cc);
-                page.Hdr = $"{CC.Ad} Fikstür";
+                page.Hdr = $"{CC.Ad} ► Ferdi Fikstür";
                 page.CEFs.Data = Db.SQL<CEF>("SELECT r FROM CEF r WHERE r.CC = ? order by r.Trh", CC);
                 return page;
             });
@@ -78,7 +78,7 @@ namespace bodved2.Api
                 var page = new CET2MACsPage();
                 CET CET = Db.FromId<CET>(cet);
 
-                page.Hdr = $"{CET.CC.Ad} Takım Maçları {CET.Trh:dd.MM.yy}";
+                page.Hdr = $"{CET.CC.Ad} ► Takım Maçları ► {CET.Trh:dd.MM.yy}";
 
                 page.CET.Data = CET;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");
@@ -91,7 +91,7 @@ namespace bodved2.Api
                 var page = new CEF2MACsPage();
                 CEF CEF = Db.FromId<CEF>(cef);
 
-                page.Hdr = $"{CEF.CC.Ad} Ferdi Maçları {CEF.Trh:dd.MM.yy}";
+                page.Hdr = $"{CEF.CC.Ad} ► Ferdi Maçları ► {CEF.Trh:dd.MM.yy}";
 
                 page.CEF.Data = CEF;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB.ObjectNo = ? and r.SoD = ? order by r.Idx", CEF.CEFoNo, "S");

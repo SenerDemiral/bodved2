@@ -375,6 +375,7 @@ namespace BDB2
         public int EX { get; set; }
 
         public int PW { get; set; }         // Puan Win
+        public int PL { get; set; }
         //--------
 
         public string K1Ad => K1 == null ? "-" : $"{K1.Ad} ({K1.Tel})";
@@ -424,7 +425,8 @@ namespace BDB2
                 EL = 0,
                 EB = 0,
                 EX = 0,
-                PW = 0;
+                PW = 0,
+                PL = 0;
 
 
             Db.TransactAsync(() =>
@@ -444,6 +446,7 @@ namespace BDB2
                         EB++;
 
                     PW += cet.HPW;
+                    PL += cet.GPW;
 
                     if (cet.Drm == "hX")
                         EX++;
@@ -469,6 +472,7 @@ namespace BDB2
                         EB++;
 
                     PW += cet.GPW;
+                    PL += cet.HPW;
 
                     if (cet.Drm == "gX")
                         EX++;
@@ -873,11 +877,8 @@ namespace BDB2
         public int MW { get; set; }
         public int ML { get; set; }
 
-        public int KF => KW - KL;        // sKor Fark, Win, Lost
-        public int KW { get; set; }
-        public int KL { get; set; }
-
         public int PW { get; set; }      // Puan Win
+        public int PL { get; set; }
 
         public static void RefreshSonuc()
         {
@@ -919,18 +920,16 @@ namespace BDB2
                     dnm[hPPoNo].SL += cef.GSSW;    // Kaybettigi digerinin Kazandigi
                     dnm[hPPoNo].MW += cef.HSMW;
                     dnm[hPPoNo].ML += cef.GSMW;    // Kaybettigi digerinin Kazandigi
-                    dnm[hPPoNo].KW += cef.HKW;
-                    dnm[hPPoNo].KL += cef.GKW;
                     dnm[hPPoNo].PW += cef.HPW;
+                    dnm[hPPoNo].PL += cef.GPW;
 
                     // Guest
                     dnm[gPPoNo].SW += cef.GSSW;
                     dnm[gPPoNo].SL += cef.HSSW;    // Kaybettigi digerinin Kazandigi
                     dnm[gPPoNo].MW += cef.GSMW;
                     dnm[gPPoNo].ML += cef.HSMW;    // Kaybettigi digerinin Kazandigi
-                    dnm[gPPoNo].KW += cef.GKW;
-                    dnm[gPPoNo].KL += cef.HKW;
                     dnm[gPPoNo].PW += cef.GPW;
+                    dnm[gPPoNo].PL += cef.HPW;
 
                     //if (cef.Drm == "hX")
                     //    EX++;
@@ -945,9 +944,8 @@ namespace BDB2
                     cf.SL = dnm[PPoNo].SL;
                     cf.MW = dnm[PPoNo].MW;
                     cf.ML = dnm[PPoNo].ML;
-                    cf.KW = dnm[PPoNo].KW;
-                    cf.KL = dnm[PPoNo].KL;
                     cf.PW = dnm[PPoNo].PW;
+                    cf.PL = dnm[PPoNo].PL;
                 }
             });
         }
@@ -955,7 +953,7 @@ namespace BDB2
         public static void CreateCEFs(ulong CCoNo)
         {
             ArrayList al = new ArrayList();
-            DateTime Trh = DateTime.Today;
+            DateTime Trh = new DateTime(2099, 12, 31);
             CC cc = Db.FromId<CC>(CCoNo);
 
             var cfs = Db.SQL<CF>("select r from CF r where r.CC = ? order by r.PP.Ad", cc);
@@ -978,7 +976,7 @@ namespace BDB2
                             HPP = Db.FromId<PP>((ulong)al[i]),
                             GPP = Db.FromId<PP>((ulong)al[k]),
                         };
-                        Trh = Trh.AddDays(1);
+                        Trh = Trh.AddDays(-1);
                     }
                 }
             });
@@ -993,38 +991,10 @@ namespace BDB2
         public string Drm { get; set; }      // Iptal, h/gX: Gelmedi, h/gD: Diskalifiye, OK: Oynandi
         public string Yer { get; set; }
 
-        public int HSSW { get; set; }        // Home Single Set Win
-        public int GSSW { get; set; }
-
-        public int HDSW { get; set; }        // Home Double Set Win
-        public int GDSW { get; set; }
-
-        public int HSMW { get; set; }        // Home Single Mac Win
-        public int GSMW { get; set; }
-
-        public int HDMW { get; set; }        // Home Double Mac Win
-        public int GDMW { get; set; }
-
-        public int HKW { get; set; }         // Home sKor Win
-        public int GKW { get; set; }
-
-        public int HPW { get; set; }         // Home Kazandigi Puan
-        public int GPW { get; set; }
-
-        //public string Tarih => $"{Trh:dd.MM.yy ddd}"; // Burda Turkce gosteremiyor, ama RefreshSonuc da gosteriyor!!
-        //public string Tarih => string.Format(CultureInfo.CreateSpecificCulture("tr-TR"), "{0:dd.MM.yy ddd}", Trh);
         public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
 
-        public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
-        public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
-
-        public string HK => $"{HSMW}S+{HDMW}D ►{HKW}";
-        public string GK => $"{GSMW}S+{GDMW}D ►{GKW}";
-
-        public string HR => $"{HPW}/{HKW}:{HSMW}/{HDMW}";
-        public string GR => $"{GPW}/{GKW}:{GSMW}/{GDMW}";
-
-        public static void RefreshSonuc()
+        /*
+        public static void RefreshSonucOLD()
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -1032,7 +1002,7 @@ namespace BDB2
             var cebs = Db.SQL<CEB>("select r from CEB r");
             foreach (var ceb in cebs)
             {
-                RefreshSonuc(ceb);
+                RefreshSonucOLD(ceb);
             }
 
             watch.Stop();
@@ -1040,7 +1010,7 @@ namespace BDB2
             //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
         }
 
-        public static void RefreshSonuc(CEB ceb)
+        public static void RefreshSonucOLD(CEB ceb)
         {
             int hSMW = 0,
                 hSSW = 0,
@@ -1138,7 +1108,7 @@ namespace BDB2
                 ceb.HPW = hPW;
                 ceb.GPW = gPW;
             });
-        }
+        }*/
     }
 
     [Database]
@@ -1153,10 +1123,34 @@ namespace BDB2
         public string HCTAd => HCT?.Ad;
         public string GCTAd => GCT?.Ad;
 
+        public int HSSW { get; set; }        // Home Single Set Win
+        public int GSSW { get; set; }
+        public int HDSW { get; set; }        // Home Double Set Win
+        public int GDSW { get; set; }
+
+        public int HSMW { get; set; }        // Home Single Mac Win
+        public int GSMW { get; set; }
+        public int HDMW { get; set; }        // Home Double Mac Win
+        public int GDMW { get; set; }
+
+        public int HKW { get; set; }         // Home sKor Win
+        public int GKW { get; set; }
+
+        public int HPW { get; set; }         // Home Kazandigi Puan
+        public int GPW { get; set; }
+
+        public string HK => $"{HSMW}S+{HDMW}D ►{HKW}";
+        public string GK => $"{GSMW}S+{GDMW}D ►{GKW}";
+
+        public string HR => $"{HPW}/{HKW}:{HSMW}/{HDMW}";
+        public string GR => $"{GPW}/{GKW}:{GSMW}/{GDMW}";
+
+        public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
+        public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
         public string HRI => $"{HSMW}s+{HDMW}d►{HKW,2:D2}► {HPW}";
         public string GRI => $"{GPW} ◄{GKW,2:D2}◄{GSMW}s+{GDMW}d";
 
-        public static void RefreshSonucCET()
+        public static void RefreshSonuc()
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -1164,7 +1158,7 @@ namespace BDB2
             var cets = Db.SQL<CET>("select r from CET r");
             foreach (var cet in cets)
             {
-                RefreshSonucCET(cet);
+                RefreshSonuc(cet);
             }
 
             watch.Stop();
@@ -1172,7 +1166,7 @@ namespace BDB2
             //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
         }
 
-        public static void RefreshSonucCET(CET cet)
+        public static void RefreshSonuc(CET cet)
         {
             int hSMW = 0, 
                 hSSW = 0,
@@ -1299,6 +1293,13 @@ namespace BDB2
         public string HPPAd => HPP?.Ad;
         public string GPPAd => GPP?.Ad;
 
+        public int HSSW { get; set; }        // Home Single Set Win
+        public int GSSW { get; set; }
+        public int HSMW { get; set; }        // Home Single Mac Win
+        public int GSMW { get; set; }
+        public int HPW { get; set; }         // Home Kazandigi Puan
+        public int GPW { get; set; }
+
         // Bir maci olur
         public string SncOzt
         {
@@ -1310,8 +1311,56 @@ namespace BDB2
 
                 return $"({mac.SncMac}) {mac.SncSet}";
             }
-        } 
+        }
 
+        public static void RefreshSonuc()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            var cefs = Db.SQL<CEF>("select r from CEF r");
+            foreach (var cef in cefs)
+            {
+                RefreshSonuc(cef);
+            }
+
+            watch.Stop();
+            Console.WriteLine($"CEF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void RefreshSonuc(CEF cef)
+        {
+            Db.TransactAsync(() =>
+            {
+                if (cef.Drm == "OK")
+                {
+                    // Ferdi Event'in tek bir single maci olur.
+                    var mac = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ? and SoD = ?", cef.GetObjectNo(), "S").FirstOrDefault();
+                    if (mac != null)
+                    {
+                        cef.HSSW = mac.HSW;
+                        cef.GSSW = mac.GSW;
+                        cef.HSMW = mac.HMW;
+                        cef.GSMW = mac.GMW;
+                        if (mac.HMW > mac.GMW)  // Home kazandi
+                        {
+                            cef.HPW = 3;
+                            cef.GPW = 1;
+                        }
+                        else if (mac.HMW < mac.GMW)  // Guest kazandi
+                        {
+                            cef.HPW = 1;
+                            cef.GPW = 3;
+                        }
+                        else // Berabere
+                        {
+                            cef.HPW = 2;
+                            cef.GPW = 3;
+                        }
+                    }
+                }
+            });
+        }
     }
 
     [Database]
@@ -2154,12 +2203,11 @@ namespace BDB2
     {
         public int SW;
         public int SL;
+
         public int MW;
         public int ML;
 
-        public int KW;
-        public int KL;
-
         public int PW;
+        public int PL;
     }
 }

@@ -11,30 +11,30 @@
                     <table class="fixTbl sngLine">
                         <colgroup>
                             <col style="width:var(--w-Tarih)" />
-                            <col style="width:var(--w-Team)" />
-                            <col style="width:8rem" />
-                            <col style="width:8rem" />
-                            <col style="width:var(--w-Team)" />
                             <col style="width:var(--w-Drm)" />
+                            <col style="width:var(--w-Team)" />
+                            <col style="width:4rem" />
+                            <col style="width:var(--w-Team)" />
+                            <col style="width:20rem" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>Tarih</th>
-                                <th colspan="2">Home</th>
-                                <th colspan="2">Guest</th>
                                 <th>Drm</th>
-
+                                <th>Home</th>
+                                <th>Puan</th>
+                                <th>Guest</th>
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="{{model.CETs}}">
                                 <tr>
                                     <td class="txtLeft"><a href="/bodved/CET2MACs/[[item.CEToNo]]">[[item.Tarih]]</a></td>
-                                    <td class="txtLeft" data-WL$="[[item.HWL]]"><a href="/bodved/CTPs/[[item.HCToNo]]">[[item.HCTAd]]</a></td>
-                                    <td class="txtRight">{{item.HRI}}</td>
-                                    <td class="txtLeft">{{item.GRI}}</td>
-                                    <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
                                     <td>{{item.Drm}}</td>
+                                    <td class="txtLeft" data-WL$="[[item.HWL]]"><a href="/bodved/CTPs/[[item.HCToNo]]">[[item.HCTAd]]</a></td>
+                                    <td>{{item.HPW}} - {{item.GPW}}</td>
+                                    <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
+                                    <td class="colInfo">{{item.Info}}</td>
 
                                 </tr>
                             </template>

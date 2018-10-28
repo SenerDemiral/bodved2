@@ -11,6 +11,7 @@
                     <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
                         <colgroup>
                             <col class="colPlyr" />
+                            <col style="width:var(--w-TF)" />
                             <col class="colRnkBaz" />
                             <col class="colRnkSon" />
                             <col class="colRnkIdx" />
@@ -33,6 +34,7 @@
                         <thead>
                             <tr>
                                 <th rowspan="3">Oyuncu</th>
+                                <th rowspan="3">Run</th>
                                 <th rowspan="2" colspan="3">Rank</th>
                                 <th colspan="7" class="colSng">Single</th>
                                 <th colspan="6" class="colDbl">Double</th>
@@ -70,6 +72,7 @@
                             <template is="dom-repeat" items="{{model.PPs}}">
                                 <tr>
                                     <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.Ad]]</a></td>
+                                    <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
                                     <td>{{item.RnkBaz}}</td>
                                     <td>{{item.RnkSon}}</td>
                                     <td style="font-weight:bold">{{item.RnkIdx}}</td>

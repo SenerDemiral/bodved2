@@ -287,14 +287,25 @@ namespace RestStarcounterServer
                     }
                     else if (request.RowSte == "D")
                     {
-                        var row = (CT)Db.FromId(request.RowKey);
+                        var row = Db.FromId(request.RowKey) as CT;
                         if (row == null)
                         {
                             request.RowErr = "CT Rec not found";
                         }
                         else
                         {
-                            request.RowErr = $"Silemezsiniz";
+                            // CTP ve CET detaylari yoksa sil.
+                            var ctp = Db.SQL("select r from CTP r where r.CT.ObjectNo = ?", request.RowKey).FirstOrDefault();
+                            if(ctp == null)
+                            {
+                                var cet = Db.SQL("select r from CET r where r.HCT.ObjectNo = ? or r.GCT.ObjectNo = ?", request.RowKey, request.RowKey).FirstOrDefault();
+                                if(cet == null)
+                                    row.Delete();
+                                else
+                                    request.RowErr = $"Event var, Silemezsiniz";
+                            }
+                            else 
+                                request.RowErr = $"Oyuncuları var, Silemezsiniz";
                         }
                     }
                 });
@@ -481,7 +492,11 @@ namespace RestStarcounterServer
                         }
                         else
                         {
-                            request.RowErr = $"Silemezsiniz";
+                            var mac = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ?", request.RowKey).FirstOrDefault();
+                            if (mac != null)
+                                request.RowErr = $"Maçları var, Silemezsiniz";
+                            else
+                                row.Delete();
                         }
                     }
                 });
@@ -619,7 +634,11 @@ namespace RestStarcounterServer
                         }
                         else
                         {
-                            request.RowErr = $"Silemezsiniz";
+                            var mac = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ?", request.RowKey).FirstOrDefault();
+                            if (mac != null)
+                                request.RowErr = $"Maçı var, Silemezsiniz";
+                            else
+                                row.Delete();
                         }
                     }
                 });
@@ -722,7 +741,7 @@ namespace RestStarcounterServer
                         }
                         else
                         {
-                            request.RowErr = $"Silemezsiniz";
+                            row.Delete();
                         }
                     }
                 });

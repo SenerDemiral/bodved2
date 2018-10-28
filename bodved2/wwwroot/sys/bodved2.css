@@ -11,6 +11,7 @@
     --w-TF: 3rem;
     --w-MacSet: 20rem;
     --w-SncTxt: 20rem;
+    --w-Inf: 20rem;
     --w-Rnk: 4rem;
     --w-Idx: 3rem;
     --w-Snc: 3rem;
@@ -232,6 +233,14 @@ body {
 
 .colLnk {
     width: var(--w-Lnk);
+    /*background-color: #bdd598;*/
+}
+
+.colInfo {
+    width: var(--w-Inf);
+    text-align: left;
+    white-space: normal;
+    font-size:xx-small;
     /*background-color: #bdd598;*/
 }
 
