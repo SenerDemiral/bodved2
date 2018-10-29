@@ -108,7 +108,7 @@ namespace RestStarcounterServer
             //MAC.RefreshGlobalRank();    // RnkBaz == RnkSon olmali, cunki CC.IsRnkd = false (Rank hesaplanmayacak)
 
 
-
+            HBR.BackupMAC();
 
         }
     }

@@ -9,8 +9,8 @@
       "GWL": "",
       "HR": "",
       "GR": "",
-      "HK": "",
-      "GK": "",
+      "HPW": 0,
+      "GPW": 0,
 
       "HCToNo": 0,
       "GCToNo": 0,
@@ -18,27 +18,7 @@
       "GCTAd": "",
       "Tarih": "",
       "Drm": "",
-      "Info": "",
-
-      "HRI": "",
-      "GRI": "",
-
-      "HSSW": 0,
-      "GSSW": 0,
-      "HSMW": 0,
-      "GSMW": 0,
-
-      "HDSW": 0,
-      "GDSW": 0,
-      "HDMW": 0,
-      "GDMW": 0,
-
-      "HKW": 0,
-      "GKW": 0,
-
-      "HPW": 0,
-      "GPW": 0
-
+      "Info": ""
     }
   ]
 }

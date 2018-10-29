@@ -139,5 +139,14 @@ namespace RestWinFormsClient
             e.Cancel = !isRun;
 
         }
+
+        private void refreshAllNavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            string err = dataSetGnl.PerfomAction("RefreshSonuc");
+            if (err != string.Empty)
+            {
+                MessageBox.Show(err);
+            }
+        }
     }
 }

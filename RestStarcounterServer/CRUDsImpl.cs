@@ -755,5 +755,41 @@ namespace RestStarcounterServer
             return Task.FromResult(request);
         }
 
+        // Global Actions
+        public override Task<ActionProxy> PerformAction(ActionProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                if (request.Req == "RefreshSonuc")
+                {
+                    MAC.RefreshSonuc();
+                    CEF.RefreshSonuc();
+                    CF.RefreshSonuc();
+                    CET.RefreshSonuc();
+                    CT.RefreshSonuc();
+                    CTP.RefreshSonucNew();
+                    PP.RefreshSonuc();
+
+                    MAC.RefreshGlobalRank();
+                    request.Rsp = "";
+                }
+                else if (request.Req == "CreateEvents")
+                {
+                    ulong CCoNo = ulong.Parse(request.Prm1);
+                    CC cc = Db.FromId<CC>(CCoNo);
+                    if(cc.Skl == "F")
+                        request.Rsp = CEF.CreateEvents(CCoNo);
+                    else if (cc.Skl == "T")
+                        request.Rsp = CET.CreateEvents(CCoNo);
+                }
+            }).Wait();
+
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
+
+            return Task.FromResult(request);
+        }
     }
 }

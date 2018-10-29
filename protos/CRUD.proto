@@ -17,7 +17,7 @@ package RestLib;		// namespace
 
 // The CRUDs service definition.
 service CRUDs {
-  rpc RefreshSonuc (QryProxy) returns (RefreshSonucProxy) {}
+  rpc PerformAction(ActionProxy) returns (ActionProxy) {}
 
   rpc PPFill (QryProxy) returns (stream PPProxy) {}
   rpc PPUpdate (PPProxy) returns (PPProxy) {}
@@ -46,16 +46,18 @@ service CRUDs {
   rpc PPlookUp (QryProxy) returns (stream PPlookUpProxy) {}
 }
 
+message ActionProxy {
+  string req = 1;
+  string prm1 = 2;
+  string prm2 = 3;
+  string rsp = 4;
+}
+
 message QryProxy {
   string query = 1;
   string param = 2;
 }
 
-
-message RefreshSonucProxy {
-  string query = 1;
-  string param = 2;
-}
 
 // PlayersLookup
 message PPlookUpProxy {

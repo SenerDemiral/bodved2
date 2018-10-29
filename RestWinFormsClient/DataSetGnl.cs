@@ -607,5 +607,21 @@ namespace RestWinFormsClient
             dt.EndLoadData();
             return $"{nor:n0} records retrieved in {sw.ElapsedMilliseconds:n0} ms";
         }
+
+
+        public string PerfomAction(string action, string prm1 = "", string prm2 = "")
+        {
+            var request = new ActionProxy
+            {
+                Req = action,
+                Prm1 = prm1,
+                Prm2 = prm2,
+                Rsp = ""
+            };
+
+            var reply = grpcService.ClientCRUDs.PerformAction(request);  // --------->
+
+            return reply.Rsp;
+        }
     }
 }

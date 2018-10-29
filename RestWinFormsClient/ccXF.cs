@@ -123,5 +123,12 @@ namespace RestWinFormsClient
             frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Matches [macXF]";
             frm.ShowDialog();
         }
+
+        private void createEventsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string err = dataSetGnl.PerfomAction("CreateEvents", $"{gridView1.GetFocusedRowCellValue(colRowKey)}");
+            if (err != string.Empty)
+                MessageBox.Show(err);
+        }
     }
 }

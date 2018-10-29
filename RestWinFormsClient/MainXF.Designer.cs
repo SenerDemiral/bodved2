@@ -53,14 +53,16 @@
             this.cTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PPrepositoryItemGridLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.TRHrepositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsRun = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCTs = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TRHrepositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.refreshAllNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -151,13 +153,15 @@
             this.navBarControl1.ActiveGroup = this.navBarGroup1;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1});
+            this.navBarGroup1,
+            this.navBarGroup2});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.CTnavBarItem,
             this.PPnavBarItem,
             this.CCnavBarItem,
             this.CETnavBarItem,
-            this.MACnavBarItem});
+            this.MACnavBarItem,
+            this.refreshAllNavBarItem});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 191;
@@ -305,32 +309,6 @@
             this.repositoryItemGridLookUpEdit1View.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colIsRun, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
-            // TRHrepositoryItemDateEdit
-            // 
-            this.TRHrepositoryItemDateEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TRHrepositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TRHrepositoryItemDateEdit.DisplayFormat.FormatString = "dd.MM.yy";
-            this.TRHrepositoryItemDateEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.TRHrepositoryItemDateEdit.Mask.EditMask = "g";
-            this.TRHrepositoryItemDateEdit.Name = "TRHrepositoryItemDateEdit";
-            this.TRHrepositoryItemDateEdit.ShowWeekNumbers = true;
-            // 
-            // SoDrepositoryItemImageComboBox
-            // 
-            this.SoDrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SoDrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("S", "S", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("D", "D", -1)});
-            this.SoDrepositoryItemImageComboBox.Name = "SoDrepositoryItemImageComboBox";
-            // 
-            // pPBindingSource
-            // 
-            this.pPBindingSource.DataMember = "PP";
-            this.pPBindingSource.DataSource = this.dataSetGnl;
-            // 
             // colRowKey
             // 
             this.colRowKey.FieldName = "RowKey";
@@ -371,6 +349,46 @@
             this.colCTs.Visible = true;
             this.colCTs.VisibleIndex = 3;
             this.colCTs.Width = 314;
+            // 
+            // TRHrepositoryItemDateEdit
+            // 
+            this.TRHrepositoryItemDateEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TRHrepositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TRHrepositoryItemDateEdit.DisplayFormat.FormatString = "dd.MM.yy";
+            this.TRHrepositoryItemDateEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.TRHrepositoryItemDateEdit.Mask.EditMask = "g";
+            this.TRHrepositoryItemDateEdit.Name = "TRHrepositoryItemDateEdit";
+            this.TRHrepositoryItemDateEdit.ShowWeekNumbers = true;
+            // 
+            // SoDrepositoryItemImageComboBox
+            // 
+            this.SoDrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SoDrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("S", "S", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("D", "D", -1)});
+            this.SoDrepositoryItemImageComboBox.Name = "SoDrepositoryItemImageComboBox";
+            // 
+            // pPBindingSource
+            // 
+            this.pPBindingSource.DataMember = "PP";
+            this.pPBindingSource.DataSource = this.dataSetGnl;
+            // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "Servis";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshAllNavBarItem)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // refreshAllNavBarItem
+            // 
+            this.refreshAllNavBarItem.Caption = "Refresh All";
+            this.refreshAllNavBarItem.Name = "refreshAllNavBarItem";
+            this.refreshAllNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshAllNavBarItem_LinkClicked);
             // 
             // MainXF
             // 
@@ -442,5 +460,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSex;
         private DevExpress.XtraGrid.Columns.GridColumn colIsRun;
         private DevExpress.XtraGrid.Columns.GridColumn colCTs;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
+        private DevExpress.XtraNavBar.NavBarItem refreshAllNavBarItem;
     }
 }

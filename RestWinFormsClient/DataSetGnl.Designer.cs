@@ -1499,13 +1499,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CTRow FindByRowKey(ulong RowKey) {
-                return ((CTRow)(this.Rows.Find(new object[] {
-                            RowKey})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 CTDataTable cln = ((CTDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1586,10 +1579,7 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnEX);
                 this.columnPW = new global::System.Data.DataColumn("PW", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPW);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
-                this.columnRowKey.Unique = true;
                 this.columnIsRun.Caption = "Run";
             }
             
@@ -2056,13 +2046,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PPRow FindByRowKey(ulong RowKey) {
-                return ((PPRow)(this.Rows.Find(new object[] {
-                            RowKey})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 PPDataTable cln = ((PPDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2146,10 +2129,7 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnDMW);
                 this.columnDML = new global::System.Data.DataColumn("DML", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDML);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
-                this.columnRowKey.Unique = true;
                 this.columnIsRun.Caption = "Run";
             }
             
@@ -3695,13 +3675,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MACRow FindByRowKey(ulong RowKey) {
-                return ((MACRow)(this.Rows.Find(new object[] {
-                            RowKey})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 MACDataTable cln = ((MACDataTable)(base.Clone()));
                 cln.InitVars();
@@ -3833,10 +3806,7 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnGRnk);
                 this.columnGRnkPX = new global::System.Data.DataColumn("GRnkPX", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGRnkPX);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
-                this.columnRowKey.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5072,13 +5042,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CFRow FindByRowKey(ulong RowKey) {
-                return ((CFRow)(this.Rows.Find(new object[] {
-                            RowKey})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 CFDataTable cln = ((CFDataTable)(base.Clone()));
                 cln.InitVars();
@@ -5120,10 +5083,7 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnRnkBas);
                 this.columnRnkBit = new global::System.Data.DataColumn("RnkBit", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRnkBit);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
-                this.columnRowKey.Unique = true;
                 this.columnIsRun.Caption = "Run";
                 this.columnRnkBas.Caption = "RnkBaş";
             }

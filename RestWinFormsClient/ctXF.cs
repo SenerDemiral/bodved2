@@ -26,7 +26,6 @@ namespace RestWinFormsClient
             colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
             colK1.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
             colK2.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
-
         }
 
         private void ctXF_Load(object sender, EventArgs e)

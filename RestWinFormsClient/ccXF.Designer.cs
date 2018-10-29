@@ -77,6 +77,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.createEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -263,9 +265,11 @@
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.teamsToolStripMenuItem,
             this.eventsToolStripMenuItem,
-            this.matchesToolStripMenuItem});
+            this.matchesToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.createEventsToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 120);
             // 
             // teamsToolStripMenuItem
             // 
@@ -579,6 +583,18 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // createEventsToolStripMenuItem
+            // 
+            this.createEventsToolStripMenuItem.Name = "createEventsToolStripMenuItem";
+            this.createEventsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createEventsToolStripMenuItem.Text = "Create Events";
+            this.createEventsToolStripMenuItem.Click += new System.EventHandler(this.createEventsToolStripMenuItem_Click);
+            // 
             // ccXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,5 +674,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox SKLrepositoryItemImageComboBox1;
         private System.Windows.Forms.ToolStripMenuItem matchesToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colIdx;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem createEventsToolStripMenuItem;
     }
 }

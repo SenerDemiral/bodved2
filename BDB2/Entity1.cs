@@ -869,9 +869,10 @@ namespace BDB2
         public ulong PPoNo => PP?.GetObjectNo() ?? 0;
         public string PPAd => PP?.Ad;
 
-        public int ST => SW + SL;        // Set Total, Win, Lost
+        public int ST => SW + SL;        // Set Total, Win, Lost, Fark
         public int SW { get; set; }
         public int SL { get; set; }
+        public int SF => SW - SL;
 
         public int MT => MW + ML;        // Mac Total, Win, Lost
         public int MW { get; set; }
@@ -947,40 +948,16 @@ namespace BDB2
                     cf.PW = dnm[PPoNo].PW;
                     cf.PL = dnm[PPoNo].PL;
                 }
-            });
-        }
 
-        public static void CreateCEFs(ulong CCoNo)
-        {
-            ArrayList al = new ArrayList();
-            DateTime Trh = new DateTime(2099, 12, 31);
-            CC cc = Db.FromId<CC>(CCoNo);
-
-            var cfs = Db.SQL<CF>("select r from CF r where r.CC = ? order by r.PP.Ad", cc);
-            foreach (var cf in cfs)
-            {
-                al.Add(cf.PP.GetObjectNo());
-            }
-            int cnt = al.Count;
-
-            Db.TransactAsync(() =>
-            {
-                for (int i = 0; i < cnt; i++)
+                int idx = 1;
+                cfs = Db.SQL<CF>("select r from CF r where r.CC = ? order by r.PW DESC, r.SF ASC", cc);
+                foreach (var cf in cfs)
                 {
-                    for (int k = i+1; k < cnt; k++)
-                    {
-                        new CEF
-                        {
-                            CC = cc,
-                            Trh = Trh,
-                            HPP = Db.FromId<PP>((ulong)al[i]),
-                            GPP = Db.FromId<PP>((ulong)al[k]),
-                        };
-                        Trh = Trh.AddDays(-1);
-                    }
+                    cf.Idx = idx++;
                 }
             });
         }
+
     }
 
     [Database]
@@ -1139,16 +1116,11 @@ namespace BDB2
         public int HPW { get; set; }         // Home Kazandigi Puan
         public int GPW { get; set; }
 
-        public string HK => $"{HSMW}S+{HDMW}D ►{HKW}";
-        public string GK => $"{GSMW}S+{GDMW}D ►{GKW}";
-
-        public string HR => $"{HPW}/{HKW}:{HSMW}/{HDMW}";
-        public string GR => $"{GPW}/{GKW}:{GSMW}/{GDMW}";
+        public string HR => $"{HSMW}S+{HDMW}D ►{HKW,2:D2} ►{HPW}";
+        public string GR => $"{GSMW}S+{GDMW}D ►{GKW,2:D2} ►{GPW}";
 
         public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
         public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
-        public string HRI => $"{HSMW}s+{HDMW}d►{HKW,2:D2}► {HPW}";
-        public string GRI => $"{GPW} ◄{GKW,2:D2}◄{GSMW}s+{GDMW}d";
 
         public static void RefreshSonuc()
         {
@@ -1265,6 +1237,52 @@ namespace BDB2
                 cet.GPW = gPW;
             });
         }
+
+        public static string CreateEvents(ulong CCoNo)
+        {
+            ArrayList al = new ArrayList();
+            DateTime Trh = new DateTime(2099, 12, 31);
+            CC cc = Db.FromId<CC>(CCoNo);
+
+            var cet = Db.SQL<CET>("select r from CET r where r.CC = ?", cc).FirstOrDefault();
+            if (cet != null)
+                return $"{cc.Ad} Takim Fikstur zaten var.";
+
+            var cts = Db.SQL<CT>("select r from CT r where r.CC = ? order by r.Ad", cc);
+            foreach (var ct in cts)
+            {
+                al.Add(ct.GetObjectNo());
+            }
+            int cnt = al.Count;
+
+            Db.TransactAsync(() =>
+            {
+                for (int i = 0; i < cnt; i++)
+                {
+                    for (int k = i + 1; k < cnt; k++)
+                    {
+                        new CET
+                        {
+                            CC = cc,
+                            Trh = Trh,
+                            HCT = Db.FromId<CT>((ulong)al[i]),
+                            GCT = Db.FromId<CT>((ulong)al[k]),
+                        };
+                        new CET
+                        {
+                            CC = cc,
+                            Trh = Trh,
+                            GCT = Db.FromId<CT>((ulong)al[i]),
+                            HCT = Db.FromId<CT>((ulong)al[k]),
+                        };
+
+                        //Trh = Trh.AddDays(-1);
+                    }
+                }
+            });
+            return "";
+        }
+
     }
 
     [Database]
@@ -1297,8 +1315,14 @@ namespace BDB2
         public int GSSW { get; set; }
         public int HSMW { get; set; }        // Home Single Mac Win
         public int GSMW { get; set; }
-        public int HPW { get; set; }         // Home Kazandigi Puan
+        public int HPW { get; set; }         // Home Puan Win
         public int GPW { get; set; }
+
+        public string HR => $"{HSSW} ►{HSMW} ►{HPW}";
+        public string GR => $"{GSSW} ►{GSMW} ►{GPW}";
+
+        public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
+        public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
 
         // Bir maci olur
         public string SncOzt
@@ -1360,6 +1384,43 @@ namespace BDB2
                     }
                 }
             });
+        }
+
+        public static string CreateEvents(ulong CCoNo)
+        {
+            ArrayList al = new ArrayList();
+            DateTime Trh = new DateTime(2099, 12, 31);
+            CC cc = Db.FromId<CC>(CCoNo);
+
+            var cef = Db.SQL<CEF>("select r from CEF r where r.CC = ?", cc).FirstOrDefault();
+            if (cef != null)
+                return $"{cc.Ad} Ferdi Fikstur zaten var.";
+
+            var cfs = Db.SQL<CF>("select r from CF r where r.CC = ? order by r.PP.Ad", cc);
+            foreach (var cf in cfs)
+            {
+                al.Add(cf.PP.GetObjectNo());
+            }
+            int cnt = al.Count;
+
+            Db.TransactAsync(() =>
+            {
+                for (int i = 0; i < cnt; i++)
+                {
+                    for (int k = i + 1; k < cnt; k++)
+                    {
+                        new CEF
+                        {
+                            CC = cc,
+                            Trh = Trh,
+                            HPP = Db.FromId<PP>((ulong)al[i]),
+                            GPP = Db.FromId<PP>((ulong)al[k]),
+                        };
+                        Trh = Trh.AddDays(-1);
+                    }
+                }
+            });
+            return "";
         }
     }
 

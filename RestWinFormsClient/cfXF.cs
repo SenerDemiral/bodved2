@@ -97,6 +97,7 @@ namespace RestWinFormsClient
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
             gridView1.SetFocusedRowCellValue(colCC, CCRow.RowKey);
             gridView1.SetFocusedRowCellValue(colPP, 0);
+            gridView1.SetFocusedRowCellValue(colIsRun, true);
 
         }
 
