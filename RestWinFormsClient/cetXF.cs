@@ -26,6 +26,7 @@ namespace RestWinFormsClient
             colHCT.ColumnEdit = Program.MF.CTrepositoryItemLookUpEdit;
             colGCT.ColumnEdit = Program.MF.CTrepositoryItemLookUpEdit;
             colTrh.ColumnEdit = Program.MF.TRHrepositoryItemDateEdit;
+            colDrm.ColumnEdit = Program.MF.DRMrepositoryItemImageComboBox;
         }
 
         private void cetXF_Load(object sender, EventArgs e)

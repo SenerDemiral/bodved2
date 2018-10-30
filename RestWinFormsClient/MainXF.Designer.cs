@@ -43,6 +43,8 @@
             this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.MACnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.refreshAllNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.persistentRepository = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.PPrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -61,8 +63,7 @@
             this.TRHrepositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.refreshAllNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -83,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoDrepositoryItemImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).BeginInit();
             this.SuspendLayout();
             // 
             // documentManager1
@@ -211,6 +213,20 @@
             this.MACnavBarItem.Name = "MACnavBarItem";
             this.MACnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MACnavBarItem_LinkClicked);
             // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "Servis";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshAllNavBarItem)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // refreshAllNavBarItem
+            // 
+            this.refreshAllNavBarItem.Caption = "Refresh All";
+            this.refreshAllNavBarItem.Name = "refreshAllNavBarItem";
+            this.refreshAllNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshAllNavBarItem_LinkClicked);
+            // 
             // dataSetGnl
             // 
             this.dataSetGnl.DataSetName = "DataSetGnl";
@@ -224,7 +240,8 @@
             this.CTrepositoryItemLookUpEdit,
             this.PPrepositoryItemGridLookUpEdit,
             this.TRHrepositoryItemDateEdit,
-            this.SoDrepositoryItemImageComboBox});
+            this.SoDrepositoryItemImageComboBox,
+            this.DRMrepositoryItemImageComboBox});
             // 
             // PPrepositoryItemLookUpEdit
             // 
@@ -376,19 +393,15 @@
             this.pPBindingSource.DataMember = "PP";
             this.pPBindingSource.DataSource = this.dataSetGnl;
             // 
-            // navBarGroup2
+            // DRMrepositoryItemImageComboBox
             // 
-            this.navBarGroup2.Caption = "Servis";
-            this.navBarGroup2.Expanded = true;
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshAllNavBarItem)});
-            this.navBarGroup2.Name = "navBarGroup2";
-            // 
-            // refreshAllNavBarItem
-            // 
-            this.refreshAllNavBarItem.Caption = "Refresh All";
-            this.refreshAllNavBarItem.Name = "refreshAllNavBarItem";
-            this.refreshAllNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshAllNavBarItem_LinkClicked);
+            this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
+            this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
             // 
             // MainXF
             // 
@@ -422,6 +435,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoDrepositoryItemImageComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,5 +476,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCTs;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem refreshAllNavBarItem;
+        public DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox DRMrepositoryItemImageComboBox;
     }
 }

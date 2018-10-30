@@ -280,7 +280,7 @@ namespace BDB2
                             mac = new MAC
                             {
                                 CC = Db.FromId<CC>(dON[oldCC]),
-                                CEB = ceb,  // Db.FromId<CEB>(dON[oldCEB]) ????????????????????????????
+                                CEB = Db.FromId<CEB>(dON[oldCEB]), //????????????????????????????
                                 HPP1 = oldHPP1 == 0 ? null : Db.FromId<PP>(dON[oldHPP1]),
                                 HPP2 = oldHPP2 == 0 ? null : Db.FromId<PP>(dON[oldHPP2]),
                                 GPP1 = oldGPP1 == 0 ? null : Db.FromId<PP>(dON[oldGPP1]),

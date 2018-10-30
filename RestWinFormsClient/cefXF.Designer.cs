@@ -46,6 +46,8 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cEFBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cEFGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.maclarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCC = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,13 +75,12 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.maclarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingNavigator)).BeginInit();
             this.cEFBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cEFGridControl)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemGridLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cfPPluBindingSource)).BeginInit();
@@ -92,7 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataSetGnl
@@ -246,6 +246,20 @@
             this.gridView1});
             this.cEFGridControl.Click += new System.EventHandler(this.cEFGridControl_Click);
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.maclarToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(111, 26);
+            // 
+            // maclarToolStripMenuItem
+            // 
+            this.maclarToolStripMenuItem.Name = "maclarToolStripMenuItem";
+            this.maclarToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.maclarToolStripMenuItem.Text = "Maçlar";
+            this.maclarToolStripMenuItem.Click += new System.EventHandler(this.maclarToolStripMenuItem_Click);
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -294,7 +308,7 @@
             this.colHPP.FieldName = "HPP";
             this.colHPP.Name = "colHPP";
             this.colHPP.Visible = true;
-            this.colHPP.VisibleIndex = 3;
+            this.colHPP.VisibleIndex = 4;
             this.colHPP.Width = 122;
             // 
             // PPrepositoryItemGridLookUpEdit
@@ -367,7 +381,7 @@
             this.colGPP.FieldName = "GPP";
             this.colGPP.Name = "colGPP";
             this.colGPP.Visible = true;
-            this.colGPP.VisibleIndex = 4;
+            this.colGPP.VisibleIndex = 5;
             this.colGPP.Width = 114;
             // 
             // colTrh
@@ -385,7 +399,7 @@
             this.colDrm.Name = "colDrm";
             this.colDrm.OptionsColumn.FixedWidth = true;
             this.colDrm.Visible = true;
-            this.colDrm.VisibleIndex = 5;
+            this.colDrm.VisibleIndex = 3;
             this.colDrm.Width = 50;
             // 
             // colYer
@@ -511,20 +525,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.maclarToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 48);
-            // 
-            // maclarToolStripMenuItem
-            // 
-            this.maclarToolStripMenuItem.Name = "maclarToolStripMenuItem";
-            this.maclarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.maclarToolStripMenuItem.Text = "Maçlar";
-            this.maclarToolStripMenuItem.Click += new System.EventHandler(this.maclarToolStripMenuItem_Click);
-            // 
             // cefXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -540,6 +540,7 @@
             this.cEFBindingNavigator.ResumeLayout(false);
             this.cEFBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cEFGridControl)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPrepositoryItemGridLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cfPPluBindingSource)).EndInit();
@@ -553,7 +554,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

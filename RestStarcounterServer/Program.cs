@@ -87,8 +87,9 @@ namespace RestStarcounterServer
                 });
             };*/
 
+
             // Sadece Yeni DB ilk calistiginda yap
-            //HBR.RestoreDB();
+            HBR.RestoreDB();    // Hic PP yoksa yapar
             
             /*
             H.PopPP();
@@ -109,7 +110,9 @@ namespace RestStarcounterServer
             PP.RefreshSonuc();
             MAC.RefreshGlobalRank();
 
-            //MAC.RefreshGlobalRank();    // RnkBaz == RnkSon olmali, cunki CC.IsRnkd = false (Rank hesaplanmayacak)
+            //CTP.UpdateRnkBas(); //Yeni doneme basinda (bodved2 ye gecis)
+            
+            //CTP.UpdateRnkBit(); //Yeni doneme bitiminde
 
             //HBR.BackupDB();
         }

@@ -35,7 +35,7 @@ namespace RestWinFormsClient
             colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
             colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
             colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-
+            colDrm.ColumnEdit = Program.MF.DRMrepositoryItemImageComboBox;
         }
 
         private void macXF_Load(object sender, EventArgs e)
@@ -69,6 +69,7 @@ namespace RestWinFormsClient
                 HPP = CEFRow.HPP;
                 GPP = CEFRow.GPP;
 
+                colSoD.OptionsColumn.ReadOnly = true;
                 colHPP1.OptionsColumn.ReadOnly = true;
                 colHPP2.OptionsColumn.ReadOnly = true;
                 colGPP1.OptionsColumn.ReadOnly = true;
@@ -260,6 +261,17 @@ namespace RestWinFormsClient
             return dr;
         }
 
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            // mACBindingNavigator.AddNewItem = null; // AddNew kontrol edebilmek icin.
+            if (CEFRow != null && gridView1.DataRowCount > 0)   // CEF icin sadece tek maci olabilir.
+            {
+                return;
+            }
+
+            gridView1.AddNewRow();
+        }
+
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
@@ -270,6 +282,7 @@ namespace RestWinFormsClient
             gridView1.SetFocusedRowCellValue(colGPP1, GPP);
             gridView1.SetFocusedRowCellValue(colGPP2, 0);
             gridView1.SetFocusedRowCellValue(colTrh, Trh);
+            gridView1.SetFocusedRowCellValue(colSoD, "S");
 
         }
 

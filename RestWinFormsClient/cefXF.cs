@@ -23,6 +23,7 @@ namespace RestWinFormsClient
 
             cEFGridControl.ExternalRepository = Program.MF.persistentRepository;
             colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
+            colDrm.ColumnEdit = Program.MF.DRMrepositoryItemImageComboBox;
             //colHPP.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
             //colGPP.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
 

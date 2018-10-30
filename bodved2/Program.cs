@@ -46,8 +46,6 @@ namespace bodved2
 
             //CF.CreateCEFs(5131);
 
-            //CTP.UpdateRnkBas(); //Yeni doneme basinda (bodved2 ye gecis)
-            //CTP.UpdateRnkBit(); //Yeni doneme bitiminde
         }
     }
 }

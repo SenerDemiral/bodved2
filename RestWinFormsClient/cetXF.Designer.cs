@@ -61,6 +61,7 @@
             this.colCC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDrm = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colYer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInfo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHSSW = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,7 +74,6 @@
             this.colGDMW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHPW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGPW = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -105,7 +105,7 @@
             this.colHCT.FieldName = "HCT";
             this.colHCT.Name = "colHCT";
             this.colHCT.Visible = true;
-            this.colHCT.VisibleIndex = 3;
+            this.colHCT.VisibleIndex = 4;
             this.colHCT.Width = 77;
             // 
             // colGCT
@@ -115,7 +115,7 @@
             this.colGCT.FieldName = "GCT";
             this.colGCT.Name = "colGCT";
             this.colGCT.Visible = true;
-            this.colGCT.VisibleIndex = 6;
+            this.colGCT.VisibleIndex = 7;
             this.colGCT.Width = 77;
             // 
             // dataSetGnl
@@ -370,8 +370,20 @@
             this.colDrm.Name = "colDrm";
             this.colDrm.OptionsColumn.FixedWidth = true;
             this.colDrm.Visible = true;
-            this.colDrm.VisibleIndex = 7;
+            this.colDrm.VisibleIndex = 3;
             this.colDrm.Width = 60;
+            // 
+            // DRMrepositoryItemImageComboBox
+            // 
+            this.DRMrepositoryItemImageComboBox.AutoHeight = false;
+            this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("-", "-", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
+            this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
             // 
             // colYer
             // 
@@ -521,7 +533,7 @@
             this.colHPW.OptionsColumn.AllowFocus = false;
             this.colHPW.OptionsColumn.FixedWidth = true;
             this.colHPW.Visible = true;
-            this.colHPW.VisibleIndex = 4;
+            this.colHPW.VisibleIndex = 5;
             this.colHPW.Width = 40;
             // 
             // colGPW
@@ -536,20 +548,8 @@
             this.colGPW.OptionsColumn.AllowFocus = false;
             this.colGPW.OptionsColumn.FixedWidth = true;
             this.colGPW.Visible = true;
-            this.colGPW.VisibleIndex = 5;
+            this.colGPW.VisibleIndex = 6;
             this.colGPW.Width = 40;
-            // 
-            // DRMrepositoryItemImageComboBox
-            // 
-            this.DRMrepositoryItemImageComboBox.AutoHeight = false;
-            this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("-", "-", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
-            this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
             // 
             // layoutControl1
             // 
