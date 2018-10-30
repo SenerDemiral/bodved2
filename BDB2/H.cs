@@ -210,7 +210,6 @@ namespace BDB2
                             var hct = Db.SQL<CT>("select r from CT r where r.PK = ?", hctPK).FirstOrDefault();
                             var gct = Db.SQL<CT>("select r from CT r where r.PK = ?", gctPK).FirstOrDefault();
 
-
                             new CET
                             {
                                 CC = cc,

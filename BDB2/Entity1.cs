@@ -1416,7 +1416,7 @@ namespace BDB2
                             HPP = Db.FromId<PP>((ulong)al[i]),
                             GPP = Db.FromId<PP>((ulong)al[k]),
                         };
-                        Trh = Trh.AddDays(-1);
+                        //Trh = Trh.AddDays(-1);
                     }
                 }
             });

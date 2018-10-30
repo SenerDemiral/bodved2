@@ -87,29 +87,31 @@ namespace RestStarcounterServer
                 });
             };*/
 
-            //MAC.deneme();
+            // Sadece Yeni DB ilk calistiginda yap
+            //HBR.RestoreDB();
+            
+            /*
             H.PopPP();
             H.PopCC();
             H.PopCT();
             H.PopCTP();
             H.PopCET();
             H.PopMAC();
-            // Sadece Yeni DB ilk calistiginda yap
-            //H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
-
-            /*
+            H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
+            */
+            
             MAC.RefreshSonuc();
+            CEF.RefreshSonuc();
+            CF.RefreshSonuc();
             CET.RefreshSonuc();
             CT.RefreshSonuc();
             CTP.RefreshSonucNew();
-            PP.RefreshStat();
+            PP.RefreshSonuc();
             MAC.RefreshGlobalRank();
-            */
+
             //MAC.RefreshGlobalRank();    // RnkBaz == RnkSon olmali, cunki CC.IsRnkd = false (Rank hesaplanmayacak)
 
-
-            HBR.BackupMAC();
-
+            //HBR.BackupDB();
         }
     }
 }
