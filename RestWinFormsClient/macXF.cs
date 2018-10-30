@@ -227,7 +227,6 @@ namespace RestWinFormsClient
             if (gridView1.FocusedColumn == colHPP2 || gridView1.FocusedColumn == colGPP2)
                 if (gridView1.GetFocusedRowCellValue(colSoD).ToString() == "S")
                     e.Cancel = true;
-
         }
 
         private DialogResult UpdateDB()
@@ -283,7 +282,6 @@ namespace RestWinFormsClient
             gridView1.SetFocusedRowCellValue(colGPP2, 0);
             gridView1.SetFocusedRowCellValue(colTrh, Trh);
             gridView1.SetFocusedRowCellValue(colSoD, "S");
-
         }
 
     }

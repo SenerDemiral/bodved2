@@ -89,8 +89,11 @@ namespace RestStarcounterServer
 
 
             // Sadece Yeni DB ilk calistiginda yap
-            HBR.RestoreDB();    // Hic PP yoksa yapar
-            
+            //HBR.RestoreDB();    // Hic PP yoksa yapar
+
+            //H.PopAll();
+            //H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
+                            
             /*
             H.PopPP();
             H.PopCC();
@@ -98,9 +101,8 @@ namespace RestStarcounterServer
             H.PopCTP();
             H.PopCET();
             H.PopMAC();
-            H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
             */
-            
+
             MAC.RefreshSonuc();
             CEF.RefreshSonuc();
             CF.RefreshSonuc();

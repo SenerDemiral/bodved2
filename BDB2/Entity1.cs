@@ -53,7 +53,7 @@ namespace BDB2
     [Database]
     public class BB   // Base
     {
-        public ulong PK { get; set; }
+        //public ulong PK { get; set; }
         public string Ad { get; set; }
         public string Info { get; set; }
     }

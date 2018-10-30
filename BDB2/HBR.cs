@@ -147,7 +147,7 @@ namespace BDB2
                                 Idx = int.Parse(ra[4]),
                                 IsRun = ra[5] == "T" ? true : false,
                             };
-                            dON[oldNO] = ctp.GetObjectNo();
+                            dON[oldNO] = ctp.GetObjectNo();     // Gerek Yok
                         }
                     }
                 });
@@ -254,8 +254,8 @@ namespace BDB2
             {
                 string line;
                 ulong oldCC, oldCEB, oldHPP1, oldHPP2, oldGPP1, oldGPP2;
-                MAC mac = null;
                 CEB ceb = null;
+
                 Db.Transact(() =>
                 {
                     while ((line = sr.ReadLine()) != null)
@@ -277,10 +277,10 @@ namespace BDB2
                             else
                                 ceb = Db.FromId<CEF>(dON[oldCEB]);
 
-                            mac = new MAC
+                            new MAC
                             {
                                 CC = Db.FromId<CC>(dON[oldCC]),
-                                CEB = Db.FromId<CEB>(dON[oldCEB]), //????????????????????????????
+                                CEB = Db.FromId<CEB>(dON[oldCEB]), //Calisiyor????????????????????????????
                                 HPP1 = oldHPP1 == 0 ? null : Db.FromId<PP>(dON[oldHPP1]),
                                 HPP2 = oldHPP2 == 0 ? null : Db.FromId<PP>(dON[oldHPP2]),
                                 GPP1 = oldGPP1 == 0 ? null : Db.FromId<PP>(dON[oldGPP1]),
@@ -307,8 +307,6 @@ namespace BDB2
                                 G6W = int.Parse(ra[23]),
                                 G7W = int.Parse(ra[24]),
                             };
-                            
-                            //dON[oldNO] = mac.GetObjectNo();   // Gerek YOK
                         }
                     }
                 });

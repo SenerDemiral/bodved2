@@ -22,6 +22,242 @@ namespace BDB2
             }
         }
 
+        public static void PopAll()
+        {
+            if (Db.SQL<PP>("select r from PP r").FirstOrDefault() != null)
+                return; // Kayit var yapma
+
+            Dictionary<ulong, ulong> dON = new Dictionary<ulong, ulong>();    // dON[oldNO] = newNO
+            ulong oldNO = 0;
+
+            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-PP0.txt", System.Text.Encoding.UTF8))
+            {
+                string line;
+                PP pp = null;
+
+                Db.Transact(() =>
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                        {
+                            string[] ra = line.Split('|');
+
+                            oldNO = ulong.Parse(ra[0]);
+                            pp = new PP
+                            {
+                                RnkIlk = Convert.ToInt32(ra[1]),
+                                RnkBaz = Convert.ToInt32(ra[1]),
+                                Sex = ra[2],
+                                Ad = ra[4],
+                                Tel = ra[6],
+                                IsRun = true,
+
+                                Rnk1 = Convert.ToInt32(ra[7]),
+                                Rnk2 = Convert.ToInt32(ra[8]),
+                                Rnk3 = Convert.ToInt32(ra[9]),
+
+                            };
+                            dON[oldNO] = pp.GetObjectNo();
+                        }
+                    }
+                });
+            }
+
+            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CC0.txt", System.Text.Encoding.UTF8))
+            {
+                string line;
+                CC cc = null;
+
+                Db.Transact(() =>
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                        {
+                            string[] ra = line.Split('|');
+
+                            oldNO = ulong.Parse(ra[0]);
+                            cc = new CC
+                            {
+                                Ad = ra[2],
+                                Skl = ra[3],
+
+                                IsRnkd = true,
+                                TNSM = 8,   // Takim Single Mac Sayisi
+                                TNDM = 3,   //       Double
+                                TNSS = 5,   // Takim Single kac set uzerinden
+                                TNDS = 5,   //       Double
+                                TSMK = 2,   // Takim SingleMac Skoru
+                                TDMK = 3,   //         DoubleMac 
+                                TEGP = 2,   //       Event Galibiyet Puan
+                                TEMP = 1,   //      
+                                TEBP = 0,
+                                TEXP = -1,
+                            };
+                            dON[oldNO] = cc.GetObjectNo();
+                        }
+                    }
+                });
+            }
+
+            //0:PK|1:CC|2:Ad|3:Adres|4:Pw|5:K1|6:K2|7:K1.Ad|8:K2.Ad
+            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CT0.txt", System.Text.Encoding.UTF8))
+            {
+                string line;
+                ulong oldCC, oldK1, oldK2;
+                CT ct = null;
+
+                Db.Transact(() =>
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                        {
+                            string[] ra = line.Split('|');
+
+                            oldNO = ulong.Parse(ra[0]);
+                            oldCC = ulong.Parse(ra[1]);
+                            oldK1 = ulong.Parse(ra[2]);
+                            oldK2 = ulong.Parse(ra[3]);
+
+                            ct = new CT
+                            {
+                                CC = Db.FromId<CC>(dON[oldCC]),
+                                K1 = oldK1 == 0 ? null : Db.FromId<PP>(dON[oldK1]),
+                                K2 = oldK2 == 0 ? null : Db.FromId<PP>(dON[oldK2]),
+
+                                Ad = ra[4],
+                                Adres = ra[5],
+                                IsRun = true
+                            };
+                            dON[oldNO] = ct.GetObjectNo();
+                        }
+                    }
+                });
+            }
+
+            //0:CC|1:CT|2:PP|3:Idx|4:PPAd|5:CTAd
+            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CTP0.txt", System.Text.Encoding.UTF8))
+            {
+                string line;
+                ulong oldCC, oldCT, oldPP;
+
+                Db.Transact(() =>
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                        {
+                            string[] ra = line.Split('|');
+
+                            oldCC = ulong.Parse(ra[0]);
+                            oldCT = ulong.Parse(ra[1]);
+                            oldPP = ulong.Parse(ra[2]);
+
+                            new CTP
+                            {
+                                CC = Db.FromId<CC>(dON[oldCC]),
+                                CT = Db.FromId<CT>(dON[oldCT]),
+                                PP = oldPP == 0 ? null : Db.FromId<PP>(dON[oldPP]),
+                                Idx = int.Parse(ra[3]),
+                                IsRun = true,
+                            };
+                        }
+                    }
+                });
+            }
+
+            //0:PK|1:CC|2:hCT|3:gCT|4:Trh:dd.MM.yyyy HH:mm|5:hPok|6:gPok|7:Rok|8:hP|9:gP|10:hPW|11:hMSW|12:hMDW|13:gPW|14:gMSW|15:gMDW
+            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CET0.txt", System.Text.Encoding.UTF8))
+            {
+                string line;
+                ulong oldCC, oldHCT, oldGCT;
+                CET cet = null;
+
+                Db.Transact(() =>
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                        {
+                            string[] ra = line.Split('|');
+
+                            oldNO = ulong.Parse(ra[0]);
+                            oldCC = ulong.Parse(ra[1]);
+                            oldHCT = ulong.Parse(ra[2]);
+                            oldGCT = ulong.Parse(ra[3]);
+
+                            cet = new CET
+                            {
+                                CC = Db.FromId<CC>(dON[oldCC]),
+                                HCT = Db.FromId<CT>(dON[oldHCT]),
+                                GCT = Db.FromId<CT>(dON[oldGCT]),
+                                Trh = DateTime.Parse(ra[4]),
+
+                                Drm = "OK"
+                            };
+                            dON[oldNO] = cet.GetObjectNo();
+                        }
+                    }
+                });
+            }
+
+            //0:CC|1:CET|2:hPP1|3:hPP2|4:gPP1|5:gPP2|6:Trh|7:SoD|8:Idx|9:hS1W|hS2W|hS3W|hS4W|hS5W|14:gS1W|gS2W|gS3W|gS4W|gS5W
+            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-MAC0.txt", System.Text.Encoding.UTF8))
+            {
+                string line;
+                ulong oldCC, oldCEB, oldHPP1, oldHPP2, oldGPP1, oldGPP2;
+
+                Db.Transact(() =>
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                        {
+                            string[] ra = line.Split('|');
+
+                            oldCC = ulong.Parse(ra[0]);
+                            oldCEB = ulong.Parse(ra[1]);
+                            oldHPP1 = ulong.Parse(ra[2]);
+                            oldHPP2 = ulong.Parse(ra[3]);
+                            oldGPP1 = ulong.Parse(ra[4]);
+                            oldGPP2 = ulong.Parse(ra[5]);
+
+                            new MAC
+                            {
+                                CC = Db.FromId<CC>(dON[oldCC]),
+                                CEB = Db.FromId<CEB>(dON[oldCEB]), //Calisiyor????????????????????????????
+                                HPP1 = oldHPP1 == 0 ? null : Db.FromId<PP>(dON[oldHPP1]),
+                                HPP2 = oldHPP2 == 0 ? null : Db.FromId<PP>(dON[oldHPP2]),
+                                GPP1 = oldGPP1 == 0 ? null : Db.FromId<PP>(dON[oldGPP1]),
+                                GPP2 = oldGPP2 == 0 ? null : Db.FromId<PP>(dON[oldGPP2]),
+
+                                Trh = DateTime.Parse(ra[6]),
+                                SoD = ra[7],
+                                Idx = int.Parse(ra[8]),
+
+                                H1W = int.Parse(ra[9]),
+                                H2W = int.Parse(ra[10]),
+                                H3W = int.Parse(ra[11]),
+                                H4W = int.Parse(ra[12]),
+                                H5W = int.Parse(ra[13]),
+
+                                G1W = int.Parse(ra[14]),
+                                G2W = int.Parse(ra[15]),
+                                G3W = int.Parse(ra[16]),
+                                G4W = int.Parse(ra[17]),
+                                G5W = int.Parse(ra[18]),
+
+                                Drm = "OK"
+                            };
+                        }
+                    }
+                });
+            }
+        }
+
+        /*
         public static void PopPP()
         {
             if (Db.SQL<PP>("select r from PP r").FirstOrDefault() != null)
@@ -286,7 +522,7 @@ namespace BDB2
             }
 
         }
-
+        */
         public static void PPbaz2ilk()
         {
             /*
