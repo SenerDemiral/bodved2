@@ -536,20 +536,31 @@ namespace BDB2
             ulong cc, cet, hct, gct, hpp, gpp;
             int hsw, gsw, hmw, gmw, hmx, gmx;
             string sod;
+            CET ceto = null;
 
             List<DictMaclar> MacList = new List<DictMaclar>();
-            foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CC IS NOT NULL and m.CEB IS BDB2.CET"))
+            //foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CC IS NOT NULL and m.CEB IS BDB2.CET"))  // 21ms
+            //foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET")) // 14ms
+            foreach (var m in Db.SQL<MAC>("select m from MAC m"))  // 1ms
+            //foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CEBtyp = ?", "CET"))  // 12ms
             {
-                nor++;
+                if (!(m.CEB is CET))    // +3ms
+                    continue;
 
-                cc = m.CC.GetObjectNo();
-                cet = m.CEB.GetObjectNo();
-                var ceto = m.CEB as CET;
+                nor++;
+                
+                //cc = m.CC.GetObjectNo();
+                
+                //cet = m.CEB.GetObjectNo();
+                
+                ceto = m.CEB as CET;
+                
                 hct = ceto.HCT.GetObjectNo();
                 gct = ceto.GCT.GetObjectNo();
+                
                 hpp = m.HPP1.GetObjectNo();
                 gpp = m.GPP1.GetObjectNo();
-
+                
                 hsw = m.HSW;
                 gsw = m.GSW;
                 hmw = m.HMW;
@@ -557,11 +568,11 @@ namespace BDB2
                 hmx = m.HMX;
                 gmx = m.GMX;
                 sod = m.SoD;
-
+                
                 MacList.Add(new DictMaclar
                 {
-                    CC = cc,
-                    CET = cet,
+                    //CC = cc,
+                    //CET = cet,
                     CT = hct,
                     PP = hpp,
                     SoD = sod,
@@ -574,8 +585,8 @@ namespace BDB2
 
                 MacList.Add(new DictMaclar
                 {
-                    CC = cc,
-                    CET = cet,
+                    //CC = cc,
+                    //CET = cet,
                     CT = gct,
                     PP = gpp,
                     SoD = sod,
@@ -585,7 +596,7 @@ namespace BDB2
                     ML = hmw,
                     MX = gmx,
                 });
-
+                
                 if (sod == "D")
                 {
                     hpp = m.HPP2.GetObjectNo();
@@ -593,8 +604,8 @@ namespace BDB2
 
                     MacList.Add(new DictMaclar
                     {
-                        CC = cc,
-                        CET = cet,
+                        //CC = cc,
+                        //CET = cet,
                         CT = hct,
                         PP = hpp,
                         SoD = sod,
@@ -607,8 +618,8 @@ namespace BDB2
 
                     MacList.Add(new DictMaclar
                     {
-                        CC = cc,
-                        CET = cet,
+                        //CC = cc,
+                        //CET = cet,
                         CT = gct,
                         PP = gpp,
                         SoD = sod,
@@ -682,7 +693,7 @@ namespace BDB2
                                     sml = grp.Sum(r => r.ML),
                                 };
 */
-
+            
             var groupedResult = MacList
                 .OrderBy(x => x.CT).ThenBy(x => x.PP) //.ThenBy(x => x.SoD)
                 .GroupBy(s => new { s.CT, s.PP, s.SoD })
@@ -705,9 +716,11 @@ namespace BDB2
             {
                 foreach (var gr in groupedResult)
                 {
+                    
                     if (pct != gr.gct || ppp != gr.gpp) // ctp yi bir kere okusun
                     {
-                        ctp = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ? and r.PP.ObjectNo = ?", gr.gct, gr.gpp).FirstOrDefault();
+                        //ctp = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ? and r.PP.ObjectNo = ?", gr.gct, gr.gpp).FirstOrDefault();
+                        ctp = Db.SQL<CTP>("select r from CTP r where r.CT = ? and r.PP = ?", Db.FromId<CT>(gr.gct), Db.FromId<PP>(gr.gpp)).FirstOrDefault();
                         pct = gr.gct;
                         ppp = gr.gpp;
                     }
@@ -730,8 +743,10 @@ namespace BDB2
                             ctp.DMX = gr.tMX;
                         }
                     }
+                    
                 }
             });
+            
             watch.Stop();
             Console.WriteLine($"CTP.RefreshSonucNew() #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
@@ -885,13 +900,16 @@ namespace BDB2
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
-
-            var ccs = Db.SQL<CC>("select r from CC r where r.Skl = ?", "F");
-            foreach (var cc in ccs)
+            
+            Db.TransactAsync(() =>
             {
-                RefreshSonuc(cc);
-            }
-
+                var ccs = Db.SQL<CC>("select r from CC r where r.Skl = ?", "F");
+                foreach (var cc in ccs)
+                {
+                    RefreshSonuc(cc);
+                }
+            });
+            
             watch.Stop();
             Console.WriteLine($"CF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
@@ -936,6 +954,7 @@ namespace BDB2
                     //    EX++;
 
                 }
+                
                 // Update
                 cfs = Db.SQL<CF>("select r from CF r where r.CC = ?", cc);
                 foreach (var cf in cfs)
@@ -948,7 +967,7 @@ namespace BDB2
                     cf.PW = dnm[PPoNo].PW;
                     cf.PL = dnm[PPoNo].PL;
                 }
-
+                
                 int idx = 1;
                 cfs = Db.SQL<CF>("select r from CF r where r.CC = ? order by r.PW DESC, r.SF ASC", cc);
                 foreach (var cf in cfs)
@@ -1329,7 +1348,8 @@ namespace BDB2
         {
             get
             {
-                var mac = Db.SQL<MAC>("select r from BDB2.MAC r where r.CEB.ObjectNo = ?", this.GetObjectNo()).FirstOrDefault();
+                //var mac = Db.SQL<MAC>("select r from BDB2.MAC r where r.CEB.ObjectNo = ?", this.GetObjectNo()).FirstOrDefault();
+                var mac = Db.SQL<MAC>("select r from BDB2.MAC r where r.CEB = ?", this).FirstOrDefault();
                 if (mac == null)
                     return "";
 
@@ -1342,11 +1362,14 @@ namespace BDB2
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            var cefs = Db.SQL<CEF>("select r from CEF r");
-            foreach (var cef in cefs)
+            Db.TransactAsync(() =>
             {
-                RefreshSonuc(cef);
-            }
+                var cefs = Db.SQL<CEF>("select r from CEF r");
+                foreach (var cef in cefs)
+                {
+                    RefreshSonuc(cef);
+                }
+            });
 
             watch.Stop();
             Console.WriteLine($"CEF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
@@ -1359,7 +1382,9 @@ namespace BDB2
                 if (cef.Drm == "OK")
                 {
                     // Ferdi Event'in tek bir single maci olur.
-                    var mac = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ? and SoD = ?", cef.GetObjectNo(), "S").FirstOrDefault();
+                    //var mac = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ? and SoD = ?", cef.GetObjectNo(), "S").FirstOrDefault();
+                    //var mac = Db.SQL<MAC>("select r from MAC r where r.CEB = ? and SoD = ?", cef, "S").FirstOrDefault();
+                    var mac = Db.SQL<MAC>("select r from MAC r where r.CEB = ?", cef).FirstOrDefault();
                     if (mac != null)
                     {
                         cef.HSSW = mac.HSW;
@@ -1650,7 +1675,9 @@ namespace BDB2
             Db.TransactAsync(() => {
                 var macs = Db.SQL<MAC>("select r from MAC r");
                 foreach (var mac in macs)
+                {
                     RefreshSonuc(mac);
+                }
             });
 
             watch.Stop();
@@ -1713,16 +1740,16 @@ namespace BDB2
                 hMW = 1;
                 gMW = 0;
             }
-
-            //Db.TransactAsync(() =>
-            //{
+            
+            Db.TransactAsync(() =>
+            {
                 mac.HSW = hSW;
                 mac.GSW = gSW;
                 mac.HMW = hMW;
                 mac.GMW = gMW;
                 mac.HMX = hMX;
                 mac.GMX = gMX;
-            //});
+            });
         }
 
         public static int compHomeRnkPX(bool isHomeWin, int hRnk, int gRnk)

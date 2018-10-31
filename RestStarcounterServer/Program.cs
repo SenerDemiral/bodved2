@@ -55,6 +55,10 @@ namespace RestStarcounterServer
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CTP_PP").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX CTP_PP ON CTP (PP)");
 
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CTP_CTPP").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX CTP_CTPP ON CTP (CT, PP)");
+
+
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CET_CC").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX CET_CC ON CET (CC)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CET_Trh").FirstOrDefault() == null)
@@ -113,7 +117,7 @@ namespace RestStarcounterServer
             MAC.RefreshGlobalRank();
 
             //CTP.UpdateRnkBas(); //Yeni doneme basinda (bodved2 ye gecis)
-            
+
             //CTP.UpdateRnkBit(); //Yeni doneme bitiminde
 
             //HBR.BackupDB();

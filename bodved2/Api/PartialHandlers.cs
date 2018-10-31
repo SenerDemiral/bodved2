@@ -94,8 +94,8 @@ namespace bodved2.Api
                 page.Hdr = $"{CEF.CC.Ad} ► Ferdi Maçları ► {CEF.Trh:dd.MM.yy}";
 
                 page.CEF.Data = CEF;
-                page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB.ObjectNo = ? and r.SoD = ? order by r.Idx", CEF.CEFoNo, "S");
-                page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB.ObjectNo = ? and r.SoD = ? order by r.Idx", CEF.CEFoNo, "D");
+                page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? order by r.Idx", CEF);
+                //page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB.ObjectNo = ? and r.SoD = ? order by r.Idx", CEF.CEFoNo, "D");
                 return page;
             });
 
