@@ -18,7 +18,13 @@ namespace bodved2.Api
             Application.Current.Use(new PartialToStandaloneHtmlProvider());
 
             // Workspace home page (landing page from launchpad) dashboard alias
-            Handle.GET("/bodved", () =>
+
+            Handle.GET("/bodved2", () =>
+            {
+                return Self.GET("/");
+            });
+
+            Handle.GET("/", () =>
             {
                 MasterPage master = GetMasterPageFromSession();
                 return master;

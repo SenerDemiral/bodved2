@@ -239,7 +239,7 @@ namespace BDB2
 
 
             watch.Stop();
-            Console.WriteLine($"PP.RefreshSonuc(): MAC:{norMAC}, PP:{norPP} {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec PP.RefreshSonuc(): MAC:{norMAC:n0}, PP:{norPP:n0}");
         }
 
         public static void RefreshSonuc(MAC mac)    // Mactaki oyuncular icin yap
@@ -258,7 +258,7 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"PP.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec PP.RefreshSonuc(MAC)");
         }
 
         public static void RefreshSonuc(PP pp)  // Bir oyuncu
@@ -409,8 +409,7 @@ namespace BDB2
 
             }
             watch.Stop();
-            Console.WriteLine($"CT.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
-
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CT.RefreshSonuc()");
         }
 
         public static void RefreshSonuc(CT ct)
@@ -748,7 +747,8 @@ namespace BDB2
             });
             
             watch.Stop();
-            Console.WriteLine($"CTP.RefreshSonucNew() #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CTP.RefreshSonucNew()");
+            //Console.WriteLine($"CTP.RefreshSonucNew() #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshSonuc()
@@ -761,7 +761,8 @@ namespace BDB2
                 RefreshSonuc(cc);
             }
             watch.Stop();
-            Console.WriteLine($"CTP.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CTP.RefreshSonuc()");
+            //Console.WriteLine($"CTP.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshSonuc(CC cc)
@@ -911,7 +912,8 @@ namespace BDB2
             });
             
             watch.Stop();
-            Console.WriteLine($"CF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CF.RefreshSonuc()");
+            //Console.WriteLine($"CF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshSonuc(CC cc)
@@ -1153,7 +1155,8 @@ namespace BDB2
             }
 
             watch.Stop();
-            Console.WriteLine($"CET.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CET.RefreshSonuc()");
+            //Console.WriteLine($"CET.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
             //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
         }
 
@@ -1372,7 +1375,8 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"CEF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CEF.RefreshSonuc()");
+            //Console.WriteLine($"CEF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshSonuc(CEF cef)
@@ -1681,7 +1685,8 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshSonuc()");
+            //Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshSonuc(MAC mac)
@@ -2178,7 +2183,8 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshGlobalRank() NOR: {nor:n0}" );
+            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshGlobalRank(DateTime trh)
