@@ -19,7 +19,7 @@ setlocal
 @rem enter this directory
 cd /d %~dp0
 
-set TOOLS_PATH=packages\Grpc.Tools.1.16.0-pre1\tools\windows_x64
+set TOOLS_PATH=packages\Grpc.Tools.1.16.0\tools\windows_x64
 
 @rem %TOOLS_PATH%\protoc.exe --csharp_out Grpc  protos/helloworld.proto --grpc_out Grpc --plugin=protoc-gen-grpc=%TOOLS_PATH%\grpc_csharp_plugin.exe
 @rem %TOOLS_PATH%\protoc.exe --csharp_out Grpc  protos/sener.proto --grpc_out Grpc --plugin=protoc-gen-grpc=%TOOLS_PATH%\grpc_csharp_plugin.exe

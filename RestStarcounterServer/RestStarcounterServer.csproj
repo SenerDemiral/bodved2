@@ -77,10 +77,12 @@
     <ProjectReference Include="..\BDB2\BDB2.csproj">
       <Project>{6d890cc0-6597-4009-b1cd-5d3f8531bc27}</Project>
       <Name>BDB2</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\RestLib\RestLib.csproj">
       <Project>{af2614e6-23d2-402c-b722-6937119d5b59}</Project>
       <Name>RestLib</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
