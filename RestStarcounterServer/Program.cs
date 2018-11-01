@@ -10,7 +10,7 @@ namespace RestStarcounterServer
 {
     class Program
     {
-        const int Port = 50055;
+        const int Port = 6000; //50055;
 
         static void Main()
         {

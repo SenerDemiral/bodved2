@@ -62,8 +62,8 @@
             this.colCTs = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TRHrepositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -83,8 +83,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoDrepositoryItemImageComboBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // documentManager1
@@ -223,7 +223,7 @@
             // 
             // refreshAllNavBarItem
             // 
-            this.refreshAllNavBarItem.Caption = "Refresh All";
+            this.refreshAllNavBarItem.Caption = "RefreshSonuc All (Server)";
             this.refreshAllNavBarItem.Name = "refreshAllNavBarItem";
             this.refreshAllNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshAllNavBarItem_LinkClicked);
             // 
@@ -388,11 +388,6 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("D", "D", -1)});
             this.SoDrepositoryItemImageComboBox.Name = "SoDrepositoryItemImageComboBox";
             // 
-            // pPBindingSource
-            // 
-            this.pPBindingSource.DataMember = "PP";
-            this.pPBindingSource.DataSource = this.dataSetGnl;
-            // 
             // DRMrepositoryItemImageComboBox
             // 
             this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -402,6 +397,11 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
             this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
+            // 
+            // pPBindingSource
+            // 
+            this.pPBindingSource.DataMember = "PP";
+            this.pPBindingSource.DataSource = this.dataSetGnl;
             // 
             // MainXF
             // 
@@ -434,8 +434,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TRHrepositoryItemDateEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoDrepositoryItemImageComboBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DRMrepositoryItemImageComboBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
