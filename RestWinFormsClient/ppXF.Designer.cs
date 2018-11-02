@@ -131,7 +131,7 @@
             this.pPBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.pPBindingNavigator.Name = "pPBindingNavigator";
             this.pPBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.pPBindingNavigator.Size = new System.Drawing.Size(1115, 30);
+            this.pPBindingNavigator.Size = new System.Drawing.Size(970, 30);
             this.pPBindingNavigator.TabIndex = 0;
             this.pPBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -236,7 +236,7 @@
             this.pPGridControl.Location = new System.Drawing.Point(12, 46);
             this.pPGridControl.MainView = this.gridView1;
             this.pPGridControl.Name = "pPGridControl";
-            this.pPGridControl.Size = new System.Drawing.Size(1115, 240);
+            this.pPGridControl.Size = new System.Drawing.Size(970, 240);
             this.pPGridControl.TabIndex = 1;
             this.pPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -281,24 +281,33 @@
             this.colDMW,
             this.colDML});
             this.gridView1.GridControl = this.pPGridControl;
+            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Sex", null, "{0:n0}")});
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey
             // 
             this.colRowKey.FieldName = "RowKey";
             this.colRowKey.Name = "colRowKey";
+            this.colRowKey.OptionsColumn.AllowEdit = false;
+            this.colRowKey.OptionsColumn.AllowFocus = false;
+            this.colRowKey.OptionsColumn.FixedWidth = true;
+            this.colRowKey.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "RowKey", "{0:n0}")});
             this.colRowKey.Visible = true;
             this.colRowKey.VisibleIndex = 0;
-            this.colRowKey.Width = 89;
+            this.colRowKey.Width = 60;
             // 
             // colAd
             // 
             this.colAd.FieldName = "Ad";
+            this.colAd.MinWidth = 120;
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 1;
-            this.colAd.Width = 114;
+            this.colAd.Width = 123;
             // 
             // colInfo
             // 
@@ -306,7 +315,7 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 4;
-            this.colInfo.Width = 106;
+            this.colInfo.Width = 118;
             // 
             // colSex
             // 
@@ -323,7 +332,7 @@
             this.colTel.Name = "colTel";
             this.colTel.Visible = true;
             this.colTel.VisibleIndex = 3;
-            this.colTel.Width = 108;
+            this.colTel.Width = 116;
             // 
             // colIsRun
             // 
@@ -477,8 +486,9 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(781, 133, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1139, 330);
+            this.layoutControl1.Size = new System.Drawing.Size(994, 330);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -490,7 +500,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 290);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1115, 28);
+            this.statusStrip1.Size = new System.Drawing.Size(970, 28);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -509,8 +519,8 @@
             this.layoutControlItem2,
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1139, 330);
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(994, 330);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -518,7 +528,7 @@
             this.layoutControlItem1.Control = this.pPGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1119, 244);
+            this.layoutControlItem1.Size = new System.Drawing.Size(974, 244);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -527,7 +537,7 @@
             this.layoutControlItem2.Control = this.pPBindingNavigator;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1119, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(974, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -535,8 +545,11 @@
             // 
             this.layoutControlItem3.Control = this.statusStrip1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 278);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(0, 32);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(104, 32);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1119, 32);
+            this.layoutControlItem3.Size = new System.Drawing.Size(974, 32);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -544,7 +557,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 330);
+            this.ClientSize = new System.Drawing.Size(994, 330);
             this.Controls.Add(this.layoutControl1);
             this.Name = "ppXF";
             this.Text = "ppXF";

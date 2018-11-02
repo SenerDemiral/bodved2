@@ -102,21 +102,25 @@
             // 
             this.colHCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.colHCT.AppearanceCell.Options.UseBackColor = true;
+            this.colHCT.Caption = "Home Takım";
             this.colHCT.FieldName = "HCT";
             this.colHCT.Name = "colHCT";
+            this.colHCT.ToolTip = "Home Takım";
             this.colHCT.Visible = true;
             this.colHCT.VisibleIndex = 4;
-            this.colHCT.Width = 77;
+            this.colHCT.Width = 120;
             // 
             // colGCT
             // 
             this.colGCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.colGCT.AppearanceCell.Options.UseBackColor = true;
+            this.colGCT.Caption = "Guest Takım";
             this.colGCT.FieldName = "GCT";
             this.colGCT.Name = "colGCT";
+            this.colGCT.ToolTip = "Guest Takım";
             this.colGCT.Visible = true;
             this.colGCT.VisibleIndex = 7;
-            this.colGCT.Width = 77;
+            this.colGCT.Width = 120;
             // 
             // dataSetGnl
             // 
@@ -371,7 +375,7 @@
             this.colDrm.OptionsColumn.FixedWidth = true;
             this.colDrm.Visible = true;
             this.colDrm.VisibleIndex = 3;
-            this.colDrm.Width = 60;
+            this.colDrm.Width = 40;
             // 
             // DRMrepositoryItemImageComboBox
             // 
@@ -391,7 +395,7 @@
             this.colYer.Name = "colYer";
             this.colYer.Visible = true;
             this.colYer.VisibleIndex = 16;
-            this.colYer.Width = 52;
+            this.colYer.Width = 56;
             // 
             // colInfo
             // 
@@ -399,7 +403,7 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 17;
-            this.colInfo.Width = 156;
+            this.colInfo.Width = 86;
             // 
             // colHSSW
             // 
@@ -412,6 +416,7 @@
             this.colHSSW.OptionsColumn.AllowEdit = false;
             this.colHSSW.OptionsColumn.AllowFocus = false;
             this.colHSSW.OptionsColumn.FixedWidth = true;
+            this.colHSSW.ToolTip = "Home Single Set Win";
             this.colHSSW.Visible = true;
             this.colHSSW.VisibleIndex = 12;
             this.colHSSW.Width = 40;
@@ -427,6 +432,7 @@
             this.colGSSW.OptionsColumn.AllowEdit = false;
             this.colGSSW.OptionsColumn.AllowFocus = false;
             this.colGSSW.OptionsColumn.FixedWidth = true;
+            this.colGSSW.ToolTip = "Guest Single Set Win";
             this.colGSSW.Visible = true;
             this.colGSSW.VisibleIndex = 13;
             this.colGSSW.Width = 40;
@@ -442,6 +448,7 @@
             this.colHDSW.OptionsColumn.AllowEdit = false;
             this.colHDSW.OptionsColumn.AllowFocus = false;
             this.colHDSW.OptionsColumn.FixedWidth = true;
+            this.colHDSW.ToolTip = "Home Double Set Win";
             this.colHDSW.Visible = true;
             this.colHDSW.VisibleIndex = 14;
             this.colHDSW.Width = 40;
@@ -457,6 +464,7 @@
             this.colGDSW.OptionsColumn.AllowEdit = false;
             this.colGDSW.OptionsColumn.AllowFocus = false;
             this.colGDSW.OptionsColumn.FixedWidth = true;
+            this.colGDSW.ToolTip = "Guest Double Set Win";
             this.colGDSW.Visible = true;
             this.colGDSW.VisibleIndex = 15;
             this.colGDSW.Width = 40;
@@ -472,6 +480,7 @@
             this.colHSMW.OptionsColumn.AllowEdit = false;
             this.colHSMW.OptionsColumn.AllowFocus = false;
             this.colHSMW.OptionsColumn.FixedWidth = true;
+            this.colHSMW.ToolTip = "Home Single Maç Win";
             this.colHSMW.Visible = true;
             this.colHSMW.VisibleIndex = 8;
             this.colHSMW.Width = 40;
@@ -487,6 +496,7 @@
             this.colGSMW.OptionsColumn.AllowEdit = false;
             this.colGSMW.OptionsColumn.AllowFocus = false;
             this.colGSMW.OptionsColumn.FixedWidth = true;
+            this.colGSMW.ToolTip = "Guest Single Maç Win";
             this.colGSMW.Visible = true;
             this.colGSMW.VisibleIndex = 9;
             this.colGSMW.Width = 40;
@@ -502,6 +512,7 @@
             this.colHDMW.OptionsColumn.AllowEdit = false;
             this.colHDMW.OptionsColumn.AllowFocus = false;
             this.colHDMW.OptionsColumn.FixedWidth = true;
+            this.colHDMW.ToolTip = "Home Double Maç Win";
             this.colHDMW.Visible = true;
             this.colHDMW.VisibleIndex = 10;
             this.colHDMW.Width = 40;
@@ -517,6 +528,7 @@
             this.colGDMW.OptionsColumn.AllowEdit = false;
             this.colGDMW.OptionsColumn.AllowFocus = false;
             this.colGDMW.OptionsColumn.FixedWidth = true;
+            this.colGDMW.ToolTip = "Guest Double Maç Win";
             this.colGDMW.Visible = true;
             this.colGDMW.VisibleIndex = 11;
             this.colGDMW.Width = 40;
@@ -532,6 +544,7 @@
             this.colHPW.OptionsColumn.AllowEdit = false;
             this.colHPW.OptionsColumn.AllowFocus = false;
             this.colHPW.OptionsColumn.FixedWidth = true;
+            this.colHPW.ToolTip = "Home Puan Win";
             this.colHPW.Visible = true;
             this.colHPW.VisibleIndex = 5;
             this.colHPW.Width = 40;
@@ -547,6 +560,7 @@
             this.colGPW.OptionsColumn.AllowEdit = false;
             this.colGPW.OptionsColumn.AllowFocus = false;
             this.colGPW.OptionsColumn.FixedWidth = true;
+            this.colGPW.ToolTip = "Guest Puan Win";
             this.colGPW.Visible = true;
             this.colGPW.VisibleIndex = 6;
             this.colGPW.Width = 40;

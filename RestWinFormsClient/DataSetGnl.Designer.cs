@@ -2443,13 +2443,6 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CTPRow FindByRowKey(ulong RowKey) {
-                return ((CTPRow)(this.Rows.Find(new object[] {
-                            RowKey})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 CTPDataTable cln = ((CTPDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2497,10 +2490,7 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnRnkBit);
                 this.columnInfo = new global::System.Data.DataColumn("Info", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInfo);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
-                this.columnRowKey.Unique = true;
                 this.columnIsRun.Caption = "Run";
             }
             

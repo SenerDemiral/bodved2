@@ -239,8 +239,11 @@
             this.colInfo});
             this.gridView1.GridControl = this.cTPGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colIdx, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey
             // 
@@ -249,6 +252,8 @@
             this.colRowKey.OptionsColumn.AllowEdit = false;
             this.colRowKey.OptionsColumn.AllowFocus = false;
             this.colRowKey.OptionsColumn.FixedWidth = true;
+            this.colRowKey.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "RowKey", "{0:n0}")});
             this.colRowKey.Visible = true;
             this.colRowKey.VisibleIndex = 0;
             this.colRowKey.Width = 60;
@@ -333,6 +338,7 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(780, 129, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(713, 314);
             this.layoutControl1.TabIndex = 2;
@@ -365,7 +371,7 @@
             this.layoutControlItem2,
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(713, 314);
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -391,8 +397,11 @@
             // 
             this.layoutControlItem3.Control = this.statusStrip1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 270);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(0, 24);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(693, 24);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 

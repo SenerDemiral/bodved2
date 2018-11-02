@@ -74,6 +74,8 @@ namespace RestWinFormsClient
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
+            gridView1.SetFocusedRowCellValue(colIsRun, true);
+            gridView1.SetFocusedRowCellValue(colSex, "E");
 
         }
 

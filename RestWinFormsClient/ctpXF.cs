@@ -24,7 +24,7 @@ namespace RestWinFormsClient
 
             cTPGridControl.ExternalRepository = Program.MF.persistentRepository;
             colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
-            colPP.ColumnEdit = Program.MF.PPrepositoryItemLookUpEdit;
+            colPP.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
         }
 
         private void ctpXF_Load(object sender, EventArgs e)
@@ -105,6 +105,7 @@ namespace RestWinFormsClient
             gridView1.SetFocusedRowCellValue(colCC, CTRow.CC);
             gridView1.SetFocusedRowCellValue(colCT, CTRow.RowKey);
             gridView1.SetFocusedRowCellValue(colPP, 0);
+            gridView1.SetFocusedRowCellValue(colIsRun, true);
         }
 
     }

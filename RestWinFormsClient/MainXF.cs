@@ -148,5 +148,10 @@ namespace RestWinFormsClient
                 MessageBox.Show(err);
             }
         }
+
+        private void refreshLookupsNavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            FillTanimlar();
+        }
     }
 }

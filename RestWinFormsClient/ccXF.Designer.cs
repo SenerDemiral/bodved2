@@ -51,6 +51,8 @@
             this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.createEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdx = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -77,8 +79,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.createEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -106,7 +106,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(322, 199, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1198, 396);
+            this.layoutControl1.Size = new System.Drawing.Size(713, 396);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -138,7 +138,7 @@
             this.cCBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.cCBindingNavigator.Name = "cCBindingNavigator";
             this.cCBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.cCBindingNavigator.Size = new System.Drawing.Size(1174, 30);
+            this.cCBindingNavigator.Size = new System.Drawing.Size(689, 30);
             this.cCBindingNavigator.TabIndex = 1;
             this.cCBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -255,7 +255,7 @@
             this.cCGridControl.Name = "cCGridControl";
             this.cCGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.SKLrepositoryItemImageComboBox1});
-            this.cCGridControl.Size = new System.Drawing.Size(1174, 314);
+            this.cCGridControl.Size = new System.Drawing.Size(689, 314);
             this.cCGridControl.TabIndex = 5;
             this.cCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -269,28 +269,40 @@
             this.toolStripSeparator1,
             this.createEventsToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 120);
+            this.contextMenuStrip.Size = new System.Drawing.Size(151, 98);
             // 
             // teamsToolStripMenuItem
             // 
             this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.teamsToolStripMenuItem.Text = "Teams/Players";
             this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
             // 
             // eventsToolStripMenuItem
             // 
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
-            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.eventsToolStripMenuItem.Text = "Events";
             this.eventsToolStripMenuItem.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
             // 
             // matchesToolStripMenuItem
             // 
             this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
-            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.matchesToolStripMenuItem.Text = "Matches";
             this.matchesToolStripMenuItem.Click += new System.EventHandler(this.matchesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
+            // 
+            // createEventsToolStripMenuItem
+            // 
+            this.createEventsToolStripMenuItem.Name = "createEventsToolStripMenuItem";
+            this.createEventsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.createEventsToolStripMenuItem.Text = "Create Events";
+            this.createEventsToolStripMenuItem.Click += new System.EventHandler(this.createEventsToolStripMenuItem_Click);
             // 
             // gridView1
             // 
@@ -333,8 +345,10 @@
             // 
             this.colIdx.FieldName = "Idx";
             this.colIdx.Name = "colIdx";
+            this.colIdx.OptionsColumn.FixedWidth = true;
             this.colIdx.Visible = true;
             this.colIdx.VisibleIndex = 1;
+            this.colIdx.Width = 50;
             // 
             // colSkl
             // 
@@ -359,10 +373,11 @@
             // colAd
             // 
             this.colAd.FieldName = "Ad";
+            this.colAd.MinWidth = 120;
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 4;
-            this.colAd.Width = 263;
+            this.colAd.Width = 325;
             // 
             // colInfo
             // 
@@ -370,7 +385,7 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 5;
-            this.colInfo.Width = 263;
+            this.colInfo.Width = 110;
             // 
             // colIsRun
             // 
@@ -531,7 +546,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 364);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1174, 20);
+            this.statusStrip1.Size = new System.Drawing.Size(689, 20);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -551,7 +566,7 @@
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1198, 396);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(713, 396);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -559,7 +574,7 @@
             this.layoutControlItem1.Control = this.statusStrip1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 352);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1178, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(693, 24);
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -569,7 +584,7 @@
             this.layoutControlItem3.Control = this.cCBindingNavigator;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1178, 34);
+            this.layoutControlItem3.Size = new System.Drawing.Size(693, 34);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -578,28 +593,16 @@
             this.layoutControlItem2.Control = this.cCGridControl;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1178, 318);
+            this.layoutControlItem2.Size = new System.Drawing.Size(693, 318);
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // createEventsToolStripMenuItem
-            // 
-            this.createEventsToolStripMenuItem.Name = "createEventsToolStripMenuItem";
-            this.createEventsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.createEventsToolStripMenuItem.Text = "Create Events";
-            this.createEventsToolStripMenuItem.Click += new System.EventHandler(this.createEventsToolStripMenuItem_Click);
             // 
             // ccXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1198, 396);
+            this.ClientSize = new System.Drawing.Size(713, 396);
             this.Controls.Add(this.layoutControl1);
             this.Name = "ccXF";
             this.Text = "ccXF";
