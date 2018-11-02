@@ -17,8 +17,8 @@ namespace RestStarcounterServer
             Server server = new Server
             {
                 Services = { CRUDs.BindService(new CRUDsImpl()) },
-                Ports = { new ServerPort("127.0.0.1", Port, ServerCredentials.Insecure) }
-                //Ports = { new ServerPort("217.160.13.102", Port, ServerCredentials.Insecure) }
+                //Ports = { new ServerPort("127.0.0.1", Port, ServerCredentials.Insecure) }
+                Ports = { new ServerPort("217.160.13.102", Port, ServerCredentials.Insecure) }
                 //Ports = { new ServerPort("192.168.1.20", Port, ServerCredentials.Insecure) }
             };
             server.Start();

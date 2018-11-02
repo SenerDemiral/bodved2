@@ -24,6 +24,11 @@ namespace bodved2.Api
                 return Self.GET("/");
             });
 
+            Handle.GET("/bodved", () =>
+            {
+                return Self.GET("/");
+            });
+
             Handle.GET("/", () =>
             {
                 MasterPage master = GetMasterPageFromSession();
