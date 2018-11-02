@@ -1726,6 +1726,8 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnIsRun;
             
+            private global::System.Data.DataColumn columnRnkIlk;
+            
             private global::System.Data.DataColumn columnRnkBaz;
             
             private global::System.Data.DataColumn columnRnkSon;
@@ -1834,6 +1836,14 @@ namespace RestWinFormsClient {
             public global::System.Data.DataColumn IsRunColumn {
                 get {
                     return this.columnIsRun;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RnkIlkColumn {
+                get {
+                    return this.columnRnkIlk;
                 }
             }
             
@@ -2001,6 +2011,7 @@ namespace RestWinFormsClient {
                         string Sex, 
                         string Tel, 
                         bool IsRun, 
+                        int RnkIlk, 
                         int RnkBaz, 
                         int RnkSon, 
                         int RnkIdx, 
@@ -2024,6 +2035,7 @@ namespace RestWinFormsClient {
                         Sex,
                         Tel,
                         IsRun,
+                        RnkIlk,
                         RnkBaz,
                         RnkSon,
                         RnkIdx,
@@ -2067,6 +2079,7 @@ namespace RestWinFormsClient {
                 this.columnSex = base.Columns["Sex"];
                 this.columnTel = base.Columns["Tel"];
                 this.columnIsRun = base.Columns["IsRun"];
+                this.columnRnkIlk = base.Columns["RnkIlk"];
                 this.columnRnkBaz = base.Columns["RnkBaz"];
                 this.columnRnkSon = base.Columns["RnkSon"];
                 this.columnRnkIdx = base.Columns["RnkIdx"];
@@ -2099,6 +2112,8 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnTel);
                 this.columnIsRun = new global::System.Data.DataColumn("IsRun", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsRun);
+                this.columnRnkIlk = new global::System.Data.DataColumn("RnkIlk", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRnkIlk);
                 this.columnRnkBaz = new global::System.Data.DataColumn("RnkBaz", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRnkBaz);
                 this.columnRnkSon = new global::System.Data.DataColumn("RnkSon", typeof(int), null, global::System.Data.MappingType.Element);
@@ -7070,6 +7085,22 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int RnkIlk {
+                get {
+                    try {
+                        return ((int)(this[this.tablePP.RnkIlkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RnkIlk\' in table \'PP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePP.RnkIlkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int RnkBaz {
                 get {
                     try {
@@ -7366,6 +7397,18 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetIsRunNull() {
                 this[this.tablePP.IsRunColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRnkIlkNull() {
+                return this.IsNull(this.tablePP.RnkIlkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRnkIlkNull() {
+                this[this.tablePP.RnkIlkColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -77,6 +77,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colRnkIlk = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingNavigator)).BeginInit();
@@ -265,6 +266,7 @@
             this.colSex,
             this.colTel,
             this.colIsRun,
+            this.colRnkIlk,
             this.colRnkBaz,
             this.colRnkSon,
             this.colRnkIdx,
@@ -307,7 +309,7 @@
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 1;
-            this.colAd.Width = 123;
+            this.colAd.Width = 120;
             // 
             // colInfo
             // 
@@ -315,7 +317,7 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 4;
-            this.colInfo.Width = 118;
+            this.colInfo.Width = 20;
             // 
             // colSex
             // 
@@ -332,7 +334,7 @@
             this.colTel.Name = "colTel";
             this.colTel.Visible = true;
             this.colTel.VisibleIndex = 3;
-            this.colTel.Width = 116;
+            this.colTel.Width = 20;
             // 
             // colIsRun
             // 
@@ -345,29 +347,32 @@
             // 
             // colRnkBaz
             // 
+            this.colRnkBaz.Caption = "Baz";
             this.colRnkBaz.FieldName = "RnkBaz";
             this.colRnkBaz.Name = "colRnkBaz";
             this.colRnkBaz.OptionsColumn.FixedWidth = true;
             this.colRnkBaz.Visible = true;
-            this.colRnkBaz.VisibleIndex = 6;
+            this.colRnkBaz.VisibleIndex = 7;
             this.colRnkBaz.Width = 40;
             // 
             // colRnkSon
             // 
+            this.colRnkSon.Caption = "Son";
             this.colRnkSon.FieldName = "RnkSon";
             this.colRnkSon.Name = "colRnkSon";
             this.colRnkSon.OptionsColumn.FixedWidth = true;
             this.colRnkSon.Visible = true;
-            this.colRnkSon.VisibleIndex = 7;
+            this.colRnkSon.VisibleIndex = 8;
             this.colRnkSon.Width = 40;
             // 
             // colRnkIdx
             // 
+            this.colRnkIdx.Caption = "Idx";
             this.colRnkIdx.FieldName = "RnkIdx";
             this.colRnkIdx.Name = "colRnkIdx";
             this.colRnkIdx.OptionsColumn.FixedWidth = true;
             this.colRnkIdx.Visible = true;
-            this.colRnkIdx.VisibleIndex = 8;
+            this.colRnkIdx.VisibleIndex = 9;
             this.colRnkIdx.Width = 40;
             // 
             // colSST
@@ -376,7 +381,7 @@
             this.colSST.Name = "colSST";
             this.colSST.OptionsColumn.FixedWidth = true;
             this.colSST.Visible = true;
-            this.colSST.VisibleIndex = 9;
+            this.colSST.VisibleIndex = 10;
             this.colSST.Width = 40;
             // 
             // colSSW
@@ -385,7 +390,7 @@
             this.colSSW.Name = "colSSW";
             this.colSSW.OptionsColumn.FixedWidth = true;
             this.colSSW.Visible = true;
-            this.colSSW.VisibleIndex = 10;
+            this.colSSW.VisibleIndex = 11;
             this.colSSW.Width = 40;
             // 
             // colSSL
@@ -394,7 +399,7 @@
             this.colSSL.Name = "colSSL";
             this.colSSL.OptionsColumn.FixedWidth = true;
             this.colSSL.Visible = true;
-            this.colSSL.VisibleIndex = 11;
+            this.colSSL.VisibleIndex = 12;
             this.colSSL.Width = 40;
             // 
             // colSMT
@@ -403,7 +408,7 @@
             this.colSMT.Name = "colSMT";
             this.colSMT.OptionsColumn.FixedWidth = true;
             this.colSMT.Visible = true;
-            this.colSMT.VisibleIndex = 12;
+            this.colSMT.VisibleIndex = 13;
             this.colSMT.Width = 40;
             // 
             // colSMW
@@ -412,7 +417,7 @@
             this.colSMW.Name = "colSMW";
             this.colSMW.OptionsColumn.FixedWidth = true;
             this.colSMW.Visible = true;
-            this.colSMW.VisibleIndex = 13;
+            this.colSMW.VisibleIndex = 14;
             this.colSMW.Width = 40;
             // 
             // colSML
@@ -421,7 +426,7 @@
             this.colSML.Name = "colSML";
             this.colSML.OptionsColumn.FixedWidth = true;
             this.colSML.Visible = true;
-            this.colSML.VisibleIndex = 14;
+            this.colSML.VisibleIndex = 15;
             this.colSML.Width = 40;
             // 
             // colDST
@@ -430,7 +435,7 @@
             this.colDST.Name = "colDST";
             this.colDST.OptionsColumn.FixedWidth = true;
             this.colDST.Visible = true;
-            this.colDST.VisibleIndex = 15;
+            this.colDST.VisibleIndex = 16;
             this.colDST.Width = 40;
             // 
             // colDSW
@@ -439,7 +444,7 @@
             this.colDSW.Name = "colDSW";
             this.colDSW.OptionsColumn.FixedWidth = true;
             this.colDSW.Visible = true;
-            this.colDSW.VisibleIndex = 16;
+            this.colDSW.VisibleIndex = 17;
             this.colDSW.Width = 40;
             // 
             // colDSL
@@ -448,7 +453,7 @@
             this.colDSL.Name = "colDSL";
             this.colDSL.OptionsColumn.FixedWidth = true;
             this.colDSL.Visible = true;
-            this.colDSL.VisibleIndex = 17;
+            this.colDSL.VisibleIndex = 18;
             this.colDSL.Width = 40;
             // 
             // colDMT
@@ -457,7 +462,7 @@
             this.colDMT.Name = "colDMT";
             this.colDMT.OptionsColumn.FixedWidth = true;
             this.colDMT.Visible = true;
-            this.colDMT.VisibleIndex = 18;
+            this.colDMT.VisibleIndex = 19;
             this.colDMT.Width = 40;
             // 
             // colDMW
@@ -466,7 +471,7 @@
             this.colDMW.Name = "colDMW";
             this.colDMW.OptionsColumn.FixedWidth = true;
             this.colDMW.Visible = true;
-            this.colDMW.VisibleIndex = 19;
+            this.colDMW.VisibleIndex = 20;
             this.colDMW.Width = 40;
             // 
             // colDML
@@ -475,7 +480,7 @@
             this.colDML.Name = "colDML";
             this.colDML.OptionsColumn.FixedWidth = true;
             this.colDML.Visible = true;
-            this.colDML.VisibleIndex = 20;
+            this.colDML.VisibleIndex = 21;
             this.colDML.Width = 40;
             // 
             // layoutControl1
@@ -552,6 +557,16 @@
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // colRnkIlk
+            // 
+            this.colRnkIlk.Caption = "Ilk";
+            this.colRnkIlk.FieldName = "RnkIlk";
+            this.colRnkIlk.Name = "colRnkIlk";
+            this.colRnkIlk.OptionsColumn.FixedWidth = true;
+            this.colRnkIlk.Visible = true;
+            this.colRnkIlk.VisibleIndex = 6;
+            this.colRnkIlk.Width = 40;
             // 
             // ppXF
             // 
@@ -631,5 +646,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDML;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colRnkIlk;
     }
 }

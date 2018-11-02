@@ -2162,7 +2162,8 @@ namespace BDB2
 
                 // Hic mac yapmamislari ve Ayrilmis olanlari Adina gore sirala
                 int dc = 0;
-                foreach (var p in Db.SQL<PP>("select p from PP p where p.SMT = ? or p.IsRun = ? order by p.Ad", 0, false))
+                //foreach (var p in Db.SQL<PP>("select p from PP p where p.SMT = ? or p.IsRun = ? order by p.Ad", 0, false))
+                foreach (var p in Db.SQL<PP>("select p from PP p where p.IsRun = ? order by p.Ad", false))
                 {
                     ppDic[p.GetObjectNo()] = dc--;
                 }

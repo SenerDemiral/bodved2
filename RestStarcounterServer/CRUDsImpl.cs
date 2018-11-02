@@ -131,7 +131,28 @@ namespace RestStarcounterServer
                         }
                         else
                         {
-                            request.RowErr = $"Silemezsiniz";
+                            // CTP, CF ve MAC da ara varsa sildirme
+                            string err = "";
+                            var ctp = Db.SQL<CTP>("select r from CTP r where r.PP = ?", row).FirstOrDefault();
+                            if (ctp != null)
+                                err = "CTP kaydı var";
+                            else
+                            {
+                                var cf = Db.SQL<CF>("select r from CF r where r.PP = ?", row).FirstOrDefault();
+                                if (cf != null)
+                                    err = "CF kaydı var";
+                                else
+                                {
+                                    var mac = Db.SQL<MAC>("select r from MAC r where r.HPP1 = ? or r.HPP2 = ? or r.GPP1 = ? or r.GPP2 = ?", row, row, row, row).FirstOrDefault();
+                                    if (mac != null)
+                                        err = "MAC kaydı var";
+                                }
+
+                            }
+                            if (err == "")
+                                row.Delete();
+                            else
+                                request.RowErr = $"Silemezsiniz! {err}";
                         }
                     }
                 });
