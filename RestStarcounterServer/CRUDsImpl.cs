@@ -808,6 +808,7 @@ namespace RestStarcounterServer
                 {
                     int ccIdx = int.Parse(request.Prm1);
                     PP.RefeshCurrentActivities(ccIdx);
+                    request.Rsp = "";
                 }
 
             }).Wait();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using BDB2;
 using Grpc.Core;
 using RestLib;
@@ -24,6 +25,14 @@ namespace RestStarcounterServer
             server.Start();
 
             Console.WriteLine("Rest server listening on port " + Port);
+
+            Handle.GET("/RestStarcounterServer", () =>
+            {
+                Task.Run(async () => { await server.ShutdownAsync(); }).Wait();
+                //server.ShutdownAsync();
+                return "ShutDown gRPC Server OK";
+            });
+
 
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PP_Ad").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX PP_Ad ON PP (Ad)");
