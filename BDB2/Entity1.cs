@@ -906,9 +906,9 @@ namespace BDB2
                 var ctps = Db.SQL<CTP>("select r from CTP r");
                 foreach(var ctp in ctps)
                 {
-                    ctp.IsRun = ctp.PP.IsRun;
-                    ctp.RnkBas = ctp.PP.RnkIlk;
-                    ctp.RnkBit = ctp.PP.RnkSon;
+                    //ctp.IsRun = ctp.PP.IsRun;
+                    ctp.RnkBas = ctp.PP.RnkSon;
+                    ctp.RnkBit = 0;
                 }
 
             });
@@ -2181,6 +2181,9 @@ namespace BDB2
                     if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
                         continue;
 
+                    if (mac.CC.Skl == "F")
+                        continue;
+
                     nor++;
 
                     hPPoNo = mac.HPP1.GetObjectNo();
@@ -2309,6 +2312,12 @@ namespace BDB2
             watch.Stop();
             Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
+
+        public static void RefreshGlobalRankFerdi()
+        {
+            Dictionary<ulong, DictFerdiRnk> dct = new Dictionary<ulong, DictFerdiRnk>();
+
+        }
     }
 
     public class DictMaclar
@@ -2350,5 +2359,11 @@ namespace BDB2
 
         public int PW;
         public int PL;
+    }
+
+    public class DictFerdiRnk
+    {
+        public int RnkBas;
+        public int TopPX;
     }
 }
