@@ -69,6 +69,8 @@ namespace BDB2
         public int RnkSon { get; set; }
         public int RnkIdx { get; set; }     // RnkSon'a gore dizildiginde Sirasi
         public bool IsRun { get; set; }     // Aktif
+        public string CurRuns { get; set; }  // Guncel Aktiviteleri
+
 
         // Simdilik Eski Lig Rankleri
         public int Rnk1 { get; set; }
@@ -313,6 +315,49 @@ namespace BDB2
                 pp.DMW = DMW;
                 pp.DML = DML;
             //});
+        }
+
+        public static void RefeshCurrentActivities(int ccIdx)
+        {
+            Dictionary<ulong, string> dct = new Dictionary<ulong, string>();
+
+            Db.TransactAsync(() =>
+            {
+                var pps = Db.SQL<PP>("select r from PP r");
+                foreach (var pp in pps)
+                {
+                    dct[pp.PPoNo] = "";
+                }
+                ccIdx = ccIdx / 100;    // Ilk 2 digitini al
+                int bgnIdx = ccIdx * 100;
+                int endIdx = (ccIdx + 1) * 100;
+                var ccs = Db.SQL<CC>("select r from CC r where r.Idx >= ? and r.Idx < ? order by r.Idx", bgnIdx, endIdx);
+                foreach (var cc in ccs)
+                {
+                    var ctps = Db.SQL<CTP>("select r from CTP r where r.CC >= ?", cc);
+                    foreach (var ctp in ctps)
+                    {
+                        dct[ctp.PPoNo] += ctp.CTAd + "/";
+                    }
+
+                    var cfs = Db.SQL<CF>("select r from CF r where r.CC >= ?", cc);
+                    foreach (var cf in cfs)
+                    {
+                        dct[cf.PPoNo] += cf.CC.Ad + "/";
+                    }
+                }
+
+                pps = Db.SQL<PP>("select r from PP r");
+                foreach (var pp in pps)
+                {
+                    pp.CurRuns = dct[pp.PPoNo];
+                    if (dct[pp.PPoNo] == "")
+                        pp.IsRun = false;
+                    else
+                        pp.IsRun = true;
+                }
+            });
+
         }
 
     }

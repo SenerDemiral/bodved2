@@ -804,6 +804,12 @@ namespace RestStarcounterServer
                     else if (cc.Skl == "T")
                         request.Rsp = CET.CreateEvents(CCoNo);
                 }
+                else if (request.Req == "RefeshCurrentActivities")
+                {
+                    int ccIdx = int.Parse(request.Prm1);
+                    PP.RefeshCurrentActivities(ccIdx);
+                }
+
             }).Wait();
 
             Session.RunTaskForAll((s, id) =>

@@ -37,14 +37,16 @@
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.CCnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
-            this.PPnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.MACnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.CCnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.PPnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.refreshAllNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.refreshLookupsNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.persistentRepository = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.PPrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -64,8 +66,6 @@
             this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.refreshLookupsNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -175,6 +175,34 @@
             this.navBarControl1.TabIndex = 1;
             this.navBarControl1.Text = "navBarControl1";
             // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "Detaylar";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.CTnavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.CETnavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MACnavBarItem)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // CTnavBarItem
+            // 
+            this.CTnavBarItem.Caption = "CT";
+            this.CTnavBarItem.Name = "CTnavBarItem";
+            this.CTnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CTnavBarItem_LinkClicked);
+            // 
+            // CETnavBarItem
+            // 
+            this.CETnavBarItem.Caption = "CET";
+            this.CETnavBarItem.Name = "CETnavBarItem";
+            this.CETnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CETnavBarItem_LinkClicked);
+            // 
+            // MACnavBarItem
+            // 
+            this.MACnavBarItem.Caption = "MAC";
+            this.MACnavBarItem.Name = "MACnavBarItem";
+            this.MACnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MACnavBarItem_LinkClicked);
+            // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "Tanımlar";
@@ -196,24 +224,6 @@
             this.PPnavBarItem.Name = "PPnavBarItem";
             this.PPnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.PPnavBarItem_LinkClicked);
             // 
-            // CTnavBarItem
-            // 
-            this.CTnavBarItem.Caption = "CT";
-            this.CTnavBarItem.Name = "CTnavBarItem";
-            this.CTnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CTnavBarItem_LinkClicked);
-            // 
-            // CETnavBarItem
-            // 
-            this.CETnavBarItem.Caption = "CET";
-            this.CETnavBarItem.Name = "CETnavBarItem";
-            this.CETnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CETnavBarItem_LinkClicked);
-            // 
-            // MACnavBarItem
-            // 
-            this.MACnavBarItem.Caption = "MAC";
-            this.MACnavBarItem.Name = "MACnavBarItem";
-            this.MACnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MACnavBarItem_LinkClicked);
-            // 
             // navBarGroup
             // 
             this.navBarGroup.Caption = "Servis";
@@ -228,6 +238,12 @@
             this.refreshAllNavBarItem.Caption = "RefreshSonuc All (Server)";
             this.refreshAllNavBarItem.Name = "refreshAllNavBarItem";
             this.refreshAllNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshAllNavBarItem_LinkClicked);
+            // 
+            // refreshLookupsNavBarItem
+            // 
+            this.refreshLookupsNavBarItem.Caption = "Refresh Lookups";
+            this.refreshLookupsNavBarItem.Name = "refreshLookupsNavBarItem";
+            this.refreshLookupsNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshLookupsNavBarItem_LinkClicked);
             // 
             // dataSetGnl
             // 
@@ -328,7 +344,8 @@
             this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             this.repositoryItemGridLookUpEdit1View.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colIsRun, DevExpress.Data.ColumnSortOrder.Ascending)});
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colIsRun, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colAd, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colAd
             // 
@@ -406,22 +423,6 @@
             // 
             this.pPBindingSource.DataMember = "PP";
             this.pPBindingSource.DataSource = this.dataSetGnl;
-            // 
-            // refreshLookupsNavBarItem
-            // 
-            this.refreshLookupsNavBarItem.Caption = "Refresh Lookups";
-            this.refreshLookupsNavBarItem.Name = "refreshLookupsNavBarItem";
-            this.refreshLookupsNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshLookupsNavBarItem_LinkClicked);
-            // 
-            // navBarGroup2
-            // 
-            this.navBarGroup2.Caption = "Detaylar";
-            this.navBarGroup2.Expanded = true;
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.CTnavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.CETnavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MACnavBarItem)});
-            this.navBarGroup2.Name = "navBarGroup2";
             // 
             // MainXF
             // 

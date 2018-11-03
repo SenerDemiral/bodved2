@@ -121,6 +121,7 @@ namespace RestStarcounterServer
             //CTP.UpdateRnkBit(); //Yeni doneme bitiminde
 
             //HBR.BackupDB();
+
         }
     }
 }

@@ -55,6 +55,7 @@
             this.colSex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTel = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsRun = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRnkIlk = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRnkBaz = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRnkSon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRnkIdx = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -77,7 +78,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colRnkIlk = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingNavigator)).BeginInit();
@@ -286,6 +286,8 @@
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Sex", null, "{0:n0}")});
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
@@ -344,6 +346,16 @@
             this.colIsRun.Visible = true;
             this.colIsRun.VisibleIndex = 5;
             this.colIsRun.Width = 40;
+            // 
+            // colRnkIlk
+            // 
+            this.colRnkIlk.Caption = "Ilk";
+            this.colRnkIlk.FieldName = "RnkIlk";
+            this.colRnkIlk.Name = "colRnkIlk";
+            this.colRnkIlk.OptionsColumn.FixedWidth = true;
+            this.colRnkIlk.Visible = true;
+            this.colRnkIlk.VisibleIndex = 6;
+            this.colRnkIlk.Width = 40;
             // 
             // colRnkBaz
             // 
@@ -557,16 +569,6 @@
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // colRnkIlk
-            // 
-            this.colRnkIlk.Caption = "Ilk";
-            this.colRnkIlk.FieldName = "RnkIlk";
-            this.colRnkIlk.Name = "colRnkIlk";
-            this.colRnkIlk.OptionsColumn.FixedWidth = true;
-            this.colRnkIlk.Visible = true;
-            this.colRnkIlk.VisibleIndex = 6;
-            this.colRnkIlk.Width = 40;
             // 
             // ppXF
             // 

@@ -283,6 +283,8 @@
             this.gridView1.OptionsView.AutoCalcPreviewLineCount = true;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.PreviewFieldName = "Info";
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colAd, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey
@@ -299,10 +301,11 @@
             // colAd
             // 
             this.colAd.FieldName = "Ad";
+            this.colAd.MinWidth = 120;
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 2;
-            this.colAd.Width = 58;
+            this.colAd.Width = 120;
             // 
             // colAdres
             // 
