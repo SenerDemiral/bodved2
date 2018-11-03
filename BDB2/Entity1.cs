@@ -328,19 +328,20 @@ namespace BDB2
                 {
                     dct[pp.PPoNo] = "";
                 }
+
                 ccIdx = ccIdx / 100;    // Ilk 2 digitini al
                 int bgnIdx = ccIdx * 100;
                 int endIdx = (ccIdx + 1) * 100;
                 var ccs = Db.SQL<CC>("select r from CC r where r.Idx >= ? and r.Idx < ? order by r.Idx", bgnIdx, endIdx);
                 foreach (var cc in ccs)
                 {
-                    var ctps = Db.SQL<CTP>("select r from CTP r where r.CC >= ?", cc);
+                    var ctps = Db.SQL<CTP>("select r from CTP r where r.CC = ?", cc);
                     foreach (var ctp in ctps)
                     {
                         dct[ctp.PPoNo] += ctp.CTAd + "/";
                     }
 
-                    var cfs = Db.SQL<CF>("select r from CF r where r.CC >= ?", cc);
+                    var cfs = Db.SQL<CF>("select r from CF r where r.CC = ?", cc);
                     foreach (var cf in cfs)
                     {
                         dct[cf.PPoNo] += cf.CC.Ad + "/";

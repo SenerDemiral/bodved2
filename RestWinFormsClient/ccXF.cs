@@ -130,5 +130,13 @@ namespace RestWinFormsClient
             if (err != string.Empty)
                 MessageBox.Show(err);
         }
+
+        private void refreshSonAktiviteleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string err = dataSetGnl.PerfomAction("RefeshCurrentActivities", $"{gridView1.GetFocusedRowCellValue(colIdx)}");
+            if (err != string.Empty)
+                MessageBox.Show(err);
+
+        }
     }
 }

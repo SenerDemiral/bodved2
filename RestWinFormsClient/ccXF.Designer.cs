@@ -79,6 +79,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.refreshSonAktiviteleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -267,40 +268,41 @@
             this.eventsToolStripMenuItem,
             this.matchesToolStripMenuItem,
             this.toolStripSeparator1,
-            this.createEventsToolStripMenuItem});
+            this.createEventsToolStripMenuItem,
+            this.refreshSonAktiviteleriToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(151, 98);
+            this.contextMenuStrip.Size = new System.Drawing.Size(196, 142);
             // 
             // teamsToolStripMenuItem
             // 
             this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.teamsToolStripMenuItem.Text = "Teams/Players";
             this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
             // 
             // eventsToolStripMenuItem
             // 
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
-            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.eventsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.eventsToolStripMenuItem.Text = "Events";
             this.eventsToolStripMenuItem.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
             // 
             // matchesToolStripMenuItem
             // 
             this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
-            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.matchesToolStripMenuItem.Text = "Matches";
             this.matchesToolStripMenuItem.Click += new System.EventHandler(this.matchesToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
             // 
             // createEventsToolStripMenuItem
             // 
             this.createEventsToolStripMenuItem.Name = "createEventsToolStripMenuItem";
-            this.createEventsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.createEventsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.createEventsToolStripMenuItem.Text = "Create Events";
             this.createEventsToolStripMenuItem.Click += new System.EventHandler(this.createEventsToolStripMenuItem_Click);
             // 
@@ -598,6 +600,13 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
+            // refreshSonAktiviteleriToolStripMenuItem
+            // 
+            this.refreshSonAktiviteleriToolStripMenuItem.Name = "refreshSonAktiviteleriToolStripMenuItem";
+            this.refreshSonAktiviteleriToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.refreshSonAktiviteleriToolStripMenuItem.Text = "Refresh Son Aktiviteleri";
+            this.refreshSonAktiviteleriToolStripMenuItem.Click += new System.EventHandler(this.refreshSonAktiviteleriToolStripMenuItem_Click);
+            // 
             // ccXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,5 +688,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colIdx;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem createEventsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshSonAktiviteleriToolStripMenuItem;
     }
 }
