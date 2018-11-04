@@ -67,7 +67,8 @@ namespace RestStarcounterServer
                 foreach (var row in Db.SQL<PP>("select r from PP r"))
                 {
                     //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
-
+                    proxy = CRUDsHelper.ToProxy<PPProxy, PP>(row);
+                    /*
                     proxy = new PPProxy
                     {
                         RowKey = row.GetObjectNo(),
@@ -77,6 +78,7 @@ namespace RestStarcounterServer
                         Info = row.Info ?? "",
                         IsRun = row.IsRun,
 
+                        RnkIlk = row.RnkBaz,
                         RnkBaz = row.RnkBaz,
                         RnkSon = row.RnkSon,
                         RnkIdx = row.RnkIdx,
@@ -95,7 +97,7 @@ namespace RestStarcounterServer
                         DML = row.DML,
 
                     };
-
+                    */
                     proxyList.Add(proxy);
                 }
             });
@@ -808,6 +810,12 @@ namespace RestStarcounterServer
                 {
                     int ccIdx = int.Parse(request.Prm1);
                     PP.RefeshCurrentActivities(ccIdx);
+                    request.Rsp = "";
+                }
+                else if (request.Req == "DonemBasiIslemleri")
+                {
+                    int dnm = int.Parse(request.Prm1);
+                    PPRC.DonemBasiIslemleri(dnm);
                     request.Rsp = "";
                 }
 

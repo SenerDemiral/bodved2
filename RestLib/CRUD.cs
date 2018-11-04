@@ -29,89 +29,90 @@ namespace RestLib {
             "cBgEIAEoCSIoCghRcnlQcm94eRINCgVxdWVyeRgBIAEoCRINCgVwYXJhbRgC",
             "IAEoCSJUCg1QUGxvb2tVcFByb3h5Eg4KBlJvd0tleRgBIAEoBBIKCgJBZBgC",
             "IAEoCRILCgNTZXgYAyABKAkSCwoDQ1RzGAUgASgJEg0KBUlzUnVuGAYgASgI",
-            "ItgCCgdQUFByb3h5Eg4KBlJvd1N0ZRgBIAEoCRIOCgZSb3dFcnIYAiABKAkS",
+            "IvkCCgdQUFByb3h5Eg4KBlJvd1N0ZRgBIAEoCRIOCgZSb3dFcnIYAiABKAkS",
             "DgoGUm93VXNyGAMgASgEEg4KBlJvd0tleRgEIAEoBBIKCgJBZBgFIAEoCRIM",
             "CgRJbmZvGAYgASgJEgsKA1NleBgHIAEoCRILCgNUZWwYCCABKAkSDQoFSXNS",
-            "dW4YCSABKAgSDgoGUm5rQmF6GAogASgFEg4KBlJua1NvbhgLIAEoBRIOCgZS",
-            "bmtJZHgYDCABKAUSCwoDU1NUGA0gASgFEgsKA1NTVxgOIAEoBRILCgNTU0wY",
-            "DyABKAUSCwoDU01UGBAgASgFEgsKA1NNVxgRIAEoBRILCgNTTUwYEiABKAUS",
-            "CwoDRFNUGBMgASgFEgsKA0RTVxgUIAEoBRILCgNEU0wYFSABKAUSCwoDRE1U",
-            "GBYgASgFEgsKA0RNVxgXIAEoBRILCgNETUwYGCABKAUitQIKB0NDUHJveHkS",
-            "DgoGUm93U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIOCgZSb3dVc3IYAyAB",
-            "KAQSDgoGUm93S2V5GAQgASgEEgsKA0lkeBgFIAEoBRIKCgJBZBgGIAEoCRIL",
-            "CgNTa2wYByABKAkSCwoDR3JwGAggASgJEgwKBEluZm8YCSABKAkSDQoFSXNS",
-            "dW4YCiABKAgSDgoGSXNSbmtkGAsgASgIEgwKBFROU00YDCABKAUSDAoEVE5E",
-            "TRgNIAEoBRIMCgRUTlNTGA4gASgFEgwKBFRORFMYDyABKAUSDAoEVFNNSxgQ",
-            "IAEoBRIMCgRURE1LGBEgASgFEgwKBFRFR1AYEiABKAUSDAoEVEVNUBgTIAEo",
-            "BRIMCgRURUJQGBQgASgFEgwKBFRFWFAYFSABKAUiuQIKB0NUUHJveHkSDgoG",
-            "Um93U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQS",
-            "DgoGUm93S2V5GAQgASgEEgoKAkNDGAUgASgEEgoKAksxGAYgASgEEgoKAksy",
-            "GAcgASgEEgoKAkFkGAggASgJEgwKBEluZm8YCSABKAkSDQoFQWRyZXMYCiAB",
-            "KAkSDQoFSXNSdW4YCyABKAgSCwoDU01XGAwgASgFEgsKA1NNTBgNIAEoBRIL",
-            "CgNETVcYDiABKAUSCwoDRE1MGA8gASgFEgoKAktXGBAgASgFEgoKAktMGBEg",
-            "ASgFEgoKAktGGBIgASgFEgoKAkVXGBMgASgFEgoKAkVMGBQgASgFEgoKAkVC",
-            "GBUgASgFEgoKAkVYGBYgASgFEgoKAlBXGBcgASgFIrgBCghDVFBQcm94eRIO",
-            "CgZSb3dTdGUYASABKAkSDgoGUm93RXJyGAIgASgJEg4KBlJvd1VzchgDIAEo",
-            "BBIOCgZSb3dLZXkYBCABKAQSCgoCQ0MYBSABKAQSCgoCQ1QYBiABKAQSCgoC",
-            "UFAYByABKAQSCwoDSWR4GAggASgFEg0KBUlzUnVuGAkgASgIEg4KBlJua0Jh",
-            "cxgKIAEoBRIOCgZSbmtCaXQYCyABKAUSDAoESW5mbxgMIAEoCSKvAgoIQ0VU",
-            "UHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIOCgZSb3dV",
-            "c3IYAyABKAQSDgoGUm93S2V5GAQgASgEEgoKAkNDGAUgASgEEgsKA0hDVBgG",
-            "IAEoBBILCgNHQ1QYByABKAQSCwoDVHJoGAggASgDEgsKA0RybRgJIAEoCRIL",
-            "CgNZZXIYCiABKAkSDAoESW5mbxgLIAEoCRIMCgRIU1NXGAwgASgFEgwKBEdT",
-            "U1cYDSABKAUSDAoESERTVxgOIAEoBRIMCgRHRFNXGA8gASgFEgwKBEhTTVcY",
-            "ECABKAUSDAoER1NNVxgRIAEoBRIMCgRIRE1XGBIgASgFEgwKBEdETVcYEyAB",
-            "KAUSCwoDSFBXGBQgASgFEgsKA0dQVxgVIAEoBSKrAQoHQ0ZQcm94eRIOCgZS",
-            "b3dTdGUYASABKAkSDgoGUm93RXJyGAIgASgJEg4KBlJvd1VzchgDIAEoBBIO",
-            "CgZSb3dLZXkYBCABKAQSCgoCQ0MYBSABKAQSCgoCUFAYBiABKAQSCwoDSWR4",
-            "GAcgASgFEg0KBUlzUnVuGAggASgIEg4KBlJua0JhcxgJIAEoBRIOCgZSbmtC",
-            "aXQYCiABKAUSDAoESW5mbxgLIAEoCSKlAQoIQ0VGUHJveHkSDgoGUm93U3Rl",
-            "GAEgASgJEg4KBlJvd0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoGUm93",
-            "S2V5GAQgASgEEgoKAkNDGAUgASgEEgsKA0hQUBgGIAEoBBILCgNHUFAYByAB",
-            "KAQSCwoDVHJoGAggASgDEgsKA0RybRgJIAEoCRILCgNZZXIYCiABKAkSDAoE",
-            "SW5mbxgLIAEoCSK5BAoITUFDUHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJv",
+            "dW4YCSABKAgSDwoHSXNGZXJkaRgKIAEoCBIOCgZSbmtJbGsYCyABKAUSDgoG",
+            "Um5rQmF6GAwgASgFEg4KBlJua1NvbhgNIAEoBRIOCgZSbmtJZHgYDiABKAUS",
+            "CwoDU1NUGA8gASgFEgsKA1NTVxgQIAEoBRILCgNTU0wYESABKAUSCwoDU01U",
+            "GBIgASgFEgsKA1NNVxgTIAEoBRILCgNTTUwYFCABKAUSCwoDRFNUGBUgASgF",
+            "EgsKA0RTVxgWIAEoBRILCgNEU0wYFyABKAUSCwoDRE1UGBggASgFEgsKA0RN",
+            "VxgZIAEoBRILCgNETUwYGiABKAUitQIKB0NDUHJveHkSDgoGUm93U3RlGAEg",
+            "ASgJEg4KBlJvd0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoGUm93S2V5",
+            "GAQgASgEEgsKA0RubRgFIAEoBRILCgNJZHgYBiABKAUSCgoCQWQYByABKAkS",
+            "CwoDU2tsGAggASgJEgwKBEluZm8YCSABKAkSDQoFSXNSdW4YCiABKAgSDgoG",
+            "SXNSbmtkGAsgASgIEgwKBFROU00YDCABKAUSDAoEVE5ETRgNIAEoBRIMCgRU",
+            "TlNTGA4gASgFEgwKBFRORFMYDyABKAUSDAoEVFNNSxgQIAEoBRIMCgRURE1L",
+            "GBEgASgFEgwKBFRFR1AYEiABKAUSDAoEVEVNUBgTIAEoBRIMCgRURUJQGBQg",
+            "ASgFEgwKBFRFWFAYFSABKAUiuQIKB0NUUHJveHkSDgoGUm93U3RlGAEgASgJ",
+            "Eg4KBlJvd0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoGUm93S2V5GAQg",
+            "ASgEEgoKAkNDGAUgASgEEgoKAksxGAYgASgEEgoKAksyGAcgASgEEgoKAkFk",
+            "GAggASgJEgwKBEluZm8YCSABKAkSDQoFQWRyZXMYCiABKAkSDQoFSXNSdW4Y",
+            "CyABKAgSCwoDU01XGAwgASgFEgsKA1NNTBgNIAEoBRILCgNETVcYDiABKAUS",
+            "CwoDRE1MGA8gASgFEgoKAktXGBAgASgFEgoKAktMGBEgASgFEgoKAktGGBIg",
+            "ASgFEgoKAkVXGBMgASgFEgoKAkVMGBQgASgFEgoKAkVCGBUgASgFEgoKAkVY",
+            "GBYgASgFEgoKAlBXGBcgASgFIrgBCghDVFBQcm94eRIOCgZSb3dTdGUYASAB",
+            "KAkSDgoGUm93RXJyGAIgASgJEg4KBlJvd1VzchgDIAEoBBIOCgZSb3dLZXkY",
+            "BCABKAQSCgoCQ0MYBSABKAQSCgoCQ1QYBiABKAQSCgoCUFAYByABKAQSCwoD",
+            "SWR4GAggASgFEg0KBUlzUnVuGAkgASgIEg4KBlJua0JhcxgKIAEoBRIOCgZS",
+            "bmtCaXQYCyABKAUSDAoESW5mbxgMIAEoCSKvAgoIQ0VUUHJveHkSDgoGUm93",
+            "U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoG",
+            "Um93S2V5GAQgASgEEgoKAkNDGAUgASgEEgsKA0hDVBgGIAEoBBILCgNHQ1QY",
+            "ByABKAQSCwoDVHJoGAggASgDEgsKA0RybRgJIAEoCRILCgNZZXIYCiABKAkS",
+            "DAoESW5mbxgLIAEoCRIMCgRIU1NXGAwgASgFEgwKBEdTU1cYDSABKAUSDAoE",
+            "SERTVxgOIAEoBRIMCgRHRFNXGA8gASgFEgwKBEhTTVcYECABKAUSDAoER1NN",
+            "VxgRIAEoBRIMCgRIRE1XGBIgASgFEgwKBEdETVcYEyABKAUSCwoDSFBXGBQg",
+            "ASgFEgsKA0dQVxgVIAEoBSKrAQoHQ0ZQcm94eRIOCgZSb3dTdGUYASABKAkS",
+            "DgoGUm93RXJyGAIgASgJEg4KBlJvd1VzchgDIAEoBBIOCgZSb3dLZXkYBCAB",
+            "KAQSCgoCQ0MYBSABKAQSCgoCUFAYBiABKAQSCwoDSWR4GAcgASgFEg0KBUlz",
+            "UnVuGAggASgIEg4KBlJua0JhcxgJIAEoBRIOCgZSbmtCaXQYCiABKAUSDAoE",
+            "SW5mbxgLIAEoCSKlAQoIQ0VGUHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJv",
             "d0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoGUm93S2V5GAQgASgEEgoK",
-            "AkNDGAUgASgEEgsKA0NFQhgGIAEoBBIMCgRIUFAxGAcgASgEEgwKBEhQUDIY",
-            "CCABKAQSDAoER1BQMRgJIAEoBBIMCgRHUFAyGAogASgEEgsKA1NvRBgLIAEo",
-            "CRILCgNJZHgYDCABKAUSCwoDVHJoGA0gASgDEgsKA0RybRgOIAEoCRILCgNZ",
-            "ZXIYDyABKAkSDQoFSGFrZW0YECABKAkSDAoESW5mbxgRIAEoCRILCgNIMVcY",
-            "EiABKAUSCwoDSDJXGBMgASgFEgsKA0gzVxgUIAEoBRILCgNINFcYFSABKAUS",
-            "CwoDSDVXGBYgASgFEgsKA0g2VxgXIAEoBRILCgNIN1cYGCABKAUSCwoDRzFX",
-            "GBkgASgFEgsKA0cyVxgaIAEoBRILCgNHM1cYGyABKAUSCwoDRzRXGBwgASgF",
-            "EgsKA0c1VxgdIAEoBRILCgNHNlcYHiABKAUSCwoDRzdXGB8gASgFEgsKA0hT",
-            "VxggIAEoBRILCgNHU1cYISABKAUSCwoDSE1XGCIgASgFEgsKA0dNVxgjIAEo",
-            "BRILCgNIWFcYJCABKAUSCwoDR1hXGCUgASgFEgwKBEhSbmsYJiABKAUSDgoG",
-            "SFJua1BYGCcgASgFEgwKBEdSbmsYKCABKAUSDgoGR1Jua1BYGCkgASgFMr0H",
-            "CgVDUlVEcxI9Cg1QZXJmb3JtQWN0aW9uEhQuUmVzdExpYi5BY3Rpb25Qcm94",
-            "eRoULlJlc3RMaWIuQWN0aW9uUHJveHkiABIxCgZQUEZpbGwSES5SZXN0TGli",
-            "LlFyeVByb3h5GhAuUmVzdExpYi5QUFByb3h5IgAwARIwCghQUFVwZGF0ZRIQ",
-            "LlJlc3RMaWIuUFBQcm94eRoQLlJlc3RMaWIuUFBQcm94eSIAEjEKBkNDRmls",
-            "bBIRLlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkNDUHJveHkiADABEjAK",
-            "CENDVXBkYXRlEhAuUmVzdExpYi5DQ1Byb3h5GhAuUmVzdExpYi5DQ1Byb3h5",
-            "IgASMQoGQ1RGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoQLlJlc3RMaWIuQ1RQ",
-            "cm94eSIAMAESMAoIQ1RVcGRhdGUSEC5SZXN0TGliLkNUUHJveHkaEC5SZXN0",
-            "TGliLkNUUHJveHkiABIzCgdDVFBGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoR",
-            "LlJlc3RMaWIuQ1RQUHJveHkiADABEjMKCUNUUFVwZGF0ZRIRLlJlc3RMaWIu",
-            "Q1RQUHJveHkaES5SZXN0TGliLkNUUFByb3h5IgASMwoHQ0VURmlsbBIRLlJl",
-            "c3RMaWIuUXJ5UHJveHkaES5SZXN0TGliLkNFVFByb3h5IgAwARIzCglDRVRV",
-            "cGRhdGUSES5SZXN0TGliLkNFVFByb3h5GhEuUmVzdExpYi5DRVRQcm94eSIA",
-            "EjEKBkNGRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkNGUHJv",
-            "eHkiADABEjAKCENGVXBkYXRlEhAuUmVzdExpYi5DRlByb3h5GhAuUmVzdExp",
-            "Yi5DRlByb3h5IgASMwoHQ0VGRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaES5S",
-            "ZXN0TGliLkNFRlByb3h5IgAwARIzCglDRUZVcGRhdGUSES5SZXN0TGliLkNF",
-            "RlByb3h5GhEuUmVzdExpYi5DRUZQcm94eSIAEjMKB01BQ0ZpbGwSES5SZXN0",
-            "TGliLlFyeVByb3h5GhEuUmVzdExpYi5NQUNQcm94eSIAMAESMwoJTUFDVXBk",
-            "YXRlEhEuUmVzdExpYi5NQUNQcm94eRoRLlJlc3RMaWIuTUFDUHJveHkiABI5",
-            "CghQUGxvb2tVcBIRLlJlc3RMaWIuUXJ5UHJveHkaFi5SZXN0TGliLlBQbG9v",
-            "a1VwUHJveHkiADABYgZwcm90bzM="));
+            "AkNDGAUgASgEEgsKA0hQUBgGIAEoBBILCgNHUFAYByABKAQSCwoDVHJoGAgg",
+            "ASgDEgsKA0RybRgJIAEoCRILCgNZZXIYCiABKAkSDAoESW5mbxgLIAEoCSK5",
+            "BAoITUFDUHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIO",
+            "CgZSb3dVc3IYAyABKAQSDgoGUm93S2V5GAQgASgEEgoKAkNDGAUgASgEEgsK",
+            "A0NFQhgGIAEoBBIMCgRIUFAxGAcgASgEEgwKBEhQUDIYCCABKAQSDAoER1BQ",
+            "MRgJIAEoBBIMCgRHUFAyGAogASgEEgsKA1NvRBgLIAEoCRILCgNJZHgYDCAB",
+            "KAUSCwoDVHJoGA0gASgDEgsKA0RybRgOIAEoCRILCgNZZXIYDyABKAkSDQoF",
+            "SGFrZW0YECABKAkSDAoESW5mbxgRIAEoCRILCgNIMVcYEiABKAUSCwoDSDJX",
+            "GBMgASgFEgsKA0gzVxgUIAEoBRILCgNINFcYFSABKAUSCwoDSDVXGBYgASgF",
+            "EgsKA0g2VxgXIAEoBRILCgNIN1cYGCABKAUSCwoDRzFXGBkgASgFEgsKA0cy",
+            "VxgaIAEoBRILCgNHM1cYGyABKAUSCwoDRzRXGBwgASgFEgsKA0c1VxgdIAEo",
+            "BRILCgNHNlcYHiABKAUSCwoDRzdXGB8gASgFEgsKA0hTVxggIAEoBRILCgNH",
+            "U1cYISABKAUSCwoDSE1XGCIgASgFEgsKA0dNVxgjIAEoBRILCgNIWFcYJCAB",
+            "KAUSCwoDR1hXGCUgASgFEgwKBEhSbmsYJiABKAUSDgoGSFJua1BYGCcgASgF",
+            "EgwKBEdSbmsYKCABKAUSDgoGR1Jua1BYGCkgASgFMr0HCgVDUlVEcxI9Cg1Q",
+            "ZXJmb3JtQWN0aW9uEhQuUmVzdExpYi5BY3Rpb25Qcm94eRoULlJlc3RMaWIu",
+            "QWN0aW9uUHJveHkiABIxCgZQUEZpbGwSES5SZXN0TGliLlFyeVByb3h5GhAu",
+            "UmVzdExpYi5QUFByb3h5IgAwARIwCghQUFVwZGF0ZRIQLlJlc3RMaWIuUFBQ",
+            "cm94eRoQLlJlc3RMaWIuUFBQcm94eSIAEjEKBkNDRmlsbBIRLlJlc3RMaWIu",
+            "UXJ5UHJveHkaEC5SZXN0TGliLkNDUHJveHkiADABEjAKCENDVXBkYXRlEhAu",
+            "UmVzdExpYi5DQ1Byb3h5GhAuUmVzdExpYi5DQ1Byb3h5IgASMQoGQ1RGaWxs",
+            "EhEuUmVzdExpYi5RcnlQcm94eRoQLlJlc3RMaWIuQ1RQcm94eSIAMAESMAoI",
+            "Q1RVcGRhdGUSEC5SZXN0TGliLkNUUHJveHkaEC5SZXN0TGliLkNUUHJveHki",
+            "ABIzCgdDVFBGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoRLlJlc3RMaWIuQ1RQ",
+            "UHJveHkiADABEjMKCUNUUFVwZGF0ZRIRLlJlc3RMaWIuQ1RQUHJveHkaES5S",
+            "ZXN0TGliLkNUUFByb3h5IgASMwoHQ0VURmlsbBIRLlJlc3RMaWIuUXJ5UHJv",
+            "eHkaES5SZXN0TGliLkNFVFByb3h5IgAwARIzCglDRVRVcGRhdGUSES5SZXN0",
+            "TGliLkNFVFByb3h5GhEuUmVzdExpYi5DRVRQcm94eSIAEjEKBkNGRmlsbBIR",
+            "LlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkNGUHJveHkiADABEjAKCENG",
+            "VXBkYXRlEhAuUmVzdExpYi5DRlByb3h5GhAuUmVzdExpYi5DRlByb3h5IgAS",
+            "MwoHQ0VGRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaES5SZXN0TGliLkNFRlBy",
+            "b3h5IgAwARIzCglDRUZVcGRhdGUSES5SZXN0TGliLkNFRlByb3h5GhEuUmVz",
+            "dExpYi5DRUZQcm94eSIAEjMKB01BQ0ZpbGwSES5SZXN0TGliLlFyeVByb3h5",
+            "GhEuUmVzdExpYi5NQUNQcm94eSIAMAESMwoJTUFDVXBkYXRlEhEuUmVzdExp",
+            "Yi5NQUNQcm94eRoRLlJlc3RMaWIuTUFDUHJveHkiABI5CghQUGxvb2tVcBIR",
+            "LlJlc3RMaWIuUXJ5UHJveHkaFi5SZXN0TGliLlBQbG9va1VwUHJveHkiADAB",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.ActionProxy), global::RestLib.ActionProxy.Parser, new[]{ "Req", "Prm1", "Prm2", "Rsp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.QryProxy), global::RestLib.QryProxy.Parser, new[]{ "Query", "Param" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.PPlookUpProxy), global::RestLib.PPlookUpProxy.Parser, new[]{ "RowKey", "Ad", "Sex", "CTs", "IsRun" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.PPProxy), global::RestLib.PPProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Ad", "Info", "Sex", "Tel", "IsRun", "RnkBaz", "RnkSon", "RnkIdx", "SST", "SSW", "SSL", "SMT", "SMW", "SML", "DST", "DSW", "DSL", "DMT", "DMW", "DML" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CCProxy), global::RestLib.CCProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Idx", "Ad", "Skl", "Grp", "Info", "IsRun", "IsRnkd", "TNSM", "TNDM", "TNSS", "TNDS", "TSMK", "TDMK", "TEGP", "TEMP", "TEBP", "TEXP" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.PPProxy), global::RestLib.PPProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Ad", "Info", "Sex", "Tel", "IsRun", "IsFerdi", "RnkIlk", "RnkBaz", "RnkSon", "RnkIdx", "SST", "SSW", "SSL", "SMT", "SMW", "SML", "DST", "DSW", "DSL", "DMT", "DMW", "DML" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CCProxy), global::RestLib.CCProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Dnm", "Idx", "Ad", "Skl", "Info", "IsRun", "IsRnkd", "TNSM", "TNDM", "TNSS", "TNDS", "TSMK", "TDMK", "TEGP", "TEMP", "TEBP", "TEXP" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTProxy), global::RestLib.CTProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "K1", "K2", "Ad", "Info", "Adres", "IsRun", "SMW", "SML", "DMW", "DML", "KW", "KL", "KF", "EW", "EL", "EB", "EX", "PW" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTPProxy), global::RestLib.CTPProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "CT", "PP", "Idx", "IsRun", "RnkBas", "RnkBit", "Info" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CETProxy), global::RestLib.CETProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HCT", "GCT", "Trh", "Drm", "Yer", "Info", "HSSW", "GSSW", "HDSW", "GDSW", "HSMW", "GSMW", "HDMW", "GDMW", "HPW", "GPW" }, null, null, null),
@@ -775,6 +776,8 @@ namespace RestLib {
       sex_ = other.sex_;
       tel_ = other.tel_;
       isRun_ = other.isRun_;
+      isFerdi_ = other.isFerdi_;
+      rnkIlk_ = other.rnkIlk_;
       rnkBaz_ = other.rnkBaz_;
       rnkSon_ = other.rnkSon_;
       rnkIdx_ = other.rnkIdx_;
@@ -897,8 +900,30 @@ namespace RestLib {
       }
     }
 
+    /// <summary>Field number for the "IsFerdi" field.</summary>
+    public const int IsFerdiFieldNumber = 10;
+    private bool isFerdi_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsFerdi {
+      get { return isFerdi_; }
+      set {
+        isFerdi_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RnkIlk" field.</summary>
+    public const int RnkIlkFieldNumber = 11;
+    private int rnkIlk_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RnkIlk {
+      get { return rnkIlk_; }
+      set {
+        rnkIlk_ = value;
+      }
+    }
+
     /// <summary>Field number for the "RnkBaz" field.</summary>
-    public const int RnkBazFieldNumber = 10;
+    public const int RnkBazFieldNumber = 12;
     private int rnkBaz_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int RnkBaz {
@@ -909,7 +934,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "RnkSon" field.</summary>
-    public const int RnkSonFieldNumber = 11;
+    public const int RnkSonFieldNumber = 13;
     private int rnkSon_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int RnkSon {
@@ -920,7 +945,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "RnkIdx" field.</summary>
-    public const int RnkIdxFieldNumber = 12;
+    public const int RnkIdxFieldNumber = 14;
     private int rnkIdx_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int RnkIdx {
@@ -931,7 +956,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "SST" field.</summary>
-    public const int SSTFieldNumber = 13;
+    public const int SSTFieldNumber = 15;
     private int sST_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int SST {
@@ -942,7 +967,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "SSW" field.</summary>
-    public const int SSWFieldNumber = 14;
+    public const int SSWFieldNumber = 16;
     private int sSW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int SSW {
@@ -953,7 +978,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "SSL" field.</summary>
-    public const int SSLFieldNumber = 15;
+    public const int SSLFieldNumber = 17;
     private int sSL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int SSL {
@@ -964,7 +989,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "SMT" field.</summary>
-    public const int SMTFieldNumber = 16;
+    public const int SMTFieldNumber = 18;
     private int sMT_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int SMT {
@@ -975,7 +1000,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "SMW" field.</summary>
-    public const int SMWFieldNumber = 17;
+    public const int SMWFieldNumber = 19;
     private int sMW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int SMW {
@@ -986,7 +1011,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "SML" field.</summary>
-    public const int SMLFieldNumber = 18;
+    public const int SMLFieldNumber = 20;
     private int sML_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int SML {
@@ -997,7 +1022,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "DST" field.</summary>
-    public const int DSTFieldNumber = 19;
+    public const int DSTFieldNumber = 21;
     private int dST_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int DST {
@@ -1008,7 +1033,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "DSW" field.</summary>
-    public const int DSWFieldNumber = 20;
+    public const int DSWFieldNumber = 22;
     private int dSW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int DSW {
@@ -1019,7 +1044,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "DSL" field.</summary>
-    public const int DSLFieldNumber = 21;
+    public const int DSLFieldNumber = 23;
     private int dSL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int DSL {
@@ -1030,7 +1055,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "DMT" field.</summary>
-    public const int DMTFieldNumber = 22;
+    public const int DMTFieldNumber = 24;
     private int dMT_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int DMT {
@@ -1041,7 +1066,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "DMW" field.</summary>
-    public const int DMWFieldNumber = 23;
+    public const int DMWFieldNumber = 25;
     private int dMW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int DMW {
@@ -1052,7 +1077,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "DML" field.</summary>
-    public const int DMLFieldNumber = 24;
+    public const int DMLFieldNumber = 26;
     private int dML_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int DML {
@@ -1084,6 +1109,8 @@ namespace RestLib {
       if (Sex != other.Sex) return false;
       if (Tel != other.Tel) return false;
       if (IsRun != other.IsRun) return false;
+      if (IsFerdi != other.IsFerdi) return false;
+      if (RnkIlk != other.RnkIlk) return false;
       if (RnkBaz != other.RnkBaz) return false;
       if (RnkSon != other.RnkSon) return false;
       if (RnkIdx != other.RnkIdx) return false;
@@ -1114,6 +1141,8 @@ namespace RestLib {
       if (Sex.Length != 0) hash ^= Sex.GetHashCode();
       if (Tel.Length != 0) hash ^= Tel.GetHashCode();
       if (IsRun != false) hash ^= IsRun.GetHashCode();
+      if (IsFerdi != false) hash ^= IsFerdi.GetHashCode();
+      if (RnkIlk != 0) hash ^= RnkIlk.GetHashCode();
       if (RnkBaz != 0) hash ^= RnkBaz.GetHashCode();
       if (RnkSon != 0) hash ^= RnkSon.GetHashCode();
       if (RnkIdx != 0) hash ^= RnkIdx.GetHashCode();
@@ -1178,64 +1207,72 @@ namespace RestLib {
         output.WriteRawTag(72);
         output.WriteBool(IsRun);
       }
-      if (RnkBaz != 0) {
+      if (IsFerdi != false) {
         output.WriteRawTag(80);
+        output.WriteBool(IsFerdi);
+      }
+      if (RnkIlk != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(RnkIlk);
+      }
+      if (RnkBaz != 0) {
+        output.WriteRawTag(96);
         output.WriteInt32(RnkBaz);
       }
       if (RnkSon != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(104);
         output.WriteInt32(RnkSon);
       }
       if (RnkIdx != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteInt32(RnkIdx);
       }
       if (SST != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(120);
         output.WriteInt32(SST);
       }
       if (SSW != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(128, 1);
         output.WriteInt32(SSW);
       }
       if (SSL != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(136, 1);
         output.WriteInt32(SSL);
       }
       if (SMT != 0) {
-        output.WriteRawTag(128, 1);
+        output.WriteRawTag(144, 1);
         output.WriteInt32(SMT);
       }
       if (SMW != 0) {
-        output.WriteRawTag(136, 1);
+        output.WriteRawTag(152, 1);
         output.WriteInt32(SMW);
       }
       if (SML != 0) {
-        output.WriteRawTag(144, 1);
+        output.WriteRawTag(160, 1);
         output.WriteInt32(SML);
       }
       if (DST != 0) {
-        output.WriteRawTag(152, 1);
+        output.WriteRawTag(168, 1);
         output.WriteInt32(DST);
       }
       if (DSW != 0) {
-        output.WriteRawTag(160, 1);
+        output.WriteRawTag(176, 1);
         output.WriteInt32(DSW);
       }
       if (DSL != 0) {
-        output.WriteRawTag(168, 1);
+        output.WriteRawTag(184, 1);
         output.WriteInt32(DSL);
       }
       if (DMT != 0) {
-        output.WriteRawTag(176, 1);
+        output.WriteRawTag(192, 1);
         output.WriteInt32(DMT);
       }
       if (DMW != 0) {
-        output.WriteRawTag(184, 1);
+        output.WriteRawTag(200, 1);
         output.WriteInt32(DMW);
       }
       if (DML != 0) {
-        output.WriteRawTag(192, 1);
+        output.WriteRawTag(208, 1);
         output.WriteInt32(DML);
       }
       if (_unknownFields != null) {
@@ -1273,6 +1310,12 @@ namespace RestLib {
       if (IsRun != false) {
         size += 1 + 1;
       }
+      if (IsFerdi != false) {
+        size += 1 + 1;
+      }
+      if (RnkIlk != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RnkIlk);
+      }
       if (RnkBaz != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(RnkBaz);
       }
@@ -1286,10 +1329,10 @@ namespace RestLib {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(SST);
       }
       if (SSW != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SSW);
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(SSW);
       }
       if (SSL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SSL);
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(SSL);
       }
       if (SMT != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(SMT);
@@ -1355,6 +1398,12 @@ namespace RestLib {
       }
       if (other.IsRun != false) {
         IsRun = other.IsRun;
+      }
+      if (other.IsFerdi != false) {
+        IsFerdi = other.IsFerdi;
+      }
+      if (other.RnkIlk != 0) {
+        RnkIlk = other.RnkIlk;
       }
       if (other.RnkBaz != 0) {
         RnkBaz = other.RnkBaz;
@@ -1449,62 +1498,70 @@ namespace RestLib {
             break;
           }
           case 80: {
-            RnkBaz = input.ReadInt32();
+            IsFerdi = input.ReadBool();
             break;
           }
           case 88: {
-            RnkSon = input.ReadInt32();
+            RnkIlk = input.ReadInt32();
             break;
           }
           case 96: {
-            RnkIdx = input.ReadInt32();
+            RnkBaz = input.ReadInt32();
             break;
           }
           case 104: {
-            SST = input.ReadInt32();
+            RnkSon = input.ReadInt32();
             break;
           }
           case 112: {
-            SSW = input.ReadInt32();
+            RnkIdx = input.ReadInt32();
             break;
           }
           case 120: {
-            SSL = input.ReadInt32();
+            SST = input.ReadInt32();
             break;
           }
           case 128: {
-            SMT = input.ReadInt32();
+            SSW = input.ReadInt32();
             break;
           }
           case 136: {
-            SMW = input.ReadInt32();
+            SSL = input.ReadInt32();
             break;
           }
           case 144: {
-            SML = input.ReadInt32();
+            SMT = input.ReadInt32();
             break;
           }
           case 152: {
-            DST = input.ReadInt32();
+            SMW = input.ReadInt32();
             break;
           }
           case 160: {
-            DSW = input.ReadInt32();
+            SML = input.ReadInt32();
             break;
           }
           case 168: {
-            DSL = input.ReadInt32();
+            DST = input.ReadInt32();
             break;
           }
           case 176: {
-            DMT = input.ReadInt32();
+            DSW = input.ReadInt32();
             break;
           }
           case 184: {
-            DMW = input.ReadInt32();
+            DSL = input.ReadInt32();
             break;
           }
           case 192: {
+            DMT = input.ReadInt32();
+            break;
+          }
+          case 200: {
+            DMW = input.ReadInt32();
+            break;
+          }
+          case 208: {
             DML = input.ReadInt32();
             break;
           }
@@ -1546,10 +1603,10 @@ namespace RestLib {
       rowErr_ = other.rowErr_;
       rowUsr_ = other.rowUsr_;
       rowKey_ = other.rowKey_;
+      dnm_ = other.dnm_;
       idx_ = other.idx_;
       ad_ = other.ad_;
       skl_ = other.skl_;
-      grp_ = other.grp_;
       info_ = other.info_;
       isRun_ = other.isRun_;
       isRnkd_ = other.isRnkd_;
@@ -1615,8 +1672,19 @@ namespace RestLib {
       }
     }
 
+    /// <summary>Field number for the "Dnm" field.</summary>
+    public const int DnmFieldNumber = 5;
+    private int dnm_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Dnm {
+      get { return dnm_; }
+      set {
+        dnm_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Idx" field.</summary>
-    public const int IdxFieldNumber = 5;
+    public const int IdxFieldNumber = 6;
     private int idx_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Idx {
@@ -1627,7 +1695,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "Ad" field.</summary>
-    public const int AdFieldNumber = 6;
+    public const int AdFieldNumber = 7;
     private string ad_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Ad {
@@ -1638,24 +1706,13 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "Skl" field.</summary>
-    public const int SklFieldNumber = 7;
+    public const int SklFieldNumber = 8;
     private string skl_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Skl {
       get { return skl_; }
       set {
         skl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "Grp" field.</summary>
-    public const int GrpFieldNumber = 8;
-    private string grp_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Grp {
-      get { return grp_; }
-      set {
-        grp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1819,10 +1876,10 @@ namespace RestLib {
       if (RowErr != other.RowErr) return false;
       if (RowUsr != other.RowUsr) return false;
       if (RowKey != other.RowKey) return false;
+      if (Dnm != other.Dnm) return false;
       if (Idx != other.Idx) return false;
       if (Ad != other.Ad) return false;
       if (Skl != other.Skl) return false;
-      if (Grp != other.Grp) return false;
       if (Info != other.Info) return false;
       if (IsRun != other.IsRun) return false;
       if (IsRnkd != other.IsRnkd) return false;
@@ -1846,10 +1903,10 @@ namespace RestLib {
       if (RowErr.Length != 0) hash ^= RowErr.GetHashCode();
       if (RowUsr != 0UL) hash ^= RowUsr.GetHashCode();
       if (RowKey != 0UL) hash ^= RowKey.GetHashCode();
+      if (Dnm != 0) hash ^= Dnm.GetHashCode();
       if (Idx != 0) hash ^= Idx.GetHashCode();
       if (Ad.Length != 0) hash ^= Ad.GetHashCode();
       if (Skl.Length != 0) hash ^= Skl.GetHashCode();
-      if (Grp.Length != 0) hash ^= Grp.GetHashCode();
       if (Info.Length != 0) hash ^= Info.GetHashCode();
       if (IsRun != false) hash ^= IsRun.GetHashCode();
       if (IsRnkd != false) hash ^= IsRnkd.GetHashCode();
@@ -1892,21 +1949,21 @@ namespace RestLib {
         output.WriteRawTag(32);
         output.WriteUInt64(RowKey);
       }
-      if (Idx != 0) {
+      if (Dnm != 0) {
         output.WriteRawTag(40);
+        output.WriteInt32(Dnm);
+      }
+      if (Idx != 0) {
+        output.WriteRawTag(48);
         output.WriteInt32(Idx);
       }
       if (Ad.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteString(Ad);
       }
       if (Skl.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(Skl);
-      }
-      if (Grp.Length != 0) {
         output.WriteRawTag(66);
-        output.WriteString(Grp);
+        output.WriteString(Skl);
       }
       if (Info.Length != 0) {
         output.WriteRawTag(74);
@@ -1980,6 +2037,9 @@ namespace RestLib {
       if (RowKey != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RowKey);
       }
+      if (Dnm != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Dnm);
+      }
       if (Idx != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idx);
       }
@@ -1988,9 +2048,6 @@ namespace RestLib {
       }
       if (Skl.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Skl);
-      }
-      if (Grp.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Grp);
       }
       if (Info.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Info);
@@ -2054,6 +2111,9 @@ namespace RestLib {
       if (other.RowKey != 0UL) {
         RowKey = other.RowKey;
       }
+      if (other.Dnm != 0) {
+        Dnm = other.Dnm;
+      }
       if (other.Idx != 0) {
         Idx = other.Idx;
       }
@@ -2062,9 +2122,6 @@ namespace RestLib {
       }
       if (other.Skl.Length != 0) {
         Skl = other.Skl;
-      }
-      if (other.Grp.Length != 0) {
-        Grp = other.Grp;
       }
       if (other.Info.Length != 0) {
         Info = other.Info;
@@ -2133,19 +2190,19 @@ namespace RestLib {
             break;
           }
           case 40: {
+            Dnm = input.ReadInt32();
+            break;
+          }
+          case 48: {
             Idx = input.ReadInt32();
             break;
           }
-          case 50: {
+          case 58: {
             Ad = input.ReadString();
             break;
           }
-          case 58: {
-            Skl = input.ReadString();
-            break;
-          }
           case 66: {
-            Grp = input.ReadString();
+            Skl = input.ReadString();
             break;
           }
           case 74: {

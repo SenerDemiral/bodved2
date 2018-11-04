@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 
 namespace RestWinFormsClient
 {
@@ -88,8 +89,32 @@ namespace RestWinFormsClient
 
         }
 
-        private void pPGridControl_Click(object sender, EventArgs e)
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PrintingSystem ps = new PrintingSystem();
+            PrintableComponentLink link = new PrintableComponentLink(ps);
+            link.Component = pPGridControl;
+
+            link.PaperKind = System.Drawing.Printing.PaperKind.A4;
+            link.Landscape = false;
+            link.Margins.Left = 50;
+            link.Margins.Right = 50;
+            link.Margins.Top = 50;
+            link.Margins.Bottom = 50;
+
+            var Font = new Font("Tahoma", 12, FontStyle.Bold);
+
+            PageHeaderFooter phf = link.PageHeaderFooter as PageHeaderFooter;
+            string mdlH = string.Format("BODVED OYUNCU LİSTESİ");
+            phf.Header.Content.AddRange(new string[] { "", mdlH, "" });
+            phf.Header.LineAlignment = BrickAlignment.Far;
+            phf.Header.Font = Font;
+
+            phf.Footer.Content.AddRange(new string[] { "[Date Printed] [Time Printed]", "Bodved", "©Şener DEMİRAL" });
+            phf.Footer.LineAlignment = BrickAlignment.Near;
+
+            link.CreateDocument();
+            link.ShowPreview();
 
         }
     }

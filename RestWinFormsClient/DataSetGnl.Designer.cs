@@ -670,7 +670,7 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnSkl;
             
-            private global::System.Data.DataColumn columnGrp;
+            private global::System.Data.DataColumn columnDnm;
             
             private global::System.Data.DataColumn columnAd;
             
@@ -759,9 +759,9 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn GrpColumn {
+            public global::System.Data.DataColumn DnmColumn {
                 get {
-                    return this.columnGrp;
+                    return this.columnDnm;
                 }
             }
             
@@ -918,7 +918,7 @@ namespace RestWinFormsClient {
                         ulong RowKey, 
                         int Idx, 
                         string Skl, 
-                        string Grp, 
+                        int Dnm, 
                         string Ad, 
                         string Info, 
                         bool IsRun, 
@@ -938,7 +938,7 @@ namespace RestWinFormsClient {
                         RowKey,
                         Idx,
                         Skl,
-                        Grp,
+                        Dnm,
                         Ad,
                         Info,
                         IsRun,
@@ -985,7 +985,7 @@ namespace RestWinFormsClient {
                 this.columnRowKey = base.Columns["RowKey"];
                 this.columnIdx = base.Columns["Idx"];
                 this.columnSkl = base.Columns["Skl"];
-                this.columnGrp = base.Columns["Grp"];
+                this.columnDnm = base.Columns["Dnm"];
                 this.columnAd = base.Columns["Ad"];
                 this.columnInfo = base.Columns["Info"];
                 this.columnIsRun = base.Columns["IsRun"];
@@ -1011,8 +1011,8 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnIdx);
                 this.columnSkl = new global::System.Data.DataColumn("Skl", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSkl);
-                this.columnGrp = new global::System.Data.DataColumn("Grp", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGrp);
+                this.columnDnm = new global::System.Data.DataColumn("Dnm", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDnm);
                 this.columnAd = new global::System.Data.DataColumn("Ad", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAd);
                 this.columnInfo = new global::System.Data.DataColumn("Info", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1726,6 +1726,8 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnIsRun;
             
+            private global::System.Data.DataColumn columnIsFerdi;
+            
             private global::System.Data.DataColumn columnRnkIlk;
             
             private global::System.Data.DataColumn columnRnkBaz;
@@ -1836,6 +1838,14 @@ namespace RestWinFormsClient {
             public global::System.Data.DataColumn IsRunColumn {
                 get {
                     return this.columnIsRun;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IsFerdiColumn {
+                get {
+                    return this.columnIsFerdi;
                 }
             }
             
@@ -2011,6 +2021,7 @@ namespace RestWinFormsClient {
                         string Sex, 
                         string Tel, 
                         bool IsRun, 
+                        bool IsFerdi, 
                         int RnkIlk, 
                         int RnkBaz, 
                         int RnkSon, 
@@ -2035,6 +2046,7 @@ namespace RestWinFormsClient {
                         Sex,
                         Tel,
                         IsRun,
+                        IsFerdi,
                         RnkIlk,
                         RnkBaz,
                         RnkSon,
@@ -2079,6 +2091,7 @@ namespace RestWinFormsClient {
                 this.columnSex = base.Columns["Sex"];
                 this.columnTel = base.Columns["Tel"];
                 this.columnIsRun = base.Columns["IsRun"];
+                this.columnIsFerdi = base.Columns["IsFerdi"];
                 this.columnRnkIlk = base.Columns["RnkIlk"];
                 this.columnRnkBaz = base.Columns["RnkBaz"];
                 this.columnRnkSon = base.Columns["RnkSon"];
@@ -2112,6 +2125,8 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnTel);
                 this.columnIsRun = new global::System.Data.DataColumn("IsRun", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsRun);
+                this.columnIsFerdi = new global::System.Data.DataColumn("IsFerdi", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsFerdi);
                 this.columnRnkIlk = new global::System.Data.DataColumn("RnkIlk", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRnkIlk);
                 this.columnRnkBaz = new global::System.Data.DataColumn("RnkBaz", typeof(int), null, global::System.Data.MappingType.Element);
@@ -5977,17 +5992,17 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Grp {
+            public int Dnm {
                 get {
                     try {
-                        return ((string)(this[this.tableCC.GrpColumn]));
+                        return ((int)(this[this.tableCC.DnmColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Grp\' in table \'CC\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Dnm\' in table \'CC\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCC.GrpColumn] = value;
+                    this[this.tableCC.DnmColumn] = value;
                 }
             }
             
@@ -6241,14 +6256,14 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsGrpNull() {
-                return this.IsNull(this.tableCC.GrpColumn);
+            public bool IsDnmNull() {
+                return this.IsNull(this.tableCC.DnmColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetGrpNull() {
-                this[this.tableCC.GrpColumn] = global::System.Convert.DBNull;
+            public void SetDnmNull() {
+                this[this.tableCC.DnmColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7085,6 +7100,22 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFerdi {
+                get {
+                    try {
+                        return ((bool)(this[this.tablePP.IsFerdiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsFerdi\' in table \'PP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePP.IsFerdiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int RnkIlk {
                 get {
                     try {
@@ -7397,6 +7428,18 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetIsRunNull() {
                 this[this.tablePP.IsRunColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIsFerdiNull() {
+                return this.IsNull(this.tablePP.IsFerdiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIsFerdiNull() {
+                this[this.tablePP.IsFerdiColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

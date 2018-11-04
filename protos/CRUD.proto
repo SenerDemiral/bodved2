@@ -81,23 +81,25 @@ message PPProxy {
 	string Sex = 7;
 	string Tel = 8;
 	bool IsRun = 9;
+	bool IsFerdi = 10;
 
-	int32 RnkBaz = 10;
-	int32 RnkSon = 11;
-	int32 RnkIdx = 12;
+	int32 RnkIlk = 11;
+	int32 RnkBaz = 12;
+	int32 RnkSon = 13;
+	int32 RnkIdx = 14;
 
-	int32 SST = 13;
-	int32 SSW = 14;
-	int32 SSL = 15;
-	int32 SMT = 16;
-	int32 SMW = 17;
-	int32 SML = 18;
-	int32 DST = 19;
-	int32 DSW = 20;
-	int32 DSL = 21;
-	int32 DMT = 22;
-	int32 DMW = 23;
-	int32 DML = 24;
+	int32 SST = 15;
+	int32 SSW = 16;
+	int32 SSL = 17;
+	int32 SMT = 18;
+	int32 SMW = 19;
+	int32 SML = 20;
+	int32 DST = 21;
+	int32 DSW = 22;
+	int32 DSL = 23;
+	int32 DMT = 24;
+	int32 DMW = 25;
+	int32 DML = 26;
 }
 
 // Competitions
@@ -107,10 +109,10 @@ message CCProxy {
 	uint64 RowUsr = 3;
 	uint64 RowKey = 4;
 
-	int32 Idx = 5;
-  string Ad = 6;
-  string Skl = 7;
-	string Grp = 8;
+	int32 Dnm = 5;
+	int32 Idx = 6;
+  string Ad = 7;
+  string Skl = 8;
 	string Info = 9;
 	bool IsRun = 10;
 	bool IsRnkd = 11;

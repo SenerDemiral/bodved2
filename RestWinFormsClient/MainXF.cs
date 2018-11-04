@@ -153,5 +153,14 @@ namespace RestWinFormsClient
         {
             FillTanimlar();
         }
+
+        private void donemBasiIslemleriNavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            string err = dataSetGnl.PerfomAction("DonemBasiIslemleri", "18");
+            if (err != string.Empty)
+            {
+                MessageBox.Show(err);
+            }
+        }
     }
 }

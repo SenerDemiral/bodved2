@@ -78,6 +78,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colIsFerdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingNavigator)).BeginInit();
@@ -132,7 +134,7 @@
             this.pPBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.pPBindingNavigator.Name = "pPBindingNavigator";
             this.pPBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.pPBindingNavigator.Size = new System.Drawing.Size(970, 30);
+            this.pPBindingNavigator.Size = new System.Drawing.Size(1070, 30);
             this.pPBindingNavigator.TabIndex = 0;
             this.pPBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -237,18 +239,18 @@
             this.pPGridControl.Location = new System.Drawing.Point(12, 46);
             this.pPGridControl.MainView = this.gridView1;
             this.pPGridControl.Name = "pPGridControl";
-            this.pPGridControl.Size = new System.Drawing.Size(970, 240);
+            this.pPGridControl.Size = new System.Drawing.Size(1070, 240);
             this.pPGridControl.TabIndex = 1;
             this.pPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.pPGridControl.Click += new System.EventHandler(this.pPGridControl_Click);
             // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playersToolStripMenuItem});
+            this.playersToolStripMenuItem,
+            this.exportToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(98, 26);
+            this.contextMenuStrip.Size = new System.Drawing.Size(108, 48);
             // 
             // playersToolStripMenuItem
             // 
@@ -266,6 +268,7 @@
             this.colSex,
             this.colTel,
             this.colIsRun,
+            this.colIsFerdi,
             this.colRnkIlk,
             this.colRnkBaz,
             this.colRnkSon,
@@ -328,7 +331,7 @@
             this.colSex.OptionsColumn.FixedWidth = true;
             this.colSex.Visible = true;
             this.colSex.VisibleIndex = 2;
-            this.colSex.Width = 40;
+            this.colSex.Width = 30;
             // 
             // colTel
             // 
@@ -354,7 +357,7 @@
             this.colRnkIlk.Name = "colRnkIlk";
             this.colRnkIlk.OptionsColumn.FixedWidth = true;
             this.colRnkIlk.Visible = true;
-            this.colRnkIlk.VisibleIndex = 6;
+            this.colRnkIlk.VisibleIndex = 7;
             this.colRnkIlk.Width = 40;
             // 
             // colRnkBaz
@@ -364,7 +367,7 @@
             this.colRnkBaz.Name = "colRnkBaz";
             this.colRnkBaz.OptionsColumn.FixedWidth = true;
             this.colRnkBaz.Visible = true;
-            this.colRnkBaz.VisibleIndex = 7;
+            this.colRnkBaz.VisibleIndex = 8;
             this.colRnkBaz.Width = 40;
             // 
             // colRnkSon
@@ -374,7 +377,7 @@
             this.colRnkSon.Name = "colRnkSon";
             this.colRnkSon.OptionsColumn.FixedWidth = true;
             this.colRnkSon.Visible = true;
-            this.colRnkSon.VisibleIndex = 8;
+            this.colRnkSon.VisibleIndex = 9;
             this.colRnkSon.Width = 40;
             // 
             // colRnkIdx
@@ -384,7 +387,7 @@
             this.colRnkIdx.Name = "colRnkIdx";
             this.colRnkIdx.OptionsColumn.FixedWidth = true;
             this.colRnkIdx.Visible = true;
-            this.colRnkIdx.VisibleIndex = 9;
+            this.colRnkIdx.VisibleIndex = 10;
             this.colRnkIdx.Width = 40;
             // 
             // colSST
@@ -393,7 +396,7 @@
             this.colSST.Name = "colSST";
             this.colSST.OptionsColumn.FixedWidth = true;
             this.colSST.Visible = true;
-            this.colSST.VisibleIndex = 10;
+            this.colSST.VisibleIndex = 11;
             this.colSST.Width = 40;
             // 
             // colSSW
@@ -402,7 +405,7 @@
             this.colSSW.Name = "colSSW";
             this.colSSW.OptionsColumn.FixedWidth = true;
             this.colSSW.Visible = true;
-            this.colSSW.VisibleIndex = 11;
+            this.colSSW.VisibleIndex = 12;
             this.colSSW.Width = 40;
             // 
             // colSSL
@@ -411,7 +414,7 @@
             this.colSSL.Name = "colSSL";
             this.colSSL.OptionsColumn.FixedWidth = true;
             this.colSSL.Visible = true;
-            this.colSSL.VisibleIndex = 12;
+            this.colSSL.VisibleIndex = 13;
             this.colSSL.Width = 40;
             // 
             // colSMT
@@ -420,7 +423,7 @@
             this.colSMT.Name = "colSMT";
             this.colSMT.OptionsColumn.FixedWidth = true;
             this.colSMT.Visible = true;
-            this.colSMT.VisibleIndex = 13;
+            this.colSMT.VisibleIndex = 14;
             this.colSMT.Width = 40;
             // 
             // colSMW
@@ -429,7 +432,7 @@
             this.colSMW.Name = "colSMW";
             this.colSMW.OptionsColumn.FixedWidth = true;
             this.colSMW.Visible = true;
-            this.colSMW.VisibleIndex = 14;
+            this.colSMW.VisibleIndex = 15;
             this.colSMW.Width = 40;
             // 
             // colSML
@@ -438,7 +441,7 @@
             this.colSML.Name = "colSML";
             this.colSML.OptionsColumn.FixedWidth = true;
             this.colSML.Visible = true;
-            this.colSML.VisibleIndex = 15;
+            this.colSML.VisibleIndex = 16;
             this.colSML.Width = 40;
             // 
             // colDST
@@ -447,7 +450,7 @@
             this.colDST.Name = "colDST";
             this.colDST.OptionsColumn.FixedWidth = true;
             this.colDST.Visible = true;
-            this.colDST.VisibleIndex = 16;
+            this.colDST.VisibleIndex = 17;
             this.colDST.Width = 40;
             // 
             // colDSW
@@ -456,7 +459,7 @@
             this.colDSW.Name = "colDSW";
             this.colDSW.OptionsColumn.FixedWidth = true;
             this.colDSW.Visible = true;
-            this.colDSW.VisibleIndex = 17;
+            this.colDSW.VisibleIndex = 18;
             this.colDSW.Width = 40;
             // 
             // colDSL
@@ -465,7 +468,7 @@
             this.colDSL.Name = "colDSL";
             this.colDSL.OptionsColumn.FixedWidth = true;
             this.colDSL.Visible = true;
-            this.colDSL.VisibleIndex = 18;
+            this.colDSL.VisibleIndex = 19;
             this.colDSL.Width = 40;
             // 
             // colDMT
@@ -474,7 +477,7 @@
             this.colDMT.Name = "colDMT";
             this.colDMT.OptionsColumn.FixedWidth = true;
             this.colDMT.Visible = true;
-            this.colDMT.VisibleIndex = 19;
+            this.colDMT.VisibleIndex = 20;
             this.colDMT.Width = 40;
             // 
             // colDMW
@@ -483,7 +486,7 @@
             this.colDMW.Name = "colDMW";
             this.colDMW.OptionsColumn.FixedWidth = true;
             this.colDMW.Visible = true;
-            this.colDMW.VisibleIndex = 20;
+            this.colDMW.VisibleIndex = 21;
             this.colDMW.Width = 40;
             // 
             // colDML
@@ -492,7 +495,7 @@
             this.colDML.Name = "colDML";
             this.colDML.OptionsColumn.FixedWidth = true;
             this.colDML.Visible = true;
-            this.colDML.VisibleIndex = 21;
+            this.colDML.VisibleIndex = 22;
             this.colDML.Width = 40;
             // 
             // layoutControl1
@@ -505,7 +508,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(781, 133, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(994, 330);
+            this.layoutControl1.Size = new System.Drawing.Size(1094, 330);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -517,7 +520,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 290);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(970, 28);
+            this.statusStrip1.Size = new System.Drawing.Size(1070, 28);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -537,7 +540,7 @@
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(994, 330);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1094, 330);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -545,7 +548,7 @@
             this.layoutControlItem1.Control = this.pPGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(974, 244);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1074, 244);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -554,7 +557,7 @@
             this.layoutControlItem2.Control = this.pPBindingNavigator;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(974, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1074, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -565,16 +568,33 @@
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(0, 32);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(104, 32);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(974, 32);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1074, 32);
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // colIsFerdi
+            // 
+            this.colIsFerdi.Caption = "Ferdi";
+            this.colIsFerdi.FieldName = "IsFerdi";
+            this.colIsFerdi.Name = "colIsFerdi";
+            this.colIsFerdi.OptionsColumn.FixedWidth = true;
+            this.colIsFerdi.Visible = true;
+            this.colIsFerdi.VisibleIndex = 6;
+            this.colIsFerdi.Width = 40;
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // ppXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 330);
+            this.ClientSize = new System.Drawing.Size(1094, 330);
             this.Controls.Add(this.layoutControl1);
             this.Name = "ppXF";
             this.Text = "ppXF";
@@ -649,5 +669,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colRnkIlk;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsFerdi;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
     }
 }

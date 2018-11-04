@@ -53,11 +53,12 @@
             this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.createEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshSonAktiviteleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdx = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSkl = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGrp = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDnm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInfo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsRun = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,7 +80,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.refreshSonAktiviteleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -271,7 +271,7 @@
             this.createEventsToolStripMenuItem,
             this.refreshSonAktiviteleriToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(196, 142);
+            this.contextMenuStrip.Size = new System.Drawing.Size(196, 120);
             // 
             // teamsToolStripMenuItem
             // 
@@ -306,13 +306,20 @@
             this.createEventsToolStripMenuItem.Text = "Create Events";
             this.createEventsToolStripMenuItem.Click += new System.EventHandler(this.createEventsToolStripMenuItem_Click);
             // 
+            // refreshSonAktiviteleriToolStripMenuItem
+            // 
+            this.refreshSonAktiviteleriToolStripMenuItem.Name = "refreshSonAktiviteleriToolStripMenuItem";
+            this.refreshSonAktiviteleriToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.refreshSonAktiviteleriToolStripMenuItem.Text = "Refresh Son Aktiviteleri";
+            this.refreshSonAktiviteleriToolStripMenuItem.Click += new System.EventHandler(this.refreshSonAktiviteleriToolStripMenuItem_Click);
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
             this.colIdx,
             this.colSkl,
-            this.colGrp,
+            this.colDnm,
             this.colAd,
             this.colInfo,
             this.colIsRun,
@@ -363,14 +370,14 @@
             this.colSkl.VisibleIndex = 2;
             this.colSkl.Width = 40;
             // 
-            // colGrp
+            // colDnm
             // 
-            this.colGrp.FieldName = "Grp";
-            this.colGrp.Name = "colGrp";
-            this.colGrp.OptionsColumn.FixedWidth = true;
-            this.colGrp.Visible = true;
-            this.colGrp.VisibleIndex = 3;
-            this.colGrp.Width = 50;
+            this.colDnm.FieldName = "Dnm";
+            this.colDnm.Name = "colDnm";
+            this.colDnm.OptionsColumn.FixedWidth = true;
+            this.colDnm.Visible = true;
+            this.colDnm.VisibleIndex = 3;
+            this.colDnm.Width = 50;
             // 
             // colAd
             // 
@@ -600,13 +607,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // refreshSonAktiviteleriToolStripMenuItem
-            // 
-            this.refreshSonAktiviteleriToolStripMenuItem.Name = "refreshSonAktiviteleriToolStripMenuItem";
-            this.refreshSonAktiviteleriToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.refreshSonAktiviteleriToolStripMenuItem.Text = "Refresh Son Aktiviteleri";
-            this.refreshSonAktiviteleriToolStripMenuItem.Click += new System.EventHandler(this.refreshSonAktiviteleriToolStripMenuItem_Click);
-            // 
             // ccXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,7 +665,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraGrid.Columns.GridColumn colRowKey;
         private DevExpress.XtraGrid.Columns.GridColumn colSkl;
-        private DevExpress.XtraGrid.Columns.GridColumn colGrp;
+        private DevExpress.XtraGrid.Columns.GridColumn colDnm;
         private DevExpress.XtraGrid.Columns.GridColumn colAd;
         private DevExpress.XtraGrid.Columns.GridColumn colInfo;
         private DevExpress.XtraGrid.Columns.GridColumn colIsRun;

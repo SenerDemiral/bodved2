@@ -66,6 +66,7 @@
             this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donemBasiIslemleriNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -167,7 +168,8 @@
             this.CETnavBarItem,
             this.MACnavBarItem,
             this.refreshAllNavBarItem,
-            this.refreshLookupsNavBarItem});
+            this.refreshLookupsNavBarItem,
+            this.donemBasiIslemleriNavBarItem});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 191;
@@ -230,7 +232,8 @@
             this.navBarGroup.Expanded = true;
             this.navBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.refreshAllNavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshLookupsNavBarItem)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshLookupsNavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.donemBasiIslemleriNavBarItem)});
             this.navBarGroup.Name = "navBarGroup";
             // 
             // refreshAllNavBarItem
@@ -424,6 +427,12 @@
             this.pPBindingSource.DataMember = "PP";
             this.pPBindingSource.DataSource = this.dataSetGnl;
             // 
+            // donemBasiIslemleriNavBarItem
+            // 
+            this.donemBasiIslemleriNavBarItem.Caption = "Donem Basi Islemleri";
+            this.donemBasiIslemleriNavBarItem.Name = "donemBasiIslemleriNavBarItem";
+            this.donemBasiIslemleriNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.donemBasiIslemleriNavBarItem_LinkClicked);
+            // 
             // MainXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,5 +509,6 @@
         private DevExpress.XtraNavBar.NavBarItem refreshLookupsNavBarItem;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
+        private DevExpress.XtraNavBar.NavBarItem donemBasiIslemleriNavBarItem;
     }
 }
