@@ -255,7 +255,7 @@
             // playersToolStripMenuItem
             // 
             this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
-            this.playersToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.playersToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.playersToolStripMenuItem.Text = "Mac";
             this.playersToolStripMenuItem.Click += new System.EventHandler(this.playersToolStripMenuItem_Click);
             // 
@@ -313,7 +313,7 @@
             this.colAd.MinWidth = 120;
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
-            this.colAd.VisibleIndex = 1;
+            this.colAd.VisibleIndex = 2;
             this.colAd.Width = 120;
             // 
             // colInfo
@@ -326,11 +326,13 @@
             // 
             // colSex
             // 
+            this.colSex.AppearanceCell.Options.UseTextOptions = true;
+            this.colSex.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSex.FieldName = "Sex";
             this.colSex.Name = "colSex";
             this.colSex.OptionsColumn.FixedWidth = true;
             this.colSex.Visible = true;
-            this.colSex.VisibleIndex = 2;
+            this.colSex.VisibleIndex = 1;
             this.colSex.Width = 30;
             // 
             // colTel
@@ -352,6 +354,8 @@
             // 
             // colRnkIlk
             // 
+            this.colRnkIlk.AppearanceCell.Options.UseTextOptions = true;
+            this.colRnkIlk.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colRnkIlk.Caption = "Ilk";
             this.colRnkIlk.FieldName = "RnkIlk";
             this.colRnkIlk.Name = "colRnkIlk";
@@ -362,6 +366,8 @@
             // 
             // colRnkBaz
             // 
+            this.colRnkBaz.AppearanceCell.Options.UseTextOptions = true;
+            this.colRnkBaz.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colRnkBaz.Caption = "Baz";
             this.colRnkBaz.FieldName = "RnkBaz";
             this.colRnkBaz.Name = "colRnkBaz";
@@ -372,6 +378,8 @@
             // 
             // colRnkSon
             // 
+            this.colRnkSon.AppearanceCell.Options.UseTextOptions = true;
+            this.colRnkSon.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colRnkSon.Caption = "Son";
             this.colRnkSon.FieldName = "RnkSon";
             this.colRnkSon.Name = "colRnkSon";
@@ -382,6 +390,8 @@
             // 
             // colRnkIdx
             // 
+            this.colRnkIdx.AppearanceCell.Options.UseTextOptions = true;
+            this.colRnkIdx.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colRnkIdx.Caption = "Idx";
             this.colRnkIdx.FieldName = "RnkIdx";
             this.colRnkIdx.Name = "colRnkIdx";
@@ -392,6 +402,8 @@
             // 
             // colSST
             // 
+            this.colSST.AppearanceCell.Options.UseTextOptions = true;
+            this.colSST.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSST.FieldName = "SST";
             this.colSST.Name = "colSST";
             this.colSST.OptionsColumn.FixedWidth = true;
@@ -401,6 +413,8 @@
             // 
             // colSSW
             // 
+            this.colSSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colSSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSSW.FieldName = "SSW";
             this.colSSW.Name = "colSSW";
             this.colSSW.OptionsColumn.FixedWidth = true;
@@ -410,6 +424,8 @@
             // 
             // colSSL
             // 
+            this.colSSL.AppearanceCell.Options.UseTextOptions = true;
+            this.colSSL.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSSL.FieldName = "SSL";
             this.colSSL.Name = "colSSL";
             this.colSSL.OptionsColumn.FixedWidth = true;
@@ -419,6 +435,8 @@
             // 
             // colSMT
             // 
+            this.colSMT.AppearanceCell.Options.UseTextOptions = true;
+            this.colSMT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSMT.FieldName = "SMT";
             this.colSMT.Name = "colSMT";
             this.colSMT.OptionsColumn.FixedWidth = true;
@@ -428,6 +446,8 @@
             // 
             // colSMW
             // 
+            this.colSMW.AppearanceCell.Options.UseTextOptions = true;
+            this.colSMW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSMW.FieldName = "SMW";
             this.colSMW.Name = "colSMW";
             this.colSMW.OptionsColumn.FixedWidth = true;
@@ -437,6 +457,8 @@
             // 
             // colSML
             // 
+            this.colSML.AppearanceCell.Options.UseTextOptions = true;
+            this.colSML.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSML.FieldName = "SML";
             this.colSML.Name = "colSML";
             this.colSML.OptionsColumn.FixedWidth = true;
@@ -446,6 +468,8 @@
             // 
             // colDST
             // 
+            this.colDST.AppearanceCell.Options.UseTextOptions = true;
+            this.colDST.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDST.FieldName = "DST";
             this.colDST.Name = "colDST";
             this.colDST.OptionsColumn.FixedWidth = true;
@@ -455,6 +479,8 @@
             // 
             // colDSW
             // 
+            this.colDSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colDSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDSW.FieldName = "DSW";
             this.colDSW.Name = "colDSW";
             this.colDSW.OptionsColumn.FixedWidth = true;
@@ -464,6 +490,8 @@
             // 
             // colDSL
             // 
+            this.colDSL.AppearanceCell.Options.UseTextOptions = true;
+            this.colDSL.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDSL.FieldName = "DSL";
             this.colDSL.Name = "colDSL";
             this.colDSL.OptionsColumn.FixedWidth = true;
@@ -473,6 +501,8 @@
             // 
             // colDMT
             // 
+            this.colDMT.AppearanceCell.Options.UseTextOptions = true;
+            this.colDMT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDMT.FieldName = "DMT";
             this.colDMT.Name = "colDMT";
             this.colDMT.OptionsColumn.FixedWidth = true;
@@ -482,6 +512,8 @@
             // 
             // colDMW
             // 
+            this.colDMW.AppearanceCell.Options.UseTextOptions = true;
+            this.colDMW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDMW.FieldName = "DMW";
             this.colDMW.Name = "colDMW";
             this.colDMW.OptionsColumn.FixedWidth = true;
@@ -491,6 +523,8 @@
             // 
             // colDML
             // 
+            this.colDML.AppearanceCell.Options.UseTextOptions = true;
+            this.colDML.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDML.FieldName = "DML";
             this.colDML.Name = "colDML";
             this.colDML.OptionsColumn.FixedWidth = true;
@@ -586,7 +620,7 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 

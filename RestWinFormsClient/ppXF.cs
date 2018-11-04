@@ -110,7 +110,7 @@ namespace RestWinFormsClient
             phf.Header.LineAlignment = BrickAlignment.Far;
             phf.Header.Font = Font;
 
-            phf.Footer.Content.AddRange(new string[] { "[Date Printed] [Time Printed]", "Bodved", "©Şener DEMİRAL" });
+            phf.Footer.Content.AddRange(new string[] { "[Date Printed] [Time Printed]", "masatenisi.online", "©Şener DEMİRAL" });
             phf.Footer.LineAlignment = BrickAlignment.Near;
 
             link.CreateDocument();

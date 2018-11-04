@@ -64,7 +64,8 @@ namespace BDB2
         public PP PP { get; set; }
         public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
         public int RnkOnc { get; set; }     // Onceki Donemin Son Ranki (Baslangic icin 0 veya Baz olabilir.
-        public int RnkBaz { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
+        //public int RnkBaz { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
+        public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
         public int RnkSon { get; set; }     // Bu Donemin Son Ranki. (Bir sonraki donemin RnkOnc'e aktarilir)
 
     }
@@ -1799,8 +1800,6 @@ namespace BDB2
             }
         }
 
-
-
         public static void RefreshSonuc()
         {
             Stopwatch watch = new Stopwatch();
@@ -2253,13 +2252,14 @@ namespace BDB2
 
             Db.TransactAsync(() =>
             {
-                var pprds = Db.SQL<PPRD>("select r from PPRD r");
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
                 foreach (var pprd in pprds)
                 {
-                    ppDic[pprd.PP.GetObjectNo()] = pprd.RnkSon;
+                    ppDic[pprd.PP.GetObjectNo()] = pprd.RnkBas;
                 }
 
-                // Sadece Single Maclar Rank uretir
+                // Sadece Single Maclar Rank uretir.
+                // O donemin Maclari taranacak
                 foreach (var mac in Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? order by r.Trh", DnmRun))
                 {
                     if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
@@ -2472,30 +2472,25 @@ namespace BDB2
             Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
-        public static void RefreshGlobalRankFerdi(ulong CCoNo)
+        public static void RefreshGlobalRankFerdi(int DnmRun)
         {
             // TakimTurnuvalar bittikten sonra yapilacak
             // Oyuncunun RnkSon'u Her Ferdi Macta degismeyecek
-            // Her Macini RnkSon ile oynayacak aldigi PX ler toplanacak
-            // Bu PX lerin yarisi RnkSon ile toplanip RnkBit olusturulacak
+            // Her Macini RnkBas/Son ile oynayacak aldigi PX ler toplanacak
+            // Bu PX lerin yarisini(KURAL) PPRC.RnkPX'e koy 
+            // Bir oyuncu ayni donemde birden cok Ferdi turnuvada oynayamaz.
 
-            Dictionary<ulong, int> dctRnk = new Dictionary<ulong, int>();
-            Dictionary<ulong, int> dctPX = new Dictionary<ulong, int>();
-            var ccr = Db.FromId<CC>(CCoNo);
+            Dictionary<ulong, int> dctRnk = new Dictionary<ulong, int>();   // Oyuncunun Donem Basi/Sonu Rank
+            Dictionary<ulong, int> dctPX = new Dictionary<ulong, int>();    // Oyuncunu ilgili CC de aldigi RnkPX toplami. Her CC icin hesaplanir
 
-
-            int ccIdx = ccr.Idx / 100;    // Ilk 2 digitini al
-            int bgnIdx = ccIdx * 100;
-            int endIdx = (ccIdx + 1) * 100;
-            var ccs = Db.SQL<CC>("select r from CC r where r.Idx >= ? and r.Idx < ? and r.Skl = ? order by r.Idx", bgnIdx, endIdx, "F");
-            foreach (var cc in ccs)
+            // Donemin Bas/Son ranklerini al
+            ulong ppNO = 0;
+            var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
+            foreach(var pprd in pprds)
             {
-                var cfs = Db.SQL<CF>("select r from CF r where r.CC = ?", cc);
-                foreach (var cf in cfs)
-                {
-                    dctRnk[cf.PPoNo] = cf.PP.RnkSon;
-                    dctPX[cf.PPoNo] = 0;
-                }
+                ppNO = pprd.PP.PPoNo;
+                dctRnk[ppNO] = pprd.RnkSon;    // Istendiginde RnkBas da olabilir. RnkBas olmasi daha mantikli
+                dctPX[ppNO] = 0;
             }
 
             int hPX = 0;
@@ -2504,7 +2499,7 @@ namespace BDB2
             Db.TransactAsync(() =>
             {
                 // Aktif/Son Ferdi Turnuvalar
-                ccs = Db.SQL<CC>("select r from CC r where r.Idx >= ? and r.Idx < ? and r.Skl = ? order by r.Idx", bgnIdx, endIdx, "F");
+                var ccs = Db.SQL<CC>("select r from CC r where r.Dnm = ? and r.Skl = ? order by r.Idx", DnmRun, "F");
                 foreach (var cc in ccs)
                 {
                     var macs = Db.SQL<MAC>("select r from MAC r where r.CC = ?", cc);
@@ -2521,14 +2516,20 @@ namespace BDB2
                         dctPX[hPP] += hPX;
                         dctPX[gPP] += -hPX;
                     }
-                }
 
-                // Update RnkBit
-                PP pp = null;
-                foreach (var d in dctRnk)
-                {
-                    pp = Db.FromId<PP>(d.Key);
-                    pp.RnkBit = pp.RnkSon + (dctPX[d.Key] / 2);
+                    // Update PPRC, Her CC+PP icin. Donem sonunda bu PX ler Oyuncunu RnkSon unu eklenecek.
+                    var pprcs = Db.SQL<PPRC>("select r from PPRC r where r.CC = ?", cc);
+                    foreach(var pprc in pprcs)
+                    {
+                        pprc.RnkPX = dctPX[pprc.PP.PPoNo] / 2;
+                    }
+
+                    // Initialize pprc.RnkPX = 0
+                    foreach (var key in dctPX.Keys.ToList())
+                    {
+                        dctPX[key] = 0;
+                    }
+
                 }
             });
         }
