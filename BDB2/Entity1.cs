@@ -64,7 +64,7 @@ namespace BDB2
         public PP PP { get; set; }
         public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
         public int RnkOnc { get; set; }     // Onceki Donemin Son Ranki (Baslangic icin 0 veya Baz olabilir.
-        //public int RnkBaz { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
+        public int RnkBaz { get; set; }     // SIL
         public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
         public int RnkSon { get; set; }     // Bu Donemin Son Ranki. (Bir sonraki donemin RnkOnc'e aktarilir)
 
@@ -126,7 +126,7 @@ namespace BDB2
                         PP = pp,
                         Dnm = DnmRun,
                         RnkOnc = RnkSon,
-                        RnkBaz = RnkSon,
+                        RnkBas = RnkSon,
                         RnkSon = 0
                     };
                 }
@@ -530,7 +530,7 @@ namespace BDB2
                 // Sort for CC
                 Db.TransactAsync(() =>
                 {
-                    cts = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC = ? order by r.PW DESC, r.KF DESC", cc);
+                    cts = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC = ? order by r.PW DESC, r.KF DESC, r.Ad", cc);
                     int idx = 1;
                     foreach (var ct in cts)
                     {
@@ -572,7 +572,7 @@ namespace BDB2
                         EW++;
                     else if (cet.HPW < cet.GPW)
                         EL++;
-                    else
+                    else if (cet.HPW == cet.GPW && cet.Drm == "OK")
                         EB++;
 
                     PW += cet.HPW;
@@ -598,7 +598,7 @@ namespace BDB2
                         EW++;
                     else if (cet.HPW > cet.GPW)
                         EL++;
-                    else
+                    else if (cet.HPW == cet.GPW && cet.Drm == "OK")
                         EB++;
 
                     PW += cet.GPW;

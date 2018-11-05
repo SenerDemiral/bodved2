@@ -13,6 +13,12 @@ namespace bodved2.Api
     {
         public void Register()
         {
+            Handle.GET("/bodved/partials/aboutpage", () =>
+            {
+                var page = new AboutPage();
+                return page;
+            });
+
             Handle.GET("/bodved/partials/PPs", () =>
             {
                 var page = new PPsPage();

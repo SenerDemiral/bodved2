@@ -1,0 +1,110 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>Bu web sitesi ©ŞenerDEMİRAL tarafından hazırlanmıştır.</div>
+                </div>
+                <div class="gridTbl_main" style="padding:5px">
+                    <b>Kullanılan araçlar:</b>
+                    <ul>
+                        <li><a href="http://starcounter.com">Starcounter v2.4 (In-Memory Application Engine)</a></li>
+                        <li><a href="https://github.com/Palindrom/Palindrom">Polindrom (Library for two-way data binding)</a></li>
+                        <li><a href="https://www.polymer-project.org/">Polymer v2 (JavaScript library for building web applications using Web Components)</a></li>
+                        <li><a href="https://www.webcomponents.org">Web Components (Web platform API)</a></li>
+                        <li><a href="https://www.microsoft.com/net/">Microsoft .Net 4.7 Framework</a> </li>
+                        <li><a href="https://www.visualstudio.com/">Microsoft Visual Studio 2017 (IDE)</a></li>
+                        <li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/">C# (Programming Language)</a></li>
+                        <li>Önerileriniz için eMail adresi <a href="mailto:masatenisi.online@gmail.com">masatenisi.online@gmail.com</a></li>
+                    </ul>
+
+                    <div style="width:90vw">
+                            <b>USATT Derecelendirme/Rank İşleme Sistemi:</b>
+                            <ul>
+                                <li>Maçlar kronolojik sıraya göre işlenir.</li>
+                                <li>Genel turnuva sonuçlarında maç kazanıp kaybedilerek puan kazanılır / kaybedilir.</li>
+                                <li>Her yeni üyeye ilk maçlarından alınan sonuçlara göre bir BazRank verilir. Ne kadar çok maç bildirilirse ilk derece okadar doğru olacaktır.</li>
+                                <li>Bir oyuncu daha yüksek Rank'i olan birçok rakibi yenerse, BazRank yukarı doğru ayarlanabilir ve turnuva bu yüksek puanlarla yeniden işlenir.</li>
+                                <li><a href="http://www.teamusa.org/usa-table-tennis/ratings/rating-system">Detaylı bilgiyi burdan bulabilirsiniz.</a></li>
+                                <li><i>Örnek:</i></li>
+                                <li>Rank 2000 ve 1960 olan iki oyuncu maç yaptığında (Rank farkı 40 (38-62 satırında)) </li>
+                                <li>-Eğer <b>üst</b> oyuncu yenerse (Beklenen sonuç) kazanan 6 puan artar, kaybedenden 6 puan düşülür. </li>
+                                <li>-Eğer <b>ast</b> oyuncu yenerse (Beklenmeyen sonuç) kazanan 13 puan artar, kaybedenden 13 puan düşülür.</li>
+                                <li>Rank hesaplaması her Tek/Single maç sonrasında yapılır. (Çift/Double maçlarda yapılmaz)</li>
+                            </ul>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Oyuncular Arasındaki</br>Rank Farkı</th>
+                                        <th>Beklenen Sonuç</br>(Üst oyuncunun kazanması)</br>Değiştirilen puan sayısı</th>
+                                        <th>Beklenmeyen Sonuç</br>(Ast oyuncunun kazanması)</br>Değiştirilen puan sayısı</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="text-align: center">
+                                    <tr>
+                                        <td>0 - 12</td>
+                                        <td>8</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13 - 37</td>
+                                        <td>7</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>38 - 62</td>
+                                        <td>6</td>
+                                        <td>13</td>
+                                    </tr>
+                                    <tr>
+                                        <td>63 - 87</td>
+                                        <td>5</td>
+                                        <td>16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>88 - 112</td>
+                                        <td>4</td>
+                                        <td>20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>113 - 137</td>
+                                        <td>3</td>
+                                        <td>25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>138 - 162</td>
+                                        <td>2</td>
+                                        <td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>163 - 187</td>
+                                        <td>2</td>
+                                        <td>35</td>
+                                    </tr>
+                                    <tr>
+                                        <td>188 - 212</td>
+                                        <td>1</td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>213 - 237</td>
+                                        <td>1</td>
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td>238 - ∞</td>
+                                        <td>0</td>
+                                        <td>50</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+</template>

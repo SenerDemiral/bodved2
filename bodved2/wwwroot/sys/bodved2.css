@@ -36,7 +36,7 @@ body {
     grid-template-areas: "header" "main";
     grid-template-columns: 1fr;
     grid-template-rows: var(--h-GrdHdr) var(--h-GrdMain); /*75px calc(100vh - 80px);*/
-    grid-gap: var(--g-Grd);
+    /*grid-gap: var(--g-Grd);*/
 }
 /*
 .grid > * {
@@ -52,9 +52,9 @@ body {
     display: grid;
     align-items: center;
     grid-auto-flow: column;
-    grid-gap: 1rem;
+    /*grid-gap: 1rem;*/
     overflow-x: auto;
-    background-color: #fca47b;
+    background-color: beige;
     grid-area: header;
     padding-left: 5px;
 }
@@ -88,15 +88,17 @@ body {
     grid-gap: var(--g-Grd);
 }
 .gridTbl_header {
-    background-color: #C2EAE9;
+    background-color: teal;/*#C2EAE9;*/
+    color:azure;
     grid-area: headerTbl;
     display: grid;
     justify-items: left;
     align-items: center;
     grid-auto-flow: row;
     /*grid-gap: 1rem;*/
-    margin: 0 5px;
+    /*margin: 0 5px;*/
     padding: 0 5px;
+    font-weight:bold;
 }
 .gridTbl_main {
     /*background-color: #C2EAE9;*/

@@ -50,6 +50,17 @@ namespace bodved2.Api
                 return master;
             });
 
+            Handle.GET("/bodved/AboutPage", () =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is PPsPage))
+                {
+                    master.CurrentPage = GetLauncherPage("/bodved/partials/aboutpage");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
             Handle.GET("/bodved/PPs", () =>
             {
                 MasterPage master = GetMasterPageFromSession();

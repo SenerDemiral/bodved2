@@ -56,6 +56,9 @@
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AboutPage.json.cs">
+      <DependentUpon>AboutPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CCsPage.json.cs">
       <DependentUpon>CCsPage.json</DependentUpon>
     </Compile>
@@ -138,6 +141,9 @@
     <TypedJSON Include="ViewModels\CEF2MACsPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <TypedJSON Include="ViewModels\AboutPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\Bodved\viewmodels\MasterPage.html" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +165,7 @@
     <None Include="wwwroot\Bodved\viewmodels\CEFsPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\CFsPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\CEF2MACsPage.html" />
+    <None Include="wwwroot\Bodved\viewmodels\AboutPage.html" />
     <Content Include="wwwroot\sys\app-shell\app-shell.html" />
     <Content Include="wwwroot\sys\bodved.css" />
     <Content Include="wwwroot\sys\bodved2.css" />
