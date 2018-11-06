@@ -566,6 +566,95 @@ namespace BDB2
         }
 
 
+        public static void PPR_DonemBaslangicIslemleri(int DnmRun)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            // Katilan Takimin Oyunculari girilmis ve Aktif oyunclar Refresh edilmis.
+            Db.TransactAsync(() =>
+            {
+                PPR prvPPR = null;
+                PPR runPPR = null;
+                int prvRnkSon = 0;
+
+                // Takimda oynayanlar CC
+                var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ?", DnmRun);
+                foreach (var ctp in ctps)
+                {
+                    runPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC = ?", ctp.PP, DnmRun, ctp.CC).FirstOrDefault(); // Yoksa kaydet 
+                    if (runPPR != null)
+                        continue;
+
+                    prvPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC is null", ctp.PP, DnmRun - 1).FirstOrDefault(); // Yoksa??????? Yani herseyin basiysa. Baslangic donem 18
+                    if (prvPPR == null)
+                        prvRnkSon = ctp.PP.RnkBaz;
+                    else
+                        prvRnkSon = prvPPR.RnkSon;
+
+                    new PPR
+                    {
+                        PP = ctp.PP,
+                        Dnm = DnmRun,
+                        CC = ctp.CC,
+                        RnkBas = prvRnkSon,
+                        RnkPX = 0
+                    };
+                }
+                // Ferdi oynayanlar CC
+                var cfs = Db.SQL<CF>("select r from CF r where r.CC.Dnm = ?", DnmRun);
+                foreach (var cf in cfs)
+                {
+                    runPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC = ?", cf.PP, DnmRun, cf.CC).FirstOrDefault(); // Yoksa kaydet 
+                    if (runPPR != null)
+                        continue;
+
+                    prvPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC is null", cf.PP, DnmRun - 1).FirstOrDefault(); // Yoksa??????? Yani herseyin basiysa. Baslangic donem 18
+                    if (prvPPR == null)
+                        prvRnkSon = cf.PP.RnkBaz;
+                    else
+                        prvRnkSon = prvPPR.RnkSon;
+
+                    new PPR
+                    {
+                        PP = cf.PP,
+                        Dnm = DnmRun,
+                        CC = cf.CC,
+                        RnkBas = prvRnkSon,
+                        RnkPX = 0
+                    };
+                }
+
+                // Her aktif PP icin Donem Sonuclari
+                var pps = Db.SQL<PP>("select r from PP r where r.IsRun = ?", true);
+                foreach (var pp in pps)
+                {
+                    runPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC IS NULL", pp, DnmRun).FirstOrDefault(); // Yoksa kaydet 
+                    if (runPPR != null)
+                        continue;
+
+                    prvPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC is null", pp, DnmRun - 1).FirstOrDefault(); // Yoksa??????? Yani herseyin basiysa. Baslangic donem 18
+                    if (prvPPR == null)
+                        prvRnkSon = pp.RnkBaz;
+                    else
+                        prvRnkSon = prvPPR.RnkSon;
+
+                    new PPR // CC is null
+                    {
+                        PP = pp,
+                        Dnm = DnmRun,
+                        RnkBas = prvRnkSon,
+                        RnkPX = 0
+                    };
+                }
+            });
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec DonemBaslangicIslemleri({DnmRun}) NOR: {nor:n0}");
+        }
+
+
+
         public static void PP_RefreshSonuc()   // Tum oyuncular icin
         {
             Dictionary<ulong, DictMacStat> dnm = new Dictionary<ulong, DictMacStat>();    // Players
