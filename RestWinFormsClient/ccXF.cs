@@ -86,14 +86,14 @@ namespace RestWinFormsClient
                 ctXF frm = new ctXF();
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Teams [ctXF]";
-                frm.ShowDialog();
+                frm.Show();
             }
             else if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "F")
             {
                 cfXF frm = new cfXF();
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Players [cfXF]";
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 
@@ -105,14 +105,14 @@ namespace RestWinFormsClient
                 cetXF frm = new cetXF();
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cetXF]";
-                frm.ShowDialog();
+                frm.Show();
             }
             else if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "F")
             {
                 cefXF frm = new cefXF();
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cefXF]";
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 
@@ -121,7 +121,7 @@ namespace RestWinFormsClient
             macXF frm = new macXF();
             frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
             frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Matches [macXF]";
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void createEventsToolStripMenuItem_Click(object sender, EventArgs e)

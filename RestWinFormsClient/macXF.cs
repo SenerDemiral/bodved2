@@ -31,10 +31,6 @@ namespace RestWinFormsClient
             colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
             colTrh.ColumnEdit = Program.MF.TRHrepositoryItemDateEdit;
             colSoD.ColumnEdit = Program.MF.SoDrepositoryItemImageComboBox;
-            colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-            colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-            colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-            colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
             colDrm.ColumnEdit = Program.MF.DRMrepositoryItemImageComboBox;
         }
 
@@ -56,7 +52,7 @@ namespace RestWinFormsClient
                 colCC.Visible = false;
                 gridView1.SortInfo.ClearAndAddRange(new[] {
                 new GridColumnSortInfo(colSoD, DevExpress.Data.ColumnSortOrder.Descending),
-                new GridColumnSortInfo(colIdx, DevExpress.Data.ColumnSortOrder.Ascending)
+                new GridColumnSortInfo(colIdx, DevExpress.Data.ColumnSortOrder.Descending)
                 });
             }
             else if (CEFRow != null)    // Ferdi
@@ -78,11 +74,16 @@ namespace RestWinFormsClient
                 colCC.Visible = false;
                 gridView1.SortInfo.ClearAndAddRange(new[] {
                 new GridColumnSortInfo(colSoD, DevExpress.Data.ColumnSortOrder.Descending),
-                new GridColumnSortInfo(colIdx, DevExpress.Data.ColumnSortOrder.Ascending)
+                new GridColumnSortInfo(colIdx, DevExpress.Data.ColumnSortOrder.Descending)
                 });
             }
             else
             {
+                colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.ClearSorting();
                 if (CCRow != null)
@@ -229,6 +230,23 @@ namespace RestWinFormsClient
                     e.Cancel = true;
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+            gridView1.AddNewRow();
+        }
+
         private DialogResult UpdateDB()
         {
             if (!Validate())
@@ -282,6 +300,8 @@ namespace RestWinFormsClient
             gridView1.SetFocusedRowCellValue(colGPP2, 0);
             gridView1.SetFocusedRowCellValue(colTrh, Trh);
             gridView1.SetFocusedRowCellValue(colSoD, "S");
+
+            gridView1.SetFocusedRowCellValue(colDrm, "OK");
         }
 
     }

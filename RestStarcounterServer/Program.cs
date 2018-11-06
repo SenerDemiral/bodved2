@@ -39,6 +39,15 @@ namespace RestStarcounterServer
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PP_RnkIdx").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX PP_RnkIdx ON PP (RnkIdx)");
 
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPR_PP").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX PPR_PP ON PPR (PP)");
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPR_Dnm").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX PPR_Dnm ON PPR (Dnm)");
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPR_Idx").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX PPR_Idx ON PPR (Idx)");
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPR_CC").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX PPR_CC ON PPR (CC)");
+
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_CC").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX MAC_CC ON MAC (CC)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "MAC_CEB").FirstOrDefault() == null)

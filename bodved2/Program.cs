@@ -46,6 +46,11 @@ namespace bodved2
 
             //CF.CreateCEFs(5131);
 
+            //PPR.DonemBaslangicIslemleri(18);
+
+            //MAC.RefreshDonemRank22222(18);
+
+
         }
     }
 }

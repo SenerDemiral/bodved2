@@ -45,17 +45,26 @@
             this.hPPrepositoryItemGridLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.hPPluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colAd = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSex = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsRun = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRowKey1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCTs = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHPP2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGPP1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gPPrepositoryItemGridLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gPPluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colAd1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSex1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsRun1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRowKey2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCTs1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGPP2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdx = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDrm = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colYer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInfo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colH1W = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -82,6 +91,7 @@
             this.colHRnkPX = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGRnk = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGRnkPX = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.H1WTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -142,6 +152,7 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mACBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mACBindingNavigator)).BeginInit();
@@ -239,7 +250,8 @@
             this.mACBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.mACBindingNavigatorSaveItem});
+            this.mACBindingNavigatorSaveItem,
+            this.toolStripButton1});
             this.mACBindingNavigator.Location = new System.Drawing.Point(12, 12);
             this.mACBindingNavigator.MoveFirstItem = null;
             this.mACBindingNavigator.MoveLastItem = null;
@@ -247,7 +259,7 @@
             this.mACBindingNavigator.MovePreviousItem = null;
             this.mACBindingNavigator.Name = "mACBindingNavigator";
             this.mACBindingNavigator.PositionItem = null;
-            this.mACBindingNavigator.Size = new System.Drawing.Size(1237, 30);
+            this.mACBindingNavigator.Size = new System.Drawing.Size(1041, 30);
             this.mACBindingNavigator.TabIndex = 0;
             this.mACBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -289,13 +301,15 @@
             this.hPPrepositoryItemGridLookUpEdit,
             this.gPPrepositoryItemGridLookUpEdit,
             this.DRMrepositoryItemImageComboBox});
-            this.mACGridControl.Size = new System.Drawing.Size(1025, 408);
+            this.mACGridControl.Size = new System.Drawing.Size(829, 408);
             this.mACGridControl.TabIndex = 1;
             this.mACGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
             this.colCC,
@@ -349,7 +363,7 @@
             this.colRowKey.OptionsColumn.AllowFocus = false;
             this.colRowKey.OptionsColumn.FixedWidth = true;
             this.colRowKey.Visible = true;
-            this.colRowKey.VisibleIndex = 1;
+            this.colRowKey.VisibleIndex = 0;
             this.colRowKey.Width = 50;
             // 
             // colCC
@@ -366,8 +380,6 @@
             this.colCEB.OptionsColumn.AllowEdit = false;
             this.colCEB.OptionsColumn.AllowFocus = false;
             this.colCEB.OptionsColumn.FixedWidth = true;
-            this.colCEB.Visible = true;
-            this.colCEB.VisibleIndex = 0;
             this.colCEB.Width = 69;
             // 
             // colHPP1
@@ -377,8 +389,8 @@
             this.colHPP1.FieldName = "HPP1";
             this.colHPP1.Name = "colHPP1";
             this.colHPP1.Visible = true;
-            this.colHPP1.VisibleIndex = 5;
-            this.colHPP1.Width = 133;
+            this.colHPP1.VisibleIndex = 4;
+            this.colHPP1.Width = 94;
             // 
             // hPPrepositoryItemGridLookUpEdit
             // 
@@ -398,10 +410,58 @@
             // 
             // repositoryItemGridLookUpEdit1View
             // 
+            this.repositoryItemGridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colAd,
+            this.colSex,
+            this.colIsRun,
+            this.colRowKey1,
+            this.colCTs});
             this.repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
             this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            this.repositoryItemGridLookUpEdit1View.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colAd, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // colAd
+            // 
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 0;
+            this.colAd.Width = 176;
+            // 
+            // colSex
+            // 
+            this.colSex.FieldName = "Sex";
+            this.colSex.Name = "colSex";
+            this.colSex.Visible = true;
+            this.colSex.VisibleIndex = 1;
+            this.colSex.Width = 44;
+            // 
+            // colIsRun
+            // 
+            this.colIsRun.Caption = "Run";
+            this.colIsRun.FieldName = "IsRun";
+            this.colIsRun.Name = "colIsRun";
+            this.colIsRun.Visible = true;
+            this.colIsRun.VisibleIndex = 2;
+            this.colIsRun.Width = 44;
+            // 
+            // colRowKey1
+            // 
+            this.colRowKey1.Caption = "Key";
+            this.colRowKey1.FieldName = "RowKey";
+            this.colRowKey1.Name = "colRowKey1";
+            this.colRowKey1.Visible = true;
+            this.colRowKey1.VisibleIndex = 3;
+            this.colRowKey1.Width = 50;
+            // 
+            // colCTs
+            // 
+            this.colCTs.FieldName = "CTs";
+            this.colCTs.Name = "colCTs";
+            this.colCTs.Width = 128;
             // 
             // colHPP2
             // 
@@ -410,8 +470,8 @@
             this.colHPP2.FieldName = "HPP2";
             this.colHPP2.Name = "colHPP2";
             this.colHPP2.Visible = true;
-            this.colHPP2.VisibleIndex = 6;
-            this.colHPP2.Width = 133;
+            this.colHPP2.VisibleIndex = 5;
+            this.colHPP2.Width = 94;
             // 
             // colGPP1
             // 
@@ -420,8 +480,8 @@
             this.colGPP1.FieldName = "GPP1";
             this.colGPP1.Name = "colGPP1";
             this.colGPP1.Visible = true;
-            this.colGPP1.VisibleIndex = 7;
-            this.colGPP1.Width = 133;
+            this.colGPP1.VisibleIndex = 8;
+            this.colGPP1.Width = 112;
             // 
             // gPPrepositoryItemGridLookUpEdit
             // 
@@ -441,10 +501,59 @@
             // 
             // gridView2
             // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colAd1,
+            this.colSex1,
+            this.colIsRun1,
+            this.colRowKey2,
+            this.colCTs1});
             this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colAd1, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // colAd1
+            // 
+            this.colAd1.Caption = "Ad";
+            this.colAd1.FieldName = "Ad";
+            this.colAd1.Name = "colAd1";
+            this.colAd1.Visible = true;
+            this.colAd1.VisibleIndex = 0;
+            this.colAd1.Width = 120;
+            // 
+            // colSex1
+            // 
+            this.colSex1.Caption = "Sex";
+            this.colSex1.FieldName = "Sex";
+            this.colSex1.Name = "colSex1";
+            this.colSex1.Visible = true;
+            this.colSex1.VisibleIndex = 1;
+            this.colSex1.Width = 28;
+            // 
+            // colIsRun1
+            // 
+            this.colIsRun1.Caption = "Run";
+            this.colIsRun1.FieldName = "IsRun";
+            this.colIsRun1.Name = "colIsRun1";
+            this.colIsRun1.Visible = true;
+            this.colIsRun1.VisibleIndex = 2;
+            this.colIsRun1.Width = 42;
+            // 
+            // colRowKey2
+            // 
+            this.colRowKey2.Caption = "Key";
+            this.colRowKey2.FieldName = "RowKey";
+            this.colRowKey2.Name = "colRowKey2";
+            this.colRowKey2.Visible = true;
+            this.colRowKey2.VisibleIndex = 3;
+            this.colRowKey2.Width = 194;
+            // 
+            // colCTs1
+            // 
+            this.colCTs1.FieldName = "CTs";
+            this.colCTs1.Name = "colCTs1";
             // 
             // colGPP2
             // 
@@ -453,8 +562,8 @@
             this.colGPP2.FieldName = "GPP2";
             this.colGPP2.Name = "colGPP2";
             this.colGPP2.Visible = true;
-            this.colGPP2.VisibleIndex = 8;
-            this.colGPP2.Width = 133;
+            this.colGPP2.VisibleIndex = 9;
+            this.colGPP2.Width = 112;
             // 
             // colSoD
             // 
@@ -465,7 +574,7 @@
             this.colSoD.Name = "colSoD";
             this.colSoD.OptionsColumn.FixedWidth = true;
             this.colSoD.Visible = true;
-            this.colSoD.VisibleIndex = 3;
+            this.colSoD.VisibleIndex = 2;
             this.colSoD.Width = 40;
             // 
             // colIdx
@@ -476,7 +585,7 @@
             this.colIdx.Name = "colIdx";
             this.colIdx.OptionsColumn.FixedWidth = true;
             this.colIdx.Visible = true;
-            this.colIdx.VisibleIndex = 4;
+            this.colIdx.VisibleIndex = 3;
             this.colIdx.Width = 40;
             // 
             // colTrh
@@ -486,8 +595,6 @@
             this.colTrh.FieldName = "Trh";
             this.colTrh.Name = "colTrh";
             this.colTrh.OptionsColumn.FixedWidth = true;
-            this.colTrh.Visible = true;
-            this.colTrh.VisibleIndex = 9;
             this.colTrh.Width = 88;
             // 
             // colDrm
@@ -496,19 +603,8 @@
             this.colDrm.Name = "colDrm";
             this.colDrm.OptionsColumn.FixedWidth = true;
             this.colDrm.Visible = true;
-            this.colDrm.VisibleIndex = 2;
+            this.colDrm.VisibleIndex = 1;
             this.colDrm.Width = 40;
-            // 
-            // DRMrepositoryItemImageComboBox
-            // 
-            this.DRMrepositoryItemImageComboBox.AutoHeight = false;
-            this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
-            this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
             // 
             // colYer
             // 
@@ -520,9 +616,7 @@
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
-            this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 10;
-            this.colInfo.Width = 140;
+            this.colInfo.Width = 119;
             // 
             // colH1W
             // 
@@ -596,13 +690,25 @@
             // 
             // colHSW
             // 
+            this.colHSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHSW.FieldName = "HSW";
             this.colHSW.Name = "colHSW";
+            this.colHSW.OptionsColumn.FixedWidth = true;
+            this.colHSW.Visible = true;
+            this.colHSW.VisibleIndex = 6;
+            this.colHSW.Width = 40;
             // 
             // colGSW
             // 
+            this.colGSW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colGSW.FieldName = "GSW";
             this.colGSW.Name = "colGSW";
+            this.colGSW.OptionsColumn.FixedWidth = true;
+            this.colGSW.Visible = true;
+            this.colGSW.VisibleIndex = 7;
+            this.colGSW.Width = 40;
             // 
             // colHMW
             // 
@@ -644,6 +750,17 @@
             this.colGRnkPX.FieldName = "GRnkPX";
             this.colGRnkPX.Name = "colGRnkPX";
             // 
+            // DRMrepositoryItemImageComboBox
+            // 
+            this.DRMrepositoryItemImageComboBox.AutoHeight = false;
+            this.DRMrepositoryItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
+            this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.dataLayoutControl1);
@@ -655,7 +772,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(494, 303, 458, 471);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1261, 501);
+            this.layoutControl1.Size = new System.Drawing.Size(1065, 501);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -686,7 +803,7 @@
             this.dataLayoutControl1.Controls.Add(this.GRnkTextEdit);
             this.dataLayoutControl1.Controls.Add(this.GRnkPXTextEdit);
             this.dataLayoutControl1.DataSource = this.mACBindingSource;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(1041, 46);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(845, 46);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup2;
             this.dataLayoutControl1.Size = new System.Drawing.Size(208, 408);
@@ -702,9 +819,12 @@
             this.H1WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H1WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H1WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.H1WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.H1WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.H1WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.H1WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.H1WTextEdit.Properties.Mask.EditMask = "N0";
             this.H1WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.H1WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.H1WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H1WTextEdit.StyleController = this.dataLayoutControl1;
             this.H1WTextEdit.TabIndex = 4;
@@ -718,9 +838,12 @@
             this.H2WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H2WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H2WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.H2WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.H2WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.H2WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.H2WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.H2WTextEdit.Properties.Mask.EditMask = "N0";
             this.H2WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.H2WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.H2WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H2WTextEdit.StyleController = this.dataLayoutControl1;
             this.H2WTextEdit.TabIndex = 5;
@@ -734,9 +857,12 @@
             this.H3WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H3WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H3WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.H3WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.H3WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.H3WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.H3WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.H3WTextEdit.Properties.Mask.EditMask = "N0";
             this.H3WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.H3WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.H3WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H3WTextEdit.StyleController = this.dataLayoutControl1;
             this.H3WTextEdit.TabIndex = 6;
@@ -750,9 +876,12 @@
             this.H4WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H4WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H4WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.H4WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.H4WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.H4WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.H4WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.H4WTextEdit.Properties.Mask.EditMask = "N0";
             this.H4WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.H4WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.H4WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H4WTextEdit.StyleController = this.dataLayoutControl1;
             this.H4WTextEdit.TabIndex = 7;
@@ -766,9 +895,12 @@
             this.H5WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H5WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H5WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.H5WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.H5WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.H5WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.H5WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.H5WTextEdit.Properties.Mask.EditMask = "N0";
             this.H5WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.H5WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.H5WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H5WTextEdit.StyleController = this.dataLayoutControl1;
             this.H5WTextEdit.TabIndex = 8;
@@ -782,9 +914,12 @@
             this.H6WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H6WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H6WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.H6WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.H6WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.H6WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.H6WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.H6WTextEdit.Properties.Mask.EditMask = "N0";
             this.H6WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.H6WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.H6WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H6WTextEdit.StyleController = this.dataLayoutControl1;
             this.H6WTextEdit.TabIndex = 9;
@@ -798,9 +933,12 @@
             this.H7WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.H7WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.H7WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.H7WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.H7WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.H7WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.H7WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.H7WTextEdit.Properties.Mask.EditMask = "N0";
             this.H7WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.H7WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.H7WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H7WTextEdit.StyleController = this.dataLayoutControl1;
             this.H7WTextEdit.TabIndex = 10;
@@ -814,9 +952,12 @@
             this.G1WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G1WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G1WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.G1WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.G1WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.G1WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.G1WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.G1WTextEdit.Properties.Mask.EditMask = "N0";
             this.G1WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.G1WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.G1WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G1WTextEdit.StyleController = this.dataLayoutControl1;
             this.G1WTextEdit.TabIndex = 11;
@@ -830,9 +971,12 @@
             this.G2WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G2WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G2WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.G2WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.G2WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.G2WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.G2WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.G2WTextEdit.Properties.Mask.EditMask = "N0";
             this.G2WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.G2WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.G2WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G2WTextEdit.StyleController = this.dataLayoutControl1;
             this.G2WTextEdit.TabIndex = 12;
@@ -846,9 +990,12 @@
             this.G3WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G3WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G3WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.G3WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.G3WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.G3WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.G3WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.G3WTextEdit.Properties.Mask.EditMask = "N0";
             this.G3WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.G3WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.G3WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G3WTextEdit.StyleController = this.dataLayoutControl1;
             this.G3WTextEdit.TabIndex = 13;
@@ -862,9 +1009,12 @@
             this.G4WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G4WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G4WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.G4WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.G4WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.G4WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.G4WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.G4WTextEdit.Properties.Mask.EditMask = "N0";
             this.G4WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.G4WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.G4WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G4WTextEdit.StyleController = this.dataLayoutControl1;
             this.G4WTextEdit.TabIndex = 14;
@@ -878,9 +1028,12 @@
             this.G5WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G5WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G5WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.G5WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.G5WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.G5WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.G5WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.G5WTextEdit.Properties.Mask.EditMask = "N0";
             this.G5WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.G5WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.G5WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G5WTextEdit.StyleController = this.dataLayoutControl1;
             this.G5WTextEdit.TabIndex = 15;
@@ -894,9 +1047,12 @@
             this.G6WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G6WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G6WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.G6WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.G6WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.G6WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.G6WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.G6WTextEdit.Properties.Mask.EditMask = "N0";
             this.G6WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.G6WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.G6WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G6WTextEdit.StyleController = this.dataLayoutControl1;
             this.G6WTextEdit.TabIndex = 16;
@@ -910,9 +1066,12 @@
             this.G7WTextEdit.Properties.Appearance.Options.UseFont = true;
             this.G7WTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.G7WTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.G7WTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.G7WTextEdit.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.G7WTextEdit.Properties.DisplayFormat.FormatString = "#;#;#";
+            this.G7WTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.G7WTextEdit.Properties.Mask.EditMask = "N0";
             this.G7WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.G7WTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.G7WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G7WTextEdit.StyleController = this.dataLayoutControl1;
             this.G7WTextEdit.TabIndex = 17;
@@ -926,9 +1085,10 @@
             this.HSWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HSWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HSWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.HSWTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.HSWTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.HSWTextEdit.Properties.Mask.EditMask = "N0";
             this.HSWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.HSWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.HSWTextEdit.Properties.ReadOnly = true;
             this.HSWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HSWTextEdit.StyleController = this.dataLayoutControl1;
@@ -943,9 +1103,10 @@
             this.GSWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GSWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GSWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GSWTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.GSWTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.GSWTextEdit.Properties.Mask.EditMask = "N0";
             this.GSWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.GSWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.GSWTextEdit.Properties.ReadOnly = true;
             this.GSWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GSWTextEdit.StyleController = this.dataLayoutControl1;
@@ -960,9 +1121,10 @@
             this.HMWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HMWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HMWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.HMWTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.HMWTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.HMWTextEdit.Properties.Mask.EditMask = "N0";
             this.HMWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.HMWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.HMWTextEdit.Properties.ReadOnly = true;
             this.HMWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HMWTextEdit.StyleController = this.dataLayoutControl1;
@@ -977,9 +1139,10 @@
             this.GMWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GMWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GMWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GMWTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.GMWTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.GMWTextEdit.Properties.Mask.EditMask = "N0";
             this.GMWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.GMWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.GMWTextEdit.Properties.ReadOnly = true;
             this.GMWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GMWTextEdit.StyleController = this.dataLayoutControl1;
@@ -994,9 +1157,10 @@
             this.HXWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HXWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HXWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.HXWTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.HXWTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.HXWTextEdit.Properties.Mask.EditMask = "N0";
             this.HXWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.HXWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.HXWTextEdit.Properties.ReadOnly = true;
             this.HXWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HXWTextEdit.StyleController = this.dataLayoutControl1;
@@ -1011,9 +1175,10 @@
             this.GXWTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GXWTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GXWTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GXWTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.GXWTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.GXWTextEdit.Properties.Mask.EditMask = "N0";
             this.GXWTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.GXWTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.GXWTextEdit.Properties.ReadOnly = true;
             this.GXWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GXWTextEdit.StyleController = this.dataLayoutControl1;
@@ -1028,9 +1193,10 @@
             this.HRnkTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HRnkTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HRnkTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.HRnkTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.HRnkTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.HRnkTextEdit.Properties.Mask.EditMask = "N0";
             this.HRnkTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.HRnkTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.HRnkTextEdit.Properties.ReadOnly = true;
             this.HRnkTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HRnkTextEdit.StyleController = this.dataLayoutControl1;
@@ -1045,9 +1211,10 @@
             this.HRnkPXTextEdit.Properties.Appearance.Options.UseFont = true;
             this.HRnkPXTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.HRnkPXTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.HRnkPXTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.HRnkPXTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.HRnkPXTextEdit.Properties.Mask.EditMask = "N0";
             this.HRnkPXTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.HRnkPXTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.HRnkPXTextEdit.Properties.ReadOnly = true;
             this.HRnkPXTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HRnkPXTextEdit.StyleController = this.dataLayoutControl1;
@@ -1062,9 +1229,10 @@
             this.GRnkTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GRnkTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GRnkTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GRnkTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.GRnkTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.GRnkTextEdit.Properties.Mask.EditMask = "N0";
             this.GRnkTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.GRnkTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.GRnkTextEdit.Properties.ReadOnly = true;
             this.GRnkTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GRnkTextEdit.StyleController = this.dataLayoutControl1;
@@ -1079,9 +1247,10 @@
             this.GRnkPXTextEdit.Properties.Appearance.Options.UseFont = true;
             this.GRnkPXTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GRnkPXTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GRnkPXTextEdit.Properties.DisplayFormat.FormatString = "#";
+            this.GRnkPXTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.GRnkPXTextEdit.Properties.Mask.EditMask = "N0";
             this.GRnkPXTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.GRnkPXTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.GRnkPXTextEdit.Properties.ReadOnly = true;
             this.GRnkPXTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GRnkPXTextEdit.StyleController = this.dataLayoutControl1;
@@ -1365,7 +1534,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 458);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1237, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(1041, 31);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1386,7 +1555,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1261, 501);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1065, 501);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -1394,7 +1563,7 @@
             this.layoutControlItem1.Control = this.mACGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1029, 412);
+            this.layoutControlItem1.Size = new System.Drawing.Size(833, 412);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1403,7 +1572,7 @@
             this.layoutControlItem2.Control = this.mACBindingNavigator;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1241, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1045, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -1412,24 +1581,34 @@
             this.layoutControlItem3.Control = this.statusStrip1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 446);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1241, 35);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1045, 35);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.dataLayoutControl1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1029, 34);
+            this.layoutControlItem4.Location = new System.Drawing.Point(833, 34);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(212, 412);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // macXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1261, 501);
+            this.ClientSize = new System.Drawing.Size(1065, 501);
             this.Controls.Add(this.layoutControl1);
             this.Name = "macXF";
             this.Text = "macXF";
@@ -1628,5 +1807,16 @@
         private System.Windows.Forms.BindingSource gPPluBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox DRMrepositoryItemImageComboBox;
+        private DevExpress.XtraGrid.Columns.GridColumn colAd;
+        private DevExpress.XtraGrid.Columns.GridColumn colSex;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsRun;
+        private DevExpress.XtraGrid.Columns.GridColumn colRowKey1;
+        private DevExpress.XtraGrid.Columns.GridColumn colCTs;
+        private DevExpress.XtraGrid.Columns.GridColumn colAd1;
+        private DevExpress.XtraGrid.Columns.GridColumn colSex1;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsRun1;
+        private DevExpress.XtraGrid.Columns.GridColumn colRowKey2;
+        private DevExpress.XtraGrid.Columns.GridColumn colCTs1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

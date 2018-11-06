@@ -57,6 +57,116 @@ namespace BDB2
         public string Ad { get; set; }
         public string Info { get; set; }
     }
+    [Database]
+    public class PPR
+    {
+        public PP PP { get; set; }
+        public int Idx { get; set; }
+        public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
+        public int RnkIdx { get; set; }
+        public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilabilir. CC is null ise.
+        public CC CC { get; set; }   
+        public int RnkPX { get; set; }      // CC de aldigi toplam PX degeri. Donem sonu hesaplanir.    CC is not null ise.
+        public int RnkSon
+        {
+            get
+            {
+                return  RnkBas + (int)(Db.SQL<long>("select sum(r.RnkPX) from BDB2.PPR r where r.PP = ? and r.Dnm = ? and r.CC IS NOT NULL", PP, Dnm).FirstOrDefault());
+            }
+        }
+        public string CCAd => CC == null ? "-" : $"{CC.Ad}";
+        public string PPAd => PP == null ? "-" : $"{PP.Ad}";
+
+
+        public static void DonemBaslangicIslemleri(int DnmRun)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            // Katilan Takimin Oyunculari girilmis ve Aktif oyunclar Refresh edilmis.
+            Db.TransactAsync(() =>
+            {
+                PPR prvPPR = null;
+                PPR runPPR = null;
+                int prvRnkSon = 0;
+
+                // Takimda oynayanlar CC
+                var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ?", DnmRun);
+                foreach (var ctp in ctps)
+                {
+                    runPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC = ?", ctp.PP, DnmRun, ctp.CC).FirstOrDefault(); // Yoksa kaydet 
+                    if (runPPR != null)
+                        continue;
+
+                    prvPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC is null", ctp.PP, DnmRun - 1).FirstOrDefault(); // Yoksa??????? Yani herseyin basiysa. Baslangic donem 18
+                    if (prvPPR == null)
+                        prvRnkSon = ctp.PP.RnkBaz;
+                    else
+                        prvRnkSon = prvPPR.RnkSon;
+
+                    new PPR
+                    {
+                        PP = ctp.PP,
+                        Dnm = DnmRun,
+                        CC = ctp.CC,
+                        RnkBas = prvRnkSon,
+                        RnkPX = 0
+                    };
+                }
+                // Ferdi oynayanlar CC
+                var cfs = Db.SQL<CF>("select r from CF r where r.CC.Dnm = ?", DnmRun);
+                foreach (var cf in cfs)
+                {
+                    runPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC = ?", cf.PP, DnmRun, cf.CC).FirstOrDefault(); // Yoksa kaydet 
+                    if (runPPR != null)
+                        continue;
+
+                    prvPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC is null", cf.PP, DnmRun - 1).FirstOrDefault(); // Yoksa??????? Yani herseyin basiysa. Baslangic donem 18
+                    if (prvPPR == null)
+                        prvRnkSon = cf.PP.RnkBaz;
+                    else
+                        prvRnkSon = prvPPR.RnkSon;
+
+                    new PPR
+                    {
+                        PP = cf.PP,
+                        Dnm = DnmRun,
+                        CC = cf.CC,
+                        RnkBas = prvRnkSon,
+                        RnkPX = 0
+                    };
+                }
+
+                // Her aktif PP icin Donem Sonuclari
+                var pps = Db.SQL<PP>("select r from PP r where r.IsRun = ?", true);
+                foreach (var pp in pps)
+                {
+                    runPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC IS NULL", pp, DnmRun).FirstOrDefault(); // Yoksa kaydet 
+                    if (runPPR != null)
+                        continue;
+
+                    prvPPR = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.Dnm = ? and r.CC is null", pp, DnmRun - 1).FirstOrDefault(); // Yoksa??????? Yani herseyin basiysa. Baslangic donem 18
+                    if (prvPPR == null)
+                        prvRnkSon = pp.RnkBaz;
+                    else
+                        prvRnkSon = prvPPR.RnkSon;
+
+                    new PPR // CC is null
+                    {
+                        PP = pp,
+                        Dnm = DnmRun,
+                        RnkBas = prvRnkSon,
+                        RnkPX = 0
+                    };
+                }
+            });
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec DonemBaslangicIslemleri({DnmRun}) NOR: {nor:n0}");
+
+        }
+
+    }
 
     [Database]
     public class PPRD   // PP RankDonem
@@ -2237,6 +2347,83 @@ namespace BDB2
             }
             watch.Stop();
             Console.WriteLine($"deneme #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void RefreshDonemRank22222(int DnmRun)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            ulong hPPoNo, gPPoNo;
+            int hpRnk, gpRnk;
+            int hPX = 0;
+            Dictionary<ulong, int> ppDic = new Dictionary<ulong, int>();    // Players BasRnk
+
+            Db.TransactAsync(() =>
+            {
+                var pprs = Db.SQL<PPR>("select r from PPR r where r.Dnm = ? and r.CC IS NULL", DnmRun);
+                foreach (var ppr in pprs)
+                {
+                    ppDic[ppr.PP.GetObjectNo()] = ppr.RnkBas;
+                }
+
+                PPR pr = null;
+                // Sadece Single Maclar Rank uretir.
+                // O donemin Maclari taranacak
+                foreach (var mac in Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? order by r.Trh", DnmRun))
+                {
+                    if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
+                        continue;
+
+                    nor++;
+
+                    hPPoNo = mac.HPP1.GetObjectNo();
+                    gPPoNo = mac.GPP1.GetObjectNo();
+
+                    hpRnk = ppDic[hPPoNo];
+                    gpRnk = ppDic[gPPoNo];
+
+                    hPX = 0;
+                    if (mac.CC.IsRnkd)  // Rank hesaplanacak ise (Ferdiler en sonunda hesaplanacak, isRnkd = false olacak)
+                        if (mac.Drm == "OK" && hpRnk != 0 && gpRnk != 0)
+                            hPX = compHomeRnkPX(mac.HMW == 0 ? false : true, hpRnk, gpRnk);
+
+                    // Update MAC
+                    mac.HRnkPX = hPX;
+                    mac.HRnk = hpRnk;
+
+                    mac.GRnkPX = -hPX;
+                    mac.GRnk = gpRnk;
+
+                    // Update dictionary
+                    ppDic[hPPoNo] = hpRnk + hPX;
+                    ppDic[gPPoNo] = gpRnk - hPX;
+
+                    // Update PPR.RnkPX if px != 0
+                    if (hPX != 0)
+                    {
+                        pr = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.CC = ? and r.Dnm = ?", mac.HPP1, mac.CC, DnmRun).FirstOrDefault();
+                        if (pr != null)
+                            pr.RnkPX += hPX;
+                        pr = Db.SQL<PPR>("select r from PPR r where r.PP = ? and r.CC = ? and r.Dnm = ?", mac.GPP1, mac.CC, DnmRun).FirstOrDefault();
+                        if (pr != null)
+                            pr.RnkPX += -hPX;
+                    }
+                }
+
+                // PPR.Idx
+                int idx = 1;
+                pprs = Db.SQL<PPR>("select r from PPR r where r.Dnm = ? and r.CC IS NULL order by r.RnkSon", DnmRun);
+                foreach (var ppr in pprs)
+                {
+                    ppr.RnkIdx = idx++;
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshGlobalRank() NOR: {nor:n0}");
+            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
         public static void RefreshDonemRank(int DnmRun)

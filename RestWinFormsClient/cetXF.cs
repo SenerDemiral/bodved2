@@ -35,7 +35,7 @@ namespace RestWinFormsClient
             prm = 0;
 
             if (CCRow == null)
-                gridView1.OptionsBehavior.Editable = false;
+                gridView1.OptionsBehavior.Editable = true; //false;
             else
             {
                 qry = "CC";
@@ -109,7 +109,7 @@ namespace RestWinFormsClient
             macXF frm = new macXF();
             frm.CETRow = (DataSetGnl.CETRow)gridView1.GetFocusedDataRow();
             frm.Text = $"{gridView1.GetFocusedRowCellDisplayText(colHCT)} >< {gridView1.GetFocusedRowCellDisplayText(colGCT)} Matches [macXF]";
-            frm.ShowDialog();
+            frm.Show();
         }
     }
 }

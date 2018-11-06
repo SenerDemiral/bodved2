@@ -105,6 +105,7 @@
             this.colHCT.Caption = "Home Takım";
             this.colHCT.FieldName = "HCT";
             this.colHCT.Name = "colHCT";
+            this.colHCT.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colHCT.ToolTip = "Home Takım";
             this.colHCT.Visible = true;
             this.colHCT.VisibleIndex = 4;
@@ -117,6 +118,7 @@
             this.colGCT.Caption = "Guest Takım";
             this.colGCT.FieldName = "GCT";
             this.colGCT.Name = "colGCT";
+            this.colGCT.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colGCT.ToolTip = "Guest Takım";
             this.colGCT.Visible = true;
             this.colGCT.VisibleIndex = 7;
@@ -355,6 +357,7 @@
             this.colCC.Name = "colCC";
             this.colCC.OptionsColumn.AllowEdit = false;
             this.colCC.OptionsColumn.AllowFocus = false;
+            this.colCC.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colCC.Visible = true;
             this.colCC.VisibleIndex = 0;
             this.colCC.Width = 77;
@@ -539,6 +542,8 @@
             this.colHPW.AppearanceCell.Options.UseBackColor = true;
             this.colHPW.AppearanceCell.Options.UseTextOptions = true;
             this.colHPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHPW.DisplayFormat.FormatString = "#";
+            this.colHPW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHPW.FieldName = "HPW";
             this.colHPW.Name = "colHPW";
             this.colHPW.OptionsColumn.AllowEdit = false;
@@ -555,6 +560,8 @@
             this.colGPW.AppearanceCell.Options.UseBackColor = true;
             this.colGPW.AppearanceCell.Options.UseTextOptions = true;
             this.colGPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGPW.DisplayFormat.FormatString = "#";
+            this.colGPW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colGPW.FieldName = "GPW";
             this.colGPW.Name = "colGPW";
             this.colGPW.OptionsColumn.AllowEdit = false;
