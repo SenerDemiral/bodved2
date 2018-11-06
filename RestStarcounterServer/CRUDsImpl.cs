@@ -39,7 +39,7 @@ namespace RestStarcounterServer
                         foreach(var ctp in Db.SQL<CTP>("select r from CTP r where r.PP = ?", row))
                         {
                             if (ctp.IsRun)
-                                proxy.CTs += "<" + ctp.CT.GetObjectNo() + ">";
+                                proxy.CTs += $"<{ctp.CT.GetObjectNo()}>";
                         }
                     }
 
@@ -786,15 +786,15 @@ namespace RestStarcounterServer
             {
                 if (request.Req == "RefreshSonuc")
                 {
-                    MAC.RefreshSonuc();
-                    CEF.RefreshSonuc();
-                    CF.RefreshSonuc();
-                    CET.RefreshSonuc();
-                    CT.RefreshSonuc();
-                    CTP.RefreshSonucNew();
-                    PP.RefreshSonuc();
+                    H.MAC_RefreshSonuc();
+                    H.CEF_RefreshSonuc();
+                    H.CF_RefreshSonuc();
+                    H.CET_RefreshSonuc();
+                    H.CT_RefreshSonuc();
+                    H.CTP_RefreshSonucNew();
+                    H.PP_RefreshSonuc();
 
-                    MAC.RefreshGlobalRank();
+                    H.MAC_RefreshGlobalRank();
                     request.Rsp = "";
                 }
                 else if (request.Req == "CreateEvents")
@@ -802,14 +802,14 @@ namespace RestStarcounterServer
                     ulong CCoNo = ulong.Parse(request.Prm1);
                     CC cc = Db.FromId<CC>(CCoNo);
                     if(cc.Skl == "F")
-                        request.Rsp = CEF.CreateEvents(CCoNo);
+                        request.Rsp = H.CEF_CreateEvents(CCoNo);
                     else if (cc.Skl == "T")
-                        request.Rsp = CET.CreateEvents(CCoNo);
+                        request.Rsp = H.CET_CreateEvents(CCoNo);
                 }
                 else if (request.Req == "RefeshCurrentActivities")
                 {
                     int ccIdx = int.Parse(request.Prm1);
-                    PP.RefeshCurrentActivities(ccIdx);
+                    H.PP_RefeshCurrentActivities(ccIdx);
                     request.Rsp = "";
                 }
                 else if (request.Req == "DonemBasiIslemleri")

@@ -34,15 +34,15 @@ namespace bodved2
                 handler.Register();
             }
 
-            MAC.RefreshSonuc();
-            CET.RefreshSonuc();
-            CT.RefreshSonuc();
-            CTP.RefreshSonucNew();
-            PP.RefreshSonuc();
-            CEF.RefreshSonuc();
-            CF.RefreshSonuc();
+            H.MAC_RefreshSonuc();
+            H.CET_RefreshSonuc();
+            H.CT_RefreshSonuc();
+            H.CTP_RefreshSonucNew();
+            H.PP_RefreshSonuc();
+            H.CEF_RefreshSonuc();
+            H.CF_RefreshSonuc();
 
-            MAC.RefreshGlobalRank();
+            H.MAC_RefreshGlobalRank();
 
             //CF.CreateCEFs(5131);
 

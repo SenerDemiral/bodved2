@@ -125,14 +125,14 @@ namespace RestStarcounterServer
             H.PopMAC();
             */
 
-            MAC.RefreshSonuc();
-            CEF.RefreshSonuc();
-            CF.RefreshSonuc();
-            CET.RefreshSonuc();
-            CT.RefreshSonuc();
-            CTP.RefreshSonucNew();
-            PP.RefreshSonuc();
-            MAC.RefreshGlobalRank();
+            H.MAC_RefreshSonuc();
+            H.CEF_RefreshSonuc();
+            H.CF_RefreshSonuc();
+            H.CET_RefreshSonuc();
+            H.CT_RefreshSonuc();
+            H.CTP_RefreshSonucNew();
+            H.PP_RefreshSonuc();
+            H.MAC_RefreshGlobalRank();
 
             //CTP.UpdateRnkBas(); //Yeni doneme basinda (bodved2 ye gecis)
 
