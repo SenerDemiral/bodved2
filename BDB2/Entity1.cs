@@ -2573,7 +2573,7 @@ namespace BDB2
                 foreach (var pair in items)
                 {
                     pp = Db.FromId<PP>(pair.Key);
-                    //pp.RnkSon = pair.Value;   // Siralamayi yukarda yaptin RnkSon sifirlama
+                    pp.RnkSon = pair.Value;   // Siralamayi yukarda yaptin RnkSon sifirlama
                     pp.RnkIdx = idx++;
                 }
             });
