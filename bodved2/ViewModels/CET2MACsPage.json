@@ -40,8 +40,9 @@
       "HMW": 0,
       "GMW": 0,
 
+      "Drm": "",
       "Hakem": "",
-      "Info": "",
+      "Info": ""
     }
   ],
 
@@ -60,6 +61,7 @@
       "SncMac": "",
       "SncSet": "",
 
+      "Drm": "",
       "Hakem": "",
       "Info": ""
     }

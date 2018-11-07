@@ -47,6 +47,7 @@
             this.navBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.refreshAllNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.refreshLookupsNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.donemBasiIslemleriNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.persistentRepository = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.PPrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -66,7 +67,6 @@
             this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donemBasiIslemleriNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -248,6 +248,12 @@
             this.refreshLookupsNavBarItem.Name = "refreshLookupsNavBarItem";
             this.refreshLookupsNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshLookupsNavBarItem_LinkClicked);
             // 
+            // donemBasiIslemleriNavBarItem
+            // 
+            this.donemBasiIslemleriNavBarItem.Caption = "Donem Basi Islemleri";
+            this.donemBasiIslemleriNavBarItem.Name = "donemBasiIslemleriNavBarItem";
+            this.donemBasiIslemleriNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.donemBasiIslemleriNavBarItem_LinkClicked);
+            // 
             // dataSetGnl
             // 
             this.dataSetGnl.DataSetName = "DataSetGnl";
@@ -419,19 +425,15 @@
             this.DRMrepositoryItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("OK", "OK", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hX", "hX", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gX", "gX", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("hH", "hH", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("gH", "gH", -1)});
             this.DRMrepositoryItemImageComboBox.Name = "DRMrepositoryItemImageComboBox";
             // 
             // pPBindingSource
             // 
             this.pPBindingSource.DataMember = "PP";
             this.pPBindingSource.DataSource = this.dataSetGnl;
-            // 
-            // donemBasiIslemleriNavBarItem
-            // 
-            this.donemBasiIslemleriNavBarItem.Caption = "Donem Basi Islemleri";
-            this.donemBasiIslemleriNavBarItem.Name = "donemBasiIslemleriNavBarItem";
-            this.donemBasiIslemleriNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.donemBasiIslemleriNavBarItem_LinkClicked);
             // 
             // MainXF
             // 

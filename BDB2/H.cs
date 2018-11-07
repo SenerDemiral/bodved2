@@ -1788,7 +1788,7 @@ namespace BDB2
                 else if (hSW < gSW)
                     gMW++;
             }
-            else if (mac.Drm == "hX")
+            else if (mac.Drm == "hX")   // Maca Cıkmadı 
             {
                 hMX = 1;
                 hMW = 0;
@@ -1799,6 +1799,22 @@ namespace BDB2
                 gMX = 1;
                 hMW = 1;
                 gMW = 0;
+            }
+            else if (mac.Drm == "hH")   // Sıralama Hatası (Set sonuclari aynen kaliyor)
+            {
+                hMX = 0;
+                hMW = 0;
+                gMW = 1;
+                hSW = 0;
+                gSW = 0;
+            }
+            else if (mac.Drm == "gH")
+            {
+                gMX = 0;
+                hMW = 1;
+                gMW = 0;
+                hSW = 0;
+                gSW = 0;
             }
 
             Db.TransactAsync(() =>

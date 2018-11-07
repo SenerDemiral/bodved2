@@ -124,7 +124,7 @@
             this.colGCT.ToolTip = "Guest Takım";
             this.colGCT.Visible = true;
             this.colGCT.VisibleIndex = 9;
-            this.colGCT.Width = 116;
+            this.colGCT.Width = 148;
             // 
             // dataSetGnl
             // 
@@ -292,6 +292,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
             this.colCC,
@@ -340,6 +342,7 @@
             this.gridView1.GridControl = this.cETGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowFixedGroups = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.OptionsSelection.EnableAppearanceHideSelection = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTrh, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -402,7 +405,7 @@
             this.colYer.Name = "colYer";
             this.colYer.Visible = true;
             this.colYer.VisibleIndex = 18;
-            this.colYer.Width = 54;
+            this.colYer.Width = 70;
             // 
             // colInfo
             // 
@@ -410,7 +413,7 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 19;
-            this.colInfo.Width = 90;
+            this.colInfo.Width = 122;
             // 
             // colHSSW
             // 
@@ -543,9 +546,12 @@
             // colHPW
             // 
             this.colHPW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHPW.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.colHPW.AppearanceCell.Options.UseBackColor = true;
+            this.colHPW.AppearanceCell.Options.UseFont = true;
             this.colHPW.AppearanceCell.Options.UseTextOptions = true;
             this.colHPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHPW.Caption = "P";
             this.colHPW.DisplayFormat.FormatString = "#";
             this.colHPW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHPW.FieldName = "HPW";
@@ -556,14 +562,17 @@
             this.colHPW.ToolTip = "Home Puan Win";
             this.colHPW.Visible = true;
             this.colHPW.VisibleIndex = 6;
-            this.colHPW.Width = 40;
+            this.colHPW.Width = 20;
             // 
             // colGPW
             // 
             this.colGPW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGPW.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.colGPW.AppearanceCell.Options.UseBackColor = true;
+            this.colGPW.AppearanceCell.Options.UseFont = true;
             this.colGPW.AppearanceCell.Options.UseTextOptions = true;
             this.colGPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGPW.Caption = "P";
             this.colGPW.DisplayFormat.FormatString = "#";
             this.colGPW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colGPW.FieldName = "GPW";
@@ -574,7 +583,7 @@
             this.colGPW.ToolTip = "Guest Puan Win";
             this.colGPW.Visible = true;
             this.colGPW.VisibleIndex = 7;
-            this.colGPW.Width = 40;
+            this.colGPW.Width = 20;
             // 
             // layoutControl1
             // 
@@ -649,6 +658,11 @@
             // 
             // colHKW
             // 
+            this.colHKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHKW.AppearanceCell.Options.UseBackColor = true;
+            this.colHKW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHKW.Caption = "K";
             this.colHKW.DisplayFormat.FormatString = "#";
             this.colHKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHKW.FieldName = "HKW";
@@ -658,10 +672,15 @@
             this.colHKW.OptionsColumn.FixedWidth = true;
             this.colHKW.Visible = true;
             this.colHKW.VisibleIndex = 5;
-            this.colHKW.Width = 40;
+            this.colHKW.Width = 20;
             // 
             // colGKW
             // 
+            this.colGKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGKW.AppearanceCell.Options.UseBackColor = true;
+            this.colGKW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGKW.Caption = "K";
             this.colGKW.DisplayFormat.FormatString = "#";
             this.colGKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colGKW.FieldName = "GKW";
@@ -671,7 +690,7 @@
             this.colGKW.OptionsColumn.FixedWidth = true;
             this.colGKW.Visible = true;
             this.colGKW.VisibleIndex = 8;
-            this.colGKW.Width = 40;
+            this.colGKW.Width = 20;
             // 
             // cetXF
             // 
