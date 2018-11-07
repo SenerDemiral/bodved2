@@ -35,18 +35,16 @@
       "SoD": "",
       "Idx": 0,
 
-      "Rnk": 0,
-      "RnkPX": 0,
       "CToNo": 0,
       "CTAd": "",
       "SncMac": "",
       "SncSet": "",
       "WL": "",
 
+      "RnkTxt": "",
+
       "RkpPPoNo": 0,
       "RkpPPAd": "",
-      "RkpRnk": 0,
-      "RkpRnkPX": 0,
       "RkpCToNo": 0,
       "RkpCTAd": "",
     }

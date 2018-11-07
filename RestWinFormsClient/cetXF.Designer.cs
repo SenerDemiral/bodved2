@@ -81,6 +81,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colHKW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGKW = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingNavigator)).BeginInit();
@@ -109,7 +111,7 @@
             this.colHCT.ToolTip = "Home Takım";
             this.colHCT.Visible = true;
             this.colHCT.VisibleIndex = 4;
-            this.colHCT.Width = 120;
+            this.colHCT.Width = 86;
             // 
             // colGCT
             // 
@@ -121,8 +123,8 @@
             this.colGCT.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colGCT.ToolTip = "Guest Takım";
             this.colGCT.Visible = true;
-            this.colGCT.VisibleIndex = 7;
-            this.colGCT.Width = 120;
+            this.colGCT.VisibleIndex = 9;
+            this.colGCT.Width = 116;
             // 
             // dataSetGnl
             // 
@@ -307,18 +309,20 @@
             this.colGSMW,
             this.colHDMW,
             this.colGDMW,
+            this.colHKW,
+            this.colGKW,
             this.colHPW,
             this.colGPW});
             gridFormatRule1.Column = this.colHCT;
             gridFormatRule1.Name = "Format0";
-            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             formatConditionRuleValue1.Appearance.Options.UseFont = true;
             formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Expression;
             formatConditionRuleValue1.Expression = "[HPW] > [GPW]";
             gridFormatRule1.Rule = formatConditionRuleValue1;
             gridFormatRule2.Column = this.colGCT;
             gridFormatRule2.Name = "Format1";
-            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             formatConditionRuleValue2.Appearance.Options.UseFont = true;
             formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Expression;
             formatConditionRuleValue2.Expression = "[HPW] < [GPW]";
@@ -360,7 +364,7 @@
             this.colCC.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colCC.Visible = true;
             this.colCC.VisibleIndex = 0;
-            this.colCC.Width = 77;
+            this.colCC.Width = 55;
             // 
             // colTrh
             // 
@@ -368,7 +372,7 @@
             this.colTrh.Name = "colTrh";
             this.colTrh.Visible = true;
             this.colTrh.VisibleIndex = 2;
-            this.colTrh.Width = 77;
+            this.colTrh.Width = 55;
             // 
             // colDrm
             // 
@@ -397,16 +401,16 @@
             this.colYer.FieldName = "Yer";
             this.colYer.Name = "colYer";
             this.colYer.Visible = true;
-            this.colYer.VisibleIndex = 16;
-            this.colYer.Width = 56;
+            this.colYer.VisibleIndex = 18;
+            this.colYer.Width = 54;
             // 
             // colInfo
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 17;
-            this.colInfo.Width = 86;
+            this.colInfo.VisibleIndex = 19;
+            this.colInfo.Width = 90;
             // 
             // colHSSW
             // 
@@ -421,7 +425,7 @@
             this.colHSSW.OptionsColumn.FixedWidth = true;
             this.colHSSW.ToolTip = "Home Single Set Win";
             this.colHSSW.Visible = true;
-            this.colHSSW.VisibleIndex = 12;
+            this.colHSSW.VisibleIndex = 14;
             this.colHSSW.Width = 40;
             // 
             // colGSSW
@@ -437,7 +441,7 @@
             this.colGSSW.OptionsColumn.FixedWidth = true;
             this.colGSSW.ToolTip = "Guest Single Set Win";
             this.colGSSW.Visible = true;
-            this.colGSSW.VisibleIndex = 13;
+            this.colGSSW.VisibleIndex = 15;
             this.colGSSW.Width = 40;
             // 
             // colHDSW
@@ -453,7 +457,7 @@
             this.colHDSW.OptionsColumn.FixedWidth = true;
             this.colHDSW.ToolTip = "Home Double Set Win";
             this.colHDSW.Visible = true;
-            this.colHDSW.VisibleIndex = 14;
+            this.colHDSW.VisibleIndex = 16;
             this.colHDSW.Width = 40;
             // 
             // colGDSW
@@ -469,7 +473,7 @@
             this.colGDSW.OptionsColumn.FixedWidth = true;
             this.colGDSW.ToolTip = "Guest Double Set Win";
             this.colGDSW.Visible = true;
-            this.colGDSW.VisibleIndex = 15;
+            this.colGDSW.VisibleIndex = 17;
             this.colGDSW.Width = 40;
             // 
             // colHSMW
@@ -485,7 +489,7 @@
             this.colHSMW.OptionsColumn.FixedWidth = true;
             this.colHSMW.ToolTip = "Home Single Maç Win";
             this.colHSMW.Visible = true;
-            this.colHSMW.VisibleIndex = 8;
+            this.colHSMW.VisibleIndex = 10;
             this.colHSMW.Width = 40;
             // 
             // colGSMW
@@ -501,7 +505,7 @@
             this.colGSMW.OptionsColumn.FixedWidth = true;
             this.colGSMW.ToolTip = "Guest Single Maç Win";
             this.colGSMW.Visible = true;
-            this.colGSMW.VisibleIndex = 9;
+            this.colGSMW.VisibleIndex = 11;
             this.colGSMW.Width = 40;
             // 
             // colHDMW
@@ -517,7 +521,7 @@
             this.colHDMW.OptionsColumn.FixedWidth = true;
             this.colHDMW.ToolTip = "Home Double Maç Win";
             this.colHDMW.Visible = true;
-            this.colHDMW.VisibleIndex = 10;
+            this.colHDMW.VisibleIndex = 12;
             this.colHDMW.Width = 40;
             // 
             // colGDMW
@@ -533,7 +537,7 @@
             this.colGDMW.OptionsColumn.FixedWidth = true;
             this.colGDMW.ToolTip = "Guest Double Maç Win";
             this.colGDMW.Visible = true;
-            this.colGDMW.VisibleIndex = 11;
+            this.colGDMW.VisibleIndex = 13;
             this.colGDMW.Width = 40;
             // 
             // colHPW
@@ -551,7 +555,7 @@
             this.colHPW.OptionsColumn.FixedWidth = true;
             this.colHPW.ToolTip = "Home Puan Win";
             this.colHPW.Visible = true;
-            this.colHPW.VisibleIndex = 5;
+            this.colHPW.VisibleIndex = 6;
             this.colHPW.Width = 40;
             // 
             // colGPW
@@ -569,7 +573,7 @@
             this.colGPW.OptionsColumn.FixedWidth = true;
             this.colGPW.ToolTip = "Guest Puan Win";
             this.colGPW.Visible = true;
-            this.colGPW.VisibleIndex = 6;
+            this.colGPW.VisibleIndex = 7;
             this.colGPW.Width = 40;
             // 
             // layoutControl1
@@ -642,6 +646,32 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(1058, 24);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // colHKW
+            // 
+            this.colHKW.DisplayFormat.FormatString = "#";
+            this.colHKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colHKW.FieldName = "HKW";
+            this.colHKW.Name = "colHKW";
+            this.colHKW.OptionsColumn.AllowEdit = false;
+            this.colHKW.OptionsColumn.AllowFocus = false;
+            this.colHKW.OptionsColumn.FixedWidth = true;
+            this.colHKW.Visible = true;
+            this.colHKW.VisibleIndex = 5;
+            this.colHKW.Width = 40;
+            // 
+            // colGKW
+            // 
+            this.colGKW.DisplayFormat.FormatString = "#";
+            this.colGKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colGKW.FieldName = "GKW";
+            this.colGKW.Name = "colGKW";
+            this.colGKW.OptionsColumn.AllowEdit = false;
+            this.colGKW.OptionsColumn.AllowFocus = false;
+            this.colGKW.OptionsColumn.FixedWidth = true;
+            this.colGKW.Visible = true;
+            this.colGKW.VisibleIndex = 8;
+            this.colGKW.Width = 40;
             // 
             // cetXF
             // 
@@ -720,5 +750,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colHDSW;
         private DevExpress.XtraGrid.Columns.GridColumn colGDSW;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox DRMrepositoryItemImageComboBox;
+        private DevExpress.XtraGrid.Columns.GridColumn colHKW;
+        private DevExpress.XtraGrid.Columns.GridColumn colGKW;
     }
 }

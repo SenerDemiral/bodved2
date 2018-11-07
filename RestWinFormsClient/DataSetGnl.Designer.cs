@@ -2687,6 +2687,10 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnGDMW;
             
+            private global::System.Data.DataColumn columnHKW;
+            
+            private global::System.Data.DataColumn columnGKW;
+            
             private global::System.Data.DataColumn columnHPW;
             
             private global::System.Data.DataColumn columnGPW;
@@ -2854,6 +2858,22 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn HKWColumn {
+                get {
+                    return this.columnHKW;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn GKWColumn {
+                get {
+                    return this.columnGKW;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn HPWColumn {
                 get {
                     return this.columnHPW;
@@ -2922,6 +2942,8 @@ namespace RestWinFormsClient {
                         int GSMW, 
                         int HDMW, 
                         int GDMW, 
+                        int HKW, 
+                        int GKW, 
                         int HPW, 
                         int GPW) {
                 CETRow rowCETRow = ((CETRow)(this.NewRow()));
@@ -2942,6 +2964,8 @@ namespace RestWinFormsClient {
                         GSMW,
                         HDMW,
                         GDMW,
+                        HKW,
+                        GKW,
                         HPW,
                         GPW};
                 rowCETRow.ItemArray = columnValuesArray;
@@ -2989,6 +3013,8 @@ namespace RestWinFormsClient {
                 this.columnGSMW = base.Columns["GSMW"];
                 this.columnHDMW = base.Columns["HDMW"];
                 this.columnGDMW = base.Columns["GDMW"];
+                this.columnHKW = base.Columns["HKW"];
+                this.columnGKW = base.Columns["GKW"];
                 this.columnHPW = base.Columns["HPW"];
                 this.columnGPW = base.Columns["GPW"];
             }
@@ -3028,6 +3054,10 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnHDMW);
                 this.columnGDMW = new global::System.Data.DataColumn("GDMW", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGDMW);
+                this.columnHKW = new global::System.Data.DataColumn("HKW", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHKW);
+                this.columnGKW = new global::System.Data.DataColumn("GKW", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGKW);
                 this.columnHPW = new global::System.Data.DataColumn("HPW", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHPW);
                 this.columnGPW = new global::System.Data.DataColumn("GPW", typeof(int), null, global::System.Data.MappingType.Element);
@@ -8152,6 +8182,38 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int HKW {
+                get {
+                    try {
+                        return ((int)(this[this.tableCET.HKWColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HKW\' in table \'CET\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCET.HKWColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int GKW {
+                get {
+                    try {
+                        return ((int)(this[this.tableCET.GKWColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GKW\' in table \'CET\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCET.GKWColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int HPW {
                 get {
                     try {
@@ -8360,6 +8422,30 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetGDMWNull() {
                 this[this.tableCET.GDMWColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsHKWNull() {
+                return this.IsNull(this.tableCET.HKWColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetHKWNull() {
+                this[this.tableCET.HKWColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsGKWNull() {
+                return this.IsNull(this.tableCET.GKWColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetGKWNull() {
+                this[this.tableCET.GKWColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

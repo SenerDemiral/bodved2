@@ -55,56 +55,56 @@ namespace RestLib {
             "KAkSDgoGUm93RXJyGAIgASgJEg4KBlJvd1VzchgDIAEoBBIOCgZSb3dLZXkY",
             "BCABKAQSCgoCQ0MYBSABKAQSCgoCQ1QYBiABKAQSCgoCUFAYByABKAQSCwoD",
             "SWR4GAggASgFEg0KBUlzUnVuGAkgASgIEg4KBlJua0JhcxgKIAEoBRIOCgZS",
-            "bmtCaXQYCyABKAUSDAoESW5mbxgMIAEoCSKvAgoIQ0VUUHJveHkSDgoGUm93",
+            "bmtCaXQYCyABKAUSDAoESW5mbxgMIAEoCSLJAgoIQ0VUUHJveHkSDgoGUm93",
             "U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoG",
             "Um93S2V5GAQgASgEEgoKAkNDGAUgASgEEgsKA0hDVBgGIAEoBBILCgNHQ1QY",
             "ByABKAQSCwoDVHJoGAggASgDEgsKA0RybRgJIAEoCRILCgNZZXIYCiABKAkS",
             "DAoESW5mbxgLIAEoCRIMCgRIU1NXGAwgASgFEgwKBEdTU1cYDSABKAUSDAoE",
             "SERTVxgOIAEoBRIMCgRHRFNXGA8gASgFEgwKBEhTTVcYECABKAUSDAoER1NN",
-            "VxgRIAEoBRIMCgRIRE1XGBIgASgFEgwKBEdETVcYEyABKAUSCwoDSFBXGBQg",
-            "ASgFEgsKA0dQVxgVIAEoBSKrAQoHQ0ZQcm94eRIOCgZSb3dTdGUYASABKAkS",
-            "DgoGUm93RXJyGAIgASgJEg4KBlJvd1VzchgDIAEoBBIOCgZSb3dLZXkYBCAB",
-            "KAQSCgoCQ0MYBSABKAQSCgoCUFAYBiABKAQSCwoDSWR4GAcgASgFEg0KBUlz",
-            "UnVuGAggASgIEg4KBlJua0JhcxgJIAEoBRIOCgZSbmtCaXQYCiABKAUSDAoE",
-            "SW5mbxgLIAEoCSKlAQoIQ0VGUHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJv",
-            "d0VychgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoGUm93S2V5GAQgASgEEgoK",
-            "AkNDGAUgASgEEgsKA0hQUBgGIAEoBBILCgNHUFAYByABKAQSCwoDVHJoGAgg",
-            "ASgDEgsKA0RybRgJIAEoCRILCgNZZXIYCiABKAkSDAoESW5mbxgLIAEoCSK5",
-            "BAoITUFDUHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJvd0VychgCIAEoCRIO",
-            "CgZSb3dVc3IYAyABKAQSDgoGUm93S2V5GAQgASgEEgoKAkNDGAUgASgEEgsK",
-            "A0NFQhgGIAEoBBIMCgRIUFAxGAcgASgEEgwKBEhQUDIYCCABKAQSDAoER1BQ",
-            "MRgJIAEoBBIMCgRHUFAyGAogASgEEgsKA1NvRBgLIAEoCRILCgNJZHgYDCAB",
-            "KAUSCwoDVHJoGA0gASgDEgsKA0RybRgOIAEoCRILCgNZZXIYDyABKAkSDQoF",
-            "SGFrZW0YECABKAkSDAoESW5mbxgRIAEoCRILCgNIMVcYEiABKAUSCwoDSDJX",
-            "GBMgASgFEgsKA0gzVxgUIAEoBRILCgNINFcYFSABKAUSCwoDSDVXGBYgASgF",
-            "EgsKA0g2VxgXIAEoBRILCgNIN1cYGCABKAUSCwoDRzFXGBkgASgFEgsKA0cy",
-            "VxgaIAEoBRILCgNHM1cYGyABKAUSCwoDRzRXGBwgASgFEgsKA0c1VxgdIAEo",
-            "BRILCgNHNlcYHiABKAUSCwoDRzdXGB8gASgFEgsKA0hTVxggIAEoBRILCgNH",
-            "U1cYISABKAUSCwoDSE1XGCIgASgFEgsKA0dNVxgjIAEoBRILCgNIWFcYJCAB",
-            "KAUSCwoDR1hXGCUgASgFEgwKBEhSbmsYJiABKAUSDgoGSFJua1BYGCcgASgF",
-            "EgwKBEdSbmsYKCABKAUSDgoGR1Jua1BYGCkgASgFMr0HCgVDUlVEcxI9Cg1Q",
-            "ZXJmb3JtQWN0aW9uEhQuUmVzdExpYi5BY3Rpb25Qcm94eRoULlJlc3RMaWIu",
-            "QWN0aW9uUHJveHkiABIxCgZQUEZpbGwSES5SZXN0TGliLlFyeVByb3h5GhAu",
-            "UmVzdExpYi5QUFByb3h5IgAwARIwCghQUFVwZGF0ZRIQLlJlc3RMaWIuUFBQ",
-            "cm94eRoQLlJlc3RMaWIuUFBQcm94eSIAEjEKBkNDRmlsbBIRLlJlc3RMaWIu",
-            "UXJ5UHJveHkaEC5SZXN0TGliLkNDUHJveHkiADABEjAKCENDVXBkYXRlEhAu",
-            "UmVzdExpYi5DQ1Byb3h5GhAuUmVzdExpYi5DQ1Byb3h5IgASMQoGQ1RGaWxs",
-            "EhEuUmVzdExpYi5RcnlQcm94eRoQLlJlc3RMaWIuQ1RQcm94eSIAMAESMAoI",
-            "Q1RVcGRhdGUSEC5SZXN0TGliLkNUUHJveHkaEC5SZXN0TGliLkNUUHJveHki",
-            "ABIzCgdDVFBGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoRLlJlc3RMaWIuQ1RQ",
-            "UHJveHkiADABEjMKCUNUUFVwZGF0ZRIRLlJlc3RMaWIuQ1RQUHJveHkaES5S",
-            "ZXN0TGliLkNUUFByb3h5IgASMwoHQ0VURmlsbBIRLlJlc3RMaWIuUXJ5UHJv",
-            "eHkaES5SZXN0TGliLkNFVFByb3h5IgAwARIzCglDRVRVcGRhdGUSES5SZXN0",
-            "TGliLkNFVFByb3h5GhEuUmVzdExpYi5DRVRQcm94eSIAEjEKBkNGRmlsbBIR",
-            "LlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkNGUHJveHkiADABEjAKCENG",
-            "VXBkYXRlEhAuUmVzdExpYi5DRlByb3h5GhAuUmVzdExpYi5DRlByb3h5IgAS",
-            "MwoHQ0VGRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaES5SZXN0TGliLkNFRlBy",
-            "b3h5IgAwARIzCglDRUZVcGRhdGUSES5SZXN0TGliLkNFRlByb3h5GhEuUmVz",
-            "dExpYi5DRUZQcm94eSIAEjMKB01BQ0ZpbGwSES5SZXN0TGliLlFyeVByb3h5",
-            "GhEuUmVzdExpYi5NQUNQcm94eSIAMAESMwoJTUFDVXBkYXRlEhEuUmVzdExp",
-            "Yi5NQUNQcm94eRoRLlJlc3RMaWIuTUFDUHJveHkiABI5CghQUGxvb2tVcBIR",
-            "LlJlc3RMaWIuUXJ5UHJveHkaFi5SZXN0TGliLlBQbG9va1VwUHJveHkiADAB",
-            "YgZwcm90bzM="));
+            "VxgRIAEoBRIMCgRIRE1XGBIgASgFEgwKBEdETVcYEyABKAUSCwoDSEtXGBQg",
+            "ASgFEgsKA0dLVxgVIAEoBRILCgNIUFcYFiABKAUSCwoDR1BXGBcgASgFIqsB",
+            "CgdDRlByb3h5Eg4KBlJvd1N0ZRgBIAEoCRIOCgZSb3dFcnIYAiABKAkSDgoG",
+            "Um93VXNyGAMgASgEEg4KBlJvd0tleRgEIAEoBBIKCgJDQxgFIAEoBBIKCgJQ",
+            "UBgGIAEoBBILCgNJZHgYByABKAUSDQoFSXNSdW4YCCABKAgSDgoGUm5rQmFz",
+            "GAkgASgFEg4KBlJua0JpdBgKIAEoBRIMCgRJbmZvGAsgASgJIqUBCghDRUZQ",
+            "cm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJyGAIgASgJEg4KBlJvd1Vz",
+            "chgDIAEoBBIOCgZSb3dLZXkYBCABKAQSCgoCQ0MYBSABKAQSCwoDSFBQGAYg",
+            "ASgEEgsKA0dQUBgHIAEoBBILCgNUcmgYCCABKAMSCwoDRHJtGAkgASgJEgsK",
+            "A1llchgKIAEoCRIMCgRJbmZvGAsgASgJIrkECghNQUNQcm94eRIOCgZSb3dT",
+            "dGUYASABKAkSDgoGUm93RXJyGAIgASgJEg4KBlJvd1VzchgDIAEoBBIOCgZS",
+            "b3dLZXkYBCABKAQSCgoCQ0MYBSABKAQSCwoDQ0VCGAYgASgEEgwKBEhQUDEY",
+            "ByABKAQSDAoESFBQMhgIIAEoBBIMCgRHUFAxGAkgASgEEgwKBEdQUDIYCiAB",
+            "KAQSCwoDU29EGAsgASgJEgsKA0lkeBgMIAEoBRILCgNUcmgYDSABKAMSCwoD",
+            "RHJtGA4gASgJEgsKA1llchgPIAEoCRINCgVIYWtlbRgQIAEoCRIMCgRJbmZv",
+            "GBEgASgJEgsKA0gxVxgSIAEoBRILCgNIMlcYEyABKAUSCwoDSDNXGBQgASgF",
+            "EgsKA0g0VxgVIAEoBRILCgNINVcYFiABKAUSCwoDSDZXGBcgASgFEgsKA0g3",
+            "VxgYIAEoBRILCgNHMVcYGSABKAUSCwoDRzJXGBogASgFEgsKA0czVxgbIAEo",
+            "BRILCgNHNFcYHCABKAUSCwoDRzVXGB0gASgFEgsKA0c2VxgeIAEoBRILCgNH",
+            "N1cYHyABKAUSCwoDSFNXGCAgASgFEgsKA0dTVxghIAEoBRILCgNITVcYIiAB",
+            "KAUSCwoDR01XGCMgASgFEgsKA0hYVxgkIAEoBRILCgNHWFcYJSABKAUSDAoE",
+            "SFJuaxgmIAEoBRIOCgZIUm5rUFgYJyABKAUSDAoER1JuaxgoIAEoBRIOCgZH",
+            "Um5rUFgYKSABKAUyvQcKBUNSVURzEj0KDVBlcmZvcm1BY3Rpb24SFC5SZXN0",
+            "TGliLkFjdGlvblByb3h5GhQuUmVzdExpYi5BY3Rpb25Qcm94eSIAEjEKBlBQ",
+            "RmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLlBQUHJveHkiADAB",
+            "EjAKCFBQVXBkYXRlEhAuUmVzdExpYi5QUFByb3h5GhAuUmVzdExpYi5QUFBy",
+            "b3h5IgASMQoGQ0NGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoQLlJlc3RMaWIu",
+            "Q0NQcm94eSIAMAESMAoIQ0NVcGRhdGUSEC5SZXN0TGliLkNDUHJveHkaEC5S",
+            "ZXN0TGliLkNDUHJveHkiABIxCgZDVEZpbGwSES5SZXN0TGliLlFyeVByb3h5",
+            "GhAuUmVzdExpYi5DVFByb3h5IgAwARIwCghDVFVwZGF0ZRIQLlJlc3RMaWIu",
+            "Q1RQcm94eRoQLlJlc3RMaWIuQ1RQcm94eSIAEjMKB0NUUEZpbGwSES5SZXN0",
+            "TGliLlFyeVByb3h5GhEuUmVzdExpYi5DVFBQcm94eSIAMAESMwoJQ1RQVXBk",
+            "YXRlEhEuUmVzdExpYi5DVFBQcm94eRoRLlJlc3RMaWIuQ1RQUHJveHkiABIz",
+            "CgdDRVRGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoRLlJlc3RMaWIuQ0VUUHJv",
+            "eHkiADABEjMKCUNFVFVwZGF0ZRIRLlJlc3RMaWIuQ0VUUHJveHkaES5SZXN0",
+            "TGliLkNFVFByb3h5IgASMQoGQ0ZGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoQ",
+            "LlJlc3RMaWIuQ0ZQcm94eSIAMAESMAoIQ0ZVcGRhdGUSEC5SZXN0TGliLkNG",
+            "UHJveHkaEC5SZXN0TGliLkNGUHJveHkiABIzCgdDRUZGaWxsEhEuUmVzdExp",
+            "Yi5RcnlQcm94eRoRLlJlc3RMaWIuQ0VGUHJveHkiADABEjMKCUNFRlVwZGF0",
+            "ZRIRLlJlc3RMaWIuQ0VGUHJveHkaES5SZXN0TGliLkNFRlByb3h5IgASMwoH",
+            "TUFDRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaES5SZXN0TGliLk1BQ1Byb3h5",
+            "IgAwARIzCglNQUNVcGRhdGUSES5SZXN0TGliLk1BQ1Byb3h5GhEuUmVzdExp",
+            "Yi5NQUNQcm94eSIAEjkKCFBQbG9va1VwEhEuUmVzdExpYi5RcnlQcm94eRoW",
+            "LlJlc3RMaWIuUFBsb29rVXBQcm94eSIAMAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -115,7 +115,7 @@ namespace RestLib {
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CCProxy), global::RestLib.CCProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "Dnm", "Idx", "Ad", "Skl", "Info", "IsRun", "IsRnkd", "TNSM", "TNDM", "TNSS", "TNDS", "TSMK", "TDMK", "TEGP", "TEMP", "TEBP", "TEXP" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTProxy), global::RestLib.CTProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "K1", "K2", "Ad", "Info", "Adres", "IsRun", "SMW", "SML", "DMW", "DML", "KW", "KL", "KF", "EW", "EL", "EB", "EX", "PW" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTPProxy), global::RestLib.CTPProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "CT", "PP", "Idx", "IsRun", "RnkBas", "RnkBit", "Info" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CETProxy), global::RestLib.CETProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HCT", "GCT", "Trh", "Drm", "Yer", "Info", "HSSW", "GSSW", "HDSW", "GDSW", "HSMW", "GSMW", "HDMW", "GDMW", "HPW", "GPW" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CETProxy), global::RestLib.CETProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HCT", "GCT", "Trh", "Drm", "Yer", "Info", "HSSW", "GSSW", "HDSW", "GDSW", "HSMW", "GSMW", "HDMW", "GDMW", "HKW", "GKW", "HPW", "GPW" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CFProxy), global::RestLib.CFProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "PP", "Idx", "IsRun", "RnkBas", "RnkBit", "Info" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CEFProxy), global::RestLib.CEFProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HPP", "GPP", "Trh", "Drm", "Yer", "Info" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.MACProxy), global::RestLib.MACProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "CEB", "HPP1", "HPP2", "GPP1", "GPP2", "SoD", "Idx", "Trh", "Drm", "Yer", "Hakem", "Info", "H1W", "H2W", "H3W", "H4W", "H5W", "H6W", "H7W", "G1W", "G2W", "G3W", "G4W", "G5W", "G6W", "G7W", "HSW", "GSW", "HMW", "GMW", "HXW", "GXW", "HRnk", "HRnkPX", "GRnk", "GRnkPX" }, null, null, null)
@@ -3498,6 +3498,8 @@ namespace RestLib {
       gSMW_ = other.gSMW_;
       hDMW_ = other.hDMW_;
       gDMW_ = other.gDMW_;
+      hKW_ = other.hKW_;
+      gKW_ = other.gKW_;
       hPW_ = other.hPW_;
       gPW_ = other.gPW_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -3717,8 +3719,30 @@ namespace RestLib {
       }
     }
 
+    /// <summary>Field number for the "HKW" field.</summary>
+    public const int HKWFieldNumber = 20;
+    private int hKW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int HKW {
+      get { return hKW_; }
+      set {
+        hKW_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GKW" field.</summary>
+    public const int GKWFieldNumber = 21;
+    private int gKW_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GKW {
+      get { return gKW_; }
+      set {
+        gKW_ = value;
+      }
+    }
+
     /// <summary>Field number for the "HPW" field.</summary>
-    public const int HPWFieldNumber = 20;
+    public const int HPWFieldNumber = 22;
     private int hPW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int HPW {
@@ -3729,7 +3753,7 @@ namespace RestLib {
     }
 
     /// <summary>Field number for the "GPW" field.</summary>
-    public const int GPWFieldNumber = 21;
+    public const int GPWFieldNumber = 23;
     private int gPW_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int GPW {
@@ -3771,6 +3795,8 @@ namespace RestLib {
       if (GSMW != other.GSMW) return false;
       if (HDMW != other.HDMW) return false;
       if (GDMW != other.GDMW) return false;
+      if (HKW != other.HKW) return false;
+      if (GKW != other.GKW) return false;
       if (HPW != other.HPW) return false;
       if (GPW != other.GPW) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -3798,6 +3824,8 @@ namespace RestLib {
       if (GSMW != 0) hash ^= GSMW.GetHashCode();
       if (HDMW != 0) hash ^= HDMW.GetHashCode();
       if (GDMW != 0) hash ^= GDMW.GetHashCode();
+      if (HKW != 0) hash ^= HKW.GetHashCode();
+      if (GKW != 0) hash ^= GKW.GetHashCode();
       if (HPW != 0) hash ^= HPW.GetHashCode();
       if (GPW != 0) hash ^= GPW.GetHashCode();
       if (_unknownFields != null) {
@@ -3889,12 +3917,20 @@ namespace RestLib {
         output.WriteRawTag(152, 1);
         output.WriteInt32(GDMW);
       }
-      if (HPW != 0) {
+      if (HKW != 0) {
         output.WriteRawTag(160, 1);
+        output.WriteInt32(HKW);
+      }
+      if (GKW != 0) {
+        output.WriteRawTag(168, 1);
+        output.WriteInt32(GKW);
+      }
+      if (HPW != 0) {
+        output.WriteRawTag(176, 1);
         output.WriteInt32(HPW);
       }
       if (GPW != 0) {
-        output.WriteRawTag(168, 1);
+        output.WriteRawTag(184, 1);
         output.WriteInt32(GPW);
       }
       if (_unknownFields != null) {
@@ -3961,6 +3997,12 @@ namespace RestLib {
       }
       if (GDMW != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(GDMW);
+      }
+      if (HKW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(HKW);
+      }
+      if (GKW != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(GKW);
       }
       if (HPW != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(HPW);
@@ -4035,6 +4077,12 @@ namespace RestLib {
       }
       if (other.GDMW != 0) {
         GDMW = other.GDMW;
+      }
+      if (other.HKW != 0) {
+        HKW = other.HKW;
+      }
+      if (other.GKW != 0) {
+        GKW = other.GKW;
       }
       if (other.HPW != 0) {
         HPW = other.HPW;
@@ -4130,10 +4178,18 @@ namespace RestLib {
             break;
           }
           case 160: {
-            HPW = input.ReadInt32();
+            HKW = input.ReadInt32();
             break;
           }
           case 168: {
+            GKW = input.ReadInt32();
+            break;
+          }
+          case 176: {
+            HPW = input.ReadInt32();
+            break;
+          }
+          case 184: {
             GPW = input.ReadInt32();
             break;
           }

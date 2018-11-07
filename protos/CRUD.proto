@@ -203,8 +203,10 @@ message CETProxy {
 	int32 HDMW = 18; 
 	int32 GDMW = 19; 
 	
-	int32 HPW  = 20;
-	int32 GPW  = 21;
+	int32 HKW  = 20;
+	int32 GKW  = 21;
+	int32 HPW  = 22;
+	int32 GPW  = 23;
 }
 
 // Competition Ferdi

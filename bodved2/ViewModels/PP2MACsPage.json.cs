@@ -36,36 +36,34 @@ namespace bodved2.ViewModels
                     sng.RkpPPoNo  = (long)mac.GPP1oNo;
                     sng.RkpPPAd   = mac.GPP1Ad;
                     sng.RkpCTAd   = mac.GCTAd;
-                    sng.RkpRnk    = mac.GRnk;
-                    sng.RkpRnkPX  = mac.GRnkPX;
                     sng.RkpCToNo  = (long)mac.GCToNo;
                     sng.RkpCTAd   = mac.GCTAd;
 
                     sng.SncMac = mac.SncMacRvrs;
                     sng.SncSet = mac.SncSetRvrs;
                     sng.SncSet = $"<{mac.SncMacRvrs}> {mac.SncSetRvrs}";
-                    sng.Rnk = mac.HRnk;
-                    sng.RnkPX = mac.HRnkPX;
                     sng.CToNo = (long)mac.HCToNo;
                     sng.CTAd = mac.HCTAd;
                     sng.WL = mac.HWL;
+
+                    //[[item.RkpRnk]]/[[item.RkpRnkPX]] ♦ [[item.Rnk]]/[[item.RnkPX]]
+                    //sng.RnkTxt = $"{mac.GRnk}{-5:+#;-#;*} ♦ {mac.HRnk}{5:+#;#;*}";
+                    sng.RnkTxt = $"{mac.GRnk}{mac.GRnkPX:+#;-#;⠀} ♦ {mac.HRnk}{mac.HRnkPX:+#;-#;⠀}";
                 }
                 else
                 {
                     sng.RkpPPoNo  = (long)mac.HPP1oNo;
                     sng.RkpPPAd   = mac.HPP1Ad;
-                    sng.RkpRnk    = mac.HRnk;
-                    sng.RkpRnkPX  = mac.HRnkPX;
                     sng.RkpCToNo  = (long)mac.HCToNo;
                     sng.RkpCTAd   = mac.HCTAd;
 
                     sng.SncMac = mac.SncMac;
                     sng.SncSet = $"<{mac.SncMac}> {mac.SncSet}";
-                    sng.Rnk = mac.GRnk;
-                    sng.RnkPX = mac.GRnkPX;
                     sng.CToNo = (long)mac.GCToNo;
                     sng.CTAd = mac.GCTAd;
                     sng.WL = mac.GWL;
+
+                    sng.RnkTxt = $"{mac.HRnk}{mac.HRnkPX:+#;-#;⠀} ♦ {mac.GRnk}{mac.GRnkPX:+#;-#;⠀}";
                 }
 
                 Sngls.Add(sng);

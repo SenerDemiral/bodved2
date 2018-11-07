@@ -36,6 +36,7 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.mACBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.mACGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -152,7 +153,6 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mACBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mACBindingNavigator)).BeginInit();
@@ -290,6 +290,16 @@
             this.mACBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 27);
             this.mACBindingNavigatorSaveItem.Text = "Save Data";
             this.mACBindingNavigatorSaveItem.Click += new System.EventHandler(this.macBindingNavigatorSaveItem_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // mACGridControl
             // 
@@ -805,6 +815,7 @@
             this.dataLayoutControl1.DataSource = this.mACBindingSource;
             this.dataLayoutControl1.Location = new System.Drawing.Point(845, 46);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
+            this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1108, 257, 250, 350);
             this.dataLayoutControl1.Root = this.layoutControlGroup2;
             this.dataLayoutControl1.Size = new System.Drawing.Size(208, 408);
             this.dataLayoutControl1.TabIndex = 3;
@@ -1263,7 +1274,7 @@
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup3});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Name = "Root";
             this.layoutControlGroup2.Size = new System.Drawing.Size(208, 408);
             this.layoutControlGroup2.TextVisible = false;
             // 
@@ -1293,129 +1304,157 @@
             // 
             // ItemForH1W
             // 
+            this.ItemForH1W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForH1W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForH1W.Control = this.H1WTextEdit;
             this.ItemForH1W.Location = new System.Drawing.Point(0, 0);
             this.ItemForH1W.Name = "ItemForH1W";
             this.ItemForH1W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForH1W.Text = "H1W";
+            this.ItemForH1W.Text = "1";
             this.ItemForH1W.TextLocation = DevExpress.Utils.Locations.Left;
             this.ItemForH1W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForH2W
             // 
+            this.ItemForH2W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForH2W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForH2W.Control = this.H2WTextEdit;
             this.ItemForH2W.Location = new System.Drawing.Point(0, 24);
             this.ItemForH2W.Name = "ItemForH2W";
             this.ItemForH2W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForH2W.Text = "H2W";
+            this.ItemForH2W.Text = "2";
             this.ItemForH2W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForH3W
             // 
+            this.ItemForH3W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForH3W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForH3W.Control = this.H3WTextEdit;
             this.ItemForH3W.Location = new System.Drawing.Point(0, 48);
             this.ItemForH3W.Name = "ItemForH3W";
             this.ItemForH3W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForH3W.Text = "H3W";
+            this.ItemForH3W.Text = "3";
             this.ItemForH3W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForH4W
             // 
+            this.ItemForH4W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForH4W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForH4W.Control = this.H4WTextEdit;
             this.ItemForH4W.Location = new System.Drawing.Point(0, 72);
             this.ItemForH4W.Name = "ItemForH4W";
             this.ItemForH4W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForH4W.Text = "H4W";
+            this.ItemForH4W.Text = "4";
             this.ItemForH4W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForH5W
             // 
+            this.ItemForH5W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForH5W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForH5W.Control = this.H5WTextEdit;
             this.ItemForH5W.Location = new System.Drawing.Point(0, 96);
             this.ItemForH5W.Name = "ItemForH5W";
             this.ItemForH5W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForH5W.Text = "H5W";
+            this.ItemForH5W.Text = "5";
             this.ItemForH5W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForH6W
             // 
+            this.ItemForH6W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForH6W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForH6W.Control = this.H6WTextEdit;
             this.ItemForH6W.Location = new System.Drawing.Point(0, 120);
             this.ItemForH6W.Name = "ItemForH6W";
             this.ItemForH6W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForH6W.Text = "H6W";
+            this.ItemForH6W.Text = "6";
             this.ItemForH6W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForH7W
             // 
+            this.ItemForH7W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForH7W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForH7W.Control = this.H7WTextEdit;
             this.ItemForH7W.Location = new System.Drawing.Point(0, 144);
             this.ItemForH7W.Name = "ItemForH7W";
             this.ItemForH7W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForH7W.Text = "H7W";
+            this.ItemForH7W.Text = "7";
             this.ItemForH7W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG1W
             // 
+            this.ItemForG1W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForG1W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForG1W.Control = this.G1WTextEdit;
             this.ItemForG1W.Location = new System.Drawing.Point(94, 0);
             this.ItemForG1W.Name = "ItemForG1W";
             this.ItemForG1W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForG1W.Text = "G1W";
+            this.ItemForG1W.Text = "1";
             this.ItemForG1W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG2W
             // 
+            this.ItemForG2W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForG2W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForG2W.Control = this.G2WTextEdit;
             this.ItemForG2W.Location = new System.Drawing.Point(94, 24);
             this.ItemForG2W.Name = "ItemForG2W";
             this.ItemForG2W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForG2W.Text = "G2W";
+            this.ItemForG2W.Text = "2";
             this.ItemForG2W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG3W
             // 
+            this.ItemForG3W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForG3W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForG3W.Control = this.G3WTextEdit;
             this.ItemForG3W.Location = new System.Drawing.Point(94, 48);
             this.ItemForG3W.Name = "ItemForG3W";
             this.ItemForG3W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForG3W.Text = "G3W";
+            this.ItemForG3W.Text = "3";
             this.ItemForG3W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG4W
             // 
+            this.ItemForG4W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForG4W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForG4W.Control = this.G4WTextEdit;
             this.ItemForG4W.Location = new System.Drawing.Point(94, 72);
             this.ItemForG4W.Name = "ItemForG4W";
             this.ItemForG4W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForG4W.Text = "G4W";
+            this.ItemForG4W.Text = "4";
             this.ItemForG4W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG5W
             // 
+            this.ItemForG5W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForG5W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForG5W.Control = this.G5WTextEdit;
             this.ItemForG5W.Location = new System.Drawing.Point(94, 96);
             this.ItemForG5W.Name = "ItemForG5W";
             this.ItemForG5W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForG5W.Text = "G5W";
+            this.ItemForG5W.Text = "5";
             this.ItemForG5W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG6W
             // 
+            this.ItemForG6W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForG6W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForG6W.Control = this.G6WTextEdit;
             this.ItemForG6W.Location = new System.Drawing.Point(94, 120);
             this.ItemForG6W.Name = "ItemForG6W";
             this.ItemForG6W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForG6W.Text = "G6W";
+            this.ItemForG6W.Text = "6";
             this.ItemForG6W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // ItemForG7W
             // 
+            this.ItemForG7W.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForG7W.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemForG7W.Control = this.G7WTextEdit;
             this.ItemForG7W.Location = new System.Drawing.Point(94, 144);
             this.ItemForG7W.Name = "ItemForG7W";
             this.ItemForG7W.Size = new System.Drawing.Size(94, 24);
-            this.ItemForG7W.Text = "G7W";
+            this.ItemForG7W.Text = "7";
             this.ItemForG7W.TextSize = new System.Drawing.Size(25, 13);
             // 
             // layoutControlGroup4
@@ -1593,16 +1632,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(212, 412);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 27);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // macXF
             // 
