@@ -38,16 +38,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <template is="dom-repeat" items="{{model.Sngls}}">
+                            <template is="dom-repeat" items="[[model.Sngls]]">
                                 <tr>
-                                    <td>{{item.Idx}}</td>
-                                    <td>{{item.Drm}}</td>
+                                    <td>[[item.Idx]]</td>
+                                    <td>[[item.Drm]]</td>
                                     <td data-WL$="[[item.HWL]]" class="txtLeft"><a href="/bodved/PP2MACs/[[item.HPP1oNo]]">[[item.HPP1Ad]]</a></td>
-                                    <td>{{item.SncMac}}</td>
+                                    <td>[[item.SncMac]]</td>
                                     <td data-WL$="[[item.GWL]]" class="txtLeft"><a href="/bodved/PP2MACs/[[item.GPP1oNo]]">[[item.GPP1Ad]]</a></td>
-                                    <td class="txtLeft">{{item.SncSet}}</td>
-                                    <td class="txtLeft">[[item.HRnk]]/[[item.HRnkPX]] - [[item.GRnk]]/[[item.GRnkPX]]</td>
-                                    <td class="txtLeft">{{item.Info}}</td>
+                                    <td class="txtLeft">[[item.SncSet]]</td>
+                                    <td class="txtLeft">[[item.RnkTxt]]</td>
+                                    <td class="txtLeft">[[item.Info]]</td>
                                 </tr>
                             </template>
                         </tbody>

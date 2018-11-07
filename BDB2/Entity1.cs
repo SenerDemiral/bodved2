@@ -617,6 +617,9 @@ namespace BDB2
         public string HCTAd => CEB is CET ? (CEB as CET).HCT.Ad : "";
         public string GCTAd => CEB is CET ? (CEB as CET).GCT.Ad : "";
 
+        public string RnkTxt => $"{HRnk}{HRnkPX:+#;-#;⠀} ♦ {GRnk}{GRnkPX:+#;-#;⠀}";
+
+
         public string SncMac
         {
             get
