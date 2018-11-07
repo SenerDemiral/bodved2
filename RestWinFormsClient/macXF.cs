@@ -247,6 +247,149 @@ namespace RestWinFormsClient
             gridView1.AddNewRow();
         }
 
+        private void HWTextEdit_Leave(object sender, EventArgs e)
+        {
+            if (!(sender as TextEdit).IsModified)
+            {
+                (sender as TextEdit).IsModified = false;
+                return;
+
+            }
+
+            int v = 0, c = 0;
+            string tag = (sender as TextEdit).Tag.ToString();
+
+            
+            switch (tag)
+            {
+                case "H1":
+                    v = (int)H1WTextEdit.EditValue;
+                    c = (int)G1WTextEdit.EditValue;
+                    break;
+                case "H2":
+                    v = (int)H2WTextEdit.EditValue;
+                    c = (int)G2WTextEdit.EditValue;
+                    break;
+                case "H3":
+                    v = (int)H3WTextEdit.EditValue;
+                    c = (int)G3WTextEdit.EditValue;
+                    break;
+                case "H4":
+                    v = (int)H4WTextEdit.EditValue;
+                    c = (int)G4WTextEdit.EditValue;
+                    break;
+                case "H5":
+                    v = (int)H5WTextEdit.EditValue;
+                    c = (int)G5WTextEdit.EditValue;
+                    break;
+
+                case "G1":
+                    c = (int)H1WTextEdit.EditValue;
+                    v = (int)G1WTextEdit.EditValue;
+                    break;
+                case "G2":
+                    c = (int)H2WTextEdit.EditValue;
+                    v = (int)G2WTextEdit.EditValue;
+                    break;
+                case "G3":
+                    c = (int)H3WTextEdit.EditValue;
+                    v = (int)G3WTextEdit.EditValue;
+                    break;
+                case "G4":
+                    c = (int)H4WTextEdit.EditValue;
+                    v = (int)G4WTextEdit.EditValue;
+                    break;
+                case "G5":
+                    c = (int)H5WTextEdit.EditValue;
+                    v = (int)G5WTextEdit.EditValue;
+                    break;
+                default:
+                    break;
+            }
+
+
+            if (v == -1)
+            {
+                v = 0;
+                c = 11;
+            }
+            else if (v > 0)
+            {
+                if (v <= 9)
+                    c = 11;
+                else
+                    c = v + 2;
+            }
+            
+            switch (tag)
+            {
+                case "H1":
+                    H1WTextEdit.EditValue = v;
+                    G1WTextEdit.EditValue = c;
+                    H1WTextEdit.IsModified = false;
+                    G1WTextEdit.IsModified = false;
+                    break;
+                case "H2":
+                    H2WTextEdit.EditValue = v;
+                    G2WTextEdit.EditValue = c;
+                    H2WTextEdit.IsModified = false;
+                    G2WTextEdit.IsModified = false;
+                    break;
+                case "H3":
+                    H3WTextEdit.EditValue = v;
+                    G3WTextEdit.EditValue = c;
+                    H3WTextEdit.IsModified = false;
+                    G3WTextEdit.IsModified = false;
+                    break;
+                case "H4":
+                    H4WTextEdit.EditValue = v;
+                    G4WTextEdit.EditValue = c;
+                    H4WTextEdit.IsModified = false;
+                    G4WTextEdit.IsModified = false;
+                    break;
+                case "H5":
+                    H5WTextEdit.EditValue = v;
+                    G5WTextEdit.EditValue = c;
+                    H5WTextEdit.IsModified = false;
+                    G5WTextEdit.IsModified = false;
+                    break;
+
+                case "G1":
+                    H1WTextEdit.EditValue = c;
+                    G1WTextEdit.EditValue = v;
+                    H1WTextEdit.IsModified = false;
+                    G1WTextEdit.IsModified = false;
+                    break;
+                case "G2":
+                    H2WTextEdit.EditValue = c;
+                    G2WTextEdit.EditValue = v;
+                    H2WTextEdit.IsModified = false;
+                    G2WTextEdit.IsModified = false;
+                    break;
+                case "G3":
+                    H3WTextEdit.EditValue = c;
+                    G3WTextEdit.EditValue = v;
+                    H3WTextEdit.IsModified = false;
+                    G3WTextEdit.IsModified = false;
+                    break;
+                case "G4":
+                    H4WTextEdit.EditValue = c;
+                    G4WTextEdit.EditValue = v;
+                    H4WTextEdit.IsModified = false;
+                    G4WTextEdit.IsModified = false;
+                    break;
+                case "G5":
+                    H5WTextEdit.EditValue = c;
+                    G5WTextEdit.EditValue = v;
+                    H5WTextEdit.IsModified = false;
+                    G5WTextEdit.IsModified = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
         private DialogResult UpdateDB()
         {
             if (!Validate())

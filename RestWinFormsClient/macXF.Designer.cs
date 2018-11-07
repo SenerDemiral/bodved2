@@ -627,6 +627,8 @@
             // 
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
+            this.colInfo.Visible = true;
+            this.colInfo.VisibleIndex = 10;
             this.colInfo.Width = 119;
             // 
             // colH1W
@@ -839,7 +841,9 @@
             this.H1WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H1WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H1WTextEdit.StyleController = this.dataLayoutControl1;
-            this.H1WTextEdit.TabIndex = 4;
+            this.H1WTextEdit.TabIndex = 0;
+            this.H1WTextEdit.Tag = "H1";
+            this.H1WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // H2WTextEdit
             // 
@@ -858,7 +862,9 @@
             this.H2WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H2WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H2WTextEdit.StyleController = this.dataLayoutControl1;
-            this.H2WTextEdit.TabIndex = 5;
+            this.H2WTextEdit.TabIndex = 3;
+            this.H2WTextEdit.Tag = "H2";
+            this.H2WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // H3WTextEdit
             // 
@@ -877,7 +883,9 @@
             this.H3WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H3WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H3WTextEdit.StyleController = this.dataLayoutControl1;
-            this.H3WTextEdit.TabIndex = 6;
+            this.H3WTextEdit.TabIndex = 5;
+            this.H3WTextEdit.Tag = "H3";
+            this.H3WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // H4WTextEdit
             // 
@@ -897,6 +905,8 @@
             this.H4WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H4WTextEdit.StyleController = this.dataLayoutControl1;
             this.H4WTextEdit.TabIndex = 7;
+            this.H4WTextEdit.Tag = "H4";
+            this.H4WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // H5WTextEdit
             // 
@@ -915,7 +925,9 @@
             this.H5WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H5WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H5WTextEdit.StyleController = this.dataLayoutControl1;
-            this.H5WTextEdit.TabIndex = 8;
+            this.H5WTextEdit.TabIndex = 9;
+            this.H5WTextEdit.Tag = "H5";
+            this.H5WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // H6WTextEdit
             // 
@@ -934,7 +946,9 @@
             this.H6WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H6WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H6WTextEdit.StyleController = this.dataLayoutControl1;
-            this.H6WTextEdit.TabIndex = 9;
+            this.H6WTextEdit.TabIndex = 11;
+            this.H6WTextEdit.Tag = "H6";
+            this.H6WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // H7WTextEdit
             // 
@@ -953,7 +967,9 @@
             this.H7WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.H7WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.H7WTextEdit.StyleController = this.dataLayoutControl1;
-            this.H7WTextEdit.TabIndex = 10;
+            this.H7WTextEdit.TabIndex = 13;
+            this.H7WTextEdit.Tag = "H7";
+            this.H7WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // G1WTextEdit
             // 
@@ -972,7 +988,9 @@
             this.G1WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G1WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G1WTextEdit.StyleController = this.dataLayoutControl1;
-            this.G1WTextEdit.TabIndex = 11;
+            this.G1WTextEdit.TabIndex = 2;
+            this.G1WTextEdit.Tag = "G1";
+            this.G1WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // G2WTextEdit
             // 
@@ -991,7 +1009,9 @@
             this.G2WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G2WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G2WTextEdit.StyleController = this.dataLayoutControl1;
-            this.G2WTextEdit.TabIndex = 12;
+            this.G2WTextEdit.TabIndex = 4;
+            this.G2WTextEdit.Tag = "G2";
+            this.G2WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // G3WTextEdit
             // 
@@ -1010,7 +1030,9 @@
             this.G3WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G3WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G3WTextEdit.StyleController = this.dataLayoutControl1;
-            this.G3WTextEdit.TabIndex = 13;
+            this.G3WTextEdit.TabIndex = 6;
+            this.G3WTextEdit.Tag = "G3";
+            this.G3WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // G4WTextEdit
             // 
@@ -1029,7 +1051,9 @@
             this.G4WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G4WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G4WTextEdit.StyleController = this.dataLayoutControl1;
-            this.G4WTextEdit.TabIndex = 14;
+            this.G4WTextEdit.TabIndex = 8;
+            this.G4WTextEdit.Tag = "G4";
+            this.G4WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // G5WTextEdit
             // 
@@ -1048,7 +1072,9 @@
             this.G5WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G5WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G5WTextEdit.StyleController = this.dataLayoutControl1;
-            this.G5WTextEdit.TabIndex = 15;
+            this.G5WTextEdit.TabIndex = 10;
+            this.G5WTextEdit.Tag = "G5";
+            this.G5WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // G6WTextEdit
             // 
@@ -1067,7 +1093,9 @@
             this.G6WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G6WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G6WTextEdit.StyleController = this.dataLayoutControl1;
-            this.G6WTextEdit.TabIndex = 16;
+            this.G6WTextEdit.TabIndex = 12;
+            this.G6WTextEdit.Tag = "G6";
+            this.G6WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // G7WTextEdit
             // 
@@ -1086,7 +1114,9 @@
             this.G7WTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.G7WTextEdit.Size = new System.Drawing.Size(62, 20);
             this.G7WTextEdit.StyleController = this.dataLayoutControl1;
-            this.G7WTextEdit.TabIndex = 17;
+            this.G7WTextEdit.TabIndex = 14;
+            this.G7WTextEdit.Tag = "G7";
+            this.G7WTextEdit.Leave += new System.EventHandler(this.HWTextEdit_Leave);
             // 
             // HSWTextEdit
             // 
@@ -1104,7 +1134,7 @@
             this.HSWTextEdit.Properties.ReadOnly = true;
             this.HSWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HSWTextEdit.StyleController = this.dataLayoutControl1;
-            this.HSWTextEdit.TabIndex = 18;
+            this.HSWTextEdit.TabIndex = 15;
             // 
             // GSWTextEdit
             // 
@@ -1122,7 +1152,7 @@
             this.GSWTextEdit.Properties.ReadOnly = true;
             this.GSWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GSWTextEdit.StyleController = this.dataLayoutControl1;
-            this.GSWTextEdit.TabIndex = 19;
+            this.GSWTextEdit.TabIndex = 16;
             // 
             // HMWTextEdit
             // 
@@ -1140,7 +1170,7 @@
             this.HMWTextEdit.Properties.ReadOnly = true;
             this.HMWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HMWTextEdit.StyleController = this.dataLayoutControl1;
-            this.HMWTextEdit.TabIndex = 20;
+            this.HMWTextEdit.TabIndex = 17;
             // 
             // GMWTextEdit
             // 
@@ -1158,7 +1188,7 @@
             this.GMWTextEdit.Properties.ReadOnly = true;
             this.GMWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GMWTextEdit.StyleController = this.dataLayoutControl1;
-            this.GMWTextEdit.TabIndex = 21;
+            this.GMWTextEdit.TabIndex = 18;
             // 
             // HXWTextEdit
             // 
@@ -1176,7 +1206,7 @@
             this.HXWTextEdit.Properties.ReadOnly = true;
             this.HXWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HXWTextEdit.StyleController = this.dataLayoutControl1;
-            this.HXWTextEdit.TabIndex = 22;
+            this.HXWTextEdit.TabIndex = 19;
             // 
             // GXWTextEdit
             // 
@@ -1194,7 +1224,7 @@
             this.GXWTextEdit.Properties.ReadOnly = true;
             this.GXWTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GXWTextEdit.StyleController = this.dataLayoutControl1;
-            this.GXWTextEdit.TabIndex = 23;
+            this.GXWTextEdit.TabIndex = 20;
             // 
             // HRnkTextEdit
             // 
@@ -1212,7 +1242,7 @@
             this.HRnkTextEdit.Properties.ReadOnly = true;
             this.HRnkTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HRnkTextEdit.StyleController = this.dataLayoutControl1;
-            this.HRnkTextEdit.TabIndex = 24;
+            this.HRnkTextEdit.TabIndex = 21;
             // 
             // HRnkPXTextEdit
             // 
@@ -1230,7 +1260,7 @@
             this.HRnkPXTextEdit.Properties.ReadOnly = true;
             this.HRnkPXTextEdit.Size = new System.Drawing.Size(50, 20);
             this.HRnkPXTextEdit.StyleController = this.dataLayoutControl1;
-            this.HRnkPXTextEdit.TabIndex = 25;
+            this.HRnkPXTextEdit.TabIndex = 23;
             // 
             // GRnkTextEdit
             // 
@@ -1248,7 +1278,7 @@
             this.GRnkTextEdit.Properties.ReadOnly = true;
             this.GRnkTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GRnkTextEdit.StyleController = this.dataLayoutControl1;
-            this.GRnkTextEdit.TabIndex = 26;
+            this.GRnkTextEdit.TabIndex = 22;
             // 
             // GRnkPXTextEdit
             // 
@@ -1266,7 +1296,7 @@
             this.GRnkPXTextEdit.Properties.ReadOnly = true;
             this.GRnkPXTextEdit.Size = new System.Drawing.Size(50, 20);
             this.GRnkPXTextEdit.StyleController = this.dataLayoutControl1;
-            this.GRnkPXTextEdit.TabIndex = 27;
+            this.GRnkPXTextEdit.TabIndex = 24;
             // 
             // layoutControlGroup2
             // 
