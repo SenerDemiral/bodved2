@@ -133,7 +133,7 @@ namespace RestWinFormsClient
 
         private void refreshSonAktiviteleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string err = dataSetGnl.PerfomAction("RefeshCurrentActivities", $"{gridView1.GetFocusedRowCellValue(colIdx)}");
+            string err = dataSetGnl.PerfomAction("RefeshCurrentActivities", $"{gridView1.GetFocusedRowCellValue(colDnm)}");
             if (err != string.Empty)
                 MessageBox.Show(err);
 

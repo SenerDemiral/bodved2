@@ -72,6 +72,8 @@
             this.colGSMW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHDMW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGDMW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHKW = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGKW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHPW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGPW = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -81,8 +83,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colHKW = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGKW = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingNavigator)).BeginInit();
@@ -104,7 +104,7 @@
             // 
             this.colHCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.colHCT.AppearanceCell.Options.UseBackColor = true;
-            this.colHCT.Caption = "Home Takım";
+            this.colHCT.Caption = "Home";
             this.colHCT.FieldName = "HCT";
             this.colHCT.Name = "colHCT";
             this.colHCT.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
@@ -117,7 +117,7 @@
             // 
             this.colGCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.colGCT.AppearanceCell.Options.UseBackColor = true;
-            this.colGCT.Caption = "Guest Takım";
+            this.colGCT.Caption = "Guest";
             this.colGCT.FieldName = "GCT";
             this.colGCT.Name = "colGCT";
             this.colGCT.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
@@ -164,7 +164,7 @@
             this.cETBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.cETBindingNavigator.Name = "cETBindingNavigator";
             this.cETBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.cETBindingNavigator.Size = new System.Drawing.Size(1054, 30);
+            this.cETBindingNavigator.Size = new System.Drawing.Size(831, 30);
             this.cETBindingNavigator.TabIndex = 0;
             this.cETBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -271,7 +271,7 @@
             this.cETGridControl.Name = "cETGridControl";
             this.cETGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.DRMrepositoryItemImageComboBox});
-            this.cETGridControl.Size = new System.Drawing.Size(1054, 261);
+            this.cETGridControl.Size = new System.Drawing.Size(831, 261);
             this.cETGridControl.TabIndex = 2;
             this.cETGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -356,7 +356,7 @@
             this.colRowKey.OptionsColumn.AllowFocus = false;
             this.colRowKey.OptionsColumn.FixedWidth = true;
             this.colRowKey.Visible = true;
-            this.colRowKey.VisibleIndex = 1;
+            this.colRowKey.VisibleIndex = 0;
             this.colRowKey.Width = 60;
             // 
             // colCC
@@ -367,7 +367,7 @@
             this.colCC.OptionsColumn.AllowFocus = false;
             this.colCC.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colCC.Visible = true;
-            this.colCC.VisibleIndex = 0;
+            this.colCC.VisibleIndex = 1;
             this.colCC.Width = 55;
             // 
             // colTrh
@@ -404,8 +404,6 @@
             // 
             this.colYer.FieldName = "Yer";
             this.colYer.Name = "colYer";
-            this.colYer.Visible = true;
-            this.colYer.VisibleIndex = 18;
             this.colYer.Width = 70;
             // 
             // colInfo
@@ -413,7 +411,7 @@
             this.colInfo.FieldName = "Info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
-            this.colInfo.VisibleIndex = 19;
+            this.colInfo.VisibleIndex = 10;
             this.colInfo.Width = 122;
             // 
             // colHSSW
@@ -428,8 +426,6 @@
             this.colHSSW.OptionsColumn.AllowFocus = false;
             this.colHSSW.OptionsColumn.FixedWidth = true;
             this.colHSSW.ToolTip = "Home Single Set Win";
-            this.colHSSW.Visible = true;
-            this.colHSSW.VisibleIndex = 14;
             this.colHSSW.Width = 40;
             // 
             // colGSSW
@@ -444,8 +440,6 @@
             this.colGSSW.OptionsColumn.AllowFocus = false;
             this.colGSSW.OptionsColumn.FixedWidth = true;
             this.colGSSW.ToolTip = "Guest Single Set Win";
-            this.colGSSW.Visible = true;
-            this.colGSSW.VisibleIndex = 15;
             this.colGSSW.Width = 40;
             // 
             // colHDSW
@@ -460,8 +454,6 @@
             this.colHDSW.OptionsColumn.AllowFocus = false;
             this.colHDSW.OptionsColumn.FixedWidth = true;
             this.colHDSW.ToolTip = "Home Double Set Win";
-            this.colHDSW.Visible = true;
-            this.colHDSW.VisibleIndex = 16;
             this.colHDSW.Width = 40;
             // 
             // colGDSW
@@ -476,8 +468,6 @@
             this.colGDSW.OptionsColumn.AllowFocus = false;
             this.colGDSW.OptionsColumn.FixedWidth = true;
             this.colGDSW.ToolTip = "Guest Double Set Win";
-            this.colGDSW.Visible = true;
-            this.colGDSW.VisibleIndex = 17;
             this.colGDSW.Width = 40;
             // 
             // colHSMW
@@ -492,8 +482,6 @@
             this.colHSMW.OptionsColumn.AllowFocus = false;
             this.colHSMW.OptionsColumn.FixedWidth = true;
             this.colHSMW.ToolTip = "Home Single Maç Win";
-            this.colHSMW.Visible = true;
-            this.colHSMW.VisibleIndex = 10;
             this.colHSMW.Width = 40;
             // 
             // colGSMW
@@ -508,8 +496,6 @@
             this.colGSMW.OptionsColumn.AllowFocus = false;
             this.colGSMW.OptionsColumn.FixedWidth = true;
             this.colGSMW.ToolTip = "Guest Single Maç Win";
-            this.colGSMW.Visible = true;
-            this.colGSMW.VisibleIndex = 11;
             this.colGSMW.Width = 40;
             // 
             // colHDMW
@@ -524,8 +510,6 @@
             this.colHDMW.OptionsColumn.AllowFocus = false;
             this.colHDMW.OptionsColumn.FixedWidth = true;
             this.colHDMW.ToolTip = "Home Double Maç Win";
-            this.colHDMW.Visible = true;
-            this.colHDMW.VisibleIndex = 12;
             this.colHDMW.Width = 40;
             // 
             // colGDMW
@@ -540,9 +524,43 @@
             this.colGDMW.OptionsColumn.AllowFocus = false;
             this.colGDMW.OptionsColumn.FixedWidth = true;
             this.colGDMW.ToolTip = "Guest Double Maç Win";
-            this.colGDMW.Visible = true;
-            this.colGDMW.VisibleIndex = 13;
             this.colGDMW.Width = 40;
+            // 
+            // colHKW
+            // 
+            this.colHKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHKW.AppearanceCell.Options.UseBackColor = true;
+            this.colHKW.AppearanceCell.Options.UseTextOptions = true;
+            this.colHKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHKW.Caption = "K";
+            this.colHKW.DisplayFormat.FormatString = "#";
+            this.colHKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colHKW.FieldName = "HKW";
+            this.colHKW.Name = "colHKW";
+            this.colHKW.OptionsColumn.AllowEdit = false;
+            this.colHKW.OptionsColumn.AllowFocus = false;
+            this.colHKW.OptionsColumn.FixedWidth = true;
+            this.colHKW.Visible = true;
+            this.colHKW.VisibleIndex = 5;
+            this.colHKW.Width = 20;
+            // 
+            // colGKW
+            // 
+            this.colGKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGKW.AppearanceCell.Options.UseBackColor = true;
+            this.colGKW.AppearanceCell.Options.UseTextOptions = true;
+            this.colGKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGKW.Caption = "K";
+            this.colGKW.DisplayFormat.FormatString = "#";
+            this.colGKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colGKW.FieldName = "GKW";
+            this.colGKW.Name = "colGKW";
+            this.colGKW.OptionsColumn.AllowEdit = false;
+            this.colGKW.OptionsColumn.AllowFocus = false;
+            this.colGKW.OptionsColumn.FixedWidth = true;
+            this.colGKW.Visible = true;
+            this.colGKW.VisibleIndex = 8;
+            this.colGKW.Width = 20;
             // 
             // colHPW
             // 
@@ -595,7 +613,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1078, 343);
+            this.layoutControl1.Size = new System.Drawing.Size(855, 343);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -607,7 +625,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 311);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1054, 20);
+            this.statusStrip1.Size = new System.Drawing.Size(831, 20);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -627,7 +645,7 @@
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1078, 343);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(855, 343);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -635,7 +653,7 @@
             this.layoutControlItem1.Control = this.cETGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1058, 265);
+            this.layoutControlItem1.Size = new System.Drawing.Size(835, 265);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -644,7 +662,7 @@
             this.layoutControlItem2.Control = this.cETBindingNavigator;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1058, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(835, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -653,51 +671,15 @@
             this.layoutControlItem3.Control = this.statusStrip1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 299);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1058, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(835, 24);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // colHKW
-            // 
-            this.colHKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.colHKW.AppearanceCell.Options.UseBackColor = true;
-            this.colHKW.AppearanceCell.Options.UseTextOptions = true;
-            this.colHKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colHKW.Caption = "K";
-            this.colHKW.DisplayFormat.FormatString = "#";
-            this.colHKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colHKW.FieldName = "HKW";
-            this.colHKW.Name = "colHKW";
-            this.colHKW.OptionsColumn.AllowEdit = false;
-            this.colHKW.OptionsColumn.AllowFocus = false;
-            this.colHKW.OptionsColumn.FixedWidth = true;
-            this.colHKW.Visible = true;
-            this.colHKW.VisibleIndex = 5;
-            this.colHKW.Width = 20;
-            // 
-            // colGKW
-            // 
-            this.colGKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.colGKW.AppearanceCell.Options.UseBackColor = true;
-            this.colGKW.AppearanceCell.Options.UseTextOptions = true;
-            this.colGKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colGKW.Caption = "K";
-            this.colGKW.DisplayFormat.FormatString = "#";
-            this.colGKW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colGKW.FieldName = "GKW";
-            this.colGKW.Name = "colGKW";
-            this.colGKW.OptionsColumn.AllowEdit = false;
-            this.colGKW.OptionsColumn.AllowFocus = false;
-            this.colGKW.OptionsColumn.FixedWidth = true;
-            this.colGKW.Visible = true;
-            this.colGKW.VisibleIndex = 8;
-            this.colGKW.Width = 20;
             // 
             // cetXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 343);
+            this.ClientSize = new System.Drawing.Size(855, 343);
             this.Controls.Add(this.layoutControl1);
             this.Name = "cetXF";
             this.Text = "cetXF";

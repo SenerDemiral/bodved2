@@ -319,10 +319,10 @@ namespace RestStarcounterServer
                         else
                         {
                             // CTP ve CET detaylari yoksa sil.
-                            var ctp = Db.SQL("select r from CTP r where r.CT.ObjectNo = ?", request.RowKey).FirstOrDefault();
+                            var ctp = Db.SQL("select r from CTP r where r.CT = ?", row).FirstOrDefault();
                             if(ctp == null)
                             {
-                                var cet = Db.SQL("select r from CET r where r.HCT.ObjectNo = ? or r.GCT.ObjectNo = ?", request.RowKey, request.RowKey).FirstOrDefault();
+                                var cet = Db.SQL("select r from CET r where r.HCT = ? or r.GCT = ?", row, row).FirstOrDefault();
                                 if(cet == null)
                                     row.Delete();
                                 else
@@ -403,15 +403,27 @@ namespace RestStarcounterServer
                 // RowSte: Added, Modified, Deletede, Unchanged
                 Db.Transact(() =>
                 {
-                    if (request.RowSte == "A" || request.RowSte == "M")
+                    if (request.RowSte == "A")
                     {
+                        CTP row = CRUDsHelper.FromProxy<CTPProxy, CTP>(request);
+                        request = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
+
+                        H.PPRD_TryInsert(row.PP, row.CC.Dnm);
+                    }
+                    else if (request.RowSte == "M")
+                    {
+                        // CC ve PP degistirilemez
+                        var oRow = (CTP)Db.FromId(request.RowKey);
+                        if (oRow.PP.GetObjectNo() != request.PP)
+                            request.RowErr = "Oyuncu değiştiremezsiniz. Silip yenisini girin.";
+                        else if (oRow.CC.GetObjectNo() != request.CC)
+                            request.RowErr = "Turnuva değiştiremezsiniz. Silip yenisini girin.";
+
                         if (request.RowErr == string.Empty)
                         {
                             CTP row = CRUDsHelper.FromProxy<CTPProxy, CTP>(request);
-                            //XUT.Append(request.RowUsr, row, request.RowSte);
                             request = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
                         }
-
                     }
                     else if (request.RowSte == "D")
                     {
@@ -422,7 +434,14 @@ namespace RestStarcounterServer
                         }
                         else
                         {
-                            request.RowErr = $"Silemezsiniz";
+                            var mac = Db.SQL<MAC>("select r from MAC r where r.CC = ? and (r.HPP1 = ? or r.HPP2 = ? or r.GPP1 = ? or r.GPP2 = ?)", row.CC, row.PP, row.PP, row.PP, row.PP).FirstOrDefault();
+                            if (mac != null)
+                                request.RowErr = "MAC kaydı var. Silemezsiniz";
+                            else
+                            {
+                                row.Delete();
+                                H.PPRD_TryDelete(row.PP, row.CC.Dnm);
+                            }
                         }
                     }
                 });
@@ -516,7 +535,7 @@ namespace RestStarcounterServer
                         }
                         else
                         {
-                            var mac = Db.SQL<MAC>("select r from MAC r where r.CEB.ObjectNo = ?", request.RowKey).FirstOrDefault();
+                            var mac = Db.SQL<MAC>("select r from MAC r where r.CEB = ?", row).FirstOrDefault();
                             if (mac != null)
                                 request.RowErr = $"Maçları var, Silemezsiniz";
                             else
@@ -808,14 +827,14 @@ namespace RestStarcounterServer
                 }
                 else if (request.Req == "RefeshCurrentActivities")
                 {
-                    int ccIdx = int.Parse(request.Prm1);
-                    H.PP_RefeshCurrentActivities(ccIdx);
+                    int dnm = int.Parse(request.Prm1);
+                    H.PP_RefeshCurrentActivities(dnm);
                     request.Rsp = "";
                 }
                 else if (request.Req == "DonemBasiIslemleri")
                 {
                     int dnm = int.Parse(request.Prm1);
-                    PPRC.DonemBasiIslemleri(dnm);
+                    H.PPRD_DonemBasiIslemleri(dnm);
                     request.Rsp = "";
                 }
 

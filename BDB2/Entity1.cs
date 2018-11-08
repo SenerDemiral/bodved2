@@ -57,8 +57,22 @@ namespace BDB2
         public string Ad { get; set; }
         public string Info { get; set; }
     }
+
+    /*
     [Database]
-    public class PPR
+    public class PPD   // PP Donem SIL
+    {
+        public PP PP { get; set; }
+        public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
+        public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
+        public int RnkPX { get; set; }
+
+        public int RnkSon => RnkBas + RnkPX;
+    }
+    */
+    /*
+    [Database]
+    public class PPR    // SIL
     {
         public PP PP { get; set; }
         public int Idx { get; set; }
@@ -76,24 +90,27 @@ namespace BDB2
         }
         public string CCAd => CC == null ? "-" : $"{CC.Ad}";
         public string PPAd => PP == null ? "-" : $"{PP.Ad}";
-
-
     }
+    */
 
     [Database]
     public class PPRD   // PP RankDonem
     {
         public PP PP { get; set; }
         public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
-        public int RnkOnc { get; set; }     // Onceki Donemin Son Ranki (Baslangic icin 0 veya Baz olabilir.
-        public int RnkBaz { get; set; }     // SIL
+        public int RnkIdx { get; set; }
         public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
-        public int RnkSon { get; set; }     // Bu Donemin Son Ranki. (Bir sonraki donemin RnkOnc'e aktarilir)
+        public int RnkPX { get; set; }
 
+        public int RnkOnc { get; set; }     // SIL
+        public int RnkBaz { get; set; }     // SIL
+        public int RnkSon { get; set; }     // SIL computed yap
+        //public int RnkSon => RnkBas + RnkPX;
     }
 
+    /*
     [Database]
-    public class PPRC   // PP Turnuva RnkPX
+    public class PPRC   // PP Turnuva RnkPX SIL
     {
         public PP PP { get; set; }
         public CC CC { get; set; }          // Turnuva (RnkBaz CC.Dnm'e gore PPRD den alinir)
@@ -161,6 +178,7 @@ namespace BDB2
             // RnkPX lerden RPRD.RnkSon hesapla
         }
     }
+    */
 
     [Database]
     public class PP : BB   // Players

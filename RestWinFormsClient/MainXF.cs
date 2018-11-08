@@ -37,6 +37,10 @@ namespace RestWinFormsClient
                 sw.Restart();
                 //watcher.Start();
 
+                dataSetGnl.PPlu.Rows.Clear();
+                dataSetGnl.CC.Rows.Clear();
+                dataSetGnl.CT.Rows.Clear();
+
                 await dataSetGnl.PPlookUp();
                 await dataSetGnl.CCFill();
                 await dataSetGnl.CTFill("",0);
