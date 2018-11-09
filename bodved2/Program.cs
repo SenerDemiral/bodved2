@@ -68,10 +68,8 @@ namespace bodved2
                 });
             }
 
-
-            //H.PPRD_DonemBasiIslemleri(17);
-            //H.PPRD_DonemBasiIslemleri(18);
-
+            H.PPRD_DonemBasiIslemleri(17);
+            H.PPRD_DonemBasiIslemleri(18);
             H.MAC_RefreshDonemRank(17);
             H.MAC_RefreshDonemRank(18);
 

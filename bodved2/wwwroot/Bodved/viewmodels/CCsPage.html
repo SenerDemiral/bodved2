@@ -19,12 +19,12 @@
                             <tr>
                                 <th>Ad</th>
                                 <th>Fikstür</th>
-                                <th>Katılımcılar</th>
+                                <th><iron-icon icon="vaadin:medal"></iron-icon></th>
                                 <th>Info</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <template is="dom-repeat" items="{{model.CCs}}">
+                            <template is="dom-repeat" items="[[model.CCs]]">
                                 <tr>
                                     <td class="txtLeft" data-CCSkl$="[[item.Skl]]">[[item.Ad]]</td>
                                     <td class="colLnk"><a href="/bodved/CE/[[item.CCoNo]]">►►</a></td>

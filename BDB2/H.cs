@@ -1759,6 +1759,29 @@ namespace BDB2
             //Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
         }
 
+        public static void MAC_RefreshSonucAktif()
+        {
+            MAC_RefreshSonuc(DnmRun);
+        }
+
+        public static void MAC_RefreshSonuc(int Dnm)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            Db.TransactAsync(() => {
+                var macs = Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ?", Dnm);
+                foreach (var mac in macs)
+                {
+                    MAC_RefreshSonuc(mac);
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshSonuc()");
+            //Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
         public static void MAC_RefreshSonuc(MAC mac)
         {
             // Compute Aldigi Setler

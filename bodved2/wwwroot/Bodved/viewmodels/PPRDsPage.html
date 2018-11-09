@@ -5,7 +5,7 @@
         <template is="dom-bind">
             <div class="gridTbl">
                 <div class="gridTbl_header">
-                    <div>Oyuncular</div>
+                    <div>[[model.Hdr]]</div>
                 </div>
                 <div class="gridTbl_main">
                     <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
@@ -13,10 +13,10 @@
                             <col class="colPlyr" />
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
-                            <col class="colRnkSon" />
                             <col class="colRnkIdx" />
                             <col class="colRnkBaz" />
-                            <col class="colRnkBaz" />
+                            <col class="colRnkIdx" />
+                            <col class="colRnkIdx" />
 
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
@@ -27,41 +27,44 @@
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>Oyuncu</th>
+                                <th rowspan="2">Oyuncu</th>
+                                <th colspan="6">Rank</th>
+
+                                <th colspan="2">Maç</th>
+                                <th colspan="2">Set</th>
+                            </tr>
+                            <tr>
                                 <th>#</th>
-                                <th>BaşRnk</th>
-                                <th>SonRnk</th>
-                                <th>DmRnk</th>
-                                <th>SonPX</th>
-                                <th>DrmPX</th>
+                                <th>Baş</th>
+                                <th></th>
+                                <th>Son</th>
+                                <th colspan="2">PX</th>
 
-                                <th>MaçA</th>
-                                <th>MaçV</th>
+                                <th>A</th>
+                                <th>V</th>
 
-                                <th>SetA</th>
-                                <th>SetV</th>
-
+                                <th>A</th>
+                                <th>V</th>
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="[[model.PPRDs]]">
                                 <tr>
                                     <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
-                                    <td style="font-weight:bold">{{item.RnkIdx}}</td>
-                                    <td>{{item.RnkBas}}</td>
-                                    <td>{{item.RnkSon}}</td>
-                                    <td>{{item.DrmRnk}}</td>
-                                    <td>{{item.SonPXTxt}}</td>
-                                    <td>{{item.DrmPX}}</td>
+                                    
+                                    <td style="font-weight:bold">[[item.RnkIdx]]</td>
+                                    <td>[[item.RnkBas]]</td>
+                                    <td>[[item.DrmRnk]]</td>
+                                    <td>[[item.RnkSon]]</td>
+                                    <td>[[item.SonPXTxt]]</td>
+                                    <td>[[item.DrmPX]]</td>
 
-                                    <td title="SMG">{{item.MW}}</td>
-                                    <td title="SMM">{{item.ML}}</td>
-
-                                    <td title="SSG">{{item.SW}}</td>
-                                    <td title="SSM">{{item.SL}}</td>
+                                    <td>[[item.MW]]</td>
+                                    <td>[[item.ML]]</td>
+                                    <td>[[item.SW]]</td>
+                                    <td>[[item.SL]]</td>
 
                                     <td class="txtLeft">[[item.CurRuns]]</td>
-
                                 </tr>
                             </template>
                         </tbody>

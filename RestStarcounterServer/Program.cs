@@ -15,24 +15,6 @@ namespace RestStarcounterServer
 
         static void Main()
         {
-            Server server = new Server
-            {
-                Services = { CRUDs.BindService(new CRUDsImpl()) },
-                //Ports = { new ServerPort("127.0.0.1", Port, ServerCredentials.Insecure) }
-                Ports = { new ServerPort("217.160.13.102", Port, ServerCredentials.Insecure) }
-                //Ports = { new ServerPort("192.168.1.20", Port, ServerCredentials.Insecure) }
-            };
-            server.Start();
-
-            Console.WriteLine("Rest server listening on port " + Port);
-
-            Handle.GET("/RestStarcounterServer", () =>
-            {
-                Task.Run(async () => { await server.ShutdownAsync(); }).Wait();
-                //server.ShutdownAsync();
-                return "ShutDown gRPC Server OK";
-            });
-
             // DROPs
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPRD_Idx").FirstOrDefault() != null)
                 Db.SQL("DROP INDEX PPRD_Idx ON PPRD");
@@ -49,11 +31,14 @@ namespace RestStarcounterServer
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CTP_CTPP").FirstOrDefault() != null)
                 Db.SQL("DROP INDEX CTP_CTPP ON CTP");
 
+
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PP_Ad").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX PP_Ad ON PP (Ad)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PP_RnkIdx").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX PP_RnkIdx ON PP (RnkIdx)");
 
+            if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPRD_PPDnm").FirstOrDefault() == null)
+                Db.SQL("CREATE INDEX PPRD_PPDnm ON PPRD (PP, Dnm)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPRD_PP").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX PPRD_PP ON PPRD (PP)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPRd_Dnm").FirstOrDefault() == null)
@@ -148,6 +133,24 @@ namespace RestStarcounterServer
             //CTP.UpdateRnkBit(); //Yeni doneme bitiminde
 
             //HBR.BackupDB();
+
+            Server server = new Server
+            {
+                Services = { CRUDs.BindService(new CRUDsImpl()) },
+                //Ports = { new ServerPort("127.0.0.1", Port, ServerCredentials.Insecure) }
+                Ports = { new ServerPort("217.160.13.102", Port, ServerCredentials.Insecure) }
+            };
+            server.Start();
+
+            Console.WriteLine("Rest server listening on port " + Port);
+
+            Handle.GET("/RestStarcounterServer", () =>
+            {
+                Task.Run(async () => { await server.ShutdownAsync(); }).Wait();
+                //server.ShutdownAsync();
+                return "ShutDown gRPC Server OK";
+            });
+
 
         }
     }

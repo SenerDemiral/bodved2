@@ -320,6 +320,17 @@ namespace BDB2
         public int RnkBas { get; set; } // Takima girdiginde hesaplanir
         public int RnkBit { get; set; } // Lig bittiginde hesaplanir
 
+        public int RnkBgn
+        {
+            get
+            {
+                var pprd = Db.SQL<PPRD>("select r from BDB2.PPRD r where r.PP = ? and r.Dnm = ?", PP, CC.Dnm).FirstOrDefault();
+                if (pprd != null)
+                    return pprd.RnkBas;
+                return 0;
+            }
+        }
+
         public int SMT => SMW + SML;    // Single Mac Total, Win, Lost, Diskalifiye
         public int SMW { get; set; }
         public int SML { get; set; }
