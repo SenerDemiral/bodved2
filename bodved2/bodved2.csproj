@@ -83,11 +83,17 @@
     <Compile Include="ViewModels\CTsPage.json.cs">
       <DependentUpon>CTsPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DDsPage.json.cs">
+      <DependentUpon>DDsPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PP2MACsPage.json.cs">
       <DependentUpon>PP2MACsPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\PPRDsPage.json.cs">
+      <DependentUpon>PPRDsPage.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PPsPage.json.cs">
       <DependentUpon>PPsPage.json</DependentUpon>
@@ -144,6 +150,12 @@
     <TypedJSON Include="ViewModels\AboutPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <TypedJSON Include="ViewModels\DDsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\PPRDsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\Bodved\viewmodels\MasterPage.html" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +178,8 @@
     <None Include="wwwroot\Bodved\viewmodels\CFsPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\CEF2MACsPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\AboutPage.html" />
+    <None Include="wwwroot\Bodved\viewmodels\DDsPage.html" />
+    <None Include="wwwroot\Bodved\viewmodels\PPRDsPage.html" />
     <Content Include="wwwroot\sys\app-shell\app-shell.html" />
     <Content Include="wwwroot\sys\bodved.css" />
     <Content Include="wwwroot\sys\bodved2.css" />

@@ -1,0 +1,20 @@
+{
+  "Html": "/Bodved/ViewModels/PPRDsPage.html",
+  "PPRDs": [
+    {
+      "PPoNo": 0,
+      "PPAd": "",
+      "RnkBas": 0,
+      "RnkSon": 0,
+      "RnkIdx": 0,
+      "DrmRnk": "",
+      "SonPXTxt": "",
+      "DrmPX": "",
+
+      "MW": 0,
+      "ML": 0,
+      "SW": 0,
+      "SL": 0
+    }
+  ]
+}

@@ -26,9 +26,37 @@
       "DMT": 0,
       "DMW": 0,
       "DML": 0,
-    
-      "Hakem": "",
+
       "Info": ""
+    }
+  ],
+
+  "PPruns": [
+    {
+      "PPoNo": 0,
+      "Ad": "",
+      "RnkBaz": 0,
+      "RnkSon": 0,
+      "RnkIdx": 0,
+      "CurRuns": "",
+
+      "SST": 0,
+      "SSW": 0,
+      "SSL": 0,
+
+      "SMT": 0,
+      "SMW": 0,
+      "SML": 0,
+      "SMX": 0,
+    }
+  ],
+
+
+  "PPolds": [
+    {
+      "PPoNo": 0,
+      "Ad": "",
+      "RnkBaz": 0
     }
   ]
 }

@@ -5,6 +5,7 @@ using bodved2.ViewModels;
 using bodved2.Api;
 using System.Globalization;
 using System.Threading;
+using System.Linq;
 //using bodved2.Helpers;
 
 namespace bodved2
@@ -50,6 +51,29 @@ namespace bodved2
 
             //MAC.RefreshDonemRank22222(18);
 
+            if (Db.SQL<DD>("select r from DD r").FirstOrDefault() == null)
+            {
+                Db.Transact(() =>
+                {
+                    new DD
+                    {
+                        Dnm = 18,
+                        Ad = "2018-19 Turnuvaları"
+                    };
+                    new DD
+                    {
+                        Dnm = 17,
+                        Ad = "2017-18 Turnuvaları"
+                    };
+                });
+            }
+
+
+            //H.PPRD_DonemBasiIslemleri(17);
+            //H.PPRD_DonemBasiIslemleri(18);
+
+            H.MAC_RefreshDonemRank(17);
+            H.MAC_RefreshDonemRank(18);
 
         }
     }

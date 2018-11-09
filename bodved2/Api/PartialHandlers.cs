@@ -26,10 +26,27 @@ namespace bodved2.Api
                 return page;
             });
 
-            Handle.GET("/bodved/partials/CCs", () =>
+            Handle.GET("/bodved/partials/DDs", () =>
+            {
+                var page = new DDsPage();
+                page.DDs.Data = Db.SQL<DD>("SELECT r FROM DD r order by r.Dnm DESC");
+                //page.Data = null;
+                return page;
+            });
+
+            Handle.GET("/bodved/partials/PPRDs/{?}", (int dnm) =>
+            {
+                var page = new PPRDsPage();
+                page.PPRDs.Data = Db.SQL<PPRD>("SELECT r FROM PPRD r where r.Dnm = ? order by r.RnkIdx", dnm);
+                //page.Data = null;
+                return page;
+            });
+
+
+            Handle.GET("/bodved/partials/CCs/{?}", (int dnm) =>
             {
                 var page = new CCsPage();
-                page.CCs.Data = Db.SQL<CC>("SELECT r FROM CC r order by r.Idx");
+                page.CCs.Data = Db.SQL<CC>("SELECT r FROM CC r where r.Dnm = ? order by r.Idx", dnm);
                 //page.Data = null;
                 return page;
             });

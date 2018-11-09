@@ -58,6 +58,13 @@ namespace BDB2
         public string Info { get; set; }
     }
 
+    [Database]
+    public class DD : BB   // Donem
+    {
+        public int Dnm { get; set; }
+    }
+
+
     /*
     [Database]
     public class PPD   // PP Donem SIL
@@ -100,12 +107,26 @@ namespace BDB2
         public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
         public int RnkIdx { get; set; }
         public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
-        public int RnkPX { get; set; }
+        public int TopPX { get; set; }
+        public int RnkSon { get; set; }
+        public int SonPX { get; set; }      // Son Aldigi PX
 
+        public string DrmPX => SonPX == 0 ? "x" : SonPX > 0 ? "▲" : "▼";    // x: SonPX = 0, yani oynamamis henuz
+        public string DrmRnk => RnkSon == RnkBas ? "=" : RnkSon > RnkBas ? "▲" : "▼";
+
+        public string SonPXTxt => $"{SonPX:+#;-#;#}";
+
+        public int MW { get; set; }
+        public int ML { get; set; }
+        public int SW { get; set; }
+        public int SL { get; set; }
+
+        public int RnkPX { get; set; }      // SIL
         public int RnkOnc { get; set; }     // SIL
         public int RnkBaz { get; set; }     // SIL
-        public int RnkSon { get; set; }     // SIL computed yap
-        //public int RnkSon => RnkBas + RnkPX;
+
+        public ulong PPoNo => PP.GetObjectNo();
+        public string PPAd => PP.Ad;
     }
 
     /*
@@ -827,4 +848,15 @@ namespace BDB2
         public int PL;
     }
 
+    public class DictPPRD
+    {
+        public int RnkSon;
+        public int TopPX;
+        public int SonPX;
+
+        public int MW;
+        public int ML;
+        public int SW;
+        public int SL;
+    }
 }

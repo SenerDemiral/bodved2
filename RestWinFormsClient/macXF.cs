@@ -115,6 +115,7 @@ namespace RestWinFormsClient
 
             DataSetGnl.hPPluRow hRow;
             DataSetGnl.gPPluRow gRow;
+            DataSetGnl.PPluRow sRow;
 
             DataSetGnl.PPluRow[] pps = (DataSetGnl.PPluRow[])Program.MF.dataSetGnl.PPlu.Select($"CTs LIKE '*<{CETRow.HCT}>*'");
             foreach (var pp in pps)
@@ -141,9 +142,28 @@ namespace RestWinFormsClient
                 dataSetGnl.gPPlu.Rows.Add(gRow);
             }
 
-            DataSetGnl.PPluRow sRow;
+            // Diskalifiye 584 ekle
+            sRow = (DataSetGnl.PPluRow)Program.MF.dataSetGnl.PPlu.Rows.Find(584);
+
+            hRow = dataSetGnl.hPPlu.NewhPPluRow();
+            hRow.RowKey = sRow.RowKey;
+            hRow.Ad = sRow.Ad;
+            hRow.Sex = sRow.Sex;
+            hRow.CTs = sRow.CTs;
+            hRow.IsRun = true;
+            dataSetGnl.hPPlu.Rows.Add(hRow);
+
+            gRow = dataSetGnl.gPPlu.NewgPPluRow();
+            gRow.RowKey = sRow.RowKey;
+            gRow.Ad = sRow.Ad;
+            gRow.Sex = sRow.Sex;
+            gRow.CTs = sRow.CTs;
+            gRow.IsRun = true;
+            dataSetGnl.gPPlu.Rows.Add(gRow);
+
             foreach (DataSetGnl.MACRow src in dataSetGnl.MAC.Rows)
             {
+
                 if (dataSetGnl.hPPlu.Rows.Find(src.HPP1) == null)
                 {
                     sRow = (DataSetGnl.PPluRow)Program.MF.dataSetGnl.PPlu.Rows.Find(src.HPP1);
@@ -410,6 +430,7 @@ namespace RestWinFormsClient
                 dr = XtraMessageBox.Show("Değişiklik var. Kaydetmek istiyormusunuz?", "Update", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Yes)
                 {
+
                     string err = dataSetGnl.MACUpdate();
                     if (err != string.Empty)
                     {
@@ -419,6 +440,11 @@ namespace RestWinFormsClient
                 }
             }
             return dr;
+        }
+
+        private void Diskalifiye()
+        {
+            //fordataSetGnl.MAC.Rows.Count
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

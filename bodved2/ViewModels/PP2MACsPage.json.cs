@@ -20,7 +20,7 @@ namespace bodved2.ViewModels
             var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", PPt, PPt);
             foreach(var mac in macs)
             {
-                //var sng = Sngls.Add();
+                //var sng2 = Sngls.Add();
 
                 SnglElement sng = new SnglElement()
                 {
@@ -70,7 +70,7 @@ namespace bodved2.ViewModels
             }
 
         }
-
+        
         [PP2MACsPage_json.Sngls]
         public partial class SnglElement : Json
         {

@@ -31,10 +31,10 @@ namespace bodved2.Api
 
             Handle.GET("/", () =>
             {
-                MasterPage master = GetMasterPageFromSession();
-                return master;
+                //MasterPage master = GetMasterPageFromSession();
+                //return master;
 
-                //return Self.GET("/bodved/organizations");
+                return Self.GET("/bodved/DDs");
             });
 
             Handle.GET("/bodved/organizations", () =>
@@ -72,12 +72,33 @@ namespace bodved2.Api
                 return master;
             });
 
-            Handle.GET("/bodved/CCs", () =>
+            Handle.GET("/bodved/DDs", () =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is DDsPage))
+                {
+                    master.CurrentPage = GetLauncherPage("/bodved/partials/DDs");
+                }
+                return master;
+            });
+
+            Handle.GET("/bodved/PPRDs/{?}", (int dnm) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is PPRDsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/PPRDs/{dnm}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
+            Handle.GET("/bodved/CCs/{?}", (int dnm) =>
             {
                 MasterPage master = GetMasterPageFromSession();
                 if (!(master.CurrentPage is CCsPage))
                 {
-                    master.CurrentPage = GetLauncherPage("/bodved/partials/CCs");
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CCs/{dnm}");
                     //(master.CurrentPage as CCsPage).Init();
                 }
                 return master;

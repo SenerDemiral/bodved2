@@ -1,0 +1,97 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>Oyuncular</div>
+                </div>
+                <div class="gridTbl_main">
+                    <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
+                        <colgroup>
+                            <col class="colPlyr" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkSon" />
+                            <col class="colRnkIdx" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+
+                            <col style="width:20rem" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Oyuncu</th>
+                                <th>#</th>
+                                <th>BaşRnk</th>
+                                <th>SonRnk</th>
+                                <th>DmRnk</th>
+                                <th>SonPX</th>
+                                <th>DrmPX</th>
+
+                                <th>MaçA</th>
+                                <th>MaçV</th>
+
+                                <th>SetA</th>
+                                <th>SetV</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="[[model.PPRDs]]">
+                                <tr>
+                                    <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
+                                    <td style="font-weight:bold">{{item.RnkIdx}}</td>
+                                    <td>{{item.RnkBas}}</td>
+                                    <td>{{item.RnkSon}}</td>
+                                    <td>{{item.DrmRnk}}</td>
+                                    <td>{{item.SonPXTxt}}</td>
+                                    <td>{{item.DrmPX}}</td>
+
+                                    <td title="SMG">{{item.MW}}</td>
+                                    <td title="SMM">{{item.ML}}</td>
+
+                                    <td title="SSG">{{item.SW}}</td>
+                                    <td title="SSM">{{item.SL}}</td>
+
+                                    <td class="txtLeft">[[item.CurRuns]]</td>
+
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+
+    <script>
+        (function () {
+            var curRowIndex = -1;
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.MyFnc = function (e) {
+                var tr = e.target.closest("tr");
+                if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
+                    return;
+
+                if (tr.rowIndex > 0) {     // Mark current Row
+                    if (curRowIndex !== -1) {
+                        ppTbl.rows[curRowIndex].classList.remove("curRow");
+                    }
+
+                    curRowIndex = tr.rowIndex;
+                    tr.classList.add("curRow");
+                }
+            };
+        })();
+    </script>
+
+</template>

@@ -15,6 +15,8 @@ namespace BDB2
 {
     public static class H
     {
+        public static int DnmRun = 18;
+
         public static CultureInfo cultureTR = CultureInfo.CreateSpecificCulture("tr-TR");  // Tarihde gun gostermek icin
 
         public static void Write2Log(string Msg)
@@ -566,28 +568,49 @@ namespace BDB2
             });
         }
 
-        public static PPRD PPRD_TryInsert(PP pp, int DnmRun)
+        public static PPRD PPRD_TryInsert(PP pp, int Dnm)
         {
             // Geldigi yerde transaction baslamis olmali.
             int prvDnm = DnmRun - 1;
             int prvRnkSon = 0;
 
-            var pprd = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, DnmRun).FirstOrDefault();
+            var pprd = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, Dnm).FirstOrDefault();
             if (pprd == null)
             {
-                var prvPPRD = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, prvDnm).FirstOrDefault();
-                if (prvPPRD == null)
-                    prvRnkSon = pp.RnkBaz;
-                else
-                    prvRnkSon = prvPPRD.RnkSon;
-
-                pprd = new PPRD
+                if (Dnm == 17)  // Baslangic
                 {
-                    PP = pp,
-                    Dnm = DnmRun,
-                    RnkBas = prvRnkSon,
-                    RnkPX = 0
-                };
+                    pprd = new PPRD
+                    {
+                        PP = pp,
+                        Dnm = Dnm,
+                        RnkBas = pp.RnkBaz,
+                        RnkSon = pp.RnkBaz,
+                    };
+                }
+                else if (Dnm == 18)  // Baslangic
+                {
+                    pprd = new PPRD
+                    {
+                        PP = pp,
+                        Dnm = Dnm,
+                        RnkBas = pp.RnkBaz,
+                    };
+                }
+                else
+                {
+                    var prvPPRD = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, prvDnm).FirstOrDefault();
+                    if (prvPPRD == null)
+                        prvRnkSon = pp.RnkBaz;
+                    else
+                        prvRnkSon = prvPPRD.RnkSon;
+
+                    pprd = new PPRD
+                    {
+                        PP = pp,
+                        Dnm = DnmRun,
+                        RnkBas = prvRnkSon,
+                    };
+                }
             }
 
             return pprd;
@@ -615,7 +638,7 @@ namespace BDB2
             }
         }
 
-        public static void PPRD_DonemBasiIslemleri(int DnmRun)
+        public static void PPRD_DonemBasiIslemleri(int Dnm)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -624,16 +647,28 @@ namespace BDB2
             // Donemin Takim Oyunculari icin
             Db.TransactAsync(() =>
             {
-                var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ?", DnmRun);
+                // Mevcutlari sil
+                Db.SQL("delete from PPRD where Dnm = ?", Dnm);
+
+                var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ?", Dnm);
                 foreach (var ctp in ctps)
                 {
-                    PPRD_TryInsert(ctp.PP, DnmRun);
+                    nor++;
+                    PPRD_TryInsert(ctp.PP, Dnm);
                 }
                 // Ferdi oynayanlar icin yapilmasina gerek yok. Takimda oynuyor ise Ferdiye katilabilir!!!
+
+                // Sort
+                int idx = 1;
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkBas DESC", Dnm);
+                foreach(var pprd in pprds)
+                {
+                    pprd.RnkIdx = idx++;
+                }
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec DonemBaslangicIslemleri({DnmRun}) NOR: {nor:n0}");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec DonemBaslangicIslemleri({Dnm}) NOR: {nor:n0}");
         }
 
 
@@ -901,7 +936,7 @@ namespace BDB2
 
         }
 
-
+        
 
         // Diskalifiye edildikten sonraki Eventlerini update
         // Takimin Yaptigi Eventleri toplayarak Sonuclari update
@@ -2327,7 +2362,135 @@ namespace BDB2
             int hPX = 0;
             PPRD npprd = null;
 
+            Dictionary<ulong, DictPPRD> rdDic = new Dictionary<ulong, DictPPRD>();    // Players Donem Ranks
+
+            Db.TransactAsync(() =>
+            {
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
+                foreach (var pprd in pprds)
+                {
+                    rdDic[pprd.PP.GetObjectNo()] = new DictPPRD
+                    {
+                        RnkSon = pprd.RnkBas,
+                    };
+                }
+
+                // Sadece Single Maclar Rank uretir.
+                // O donemin Maclari taranacak
+                foreach (var mac in Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? order by r.Trh", DnmRun))
+                {
+                    if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
+                        continue;
+
+                    nor++;
+
+                    hPPoNo = mac.HPP1.GetObjectNo();
+                    gPPoNo = mac.GPP1.GetObjectNo();
+
+                    // Oyuncu kaydi PPRD de yoksa yarat ve kullan
+                    if (!rdDic.ContainsKey(hPPoNo))
+                    {
+                        npprd = PPRD_TryInsert(mac.HPP1, DnmRun);
+                        rdDic[hPPoNo] = new DictPPRD
+                        {
+                            RnkSon = npprd.RnkBas,
+                        };
+                    }
+                    if (!rdDic.ContainsKey(gPPoNo))
+                    {
+                        npprd = PPRD_TryInsert(mac.GPP1, DnmRun);
+                        rdDic[gPPoNo] = new DictPPRD
+                        {
+                            RnkSon = npprd.RnkBas,
+                        };
+                    }
+
+                    hpRnk = rdDic[hPPoNo].RnkSon;
+                    gpRnk = rdDic[gPPoNo].RnkSon;
+
+                    hPX = 0;
+                    if (mac.CC.IsRnkd)  // Rank hesaplanacak ise (Ferdiler en sonunda hesaplanacak, isRnkd = false olacak)
+                        if (mac.Drm == "OK" && hpRnk != 0 && gpRnk != 0)
+                            hPX = compHomeRnkPX(mac.HMW == 0 ? false : true, hpRnk, gpRnk);
+
+                    // Update MAC
+                    mac.HRnkPX = hPX;
+                    mac.HRnk = hpRnk;
+
+                    mac.GRnkPX = -hPX;
+                    mac.GRnk = gpRnk;
+
+                                     
+                    
+                    // Update PP dictionary
+                    rdDic[hPPoNo].RnkSon = hpRnk + hPX;
+                    rdDic[gPPoNo].RnkSon = gpRnk - hPX;
+
+                    // Update PX dictionary
+                    rdDic[hPPoNo].TopPX += hPX;
+                    rdDic[gPPoNo].TopPX += -hPX;
+
+                    // Update SonPX dictionary
+                    rdDic[hPPoNo].SonPX = hPX;
+                    rdDic[gPPoNo].SonPX = -hPX;
+
+                    // Update MW/ML dictionary
+                    rdDic[hPPoNo].MW += mac.HMW;
+                    rdDic[hPPoNo].ML += mac.GMW;
+                    rdDic[gPPoNo].MW += mac.GMW;
+                    rdDic[gPPoNo].ML += mac.HMW;
+                    // Update SW/SL dictionary
+                    rdDic[hPPoNo].SW += mac.HSW;
+                    rdDic[hPPoNo].SL += mac.GSW;
+                    rdDic[gPPoNo].SW += mac.GSW;
+                    rdDic[gPPoNo].SL += mac.HSW;
+                }
+
+                // Update PPRD.RnkPX
+                ulong ppNO = 0;
+                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
+                foreach (var pprd in pprds)
+                {
+                    ppNO = pprd.PP.GetObjectNo();
+                    pprd.TopPX = rdDic[ppNO].TopPX;
+                    pprd.RnkSon = pprd.RnkBas + rdDic[ppNO].TopPX;
+                    pprd.SonPX = rdDic[ppNO].SonPX;
+
+                    pprd.MW = rdDic[ppNO].MW;
+                    pprd.ML = rdDic[ppNO].ML;
+                    pprd.SW = rdDic[ppNO].SW;
+                    pprd.SL = rdDic[ppNO].SL;
+                }
+
+                // PPRD.Idx
+                int idx = 1;
+                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon DESC", DnmRun);
+                foreach (var pprd in pprds)
+                {
+                    pprd.RnkIdx = idx++;
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshDonemRank({DnmRun}) NOR: {nor:n0}");
+            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void MAC_RefreshDonemRankOld(int DnmRun)
+        {/*
+            // MAC_RefreshDonemFerdiRank den once yapilmali
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            ulong hPPoNo, gPPoNo;
+            int hpRnk, gpRnk;
+            int hPX = 0;
+            PPRD npprd = null;
+
             Dictionary<ulong, int> ppDic = new Dictionary<ulong, int>();    // Players BasRnk
+            Dictionary<ulong, int> pxDic = new Dictionary<ulong, int>();    // Players PX
+            Dictionary<ulong, int> snDic = new Dictionary<ulong, int>();    // Son aldigi PX
 
             Db.TransactAsync(() =>
             {
@@ -2336,6 +2499,8 @@ namespace BDB2
                 {
                     ppDic[pprd.PP.GetObjectNo()] = pprd.RnkBas;
                     pprd.RnkPX = 0;
+                    pxDic[pprd.PP.GetObjectNo()] = 0;
+                    snDic[pprd.PP.GetObjectNo()] = 0;
                 }
 
                 // Sadece Single Maclar Rank uretir.
@@ -2377,21 +2542,33 @@ namespace BDB2
                     mac.GRnkPX = -hPX;
                     mac.GRnk = gpRnk;
 
-                    // Update dictionary
+                    // Update PP dictionary
                     ppDic[hPPoNo] = hpRnk + hPX;
                     ppDic[gPPoNo] = gpRnk - hPX;
+
+                    // Update PX dictionary
+                    pxDic[hPPoNo] += hPX;
+                    pxDic[gPPoNo] += -hPX;
+
+                    // Update SonPX dictionary
+                    snDic[hPPoNo] = hPX;
+                    snDic[gPPoNo] = -hPX;
                 }
 
                 // Update PPRD.RnkPX
+                ulong ppNO = 0;
                 pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
                 foreach (var pprd in pprds)
                 {
-                    pprd.RnkPX = ppDic[pprd.PP.GetObjectNo()];
+                    ppNO = pprd.PP.GetObjectNo();
+                    pprd.RnkPX = pxDic[ppNO];
+                    pprd.RnkSon = pprd.RnkBas + pxDic[ppNO];
+                    pprd.SonPX = snDic[ppNO];
                 }
 
                 // PPRD.Idx
                 int idx = 1;
-                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon", DnmRun);
+                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon DESC", DnmRun);
                 foreach (var pprd in pprds)
                 {
                     pprd.RnkIdx = idx++;
@@ -2401,6 +2578,7 @@ namespace BDB2
             watch.Stop();
             Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshGlobalRank() NOR: {nor:n0}");
             //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            */
         }
 
         public static void MAC_RefreshDonemFerdiRank(int DnmRun)
@@ -2449,7 +2627,7 @@ namespace BDB2
                 pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
                 foreach (var pprd in pprds)
                 {
-                    pprd.RnkPX += dctPX[pprd.PP.PPoNo] / 2;
+                    pprd.TopPX += dctPX[pprd.PP.PPoNo] / 2;
                 }
             });
         

@@ -1,0 +1,38 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>BODVED Aktiviteleri</div>
+                </div>
+                <div class="gridTbl_main">
+                    <table class="fixTbl">
+                        <colgroup>
+                            <col style="width:20rem" />
+                            <col style="width:5rem" />
+                            <col style="width:20rem" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Dönem</th>
+                                <th>Oyuncular</th>
+                                <th>Info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="[[model.DDs]]">
+                                <tr>
+                                    <td class="txtLeft"><a href="/bodved/CCs/[[item.Dnm]]">[[item.Ad]]</a></td>
+                                    <td><a href="/bodved/PPRDs/[[item.Dnm]]">►►</a></td>
+                                    <td class="txtLeft">[[item.Info]]</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+</template>

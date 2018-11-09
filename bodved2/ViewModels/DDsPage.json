@@ -1,0 +1,13 @@
+{
+  "Html": "/Bodved/viewmodels/DDsPage.html",
+  "ShowMenu": true,
+  "DDs": [
+    {
+      "Dnm": 0,
+      "Ad": "",
+      "IsRun": true,
+
+      "Info": ""
+    }
+  ]
+}
