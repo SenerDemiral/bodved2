@@ -1,0 +1,25 @@
+{
+  "Html": "/Bodved/ViewModels/CT2CETsPage.html",
+  "Hdr": "",
+  "CToNo": 0,
+  "CTAd": "",
+
+  "CETs": [
+    {
+      "CEToNo": 0,
+      "Tarih": "",
+
+      "RkpCToNo": 0,
+      "RkpCTAd": "",
+      "RkpPW": 0,
+      "RkpKW": 0,
+      "RkpSMW": 0,
+      "RkpDMW": 0,
+
+      "PW": 0,
+      "KW": 0,
+      "SMW": 0,
+      "DMW": 0
+    }
+  ]
+}

@@ -77,6 +77,9 @@
     <Compile Include="ViewModels\CFsPage.json.cs">
       <DependentUpon>CFsPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CT2CETsPage.json.cs">
+      <DependentUpon>CT2CETsPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CTPsPage.json.cs">
       <DependentUpon>CTPsPage.json</DependentUpon>
     </Compile>
@@ -156,6 +159,9 @@
     <TypedJSON Include="ViewModels\PPRDsPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <TypedJSON Include="ViewModels\CT2CETsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\Bodved\viewmodels\MasterPage.html" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +186,7 @@
     <None Include="wwwroot\Bodved\viewmodels\AboutPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\DDsPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\PPRDsPage.html" />
+    <None Include="wwwroot\Bodved\viewmodels\CT2CETsPage.html" />
     <Content Include="wwwroot\sys\app-shell\app-shell.html" />
     <Content Include="wwwroot\sys\bodved.css" />
     <Content Include="wwwroot\sys\bodved2.css" />

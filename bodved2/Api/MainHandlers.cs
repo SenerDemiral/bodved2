@@ -134,6 +134,17 @@ namespace bodved2.Api
                 return master;
             });
 
+            Handle.GET("/bodved/CT2CETs/{?}", (ulong ct) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is CT2CETsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CT2CETs/{ct}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
             Handle.GET("/bodved/CTPs/{?}", (ulong ct) =>
             {
                 MasterPage master = GetMasterPageFromSession();

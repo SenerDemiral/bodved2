@@ -141,6 +141,15 @@ namespace bodved2.Api
 
             });
 
+            Handle.GET("/bodved/partials/CT2CETs/{?}", (long ct) =>
+            {
+                var page = new CT2CETsPage();
+                page.CToNo = ct;
+                page.Data = null;
+                return page;
+
+            });
+
         }
     }
 }

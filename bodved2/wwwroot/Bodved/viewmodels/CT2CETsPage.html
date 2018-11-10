@@ -1,0 +1,92 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>[[model.Hdr]]</div>
+                </div>
+                <div class="gridTbl_main">
+                    <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
+                        <colgroup>
+                            <col class="colTeam" />
+                            <col class="colTarih" />
+
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Tarih</th>
+
+                                <th colspan="5">Rakip</th>
+                                <th colspan="4">[[model.CTAd]]</th>
+                            </tr>
+                            <tr>
+                                <th>Takım</th>
+                                <th>Puan</th>
+                                <th>Skor</th>
+                                <th>SMW</th>
+                                <th>DMW</th>
+
+                                <th>Puan</th>
+                                <th>Skor</th>
+                                <th>SMW</th>
+                                <th>DMW</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="[[model.CETs]]">
+                                <tr>
+                                    <td class="colTeam"><a href="/bodved/CT2CETs/[[item.RkpCToNo]]">[[item.RkpCTAd]]</a></td>
+
+                                    <td>[[item.RkpPW]]</td>
+                                    <td>[[item.RkpKW]]</td>
+                                    <td>[[item.RnkSMW]]</td>
+                                    <td>[[item.RkpDMW]]</td>
+
+                                    <td>[[item.PW]]</td>
+                                    <td>[[item.KW]]</td>
+                                    <td>[[item.SMW]]</td>
+                                    <td>[[item.DMW]]</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+
+    <script>
+        (function () {
+            var curRowIndex = -1;
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.MyFnc = function (e) {
+                var tr = e.target.closest("tr");
+                if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
+                    return;
+
+                if (tr.rowIndex > 0) {     // Mark current Row
+                    if (curRowIndex !== -1) {
+                        ppTbl.rows[curRowIndex].classList.remove("curRow");
+                    }
+
+                    curRowIndex = tr.rowIndex;
+                    tr.classList.add("curRow");
+                }
+            };
+        })();
+    </script>
+
+</template>
