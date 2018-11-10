@@ -11,15 +11,16 @@
 
       "RkpCToNo": 0,
       "RkpCTAd": "",
-      "RkpPW": 0,
-      "RkpKW": 0,
-      "RkpSMW": 0,
-      "RkpDMW": 0,
+      "RkpPW": "",
+      "RkpKW": "",
+      "RkpSMW": "",
+      "RkpDMW": "",
 
-      "PW": 0,
-      "KW": 0,
-      "SMW": 0,
-      "DMW": 0
+      "PW": "",
+      "KW": "",
+      "SMW": "",
+      "DMW": ""
+
     }
   ]
 }

@@ -10,7 +10,7 @@
                 <div class="gridTbl_main">
                     <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
                         <colgroup>
-                            <col class="colPlyr" />
+                            <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
                             <col class="colRnkIdx" />
@@ -22,19 +22,17 @@
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
-
-                            <col style="width:20rem" />
                         </colgroup>
                         <thead>
                             <tr>
-                                <th rowspan="2">Oyuncu</th>
+                                <th rowspan="2">Dönem</th>
                                 <th colspan="6">Rank</th>
 
                                 <th colspan="2">Maç</th>
                                 <th colspan="2">Set</th>
                             </tr>
                             <tr>
-                                <th>#</th>
+                                <th>Rank</th>
                                 <th>Baş</th>
                                 <th></th>
                                 <th>Son</th>
@@ -50,9 +48,9 @@
                         <tbody>
                             <template is="dom-repeat" items="[[model.PPRDs]]">
                                 <tr>
-                                    <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
-                                    
-                                    <td style="font-weight:bold"><a href="/bodved/PP2PPRDs/[[item.PPoNo]]">[[item.RnkIdx]]</a></td>
+                                    <td>[[item.Dnm]]</td>
+
+                                    <td style="font-weight:bold">[[item.RnkIdx]]</td>
                                     <td>[[item.RnkBas]]</td>
                                     <td>[[item.DrmRnk]]</td>
                                     <td>[[item.RnkSon]]</td>
@@ -63,8 +61,6 @@
                                     <td>[[item.ML]]</td>
                                     <td>[[item.SW]]</td>
                                     <td>[[item.SL]]</td>
-
-                                    <td class="txtLeft">[[item.CurRuns]]</td>
                                 </tr>
                             </template>
                         </tbody>

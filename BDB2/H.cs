@@ -668,7 +668,7 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec DonemBaslangicIslemleri({Dnm}) NOR: {nor:n0}");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms DonemBaslangicIslemleri({Dnm}) NOR: {nor:n0}");
         }
 
 
@@ -819,7 +819,7 @@ namespace BDB2
 
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec PP.RefreshSonuc(): MAC:{norMAC:n0}, PP:{norPP:n0}");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms PP.RefreshSonuc(): MAC:{norMAC:n0}, PP:{norPP:n0}");
         }
 
         public static void PP_RefreshSonuc(MAC mac)    // Mactaki oyuncular icin yap
@@ -838,7 +838,7 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec PP.RefreshSonuc(MAC)");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms PP.RefreshSonuc(MAC)");
         }
 
         public static void PP_RefreshSonuc(PP pp)  // Bir oyuncu
@@ -966,7 +966,37 @@ namespace BDB2
 
             }
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CT.RefreshSonuc()");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CT.RefreshSonuc()");
+        }
+
+        public static void CT_RefreshSonuc(int Dnm)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            //var cts = Db.SQL<CT>("select r from CT r where r.CC.Dnm = ?", Dnm);
+            var cts = Db.SQL<CT>("select r from CT r");
+            foreach (var ct in cts)
+            {
+                if (ct.CC.Dnm == Dnm)
+                    CT_RefreshSonuc(ct);
+            }
+
+            // Sort for CC
+            Db.TransactAsync(() =>
+            {
+                //cts = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC.Dnm = ? order by r.PW DESC, r.KF DESC, r.Ad", Dnm);
+                cts = Db.SQL<CT>("SELECT r FROM CT r order by r.PW DESC, r.KF DESC, r.Ad");
+                int idx = 1;
+                foreach (var ct in cts)
+                {
+                    if (ct.CC.Dnm == Dnm)
+                        ct.Idx = idx++;
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CT.RefreshSonuc({Dnm})");
         }
 
         public static void CT_RefreshSonuc(CT ct)
@@ -1278,8 +1308,233 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CTP.RefreshSonucNew()");
-            //Console.WriteLine($"CTP.RefreshSonucNew() #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CTP.RefreshSonucNew()");
+            //Console.WriteLine($"CTP.RefreshSonucNew() #MAC {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
+        }
+
+        public static void CTP_RefreshSonucNew(int Dnm)
+        {
+            // RefreshSonuc'dan 5 kat hizli
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            // Donemin Her CTP si icin
+
+
+            int nor = 0;
+            ulong cc, cet, hct, gct, hpp, gpp;
+            int hsw, gsw, hmw, gmw, hmx, gmx;
+            string sod;
+            CET ceto = null;
+
+            List<DictMaclar> MacList = new List<DictMaclar>();
+            foreach (var m in Db.SQL<MAC>("select m from MAC m"))
+            {
+                if (m.CC.Dnm != Dnm || !(m.CEB is CET))
+                    continue;
+
+                nor++;
+
+                //cc = m.CC.GetObjectNo();
+
+                //cet = m.CEB.GetObjectNo();
+
+                ceto = m.CEB as CET;
+
+                hct = ceto.HCT.GetObjectNo();
+                gct = ceto.GCT.GetObjectNo();
+
+                hpp = m.HPP1.GetObjectNo();
+                gpp = m.GPP1.GetObjectNo();
+
+                hsw = m.HSW;
+                gsw = m.GSW;
+                hmw = m.HMW;
+                gmw = m.GMW;
+                hmx = m.HMX;
+                gmx = m.GMX;
+                sod = m.SoD;
+
+                MacList.Add(new DictMaclar
+                {
+                    //CC = cc,
+                    //CET = cet,
+                    CT = hct,
+                    PP = hpp,
+                    SoD = sod,
+                    SW = hsw,
+                    SL = gsw,
+                    MW = hmw,
+                    ML = gmw,
+                    MX = hmx,
+                });
+
+                MacList.Add(new DictMaclar
+                {
+                    //CC = cc,
+                    //CET = cet,
+                    CT = gct,
+                    PP = gpp,
+                    SoD = sod,
+                    SW = gsw,
+                    SL = hsw,
+                    MW = gmw,
+                    ML = hmw,
+                    MX = gmx,
+                });
+
+                if (sod == "D")
+                {
+                    hpp = m.HPP2.GetObjectNo();
+                    gpp = m.GPP2.GetObjectNo();
+
+                    MacList.Add(new DictMaclar
+                    {
+                        //CC = cc,
+                        //CET = cet,
+                        CT = hct,
+                        PP = hpp,
+                        SoD = sod,
+                        SW = hsw,
+                        SL = gsw,
+                        MW = hmw,
+                        ML = gmw,
+                        MX = hmx,
+                    });
+
+                    MacList.Add(new DictMaclar
+                    {
+                        //CC = cc,
+                        //CET = cet,
+                        CT = gct,
+                        PP = gpp,
+                        SoD = sod,
+                        SW = gsw,
+                        SL = hsw,
+                        MW = gmw,
+                        ML = hmw,
+                        MX = gmx,
+                    });
+                }
+            }
+
+            /*
+            var invoiceSum =
+            DSZoho.Tables["Invoices"].AsEnumerable()
+            .Select (x => 
+                new {  
+                    InvNumber = x["invoice number"],
+                    InvTotal = x["item price"],
+                    Contact = x["customer name"],
+                    InvDate = x["invoice date"],
+                    DueDate = x["due date"],
+                    Balance = x["balance"],
+                    }
+            )
+             .GroupBy (s => new {s.InvNumber, s.Contact, s.InvDate, s.DueDate} )
+             .Select (g => 
+                    new {
+                        InvNumber = g.Key.InvNumber,
+                        InvDate = g.Key.InvDate,
+                        DueDate = g.Key.DueDate,
+                        Contact = g.Key.Contact,
+                        InvTotal = g.Sum (x => Math.Round(Convert.ToDecimal(x.InvTotal), 2)),
+                        Balance = g.Sum (x => Math.Round(Convert.ToDecimal(x.Balance), 2)),
+                        } 
+             );
+            */
+            /*
+            var groupedResult4 = ml
+                .Select(x =>
+                   new
+                   {
+                       acc = x.CC,
+                       acet = x.CET,
+                       act = x.CT,
+                       asod = x.SoD,
+                       aSW = x.SW,
+                       aMW = x.MW,
+                   }
+                )
+                .OrderBy(x => x.act)//.ThenBy(x => x.asod)
+                .GroupBy(s => new { s.act, s.asod })
+             .Select(g =>
+                   new
+                   {
+                       gact = g.Key.act,
+                       gasod = g.Key.asod,
+                       tSW = g.Sum(x => x.aSW),
+                       tMW = g.Sum(x => x.aMW),
+                   }
+             );*/
+            /*
+            var groupedResult3 = from s in ml
+                                group s by new { ct = s.CT, SoD = s.SoD } into grp
+                                select new
+                                {
+                                    Key = grp.Key,
+                                    ssw = grp.Sum(r => r.SW),
+                                    ssl = grp.Sum(r => r.SL),
+                                    smw = grp.Sum(r => r.MW),
+                                    sml = grp.Sum(r => r.ML),
+                                };
+*/
+
+            var groupedResult = MacList
+                .OrderBy(x => x.CT).ThenBy(x => x.PP) //.ThenBy(x => x.SoD)
+                .GroupBy(s => new { s.CT, s.PP, s.SoD })
+                .Select(g => new
+                {
+                    gct = g.Key.CT,
+                    gpp = g.Key.PP,
+                    gsod = g.Key.SoD,
+                    tSW = g.Sum(x => x.SW),
+                    tSL = g.Sum(x => x.SL),
+                    tMW = g.Sum(x => x.MW),
+                    tML = g.Sum(x => x.ML),
+                    tMX = g.Sum(x => x.MX),
+                });
+
+            //iterate each group 
+            ulong pct = 0, ppp = 0;
+            CTP ctp = null;
+            Db.TransactAsync(() =>
+            {
+                foreach (var gr in groupedResult)
+                {
+
+                    if (pct != gr.gct || ppp != gr.gpp) // ctp yi bir kere okusun
+                    {
+                        //ctp = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ? and r.PP.ObjectNo = ?", gr.gct, gr.gpp).FirstOrDefault();
+                        ctp = Db.SQL<CTP>("select r from CTP r where r.CT = ? and r.PP = ?", Db.FromId<CT>(gr.gct), Db.FromId<PP>(gr.gpp)).FirstOrDefault();
+                        pct = gr.gct;
+                        ppp = gr.gpp;
+                    }
+                    if (ctp != null)
+                    {
+                        if (gr.gsod == "S")
+                        {
+                            //ssw = gr.tSW;
+                            //ssl = gr.tSL;
+                            ctp.SMW = gr.tMW;
+                            ctp.SML = gr.tML;
+                            ctp.SMX = gr.tMX;
+                        }
+                        else if (gr.gsod == "D")
+                        {
+                            //dsw = gr.tSW;
+                            //dsl = gr.tSL;
+                            ctp.DMW = gr.tMW;
+                            ctp.DML = gr.tML;
+                            ctp.DMX = gr.tMX;
+                        }
+                    }
+
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CTP.RefreshSonucNew({Dnm})");
         }
 
         public static void CTP_RefreshSonuc()
@@ -1292,8 +1547,8 @@ namespace BDB2
                 CTP_RefreshSonuc(cc);
             }
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CTP.RefreshSonuc()");
-            //Console.WriteLine($"CTP.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CTP.RefreshSonuc()");
+            //Console.WriteLine($"CTP.RefreshSonuc(): {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
         public static void CTP_RefreshSonuc(CC cc)
@@ -1416,8 +1671,8 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CF.RefreshSonuc()");
-            //Console.WriteLine($"CF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CF.RefreshSonuc()");
+            //Console.WriteLine($"CF.RefreshSonuc(): {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
         public static void CF_RefreshSonuc(CC cc)
@@ -1500,8 +1755,8 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CEF.RefreshSonuc()");
-            //Console.WriteLine($"CEF.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CEF.RefreshSonuc()");
+            //Console.WriteLine($"CEF.RefreshSonuc(): {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
         public static void CEF_RefreshSonuc(CEF cef)
@@ -1589,9 +1844,24 @@ namespace BDB2
             }
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec CET.RefreshSonuc()");
-            //Console.WriteLine($"CET.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
-            //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CET.RefreshSonuc()");
+        }
+
+        public static void CET_RefreshSonuc(int Dnm)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            //var cets = Db.SQL<CET>("select r from CET r where r.CC.Dnm = ?", Dnm);
+            var cets = Db.SQL<CET>("select r from CET r");
+            foreach (var cet in cets)
+            {
+                if (cet.CC.Dnm == Dnm)
+                    CET_RefreshSonuc(cet);
+            }
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CET.RefreshSonuc({Dnm})");
         }
 
         public static void CET_RefreshSonuc(CET cet)
@@ -1746,40 +2016,44 @@ namespace BDB2
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
+            int nor = 0;
+
             Db.TransactAsync(() => {
                 var macs = Db.SQL<MAC>("select r from MAC r");
                 foreach (var mac in macs)
                 {
+                    nor++;
                     MAC_RefreshSonuc(mac);
                 }
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshSonuc()");
-            //Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms MAC.RefreshSonuc() NOR:{nor:n0}");
         }
 
-        public static void MAC_RefreshSonucAktif()
-        {
-            MAC_RefreshSonuc(DnmRun);
-        }
 
         public static void MAC_RefreshSonuc(int Dnm)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
+            int nor = 0;
+
             Db.TransactAsync(() => {
-                var macs = Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ?", Dnm);
+                //var macs = Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ?", Dnm);
+                var macs = Db.SQL<MAC>("select r from MAC r");
                 foreach (var mac in macs)
                 {
-                    MAC_RefreshSonuc(mac);
+                    if (mac.CC.Dnm == Dnm)
+                    { 
+                        nor++;
+                        MAC_RefreshSonuc(mac);
+                    }
                 }
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshSonuc()");
-            //Console.WriteLine($"MAC.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms MAC.RefreshSonuc({Dnm}) NOR:{nor:n0}");
         }
 
         public static void MAC_RefreshSonuc(MAC mac)
@@ -2104,7 +2378,7 @@ namespace BDB2
             }
             */
             watch.Stop();
-            Console.WriteLine($"deneme2 #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"deneme2 #MAC {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
         public static void MAC_deneme()
@@ -2216,7 +2490,7 @@ namespace BDB2
                 ms = pair.Value;
             }
             watch.Stop();
-            Console.WriteLine($"deneme #MAC {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"deneme #MAC {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
         public static void MAC_RefreshGlobalRank()
@@ -2293,8 +2567,8 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshGlobalRank() NOR: {nor:n0}");
-            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms MAC.RefreshGlobalRank() NOR: {nor:n0}");
+            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
         public static void MAC_RefreshGlobalRank(DateTime trh)  // Kullanilmiyor
@@ -2370,10 +2644,10 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
-        public static void MAC_RefreshDonemRank(int DnmRun)
+        public static void PPRD_RefreshSonuc(int Dnm)
         {
             // MAC_RefreshDonemFerdiRank den once yapilmali
             Stopwatch watch = new Stopwatch();
@@ -2389,7 +2663,7 @@ namespace BDB2
 
             Db.TransactAsync(() =>
             {
-                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", Dnm);
                 foreach (var pprd in pprds)
                 {
                     rdDic[pprd.PP.GetObjectNo()] = new DictPPRD
@@ -2400,9 +2674,11 @@ namespace BDB2
 
                 // Sadece Single Maclar Rank uretir.
                 // O donemin Maclari taranacak
-                foreach (var mac in Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? order by r.Trh", DnmRun))
+                //var macs = Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? order by r.Trh", Dnm); // Bu 2 kat yavas calisiyor
+                var macs = Db.SQL<MAC>("select r from MAC r order by r.Trh");
+                foreach (var mac in macs)
                 {
-                    if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
+                    if (mac.CC.Dnm != Dnm || mac.SoD == "D") // Performans daha iyi Query de Single arama 
                         continue;
 
                     nor++;
@@ -2413,7 +2689,7 @@ namespace BDB2
                     // Oyuncu kaydi PPRD de yoksa yarat ve kullan
                     if (!rdDic.ContainsKey(hPPoNo))
                     {
-                        npprd = PPRD_TryInsert(mac.HPP1, DnmRun);
+                        npprd = PPRD_TryInsert(mac.HPP1, Dnm);
                         rdDic[hPPoNo] = new DictPPRD
                         {
                             RnkSon = npprd.RnkBas,
@@ -2421,7 +2697,7 @@ namespace BDB2
                     }
                     if (!rdDic.ContainsKey(gPPoNo))
                     {
-                        npprd = PPRD_TryInsert(mac.GPP1, DnmRun);
+                        npprd = PPRD_TryInsert(mac.GPP1, Dnm);
                         rdDic[gPPoNo] = new DictPPRD
                         {
                             RnkSon = npprd.RnkBas,
@@ -2442,8 +2718,6 @@ namespace BDB2
 
                     mac.GRnkPX = -hPX;
                     mac.GRnk = gpRnk;
-
-                                     
                     
                     // Update PP dictionary
                     rdDic[hPPoNo].RnkSon = hpRnk + hPX;
@@ -2471,7 +2745,7 @@ namespace BDB2
 
                 // Update PPRD.RnkPX
                 ulong ppNO = 0;
-                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
+                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", Dnm);
                 foreach (var pprd in pprds)
                 {
                     ppNO = pprd.PP.GetObjectNo();
@@ -2485,9 +2759,8 @@ namespace BDB2
                     pprd.SL = rdDic[ppNO].SL;
                 }
 
-                // PPRD.Idx
                 int idx = 1;
-                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon DESC", DnmRun);
+                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon DESC", Dnm);
                 foreach (var pprd in pprds)
                 {
                     pprd.RnkIdx = idx++;
@@ -2495,8 +2768,7 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshDonemRank({DnmRun}) NOR: {nor:n0}");
-            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms PPRD.RefreshSonuc({Dnm}) NOR: {nor:n0}");
         }
 
         public static void MAC_RefreshDonemRankOld(int DnmRun)
@@ -2599,8 +2871,8 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} msec MAC.RefreshGlobalRank() NOR: {nor:n0}");
-            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms MAC.RefreshGlobalRank() NOR: {nor:n0}");
+            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
             */
         }
 
@@ -2654,6 +2926,33 @@ namespace BDB2
                 }
             });
         
+        }
+
+        public static void PerfDeneme()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            int nor = 0;
+            ulong aaa = 0;
+
+            for (int i = 0; i < 1_000; i++)
+            {
+                //var macs = Db.SQL<MAC>("select r from MAC r");                        // 8300 ms
+                //var macs = Db.SQL<MAC>("select r from MAC r order by Trh");           //  8600 ms
+                var macs = Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ?", 17);   // 14500 ms
+                foreach (var mac in macs)
+                {
+                    //if (mac.CC.Dnm == 17)
+                    {
+                        aaa += mac.HPP1.GetObjectNo();
+                        //nor++;
+                    }
+                }
+            }
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms PerfDeneme() NOR: {nor:n0}");
+
         }
 
     }

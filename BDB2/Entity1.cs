@@ -111,7 +111,7 @@ namespace BDB2
         public int RnkSon { get; set; }
         public int SonPX { get; set; }      // Son Aldigi PX
 
-        public string DrmPX => SonPX == 0 ? "x" : SonPX > 0 ? "▲" : "▼";    // x: SonPX = 0, yani oynamamis henuz
+        public string DrmPX => SonPX == 0 ? "-" : SonPX > 0 ? "▲" : "▼";    // x: SonPX = 0, yani oynamamis henuz
         public string DrmRnk => RnkSon == RnkBas ? "=" : RnkSon > RnkBas ? "▲" : "▼";
 
         public string SonPXTxt => $"{SonPX:+#;-#;#}";
@@ -534,6 +534,7 @@ namespace BDB2
         public int HPW { get; set; }         // Home Kazandigi Puan
         public int GPW { get; set; }
 
+        public string Puan => $"{HPW:#} - {GPW:#}";
         public string HR => $"{HSMW}S+{HDMW}D ►{HKW,2:D2} ►{HPW}";
         public string GR => $"{GSMW}S+{GDMW}D ►{GKW,2:D2} ►{GPW}";
 

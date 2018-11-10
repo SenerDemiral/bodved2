@@ -80,6 +80,18 @@ namespace bodved2.Api
                 return page;
             });
 
+            Handle.GET("/bodved/partials/CurEvents", () =>
+            {
+                var page = new CurEventsPage();
+                DD dd = Db.SQL<DD>("select r from DD r where r.Dnm = ?", H.DnmRun).FirstOrDefault();
+                page.Hdr = $"{dd.Ad} ► Güncel";
+                DateTime T1 = DateTime.Today.AddDays(-5);
+                DateTime T2 = DateTime.Today.AddDays(5);
+                page.CETs.Data = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC.Dnm = ? and r.Trh >= ? and r.Trh < ? order by r.Trh", H.DnmRun, T1, T2);
+                return page;
+            });
+
+
             Handle.GET("/bodved/partials/CETs/{?}", (ulong cc) =>
             {
                 var page = new CETsPage();
@@ -124,7 +136,7 @@ namespace bodved2.Api
                 return page;
             });
 
-            Handle.GET("/bodved/partials/PP2MACs/{?}", (long pp) =>
+            Handle.GET("/bodved/partials/PP2MACs/{?}", (ulong pp) =>
             {
                 var page = new PP2MACsPage();
                 /*
@@ -135,10 +147,19 @@ namespace bodved2.Api
                 page.Dbls.Data  = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ? or r.HPP2 = ? or r.GPP2 = ?) order by r.Trh DESC", "D", PP, PP, PP, PP);
                 */
 
-                page.PPoNo = pp;
+                page.PPoNo = (long)pp;
                 page.Data = null;
                 return page;
 
+            });
+
+            Handle.GET("/bodved/partials/PP2PPRDs/{?}", (ulong pp) =>
+            {
+                var page = new PP2PPRDsPage();
+                PP PP = Db.FromId<PP>(pp);
+                page.Hdr = $"{PP.Ad} ► Dönem Bilgileri";
+                page.PPRDs.Data = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? order by r.Dnm DESC", PP);
+                return page;
             });
 
             Handle.GET("/bodved/partials/CT2CETs/{?}", (long ct) =>
@@ -147,7 +168,6 @@ namespace bodved2.Api
                 page.CToNo = ct;
                 page.Data = null;
                 return page;
-
             });
 
         }

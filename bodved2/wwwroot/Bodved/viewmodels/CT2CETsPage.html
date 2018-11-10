@@ -11,12 +11,12 @@
                     <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
                         <colgroup>
                             <col class="colTeam" />
-                            <col class="colTarih" />
 
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
+                            <col class="colTeam" />
 
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
@@ -26,17 +26,16 @@
                         <thead>
                             <tr>
                                 <th rowspan="2">Tarih</th>
-
-                                <th colspan="5">Rakip</th>
                                 <th colspan="4">[[model.CTAd]]</th>
+                                <th colspan="5">Rakip</th>
                             </tr>
                             <tr>
-                                <th>Takım</th>
                                 <th>Puan</th>
                                 <th>Skor</th>
                                 <th>SMW</th>
                                 <th>DMW</th>
 
+                                <th>Takım</th>
                                 <th>Puan</th>
                                 <th>Skor</th>
                                 <th>SMW</th>
@@ -46,17 +45,18 @@
                         <tbody>
                             <template is="dom-repeat" items="[[model.CETs]]">
                                 <tr>
-                                    <td class="colTeam"><a href="/bodved/CT2CETs/[[item.RkpCToNo]]">[[item.RkpCTAd]]</a></td>
-
-                                    <td>[[item.RkpPW]]</td>
-                                    <td>[[item.RkpKW]]</td>
-                                    <td>[[item.RnkSMW]]</td>
-                                    <td>[[item.RkpDMW]]</td>
+                                    <td class="txtLeft"><a href="/bodved/CET2MACs/[[item.CEToNo]]">[[item.Tarih]]</a></td>
 
                                     <td>[[item.PW]]</td>
                                     <td>[[item.KW]]</td>
                                     <td>[[item.SMW]]</td>
                                     <td>[[item.DMW]]</td>
+
+                                    <td class="colTeam"><a href="/bodved/CT2CETs/[[item.RkpCToNo]]">[[item.RkpCTAd]]</a></td>
+                                    <td>[[item.RkpPW]]</td>
+                                    <td>[[item.RkpKW]]</td>
+                                    <td>[[item.RkpSMW]]</td>
+                                    <td>[[item.RkpDMW]]</td>
                                 </tr>
                             </template>
                         </tbody>

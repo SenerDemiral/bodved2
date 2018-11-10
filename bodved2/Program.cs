@@ -35,6 +35,7 @@ namespace bodved2
                 handler.Register();
             }
 
+            Console.WriteLine("------------------");
             H.MAC_RefreshSonuc();
             H.CET_RefreshSonuc();
             H.CT_RefreshSonuc();
@@ -68,10 +69,21 @@ namespace bodved2
                 });
             }
 
-            H.PPRD_DonemBasiIslemleri(17);
-            H.PPRD_DonemBasiIslemleri(18);
-            H.MAC_RefreshDonemRank(17);
-            H.MAC_RefreshDonemRank(18);
+            Console.WriteLine("------------------");
+
+            //H.PPRD_DonemBasiIslemleri(17);
+            //H.PPRD_DonemBasiIslemleri(18);
+            //H.PPRD_RefreshDonemRank(17);
+
+            H.MAC_RefreshSonuc(H.DnmRun);
+            H.CET_RefreshSonuc(H.DnmRun);
+            H.CT_RefreshSonuc(H.DnmRun);
+            H.CTP_RefreshSonucNew(H.DnmRun);
+
+            H.PPRD_RefreshSonuc(H.DnmRun);
+            H.PPRD_RefreshSonuc(17);
+
+            //H.PerfDeneme();
 
         }
     }

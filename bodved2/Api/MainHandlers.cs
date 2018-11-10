@@ -82,6 +82,16 @@ namespace bodved2.Api
                 return master;
             });
 
+            Handle.GET("/bodved/CurEvents", () =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is CurEventsPage))
+                {
+                    master.CurrentPage = GetLauncherPage("/bodved/partials/CurEvents");
+                }
+                return master;
+            });
+
             Handle.GET("/bodved/PPRDs/{?}", (int dnm) =>
             {
                 MasterPage master = GetMasterPageFromSession();
@@ -137,7 +147,7 @@ namespace bodved2.Api
             Handle.GET("/bodved/CT2CETs/{?}", (ulong ct) =>
             {
                 MasterPage master = GetMasterPageFromSession();
-                if (!(master.CurrentPage is CT2CETsPage))
+                //if (!(master.CurrentPage is CT2CETsPage))
                 {
                     master.CurrentPage = GetLauncherPage($"/bodved/partials/CT2CETs/{ct}");
                     //(master.CurrentPage as CCsPage).Init();
@@ -195,6 +205,17 @@ namespace bodved2.Api
                 //if (!(master.CurrentPage is PP2MACsPage))
                 {
                     master.CurrentPage = GetLauncherPage($"/bodved/partials/PP2MACs/{pp}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
+            Handle.GET("/bodved/PP2PPRDs/{?}", (ulong pp) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                //if (!(master.CurrentPage is PP2MACsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/PP2PPRDs/{pp}");
                     //(master.CurrentPage as CCsPage).Init();
                 }
                 return master;
