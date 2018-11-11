@@ -1,6 +1,7 @@
-using Starcounter;
+﻿using Starcounter;
 using BDB2;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace bodved2.ViewModels
 {
@@ -10,41 +11,38 @@ namespace bodved2.ViewModels
         {
             base.OnData();
 
-            ulong ppNO = 0;
-            HashSet<ulong> ppHS = new HashSet<ulong>(); // DnmRun da oynayanlari ayirmak icin.
+            PPRD pprd = null;
+            bool isRun = false;
+            PPsElementJson ppse;
+            int TopPP = 0;
+            int RunPP = 0;
 
-            // Aktif olan Oyunculari PPRD den al.
-            var pprds = Db.SQL<PPRD>("select r from PPRD r where Dnm = ? order by r.RnkIdx", H.DnmRun);
-            foreach(var pprd in pprds)
+            var pps = Db.SQL<PP>("select r from PP r order by r.Ad");
+            foreach (var pp in pps)
             {
-                ppNO = pprd.PP.GetObjectNo();
+                TopPP++;
+                isRun = false;
 
-                ppHS.Add(ppNO);     // Oynuyor
-
-                new PPrunsElementJson
+                pprd = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, H.DnmRun).FirstOrDefault();
+                if (pprd != null)
                 {
-                    PPoNo = (long)ppNO,
-                    Ad = pprd.PP.Ad,
-                    RnkBaz = pprd.PP.RnkBaz,
-                    RnkSon = pprd.RnkSon,
-                    RnkIdx = pprd.RnkIdx
-                };
-            }
-
-            // Aktif Olmayanlari PP den
-            var pps = Db.SQL<PP>("select r from PP r order by Ad");
-            foreach(var pp in pps)
-            {
-                if (!ppHS.Contains(pp.GetObjectNo()))
-                {
-                    new PPoldsElementJson
-                    {
-                        PPoNo = (long)pp.GetObjectNo(),
-                        Ad = pp.Ad,
-                        RnkBaz = pp.RnkBaz,
-                    };
+                    isRun = true;
+                    RunPP++;
                 }
+
+                ppse = new PPsElementJson
+                {
+                    PPoNo = (long)pp.GetObjectNo(),
+                    Ad = pp.Ad,
+                    RnkBaz = pp.RnkBaz,
+                    IsRun = isRun,
+                };
+
+                PPs.Add(ppse);
             }
+
+            Hdr = $"Oyuncular ► Toplam : {TopPP:n0} ► Aktif : {RunPP}";
+
         }
     }
 }

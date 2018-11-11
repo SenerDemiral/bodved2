@@ -101,6 +101,9 @@
     <Compile Include="ViewModels\PP2PPRDsPage.json.cs">
       <DependentUpon>PP2PPRDsPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\PPOsPage.json.cs">
+      <DependentUpon>PPOsPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\PPRDsPage.json.cs">
       <DependentUpon>PPRDsPage.json</DependentUpon>
     </Compile>
@@ -174,6 +177,9 @@
     <TypedJSON Include="ViewModels\PP2PPRDsPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <TypedJSON Include="ViewModels\PPOsPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\Bodved\viewmodels\MasterPage.html" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +207,7 @@
     <None Include="wwwroot\Bodved\viewmodels\CT2CETsPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\CurEventsPage.html" />
     <None Include="wwwroot\Bodved\viewmodels\PP2PPRDsPage.html" />
+    <None Include="wwwroot\Bodved\viewmodels\PPOsPage.html" />
     <Content Include="wwwroot\sys\app-shell\app-shell.html" />
     <Content Include="wwwroot\sys\bodved.css" />
     <Content Include="wwwroot\sys\bodved2.css" />

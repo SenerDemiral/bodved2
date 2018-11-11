@@ -1,6 +1,5 @@
 ﻿using Starcounter;
 using BDB2;
-using System.Linq;
 
 namespace bodved2.ViewModels
 {
@@ -10,34 +9,15 @@ namespace bodved2.ViewModels
         {
             base.OnData();
 
-            PP pp = Db.FromId<PP>((ulong)PPoNo);
+            PP PPt = Db.FromId<PP>((ulong)PPoNo);
+            Hdr = PPt.Ad;
 
-            PP.RnkBaz = pp.RnkBaz;
-
-            var pprds = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? order by r.Dnm", pp);
-            foreach(var pprd in pprds)  // Son bulunan deger en son 
-            {
-                PP.Dnm = pprd.Dnm;
-                PP.RnkSon = pprd.RnkSon;
-                PP.RnkIdx = pprd.RnkIdx;
-
-                PP.SMW += pprd.MW;
-                PP.SML += pprd.ML;
-
-                PP.SSW += pprd.SW;
-                PP.SSL += pprd.SL;
-            }
-            PP.SMT = PP.SMW + PP.SML;
-            PP.SST = PP.SSW + PP.SSL;
-
-            Hdr = $"{pp.Ad}  ► Maçları";
-
-            //PP.Data = pp;
+            PP.Data = PPt;
             //Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", PPt, PPt);
-            Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ? or r.HPP2 = ? or r.GPP2 = ?) order by r.Trh DESC", "D", pp, pp, pp, pp);
+            Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ? or r.HPP2 = ? or r.GPP2 = ?) order by r.Trh DESC", "D", PPt, PPt, PPt, PPt);
 
 
-            var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", pp, pp);
+            var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", PPt, PPt);
             foreach(var mac in macs)
             {
                 //var sng2 = Sngls.Add();

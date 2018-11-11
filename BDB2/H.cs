@@ -568,6 +568,8 @@ namespace BDB2
             });
         }
 
+
+
         public static PPRD PPRD_TryInsert(PP pp, int Dnm)
         {
             // Geldigi yerde transaction baslamis olmali.
@@ -2926,6 +2928,14 @@ namespace BDB2
                 }
             });
         
+        }
+
+        public static DateTime GetNextWeekday(DayOfWeek day)
+        {
+            DateTime result = DateTime.Today; //.AddDays(1);
+            while (result.DayOfWeek != day)
+                result = result.AddDays(1);
+            return result;
         }
 
         public static void PerfDeneme()

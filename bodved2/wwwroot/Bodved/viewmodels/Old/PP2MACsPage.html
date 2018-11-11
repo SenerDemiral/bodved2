@@ -11,9 +11,16 @@
                     <table class="fixTbl sngLine">
                         <colgroup>
                             <col class="colRnkBaz" />
-                            <col class="colRnkBaz" />
                             <col class="colRnkSon" />
                             <col class="colRnkIdx" />
+
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colSet" />
+                            <col class="colSet" />
+                            <col class="colSet" />
 
                             <col class="colMac" />
                             <col class="colMac" />
@@ -24,15 +31,17 @@
                         </colgroup>
                         <thead>
                             <tr>
-                                <th rowspan="2" colspan="4">Rank</th>
-                                <th colspan="6" class="colSng">Toplam Single</th>
+                                <th rowspan="2" colspan="3">Rank</th>
+                                <th colspan="7" class="colSng">Single</th>
+                                <th colspan="6" class="colDbl">Double</th>
                             </tr>
                             <tr>
-                                <th colspan="3">Mac</th>
+                                <th colspan="4">Mac</th>
                                 <th colspan="3" class="colSnc">Set</th>
+                                <th colspan="3">Mac</th>
+                                <th colspan="3">Set</th>
                             </tr>
                             <tr>
-                                <th>Dönem</th>
                                 <th>Baz</th>
                                 <th>Son</th>
                                 <th>Sıra</th>
@@ -40,7 +49,15 @@
                                 <th>O</th>
                                 <th>G</th>
                                 <th>M</th>
+                                <th>x</th>
 
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
                                 <th>O</th>
                                 <th>G</th>
                                 <th>M</th>
@@ -48,17 +65,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>[[model.PP.Dnm]]</td>
-                                <td>[[model.PP.RnkBaz]]</td>
-                                <td>[[model.PP.RnkSon]]</td>
-                                <td style="font-weight:bold">[[model.PP.RnkIdx]]</td>
+                                <td>{{model.PP.RnkBaz}}</td>
+                                <td>{{model.PP.RnkSon}}</td>
+                                <td style="font-weight:bold">{{model.PP.RnkIdx}}</td>
 
-                                <td title="SMO">[[model.PP.SMT]]</td>
-                                <td title="SMG">[[model.PP.SMW]]</td>
-                                <td title="SMM">[[model.PP.SML]]</td>
-                                <td title="SSO">[[model.PP.SST]]</td>
-                                <td title="SSG">[[model.PP.SSW]]</td>
-                                <td title="SSM">[[model.PP.SSL]]</td>
+                                <td title="SMO">{{model.PP.SMT}}</td>
+                                <td title="SMG">{{model.PP.SMW}}</td>
+                                <td title="SMM">{{model.PP.SML}}</td>
+                                <td title="SMX">{{model.PP.SMX}}</td>
+                                
+                                <td title="SSO">{{model.PP.SST}}</td>
+                                <td title="SSG">{{model.PP.SSW}}</td>
+                                <td title="SSM">{{model.PP.SSL}}</td>
+
+                                <td title="DMO">{{model.PP.DMT}}</td>
+                                <td title="DMG">{{model.PP.DMW}}</td>
+                                <td title="DMM">{{model.PP.DML}}</td>
+                                
+                                <td title="DSO">{{model.PP.DST}}</td>
+                                <td title="DSG">{{model.PP.DSW}}</td>
+                                <td title="DSM">{{model.PP.DSL}}</td>
                             </tr>
                         </tbody>
                     </table>

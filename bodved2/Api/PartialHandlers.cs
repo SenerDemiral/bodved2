@@ -22,7 +22,13 @@ namespace bodved2.Api
             Handle.GET("/bodved/partials/PPs", () =>
             {
                 var page = new PPsPage();
-                page.PPs.Data = Db.SQL<PP>("SELECT r FROM PP r order by r.RnkIdx");
+                //page.PPs.Data = Db.SQL<PP>("SELECT r FROM PP r order by r.RnkIdx");
+
+                //var top = Db.SQL<long>("select COUNT(r) from PP r").FirstOrDefault();
+                //var aktif = Db.SQL<long>("select count(r) from PP r where r.IsRun = ?", true).FirstOrDefault();
+                //page.PPs.Data = Db.SQL<PP>("SELECT r FROM PP r order by r.Ad");
+
+                page.Data = null;
                 return page;
             });
 
@@ -85,9 +91,11 @@ namespace bodved2.Api
                 var page = new CurEventsPage();
                 DD dd = Db.SQL<DD>("select r from DD r where r.Dnm = ?", H.DnmRun).FirstOrDefault();
                 page.Hdr = $"{dd.Ad} ► Güncel";
-                DateTime T1 = DateTime.Today.AddDays(-5);
-                DateTime T2 = DateTime.Today.AddDays(5);
-                page.CETs.Data = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC.Dnm = ? and r.Trh >= ? and r.Trh < ? order by r.Trh", H.DnmRun, T1, T2);
+                // Gecmis Pzrtsi'den bir sonraki Cumaya kadar. 2 haftalik 
+                DateTime firstMonday = H.GetNextWeekday(DayOfWeek.Monday);
+                DateTime T1 = firstMonday.AddDays(-7);
+                DateTime T2 = firstMonday.AddDays(5);
+                page.CETs.Data = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC.Dnm = ? and r.Trh >= ? and r.Trh <= ? order by r.Trh", H.DnmRun, T1, T2);
                 return page;
             });
 

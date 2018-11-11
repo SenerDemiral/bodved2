@@ -1,0 +1,133 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>Oyuncular</div>
+                </div>
+                <div class="gridTbl_main">
+                    <table id="ppTbl" class="fixTbl sngLine" on-click="MyFnc">
+                        <colgroup>
+                            <col class="colPlyr" />
+                            <col style="width:var(--w-TF)" />
+                            <col class="colRnkBaz" />
+                            <col class="colRnkSon" />
+                            <col class="colRnkIdx" />
+
+                            <col class="colSet" />
+                            <col class="colSet" />
+                            <col class="colSet" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+
+                            <col class="colSet" />
+                            <col class="colSet" />
+                            <col class="colSet" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col class="colMac" />
+                            <col style="width:40rem" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th rowspan="3">Oyuncu</th>
+                                <th rowspan="3">Run</th>
+                                <th rowspan="2" colspan="3">Rank</th>
+                                <th colspan="7" class="colSng">Single</th>
+                                <th colspan="6" class="colDbl">Double</th>
+                                <th rowspan="3">Son Aktiviteleri</th>
+                            </tr>
+                            <tr>
+                                <th colspan="4">Mac</th>
+                                <th colspan="3" class="colSnc">Set</th>
+                                <th colspan="3">Mac</th>
+                                <th colspan="3">Set</th>
+                            </tr>
+                            <tr>
+                                <th>Baz</th>
+                                <th>Son</th>
+                                <th>Sıra</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+                                <th>x</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="{{model.PPs}}">
+                                <tr>
+                                    <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.Ad]]</a></td>
+                                    <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
+                                    <td>{{item.RnkBaz}}</td>
+                                    <td>{{item.RnkSon}}</td>
+                                    <td style="font-weight:bold">{{item.RnkIdx}}</td>
+
+                                    <td title="SMO">{{item.SMT}}</td>
+                                    <td title="SMG">{{item.SMW}}</td>
+                                    <td title="SMM">{{item.SML}}</td>
+                                    <td title="SMX">{{item.SMX}}</td>
+
+                                    <td title="SSO">{{item.SST}}</td>
+                                    <td title="SSG">{{item.SSW}}</td>
+                                    <td title="SSM">{{item.SSL}}</td>
+
+                                    <td title="DMO">{{item.DMT}}</td>
+                                    <td title="DMG">{{item.DMW}}</td>
+                                    <td title="DMM">{{item.DML}}</td>
+
+                                    <td title="DSO">{{item.DST}}</td>
+                                    <td title="DSG">{{item.DSW}}</td>
+                                    <td title="DSM">{{item.DSL}}</td>
+
+                                    <td class="txtLeft">[[item.CurRuns]]</td>
+
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+
+    <script>
+        (function () {
+            var curRowIndex = -1;
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.MyFnc = function (e) {
+                var tr = e.target.closest("tr");
+                if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
+                    return;
+
+                if (tr.rowIndex > 0) {     // Mark current Row
+                    if (curRowIndex !== -1) {
+                        ppTbl.rows[curRowIndex].classList.remove("curRow");
+                    }
+
+                    curRowIndex = tr.rowIndex;
+                    tr.classList.add("curRow");
+                }
+            };
+        })();
+    </script>
+
+</template>
