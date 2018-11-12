@@ -85,6 +85,8 @@ namespace bodved2
 
             //H.PerfDeneme();
 
+            H.Deneme2();
+
         }
     }
 }

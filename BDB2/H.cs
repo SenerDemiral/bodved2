@@ -2965,6 +2965,86 @@ namespace BDB2
 
         }
 
+        public static void Deneme2()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            int nor = 0;
+            int dnm = 0;
+            List<ListMac> LM = new List<ListMac>();
+
+            var macs = Db.SQL<MAC>("select r from MAC r");
+            foreach (var mac in macs)
+            {
+                if (mac.CEB is CET)
+                {
+                    dnm = mac.CC.Dnm;
+
+                    LM.Add(new ListMac
+                    {
+                        CT = (mac.CEB as CET).HCT,
+                        PP = mac.HPP1,
+                        Dnm = dnm,
+                        MW = mac.HMW,
+                        ML = mac.GMW,
+                        SW = mac.HSW,
+                        SL = mac.GSW,
+                    });
+
+                    LM.Add(new ListMac
+                    {
+                        CT = (mac.CEB as CET).GCT,
+                        PP = mac.GPP1,
+                        Dnm = dnm,
+                        MW = mac.GMW,
+                        ML = mac.HMW,
+                        SW = mac.GSW,
+                        SL = mac.HSW,
+                    });
+
+                    nor += 2;
+                }
+            }
+
+            var groupedResult = LM
+                           //.OrderBy(x => x.CT.CToNo).ThenBy(x => x.PP.PPoNo)
+                           //.GroupBy(s => new { s.CT.CToNo, s.PP.PPoNo })
+                           .GroupBy(s => new { s.CT, s.PP })
+                           .Select(g => new
+                           {
+                               gct = g.Key.CT,
+                               gpp = g.Key.PP,
+                               tSW = g.Sum(x => x.SW),
+                               tSL = g.Sum(x => x.SL),
+                               tMW = g.Sum(x => x.MW),
+                               tML = g.Sum(x => x.ML),
+                           });
+
+
+            CTP ctp = null;
+
+            Db.TransactAsync(() =>
+            {
+
+                foreach (var gr in groupedResult)
+                {
+                    //Console.WriteLine($"{gr.gct}");
+                    ctp = Db.SQL<CTP>("select r from CTP r where r.CT = ? and r.PP = ?", gr.gct, gr.gpp).FirstOrDefault();
+                    /*
+                    if (ctp != null)
+                    {
+                        ctp.SMW = gr.tMW;
+                        ctp.SML = gr.tML;
+                    }
+                    */
+                }
+            });
+            
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms Deneme2() NOR: {nor:n0}");
+        }
+
     }
 
 }

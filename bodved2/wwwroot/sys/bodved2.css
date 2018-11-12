@@ -5,7 +5,7 @@
     --w-Evn: 3rem;
     --w-Lnk: 6rem;
     --w-Team: 8rem;
-    --w-Plyr: 9rem;
+    --w-Plyr: 10rem;
     --w-Tarih: 7rem;
     --w-Drm: 3rem;
     --w-TF: 3rem;
@@ -154,6 +154,7 @@ body {
 
     .fixTbl th {
         font-weight: bold;
+        background-color: #eaeace;
     }
 
 .fixTbl, th, td {
@@ -252,7 +253,7 @@ body {
     /*background-color: #bdd598;*/
 }
 tbody tr:nth-child(even) {
-    background-color: #f2f2f2
+    background-color: lightgoldenrodyellow;
 }
 
 [data-WL="W"] {

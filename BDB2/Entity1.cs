@@ -819,6 +819,18 @@ namespace BDB2
 
     }
 
+    public class ListMac
+    {
+        public CT CT;
+        public PP PP;
+        public int Dnm;
+
+        public int SW;
+        public int SL;
+        public int MW;
+        public int ML;
+    }
+
     public class DictMaclar
     {
         public ulong CC;
