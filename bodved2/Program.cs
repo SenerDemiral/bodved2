@@ -35,22 +35,6 @@ namespace bodved2
                 handler.Register();
             }
 
-            Console.WriteLine("------------------");
-            H.MAC_RefreshSonuc();
-            H.CET_RefreshSonuc();
-            H.CT_RefreshSonuc();
-            H.CTP_RefreshSonucNew();
-            H.PP_RefreshSonuc();
-            H.CEF_RefreshSonuc();
-            H.CF_RefreshSonuc();
-
-            H.MAC_RefreshGlobalRank();
-
-            //CF.CreateCEFs(5131);
-
-            //PPR.DonemBaslangicIslemleri(18);
-
-            //MAC.RefreshDonemRank22222(18);
 
             if (Db.SQL<DD>("select r from DD r").FirstOrDefault() == null)
             {
@@ -71,21 +55,36 @@ namespace bodved2
 
             Console.WriteLine("------------------");
 
+
+            // Bir kerelik
             //H.PPRD_DonemBasiIslemleri(17);
             //H.PPRD_DonemBasiIslemleri(18);
-            //H.PPRD_RefreshDonemRank(17);
+            //H.CTP_RefreshSonucNew(17);
+            //H.PPRD_RefreshSonuc(17);
 
             H.MAC_RefreshSonuc(H.DnmRun);
             H.CET_RefreshSonuc(H.DnmRun);
             H.CT_RefreshSonuc(H.DnmRun);
-            H.CTP_RefreshSonucNew(H.DnmRun);
-
+            H.CTP_RefreshSonuc(H.DnmRun);
             H.PPRD_RefreshSonuc(H.DnmRun);
-            H.PPRD_RefreshSonuc(17);
+
+
+            // Bunlara gerek kalmadi
+            /*
+            H.MAC_RefreshSonuc();
+            H.CET_RefreshSonuc();
+            H.CT_RefreshSonuc();
+            H.CTP_RefreshSonucNew();
+            H.PP_RefreshSonuc();
+            H.CEF_RefreshSonuc();
+            H.CF_RefreshSonuc();
+
+            H.MAC_RefreshGlobalRank();
+            */
 
             //H.PerfDeneme();
 
-            H.Deneme2();
+            //H.Deneme2();
 
         }
     }

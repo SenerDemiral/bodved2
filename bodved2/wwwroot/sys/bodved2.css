@@ -266,6 +266,13 @@ tbody tr:nth-child(even) {
     color: red;
 }
 
+[data-AE="▲"] {
+    color: green;
+}
+[data-AE="▼"] {
+    color: red;
+}
+
 [data-CCSkl="F"] {
     font-style:italic;
     text-align:right;

@@ -406,9 +406,9 @@ namespace RestStarcounterServer
                     if (request.RowSte == "A")
                     {
                         CTP row = CRUDsHelper.FromProxy<CTPProxy, CTP>(request);
+                        var pprd = H.PPRD_TryInsert(row.PP, row.CC.Dnm);
+                        row.RnkBas = pprd.RnkBas;
                         request = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
-
-                        H.PPRD_TryInsert(row.PP, row.CC.Dnm);
                     }
                     else if (request.RowSte == "M")
                     {
@@ -422,6 +422,8 @@ namespace RestStarcounterServer
                         if (request.RowErr == string.Empty)
                         {
                             CTP row = CRUDsHelper.FromProxy<CTPProxy, CTP>(request);
+                            var pprd = H.PPRD_TryInsert(row.PP, row.CC.Dnm);
+                            row.RnkBas = pprd.RnkBas;
                             request = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
                         }
                     }
@@ -516,15 +518,18 @@ namespace RestStarcounterServer
                 // RowSte: Added, Modified, Deletede, Unchanged
                 Db.Transact(() =>
                 {
-                    if (request.RowSte == "A" || request.RowSte == "M")
+                    if (request.RowSte == "A")
                     {
-                        if (request.RowErr == string.Empty)
-                        {
-                            CET row = CRUDsHelper.FromProxy<CETProxy, CET>(request);
-                            //XUT.Append(request.RowUsr, row, request.RowSte);
-                            request = CRUDsHelper.ToProxy<CETProxy, CET>(row);
-                        }
+                        CET row = CRUDsHelper.FromProxy<CETProxy, CET>(request);
+                        request = CRUDsHelper.ToProxy<CETProxy, CET>(row);
+                    }
+                    else if (request.RowSte == "M")
+                    {
+                        CET row = CRUDsHelper.FromProxy<CETProxy, CET>(request);
+                        H.CET_RefreshSonuc(row);
+                        request = CRUDsHelper.ToProxy<CETProxy, CET>(row);
 
+                        H.CT_RefreshSonuc(row.CC);
                     }
                     else if (request.RowSte == "D")
                     {
@@ -770,7 +775,7 @@ namespace RestStarcounterServer
                         if (request.RowErr == string.Empty)
                         {
                             MAC row = CRUDsHelper.FromProxy<MACProxy, MAC>(request);
-                            //XUT.Append(request.RowUsr, row, request.RowSte);
+                            H.MAC_RefreshSonuc(row);
                             request = CRUDsHelper.ToProxy<MACProxy, MAC>(row);
                         }
 
@@ -803,7 +808,17 @@ namespace RestStarcounterServer
         {
             Scheduling.RunTask(() =>
             {
-                if (request.Req == "RefreshSonuc")
+                if (request.Req == "RefreshSonucDnmRun")
+                {
+                    H.MAC_RefreshSonuc(H.DnmRun);
+                    H.CET_RefreshSonuc(H.DnmRun);
+                    H.CT_RefreshSonuc(H.DnmRun);
+                    H.CTP_RefreshSonuc(H.DnmRun);
+                    H.PPRD_RefreshSonuc(H.DnmRun);
+
+                    request.Rsp = "";
+                }
+                else if (request.Req == "RefreshSonuc")
                 {
                     H.MAC_RefreshSonuc();
                     H.CEF_RefreshSonuc();
@@ -811,9 +826,9 @@ namespace RestStarcounterServer
                     H.CET_RefreshSonuc();
                     H.CT_RefreshSonuc();
                     H.CTP_RefreshSonucNew();
-                    H.PP_RefreshSonuc();
+                    //H.PP_RefreshSonuc();
+                    //H.MAC_RefreshGlobalRank();
 
-                    H.MAC_RefreshGlobalRank();
                     request.Rsp = "";
                 }
                 else if (request.Req == "CreateEvents")

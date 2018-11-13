@@ -341,6 +341,11 @@ namespace BDB2
         public int DML { get; set; }
         public int DMX { get; set; }    //            HukmenMaglup
 
+        public int SSW { get; set; }
+        public int SSL { get; set; }
+        public int DSW { get; set; }
+        public int DSL { get; set; }
+
         public ulong CToNo => CT?.GetObjectNo() ?? 0;
         public ulong PPoNo => PP?.GetObjectNo() ?? 0;
         public string CTAd => CT == null ? "-" : $"{CT.Ad}";
@@ -824,6 +829,7 @@ namespace BDB2
         public CT CT;
         public PP PP;
         public int Dnm;
+        public string SoD;
 
         public int SW;
         public int SL;

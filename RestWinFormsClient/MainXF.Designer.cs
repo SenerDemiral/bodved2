@@ -67,6 +67,7 @@
             this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.refreshDnmRunNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -141,8 +142,8 @@
             this.dockPanel1.ID = new System.Guid("62062155-118b-42c0-a9aa-13e2168cc652");
             this.dockPanel1.Location = new System.Drawing.Point(0, 0);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 482);
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(234, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(234, 482);
             this.dockPanel1.Text = "Menü";
             // 
             // dockPanel1_Container
@@ -150,12 +151,12 @@
             this.dockPanel1_Container.Controls.Add(this.navBarControl1);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(191, 455);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(225, 455);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup2;
+            this.navBarControl1.ActiveGroup = this.navBarGroup1;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroup1,
@@ -169,11 +170,12 @@
             this.MACnavBarItem,
             this.refreshAllNavBarItem,
             this.refreshLookupsNavBarItem,
-            this.donemBasiIslemleriNavBarItem});
+            this.donemBasiIslemleriNavBarItem,
+            this.refreshDnmRunNavBarItem});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 191;
-            this.navBarControl1.Size = new System.Drawing.Size(191, 455);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 225;
+            this.navBarControl1.Size = new System.Drawing.Size(225, 455);
             this.navBarControl1.TabIndex = 1;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -231,6 +233,7 @@
             this.navBarGroup.Caption = "Servis";
             this.navBarGroup.Expanded = true;
             this.navBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshDnmRunNavBarItem),
             new DevExpress.XtraNavBar.NavBarItemLink(this.refreshAllNavBarItem),
             new DevExpress.XtraNavBar.NavBarItemLink(this.refreshLookupsNavBarItem),
             new DevExpress.XtraNavBar.NavBarItemLink(this.donemBasiIslemleriNavBarItem)});
@@ -435,6 +438,14 @@
             this.pPBindingSource.DataMember = "PP";
             this.pPBindingSource.DataSource = this.dataSetGnl;
             // 
+            // refreshDnmRunNavBarItem
+            // 
+            this.refreshDnmRunNavBarItem.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.refreshDnmRunNavBarItem.Appearance.Options.UseFont = true;
+            this.refreshDnmRunNavBarItem.Caption = "RefreshSonuc DnmRun (Server)";
+            this.refreshDnmRunNavBarItem.Name = "refreshDnmRunNavBarItem";
+            this.refreshDnmRunNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshDnmRunNavBarItem_LinkClicked);
+            // 
             // MainXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,5 +523,6 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem donemBasiIslemleriNavBarItem;
+        private DevExpress.XtraNavBar.NavBarItem refreshDnmRunNavBarItem;
     }
 }

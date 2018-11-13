@@ -1001,6 +1001,33 @@ namespace BDB2
             Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CT.RefreshSonuc({Dnm})");
         }
 
+        public static void CT_RefreshSonuc(CC cc)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            var cts = Db.SQL<CT>("select r from CT r where r.CC = ?", cc);
+            foreach (var ct in cts)
+            {
+                CT_RefreshSonuc(ct);
+            }
+
+            // Sort for CC
+            Db.TransactAsync(() =>
+            {
+                cts = Db.SQL<CT>("SELECT r FROM CT r where r.CC = ? order by r.PW DESC, r.KF DESC, r.Ad", cc);
+                int idx = 1;
+                foreach (var ct in cts)
+                {
+                    ct.Idx = idx++;
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CT.RefreshSonuc({cc.Ad})");
+        }
+
+
         public static void CT_RefreshSonuc(CT ct)
         {
             int SMW = 0,
@@ -1314,22 +1341,19 @@ namespace BDB2
             //Console.WriteLine($"CTP.RefreshSonucNew() #MAC {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
-        public static void CTP_RefreshSonucNew(int Dnm)
+        public static void CTP_RefreshSonuc(int Dnm)
         {
-            // RefreshSonuc'dan 5 kat hizli
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
             // Donemin Her CTP si icin
 
-
             int nor = 0;
-            ulong cc, cet, hct, gct, hpp, gpp;
             int hsw, gsw, hmw, gmw, hmx, gmx;
             string sod;
             CET ceto = null;
 
-            List<DictMaclar> MacList = new List<DictMaclar>();
+            List<ListMac> MacList = new List<ListMac>();
             foreach (var m in Db.SQL<MAC>("select m from MAC m"))
             {
                 if (m.CC.Dnm != Dnm || !(m.CEB is CET))
@@ -1337,201 +1361,102 @@ namespace BDB2
 
                 nor++;
 
-                //cc = m.CC.GetObjectNo();
-
-                //cet = m.CEB.GetObjectNo();
-
                 ceto = m.CEB as CET;
 
-                hct = ceto.HCT.GetObjectNo();
-                gct = ceto.GCT.GetObjectNo();
-
-                hpp = m.HPP1.GetObjectNo();
-                gpp = m.GPP1.GetObjectNo();
-
+                sod = m.SoD;
                 hsw = m.HSW;
                 gsw = m.GSW;
                 hmw = m.HMW;
                 gmw = m.GMW;
                 hmx = m.HMX;
                 gmx = m.GMX;
-                sod = m.SoD;
 
-                MacList.Add(new DictMaclar
+                MacList.Add(new ListMac
                 {
-                    //CC = cc,
-                    //CET = cet,
-                    CT = hct,
-                    PP = hpp,
+                    CT = ceto.HCT,
+                    PP = m.HPP1,
                     SoD = sod,
                     SW = hsw,
                     SL = gsw,
                     MW = hmw,
                     ML = gmw,
-                    MX = hmx,
                 });
 
-                MacList.Add(new DictMaclar
+                MacList.Add(new ListMac
                 {
-                    //CC = cc,
-                    //CET = cet,
-                    CT = gct,
-                    PP = gpp,
+                    CT = ceto.GCT,
+                    PP = m.GPP1,
                     SoD = sod,
                     SW = gsw,
                     SL = hsw,
                     MW = gmw,
                     ML = hmw,
-                    MX = gmx,
                 });
 
                 if (sod == "D")
                 {
-                    hpp = m.HPP2.GetObjectNo();
-                    gpp = m.GPP2.GetObjectNo();
-
-                    MacList.Add(new DictMaclar
+                    MacList.Add(new ListMac
                     {
-                        //CC = cc,
-                        //CET = cet,
-                        CT = hct,
-                        PP = hpp,
+                        CT = ceto.HCT,
+                        PP = m.HPP2,
                         SoD = sod,
                         SW = hsw,
                         SL = gsw,
                         MW = hmw,
                         ML = gmw,
-                        MX = hmx,
                     });
 
-                    MacList.Add(new DictMaclar
+                    MacList.Add(new ListMac
                     {
-                        //CC = cc,
-                        //CET = cet,
-                        CT = gct,
-                        PP = gpp,
+                        CT = ceto.GCT,
+                        PP = m.GPP2,
                         SoD = sod,
                         SW = gsw,
                         SL = hsw,
                         MW = gmw,
                         ML = hmw,
-                        MX = gmx,
                     });
                 }
             }
 
-            /*
-            var invoiceSum =
-            DSZoho.Tables["Invoices"].AsEnumerable()
-            .Select (x => 
-                new {  
-                    InvNumber = x["invoice number"],
-                    InvTotal = x["item price"],
-                    Contact = x["customer name"],
-                    InvDate = x["invoice date"],
-                    DueDate = x["due date"],
-                    Balance = x["balance"],
-                    }
-            )
-             .GroupBy (s => new {s.InvNumber, s.Contact, s.InvDate, s.DueDate} )
-             .Select (g => 
-                    new {
-                        InvNumber = g.Key.InvNumber,
-                        InvDate = g.Key.InvDate,
-                        DueDate = g.Key.DueDate,
-                        Contact = g.Key.Contact,
-                        InvTotal = g.Sum (x => Math.Round(Convert.ToDecimal(x.InvTotal), 2)),
-                        Balance = g.Sum (x => Math.Round(Convert.ToDecimal(x.Balance), 2)),
-                        } 
-             );
-            */
-            /*
-            var groupedResult4 = ml
-                .Select(x =>
-                   new
-                   {
-                       acc = x.CC,
-                       acet = x.CET,
-                       act = x.CT,
-                       asod = x.SoD,
-                       aSW = x.SW,
-                       aMW = x.MW,
-                   }
-                )
-                .OrderBy(x => x.act)//.ThenBy(x => x.asod)
-                .GroupBy(s => new { s.act, s.asod })
-             .Select(g =>
-                   new
-                   {
-                       gact = g.Key.act,
-                       gasod = g.Key.asod,
-                       tSW = g.Sum(x => x.aSW),
-                       tMW = g.Sum(x => x.aMW),
-                   }
-             );*/
-            /*
-            var groupedResult3 = from s in ml
-                                group s by new { ct = s.CT, SoD = s.SoD } into grp
-                                select new
-                                {
-                                    Key = grp.Key,
-                                    ssw = grp.Sum(r => r.SW),
-                                    ssl = grp.Sum(r => r.SL),
-                                    smw = grp.Sum(r => r.MW),
-                                    sml = grp.Sum(r => r.ML),
-                                };
-*/
-
             var groupedResult = MacList
-                .OrderBy(x => x.CT).ThenBy(x => x.PP) //.ThenBy(x => x.SoD)
+                //.OrderBy(x => x.CT).ThenBy(x => x.PP) //.ThenBy(x => x.SoD)
                 .GroupBy(s => new { s.CT, s.PP, s.SoD })
                 .Select(g => new
                 {
-                    gct = g.Key.CT,
-                    gpp = g.Key.PP,
-                    gsod = g.Key.SoD,
+                    ct = g.Key.CT,
+                    pp = g.Key.PP,
+                    sod = g.Key.SoD,
                     tSW = g.Sum(x => x.SW),
                     tSL = g.Sum(x => x.SL),
                     tMW = g.Sum(x => x.MW),
                     tML = g.Sum(x => x.ML),
-                    tMX = g.Sum(x => x.MX),
                 });
 
             //iterate each group 
-            ulong pct = 0, ppp = 0;
             CTP ctp = null;
             Db.TransactAsync(() =>
             {
                 foreach (var gr in groupedResult)
                 {
-
-                    if (pct != gr.gct || ppp != gr.gpp) // ctp yi bir kere okusun
-                    {
-                        //ctp = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ? and r.PP.ObjectNo = ?", gr.gct, gr.gpp).FirstOrDefault();
-                        ctp = Db.SQL<CTP>("select r from CTP r where r.CT = ? and r.PP = ?", Db.FromId<CT>(gr.gct), Db.FromId<PP>(gr.gpp)).FirstOrDefault();
-                        pct = gr.gct;
-                        ppp = gr.gpp;
-                    }
+                    ctp = Db.SQL<CTP>("select r from CTP r where r.CT = ? and r.PP = ?", gr.ct, gr.pp).FirstOrDefault();
                     if (ctp != null)
                     {
-                        if (gr.gsod == "S")
+                        if (gr.sod == "S")
                         {
-                            //ssw = gr.tSW;
-                            //ssl = gr.tSL;
+                            ctp.SSW = gr.tSW;
+                            ctp.SSL = gr.tSL;
                             ctp.SMW = gr.tMW;
                             ctp.SML = gr.tML;
-                            ctp.SMX = gr.tMX;
                         }
-                        else if (gr.gsod == "D")
+                        else if (gr.sod == "D")
                         {
-                            //dsw = gr.tSW;
-                            //dsl = gr.tSL;
+                            ctp.DSW = gr.tSW;
+                            ctp.DSL = gr.tSL;
                             ctp.DMW = gr.tMW;
                             ctp.DML = gr.tML;
-                            ctp.DMX = gr.tMX;
                         }
                     }
-
                 }
             });
 
