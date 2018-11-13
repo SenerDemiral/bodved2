@@ -1,22 +1,29 @@
 {
   "Html": "/Bodved/viewmodels/CTPsPage.html",
   "Hdr": "",
-  
+  "CToNo": 0,
+
   "CTPs": [
     {
       "PPoNo": 0,
       "PPAd": "",
       "IsRun": true,
       "RnkBas": 0,
-      "RnkBit": 0,
+      "RnkBit": "",
       "Idx": 0,
-      "SMT": 0,
-      "SMW": 0,
-      "SML": 0,
-      "SMX": 0,
-      "DMT": 0,
-      "DMW": 0,
-      "DML": 0
+
+      "SMT": "",
+      "SMW": "",
+      "SML": "",
+
+      "DMT": "",
+      "DMW": "",
+      "DML": "",
+
+      "SSW": "",
+      "SSL": "",
+      "DSW": "",
+      "DSL": "",
     }
   ]
 }

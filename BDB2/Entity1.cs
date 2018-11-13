@@ -317,10 +317,10 @@ namespace BDB2
         public int Idx { get; set; }    // Takim icindeki sirasi
         public bool IsRun { get; set; }     // Aktif oynuyor mu?
 
-        public int RnkBas { get; set; } // Takima girdiginde hesaplanir
+        //public int RnkBas { get; set; } // Takima girdiginde hesaplanir
         public int RnkBit { get; set; } // Lig bittiginde hesaplanir
 
-        public int RnkBgn
+        public int RnkBas
         {
             get
             {

@@ -27,7 +27,7 @@
                             <template is="dom-repeat" items="[[model.PPs]]">
                                 <tr>
                                     <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.Ad]]</a></td>
-                                    <td>[[item.RnkBaz]]</td>
+                                    <td><a href="/bodved/PP2PPRDs/[[item.PPoNo]]">[[item.RnkBaz]]</a></td>
                                     <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
                                     <td>[[item.Info]]</td>
                                 </tr>

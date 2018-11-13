@@ -57,10 +57,12 @@ namespace bodved2
 
 
             // Bir kerelik
-            //H.PPRD_DonemBasiIslemleri(17);
-            //H.PPRD_DonemBasiIslemleri(18);
-            //H.CTP_RefreshSonucNew(17);
-            //H.PPRD_RefreshSonuc(17);
+            /*
+            H.PPRD_DonemBasiIslemleri(17);
+            H.PPRD_DonemBasiIslemleri(18);
+            H.CTP_RefreshSonuc(17);
+            H.PPRD_RefreshSonuc(17);
+            */
 
             H.MAC_RefreshSonuc(H.DnmRun);
             H.CET_RefreshSonuc(H.DnmRun);

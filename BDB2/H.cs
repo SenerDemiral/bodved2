@@ -940,8 +940,6 @@ namespace BDB2
 
         
 
-        // Diskalifiye edildikten sonraki Eventlerini update
-        // Takimin Yaptigi Eventleri toplayarak Sonuclari update
         public static void CT_RefreshSonuc()
         {
             Stopwatch watch = new Stopwatch();
@@ -976,24 +974,23 @@ namespace BDB2
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            //var cts = Db.SQL<CT>("select r from CT r where r.CC.Dnm = ?", Dnm);
-            var cts = Db.SQL<CT>("select r from CT r");
-            foreach (var ct in cts)
-            {
-                if (ct.CC.Dnm == Dnm)
-                    CT_RefreshSonuc(ct);
-            }
-
-            // Sort for CC
             Db.TransactAsync(() =>
             {
-                //cts = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC.Dnm = ? order by r.PW DESC, r.KF DESC, r.Ad", Dnm);
-                cts = Db.SQL<CT>("SELECT r FROM CT r order by r.PW DESC, r.KF DESC, r.Ad");
-                int idx = 1;
-                foreach (var ct in cts)
+                var ccs = Db.SQL<CC>("select r from CC r where r.Dnm = ? and r.Skl = ?", Dnm, "T");
+                foreach (var cc in ccs)
                 {
-                    if (ct.CC.Dnm == Dnm)
+                    var cts = Db.SQL<CT>("select r from CT r where r.CC = ?", cc);
+                    foreach (var ct in cts)
+                    {
+                        CT_RefreshSonuc(ct);
+                    }
+
+                    cts = Db.SQL<CT>("SELECT r FROM CT r where r.CC = ? order by r.PW DESC, r.KF DESC, r.Ad", cc);
+                    int idx = 1;
+                    foreach (var ct in cts)
+                    {
                         ct.Idx = idx++;
+                    }
                 }
             });
 
@@ -1574,7 +1571,7 @@ namespace BDB2
                 foreach (var ctp in ctps)
                 {
                     //ctp.IsRun = ctp.PP.IsRun;
-                    ctp.RnkBas = ctp.PP.RnkSon;
+                    //ctp.RnkBas = ctp.PP.RnkSon;
                     ctp.RnkBit = 0;
                 }
 

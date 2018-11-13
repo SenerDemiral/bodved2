@@ -80,9 +80,13 @@ namespace bodved2.Api
             Handle.GET("/bodved/partials/CTPs/{?}", (ulong ct) =>
             {
                 var page = new CTPsPage();
-                CT CT = Db.FromId<CT>(ct);
-                page.Hdr = $"{CT.CC.Ad} ► {CT.Ad} ► Takım Oyuncuları";
-                page.CTPs.Data = Db.SQL<CTP>("SELECT r FROM CTP r WHERE r.CT.ObjectNo = ? order by r.Idx", ct);
+
+                //CT CT = Db.FromId<CT>(ct);
+                //page.Hdr = $"{CT.CC.Ad} ► {CT.Ad} ► Takım Oyuncuları";
+                //page.CTPs.Data = Db.SQL<CTP>("SELECT r FROM CTP r WHERE r.CT = ? order by r.RnkBas DESC, r.PP.Ad", CT);
+
+                page.CToNo = (long)ct;
+                page.Data = null;
                 return page;
             });
 

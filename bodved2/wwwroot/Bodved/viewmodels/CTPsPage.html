@@ -10,14 +10,20 @@
                 <div class="gridTbl_main">
                     <table class="fixTbl sngLine">
                         <colgroup>
-                            <col style="width:var(--w-Plyr)" />
                             <col style="width:var(--w-TF)" />
-                            <col style="width:var(--w-Rnk)" />
-                            <col style="width:var(--w-Rnk)" />
                             <col style="width:var(--w-Idx)" />
+                            
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Rnk)" />
+
                             <col style="width:var(--w-Mac)" />
                             <col style="width:var(--w-Mac)" />
                             <col style="width:var(--w-Mac)" />
+                            <col style="width:var(--w-Mac)" />
+                            <col style="width:var(--w-Mac)" />
+                            <col style="width:var(--w-Mac)" />
+
                             <col style="width:var(--w-Mac)" />
                             <col style="width:var(--w-Mac)" />
                             <col style="width:var(--w-Mac)" />
@@ -25,35 +31,59 @@
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>Oyuncu</th>
-                                <th>Run</th>
-                                <th>RnkBaş</th>
-                                <th>RnkBit</th>
-                                <th>Sıra</th>
-                                <th>SO</th>
-                                <th>SG</th>
-                                <th>SM</th>
-                                <th>SX</th>
-                                <th>DO</th>
-                                <th>DG</th>
-                                <th>DM</th>
+                                <th rowspan="2">Run</th>
+                                <th rowspan="2">Sıra</th>
+
+                                <th rowspan="2">Oyuncu</th>
+                                <th colspan="2">Rank</th>
+
+                                <th colspan="3">SingleMaç</th>
+
+                                <th colspan="3">DoubleMaç</th>
+
+                                <th colspan="2">SingleSet</th>
+                                <th colspan="2">DoubleSet</th>
+                            </tr>
+
+                            <tr>
+                                <th>Baş</th>
+                                <th>Bit</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+
+                                <th>O</th>
+                                <th>G</th>
+                                <th>M</th>
+
+                                <th>A</th>
+                                <th>V</th>
+                                <th>A</th>
+                                <th>V</th>
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="{{model.CTPs}}">
                                 <tr>
-                                    <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
                                     <td><input type="checkbox" checked="{{item.IsRun::change}}" disabled></td>
+                                    <td>[[item.Idx]]</td>
+
+                                    <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
                                     <td>[[item.RnkBas]]</td>
                                     <td>[[item.RnkBit]]</td>
-                                    <td>[[item.Idx]]</td>
+
                                     <td>[[item.SMT]]</td>
                                     <td>[[item.SMW]]</td>
                                     <td>[[item.SML]]</td>
-                                    <td>[[item.SMX]]</td>
                                     <td>[[item.DMT]]</td>
                                     <td>[[item.DMW]]</td>
                                     <td>[[item.DML]]</td>
+
+                                    <td>[[item.SSW]]</td>
+                                    <td>[[item.SSL]]</td>
+                                    <td>[[item.DSW]]</td>
+                                    <td>[[item.DSL]]</td>
                                 </tr>
                             </template>
                         </tbody>
