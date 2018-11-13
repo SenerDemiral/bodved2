@@ -1,6 +1,8 @@
 {
   "Html": "/Bodved/ViewModels/PPRDsPage.html",
   "Hdr": "",
+  "Dnm": 0,
+
   "PPRDs": [
     {
       "PPoNo": 0,
@@ -12,10 +14,12 @@
       "SonPXTxt": "",
       "DrmPX": "",
 
-      "MW": 0,
-      "ML": 0,
-      "SW": 0,
-      "SL": 0
+      "MW": "",
+      "ML": "",
+      "SW": "",
+      "SL": "",
+
+      "CurRuns": ""
     }
   ]
 }

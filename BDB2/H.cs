@@ -618,19 +618,19 @@ namespace BDB2
             return pprd;
         }
 
-        public static void PPRD_TryDelete(PP pp, int DnmRun)
+        public static void PPRD_TryDelete(PP pp, int Dnm)
         {
-            // DnmRun da CTP, CF ve MAC kayitlarinin olmamasi gerek
-            var pprd = Db.SQL("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, DnmRun).FirstOrDefault();
-            if (pprd == null)
+            // Donemde CTP, CF ve MAC kayitlarinin olmamasi gerek
+            var pprd = Db.SQL("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, Dnm).FirstOrDefault();
+            if (pprd != null)
             {
-                var cf = Db.SQL("select r from CF r where r.PP = ? and r.CC.Dnm = ?", pp, DnmRun).FirstOrDefault();
+                var cf = Db.SQL("select r from CF r where r.PP = ? and r.CC.Dnm = ?", pp, Dnm).FirstOrDefault();
                 if (cf == null)
                 {
-                    var ctp = Db.SQL("select r from CTP r where r.PP = ? and r.CC.Dnm = ?", pp, DnmRun).FirstOrDefault();
+                    var ctp = Db.SQL("select r from CTP r where r.PP = ? and r.CC.Dnm = ?", pp, Dnm).FirstOrDefault();
                     if (ctp == null)
                     {
-                        var mac = Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? and (r.HPP1 = ? or r.HPP2 = ? or r.GPP1 = ? or r.GPP2 = ?)", DnmRun, pp, pp, pp, pp).FirstOrDefault();
+                        var mac = Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? and (r.HPP1 = ? or r.HPP2 = ? or r.GPP1 = ? or r.GPP2 = ?)", Dnm, pp, pp, pp, pp).FirstOrDefault();
                         if (mac == null)
                         {
                             pprd.Delete();

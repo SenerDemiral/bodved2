@@ -109,7 +109,7 @@ namespace RestStarcounterServer
 
             //H.PopAll();
             //H.PPmove2baz(); // Eski Lig rank'i BazRnk'e koy
-                            
+
             /*
             H.PopPP();
             H.PopCC();
@@ -119,6 +119,8 @@ namespace RestStarcounterServer
             H.PopMAC();
             */
 
+            // Bunkara Gerek kalmadi
+            /*
             H.MAC_RefreshSonuc();
             H.CEF_RefreshSonuc();
             H.CF_RefreshSonuc();
@@ -127,7 +129,7 @@ namespace RestStarcounterServer
             H.CTP_RefreshSonucNew();
             H.PP_RefreshSonuc();
             H.MAC_RefreshGlobalRank();
-
+            */
             //CTP.UpdateRnkBas(); //Yeni doneme basinda (bodved2 ye gecis)
 
             //CTP.UpdateRnkBit(); //Yeni doneme bitiminde

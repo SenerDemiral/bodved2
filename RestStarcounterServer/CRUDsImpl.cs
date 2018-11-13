@@ -406,8 +406,7 @@ namespace RestStarcounterServer
                     if (request.RowSte == "A")
                     {
                         CTP row = CRUDsHelper.FromProxy<CTPProxy, CTP>(request);
-                        var pprd = H.PPRD_TryInsert(row.PP, row.CC.Dnm);
-                        row.RnkBas = pprd.RnkBas;
+                        H.PPRD_TryInsert(row.PP, row.CC.Dnm);
                         request = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
                     }
                     else if (request.RowSte == "M")
@@ -422,8 +421,7 @@ namespace RestStarcounterServer
                         if (request.RowErr == string.Empty)
                         {
                             CTP row = CRUDsHelper.FromProxy<CTPProxy, CTP>(request);
-                            var pprd = H.PPRD_TryInsert(row.PP, row.CC.Dnm);
-                            row.RnkBas = pprd.RnkBas;
+                            H.PPRD_TryInsert(row.PP, row.CC.Dnm);
                             request = CRUDsHelper.ToProxy<CTPProxy, CTP>(row);
                         }
                     }
@@ -441,8 +439,10 @@ namespace RestStarcounterServer
                                 request.RowErr = "MAC kaydı var. Silemezsiniz";
                             else
                             {
+                                PP pp = row.PP;
+                                int dnm = row.CC.Dnm;
                                 row.Delete();
-                                H.PPRD_TryDelete(row.PP, row.CC.Dnm);
+                                H.PPRD_TryDelete(pp, dnm);
                             }
                         }
                     }
