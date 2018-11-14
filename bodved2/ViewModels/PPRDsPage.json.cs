@@ -23,6 +23,7 @@ namespace bodved2.ViewModels
                     PPoNo = (long)pprd.PPoNo,
                     PPAd = pprd.PPAd,
                     RnkBas = pprd.RnkBas,
+                    TopPX = $"{pprd.TopPX:+#;-#;#}",
                     RnkSon = pprd.RnkSon,
                     RnkIdx = pprd.RnkIdx,
                     DrmRnk = pprd.DrmRnk,

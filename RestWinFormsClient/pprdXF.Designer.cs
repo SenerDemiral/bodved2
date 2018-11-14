@@ -197,8 +197,6 @@
             // 
             this.colRnkBas.FieldName = "RnkBas";
             this.colRnkBas.Name = "colRnkBas";
-            this.colRnkBas.OptionsColumn.AllowEdit = false;
-            this.colRnkBas.OptionsColumn.AllowFocus = false;
             this.colRnkBas.Visible = true;
             this.colRnkBas.VisibleIndex = 4;
             // 
