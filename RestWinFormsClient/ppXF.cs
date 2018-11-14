@@ -28,7 +28,7 @@ namespace RestWinFormsClient
         {
             string res = "";
             pPGridControl.DataSource = null;
-            dataSetGnl.CC.Rows.Clear();
+            dataSetGnl.PP.Rows.Clear();
             Task.Run(async () => { res = await dataSetGnl.PPFill(); }).Wait();
             toolStripStatusLabel1.Text = res;
             pPGridControl.DataSource = pPBindingSource;

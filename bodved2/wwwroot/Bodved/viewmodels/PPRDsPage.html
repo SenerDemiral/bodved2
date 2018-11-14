@@ -23,6 +23,8 @@
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
 
+                            <col style="width:var(--w-TF)" />
+
                             <col style="width:20rem" />
                         </colgroup>
                         <thead>
@@ -32,6 +34,7 @@
 
                                 <th colspan="2">Maç</th>
                                 <th colspan="2">Set</th>
+                                <th colspan="2">Aktivite</th>
                             </tr>
                             <tr>
                                 <th>#</th>
@@ -45,13 +48,17 @@
 
                                 <th>A</th>
                                 <th>V</th>
+
+                                <th>Ferdi</th>
+                                <th></th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="[[model.PPRDs]]">
                                 <tr>
                                     <td class="colPlyr"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
-                                    
+
                                     <td style="font-weight:bold"><a href="/bodved/PP2PPRDs/[[item.PPoNo]]">[[item.RnkIdx]]</a></td>
                                     <td>[[item.RnkBas]]</td>
                                     <td data-AE$="[[item.DrmRnk]]">[[item.DrmRnk]]</td>
@@ -64,6 +71,7 @@
                                     <td>[[item.SW]]</td>
                                     <td>[[item.SL]]</td>
 
+                                    <td><input type="checkbox" checked="{{item.IsFerdi::change}}" disabled></td>
                                     <td class="txtLeft">[[item.CurRuns]]</td>
                                 </tr>
                             </template>

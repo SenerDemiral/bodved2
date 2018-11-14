@@ -160,6 +160,12 @@
     <Compile Include="MainXF.Designer.cs">
       <DependentUpon>MainXF.cs</DependentUpon>
     </Compile>
+    <Compile Include="pprdXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pprdXF.Designer.cs">
+      <DependentUpon>pprdXF.cs</DependentUpon>
+    </Compile>
     <Compile Include="ppXF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainXF.resx">
       <DependentUpon>MainXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pprdXF.resx">
+      <DependentUpon>pprdXF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ppXF.resx">
       <DependentUpon>ppXF.cs</DependentUpon>

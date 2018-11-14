@@ -227,7 +227,7 @@ namespace RestWinFormsClient
 
             string res = "";
             mACGridControl.DataSource = null;
-            dataSetGnl.CC.Rows.Clear();
+            dataSetGnl.MAC.Rows.Clear();
             Task.Run(async () => { res = await dataSetGnl.MACFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
 

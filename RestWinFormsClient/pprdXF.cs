@@ -11,52 +11,34 @@ using DevExpress.XtraEditors;
 
 namespace RestWinFormsClient
 {
-    public partial class cfXF : DevExpress.XtraEditors.XtraForm
+    public partial class pprdXF : DevExpress.XtraEditors.XtraForm
     {
-        public DataSetGnl.CCRow CCRow = null;
-        private string qry;
-        private ulong prm;
-
-        public cfXF()
+        public pprdXF()
         {
             InitializeComponent();
 
-            cFGridControl.ExternalRepository = Program.MF.persistentRepository;
-            colCC.ColumnEdit = Program.MF.CCrepositoryItemLookUpEdit;
+            pPRDGridControl.ExternalRepository = Program.MF.persistentRepository;
             colPP.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
         }
 
-        private void cfXF_Load(object sender, EventArgs e)
+        private void pprdXF_Load(object sender, EventArgs e)
         {
-            qry = "";
-            prm = 0;
-
-            if (CCRow == null)
-            {
-                gridView1.OptionsBehavior.Editable = false;
-            }
-            else
-            {
-                qry = "CC";
-                prm = CCRow.RowKey;
-                colCC.Visible = false;
-            }
             FillDB();
         }
 
         private void FillDB()
         {
             string res = "";
-            cFGridControl.DataSource = null;
-            dataSetGnl.CF.Rows.Clear();
-            Task.Run(async () => { res = await dataSetGnl.CFFill(qry, prm); }).Wait();
+            pPRDGridControl.DataSource = null;
+            dataSetGnl.PPRD.Rows.Clear();
+            Task.Run(async () => { res = await dataSetGnl.PPRDFill(); }).Wait();
             toolStripStatusLabel1.Text = res;
-            cFGridControl.DataSource = cFBindingSource;
+            pPRDGridControl.DataSource = pPRDBindingSource;
 
             gridView1.BestFitColumns();
         }
 
-        private void cFBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void pPRDBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             UpdateDB();
         }
@@ -65,7 +47,7 @@ namespace RestWinFormsClient
         {
             if (!Validate())
                 return DialogResult.Cancel;
-            cFBindingSource.EndEdit();
+            pPRDBindingSource.EndEdit();
 
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
@@ -81,7 +63,7 @@ namespace RestWinFormsClient
                 dr = XtraMessageBox.Show("Değişiklik var. Kaydetmek istiyormusunuz?", "Update", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Yes)
                 {
-                    string err = dataSetGnl.CFUpdate();
+                    string err = dataSetGnl.PPRDUpdate();
                     if (err != string.Empty)
                     {
                         MessageBox.Show(err);
@@ -95,9 +77,6 @@ namespace RestWinFormsClient
         private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             gridView1.SetFocusedRowCellValue(colRowKey, 0);
-            gridView1.SetFocusedRowCellValue(colCC, CCRow.RowKey);
-            gridView1.SetFocusedRowCellValue(colPP, 0);
-            gridView1.SetFocusedRowCellValue(colIsRun, true);
 
         }
 

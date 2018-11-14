@@ -37,17 +37,18 @@
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
-            this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
-            this.MACnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.CCnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.PPnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
+            this.refreshDnmRunNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.refreshAllNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.refreshLookupsNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.donemBasiIslemleriNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.MACnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.persistentRepository = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.PPrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -67,7 +68,7 @@
             this.SoDrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.DRMrepositoryItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.pPBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.refreshDnmRunNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.PPRDnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -171,41 +172,14 @@
             this.refreshAllNavBarItem,
             this.refreshLookupsNavBarItem,
             this.donemBasiIslemleriNavBarItem,
-            this.refreshDnmRunNavBarItem});
+            this.refreshDnmRunNavBarItem,
+            this.PPRDnavBarItem});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 225;
             this.navBarControl1.Size = new System.Drawing.Size(225, 455);
             this.navBarControl1.TabIndex = 1;
             this.navBarControl1.Text = "navBarControl1";
-            // 
-            // navBarGroup2
-            // 
-            this.navBarGroup2.Caption = "Detaylar";
-            this.navBarGroup2.Expanded = true;
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.CTnavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.CETnavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MACnavBarItem)});
-            this.navBarGroup2.Name = "navBarGroup2";
-            // 
-            // CTnavBarItem
-            // 
-            this.CTnavBarItem.Caption = "CT";
-            this.CTnavBarItem.Name = "CTnavBarItem";
-            this.CTnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CTnavBarItem_LinkClicked);
-            // 
-            // CETnavBarItem
-            // 
-            this.CETnavBarItem.Caption = "CET";
-            this.CETnavBarItem.Name = "CETnavBarItem";
-            this.CETnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CETnavBarItem_LinkClicked);
-            // 
-            // MACnavBarItem
-            // 
-            this.MACnavBarItem.Caption = "MAC";
-            this.MACnavBarItem.Name = "MACnavBarItem";
-            this.MACnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MACnavBarItem_LinkClicked);
             // 
             // navBarGroup1
             // 
@@ -239,6 +213,14 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.donemBasiIslemleriNavBarItem)});
             this.navBarGroup.Name = "navBarGroup";
             // 
+            // refreshDnmRunNavBarItem
+            // 
+            this.refreshDnmRunNavBarItem.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.refreshDnmRunNavBarItem.Appearance.Options.UseFont = true;
+            this.refreshDnmRunNavBarItem.Caption = "RefreshSonuc DnmRun (Server)";
+            this.refreshDnmRunNavBarItem.Name = "refreshDnmRunNavBarItem";
+            this.refreshDnmRunNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshDnmRunNavBarItem_LinkClicked);
+            // 
             // refreshAllNavBarItem
             // 
             this.refreshAllNavBarItem.Caption = "RefreshSonuc All (Server)";
@@ -256,6 +238,35 @@
             this.donemBasiIslemleriNavBarItem.Caption = "Donem Basi Islemleri";
             this.donemBasiIslemleriNavBarItem.Name = "donemBasiIslemleriNavBarItem";
             this.donemBasiIslemleriNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.donemBasiIslemleriNavBarItem_LinkClicked);
+            // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "Detaylar";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.CTnavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.CETnavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MACnavBarItem),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.PPRDnavBarItem)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // CTnavBarItem
+            // 
+            this.CTnavBarItem.Caption = "CT";
+            this.CTnavBarItem.Name = "CTnavBarItem";
+            this.CTnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CTnavBarItem_LinkClicked);
+            // 
+            // CETnavBarItem
+            // 
+            this.CETnavBarItem.Caption = "CET";
+            this.CETnavBarItem.Name = "CETnavBarItem";
+            this.CETnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CETnavBarItem_LinkClicked);
+            // 
+            // MACnavBarItem
+            // 
+            this.MACnavBarItem.Caption = "MAC";
+            this.MACnavBarItem.Name = "MACnavBarItem";
+            this.MACnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MACnavBarItem_LinkClicked);
             // 
             // dataSetGnl
             // 
@@ -438,13 +449,11 @@
             this.pPBindingSource.DataMember = "PP";
             this.pPBindingSource.DataSource = this.dataSetGnl;
             // 
-            // refreshDnmRunNavBarItem
+            // PPRDnavBarItem
             // 
-            this.refreshDnmRunNavBarItem.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.refreshDnmRunNavBarItem.Appearance.Options.UseFont = true;
-            this.refreshDnmRunNavBarItem.Caption = "RefreshSonuc DnmRun (Server)";
-            this.refreshDnmRunNavBarItem.Name = "refreshDnmRunNavBarItem";
-            this.refreshDnmRunNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshDnmRunNavBarItem_LinkClicked);
+            this.PPRDnavBarItem.Caption = "PPRD";
+            this.PPRDnavBarItem.Name = "PPRDnavBarItem";
+            this.PPRDnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.PPRDnavBarItem_LinkClicked);
             // 
             // MainXF
             // 
@@ -524,5 +533,6 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem donemBasiIslemleriNavBarItem;
         private DevExpress.XtraNavBar.NavBarItem refreshDnmRunNavBarItem;
+        private DevExpress.XtraNavBar.NavBarItem PPRDnavBarItem;
     }
 }

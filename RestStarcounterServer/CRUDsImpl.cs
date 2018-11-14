@@ -53,6 +53,71 @@ namespace RestStarcounterServer
             }
         }
 
+        // Donem Players 
+        public override async Task PPRDFill(QryProxy request, IServerStreamWriter<PPRDProxy> responseStream, ServerCallContext context)
+        {
+            PPRDProxy proxy = new PPRDProxy();
+            List<PPRDProxy> proxyList = new List<PPRDProxy>();
+
+            Type proxyType = typeof(PPRDProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                IEnumerable<PPRD> rows = null;
+                if (request.Query == "DnmRun")
+                    rows = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", H.DnmRun);
+                else
+                    rows = Db.SQL<PPRD>("select r from PPRD r");
+
+                foreach (var row in rows)
+                {
+                    proxy = CRUDsHelper.ToProxy<PPRDProxy, PPRD>(row);
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+        public override Task<PPRDProxy> PPRDUpdate(PPRDProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                // RowSte: Added, Modified, Deletede, Unchanged
+                Db.Transact(() =>
+                {
+                    if (request.RowSte == "A")
+                    {
+                        PPRD row = CRUDsHelper.FromProxy<PPRDProxy, PPRD>(request);
+                        request = CRUDsHelper.ToProxy<PPRDProxy, PPRD>(row);
+                    }
+                    else if (request.RowSte == "M")
+                    {
+                        // Sadece IsFerdi degisebilir
+                        if (request.RowErr == string.Empty)
+                        {
+                            PPRD row = CRUDsHelper.FromProxy<PPRDProxy, PPRD>(request);
+                            request = CRUDsHelper.ToProxy<PPRDProxy, PPRD>(row);
+                        }
+                    }
+                    else if (request.RowSte == "D")
+                    {
+                        request.RowErr = "Silemezsiniz";
+                    }
+                });
+            }).Wait();
+
+            Session.RunTaskForAll((s, id) =>
+            {
+                s.CalculatePatchAndPushOnWebSocket();
+            });
+
+            return Task.FromResult(request);
+        }
+
         // Players
         public override async Task PPFill(QryProxy request, IServerStreamWriter<PPProxy> responseStream, ServerCallContext context)
         {

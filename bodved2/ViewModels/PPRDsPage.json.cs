@@ -33,7 +33,10 @@ namespace bodved2.ViewModels
                     SW = $"{pprd.SW:#}",
                     SL = $"{pprd.SL:#}",
 
+                    IsFerdi = pprd.IsFerdi
+
                 };
+
                 // Oynadigi CTP, CF leri bul
                 info = "";
                 var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ? and r.PP = ?", H.DnmRun, pprd.PP);

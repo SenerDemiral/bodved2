@@ -19,7 +19,8 @@
       "SW": "",
       "SL": "",
 
-      "CurRuns": ""
+      "CurRuns": "",
+      "IsFerdi": false,
     }
   ]
 }

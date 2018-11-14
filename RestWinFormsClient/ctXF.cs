@@ -58,7 +58,7 @@ namespace RestWinFormsClient
         {
             string res = "";
             cTGridControl.DataSource = null;
-            dataSetGnl.CC.Rows.Clear();
+            dataSetGnl.CT.Rows.Clear();
             Task.Run(async () => { res = await dataSetGnl.CTFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
             cTGridControl.DataSource = cTBindingSource;

@@ -22,6 +22,8 @@ namespace RestWinFormsClient
         ctXF frmCT;
         cetXF frmCET;
         macXF frmMAC;
+        pprdXF frmPPRD;
+
 
         public MainXF()
         {
@@ -174,6 +176,22 @@ namespace RestWinFormsClient
             {
                 MessageBox.Show(err);
             }
+        }
+
+        private void PPRDnavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            var doc = documentManager1.GetDocument(frmPPRD);
+            if (doc != null)
+                tabbedView1.Controller.Activate(doc);
+            else
+            {
+                frmPPRD = new pprdXF
+                {
+                    MdiParent = this
+                };
+                frmPPRD.Show();
+            }
+
         }
     }
 }

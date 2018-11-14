@@ -40,6 +40,7 @@ namespace RestLib {
     static readonly grpc::Marshaller<global::RestLib.CFProxy> __Marshaller_RestLib_CFProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CFProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.CEFProxy> __Marshaller_RestLib_CEFProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.CEFProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.MACProxy> __Marshaller_RestLib_MACProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.MACProxy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RestLib.PPRDProxy> __Marshaller_RestLib_PPRDProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.PPRDProxy.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RestLib.PPlookUpProxy> __Marshaller_RestLib_PPlookUpProxy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RestLib.PPlookUpProxy.Parser.ParseFrom);
 
     static readonly grpc::Method<global::RestLib.ActionProxy, global::RestLib.ActionProxy> __Method_PerformAction = new grpc::Method<global::RestLib.ActionProxy, global::RestLib.ActionProxy>(
@@ -161,6 +162,20 @@ namespace RestLib {
         __Marshaller_RestLib_MACProxy,
         __Marshaller_RestLib_MACProxy);
 
+    static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.PPRDProxy> __Method_PPRDFill = new grpc::Method<global::RestLib.QryProxy, global::RestLib.PPRDProxy>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "PPRDFill",
+        __Marshaller_RestLib_QryProxy,
+        __Marshaller_RestLib_PPRDProxy);
+
+    static readonly grpc::Method<global::RestLib.PPRDProxy, global::RestLib.PPRDProxy> __Method_PPRDUpdate = new grpc::Method<global::RestLib.PPRDProxy, global::RestLib.PPRDProxy>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "PPRDUpdate",
+        __Marshaller_RestLib_PPRDProxy,
+        __Marshaller_RestLib_PPRDProxy);
+
     static readonly grpc::Method<global::RestLib.QryProxy, global::RestLib.PPlookUpProxy> __Method_PPlookUp = new grpc::Method<global::RestLib.QryProxy, global::RestLib.PPlookUpProxy>(
         grpc::MethodType.ServerStreaming,
         __ServiceName,
@@ -258,6 +273,16 @@ namespace RestLib {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::RestLib.MACProxy> MACUpdate(global::RestLib.MACProxy request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task PPRDFill(global::RestLib.QryProxy request, grpc::IServerStreamWriter<global::RestLib.PPRDProxy> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::RestLib.PPRDProxy> PPRDUpdate(global::RestLib.PPRDProxy request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -500,6 +525,30 @@ namespace RestLib {
       {
         return CallInvoker.AsyncUnaryCall(__Method_MACUpdate, null, options, request);
       }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPRDProxy> PPRDFill(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PPRDFill(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPRDProxy> PPRDFill(global::RestLib.QryProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_PPRDFill, null, options, request);
+      }
+      public virtual global::RestLib.PPRDProxy PPRDUpdate(global::RestLib.PPRDProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PPRDUpdate(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::RestLib.PPRDProxy PPRDUpdate(global::RestLib.PPRDProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_PPRDUpdate, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.PPRDProxy> PPRDUpdateAsync(global::RestLib.PPRDProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PPRDUpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::RestLib.PPRDProxy> PPRDUpdateAsync(global::RestLib.PPRDProxy request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_PPRDUpdate, null, options, request);
+      }
       public virtual grpc::AsyncServerStreamingCall<global::RestLib.PPlookUpProxy> PPlookUp(global::RestLib.QryProxy request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return PPlookUp(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -537,6 +586,8 @@ namespace RestLib {
           .AddMethod(__Method_CEFUpdate, serviceImpl.CEFUpdate)
           .AddMethod(__Method_MACFill, serviceImpl.MACFill)
           .AddMethod(__Method_MACUpdate, serviceImpl.MACUpdate)
+          .AddMethod(__Method_PPRDFill, serviceImpl.PPRDFill)
+          .AddMethod(__Method_PPRDUpdate, serviceImpl.PPRDUpdate)
           .AddMethod(__Method_PPlookUp, serviceImpl.PPlookUp).Build();
     }
 

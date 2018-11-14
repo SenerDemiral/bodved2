@@ -43,6 +43,9 @@ service CRUDs {
   rpc MACFill (QryProxy) returns (stream MACProxy) {}
   rpc MACUpdate (MACProxy) returns (MACProxy) {}
 
+  rpc PPRDFill (QryProxy) returns (stream PPRDProxy) {}
+  rpc PPRDUpdate (PPRDProxy) returns (PPRDProxy) {}
+
   rpc PPlookUp (QryProxy) returns (stream PPlookUpProxy) {}
 }
 
@@ -67,6 +70,23 @@ message PPlookUpProxy {
 	string Sex = 3;
 	string CTs = 5;
 	bool IsRun = 6;
+}
+
+// Players
+message PPRDProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 PP = 5;
+	int32 Dnm = 6;
+  int32 RnkIdx = 7;
+	int32 RnkBas = 8;
+	int32 TopPX = 9;
+	int32 RnkSon = 10;
+	int32 SonPX = 11;
+	bool IsFerdi = 12;
 }
 
 // Players

@@ -110,6 +110,7 @@ namespace BDB2
         public int TopPX { get; set; }
         public int RnkSon { get; set; }
         public int SonPX { get; set; }      // Son Aldigi PX
+        public bool IsFerdi { get; set; }   // Ferdi Turnuvaya katilacak?
 
         public string DrmPX => SonPX == 0 ? "-" : SonPX > 0 ? "▲" : "▼";    // x: SonPX = 0, yani oynamamis henuz
         public string DrmRnk => RnkSon == RnkBas ? "=" : RnkSon > RnkBas ? "▲" : "▼";

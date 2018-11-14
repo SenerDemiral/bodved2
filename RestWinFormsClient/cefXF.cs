@@ -78,7 +78,7 @@ namespace RestWinFormsClient
         {
             string res = "";
             cEFGridControl.DataSource = null;
-            dataSetGnl.CC.Rows.Clear();
+            dataSetGnl.CF.Rows.Clear();
             Task.Run(async () => { res = await dataSetGnl.CEFFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
             cEFGridControl.DataSource = cEFBindingSource;
