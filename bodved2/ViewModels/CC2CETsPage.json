@@ -1,10 +1,12 @@
 {
-  "Html": "/Bodved/viewmodels/CETsPage.html",
+  "Html": "/Bodved/ViewModels/CC2CETsPage.html",
   "Hdr": "",
   "CCoNo": 0,
 
   "CETs": [
     {
+      "Break": false,
+
       "CEToNo": 0,
       "HWL": "",
       "GWL": "",

@@ -1,30 +1,23 @@
 ﻿using BDB2;
 using Starcounter;
-using System;
-using System.Linq;
 
 namespace bodved2.ViewModels
 {
-    partial class CurEventsPage : Json
+    partial class CC2CETsPage : Json
     {
         protected override void OnData()
         {
             base.OnData();
 
-            DD dd = Db.SQL<DD>("select r from DD r where r.Dnm = ?", H.DnmRun).FirstOrDefault();
-            Hdr = $"{dd.Ad} ► Güncel";
+            CC cc = Db.FromId<CC>((ulong)CCoNo);
+            Hdr = $"{cc.Ad} ► Fikstür";
 
-            // Gecmis Pzrtsi'den bir sonraki Cumaya kadar. 2 haftalik 
-            DateTime firstMonday = H.GetNextWeekday(DayOfWeek.Monday);
-            DateTime T1 = firstMonday.AddDays(-7);
-            DateTime T2 = firstMonday.AddDays(5);
             string tarih = "";
-            var cets = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC.Dnm = ? and r.Trh >= ? and r.Trh <= ? order by r.Trh", H.DnmRun, T1, T2);
+            var cets = Db.SQL<CET>("SELECT r FROM CET r WHERE r.CC = ? order by r.Trh", cc);
             foreach (var cet in cets)
             {
                 var rde = new CETsElementJson
                 {
-                    CCoNo = (long)cet.CCoNo,
                     HCToNo = (long)cet.HCToNo,
                     HCTAd = cet.HCTAd,
                     GCToNo = (long)cet.GCToNo,
@@ -55,4 +48,3 @@ namespace bodved2.ViewModels
 
     }
 }
-

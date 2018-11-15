@@ -122,7 +122,7 @@ namespace bodved2.Api
                 MasterPage master = GetMasterPageFromSession();
 
                 if (CC.Skl == "T")
-                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CETs/{cc}");
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CC2CETs/{cc}");
                 else if (CC.Skl == "F")
                     master.CurrentPage = GetLauncherPage($"/bodved/partials/CEFs/{cc}");
 
