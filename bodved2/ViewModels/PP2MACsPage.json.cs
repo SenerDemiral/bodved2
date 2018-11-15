@@ -49,6 +49,7 @@ namespace bodved2.ViewModels
                     Tarih = mac.Tarih,
                     SoD = mac.SoD,
                     Idx = mac.Idx,
+                    Info = mac.Info,
                 };
 
                 if (PPoNo == (long)mac.HPP1oNo)  // Home Kendisi, Guest Rakip

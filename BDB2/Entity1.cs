@@ -519,6 +519,7 @@ namespace BDB2
         public CT HCT { get; set; }     // Home Takim
         public CT GCT { get; set; }     // Guest Takim
 
+        public ulong CCoNo => CC.GetObjectNo();
         public ulong HCToNo => HCT?.GetObjectNo() ?? 0;
         public ulong GCToNo => GCT?.GetObjectNo() ?? 0;
         public string HCTAd => HCT?.Ad;

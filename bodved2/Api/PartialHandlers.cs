@@ -65,6 +65,7 @@ namespace bodved2.Api
             {
                 var page = new CTsPage();
                 CC CC = Db.FromId<CC>(cc);
+                page.CCoNo = (long)CC.CCoNo;
                 page.Hdr = $"{CC.Ad} ► Takım Puanları"; 
                 page.CTs.Data = Db.SQL<CT>("SELECT r FROM CT r WHERE r.CC = ? order by r.Idx", CC);
                 return page;

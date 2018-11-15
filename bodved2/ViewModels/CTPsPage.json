@@ -1,6 +1,8 @@
 {
   "Html": "/Bodved/viewmodels/CTPsPage.html",
   "Hdr": "",
+
+  "CCoNo": 0,
   "CToNo": 0,
 
   "CTPs": [

@@ -34,6 +34,8 @@ namespace bodved2.ViewModels
                         KW = $"{cet.HKW:#}",
                         SMW = $"{cet.HSMW:#}",
                         DMW = $"{cet.HDMW:#}",
+
+                        WL = cet.HPW > cet.GPW ? "W" : "L"
                     };
                     CETs.Add(hcet);
                 }
@@ -55,6 +57,8 @@ namespace bodved2.ViewModels
                         KW = $"{cet.GKW:#}",
                         SMW = $"{cet.GSMW:#}",
                         DMW = $"{cet.GDMW:#}",
+
+                        WL = cet.GPW > cet.HPW ? "W" : "L"
                     };
                     CETs.Add(gcet);
                 }

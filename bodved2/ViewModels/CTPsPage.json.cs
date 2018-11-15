@@ -10,6 +10,7 @@ namespace bodved2.ViewModels
             base.OnData();
 
             CT ct = Db.FromId<CT>((ulong)CToNo);
+            CCoNo = (long)ct.CC.CCoNo;
             Hdr = $"{ct.CC.Ad} ► {ct.Ad} ► Takım Oyuncuları";
 
             //int idx = 1;
