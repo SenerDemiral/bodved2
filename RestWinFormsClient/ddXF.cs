@@ -11,44 +11,31 @@ using DevExpress.XtraEditors;
 
 namespace RestWinFormsClient
 {
-    public partial class pprdXF : DevExpress.XtraEditors.XtraForm
+    public partial class ddXF : DevExpress.XtraEditors.XtraForm
     {
-        public DataSetGnl.DDRow DDRow = null;
-        private string qry = "";
-        private ulong prm = 0;
-
-        public pprdXF()
+        public ddXF()
         {
             InitializeComponent();
-
-            pPRDGridControl.ExternalRepository = Program.MF.persistentRepository;
-            colPP.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
         }
 
-        private void pprdXF_Load(object sender, EventArgs e)
+        private void ddXF_Load(object sender, EventArgs e)
         {
-            if (DDRow != null)
-            {
-                qry = "DD";
-                prm = (ulong)DDRow.Dnm;
-            }
-
             FillDB();
         }
 
         private void FillDB()
         {
             string res = "";
-            pPRDGridControl.DataSource = null;
-            dataSetGnl.PPRD.Rows.Clear();
-            Task.Run(async () => { res = await dataSetGnl.PPRDFill(qry, prm); }).Wait();
+            ddGridControl.DataSource = null;
+            dataSetGnl.CC.Rows.Clear();
+            Task.Run(async () => { res = await dataSetGnl.DDFill(); }).Wait();
             toolStripStatusLabel1.Text = res;
-            pPRDGridControl.DataSource = pPRDBindingSource;
+            ddGridControl.DataSource = ddBindingSource;
 
             gridView1.BestFitColumns();
         }
 
-        private void pPRDBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void ddBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             UpdateDB();
         }
@@ -57,7 +44,7 @@ namespace RestWinFormsClient
         {
             if (!Validate())
                 return DialogResult.Cancel;
-            pPRDBindingSource.EndEdit();
+            ddBindingSource.EndEdit();
 
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
@@ -73,7 +60,7 @@ namespace RestWinFormsClient
                 dr = XtraMessageBox.Show("Değişiklik var. Kaydetmek istiyormusunuz?", "Update", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Yes)
                 {
-                    string err = dataSetGnl.PPRDUpdate();
+                    string err = dataSetGnl.CCUpdate();
                     if (err != string.Empty)
                     {
                         MessageBox.Show(err);
@@ -90,5 +77,33 @@ namespace RestWinFormsClient
 
         }
 
+        private void cCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ccXF frm = new ccXF();
+            frm.MdiParent = Program.MF;
+            frm.DDRow = (DataSetGnl.DDRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Competitions [ccXF]";
+            frm.Show();
+
+        }
+
+        private void cETToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cetXF frm = new cetXF();
+            frm.MdiParent = Program.MF;
+            frm.DDRow = (DataSetGnl.DDRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Events [cetXF]";
+            frm.Show();
+
+        }
+
+        private void pPRDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pprdXF frm = new pprdXF();
+            frm.MdiParent = Program.MF;
+            frm.DDRow = (DataSetGnl.DDRow)gridView1.GetFocusedDataRow();
+            frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Rank [pprdXF]";
+            frm.Show();
+        }
     }
 }

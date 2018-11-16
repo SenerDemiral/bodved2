@@ -343,8 +343,10 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowFixedGroups = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
+            this.gridView1.OptionsFilter.UseNewCustomFilterDialog = true;
             this.gridView1.OptionsSelection.EnableAppearanceHideSelection = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTrh, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
@@ -355,6 +357,8 @@
             this.colRowKey.OptionsColumn.AllowEdit = false;
             this.colRowKey.OptionsColumn.AllowFocus = false;
             this.colRowKey.OptionsColumn.FixedWidth = true;
+            this.colRowKey.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "RowKey", "{0:#}")});
             this.colRowKey.Visible = true;
             this.colRowKey.VisibleIndex = 0;
             this.colRowKey.Width = 60;
@@ -384,6 +388,7 @@
             this.colDrm.FieldName = "Drm";
             this.colDrm.Name = "colDrm";
             this.colDrm.OptionsColumn.FixedWidth = true;
+            this.colDrm.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colDrm.Visible = true;
             this.colDrm.VisibleIndex = 3;
             this.colDrm.Width = 40;
@@ -540,6 +545,7 @@
             this.colHKW.OptionsColumn.AllowEdit = false;
             this.colHKW.OptionsColumn.AllowFocus = false;
             this.colHKW.OptionsColumn.FixedWidth = true;
+            this.colHKW.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colHKW.Visible = true;
             this.colHKW.VisibleIndex = 5;
             this.colHKW.Width = 20;
@@ -558,6 +564,7 @@
             this.colGKW.OptionsColumn.AllowEdit = false;
             this.colGKW.OptionsColumn.AllowFocus = false;
             this.colGKW.OptionsColumn.FixedWidth = true;
+            this.colGKW.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colGKW.Visible = true;
             this.colGKW.VisibleIndex = 8;
             this.colGKW.Width = 20;
@@ -578,6 +585,7 @@
             this.colHPW.OptionsColumn.AllowEdit = false;
             this.colHPW.OptionsColumn.AllowFocus = false;
             this.colHPW.OptionsColumn.FixedWidth = true;
+            this.colHPW.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colHPW.ToolTip = "Home Puan Win";
             this.colHPW.Visible = true;
             this.colHPW.VisibleIndex = 6;
@@ -599,6 +607,7 @@
             this.colGPW.OptionsColumn.AllowEdit = false;
             this.colGPW.OptionsColumn.AllowFocus = false;
             this.colGPW.OptionsColumn.FixedWidth = true;
+            this.colGPW.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colGPW.ToolTip = "Guest Puan Win";
             this.colGPW.Visible = true;
             this.colGPW.VisibleIndex = 7;

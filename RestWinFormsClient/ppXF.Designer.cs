@@ -48,6 +48,7 @@
             this.pPGridControl = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAd = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,6 +56,7 @@
             this.colSex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTel = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsRun = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsFerdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRnkIlk = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRnkBaz = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRnkSon = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -78,8 +80,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colIsFerdi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPBindingNavigator)).BeginInit();
@@ -259,6 +259,13 @@
             this.playersToolStripMenuItem.Text = "Mac";
             this.playersToolStripMenuItem.Click += new System.EventHandler(this.playersToolStripMenuItem_Click);
             // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -302,7 +309,7 @@
             this.colRowKey.OptionsColumn.AllowFocus = false;
             this.colRowKey.OptionsColumn.FixedWidth = true;
             this.colRowKey.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "RowKey", "{0:n0}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "RowKey", "{0:#}")});
             this.colRowKey.Visible = true;
             this.colRowKey.VisibleIndex = 0;
             this.colRowKey.Width = 60;
@@ -351,6 +358,16 @@
             this.colIsRun.Visible = true;
             this.colIsRun.VisibleIndex = 5;
             this.colIsRun.Width = 40;
+            // 
+            // colIsFerdi
+            // 
+            this.colIsFerdi.Caption = "Ferdi";
+            this.colIsFerdi.FieldName = "IsFerdi";
+            this.colIsFerdi.Name = "colIsFerdi";
+            this.colIsFerdi.OptionsColumn.FixedWidth = true;
+            this.colIsFerdi.Visible = true;
+            this.colIsFerdi.VisibleIndex = 6;
+            this.colIsFerdi.Width = 40;
             // 
             // colRnkIlk
             // 
@@ -606,23 +623,6 @@
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // colIsFerdi
-            // 
-            this.colIsFerdi.Caption = "Ferdi";
-            this.colIsFerdi.FieldName = "IsFerdi";
-            this.colIsFerdi.Name = "colIsFerdi";
-            this.colIsFerdi.OptionsColumn.FixedWidth = true;
-            this.colIsFerdi.Visible = true;
-            this.colIsFerdi.VisibleIndex = 6;
-            this.colIsFerdi.Width = 40;
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // ppXF
             // 

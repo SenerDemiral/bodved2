@@ -22,6 +22,9 @@ service CRUDs {
   rpc PPFill (QryProxy) returns (stream PPProxy) {}
   rpc PPUpdate (PPProxy) returns (PPProxy) {}
 
+  rpc DDFill (QryProxy) returns (stream DDProxy) {}
+  rpc DDUpdate (DDProxy) returns (DDProxy) {}
+
   rpc CCFill (QryProxy) returns (stream CCProxy) {}
   rpc CCUpdate (CCProxy) returns (CCProxy) {}
 
@@ -120,6 +123,18 @@ message PPProxy {
 	int32 DMT = 24;
 	int32 DMW = 25;
 	int32 DML = 26;
+}
+
+// Competitions
+message DDProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	int32 Dnm = 5;
+  string Ad = 6;
+  string Info = 7;
 }
 
 // Competitions

@@ -19,6 +19,7 @@ namespace RestWinFormsClient
         int nor = 0;
 
         ppXF frmPP;
+        ddXF frmDD;
         ccXF frmCC;
         ctXF frmCT;
         cetXF frmCET;
@@ -49,8 +50,8 @@ namespace RestWinFormsClient
                 dataSetGnl.CT.Rows.Clear();
 
                 await dataSetGnl.PPlookUp();
-                await dataSetGnl.CCFill();
-                await dataSetGnl.CTFill("",0);
+                await dataSetGnl.CCFill("", 0);
+                await dataSetGnl.CTFill("", 0);
 
                 sw.Stop();
                 //InitLookups();
@@ -63,6 +64,22 @@ namespace RestWinFormsClient
 
         private void MainXF_Load(object sender, EventArgs e)
         {
+        }
+
+        private void DDnavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            var doc = documentManager1.GetDocument(frmDD);
+            if (doc != null)
+                tabbedView1.Controller.Activate(doc);
+            else
+            {
+                frmDD = new ddXF
+                {
+                    MdiParent = this
+                };
+                frmDD.Show();
+            }
+
         }
 
         private void CTnavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -198,5 +215,6 @@ namespace RestWinFormsClient
             }
 
         }
+
     }
 }

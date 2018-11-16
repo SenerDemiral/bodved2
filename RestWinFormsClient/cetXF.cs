@@ -14,6 +14,7 @@ namespace RestWinFormsClient
     public partial class cetXF : DevExpress.XtraEditors.XtraForm
     {
         public DataSetGnl.CCRow CCRow = null;
+        public DataSetGnl.DDRow DDRow = null;
         private string qry;
         private ulong prm;
 
@@ -34,15 +35,22 @@ namespace RestWinFormsClient
             qry = "";
             prm = 0;
 
-            if (CCRow == null)
-                gridView1.OptionsBehavior.Editable = true; //false;
-            else
+            if(CCRow != null)
             {
                 qry = "CC";
                 prm = CCRow.RowKey;
 
                 colCC.Visible = false;
             }
+            else if (DDRow != null)
+            {
+                qry = "DD";
+                prm = (ulong)DDRow.Dnm;
+
+                colCC.Visible = true;
+            }
+            else
+                gridView1.OptionsBehavior.Editable = true; //false;
 
             FillDB();
         }
@@ -107,8 +115,11 @@ namespace RestWinFormsClient
         private void maclarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             macXF frm = new macXF();
+            frm.MdiParent = Program.MF;
             frm.CETRow = (DataSetGnl.CETRow)gridView1.GetFocusedDataRow();
-            frm.Text = $"{gridView1.GetFocusedRowCellDisplayText(colHCT)} >< {gridView1.GetFocusedRowCellDisplayText(colGCT)} Matches [macXF]";
+            frm.Text = $"{gridView1.GetFocusedRowCellDisplayText(colHCT)} - {gridView1.GetFocusedRowCellDisplayText(colGCT)} Matches [macXF]";
+            frm.HCTAd = gridView1.GetFocusedRowCellDisplayText(colHCT);
+            frm.GCTAd = gridView1.GetFocusedRowCellDisplayText(colGCT);
             frm.Show();
         }
     }

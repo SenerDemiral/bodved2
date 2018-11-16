@@ -13,15 +13,23 @@ namespace RestWinFormsClient
 {
     public partial class ccXF : DevExpress.XtraEditors.XtraForm
     {
+        public DataSetGnl.DDRow DDRow = null;
+        private string qry = "";
+        private ulong prm = 0;
+
         public ccXF()
         {
             InitializeComponent();
-
-            
         }
 
         private void ccXF_Load(object sender, EventArgs e)
         {
+            if(DDRow != null)
+            {
+                qry = "DD";
+                prm = (ulong)DDRow.Dnm;
+            }
+
             FillDB();
         }
 
@@ -30,7 +38,7 @@ namespace RestWinFormsClient
             string res = "";
             cCGridControl.DataSource = null;
             dataSetGnl.CC.Rows.Clear();
-            Task.Run(async () => { res = await dataSetGnl.CCFill(); }).Wait();
+            Task.Run(async () => { res = await dataSetGnl.CCFill(qry, prm); }).Wait();
             toolStripStatusLabel1.Text = res;
             cCGridControl.DataSource = cCBindingSource;
 
@@ -84,13 +92,16 @@ namespace RestWinFormsClient
             if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "T")
             {
                 ctXF frm = new ctXF();
+                frm.MdiParent = Program.MF;
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Teams [ctXF]";
+
                 frm.Show();
             }
             else if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "F")
             {
                 cfXF frm = new cfXF();
+                frm.MdiParent = Program.MF;
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} Players [cfXF]";
                 frm.Show();
@@ -103,6 +114,7 @@ namespace RestWinFormsClient
             if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "T")
             {
                 cetXF frm = new cetXF();
+                frm.MdiParent = Program.MF;
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cetXF]";
                 frm.Show();
@@ -110,6 +122,7 @@ namespace RestWinFormsClient
             else if (gridView1.GetFocusedRowCellValue(colSkl).ToString() == "F")
             {
                 cefXF frm = new cefXF();
+                frm.MdiParent = Program.MF;
                 frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
                 frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Events [cefXF]";
                 frm.Show();
@@ -119,6 +132,7 @@ namespace RestWinFormsClient
         private void matchesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             macXF frm = new macXF();
+            frm.MdiParent = Program.MF;
             frm.CCRow = (DataSetGnl.CCRow)gridView1.GetFocusedDataRow();
             frm.Text = $"{gridView1.GetFocusedRowCellValue(colAd)} / {gridView1.GetFocusedRowCellValue(colSkl)} Matches [macXF]";
             frm.Show();

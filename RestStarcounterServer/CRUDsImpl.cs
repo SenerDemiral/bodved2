@@ -53,6 +53,55 @@ namespace RestStarcounterServer
             }
         }
 
+        // Donemler
+        public override async Task DDFill(QryProxy request, IServerStreamWriter<DDProxy> responseStream, ServerCallContext context)
+        {
+            DDProxy proxy = new DDProxy();
+            List<DDProxy> proxyList = new List<DDProxy>();
+
+            Type proxyType = typeof(DDProxy);
+            PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
+
+            await Scheduling.RunTask(() =>
+            {
+                foreach (var row in Db.SQL<DD>("select r from DD r"))
+                {
+                    proxy = CRUDsHelper.ToProxy<DDProxy, DD>(row);
+                    proxyList.Add(proxy);
+                }
+            });
+
+            foreach (var p in proxyList)
+            {
+                await responseStream.WriteAsync(p);
+            }
+        }
+        public override Task<DDProxy> DDUpdate(DDProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                // RowSte: Added, Modified, Deletede, Unchanged
+                Db.Transact(() =>
+                {
+                    if (request.RowSte == "A" || request.RowSte == "M")
+                    {
+                        if (request.RowErr == string.Empty)
+                        {
+                            DD row = CRUDsHelper.FromProxy<DDProxy, DD>(request);
+                            request = CRUDsHelper.ToProxy<DDProxy, DD>(row);
+                        }
+
+                    }
+                    else if (request.RowSte == "D")
+                    {
+                        request.RowErr = $"Silemezsiniz!";
+                    }
+                });
+            }).Wait();
+
+            return Task.FromResult(request);
+        }
+
         // Donem Players 
         public override async Task PPRDFill(QryProxy request, IServerStreamWriter<PPRDProxy> responseStream, ServerCallContext context)
         {
@@ -65,8 +114,8 @@ namespace RestStarcounterServer
             await Scheduling.RunTask(() =>
             {
                 IEnumerable<PPRD> rows = null;
-                if (request.Query == "DnmRun")
-                    rows = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", H.DnmRun);
+                if (request.Query == "DD")
+                    rows = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", int.Parse(request.Param));
                 else
                     rows = Db.SQL<PPRD>("select r from PPRD r");
 
@@ -239,21 +288,15 @@ namespace RestStarcounterServer
 
             await Scheduling.RunTask(() =>
             {
-                foreach (var row in Db.SQL<CC>("select r from CC r"))
+                IEnumerable<CC> rows = null;
+                if (request.Query == "DD")
+                    rows = Db.SQL<CC>("SELECT r FROM CC r WHERE r.Dnm = ?", int.Parse(request.Param));
+                else
+                    rows = Db.SQL<CC>("select r from CC r");
+
+                foreach (var row in rows)
                 {
                     proxy = CRUDsHelper.ToProxy<CCProxy, CC>(row);
-                    /*
-                    proxy = new CCProxy
-                    {
-                        RowKey = row.GetObjectNo(),
-                        Ad = row.Ad,
-                        Skl = row.Skl ?? "",
-                        Grp = row.Grp ?? "",
-                        Info = row.Info ?? "",
-                        IsRun = row.IsRun,
-                        IsRnkd = row.IsRnkd,
-                    };
-                    */
                     proxyList.Add(proxy);
                 }
             });
@@ -318,36 +361,11 @@ namespace RestStarcounterServer
                 if (request.Query == "CC")
                     rows = Db.SQL<CT>("select r from CT r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
                 else
-                    rows = Db.SQL<CT>("select r from CT r ");
+                    rows = Db.SQL<CT>("select r from CT r");
 
                 foreach (var row in rows)
                 {
-                    //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
                     proxy = CRUDsHelper.ToProxy<CTProxy, CT>(row);
-                    /*
-                    proxy = new CTProxy
-                    {
-                        RowKey = row.GetObjectNo(),
-                        CC = row.CC == null ? 0 : row.CC.GetObjectNo(),
-                        K1 = row.K1 == null ? 0 : row.K1.GetObjectNo(),
-                        K2 = row.K2 == null ? 0 : row.K1.GetObjectNo(),
-
-                        Ad = row.Ad,
-                        Adres = row.Adres ?? "",
-                        Info = row.Info ?? "",
-                        NG = row.NG,
-                        NM = row.NM,
-                        NB = row.NB,
-                        NT = row.NT,
-                        NX = row.NX,
-                        KA = row.KA,
-                        KV = row.KV,
-                        KF = row.KF,
-                        PW = row.PW,
-                        
-                        IsRun = row.IsRun,
-                    };
-                    */
                     proxyList.Add(proxy);
                 }
             });
@@ -536,37 +554,14 @@ namespace RestStarcounterServer
                 IEnumerable<CET> rows = null;
                 if (request.Query == "CC")
                     rows = Db.SQL<CET>("select r from CET r where r.CC.ObjectNo = ?", ulong.Parse(request.Param));
+                else if (request.Query == "DD")
+                    rows = Db.SQL<CET>("select r from CET r where r.CC.Dnm = ?", int.Parse(request.Param));
                 else
                     rows = Db.SQL<CET>("select r from CET r");
 
                 foreach (var row in rows)
                 {
-                    //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
                     proxy = CRUDsHelper.ToProxy<CETProxy, CET>(row);
-                    /*
-                    proxy = new CTProxy
-                    {
-                        RowKey = row.GetObjectNo(),
-                        CC = row.CC == null ? 0 : row.CC.GetObjectNo(),
-                        K1 = row.K1 == null ? 0 : row.K1.GetObjectNo(),
-                        K2 = row.K2 == null ? 0 : row.K1.GetObjectNo(),
-
-                        Ad = row.Ad,
-                        Adres = row.Adres ?? "",
-                        Info = row.Info ?? "",
-                        NG = row.NG,
-                        NM = row.NM,
-                        NB = row.NB,
-                        NT = row.NT,
-                        NX = row.NX,
-                        KA = row.KA,
-                        KV = row.KV,
-                        KF = row.KF,
-                        PW = row.PW,
-                        
-                        IsRun = row.IsRun,
-                    };
-                    */
                     proxyList.Add(proxy);
                 }
             });

@@ -18,6 +18,8 @@ namespace RestWinFormsClient
         public DataSetGnl.CCRow CCRow = null;
         public DataSetGnl.CETRow CETRow = null;
         public DataSetGnl.CEFRow CEFRow = null;
+        public string HCTAd = "", GCTAd = "";
+
         private ulong CC, CEB, HPP, GPP;
         private DateTime Trh;
         private string qry;
@@ -48,6 +50,9 @@ namespace RestWinFormsClient
                 Trh = CETRow.Trh;
                 HPP = 0;
                 GPP = 0;
+
+                colHPP1.Caption = HCTAd;
+                colGPP1.Caption = GCTAd;
 
                 colCC.Visible = false;
                 gridView1.SortInfo.ClearAndAddRange(new[] {
