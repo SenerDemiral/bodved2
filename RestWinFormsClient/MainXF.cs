@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Diagnostics;
+using System.Threading;
 
 namespace RestWinFormsClient
 {
@@ -28,6 +29,10 @@ namespace RestWinFormsClient
         public MainXF()
         {
             InitializeComponent();
+
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("tr-TR");
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("tr-TR");
+
         }
 
         public void FillTanimlar()
