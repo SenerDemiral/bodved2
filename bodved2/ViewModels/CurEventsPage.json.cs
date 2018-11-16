@@ -25,6 +25,7 @@ namespace bodved2.ViewModels
                 var rde = new CETsElementJson
                 {
                     CCoNo = (long)cet.CCoNo,
+                    CEToNo = (long)cet.CEToNo,
                     HCToNo = (long)cet.HCToNo,
                     HCTAd = cet.HCTAd,
                     GCToNo = (long)cet.GCToNo,
