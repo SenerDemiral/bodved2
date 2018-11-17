@@ -410,6 +410,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.hPPrepositoryItemGridLookUpEdit.DataSource = this.hPPluBindingSource;
             this.hPPrepositoryItemGridLookUpEdit.DisplayMember = "Ad";
+            this.hPPrepositoryItemGridLookUpEdit.ImmediatePopup = true;
             this.hPPrepositoryItemGridLookUpEdit.Name = "hPPrepositoryItemGridLookUpEdit";
             this.hPPrepositoryItemGridLookUpEdit.ValueMember = "RowKey";
             this.hPPrepositoryItemGridLookUpEdit.View = this.repositoryItemGridLookUpEdit1View;
@@ -440,33 +441,36 @@
             this.colAd.Name = "colAd";
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 0;
-            this.colAd.Width = 176;
+            this.colAd.Width = 274;
             // 
             // colSex
             // 
             this.colSex.FieldName = "Sex";
             this.colSex.Name = "colSex";
+            this.colSex.OptionsColumn.FixedWidth = true;
             this.colSex.Visible = true;
             this.colSex.VisibleIndex = 1;
-            this.colSex.Width = 44;
+            this.colSex.Width = 30;
             // 
             // colIsRun
             // 
             this.colIsRun.Caption = "Run";
             this.colIsRun.FieldName = "IsRun";
             this.colIsRun.Name = "colIsRun";
+            this.colIsRun.OptionsColumn.FixedWidth = true;
             this.colIsRun.Visible = true;
             this.colIsRun.VisibleIndex = 2;
-            this.colIsRun.Width = 44;
+            this.colIsRun.Width = 30;
             // 
             // colRowKey1
             // 
             this.colRowKey1.Caption = "Key";
             this.colRowKey1.FieldName = "RowKey";
             this.colRowKey1.Name = "colRowKey1";
+            this.colRowKey1.OptionsColumn.FixedWidth = true;
             this.colRowKey1.Visible = true;
             this.colRowKey1.VisibleIndex = 3;
-            this.colRowKey1.Width = 50;
+            this.colRowKey1.Width = 40;
             // 
             // colCTs
             // 
@@ -501,6 +505,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.gPPrepositoryItemGridLookUpEdit.DataSource = this.gPPluBindingSource;
             this.gPPrepositoryItemGridLookUpEdit.DisplayMember = "Ad";
+            this.gPPrepositoryItemGridLookUpEdit.ImmediatePopup = true;
             this.gPPrepositoryItemGridLookUpEdit.Name = "gPPrepositoryItemGridLookUpEdit";
             this.gPPrepositoryItemGridLookUpEdit.ValueMember = "RowKey";
             this.gPPrepositoryItemGridLookUpEdit.View = this.gridView2;
@@ -532,34 +537,37 @@
             this.colAd1.Name = "colAd1";
             this.colAd1.Visible = true;
             this.colAd1.VisibleIndex = 0;
-            this.colAd1.Width = 120;
+            this.colAd1.Width = 274;
             // 
             // colSex1
             // 
             this.colSex1.Caption = "Sex";
             this.colSex1.FieldName = "Sex";
             this.colSex1.Name = "colSex1";
+            this.colSex1.OptionsColumn.FixedWidth = true;
             this.colSex1.Visible = true;
             this.colSex1.VisibleIndex = 1;
-            this.colSex1.Width = 28;
+            this.colSex1.Width = 30;
             // 
             // colIsRun1
             // 
             this.colIsRun1.Caption = "Run";
             this.colIsRun1.FieldName = "IsRun";
             this.colIsRun1.Name = "colIsRun1";
+            this.colIsRun1.OptionsColumn.FixedWidth = true;
             this.colIsRun1.Visible = true;
             this.colIsRun1.VisibleIndex = 2;
-            this.colIsRun1.Width = 42;
+            this.colIsRun1.Width = 30;
             // 
             // colRowKey2
             // 
             this.colRowKey2.Caption = "Key";
             this.colRowKey2.FieldName = "RowKey";
             this.colRowKey2.Name = "colRowKey2";
+            this.colRowKey2.OptionsColumn.FixedWidth = true;
             this.colRowKey2.Visible = true;
             this.colRowKey2.VisibleIndex = 3;
-            this.colRowKey2.Width = 194;
+            this.colRowKey2.Width = 40;
             // 
             // colCTs1
             // 

@@ -40,7 +40,7 @@ namespace bodved2.ViewModels
 
                 if (rde.Tarih != tarih)
                 {
-                    rde.Break = true;
+                    //rde.Break = true; // Ayni tarihdekileri gruplamak icin. Gerek yok
                     tarih = rde.Tarih;
                 }
 

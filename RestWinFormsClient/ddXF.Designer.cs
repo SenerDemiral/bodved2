@@ -37,6 +37,10 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.dDBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.ddGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pPRDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDnm = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,15 +53,12 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pPRDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dDBindingNavigator)).BeginInit();
             this.dDBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddGridControl)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -66,7 +67,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataSetGnl
@@ -141,6 +141,36 @@
             this.ddGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cCToolStripMenuItem,
+            this.cETToolStripMenuItem,
+            this.pPRDToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(104, 70);
+            // 
+            // cCToolStripMenuItem
+            // 
+            this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
+            this.cCToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.cCToolStripMenuItem.Text = "CC";
+            this.cCToolStripMenuItem.Click += new System.EventHandler(this.cCToolStripMenuItem_Click);
+            // 
+            // cETToolStripMenuItem
+            // 
+            this.cETToolStripMenuItem.Name = "cETToolStripMenuItem";
+            this.cETToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.cETToolStripMenuItem.Text = "CET";
+            this.cETToolStripMenuItem.Click += new System.EventHandler(this.cETToolStripMenuItem_Click);
+            // 
+            // pPRDToolStripMenuItem
+            // 
+            this.pPRDToolStripMenuItem.Name = "pPRDToolStripMenuItem";
+            this.pPRDToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.pPRDToolStripMenuItem.Text = "PPRD";
+            this.pPRDToolStripMenuItem.Click += new System.EventHandler(this.pPRDToolStripMenuItem_Click);
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -150,6 +180,8 @@
             this.colInfo});
             this.gridView1.GridControl = this.ddGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDnm, DevExpress.Data.ColumnSortOrder.Descending)});
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey
@@ -254,36 +286,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cCToolStripMenuItem,
-            this.cETToolStripMenuItem,
-            this.pPRDToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 92);
-            // 
-            // cCToolStripMenuItem
-            // 
-            this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
-            this.cCToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
-            this.cCToolStripMenuItem.Text = "CC";
-            this.cCToolStripMenuItem.Click += new System.EventHandler(this.cCToolStripMenuItem_Click);
-            // 
-            // cETToolStripMenuItem
-            // 
-            this.cETToolStripMenuItem.Name = "cETToolStripMenuItem";
-            this.cETToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
-            this.cETToolStripMenuItem.Text = "CET";
-            this.cETToolStripMenuItem.Click += new System.EventHandler(this.cETToolStripMenuItem_Click);
-            // 
-            // pPRDToolStripMenuItem
-            // 
-            this.pPRDToolStripMenuItem.Name = "pPRDToolStripMenuItem";
-            this.pPRDToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pPRDToolStripMenuItem.Text = "PPRD";
-            this.pPRDToolStripMenuItem.Click += new System.EventHandler(this.pPRDToolStripMenuItem_Click);
-            // 
             // ddXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,6 +301,7 @@
             this.dDBindingNavigator.ResumeLayout(false);
             this.dDBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddGridControl)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -308,7 +311,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
