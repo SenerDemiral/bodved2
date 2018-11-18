@@ -6058,6 +6058,8 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnIsFerdi;
             
+            private global::System.Data.DataColumn columnPPTel;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public PPRDDataTable() {
@@ -6165,6 +6167,14 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PPTelColumn {
+                get {
+                    return this.columnPPTel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6200,7 +6210,7 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PPRDRow AddPPRDRow(ulong RowKey, ulong PP, int Dnm, int RnkIdx, int RnkBas, int TopPX, int RnkSon, int SonPX, bool IsFerdi) {
+            public PPRDRow AddPPRDRow(ulong RowKey, ulong PP, int Dnm, int RnkIdx, int RnkBas, int TopPX, int RnkSon, int SonPX, bool IsFerdi, string PPTel) {
                 PPRDRow rowPPRDRow = ((PPRDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowKey,
@@ -6211,7 +6221,8 @@ namespace RestWinFormsClient {
                         TopPX,
                         RnkSon,
                         SonPX,
-                        IsFerdi};
+                        IsFerdi,
+                        PPTel};
                 rowPPRDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPPRDRow);
                 return rowPPRDRow;
@@ -6243,6 +6254,7 @@ namespace RestWinFormsClient {
                 this.columnRnkSon = base.Columns["RnkSon"];
                 this.columnSonPX = base.Columns["SonPX"];
                 this.columnIsFerdi = base.Columns["IsFerdi"];
+                this.columnPPTel = base.Columns["PPTel"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6266,6 +6278,8 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnSonPX);
                 this.columnIsFerdi = new global::System.Data.DataColumn("IsFerdi", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsFerdi);
+                this.columnPPTel = new global::System.Data.DataColumn("PPTel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPPTel);
                 this.columnRowKey.AllowDBNull = false;
                 this.columnIsFerdi.Caption = "Ferdi";
             }
@@ -11417,6 +11431,22 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string PPTel {
+                get {
+                    try {
+                        return ((string)(this[this.tablePPRD.PPTelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PPTel\' in table \'PPRD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePPRD.PPTelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPPNull() {
                 return this.IsNull(this.tablePPRD.PPColumn);
             }
@@ -11509,6 +11539,18 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetIsFerdiNull() {
                 this[this.tablePPRD.IsFerdiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPPTelNull() {
+                return this.IsNull(this.tablePPRD.PPTelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPPTelNull() {
+                this[this.tablePPRD.PPTelColumn] = global::System.Convert.DBNull;
             }
         }
         

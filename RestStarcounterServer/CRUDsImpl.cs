@@ -875,6 +875,7 @@ namespace RestStarcounterServer
                     H.CT_RefreshSonuc(H.DnmRun);
                     H.CTP_RefreshSonuc(H.DnmRun);
                     H.PPRD_RefreshSonuc(H.DnmRun);
+                    H.DD_RefreshSonuc(H.DnmRun);
 
                     request.Rsp = "";
                 }

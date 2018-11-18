@@ -88,6 +88,9 @@ namespace bodved2
 
             //H.Deneme2();
 
+            H.DD_RefreshSonuc(17);
+            H.DD_RefreshSonuc(18);
+
         }
     }
 }

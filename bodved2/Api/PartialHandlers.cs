@@ -35,8 +35,8 @@ namespace bodved2.Api
             Handle.GET("/bodved/partials/DDs", () =>
             {
                 var page = new DDsPage();
-                page.DDs.Data = Db.SQL<DD>("SELECT r FROM DD r order by r.Dnm DESC");
-                //page.Data = null;
+                //page.DDs.Data = Db.SQL<DD>("SELECT r FROM DD r order by r.Dnm DESC");
+                page.Data = null;
                 return page;
             });
 

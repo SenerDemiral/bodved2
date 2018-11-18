@@ -1,13 +1,19 @@
 {
   "Html": "/Bodved/viewmodels/DDsPage.html",
-  "ShowMenu": true,
+  "Hdr": "",
   "DDs": [
     {
+      "DDoNo": 0,
       "Dnm": 0,
       "Ad": "",
-      "IsRun": true,
+      "Ozet": "",
+      "Info": "",
 
-      "Info": ""
+      "KOC": "",
+      "OOC": "",
+      "Mac": "",
+      "Set": "",
+      "Sayi": ""
     }
   ]
 }

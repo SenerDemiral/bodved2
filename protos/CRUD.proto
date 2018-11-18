@@ -90,6 +90,7 @@ message PPRDProxy {
 	int32 RnkSon = 10;
 	int32 SonPX = 11;
 	bool IsFerdi = 12;
+	string PPTel = 13;
 }
 
 // Players

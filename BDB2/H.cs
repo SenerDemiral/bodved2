@@ -2860,6 +2860,67 @@ namespace BDB2
             return result;
         }
 
+        public static void DD_RefreshSonuc(int Dnm)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            int SMC = 0; // SingleMacCount
+            int DSC = 0;
+            int SSC = 0;
+            int SNC = 0; // SingleSayiCount
+            int DNC = 0;
+            int DMC = 0;
+
+            HashSet<ulong> ppHS = new HashSet<ulong>(); // DnmRun da oynayanlari ayirmak icin.
+
+            Db.TransactAsync(() =>
+            {
+                var macs = Db.SQL<MAC>("select r from MAC r");
+                foreach (var mac in macs)
+                {
+                    if (mac.CC.Dnm != Dnm)
+                        continue;
+
+                    ppHS.Add(mac.HPP1oNo);     // Oynuyor
+                    ppHS.Add(mac.HPP2oNo);     // Oynuyor
+                    ppHS.Add(mac.GPP1oNo);     // Oynuyor
+                    ppHS.Add(mac.GPP2oNo);     // Oynuyor
+
+                    nor++;
+                    if (mac.SoD == "S")
+                    {
+                        SMC += 1;
+                        SSC += mac.HSW + mac.GSW;
+                        SNC += mac.H1W + mac.H2W + mac.H3W + mac.H4W + mac.H5W + mac.H6W + mac.H7W + mac.G1W + mac.G2W + mac.G3W + mac.G4W + mac.G5W + mac.G6W + mac.G7W;
+
+                    }
+                    else
+                    {
+                        DMC += 1;
+                        DSC += mac.HSW + mac.GSW;
+                        DNC += mac.H1W + mac.H2W + mac.H3W + mac.H4W + mac.H5W + mac.H6W + mac.H7W + mac.G1W + mac.G2W + mac.G3W + mac.G4W + mac.G5W + mac.G6W + mac.G7W;
+                    }
+                }
+
+                DD dd = Db.SQL<DD>("select r from DD r where r.Dnm = ?", Dnm).FirstOrDefault();
+                dd.SMC = SMC;
+                dd.DMC = DMC;
+                dd.SSC = SSC;
+                dd.DSC = DSC;
+                dd.SNC = SNC;
+                dd.DNC = DNC;
+
+                dd.KOC = (int)Db.SQL<long>("select count(r) from PPRD r where r.Dnm = ?", Dnm).FirstOrDefault();
+                dd.OOC = ppHS.Count;
+            });
+
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms DD_RefreshSonuc({Dnm}) NOR: {nor:n0}");
+        }
+
         public static void PerfDeneme()
         {
             Stopwatch watch = new Stopwatch();

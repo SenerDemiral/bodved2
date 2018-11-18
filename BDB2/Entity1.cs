@@ -36,7 +36,7 @@ namespace BDB2
                         ID = 1,
                         IdVal = 32000
                     };
-                    EntCnt = 32000; // Bodved2 baslangic
+                    EntCnt = 32000; // Bodved2 baslangicgg
                 }
                 else
                 {
@@ -53,7 +53,7 @@ namespace BDB2
     [Database]
     public class BB   // Base
     {
-        //public ulong PK { get; set; }
+        //public ulong PK { get; set; } 
         public string Ad { get; set; }
         public string Info { get; set; }
     }
@@ -62,6 +62,20 @@ namespace BDB2
     public class DD : BB   // Donem
     {
         public int Dnm { get; set; }
+
+        public int SMC { get; set; } // SingleMacCount
+        public int DMC { get; set; }
+        public int SSC { get; set; }
+        public int DSC { get; set; }
+        public int SNC { get; set; } // SingleSayiCount
+        public int DNC { get; set; }
+
+        public int ONC { get; set; }    // SIL
+
+        public int KOC { get; set; }    // Kayıtlı Oyuncu Sayisi (Unique)
+        public int OOC { get; set; }    // Oynayan Oyuncu Sayisi (Unique)
+
+        public string Ozet => $"Oyuncu {ONC:n0} ♦ Maç {SMC + DMC:n0} ♦ Set {SSC + DSC:n0} ♦ Sayı {SNC + DNC:n0}";
     }
 
 
@@ -128,6 +142,7 @@ namespace BDB2
 
         public ulong PPoNo => PP.GetObjectNo();
         public string PPAd => PP.Ad;
+        public string PPTel => PP.Tel;
     }
 
     /*
@@ -890,5 +905,15 @@ namespace BDB2
         public int ML;
         public int SW;
         public int SL;
+    }
+
+    public class DictDnm
+    {
+        public int SMC; // SingleMacCount
+        public int DMC;
+        public int SSC;
+        public int DSC;
+        public int SNC; // SingleSayiCount
+        public int DNC;
     }
 }

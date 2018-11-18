@@ -53,7 +53,9 @@ namespace bodved2.ViewModels
                 PPs.Add(ppse);
             }
 
-            Hdr = $"Oyuncular ► Toplam : {TopPP:n0} ► Aktif : {RunPP}";
+            DD dd = Db.SQL<DD>("select r from DD r where r.Dnm = ?", H.DnmRun).FirstOrDefault();
+
+            Hdr = $"Oyuncular ► Toplam {TopPP:n0} ► Son Dönem ► Kayıtlı {RunPP:n0} ♦ Oynamış {dd.ONC:n0}";
 
         }
     }
