@@ -9,7 +9,7 @@
                     <div><a href="/bodved/CE/[[model.CCoNo]]" style="color: aliceblue;text-decoration: underline;"><iron-icon icon="vaadin:calendar"></iron-icon></a></div>
                 </div>
                 <div class="gridTbl_main">
-                    <table class="fixTbl sngLine">
+                    <table id="tbl" class="fixTbl sngLine" on-click="MyFnc">
                         <colgroup>
                             <col style="width:2rem" />
                             <col style="width:var(--w-Team)" />
@@ -33,8 +33,8 @@
                             <col style="width:3rem" />
 
                             <col style="width:10rem" />
-                            <col style="width:16rem" />
-                            <col style="width:16rem" />
+                            <col style="width:8rem" />
+                            <col style="width:8rem" />
                         </colgroup>
                         <thead>
                             <tr>
@@ -44,6 +44,9 @@
                                 <th rowspan="2" colspan="3">Skor</th>
                                 <th rowspan="2" colspan="5">Müsabaka</th>
                                 <th colspan="6">Maç</th>
+                                <th rowspan="3">Yer</th>
+                                <th rowspan="3">1.Kaptan</th>
+                                <th rowspan="3">2.Kaptan</th>
                             </tr>
                             <tr>
                                 <th colspan="3">Single</th>
@@ -107,4 +110,28 @@
             </div>
         </template>
     </dom-bind>
+
+    <script>
+        (function () {
+            var curRowIndex = -1;
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.MyFnc = function (e) {
+                var tr = e.target.closest("tr");
+                if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
+                    return;
+
+                if (tr.rowIndex > 0) {     // Mark current Row
+                    if (curRowIndex !== -1) {
+                        tbl.rows[curRowIndex].classList.remove("curRow");
+                    }
+
+                    curRowIndex = tr.rowIndex;
+                    tr.classList.add("curRow");
+                }
+            };
+        })();
+    </script>
+
 </template>

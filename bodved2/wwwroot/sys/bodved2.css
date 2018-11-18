@@ -89,7 +89,7 @@ body {
 }
 .gridTbl_header {
     background-color: teal; /*#C2EAE9;*/
-    color: azure;
+    color: white;
     grid-area: headerTbl;
     display: grid;
     justify-items: left;
@@ -99,7 +99,7 @@ body {
     /*grid-gap: 1rem;*/
     /*margin: 0 5px;*/
     padding: 0 5px;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 .gridTbl_main {
     /*background-color: #C2EAE9;*/

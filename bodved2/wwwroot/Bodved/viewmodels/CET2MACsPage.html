@@ -8,7 +8,7 @@
                     <div>[[model.Hdr]]</div>
                 </div>
                 <div class="gridTbl_main">
-                    <table class="fixTbl sngLine">
+                    <table id="tbl" class="fixTbl sngLine" on-click="MyFnc">
                         <colgroup>
                             <col style="width:2rem" />
                             <col style="width:3rem" />
@@ -93,4 +93,28 @@
             </div>
         </template>
     </dom-bind>
+
+    <script>
+        (function () {
+            var curRowIndex = -1;
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.MyFnc = function (e) {
+                var tr = e.target.closest("tr");
+                if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
+                    return;
+
+                if (tr.rowIndex > 0) {     // Mark current Row
+                    if (curRowIndex !== -1) {
+                        tbl.rows[curRowIndex].classList.remove("curRow");
+                    }
+
+                    curRowIndex = tr.rowIndex;
+                    tr.classList.add("curRow");
+                }
+            };
+        })();
+    </script>
+
 </template>
