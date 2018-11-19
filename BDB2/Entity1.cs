@@ -319,8 +319,10 @@ namespace BDB2
         public int PL { get; set; }
         //--------
 
-        public string K1Ad => K1 == null ? "-" : $"{K1.Ad} ({K1.Tel})";
-        public string K2Ad => K2 == null ? "-" : $"{K2.Ad} ({K2.Tel})";
+        public string K1Ad => K1 == null ? "-" : $"{K1.Ad}";
+        public string K2Ad => K2 == null ? "-" : $"{K2.Ad}";
+        public string K1Tel => K1 == null ? "-" : $"{K1.Tel}";
+        public string K2Tel => K2 == null ? "-" : $"{K2.Tel}";
 
     }
 

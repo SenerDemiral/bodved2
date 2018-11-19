@@ -32,7 +32,7 @@
                             <col style="width:3rem" />
                             <col style="width:3rem" />
 
-                            <col style="width:10rem" />
+                            <col style="width:8rem" />
                             <col style="width:8rem" />
                             <col style="width:8rem" />
                         </colgroup>
@@ -99,9 +99,9 @@
                                     <td>[[item.DML]]</td>
 
 
-                                    <td class="txtLeft">[[item.Adres]]</td>
-                                    <td class="colInfo">[[item.K1Ad]]</td>
-                                    <td class="colInfo">[[item.K2Ad]]</td>
+                                    <td class="colInfo">[[item.Adres]]</td>
+                                    <td class="colInfo">[[item.K1Ad]]<br />[[item.K1Tel]]</td>
+                                    <td class="colInfo">[[item.K2Ad]]<br />[[item.K2Tel]]</td>
                                 </tr>
                             </template>
                         </tbody>
@@ -122,7 +122,9 @@
                 if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
                     return;
 
-                if (tr.rowIndex > 0) {     // Mark current Row
+                if (tr.rowIndex >= 3) {     // Mark current Row
+                    var td = e.target.closest("td");
+                    console.log('RowIdx', tr.rowIndex, 'ColIdx', td.cellIndex);
                     if (curRowIndex !== -1) {
                         tbl.rows[curRowIndex].classList.remove("curRow");
                     }
