@@ -27,6 +27,14 @@ namespace BDB2
             }
         }
 
+        public static DateTime GetNextWeekday(DayOfWeek day)
+        {
+            DateTime result = DateTime.Today; //.AddDays(1);
+            while (result.DayOfWeek != day)
+                result = result.AddDays(1);
+            return result;
+        }
+
         public static void PopAll() // ARTIK KULLANILMIYOR
         {
             if (Db.SQL<PP>("select r from PP r").FirstOrDefault() != null)
@@ -261,274 +269,6 @@ namespace BDB2
                 });
             }
         }
-
-        /*
-        public static void PopPP()
-        {
-            if (Db.SQL<PP>("select r from PP r").FirstOrDefault() != null)
-                return; // Kayit var yapma
-
-            // 0:PK,1:RnkBaz,2:Sex,3:DgmTrh,4:Ad,5:eMail,6:Tel,7:Rnk1,8:Rnk2,9:Rnk3
-            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-PP.txt", System.Text.Encoding.UTF8))
-            {
-                string line;
-                Db.Transact(() =>
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                        {
-                            string[] ra = line.Split('|');
-
-                            new PP
-                            {
-                                PK = Convert.ToUInt64(ra[0]),
-                                RnkIlk = Convert.ToInt32(ra[1]),
-                                RnkBaz = Convert.ToInt32(ra[1]),
-                                Sex = ra[2],
-                                Ad = ra[4],
-                                Tel = ra[6],
-                                IsRun = true,
-
-                                Rnk1 = Convert.ToInt32(ra[7]),
-                                Rnk2 = Convert.ToInt32(ra[8]),
-                                Rnk3 = Convert.ToInt32(ra[9]),
-
-                            };
-                        }
-                    }
-                });
-            }
-        }
-
-        public static void PopCC()
-        {
-            if (Db.SQL<CC>("select r from CC r").FirstOrDefault() != null)
-                return; // Kayit var yapma
-
-            //0:PK|1:ID|2:Ad|3:Skl|4:Grp|5:Idx|6:Lig|7:RnkID|8:RnkAd
-            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CC.txt", System.Text.Encoding.UTF8))
-            {
-                string line;
-                Db.Transact(() =>
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                        {
-                            string[] ra = line.Split('|');
-
-                            new CC
-                            {
-                                PK = Convert.ToUInt64(ra[0]),
-                                Ad = ra[2],
-                                Skl = ra[3],
-
-                                IsRnkd = true,
-                                TNSM = 8,   // Takim Single Mac Sayisi
-                                TNDM = 3,   //       Double
-                                TNSS = 5,   // Takim Single kac set uzerinden
-                                TNDS = 5,   //       Double
-                                TSMK = 2,   // Takim SingleMac Skoru
-                                TDMK = 3,   //         DoubleMac 
-                                TEGP = 2,   //       Event Galiibiyet Puan
-                                TEMP = 1,   //      
-                                TEBP = 0,
-                                TEXP = -1,
-                            };
-                        }
-                    }
-                });
-            }
-        }
-
-        public static void PopCT()
-        {
-            if (Db.SQL<CT>("select r from CT r").FirstOrDefault() != null)
-                return; // Kayit var yapma
-
-            //0:CC.PK|1:PK|2:Ad|3:Adres|4:Pw|5:K1.PK|6:K2.PK|7:K1.Ad|8:K2.Ad
-            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CT.txt", System.Text.Encoding.UTF8))
-            {
-                string line;
-                Db.Transact(() =>
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                        {
-                            string[] ra = line.Split('|');
-
-                            var cc = Db.SQL<CC>("select r from CC r where r.PK = ?", ulong.Parse(ra[0])).FirstOrDefault();
-                            ulong K1PK = string.IsNullOrEmpty(ra[5]) ? 0 : ulong.Parse(ra[5]);
-                            ulong K2PK = string.IsNullOrEmpty(ra[6]) ? 0 : ulong.Parse(ra[6]);
-                            var ppK1 = Db.SQL<PP>("select r from PP r where r.PK = ?", K1PK).FirstOrDefault();
-                            var ppK2 = Db.SQL<PP>("select r from PP r where r.PK = ?", K2PK).FirstOrDefault();
-
-                            new CT
-                            {
-                                CC = cc,
-                                K1 = ppK1,
-                                K2 = ppK2,
-                                PK = Convert.ToUInt64(ra[1]),
-                                Ad = ra[2],
-                                Adres = ra[3],
-                                IsRun = true
-                            };
-                        }
-                    }
-                });
-            }
-        }
-
-        public static void PopCTP()
-        {
-            if (Db.SQL<CTP>("select r from CTP r").FirstOrDefault() != null)
-                return; // Kayit var yapma
-
-            //0:CC.PK|1:CT.PK|2:PP.PK|3:Idx|4:PPAd|5:CTAd
-            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CTP.txt", System.Text.Encoding.UTF8))
-            {
-                string line;
-                ulong ccPK, ctPK, ppPK;
-
-                Db.Transact(() =>
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                        {
-                            string[] ra = line.Split('|');
-
-                            ccPK = ulong.Parse(ra[0]);
-                            ctPK = ulong.Parse(ra[1]);
-                            ppPK = ulong.Parse(ra[2]);
-
-                            var cc = Db.SQL<CC>("select r from CC r where r.PK = ?", ccPK).FirstOrDefault();
-                            var ct = Db.SQL<CT>("select r from CT r where r.PK = ?", ctPK).FirstOrDefault();
-                            var pp = Db.SQL<PP>("select r from PP r where r.PK = ?", ppPK).FirstOrDefault();
-
-
-                            new CTP
-                            {
-                                CC = cc,
-                                CT = ct,
-                                PP = pp,
-                                Idx = int.Parse(ra[3]),
-                                IsRun = true,
-                            };
-                        }
-                    }
-                });
-            }
-        }
-
-        public static void PopCET()
-        {
-            if (Db.SQL<CET>("select r from CET r").FirstOrDefault() != null)
-                return; // Kayit var yapma
-
-            //0:CC.PK|1:PK|2:hCT.PK|3:gCT.PK|4:Trh:dd.MM.yyyy HH:mm|5:hPok|6:gPok|7:Rok|8:hP|9:gP|10:hPW|11:hMSW|12:hMDW|13:gPW|14:gMSW|15:gMDW
-            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-CET.txt", System.Text.Encoding.UTF8))
-            {
-                string line;
-                ulong ccPK, rPK, hctPK, gctPK;
-
-                Db.Transact(() =>
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                        {
-                            string[] ra = line.Split('|');
-
-                            ccPK = ulong.Parse(ra[0]);
-                            rPK = ulong.Parse(ra[1]);
-                            hctPK = ulong.Parse(ra[2]);
-                            gctPK = ulong.Parse(ra[3]);
-
-                            var cc = Db.SQL<CC>("select r from CC r where r.PK = ?", ccPK).FirstOrDefault();
-                            var hct = Db.SQL<CT>("select r from CT r where r.PK = ?", hctPK).FirstOrDefault();
-                            var gct = Db.SQL<CT>("select r from CT r where r.PK = ?", gctPK).FirstOrDefault();
-
-                            new CET
-                            {
-                                CC = cc,
-                                PK = rPK,
-                                Trh = DateTime.Parse(ra[4]),
-                                HCT = hct,
-                                GCT = gct,
-
-                                Drm = "OK"
-                            };
-                        }
-                    }
-                });
-            }
-        }
-
-        public static void PopMAC()
-        {
-            if (Db.SQL<MAC>("select r from MAC r").FirstOrDefault() != null)
-                return; // Kayit var yapma
-
-            //0:CC.PK|1:CET.PK|2:hPP1.PK|3:hPP2.PK|4:gPP1.PK|5:gPP2.PK|6:Trh|7:SoD|8:Idx|9:hS1W|hS2W|hS3W|hS4W|hS5W|14:gS1W|gS2W|gS3W|gS4W|gS5W
-            using (StreamReader sr = new StreamReader($@"C:\Starcounter\Bodved2Data\BDB-MAC.txt", System.Text.Encoding.UTF8))
-            {
-                string line;
-
-                Db.Transact(() =>
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                        {
-                            string[] ra = line.Split('|');
-
-                            var cc = Db.SQL<CC>("select r from CC r where r.PK = ?",    ulong.Parse(ra[0])).FirstOrDefault();
-                            var cet = Db.SQL<CET>("select r from CET r where r.PK = ?", ulong.Parse(ra[1])).FirstOrDefault();
-                            var hPP1 = Db.SQL<PP>("select r from PP r where r.PK = ?",  ulong.Parse(ra[2])).FirstOrDefault();
-                            ulong hPP2PK = string.IsNullOrEmpty(ra[3]) ? 0 : ulong.Parse(ra[3]);
-                            var hPP2 = Db.SQL<PP>("select r from PP r where r.PK = ?", hPP2PK).FirstOrDefault();
-                            var gPP1 = Db.SQL<PP>("select r from PP r where r.PK = ?",  ulong.Parse(ra[4])).FirstOrDefault();
-                            ulong gPP2PK = string.IsNullOrEmpty(ra[5]) ? 0 : ulong.Parse(ra[5]);
-                            var gPP2 = Db.SQL<PP>("select r from PP r where r.PK = ?", gPP2PK).FirstOrDefault();
-
-                            var m = new MAC
-                            {
-                                CC = cc,
-                                CEB = cet,
-                                HPP1 = hPP1, 
-                                HPP2 = hPP2, 
-                                GPP1 = gPP1, 
-                                GPP2 = gPP2,
-
-                                Trh = DateTime.Parse(ra[6]),
-                                SoD = ra[7],
-                                Idx = int.Parse(ra[8]),
-
-                                H1W = int.Parse(ra[9]),
-                                H2W = int.Parse(ra[10]),
-                                H3W = int.Parse(ra[11]),
-                                H4W = int.Parse(ra[12]),
-                                H5W = int.Parse(ra[13]),
-
-                                G1W = int.Parse(ra[14]),
-                                G2W = int.Parse(ra[15]),
-                                G3W = int.Parse(ra[16]),
-                                G4W = int.Parse(ra[17]),
-                                G5W = int.Parse(ra[18]),
-
-                                Drm = "OK"
-                            };
-                        }
-                    }
-                });
-            }
-
-        }
-        */
-
         public static void PPbaz2ilk()  // KULLANILMIYOR
         {
             /*
@@ -675,7 +415,7 @@ namespace BDB2
 
 
 
-        public static void PP_RefreshSonuc()   // Tum oyuncular icin
+        public static void PP_RefreshSonuc()   // Tum oyuncular icin KULLANILMIYOR
         {
             Dictionary<ulong, DictMacStat> dnm = new Dictionary<ulong, DictMacStat>();    // Players
             ulong hPPoNo, gPPoNo;
@@ -940,7 +680,7 @@ namespace BDB2
 
         
 
-        public static void CT_RefreshSonuc()
+        public static void CT_RefreshSonuc() // KULLANMA
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -1023,7 +763,6 @@ namespace BDB2
             watch.Stop();
             Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CT.RefreshSonuc({cc.Ad})");
         }
-
 
         public static void CT_RefreshSonuc(CT ct)
         {
@@ -1756,6 +1495,8 @@ namespace BDB2
             return "";
         }
 
+
+
         public static void CET_RefreshSonuc()
         {
             Stopwatch watch = new Stopwatch();
@@ -1955,7 +1696,6 @@ namespace BDB2
             Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms MAC.RefreshSonuc() NOR:{nor:n0}");
         }
 
-
         public static void MAC_RefreshSonuc(int Dnm)
         {
             Stopwatch watch = new Stopwatch();
@@ -2140,283 +1880,6 @@ namespace BDB2
             return hPX;
         }
 
-        public static void MAC_deneme2()
-        {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-            int nor = 0;
-
-            // Bu sadece PP icin dogru olur, SoD secerek 
-            DataTable table = new DataTable();
-            table.Columns.Add("CC", typeof(ulong));
-            table.Columns.Add("CET", typeof(ulong));
-            table.Columns.Add("CT", typeof(ulong));
-            table.Columns.Add("PP", typeof(ulong));
-            table.Columns.Add("SoD", typeof(string));
-            table.Columns.Add("SW", typeof(int));
-            table.Columns.Add("SL", typeof(int));
-            table.Columns.Add("MW", typeof(int));
-            table.Columns.Add("ML", typeof(int));
-
-            ulong cc, cet, hct, gct, hpp, gpp;
-            int hsw, gsw, hmw, gmw;
-
-            // Takim Maclari PP
-            foreach (var m in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
-            {
-                nor++;
-
-                cc = m.CC.GetObjectNo();
-                cet = m.CEB.GetObjectNo();
-                var ceto = m.CEB as CET;
-                hct = ceto.HCT.GetObjectNo();
-                gct = ceto.GCT.GetObjectNo();
-
-                hsw = m.HSW;
-                gsw = m.GSW;
-                hmw = m.HMW;
-                gmw = m.GMW;
-
-                if (m.SoD == "S")
-                {
-                    hpp = m.HPP1.GetObjectNo();
-                    gpp = m.GPP1.GetObjectNo();
-                    // Home
-                    table.Rows.Add(cc, cet, hct, hpp, "S", hsw, gsw, hmw, gmw);
-                    table.Rows.Add(cc, cet, gct, gpp, "S", gsw, hsw, gmw, hmw);
-                }
-                if (m.SoD == "D")
-                {
-                    hpp = m.HPP2.GetObjectNo();
-                    gpp = m.GPP2.GetObjectNo();
-                    table.Rows.Add(cc, cet, hct, hpp, "D", hsw, gsw, hmw, gmw);
-                    table.Rows.Add(cc, cet, gct, gpp, "D", gsw, hsw, gmw, hmw);
-                }
-            }
-
-            //table.Compute("")
-
-            // CT her CC icin ayri tanimladigindan unique
-            // CT Single Maclari
-            /*
-            var result = from row in table.AsEnumerable()
-                         where row.Field<string>("SoD") == "S"
-                         group row by row.Field<ulong>("CT") into grp
-                         select new
-                         {
-                             ctID = grp.Key,
-                             macCount = grp.Count(),
-                             ssw = grp.Sum(r => r.Field<int>("SSW")),
-                             ssl = grp.Sum(r => r.Field<int>("SSL")),
-                             smw = grp.Sum(r => r.Field<int>("SMW")),
-                             sml = grp.Sum(r => r.Field<int>("SML")),
-
-                             dsw = grp.Sum(r => r.Field<int>("DSW")),
-                             dsl = grp.Sum(r => r.Field<int>("DSL")),
-                             dmw = grp.Sum(r => r.Field<int>("DMW")),
-                             dml = grp.Sum(r => r.Field<int>("DML")),
-                         };
-            // PP Single Maclari
-            var SinglesPP = from row in table.AsEnumerable()
-                            where row.Field<string>("SoD") == "S"
-                            group row by row.Field<ulong>("PP") into grp
-                            select new
-                            {
-                                ctID = grp.Key,
-                                macCount = grp.Count(),
-                                sw = grp.Sum(r => r.Field<int>("SW")),
-                                sl = grp.Sum(r => r.Field<int>("SL")),
-                                mw = grp.Sum(r => r.Field<int>("MW")),
-                                ml = grp.Sum(r => r.Field<int>("ML")),
-                            };
-            var DoublesPP = from row in table.AsEnumerable()
-                            where row.Field<string>("SoD") == "D"
-                            group row by row.Field<ulong>("PP") into grp
-                            select new
-                            {
-                                ctID = grp.Key,
-                                macCount = grp.Count(),
-                                sw = grp.Sum(r => r.Field<int>("SW")),
-                                sl = grp.Sum(r => r.Field<int>("SL")),
-                                mw = grp.Sum(r => r.Field<int>("MW")),
-                                ml = grp.Sum(r => r.Field<int>("ML")),
-                            };
-*/
-            var qryLatestInterview = from rows in table.AsEnumerable()
-                                     orderby rows["CT"], rows["PP"]
-                                     group rows by new { ct = rows["CT"], pp = rows["PP"], SoD = rows["SoD"] } into grp
-                                     select new
-                                     {
-                                         key = grp.Key,
-                                         ssw = grp.Sum(r => r.Field<int>("SW")),
-                                         ssl = grp.Sum(r => r.Field<int>("SL")),
-                                         smw = grp.Sum(r => r.Field<int>("MW")),
-                                         sml = grp.Sum(r => r.Field<int>("ML")),
-
-                                     };
-            //select grp.First();
-
-            foreach (var r in qryLatestInterview)
-            {
-                var aaa = r.key.ct;
-                var bbb = r.key.pp;
-                var ccc = r.key.SoD;
-                var ctp = Db.SQL<CTP>("select r from CTP r where r.CT.ObjectNo = ? and r.PP.ObjectNo = ?", aaa, bbb).FirstOrDefault();
-
-            }
-
-            //var dtPositionInterviews = qryLatestInterview.CopyToDataTable();
-
-            /*
-            var myLinqQuery = table.AsEnumerable()
-                         .GroupBy(r1 => r1.Field<int>("ID1"), r2 => r2.Field<int>("ID2"))
-                         .Select(g =>
-                         {
-                             var row = table.NewRow();
-
-                             row["ID1"] = g.Select(r => r.Field<int>("ID1"));
-                             row["ID2"] = g.Select(r => r.Field<int>("ID2"));
-                             row["Value1"] = g.Select(r => r.Field<string>("Value1"));
-                             row["Value2"] = g.Max<string>(r => r.Field<string>("Value2"));
-
-                             return row;
-                         }).CopyToDataTable();
-                         */
-            /*
-            var dt = table.AsEnumerable()
-                .GroupBy(r => new { Col1 = r["CT"], Col2 = r["SoD"] })
-                .Select(g => g.OrderBy(r => r["CT"]).First())
-                .CopyToDataTable();
-*/
-            /*
-            foreach (var t in result)
-                Console.WriteLine(t.TeamID + " " + t.MemberCount);
-
-
-            var query = (from DataRow data in table.Rows
-                         select data).ToList();
-
-            foreach(var r in query)
-            {
-                
-            }
-            */
-            watch.Stop();
-            Console.WriteLine($"deneme2 #MAC {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
-        }
-
-        public static void MAC_deneme()
-        {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-            int nor = 0;
-            Dictionary<string, DictMacStat> dnm = new Dictionary<string, DictMacStat>();    // Players
-                                                                                            /*
-                                                                                                        foreach (var p in Db.SQL<PP>("select p from PP p"))
-                                                                                                        {
-                                                                                                            dnm[p.GetObjectNo().ToString()] = new MacStat
-                                                                                                            {
-                                                                                                                SSW = 0,
-                                                                                                                SSL = 0,
-                                                                                                                SMW = 0,
-                                                                                                                SML = 0,
-                                                                                                                DSW = 0,
-                                                                                                                DSL = 0,
-                                                                                                                DMW = 0,
-                                                                                                                DML = 0,
-                                                                                                            };
-                                                                                                        }*/
-            string hPPoNo, gPPoNo;
-            string hPP2oNo, gPP2oNo;
-            DictMacStat hMS, gMS;
-            foreach (var mac in Db.SQL<MAC>("select m from MAC m where m.CEB IS BDB2.CET"))
-            {
-                nor++;
-                var hCT = (mac.CEB as CET).HCT.GetObjectNo().ToString();
-                var gCT = (mac.CEB as CET).GCT.GetObjectNo().ToString();
-
-                hPPoNo = $"{mac.HPP1.GetObjectNo()} {hCT}";
-                gPPoNo = $"{mac.GPP1.GetObjectNo()} {gCT}";
-                //gPPoNo = mac.gPP1.GetObjectNo().ToString() + gCT;
-
-                if (!dnm.ContainsKey(hPPoNo))
-                    dnm[hPPoNo] = new DictMacStat();
-                if (!dnm.ContainsKey(gPPoNo))
-                    dnm[gPPoNo] = new DictMacStat();
-
-                if (mac.SoD == "S")
-                {
-                    hMS = dnm[hPPoNo];
-                    hMS.SSW += mac.HSW;
-                    hMS.SSL += mac.GSW;
-                    hMS.SMW += mac.HMW;
-                    hMS.SML += mac.GMW;
-                    dnm[hPPoNo] = hMS;
-
-                    gMS = dnm[gPPoNo];
-                    gMS.SSW += mac.GSW;
-                    gMS.SSL += mac.HSW;
-                    gMS.SMW += mac.GMW;
-                    gMS.SML += mac.HMW;
-                    dnm[gPPoNo] = gMS;
-                }
-
-                else
-                {
-                    hMS = dnm[hPPoNo];
-                    hMS.DSW += mac.HSW;
-                    hMS.DSL += mac.GSW;
-                    hMS.DMW += mac.HMW;
-                    hMS.DML += mac.GMW;
-                    dnm[hPPoNo] = hMS;
-
-                    gMS = dnm[gPPoNo];
-                    gMS.DSW += mac.GSW;
-                    gMS.DSL += mac.HSW;
-                    gMS.DMW += mac.GMW;
-                    gMS.DML += mac.HMW;
-                    dnm[gPPoNo] = gMS;
-
-                    //hPP2oNo = mac.hPP2.GetObjectNo().ToString() + hCT;
-                    //gPP2oNo = mac.gPP2.GetObjectNo().ToString() + gCT;
-                    hPP2oNo = $"{mac.HPP2.GetObjectNo()} {hCT}";
-                    gPP2oNo = $"{mac.GPP2.GetObjectNo()} {gCT}";
-                    if (!dnm.ContainsKey(hPP2oNo))
-                        dnm[hPP2oNo] = new DictMacStat();
-                    if (!dnm.ContainsKey(gPP2oNo))
-                        dnm[gPP2oNo] = new DictMacStat();
-
-                    hMS = dnm[hPP2oNo];
-                    hMS.DSW += mac.HSW;
-                    hMS.DSL += mac.GSW;
-                    hMS.DMW += mac.HMW;
-                    hMS.DML += mac.GMW;
-                    dnm[hPP2oNo] = hMS;
-
-                    gMS = dnm[gPP2oNo];
-                    gMS.DSW += mac.GSW;
-                    gMS.DSL += mac.HSW;
-                    gMS.DMW += mac.GMW;
-                    gMS.DML += mac.HMW;
-                    dnm[gPP2oNo] = gMS;
-
-                }
-
-            }
-            string[] k;
-            ulong pp, ct;
-            DictMacStat ms;
-            foreach (var pair in dnm)
-            {
-                k = pair.Key.Split(new Char[] { ' ' });
-                pp = ulong.Parse(k[0]);
-                ct = ulong.Parse(k[1]);
-                ms = pair.Value;
-            }
-            watch.Stop();
-            Console.WriteLine($"deneme #MAC {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
-        }
-
         public static void MAC_RefreshGlobalRank()
         {
             Stopwatch watch = new Stopwatch();
@@ -2571,6 +2034,8 @@ namespace BDB2
             Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
+
+
         public static void PPRD_RefreshSonuc(int Dnm)
         {
             // MAC_RefreshDonemFerdiRank den once yapilmali
@@ -2695,111 +2160,6 @@ namespace BDB2
             Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms PPRD.RefreshSonuc({Dnm}) NOR: {nor:n0}");
         }
 
-        public static void MAC_RefreshDonemRankOld(int DnmRun)
-        {/*
-            // MAC_RefreshDonemFerdiRank den once yapilmali
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-            int nor = 0;
-
-            ulong hPPoNo, gPPoNo;
-            int hpRnk, gpRnk;
-            int hPX = 0;
-            PPRD npprd = null;
-
-            Dictionary<ulong, int> ppDic = new Dictionary<ulong, int>();    // Players BasRnk
-            Dictionary<ulong, int> pxDic = new Dictionary<ulong, int>();    // Players PX
-            Dictionary<ulong, int> snDic = new Dictionary<ulong, int>();    // Son aldigi PX
-
-            Db.TransactAsync(() =>
-            {
-                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
-                foreach (var pprd in pprds)
-                {
-                    ppDic[pprd.PP.GetObjectNo()] = pprd.RnkBas;
-                    pprd.RnkPX = 0;
-                    pxDic[pprd.PP.GetObjectNo()] = 0;
-                    snDic[pprd.PP.GetObjectNo()] = 0;
-                }
-
-                // Sadece Single Maclar Rank uretir.
-                // O donemin Maclari taranacak
-                foreach (var mac in Db.SQL<MAC>("select r from MAC r where r.CC.Dnm = ? order by r.Trh", DnmRun))
-                {
-                    if (mac.SoD == "D") // Performans daha iyi Query de Single arama 
-                        continue;
-
-                    nor++;
-
-                    hPPoNo = mac.HPP1.GetObjectNo();
-                    gPPoNo = mac.GPP1.GetObjectNo();
-
-                    // Oyuncu kaydi PPRD de yoksa yarat ve kullan
-                    if (!ppDic.ContainsKey(hPPoNo))
-                    {
-                        npprd = PPRD_TryInsert(mac.HPP1, DnmRun);
-                        ppDic[npprd.PP.GetObjectNo()] = npprd.RnkBas;
-                    }
-                    if (!ppDic.ContainsKey(gPPoNo))
-                    {
-                        npprd = PPRD_TryInsert(mac.GPP1, DnmRun);
-                        ppDic[npprd.PP.GetObjectNo()] = npprd.RnkBas;
-                    }
-
-                    hpRnk = ppDic[hPPoNo];
-                    gpRnk = ppDic[gPPoNo];
-
-                    hPX = 0;
-                    if (mac.CC.IsRnkd)  // Rank hesaplanacak ise (Ferdiler en sonunda hesaplanacak, isRnkd = false olacak)
-                        if (mac.Drm == "OK" && hpRnk != 0 && gpRnk != 0)
-                            hPX = compHomeRnkPX(mac.HMW == 0 ? false : true, hpRnk, gpRnk);
-
-                    // Update MAC
-                    mac.HRnkPX = hPX;
-                    mac.HRnk = hpRnk;
-
-                    mac.GRnkPX = -hPX;
-                    mac.GRnk = gpRnk;
-
-                    // Update PP dictionary
-                    ppDic[hPPoNo] = hpRnk + hPX;
-                    ppDic[gPPoNo] = gpRnk - hPX;
-
-                    // Update PX dictionary
-                    pxDic[hPPoNo] += hPX;
-                    pxDic[gPPoNo] += -hPX;
-
-                    // Update SonPX dictionary
-                    snDic[hPPoNo] = hPX;
-                    snDic[gPPoNo] = -hPX;
-                }
-
-                // Update PPRD.RnkPX
-                ulong ppNO = 0;
-                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", DnmRun);
-                foreach (var pprd in pprds)
-                {
-                    ppNO = pprd.PP.GetObjectNo();
-                    pprd.RnkPX = pxDic[ppNO];
-                    pprd.RnkSon = pprd.RnkBas + pxDic[ppNO];
-                    pprd.SonPX = snDic[ppNO];
-                }
-
-                // PPRD.Idx
-                int idx = 1;
-                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon DESC", DnmRun);
-                foreach (var pprd in pprds)
-                {
-                    pprd.RnkIdx = idx++;
-                }
-            });
-
-            watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms MAC.RefreshGlobalRank() NOR: {nor:n0}");
-            //Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
-            */
-        }
-
         public static void MAC_RefreshDonemFerdiRank(int DnmRun)
         {
             // TakimTurnuvalar bittikten sonra yapilacak
@@ -2850,14 +2210,6 @@ namespace BDB2
                 }
             });
         
-        }
-
-        public static DateTime GetNextWeekday(DayOfWeek day)
-        {
-            DateTime result = DateTime.Today; //.AddDays(1);
-            while (result.DayOfWeek != day)
-                result = result.AddDays(1);
-            return result;
         }
 
         public static void DD_RefreshSonuc(int Dnm)

@@ -72,47 +72,12 @@ namespace BDB2
 
         public int ONC { get; set; }    // SIL
 
-        public int KOC { get; set; }    // Kayıtlı Oyuncu Sayisi (Unique)
+        public int KOC { get; set; }    // Kayıtlı Oyuncu Sayisi
         public int OOC { get; set; }    // Oynayan Oyuncu Sayisi (Unique)
 
         public string Ozet => $"Oyuncu {ONC:n0} ♦ Maç {SMC + DMC:n0} ♦ Set {SSC + DSC:n0} ♦ Sayı {SNC + DNC:n0}";
     }
 
-
-    /*
-    [Database]
-    public class PPD   // PP Donem SIL
-    {
-        public PP PP { get; set; }
-        public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
-        public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilarak RnkOnc ile ayni olmayabilir.
-        public int RnkPX { get; set; }
-
-        public int RnkSon => RnkBas + RnkPX;
-    }
-    */
-    /*
-    [Database]
-    public class PPR    // SIL
-    {
-        public PP PP { get; set; }
-        public int Idx { get; set; }
-        public int Dnm { get; set; }        // Donem 2017-2018, Baslangic yili, son iki digit yeterli.
-        public int RnkIdx { get; set; }
-        public int RnkBas { get; set; }     // Bu Donemin baslangic Ranki, Manuel duzeltme yapilabilir. CC is null ise.
-        public CC CC { get; set; }   
-        public int RnkPX { get; set; }      // CC de aldigi toplam PX degeri. Donem sonu hesaplanir.    CC is not null ise.
-        public int RnkSon
-        {
-            get
-            {
-                return  RnkBas + (int)(Db.SQL<long>("select sum(r.RnkPX) from BDB2.PPR r where r.PP = ? and r.Dnm = ? and r.CC IS NOT NULL", PP, Dnm).FirstOrDefault());
-            }
-        }
-        public string CCAd => CC == null ? "-" : $"{CC.Ad}";
-        public string PPAd => PP == null ? "-" : $"{PP.Ad}";
-    }
-    */
 
     [Database]
     public class PPRD   // PP RankDonem
@@ -144,78 +109,6 @@ namespace BDB2
         public string PPAd => PP.Ad;
         public string PPTel => PP.Tel;
     }
-
-    /*
-    [Database]
-    public class PPRC   // PP Turnuva RnkPX SIL
-    {
-        public PP PP { get; set; }
-        public CC CC { get; set; }          // Turnuva (RnkBaz CC.Dnm'e gore PPRD den alinir)
-        public int RnkPX { get; set; }      // Turnuvadaki toplam PX degeri. Donem sonu hesaplanir.
-                                            // Ferdi Rank Donemin sonundaki Rnk'e gore bir kerede hesaplanir. 
-                                            // PPRD.RnkSon = SUM(RnkPX of CC.Dnm)
-
-        public static void DonemBasiIslemleri(int DnmRun)   // RunDnm 18'den baslar gecmis aynen kalacak cunki birden cok Rank var.
-        {
-            // Takim ve Ferdi oyunculari girilmis, bunlara gore Aktifler duzeltilmis. (PP.IsRun = true)
-            // Bu PP nin oynadigi CC leri bul
-
-            Db.TransactAsync(() =>
-            {
-                // Takimda oynayanlar
-                var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ?", DnmRun);
-                foreach (var ctp in ctps)
-                {
-                    new PPRC
-                    {
-                        PP = ctp.PP,
-                        CC = ctp.CC,
-                        RnkPX = 0
-                    };
-                }
-                // Ferdi oynayanlar
-                var cfs = Db.SQL<CF>("select r from CF r where r.CC.Dnm = ?", DnmRun);
-                foreach (var cf in cfs)
-                {
-                    new PPRC
-                    {
-                        PP = cf.PP,
-                        CC = cf.CC,
-                        RnkPX = 0
-                    };
-                }
-
-                // Her aktif PP icin PPRD insert et.
-                PPRD prvPPRD = null;
-                int RnkSon = 0;
-                var pps = Db.SQL<PP>("select r from PP r where r.IsRun = ?", true);
-                foreach (var pp in pps)
-                {
-                    prvPPRD = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, DnmRun - 1).FirstOrDefault(); // Yoksa??????? Yani herseyin basiysa. Baslangic donem 18
-                    if (prvPPRD == null)
-                        RnkSon = pp.RnkBaz;
-                    else
-                        RnkSon = prvPPRD.RnkSon;
-
-                    new PPRD
-                    {
-                        PP = pp,
-                        Dnm = DnmRun,
-                        RnkOnc = RnkSon,
-                        RnkBas = RnkSon,
-                        RnkSon = 0
-                    };
-                }
-            });
-        }
-
-        public static void DonemBasiIslemleri(int DnmRun, PP pp)    // Sonradan Eklenen PP icin
-        {
-            // Her CC icin RnkPX Hesapla
-            // RnkPX lerden RPRD.RnkSon hesapla
-        }
-    }
-    */
 
     [Database]
     public class PP : BB   // Players
@@ -411,122 +304,6 @@ namespace BDB2
 
         public string Tarih => string.Format(H.cultureTR, "{0:dd.MM.yy ddd}", Trh);  //$"{Trh:dd.MM.yy ddd}";
 
-        /*
-        public static void RefreshSonucOLD()
-        {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-
-            var cebs = Db.SQL<CEB>("select r from CEB r");
-            foreach (var ceb in cebs)
-            {
-                RefreshSonucOLD(ceb);
-            }
-
-            watch.Stop();
-            Console.WriteLine($"CEB.RefreshSonuc(): {watch.ElapsedMilliseconds} msec  {watch.ElapsedTicks} ticks");
-            //Console.WriteLine($"CET.RefreshSonuc(){DateTime.Now:dd.MM.yy ddd}");  // Turkce, Burda oluyor!!
-        }
-
-        public static void RefreshSonucOLD(CEB ceb)
-        {
-            int hSMW = 0,
-                hSSW = 0,
-                gSMW = 0,
-                gSSW = 0,
-                hDMW = 0,
-                hDSW = 0,
-                gDMW = 0,
-                gDSW = 0,
-                hKW = 0,
-                gKW = 0,
-                hPW = 0,
-                gPW = 0;
-
-            int TSMK = ceb.CC.TSMK;
-            int TDMK = ceb.CC.TDMK;
-
-            int TEGP = ceb.CC.TEGP;
-            int TEMP = ceb.CC.TEMP;
-            int TEBP = ceb.CC.TEBP;
-            int TEXP = ceb.CC.TEXP;
-
-            Db.TransactAsync(() =>
-            {
-                if (ceb.Drm == "OK")
-                {
-                    var macs = Db.SQL<MAC>("select m from MAC m where m.CEB.ObjectNo = ?", ceb.GetObjectNo());
-                    foreach (var mac in macs)
-                    {
-                        if (mac.SoD == "S")
-                        {
-                            hSSW += mac.HSW;
-                            gSSW += mac.GSW;
-                            hSMW += mac.HMW;
-                            gSMW += mac.GMW;
-                        }
-                        else if (mac.SoD == "D")
-                        {
-                            hDSW += mac.HSW;
-                            gDSW += mac.GSW;
-                            hDMW += mac.HMW;
-                            gDMW += mac.GMW;
-                        }
-                    }
-                    hKW = hSMW * TSMK + hDMW * TDMK;
-                    gKW = gSMW * TSMK + gDMW * TDMK;
-
-                    if (hKW > gKW)
-                    {
-                        hPW = TEGP;
-                        gPW = TEMP;
-                    }
-                    else if (hKW < gKW)
-                    {
-                        hPW = TEMP;
-                        gPW = TEGP;
-                    }
-                    else
-                    {
-                        hPW = TEBP;
-                        gPW = TEBP;
-                    }
-                }
-                else if (ceb.Drm == "hX")  // Home Gelmedi/Cikmadi
-                {
-
-                }
-                else if (ceb.Drm == "gX")  // Guest Gelmedi/Cikmadi
-                {
-
-                }
-                else if (ceb.Drm == "hD")  // Home Diskalifiye
-                {
-
-                }
-                else if (ceb.Drm == "gD")  // Guest Diskalifiye
-                {
-
-                }
-
-                // Update CET
-                ceb.HSSW = hSSW;
-                ceb.GSSW = gSSW;
-                ceb.HDSW = hDSW;
-                ceb.GDSW = gDSW;
-
-                ceb.HSMW = hSMW;
-                ceb.GSMW = gSMW;
-                ceb.HDMW = hDMW;
-                ceb.GDMW = gDMW;
-
-                ceb.HKW = hKW;
-                ceb.GKW = gKW;
-
-                ceb.HPW = hPW;
-                ceb.GPW = gPW;
-            });
-        }*/
     }
 
     [Database]
@@ -909,13 +686,4 @@ namespace BDB2
         public int SL;
     }
 
-    public class DictDnm
-    {
-        public int SMC; // SingleMacCount
-        public int DMC;
-        public int SSC;
-        public int DSC;
-        public int SNC; // SingleSayiCount
-        public int DNC;
-    }
 }

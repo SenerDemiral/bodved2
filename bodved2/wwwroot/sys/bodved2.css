@@ -51,12 +51,14 @@ body {
 .grid_header {
     display: grid;
     align-items: center;
-    grid-auto-flow: column;
-    /*grid-gap: 1rem;*/
+    grid-gap: 1rem;
     overflow-x: auto;
     background-color: beige;
     grid-area: header;
-    padding-left: 5px;
+    /*padding-left: 5px;*/
+    grid-template-columns: 3rem 3rem 3rem 3rem 1fr max-content;
+    justify-items: center;
+    /*grid-auto-flow: column;*/
 }
 
 .grid_main {

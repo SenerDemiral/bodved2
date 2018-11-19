@@ -7,16 +7,12 @@
         <template is="dom-bind">
             <div class="grid">
                 <header class="grid_header">
-                    <div>
-                        <a href="/bodved" style="padding-left:10px;"><iron-icon icon="vaadin:home"></iron-icon></a>
-                        <a href="/bodved/CurEvents" style="padding-left:10px;"><iron-icon icon="vaadin:bell-o"></iron-icon></a>
-                        <a href="/bodved/PPs" style="padding-left:10px;"><iron-icon icon="vaadin:users"></iron-icon></a>
-                    </div>
-                    <div>
-                        <a href="/bodved/AboutPage"><iron-icon icon="vaadin:info-circle"></iron-icon></a>
-                    </div>
-                    <div style="justify-self:center;font-weight:bold">[[model.EntCntFrmtd]]</div>
-                    <div style="font-size:x-large;justify-self:end;padding-right:10px;">BODVED</div>
+                    <a href="/bodved"><iron-icon icon="vaadin:home"></iron-icon></a>
+                    <a href="/bodved/CurEvents"><iron-icon icon="vaadin:bell-o"></iron-icon></a>
+                    <a href="/bodved/PPs"><iron-icon icon="vaadin:users"></iron-icon></a>
+                    <a href="/bodved/AboutPage"><iron-icon icon="vaadin:info-circle"></iron-icon></a>
+                    <div style="justify-self:end;font-weight:bold">[[model.EntCntFrmtd]]</div>
+                    <div style="font-size:x-large;justify-self:end;color:teal;">BODVED</div>
                 </header>
                 <main class="grid_main">
                     <starcounter-include view-model="{{model.CurrentPage}}"></starcounter-include>

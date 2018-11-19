@@ -38,6 +38,7 @@
             this.pPRDBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.pPRDGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDnm = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,6 +48,7 @@
             this.colRnkSon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSonPX = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsFerdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPPTel = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -54,7 +56,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colPPTel = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPRDBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPRDBindingNavigator)).BeginInit();
@@ -144,6 +145,7 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
             this.colRowKey,
             this.colPP,
             this.colDnm,
@@ -158,7 +160,18 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "#";
+            this.gridColumn1.FieldName = "gridColumn1";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // colRowKey
             // 
@@ -170,7 +183,7 @@
             this.colRowKey.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "RowKey", "{0:#}")});
             this.colRowKey.Visible = true;
-            this.colRowKey.VisibleIndex = 0;
+            this.colRowKey.VisibleIndex = 1;
             this.colRowKey.Width = 60;
             // 
             // colPP
@@ -178,7 +191,7 @@
             this.colPP.FieldName = "PP";
             this.colPP.Name = "colPP";
             this.colPP.Visible = true;
-            this.colPP.VisibleIndex = 2;
+            this.colPP.VisibleIndex = 3;
             this.colPP.Width = 253;
             // 
             // colDnm
@@ -187,7 +200,7 @@
             this.colDnm.Name = "colDnm";
             this.colDnm.OptionsColumn.FixedWidth = true;
             this.colDnm.Visible = true;
-            this.colDnm.VisibleIndex = 1;
+            this.colDnm.VisibleIndex = 2;
             this.colDnm.Width = 50;
             // 
             // colRnkIdx
@@ -198,7 +211,7 @@
             this.colRnkIdx.OptionsColumn.AllowFocus = false;
             this.colRnkIdx.OptionsColumn.FixedWidth = true;
             this.colRnkIdx.Visible = true;
-            this.colRnkIdx.VisibleIndex = 3;
+            this.colRnkIdx.VisibleIndex = 4;
             this.colRnkIdx.Width = 50;
             // 
             // colRnkBas
@@ -207,7 +220,7 @@
             this.colRnkBas.Name = "colRnkBas";
             this.colRnkBas.OptionsColumn.FixedWidth = true;
             this.colRnkBas.Visible = true;
-            this.colRnkBas.VisibleIndex = 4;
+            this.colRnkBas.VisibleIndex = 5;
             this.colRnkBas.Width = 50;
             // 
             // colTopPX
@@ -218,7 +231,7 @@
             this.colTopPX.OptionsColumn.AllowFocus = false;
             this.colTopPX.OptionsColumn.FixedWidth = true;
             this.colTopPX.Visible = true;
-            this.colTopPX.VisibleIndex = 5;
+            this.colTopPX.VisibleIndex = 7;
             this.colTopPX.Width = 50;
             // 
             // colRnkSon
@@ -238,7 +251,7 @@
             this.colSonPX.OptionsColumn.AllowFocus = false;
             this.colSonPX.OptionsColumn.FixedWidth = true;
             this.colSonPX.Visible = true;
-            this.colSonPX.VisibleIndex = 7;
+            this.colSonPX.VisibleIndex = 8;
             this.colSonPX.Width = 50;
             // 
             // colIsFerdi
@@ -247,8 +260,17 @@
             this.colIsFerdi.Name = "colIsFerdi";
             this.colIsFerdi.OptionsColumn.FixedWidth = true;
             this.colIsFerdi.Visible = true;
-            this.colIsFerdi.VisibleIndex = 8;
+            this.colIsFerdi.VisibleIndex = 9;
             this.colIsFerdi.Width = 50;
+            // 
+            // colPPTel
+            // 
+            this.colPPTel.FieldName = "PPTel";
+            this.colPPTel.Name = "colPPTel";
+            this.colPPTel.OptionsColumn.AllowEdit = false;
+            this.colPPTel.OptionsColumn.AllowFocus = false;
+            this.colPPTel.Visible = true;
+            this.colPPTel.VisibleIndex = 10;
             // 
             // layoutControl1
             // 
@@ -320,15 +342,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // colPPTel
-            // 
-            this.colPPTel.FieldName = "PPTel";
-            this.colPPTel.Name = "colPPTel";
-            this.colPPTel.OptionsColumn.AllowEdit = false;
-            this.colPPTel.OptionsColumn.AllowFocus = false;
-            this.colPPTel.Visible = true;
-            this.colPPTel.VisibleIndex = 9;
-            // 
             // pprdXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,5 +397,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraGrid.Columns.GridColumn colPPTel;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
