@@ -35,7 +35,6 @@ namespace bodved2
                 handler.Register();
             }
 
-
             if (Db.SQL<DD>("select r from DD r").FirstOrDefault() == null)
             {
                 Db.Transact(() =>
@@ -69,6 +68,8 @@ namespace bodved2
             H.CT_RefreshSonuc(H.DnmRun);
             H.CTP_RefreshSonuc(H.DnmRun);
             H.PPRD_RefreshSonuc(H.DnmRun);
+            //H.DD_RefreshSonuc(17);
+            H.DD_RefreshSonuc(H.DnmRun);
 
 
             // Bunlara gerek kalmadi
@@ -88,8 +89,6 @@ namespace bodved2
 
             //H.Deneme2();
 
-            H.DD_RefreshSonuc(17);
-            H.DD_RefreshSonuc(18);
 
         }
     }

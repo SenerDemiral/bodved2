@@ -23,7 +23,8 @@ namespace BDB2
 
         public static int UpdEntCnt()
         {
-            H.Write2Log($"Enter: {Session.Current.SessionId}");
+            //H.Write2Log($"Enter: {Session.Current.SessionId}");
+            H.Write2Log("");
 
             int EntCnt = 0;
             Db.Transact(() =>
@@ -624,6 +625,7 @@ namespace BDB2
     {
         public CT CT;
         public PP PP;
+        public ulong PPoNo;
         public int Dnm;
         public string SoD;
 

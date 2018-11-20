@@ -117,5 +117,11 @@ namespace RestWinFormsClient
             link.ShowPreview();
 
         }
+
+        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column == gridColumn1)
+                e.DisplayText = (e.RowHandle + 1).ToString();
+        }
     }
 }

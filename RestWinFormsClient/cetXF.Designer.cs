@@ -111,7 +111,7 @@
             this.colHCT.ToolTip = "Home Takım";
             this.colHCT.Visible = true;
             this.colHCT.VisibleIndex = 4;
-            this.colHCT.Width = 86;
+            this.colHCT.Width = 120;
             // 
             // colGCT
             // 
@@ -124,7 +124,7 @@
             this.colGCT.ToolTip = "Guest Takım";
             this.colGCT.Visible = true;
             this.colGCT.VisibleIndex = 9;
-            this.colGCT.Width = 148;
+            this.colGCT.Width = 120;
             // 
             // dataSetGnl
             // 
@@ -345,6 +345,7 @@
             this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
             this.gridView1.OptionsFilter.UseNewCustomFilterDialog = true;
             this.gridView1.OptionsSelection.EnableAppearanceHideSelection = false;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -378,9 +379,10 @@
             // 
             this.colTrh.FieldName = "Trh";
             this.colTrh.Name = "colTrh";
+            this.colTrh.OptionsColumn.FixedWidth = true;
             this.colTrh.Visible = true;
             this.colTrh.VisibleIndex = 2;
-            this.colTrh.Width = 55;
+            this.colTrh.Width = 80;
             // 
             // colDrm
             // 
@@ -417,7 +419,7 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 10;
-            this.colInfo.Width = 122;
+            this.colInfo.Width = 165;
             // 
             // colHSSW
             // 
