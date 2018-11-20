@@ -881,16 +881,16 @@ namespace RestStarcounterServer
                 }
                 else if (request.Req == "RefreshSonuc")
                 {
-                    H.MAC_RefreshSonuc();
-                    H.CEF_RefreshSonuc();
-                    H.CF_RefreshSonuc();
-                    H.CET_RefreshSonuc();
-                    H.CT_RefreshSonuc();
-                    H.CTP_RefreshSonucNew();
+                    //H.MAC_RefreshSonuc();
+                    //H.CEF_RefreshSonuc();
+                    //H.CF_RefreshSonuc();
+                    //H.CET_RefreshSonuc();
+                    //H.CT_RefreshSonuc();
+                    //H.CTP_RefreshSonucNew();
                     //H.PP_RefreshSonuc();
                     //H.MAC_RefreshGlobalRank();
 
-                    request.Rsp = "";
+                    request.Rsp = "Donem için yapın.";
                 }
                 else if (request.Req == "CreateEvents")
                 {
