@@ -68,7 +68,7 @@ namespace bodved2
             H.CT_RefreshSonuc(H.DnmRun);
             H.CTP_RefreshSonuc(H.DnmRun);
             H.PPRD_RefreshSonuc(H.DnmRun);
-            //H.DD_RefreshSonuc(17);
+            H.PPRD_RefreshCurRuns(H.DnmRun);
             H.DD_RefreshSonuc(H.DnmRun);
 
 

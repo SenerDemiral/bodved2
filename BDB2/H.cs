@@ -381,13 +381,20 @@ namespace BDB2
             }
         }
 
-        public static void PPRD_DonemBasiIslemleri(int Dnm)
+        public static string PPRD_DonemBasiIslemleri(int Dnm)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
             int nor = 0;
-            
+
             // Donemin Takim Oyunculari icin
+            // Takimda oynamayan Ferdi de oynayabilir.
+            // IsFerdi girisi burdan yapiliyor. (CF ye sonradan ekleniyor) Kayit varsa silME.
+
+            var rd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", Dnm).FirstOrDefault();
+            if (rd != null)
+                return $"Dnm:{Dnm} kayıtları var! İşlem yapılmadı.";
+
             Db.TransactAsync(() =>
             {
                 // Mevcutlari sil
@@ -399,7 +406,6 @@ namespace BDB2
                     nor++;
                     PPRD_TryInsert(ctp.PP, Dnm);
                 }
-                // Ferdi oynayanlar icin yapilmasina gerek yok. Takimda oynuyor ise Ferdiye katilabilir!!!
 
                 // Sort
                 int idx = 1;
@@ -412,6 +418,8 @@ namespace BDB2
 
             watch.Stop();
             Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms DonemBaslangicIslemleri({Dnm}) NOR: {nor:n0}");
+
+            return "";
         }
 
 
@@ -640,6 +648,8 @@ namespace BDB2
 
         public static void PP_RefeshCurrentActivities(int Dnm)
         {
+            // DnmRun a gore PP leri update eder.
+
             Dictionary<ulong, string> dct = new Dictionary<ulong, string>();
 
             Db.TransactAsync(() =>
@@ -1946,6 +1956,44 @@ namespace BDB2
             Console.WriteLine($"{DateTime.Now:dd.MM.yy HH:mm}  {watch.ElapsedMilliseconds,5} ms PPRD.RefreshSonuc({Dnm}) NOR: {nor:n0}");
         }
 
+        public static void PPRD_RefreshCurRuns(int Dnm)
+        {
+            // DnmRun a gore PPRD leri update eder.
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+
+            string info;
+            char[] charsToTrim = { '♦', ' ' };
+
+            Db.TransactAsync(() =>
+            {
+                var pprds = Db.SQL<PPRD>("SELECT r FROM PPRD r where r.Dnm = ?", Dnm);
+                foreach (var pprd in pprds)
+                {
+                    nor++;
+                    // Oynadigi CTP, CF leri bul
+                    info = "";
+                    var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ? and r.PP = ?", H.DnmRun, pprd.PP);
+                    foreach (var ctp in ctps)
+                    {
+                        info += ctp.CTAd + " ♦ ";
+                    }
+
+                    var cf = Db.SQL<CF>("select r from CF r where r.PP = ? and r.CC.Dnm = ?", pprd.PP, Dnm).FirstOrDefault();  // Ferdi olarak tek ligde oynayabilir
+                    if(cf != null)
+                        info += cf.CC.Ad + " ♦ ";
+
+                    pprd.CurRuns = info.TrimEnd(charsToTrim);
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{DateTime.Now:dd.MM.yy HH:mm}  {watch.ElapsedMilliseconds,5} ms PPRD_RefreshCurRuns({Dnm}) NOR: {nor:n0}");
+        }
+
+
+
         public static void MAC_RefreshDonemFerdiRank(int DnmRun)
         {
             // TakimTurnuvalar bittikten sonra yapilacak
@@ -1997,6 +2045,8 @@ namespace BDB2
             });
         
         }
+
+
 
         public static void DD_RefreshSonuc(int Dnm)
         {

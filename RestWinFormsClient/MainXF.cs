@@ -173,24 +173,6 @@ namespace RestWinFormsClient
             FillTanimlar();
         }
 
-        private void donemBasiIslemleriNavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            string err = dataSetGnl.PerfomAction("DonemBasiIslemleri", "18");
-            if (err != string.Empty)
-            {
-                MessageBox.Show(err);
-            }
-        }
-
-        private void refreshAllNavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            string err = dataSetGnl.PerfomAction("RefreshSonuc");
-            if (err != string.Empty)
-            {
-                MessageBox.Show(err);
-            }
-        }
-
         private void refreshDnmRunNavBarItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             string err = dataSetGnl.PerfomAction("RefreshSonucDnmRun");

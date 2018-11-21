@@ -34,10 +34,11 @@ namespace bodved2.ViewModels
                     SW = $"{pprd.SW:#}",
                     SL = $"{pprd.SL:#}",
 
-                    IsFerdi = pprd.IsFerdi
+                    IsFerdi = pprd.IsFerdi,
+                    CurRuns = pprd.CurRuns
 
                 };
-
+                /*
                 // Oynadigi CTP, CF leri bul
                 info = "";
                 var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ? and r.PP = ?", H.DnmRun, pprd.PP);
@@ -46,7 +47,7 @@ namespace bodved2.ViewModels
                     info += ctp.CTAd + " ♦ ";
                 }
                 rde.CurRuns = info.TrimEnd(charsToTrim);
-
+                */
                 PPRDs.Add(rde);
             }
         }

@@ -874,23 +874,11 @@ namespace RestStarcounterServer
                     H.CET_RefreshSonuc(H.DnmRun);
                     H.CT_RefreshSonuc(H.DnmRun);
                     H.CTP_RefreshSonuc(H.DnmRun);
-                    H.PPRD_RefreshSonuc(H.DnmRun);
                     H.DD_RefreshSonuc(H.DnmRun);
+                    H.PPRD_RefreshSonuc(H.DnmRun);
+                    H.PPRD_RefreshCurRuns(H.DnmRun);
 
                     request.Rsp = "";
-                }
-                else if (request.Req == "RefreshSonuc")
-                {
-                    //H.MAC_RefreshSonuc();
-                    //H.CEF_RefreshSonuc();
-                    //H.CF_RefreshSonuc();
-                    //H.CET_RefreshSonuc();
-                    //H.CT_RefreshSonuc();
-                    //H.CTP_RefreshSonucNew();
-                    //H.PP_RefreshSonuc();
-                    //H.MAC_RefreshGlobalRank();
-
-                    request.Rsp = "Donem için yapın.";
                 }
                 else if (request.Req == "CreateEvents")
                 {
@@ -900,18 +888,6 @@ namespace RestStarcounterServer
                         request.Rsp = H.CEF_CreateEvents(CCoNo);
                     else if (cc.Skl == "T")
                         request.Rsp = H.CET_CreateEvents(CCoNo);
-                }
-                else if (request.Req == "RefeshCurrentActivities")
-                {
-                    int dnm = int.Parse(request.Prm1);
-                    H.PP_RefeshCurrentActivities(dnm);
-                    request.Rsp = "";
-                }
-                else if (request.Req == "DonemBasiIslemleri")
-                {
-                    int dnm = int.Parse(request.Prm1);
-                    H.PPRD_DonemBasiIslemleri(dnm);
-                    request.Rsp = "";
                 }
 
             }).Wait();

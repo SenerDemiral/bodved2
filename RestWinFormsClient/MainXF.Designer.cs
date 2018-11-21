@@ -38,14 +38,12 @@
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.CCnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.PPnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.DDnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
+            this.CCnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.refreshDnmRunNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
-            this.refreshAllNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.refreshLookupsNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
-            this.donemBasiIslemleriNavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.CTnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
             this.CETnavBarItem = new DevExpress.XtraNavBar.NavBarItem();
@@ -170,9 +168,7 @@
             this.CCnavBarItem,
             this.CETnavBarItem,
             this.MACnavBarItem,
-            this.refreshAllNavBarItem,
             this.refreshLookupsNavBarItem,
-            this.donemBasiIslemleriNavBarItem,
             this.refreshDnmRunNavBarItem,
             this.PPRDnavBarItem,
             this.DDnavBarItem});
@@ -193,12 +189,6 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.CCnavBarItem)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // CCnavBarItem
-            // 
-            this.CCnavBarItem.Caption = "Competitions";
-            this.CCnavBarItem.Name = "CCnavBarItem";
-            this.CCnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CCnavBarItem_LinkClicked);
-            // 
             // PPnavBarItem
             // 
             this.PPnavBarItem.Caption = "Players";
@@ -211,15 +201,19 @@
             this.DDnavBarItem.Name = "DDnavBarItem";
             this.DDnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.DDnavBarItem_LinkClicked);
             // 
+            // CCnavBarItem
+            // 
+            this.CCnavBarItem.Caption = "Competitions";
+            this.CCnavBarItem.Name = "CCnavBarItem";
+            this.CCnavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CCnavBarItem_LinkClicked);
+            // 
             // navBarGroup
             // 
             this.navBarGroup.Caption = "Servis";
             this.navBarGroup.Expanded = true;
             this.navBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.refreshDnmRunNavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshAllNavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshLookupsNavBarItem),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.donemBasiIslemleriNavBarItem)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.refreshLookupsNavBarItem)});
             this.navBarGroup.Name = "navBarGroup";
             // 
             // refreshDnmRunNavBarItem
@@ -230,23 +224,11 @@
             this.refreshDnmRunNavBarItem.Name = "refreshDnmRunNavBarItem";
             this.refreshDnmRunNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshDnmRunNavBarItem_LinkClicked);
             // 
-            // refreshAllNavBarItem
-            // 
-            this.refreshAllNavBarItem.Caption = "RefreshSonuc All (Server)";
-            this.refreshAllNavBarItem.Name = "refreshAllNavBarItem";
-            this.refreshAllNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshAllNavBarItem_LinkClicked);
-            // 
             // refreshLookupsNavBarItem
             // 
             this.refreshLookupsNavBarItem.Caption = "Refresh Lookups";
             this.refreshLookupsNavBarItem.Name = "refreshLookupsNavBarItem";
             this.refreshLookupsNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.refreshLookupsNavBarItem_LinkClicked);
-            // 
-            // donemBasiIslemleriNavBarItem
-            // 
-            this.donemBasiIslemleriNavBarItem.Caption = "Donem Basi Islemleri";
-            this.donemBasiIslemleriNavBarItem.Name = "donemBasiIslemleriNavBarItem";
-            this.donemBasiIslemleriNavBarItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.donemBasiIslemleriNavBarItem_LinkClicked);
             // 
             // navBarGroup2
             // 
@@ -535,12 +517,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSex;
         private DevExpress.XtraGrid.Columns.GridColumn colIsRun;
         private DevExpress.XtraGrid.Columns.GridColumn colCTs;
-        private DevExpress.XtraNavBar.NavBarItem refreshAllNavBarItem;
         public DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox DRMrepositoryItemImageComboBox;
         private DevExpress.XtraNavBar.NavBarItem refreshLookupsNavBarItem;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
-        private DevExpress.XtraNavBar.NavBarItem donemBasiIslemleriNavBarItem;
         private DevExpress.XtraNavBar.NavBarItem refreshDnmRunNavBarItem;
         private DevExpress.XtraNavBar.NavBarItem PPRDnavBarItem;
         private DevExpress.XtraNavBar.NavBarItem DDnavBarItem;

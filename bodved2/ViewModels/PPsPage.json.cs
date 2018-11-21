@@ -17,7 +17,6 @@ namespace bodved2.ViewModels
             int TopPP = 0;
             int RunPP = 0;
             string info = "";
-            char[] charsToTrim = { '♦', ' ' };
 
             var pps = Db.SQL<PP>("select r from PP r order by r.Ad");
             foreach (var pp in pps)
@@ -31,14 +30,7 @@ namespace bodved2.ViewModels
                 {
                     isRun = true;
                     RunPP++;
-
-                    // Oynadigi CTP, CF leri bul
-                    var ctps = Db.SQL<CTP>("select r from CTP r where r.CC.Dnm = ? and r.PP = ?", H.DnmRun, pp);
-                    foreach(var ctp in ctps)
-                    {
-                        info += ctp.CTAd + " ♦ ";
-                    }
-                    info = info.TrimEnd(charsToTrim);
+                    info = pprd.CurRuns;
                 }
 
                 ppse = new PPsElementJson
