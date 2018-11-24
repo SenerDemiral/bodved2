@@ -497,25 +497,25 @@ namespace BDB2
                 string rtr = "";
                 if ((H1W + G1W) != 0)
                 {
-                    rtr = H1W > G1W ? $"●{G1W}" : $"{H1W}●";
+                    rtr = H1W > G1W ? $"◀{G1W}" : $"{H1W}▶";
                     if ((H2W + G2W) != 0)
                     {
-                        rtr += H2W > G2W ? $"│●{G2W}" : $"│{H2W}●";
+                        rtr += H2W > G2W ? $"·◀{G2W}" : $"·{H2W}▶";
                         if ((H3W + G3W) != 0)
                         {
-                            rtr += H3W > G3W ? $"│●{G3W}" : $"│{H3W}●";
+                            rtr += H3W > G3W ? $"·◀{G3W}" : $"·{H3W}▶";
                             if ((H4W + G4W) != 0)
                             {
-                                rtr += H4W > G4W ? $"│●{G4W}" : $"│{H4W}●";
+                                rtr += H4W > G4W ? $"·◀{G4W}" : $"·{H4W}▶";
                                 if ((H5W + G5W) != 0)
                                 {
-                                    rtr += H5W > G5W ? $"│●{G5W}" : $"│{H5W}●";
+                                    rtr += H5W > G5W ? $"·◀{G5W}" : $"·{H5W}▶";
                                     if ((H6W + G6W) != 0)
                                     {
-                                        rtr += H6W > G6W ? $"│●{G6W}" : $"│{H6W}●";
+                                        rtr += H6W > G6W ? $"·◀{G6W}" : $"·{H6W}▶";
                                         if ((H7W + G7W) != 0)
                                         {
-                                            rtr += H7W > G7W ? $"│●{G7W}" : $"│{H7W}●";
+                                            rtr += H7W > G7W ? $"·◀{G7W}" : $"·{H7W}▶";
                                         }
                                     }
                                 }
@@ -566,25 +566,25 @@ namespace BDB2
                 string rtr = "";
                 if ((H1W + G1W) != 0)
                 {
-                    rtr = H1W > G1W ? $"{G1W}●" : $"●{H1W}";
+                    rtr = H1W > G1W ? $"{G1W}▶" : $"◀{H1W}";
                     if ((H2W + G2W) != 0)
                     {
-                        rtr += H2W > G2W ? $"│{G2W}●" : $"│●{H2W}";
+                        rtr += H2W > G2W ? $"·{G2W}▶" : $"·◀{H2W}";
                         if ((H3W + G3W) != 0)
                         {
-                            rtr += H3W > G3W ? $"│{G3W}●" : $"│●{H3W}";
+                            rtr += H3W > G3W ? $"·{G3W}▶" : $"·◀{H3W}";
                             if ((H4W + G4W) != 0)
                             {
-                                rtr += H4W > G4W ? $"│{G4W}●" : $"│●{H4W}";
+                                rtr += H4W > G4W ? $"·{G4W}▶" : $"·◀{H4W}";
                                 if ((H5W + G5W) != 0)
                                 {
-                                    rtr += H5W > G5W ? $"│{G5W}●" : $"│●{H5W}";
+                                    rtr += H5W > G5W ? $"·{G5W}▶" : $"·◀{H5W}";
                                     if ((H6W + G6W) != 0)
                                     {
-                                        rtr += H6W > G6W ? $"│{G6W}●" : $"│●{H6W}";
+                                        rtr += H6W > G6W ? $"·{G6W}▶" : $"·◀{H6W}";
                                         if ((H7W + G7W) != 0)
                                         {
-                                            rtr += H7W > G7W ? $"│{G7W}●" : $"│●{H7W}";
+                                            rtr += H7W > G7W ? $"·{G7W}▶" : $"·◀{H7W}";
                                         }
                                     }
                                 }

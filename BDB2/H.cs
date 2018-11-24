@@ -1945,7 +1945,7 @@ namespace BDB2
                 }
 
                 int idx = 1;
-                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon DESC", Dnm);
+                pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkSon DESC, r.RnkBas DESC", Dnm);
                 foreach (var pprd in pprds)
                 {
                     pprd.RnkIdx = idx++;

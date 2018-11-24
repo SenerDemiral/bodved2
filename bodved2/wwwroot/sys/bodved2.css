@@ -29,6 +29,7 @@
 body {
     /*margin: 10px;*/
     height:auto;
+    /*font-family: Arial, Helvetica, sans-serif;*/
 }
 
 .grid {
@@ -253,6 +254,7 @@ body {
 .colSncTxt {
     width: var(--w-SncTxt);
     text-align: left;
+    font-family: Arial;
     /*background-color: #bdd598;*/
 }
 tbody tr:nth-child(even) {

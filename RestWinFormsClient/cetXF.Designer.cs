@@ -102,8 +102,6 @@
             // 
             // colHCT
             // 
-            this.colHCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.colHCT.AppearanceCell.Options.UseBackColor = true;
             this.colHCT.Caption = "Home";
             this.colHCT.FieldName = "HCT";
             this.colHCT.Name = "colHCT";
@@ -115,8 +113,6 @@
             // 
             // colGCT
             // 
-            this.colGCT.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.colGCT.AppearanceCell.Options.UseBackColor = true;
             this.colGCT.Caption = "Guest";
             this.colGCT.FieldName = "GCT";
             this.colGCT.Name = "colGCT";
@@ -535,8 +531,10 @@
             // 
             // colHKW
             // 
-            this.colHKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHKW.AppearanceCell.BackColor = System.Drawing.Color.Teal;
+            this.colHKW.AppearanceCell.ForeColor = System.Drawing.Color.White;
             this.colHKW.AppearanceCell.Options.UseBackColor = true;
+            this.colHKW.AppearanceCell.Options.UseForeColor = true;
             this.colHKW.AppearanceCell.Options.UseTextOptions = true;
             this.colHKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHKW.Caption = "K";
@@ -554,8 +552,10 @@
             // 
             // colGKW
             // 
-            this.colGKW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGKW.AppearanceCell.BackColor = System.Drawing.Color.Teal;
+            this.colGKW.AppearanceCell.ForeColor = System.Drawing.Color.White;
             this.colGKW.AppearanceCell.Options.UseBackColor = true;
+            this.colGKW.AppearanceCell.Options.UseForeColor = true;
             this.colGKW.AppearanceCell.Options.UseTextOptions = true;
             this.colGKW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colGKW.Caption = "K";
@@ -573,10 +573,12 @@
             // 
             // colHPW
             // 
-            this.colHPW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.colHPW.AppearanceCell.BackColor = System.Drawing.Color.Maroon;
             this.colHPW.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.colHPW.AppearanceCell.ForeColor = System.Drawing.Color.White;
             this.colHPW.AppearanceCell.Options.UseBackColor = true;
             this.colHPW.AppearanceCell.Options.UseFont = true;
+            this.colHPW.AppearanceCell.Options.UseForeColor = true;
             this.colHPW.AppearanceCell.Options.UseTextOptions = true;
             this.colHPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHPW.Caption = "P";
@@ -595,10 +597,12 @@
             // 
             // colGPW
             // 
-            this.colGPW.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colGPW.AppearanceCell.BackColor = System.Drawing.Color.Maroon;
             this.colGPW.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.colGPW.AppearanceCell.ForeColor = System.Drawing.Color.White;
             this.colGPW.AppearanceCell.Options.UseBackColor = true;
             this.colGPW.AppearanceCell.Options.UseFont = true;
+            this.colGPW.AppearanceCell.Options.UseForeColor = true;
             this.colGPW.AppearanceCell.Options.UseTextOptions = true;
             this.colGPW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colGPW.Caption = "P";

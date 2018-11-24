@@ -401,7 +401,7 @@
             this.colHPP1.Name = "colHPP1";
             this.colHPP1.Visible = true;
             this.colHPP1.VisibleIndex = 4;
-            this.colHPP1.Width = 94;
+            this.colHPP1.Width = 99;
             // 
             // hPPrepositoryItemGridLookUpEdit
             // 
@@ -486,7 +486,7 @@
             this.colHPP2.Name = "colHPP2";
             this.colHPP2.Visible = true;
             this.colHPP2.VisibleIndex = 5;
-            this.colHPP2.Width = 94;
+            this.colHPP2.Width = 99;
             // 
             // colGPP1
             // 
@@ -496,7 +496,7 @@
             this.colGPP1.Name = "colGPP1";
             this.colGPP1.Visible = true;
             this.colGPP1.VisibleIndex = 8;
-            this.colGPP1.Width = 112;
+            this.colGPP1.Width = 124;
             // 
             // gPPrepositoryItemGridLookUpEdit
             // 
@@ -582,7 +582,7 @@
             this.colGPP2.Name = "colGPP2";
             this.colGPP2.Visible = true;
             this.colGPP2.VisibleIndex = 9;
-            this.colGPP2.Width = 112;
+            this.colGPP2.Width = 124;
             // 
             // colSoD
             // 
@@ -637,7 +637,7 @@
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 10;
-            this.colInfo.Width = 119;
+            this.colInfo.Width = 135;
             // 
             // colH1W
             // 
@@ -713,23 +713,27 @@
             // 
             this.colHSW.AppearanceCell.Options.UseTextOptions = true;
             this.colHSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHSW.DisplayFormat.FormatString = "#";
+            this.colHSW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHSW.FieldName = "HSW";
             this.colHSW.Name = "colHSW";
             this.colHSW.OptionsColumn.FixedWidth = true;
             this.colHSW.Visible = true;
             this.colHSW.VisibleIndex = 6;
-            this.colHSW.Width = 40;
+            this.colHSW.Width = 30;
             // 
             // colGSW
             // 
             this.colGSW.AppearanceCell.Options.UseTextOptions = true;
             this.colGSW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGSW.DisplayFormat.FormatString = "#";
+            this.colGSW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colGSW.FieldName = "GSW";
             this.colGSW.Name = "colGSW";
             this.colGSW.OptionsColumn.FixedWidth = true;
             this.colGSW.Visible = true;
             this.colGSW.VisibleIndex = 7;
-            this.colGSW.Width = 40;
+            this.colGSW.Width = 30;
             // 
             // colHMW
             // 
