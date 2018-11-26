@@ -5,7 +5,7 @@
         <template is="dom-bind">
             <div class="gridTbl">
                 <div class="gridTbl_header">
-                    <div></div>
+                    <div>BODVED Aktiviteleri</div>
                 </div>
                 <div class="gridTbl_main">
                     <table class="fixTbl">
@@ -49,6 +49,18 @@
                                 </tr>
                             </template>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td>TOPLAM</td>
+                                <td>[[model.TopPP]]</td>
+                                <td>[[model.RunPP]]</td>
+                                <td>[[model.TopMac]]</td>
+                                <td>[[model.TopSet]]</td>
+                                <td>[[model.TopSayi]]</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

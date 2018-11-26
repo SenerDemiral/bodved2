@@ -309,7 +309,36 @@ namespace BDB2
             });
         }
 
+        public static void PPRD_Ayarla()
+        {
+            Db.TransactAsync(() =>
+            {
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", 17);
+                foreach(var pprd in pprds)
+                {
+                    pprd.RnkBas = pprd.PP.RnkIlk;
+                }
 
+                var pps = Db.SQL<PP>("select r from PP r");
+                foreach(var pp in pps)
+                {
+                    if(pp.RnkIlk == 0)
+                    {
+                        var rd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", 17, pp).FirstOrDefault();
+                        if (rd != null)
+                            pp.RnkBaz = rd.RnkBas;
+                        else
+                        {
+                            rd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", 18, pp).FirstOrDefault();
+                            if (rd != null)
+                                pp.RnkBaz = rd.RnkBas;
+                        }
+                    }
+                    else
+                        pp.RnkBaz = pp.RnkIlk;
+                }
+            });
+        }
 
         public static PPRD PPRD_TryInsert(PP pp, int Dnm)
         {
@@ -326,8 +355,9 @@ namespace BDB2
                     {
                         PP = pp,
                         Dnm = Dnm,
-                        RnkBas = pp.RnkBaz,
-                        RnkSon = pp.RnkBaz,
+                        //RnkBas = pp.RnkBaz,
+                        RnkBas = pp.RnkIlk,
+                        //RnkSon = pp.RnkBaz,
                     };
                 }
                 else if (Dnm == 18)  // Baslangic
@@ -1197,6 +1227,53 @@ namespace BDB2
             });
         }
 
+        public static void CF_Create()
+        {
+            if (Db.SQL<CF>("select r from CF r").FirstOrDefault() != null)
+                return;
+
+            Db.TransactAsync(() =>
+            {
+                int i = 1;
+                CC cc = null;
+
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.IsFerdi = ? order by r.RnkBas DESC, r.PP.Ad", 18, true);
+                foreach (var pprd in pprds)
+                {
+                    if (i == 1)         // A
+                        cc = Db.FromId<CC>(8420);
+                    else if (i == 11)    // B
+                        cc = Db.FromId<CC>(8421);
+                    else if (i == 31)    // C
+                        cc = Db.FromId<CC>(8422);
+                    else if (i == 51)    // D
+                        cc = Db.FromId<CC>(8423);
+                    else if (i == 71)    // E
+                        cc = Db.FromId<CC>(8424);
+                    else if (i == 92)   // F
+                        cc = Db.FromId<CC>(8425);
+                    else if (i == 113)   // G
+                        cc = Db.FromId<CC>(8426);
+                    else if (i == 134)   // H
+                        cc = Db.FromId<CC>(8427);
+                    else if (i == 155)   // I
+                        cc = Db.FromId<CC>(8428);
+                    else if (i == 176)   // J
+                        cc = Db.FromId<CC>(8429);
+
+                    new CF
+                    {
+                        CC = cc,
+                        PP = pprd.PP,
+                        IsRun = true,
+                        RnkBas = pprd.RnkBas
+                    };
+
+                    i++;
+                }
+            });
+        }
+
 
 
         public static void CEF_RefreshSonuc()
@@ -1236,18 +1313,18 @@ namespace BDB2
                         cef.GSMW = mac.GMW;
                         if (mac.HMW > mac.GMW)  // Home kazandi
                         {
-                            cef.HPW = 3;
-                            cef.GPW = 1;
+                            cef.HPW = cef.CC.TEGP;
+                            cef.GPW = cef.CC.TEMP;
                         }
                         else if (mac.HMW < mac.GMW)  // Guest kazandi
                         {
-                            cef.HPW = 1;
-                            cef.GPW = 3;
+                            cef.HPW = cef.CC.TEMP;
+                            cef.GPW = cef.CC.TEGP;
                         }
                         else // Berabere
                         {
-                            cef.HPW = 2;
-                            cef.GPW = 3;
+                            cef.HPW = cef.CC.TEBP;
+                            cef.GPW = cef.CC.TEBP;
                         }
                     }
                 }
@@ -1257,7 +1334,7 @@ namespace BDB2
         public static string CEF_CreateEvents(ulong CCoNo)
         {
             ArrayList al = new ArrayList();
-            DateTime Trh = new DateTime(2099, 12, 31);
+            DateTime Trh = new DateTime(2099, 01, 01);
             CC cc = Db.FromId<CC>(CCoNo);
 
             var cef = Db.SQL<CEF>("select r from CEF r where r.CC = ?", cc).FirstOrDefault();
@@ -1391,11 +1468,17 @@ namespace BDB2
                 }
                 else if (cet.Drm == "hX")  // Home Gelmedi/Cikmadi
                 {
-
+                    hKW = 0;
+                    gKW = cet.CC.TNSM * TSMK + cet.CC.TNDM * TDMK;
+                    hPW = TEXP;
+                    gPW = TEGP;
                 }
                 else if (cet.Drm == "gX")  // Guest Gelmedi/Cikmadi
                 {
-
+                    hKW = cet.CC.TNSM * TSMK + cet.CC.TNDM * TDMK;
+                    gKW = 0;
+                    hPW = TEGP;
+                    gPW = TEXP;
                 }
                 else if (cet.Drm == "hD")  // Home Diskalifiye
                 {

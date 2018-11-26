@@ -74,9 +74,8 @@ namespace bodved2.Api
             Handle.GET("/bodved/partials/CFs/{?}", (ulong cc) =>
             {
                 var page = new CFsPage();
-                CC CC = Db.FromId<CC>(cc);
-                page.Hdr = $"{CC.Ad} ► Ferdi Puanları";
-                page.CFs.Data = Db.SQL<CF>("SELECT r FROM CF r WHERE r.CC = ? order by r.Idx", CC);
+                page.CCoNo = (long)cc;
+                page.Data = null;
                 return page;
             });
 

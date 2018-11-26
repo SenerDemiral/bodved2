@@ -12,6 +12,7 @@
                         <colgroup>
                             <col class="colRnkBaz" />
                             <col class="colRnkBaz" />
+                            <col class="colRnkBaz" />
                             <col class="colRnkSon" />
                             <col class="colRnkIdx" />
 
@@ -24,7 +25,7 @@
                         </colgroup>
                         <thead>
                             <tr>
-                                <th rowspan="2" colspan="4">Rank</th>
+                                <th rowspan="2" colspan="5">Rank</th>
                                 <th colspan="6" class="colSng">Single</th>
                             </tr>
                             <tr>
@@ -32,8 +33,9 @@
                                 <th colspan="3" class="colSnc">Set</th>
                             </tr>
                             <tr>
-                                <th>Dönem</th>
+                                <th>Sezon</th>
                                 <th>Baş</th>
+                                <th>PX</th>
                                 <th>Son</th>
                                 <th>Sıra</th>
 
@@ -47,24 +49,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>[[model.PP.Dnm]]</td>
-                                <td>[[model.PP.RnkBaz]]</td>
-                                <td>[[model.PP.RnkSon]]</td>
-                                <td style="font-weight:bold">[[model.PP.RnkIdx]]</td>
+                            <template is="dom-repeat" items="[[model.PPRDs]]">
+                                <tr>
+                                    <td>[[item.Dnm]]</td>
+                                    <td>[[item.RnkBas]]</td>
+                                    <td>[[item.TopPX]]</td>
+                                    <td>[[item.RnkSon]]</td>
+                                    <td style="font-weight:bold">[[item.RnkIdx]]</td>
 
-                                <td title="SMO">[[model.PP.SMT]]</td>
-                                <td title="SMG">[[model.PP.SMW]]</td>
-                                <td title="SMM">[[model.PP.SML]]</td>
-                                <td title="SSO">[[model.PP.SST]]</td>
-                                <td title="SSG">[[model.PP.SSW]]</td>
-                                <td title="SSM">[[model.PP.SSL]]</td>
-                            </tr>
+                                    <td title="SMO">[[item.SMT]]</td>
+                                    <td title="SMG">[[item.SMW]]</td>
+                                    <td title="SMM">[[item.SML]]</td>
+                                    <td title="SSO">[[item.SST]]</td>
+                                    <td title="SSG">[[item.SSW]]</td>
+                                    <td title="SSM">[[item.SSL]]</td>
+                                </tr>
+                            </template>
                         </tbody>
                     </table>
                     <br />
                     <table id="tbl" class="fixTbl sngLine" on-click="MyFnc">
                         <colgroup>
+                            <col style="width:2rem" />
                             <col style="width:5rem" />
                             <col style="width:2rem" />
 
@@ -78,6 +84,7 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>Szn</th>
                                 <th>Tarih</th>
                                 <th>#</th>
 
@@ -93,6 +100,7 @@
                         <tbody>
                             <template is="dom-repeat" items="[[model.Sngls]]">
                                 <tr>
+                                    <td>[[item.Dnm]]</td>
                                     <td>[[item.Tarih]]</td>
                                     <td>[[item.Idx]]</td>
 
@@ -115,7 +123,6 @@
                             <col style="width:var(--w-Idx)" />
                             <col style="width:var(--w-Plyr)" />
                             <col style="width:14rem" />
-                            <col style="width:5rem" />
                         </colgroup>
                         <tbody>
                             <template is="dom-repeat" items="{{model.Dbls}}">
@@ -126,7 +133,6 @@
                                     <td>{{item.SncMac}}</td>
                                     <td class="colPlyr">{{item.GPP1Ad}}<br />{{item.GPP2Ad}}</td>
                                     <td class="colSncTxt">{{item.SncSet}}</td>
-                                    <td class="colPlyr">[[item.MACoNo]]</td>
                                 </tr>
                             </template>
                         </tbody>

@@ -64,9 +64,6 @@
             this.colDrm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInfo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsRun = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colRnkBas = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colRnkBit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -75,6 +72,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colSncOzt = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingNavigator)).BeginInit();
@@ -271,9 +269,7 @@
             this.colDrm,
             this.colYer,
             this.colInfo,
-            this.colIsRun,
-            this.colRnkBas,
-            this.colRnkBit});
+            this.colSncOzt});
             this.gridView1.GridControl = this.cEFGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -418,33 +414,6 @@
             this.colInfo.VisibleIndex = 7;
             this.colInfo.Width = 98;
             // 
-            // colIsRun
-            // 
-            this.colIsRun.FieldName = "IsRun";
-            this.colIsRun.Name = "colIsRun";
-            this.colIsRun.OptionsColumn.FixedWidth = true;
-            this.colIsRun.Visible = true;
-            this.colIsRun.VisibleIndex = 8;
-            this.colIsRun.Width = 50;
-            // 
-            // colRnkBas
-            // 
-            this.colRnkBas.FieldName = "RnkBas";
-            this.colRnkBas.Name = "colRnkBas";
-            this.colRnkBas.OptionsColumn.FixedWidth = true;
-            this.colRnkBas.Visible = true;
-            this.colRnkBas.VisibleIndex = 9;
-            this.colRnkBas.Width = 50;
-            // 
-            // colRnkBit
-            // 
-            this.colRnkBit.FieldName = "RnkBit";
-            this.colRnkBit.Name = "colRnkBit";
-            this.colRnkBit.OptionsColumn.FixedWidth = true;
-            this.colRnkBit.Visible = true;
-            this.colRnkBit.VisibleIndex = 10;
-            this.colRnkBit.Width = 50;
-            // 
             // cFBindingSource
             // 
             this.cFBindingSource.DataMember = "CF";
@@ -525,6 +494,13 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // colSncOzt
+            // 
+            this.colSncOzt.FieldName = "SncOzt";
+            this.colSncOzt.Name = "colSncOzt";
+            this.colSncOzt.Visible = true;
+            this.colSncOzt.VisibleIndex = 8;
+            // 
             // cefXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,9 +561,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDrm;
         private DevExpress.XtraGrid.Columns.GridColumn colYer;
         private DevExpress.XtraGrid.Columns.GridColumn colInfo;
-        private DevExpress.XtraGrid.Columns.GridColumn colIsRun;
-        private DevExpress.XtraGrid.Columns.GridColumn colRnkBas;
-        private DevExpress.XtraGrid.Columns.GridColumn colRnkBit;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -605,5 +578,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colRowKeyPP;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem maclarToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colSncOzt;
     }
 }

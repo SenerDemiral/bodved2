@@ -74,49 +74,50 @@ namespace RestLib {
             "cnIYAiABKAkSDgoGUm93VXNyGAMgASgEEg4KBlJvd0tleRgEIAEoBBIKCgJD",
             "QxgFIAEoBBIKCgJQUBgGIAEoBBILCgNJZHgYByABKAUSDQoFSXNSdW4YCCAB",
             "KAgSDgoGUm5rQmFzGAkgASgFEg4KBlJua0JpdBgKIAEoBRIMCgRJbmZvGAsg",
-            "ASgJIqUBCghDRUZQcm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJyGAIg",
+            "ASgJIrUBCghDRUZQcm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJyGAIg",
             "ASgJEg4KBlJvd1VzchgDIAEoBBIOCgZSb3dLZXkYBCABKAQSCgoCQ0MYBSAB",
             "KAQSCwoDSFBQGAYgASgEEgsKA0dQUBgHIAEoBBILCgNUcmgYCCABKAMSCwoD",
-            "RHJtGAkgASgJEgsKA1llchgKIAEoCRIMCgRJbmZvGAsgASgJIrkECghNQUNQ",
-            "cm94eRIOCgZSb3dTdGUYASABKAkSDgoGUm93RXJyGAIgASgJEg4KBlJvd1Vz",
-            "chgDIAEoBBIOCgZSb3dLZXkYBCABKAQSCgoCQ0MYBSABKAQSCwoDQ0VCGAYg",
-            "ASgEEgwKBEhQUDEYByABKAQSDAoESFBQMhgIIAEoBBIMCgRHUFAxGAkgASgE",
-            "EgwKBEdQUDIYCiABKAQSCwoDU29EGAsgASgJEgsKA0lkeBgMIAEoBRILCgNU",
-            "cmgYDSABKAMSCwoDRHJtGA4gASgJEgsKA1llchgPIAEoCRINCgVIYWtlbRgQ",
-            "IAEoCRIMCgRJbmZvGBEgASgJEgsKA0gxVxgSIAEoBRILCgNIMlcYEyABKAUS",
-            "CwoDSDNXGBQgASgFEgsKA0g0VxgVIAEoBRILCgNINVcYFiABKAUSCwoDSDZX",
-            "GBcgASgFEgsKA0g3VxgYIAEoBRILCgNHMVcYGSABKAUSCwoDRzJXGBogASgF",
-            "EgsKA0czVxgbIAEoBRILCgNHNFcYHCABKAUSCwoDRzVXGB0gASgFEgsKA0c2",
-            "VxgeIAEoBRILCgNHN1cYHyABKAUSCwoDSFNXGCAgASgFEgsKA0dTVxghIAEo",
-            "BRILCgNITVcYIiABKAUSCwoDR01XGCMgASgFEgsKA0hYVxgkIAEoBRILCgNH",
-            "WFcYJSABKAUSDAoESFJuaxgmIAEoBRIOCgZIUm5rUFgYJyABKAUSDAoER1Ju",
-            "axgoIAEoBRIOCgZHUm5rUFgYKSABKAUykQkKBUNSVURzEj0KDVBlcmZvcm1B",
-            "Y3Rpb24SFC5SZXN0TGliLkFjdGlvblByb3h5GhQuUmVzdExpYi5BY3Rpb25Q",
-            "cm94eSIAEjEKBlBQRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGli",
-            "LlBQUHJveHkiADABEjAKCFBQVXBkYXRlEhAuUmVzdExpYi5QUFByb3h5GhAu",
-            "UmVzdExpYi5QUFByb3h5IgASMQoGRERGaWxsEhEuUmVzdExpYi5RcnlQcm94",
-            "eRoQLlJlc3RMaWIuRERQcm94eSIAMAESMAoIRERVcGRhdGUSEC5SZXN0TGli",
-            "LkREUHJveHkaEC5SZXN0TGliLkREUHJveHkiABIxCgZDQ0ZpbGwSES5SZXN0",
-            "TGliLlFyeVByb3h5GhAuUmVzdExpYi5DQ1Byb3h5IgAwARIwCghDQ1VwZGF0",
-            "ZRIQLlJlc3RMaWIuQ0NQcm94eRoQLlJlc3RMaWIuQ0NQcm94eSIAEjEKBkNU",
-            "RmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkNUUHJveHkiADAB",
-            "EjAKCENUVXBkYXRlEhAuUmVzdExpYi5DVFByb3h5GhAuUmVzdExpYi5DVFBy",
-            "b3h5IgASMwoHQ1RQRmlsbBIRLlJlc3RMaWIuUXJ5UHJveHkaES5SZXN0TGli",
-            "LkNUUFByb3h5IgAwARIzCglDVFBVcGRhdGUSES5SZXN0TGliLkNUUFByb3h5",
-            "GhEuUmVzdExpYi5DVFBQcm94eSIAEjMKB0NFVEZpbGwSES5SZXN0TGliLlFy",
-            "eVByb3h5GhEuUmVzdExpYi5DRVRQcm94eSIAMAESMwoJQ0VUVXBkYXRlEhEu",
-            "UmVzdExpYi5DRVRQcm94eRoRLlJlc3RMaWIuQ0VUUHJveHkiABIxCgZDRkZp",
-            "bGwSES5SZXN0TGliLlFyeVByb3h5GhAuUmVzdExpYi5DRlByb3h5IgAwARIw",
-            "CghDRlVwZGF0ZRIQLlJlc3RMaWIuQ0ZQcm94eRoQLlJlc3RMaWIuQ0ZQcm94",
-            "eSIAEjMKB0NFRkZpbGwSES5SZXN0TGliLlFyeVByb3h5GhEuUmVzdExpYi5D",
-            "RUZQcm94eSIAMAESMwoJQ0VGVXBkYXRlEhEuUmVzdExpYi5DRUZQcm94eRoR",
-            "LlJlc3RMaWIuQ0VGUHJveHkiABIzCgdNQUNGaWxsEhEuUmVzdExpYi5RcnlQ",
-            "cm94eRoRLlJlc3RMaWIuTUFDUHJveHkiADABEjMKCU1BQ1VwZGF0ZRIRLlJl",
-            "c3RMaWIuTUFDUHJveHkaES5SZXN0TGliLk1BQ1Byb3h5IgASNQoIUFBSREZp",
-            "bGwSES5SZXN0TGliLlFyeVByb3h5GhIuUmVzdExpYi5QUFJEUHJveHkiADAB",
-            "EjYKClBQUkRVcGRhdGUSEi5SZXN0TGliLlBQUkRQcm94eRoSLlJlc3RMaWIu",
-            "UFBSRFByb3h5IgASOQoIUFBsb29rVXASES5SZXN0TGliLlFyeVByb3h5GhYu",
-            "UmVzdExpYi5QUGxvb2tVcFByb3h5IgAwAWIGcHJvdG8z"));
+            "RHJtGAkgASgJEgsKA1llchgKIAEoCRIMCgRJbmZvGAsgASgJEg4KBlNuY096",
+            "dBgMIAEoCSK5BAoITUFDUHJveHkSDgoGUm93U3RlGAEgASgJEg4KBlJvd0Vy",
+            "chgCIAEoCRIOCgZSb3dVc3IYAyABKAQSDgoGUm93S2V5GAQgASgEEgoKAkND",
+            "GAUgASgEEgsKA0NFQhgGIAEoBBIMCgRIUFAxGAcgASgEEgwKBEhQUDIYCCAB",
+            "KAQSDAoER1BQMRgJIAEoBBIMCgRHUFAyGAogASgEEgsKA1NvRBgLIAEoCRIL",
+            "CgNJZHgYDCABKAUSCwoDVHJoGA0gASgDEgsKA0RybRgOIAEoCRILCgNZZXIY",
+            "DyABKAkSDQoFSGFrZW0YECABKAkSDAoESW5mbxgRIAEoCRILCgNIMVcYEiAB",
+            "KAUSCwoDSDJXGBMgASgFEgsKA0gzVxgUIAEoBRILCgNINFcYFSABKAUSCwoD",
+            "SDVXGBYgASgFEgsKA0g2VxgXIAEoBRILCgNIN1cYGCABKAUSCwoDRzFXGBkg",
+            "ASgFEgsKA0cyVxgaIAEoBRILCgNHM1cYGyABKAUSCwoDRzRXGBwgASgFEgsK",
+            "A0c1VxgdIAEoBRILCgNHNlcYHiABKAUSCwoDRzdXGB8gASgFEgsKA0hTVxgg",
+            "IAEoBRILCgNHU1cYISABKAUSCwoDSE1XGCIgASgFEgsKA0dNVxgjIAEoBRIL",
+            "CgNIWFcYJCABKAUSCwoDR1hXGCUgASgFEgwKBEhSbmsYJiABKAUSDgoGSFJu",
+            "a1BYGCcgASgFEgwKBEdSbmsYKCABKAUSDgoGR1Jua1BYGCkgASgFMpEJCgVD",
+            "UlVEcxI9Cg1QZXJmb3JtQWN0aW9uEhQuUmVzdExpYi5BY3Rpb25Qcm94eRoU",
+            "LlJlc3RMaWIuQWN0aW9uUHJveHkiABIxCgZQUEZpbGwSES5SZXN0TGliLlFy",
+            "eVByb3h5GhAuUmVzdExpYi5QUFByb3h5IgAwARIwCghQUFVwZGF0ZRIQLlJl",
+            "c3RMaWIuUFBQcm94eRoQLlJlc3RMaWIuUFBQcm94eSIAEjEKBkRERmlsbBIR",
+            "LlJlc3RMaWIuUXJ5UHJveHkaEC5SZXN0TGliLkREUHJveHkiADABEjAKCERE",
+            "VXBkYXRlEhAuUmVzdExpYi5ERFByb3h5GhAuUmVzdExpYi5ERFByb3h5IgAS",
+            "MQoGQ0NGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoQLlJlc3RMaWIuQ0NQcm94",
+            "eSIAMAESMAoIQ0NVcGRhdGUSEC5SZXN0TGliLkNDUHJveHkaEC5SZXN0TGli",
+            "LkNDUHJveHkiABIxCgZDVEZpbGwSES5SZXN0TGliLlFyeVByb3h5GhAuUmVz",
+            "dExpYi5DVFByb3h5IgAwARIwCghDVFVwZGF0ZRIQLlJlc3RMaWIuQ1RQcm94",
+            "eRoQLlJlc3RMaWIuQ1RQcm94eSIAEjMKB0NUUEZpbGwSES5SZXN0TGliLlFy",
+            "eVByb3h5GhEuUmVzdExpYi5DVFBQcm94eSIAMAESMwoJQ1RQVXBkYXRlEhEu",
+            "UmVzdExpYi5DVFBQcm94eRoRLlJlc3RMaWIuQ1RQUHJveHkiABIzCgdDRVRG",
+            "aWxsEhEuUmVzdExpYi5RcnlQcm94eRoRLlJlc3RMaWIuQ0VUUHJveHkiADAB",
+            "EjMKCUNFVFVwZGF0ZRIRLlJlc3RMaWIuQ0VUUHJveHkaES5SZXN0TGliLkNF",
+            "VFByb3h5IgASMQoGQ0ZGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoQLlJlc3RM",
+            "aWIuQ0ZQcm94eSIAMAESMAoIQ0ZVcGRhdGUSEC5SZXN0TGliLkNGUHJveHka",
+            "EC5SZXN0TGliLkNGUHJveHkiABIzCgdDRUZGaWxsEhEuUmVzdExpYi5RcnlQ",
+            "cm94eRoRLlJlc3RMaWIuQ0VGUHJveHkiADABEjMKCUNFRlVwZGF0ZRIRLlJl",
+            "c3RMaWIuQ0VGUHJveHkaES5SZXN0TGliLkNFRlByb3h5IgASMwoHTUFDRmls",
+            "bBIRLlJlc3RMaWIuUXJ5UHJveHkaES5SZXN0TGliLk1BQ1Byb3h5IgAwARIz",
+            "CglNQUNVcGRhdGUSES5SZXN0TGliLk1BQ1Byb3h5GhEuUmVzdExpYi5NQUNQ",
+            "cm94eSIAEjUKCFBQUkRGaWxsEhEuUmVzdExpYi5RcnlQcm94eRoSLlJlc3RM",
+            "aWIuUFBSRFByb3h5IgAwARI2CgpQUFJEVXBkYXRlEhIuUmVzdExpYi5QUFJE",
+            "UHJveHkaEi5SZXN0TGliLlBQUkRQcm94eSIAEjkKCFBQbG9va1VwEhEuUmVz",
+            "dExpYi5RcnlQcm94eRoWLlJlc3RMaWIuUFBsb29rVXBQcm94eSIAMAFiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -131,7 +132,7 @@ namespace RestLib {
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CTPProxy), global::RestLib.CTPProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "CT", "PP", "Idx", "IsRun", "RnkBas", "RnkBit", "Info" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CETProxy), global::RestLib.CETProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HCT", "GCT", "Trh", "Drm", "Yer", "Info", "HSSW", "GSSW", "HDSW", "GDSW", "HSMW", "GSMW", "HDMW", "GDMW", "HKW", "GKW", "HPW", "GPW" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CFProxy), global::RestLib.CFProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "PP", "Idx", "IsRun", "RnkBas", "RnkBit", "Info" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CEFProxy), global::RestLib.CEFProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HPP", "GPP", "Trh", "Drm", "Yer", "Info" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.CEFProxy), global::RestLib.CEFProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "HPP", "GPP", "Trh", "Drm", "Yer", "Info", "SncOzt" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::RestLib.MACProxy), global::RestLib.MACProxy.Parser, new[]{ "RowSte", "RowErr", "RowUsr", "RowKey", "CC", "CEB", "HPP1", "HPP2", "GPP1", "GPP2", "SoD", "Idx", "Trh", "Drm", "Yer", "Hakem", "Info", "H1W", "H2W", "H3W", "H4W", "H5W", "H6W", "H7W", "G1W", "G2W", "G3W", "G4W", "G5W", "G6W", "G7W", "HSW", "GSW", "HMW", "GMW", "HXW", "GXW", "HRnk", "HRnkPX", "GRnk", "GRnkPX" }, null, null, null)
           }));
     }
@@ -5432,6 +5433,7 @@ namespace RestLib {
       drm_ = other.drm_;
       yer_ = other.yer_;
       info_ = other.info_;
+      sncOzt_ = other.sncOzt_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5561,6 +5563,17 @@ namespace RestLib {
       }
     }
 
+    /// <summary>Field number for the "SncOzt" field.</summary>
+    public const int SncOztFieldNumber = 12;
+    private string sncOzt_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SncOzt {
+      get { return sncOzt_; }
+      set {
+        sncOzt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as CEFProxy);
@@ -5585,6 +5598,7 @@ namespace RestLib {
       if (Drm != other.Drm) return false;
       if (Yer != other.Yer) return false;
       if (Info != other.Info) return false;
+      if (SncOzt != other.SncOzt) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5602,6 +5616,7 @@ namespace RestLib {
       if (Drm.Length != 0) hash ^= Drm.GetHashCode();
       if (Yer.Length != 0) hash ^= Yer.GetHashCode();
       if (Info.Length != 0) hash ^= Info.GetHashCode();
+      if (SncOzt.Length != 0) hash ^= SncOzt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5659,6 +5674,10 @@ namespace RestLib {
         output.WriteRawTag(90);
         output.WriteString(Info);
       }
+      if (SncOzt.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(SncOzt);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5699,6 +5718,9 @@ namespace RestLib {
       }
       if (Info.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Info);
+      }
+      if (SncOzt.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SncOzt);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5743,6 +5765,9 @@ namespace RestLib {
       }
       if (other.Info.Length != 0) {
         Info = other.Info;
+      }
+      if (other.SncOzt.Length != 0) {
+        SncOzt = other.SncOzt;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5797,6 +5822,10 @@ namespace RestLib {
           }
           case 90: {
             Info = input.ReadString();
+            break;
+          }
+          case 98: {
+            SncOzt = input.ReadString();
             break;
           }
         }

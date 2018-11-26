@@ -12,30 +12,33 @@
                         <colgroup>
                             <col style="width:var(--w-Tarih)" />
                             <col style="width:var(--w-Drm)" />
-                            <col style="width:var(--w-Team)" />
-                            <col style="width:var(--w-EvntPnt)" />
-                            <col style="width:var(--w-Team)" />
-                            <col style="width:14rem" />
+                            <col style="width:var(--w-Plyr)" />
+                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:12rem" />
+                            <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Plyr)" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>Tarih</th>
                                 <th>Drm</th>
                                 <th>Home</th>
-                                <th>Puan</th>
-                                <th>Guest</th>
+                                <th>Rank</th>
                                 <th>Sonuç</th>
+                                <th>Rank</th>
+                                <th>Guest</th>
                             </tr>
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="{{model.CEFs}}">
                                 <tr>
-                                    <td class="txtLeft">[[item.Tarih]]</td>
+                                    <td class="txtLeft"><a href="/bodved/CEF2MACs/[[item.CEFoNo]]">[[item.Tarih]]</a></td>
                                     <td>{{item.Drm}}</td>
                                     <td class="txtLeft" data-WL$="[[item.HWL]]"><a href="/bodved/PP2MACs/[[item.HPPoNo]]">[[item.HPPAd]]</a></td>
-                                    <td>{{item.HPW}} - {{item.GPW}}</td>
+                                    <td>[[item.HRnkBas]]</td>
+                                    <td class="colSncTxt">{{item.SncOzt}}</td>
+                                    <td>[[item.GRnkBas]]</td>
                                     <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/PP2MACs/[[item.GPPoNo]]">[[item.GPPAd]]</a></td>
-                                    <td class="txtLeft">{{item.SncOzt}}</td>
                                 </tr>
                             </template>
                         </tbody>

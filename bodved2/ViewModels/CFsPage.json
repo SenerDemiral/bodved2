@@ -1,24 +1,25 @@
 {
   "Html": "/Bodved/viewmodels/CFsPage.html",
   "Hdr": "",
+  "CCoNo": 0,
 
   "CFs": [
     {
       "CFoNo": 0,
 
-      "Idx": 0,
+      "Idx": "",
       "PPoNo": 0,
       "PPAd": "",
 
-      "PW": 0,
-      "PL": 0,
-      "MT": 0,
-      "MW": 0,
-      "ML": 0,
-      "ST": 0,
-      "SW": 0,
-      "SL": 0,
-      "SF": 0
+      "PW": "",
+      "PL": "",
+      "MT": "",
+      "MW": "",
+      "ML": "",
+      "ST": "",
+      "SW": "",
+      "SL": "",
+      "SF": ""
     }
   ]
 }

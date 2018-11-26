@@ -34,6 +34,7 @@ namespace RestWinFormsClient
             colTrh.ColumnEdit = Program.MF.TRHrepositoryItemDateEdit;
             colSoD.ColumnEdit = Program.MF.SoDrepositoryItemImageComboBox;
             colDrm.ColumnEdit = Program.MF.DRMrepositoryItemImageComboBox;
+
         }
 
         private void macXF_Load(object sender, EventArgs e)
@@ -76,6 +77,11 @@ namespace RestWinFormsClient
                 colGPP1.OptionsColumn.ReadOnly = true;
                 colGPP2.OptionsColumn.ReadOnly = true;
 
+                colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+                colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
+
                 colCC.Visible = false;
                 gridView1.SortInfo.ClearAndAddRange(new[] {
                 new GridColumnSortInfo(colSoD, DevExpress.Data.ColumnSortOrder.Descending),
@@ -84,10 +90,6 @@ namespace RestWinFormsClient
             }
             else
             {
-                colHPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-                colHPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-                colGPP1.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
-                colGPP2.ColumnEdit = Program.MF.PPrepositoryItemGridLookUpEdit;
 
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.ClearSorting();

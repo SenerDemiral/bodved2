@@ -63,6 +63,10 @@ namespace bodved2
             H.PPRD_RefreshSonuc(17);
             */
 
+            H.PPRD_Ayarla();            // Bir kere
+            H.PPRD_RefreshSonuc(17);    // Bir kere
+            H.CF_Create();              // Bir kere
+
             H.MAC_RefreshSonuc(H.DnmRun);
             H.CET_RefreshSonuc(H.DnmRun);
             H.CT_RefreshSonuc(H.DnmRun);
@@ -71,6 +75,8 @@ namespace bodved2
             H.PPRD_RefreshCurRuns(H.DnmRun);
             H.DD_RefreshSonuc(H.DnmRun);
 
+            H.CEF_RefreshSonuc();   // Bunlari da Donem/Sezon luk yap.
+            H.CF_RefreshSonuc();
 
             // Bunlara gerek kalmadi
             /*
@@ -88,6 +94,7 @@ namespace bodved2
             //H.PerfDeneme();
 
             //H.Deneme2();
+
 
 
         }

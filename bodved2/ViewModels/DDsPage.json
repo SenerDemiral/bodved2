@@ -1,6 +1,13 @@
 {
   "Html": "/Bodved/viewmodels/DDsPage.html",
   "Hdr": "",
+
+  "TopPP": "",
+  "RunPP": "",
+  "TopMac": "",
+  "TopSet": "",
+  "TopSayi": "",
+
   "DDs": [
     {
       "DDoNo": 0,

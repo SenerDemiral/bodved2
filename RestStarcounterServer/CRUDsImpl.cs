@@ -878,6 +878,9 @@ namespace RestStarcounterServer
                     H.PPRD_RefreshSonuc(H.DnmRun);
                     H.PPRD_RefreshCurRuns(H.DnmRun);
 
+                    H.CEF_RefreshSonuc();   // Bunlari da Donem/Sezon luk yap.
+                    H.CF_RefreshSonuc();
+
                     request.Rsp = "";
                 }
                 else if (request.Req == "CreateEvents")

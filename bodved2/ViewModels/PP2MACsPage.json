@@ -3,32 +3,36 @@
   "Hdr": "",
   "PPoNo": 0,
 
-  "PP": {
-    "Dnm": 0,
-    "RnkBaz": 0,
-    "RnkSon": 0,
-    "RnkIdx": 0,
+  "PPRDs": [
+    {
+      "Dnm": 0,
+      "RnkBas": 0,
+      "TopPX": 0,
+      "RnkSon": 0,
+      "RnkIdx": 0,
 
-    "SST": 0,
-    "SSW": 0,
-    "SSL": 0,
+      "SST": 0,
+      "SSW": 0,
+      "SSL": 0,
 
-    "SMT": 0,
-    "SMW": 0,
-    "SML": 0,
-    "SMX": 0,
+      "SMT": 0,
+      "SMW": 0,
+      "SML": 0,
+      "SMX": 0,
 
-    "DST": 0,
-    "DSW": 0,
-    "DSL": 0,
+      "DST": 0,
+      "DSW": 0,
+      "DSL": 0,
 
-    "DMT": 0,
-    "DMW": 0,
-    "DML": 0,
-  },
+      "DMT": 0,
+      "DMW": 0,
+      "DML": 0,
+    }
+  ],
 
   "Sngls": [
     {
+      "Dnm": 0,
       "CEBoNo": 0,
       "MACoNo": 0,
       "Tarih": "",
@@ -48,12 +52,13 @@
       "RkpCToNo": 0,
       "RkpCTAd": "",
 
-      "Info": "",
+      "Info": ""
     }
   ],
 
   "Dbls": [
     {
+      "Dnm": 0,
       "MACoNo": 0,
       "Tarih": "",
       "HPP1oNo": 0,

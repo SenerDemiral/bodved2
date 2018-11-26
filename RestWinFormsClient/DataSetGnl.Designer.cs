@@ -5355,11 +5355,7 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnInfo;
             
-            private global::System.Data.DataColumn columnIsRun;
-            
-            private global::System.Data.DataColumn columnRnkBas;
-            
-            private global::System.Data.DataColumn columnRnkBit;
+            private global::System.Data.DataColumn columnSncOzt;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -5460,25 +5456,9 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IsRunColumn {
+            public global::System.Data.DataColumn SncOztColumn {
                 get {
-                    return this.columnIsRun;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RnkBasColumn {
-                get {
-                    return this.columnRnkBas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RnkBitColumn {
-                get {
-                    return this.columnRnkBit;
+                    return this.columnSncOzt;
                 }
             }
             
@@ -5519,7 +5499,7 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CEFRow AddCEFRow(ulong RowKey, ulong CC, ulong HPP, ulong GPP, System.DateTime Trh, string Drm, string Yer, string Info, bool IsRun, int RnkBas, int RnkBit) {
+            public CEFRow AddCEFRow(ulong RowKey, ulong CC, ulong HPP, ulong GPP, System.DateTime Trh, string Drm, string Yer, string Info, string SncOzt) {
                 CEFRow rowCEFRow = ((CEFRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowKey,
@@ -5530,9 +5510,7 @@ namespace RestWinFormsClient {
                         Drm,
                         Yer,
                         Info,
-                        IsRun,
-                        RnkBas,
-                        RnkBit};
+                        SncOzt};
                 rowCEFRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCEFRow);
                 return rowCEFRow;
@@ -5570,9 +5548,7 @@ namespace RestWinFormsClient {
                 this.columnDrm = base.Columns["Drm"];
                 this.columnYer = base.Columns["Yer"];
                 this.columnInfo = base.Columns["Info"];
-                this.columnIsRun = base.Columns["IsRun"];
-                this.columnRnkBas = base.Columns["RnkBas"];
-                this.columnRnkBit = base.Columns["RnkBit"];
+                this.columnSncOzt = base.Columns["SncOzt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5594,18 +5570,12 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnYer);
                 this.columnInfo = new global::System.Data.DataColumn("Info", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInfo);
-                this.columnIsRun = new global::System.Data.DataColumn("IsRun", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsRun);
-                this.columnRnkBas = new global::System.Data.DataColumn("RnkBas", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRnkBas);
-                this.columnRnkBit = new global::System.Data.DataColumn("RnkBit", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRnkBit);
+                this.columnSncOzt = new global::System.Data.DataColumn("SncOzt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSncOzt);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
                 this.columnRowKey.Unique = true;
-                this.columnIsRun.Caption = "Run";
-                this.columnRnkBas.Caption = "RnkBaş";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10999,49 +10969,17 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRun {
+            public string SncOzt {
                 get {
                     try {
-                        return ((bool)(this[this.tableCEF.IsRunColumn]));
+                        return ((string)(this[this.tableCEF.SncOztColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'IsRun\' in table \'CEF\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SncOzt\' in table \'CEF\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCEF.IsRunColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int RnkBas {
-                get {
-                    try {
-                        return ((int)(this[this.tableCEF.RnkBasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RnkBas\' in table \'CEF\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCEF.RnkBasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int RnkBit {
-                get {
-                    try {
-                        return ((int)(this[this.tableCEF.RnkBitColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RnkBit\' in table \'CEF\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCEF.RnkBitColumn] = value;
+                    this[this.tableCEF.SncOztColumn] = value;
                 }
             }
             
@@ -11131,38 +11069,14 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIsRunNull() {
-                return this.IsNull(this.tableCEF.IsRunColumn);
+            public bool IsSncOztNull() {
+                return this.IsNull(this.tableCEF.SncOztColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIsRunNull() {
-                this[this.tableCEF.IsRunColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRnkBasNull() {
-                return this.IsNull(this.tableCEF.RnkBasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRnkBasNull() {
-                this[this.tableCEF.RnkBasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRnkBitNull() {
-                return this.IsNull(this.tableCEF.RnkBitColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRnkBitNull() {
-                this[this.tableCEF.RnkBitColumn] = global::System.Convert.DBNull;
+            public void SetSncOztNull() {
+                this[this.tableCEF.SncOztColumn] = global::System.Convert.DBNull;
             }
         }
         

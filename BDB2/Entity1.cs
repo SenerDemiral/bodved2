@@ -76,7 +76,7 @@ namespace BDB2
         public int KOC { get; set; }    // Kayıtlı Oyuncu Sayisi
         public int OOC { get; set; }    // Oynayan Oyuncu Sayisi (Unique)
 
-        public string Ozet => $"Oyuncu {ONC:n0} ♦ Maç {SMC + DMC:n0} ♦ Set {SSC + DSC:n0} ♦ Sayı {SNC + DNC:n0}";
+        public string Ozet => $"Oyuncu {OOC:n0} ♦ Maç {SMC + DMC:n0} ♦ Set {SSC + DSC:n0} ♦ Sayı {SNC + DNC:n0}";
     }
 
 
@@ -382,8 +382,8 @@ namespace BDB2
         public string HR => $"{HSSW} ►{HSMW} ►{HPW}";
         public string GR => $"{GSSW} ►{GSMW} ►{GPW}";
 
-        public string HWL => HPW == GPW ? "?" : HPW > GPW ? "W" : "L";
-        public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
+        public string HWL => HSMW == GSMW ? "?" : HSMW > GSMW ? "W" : "L";
+        public string GWL => HSMW == GSMW ? "?" : HSMW < GSMW ? "W" : "L";
 
         // Bir maci olur
         public string SncOzt
@@ -396,6 +396,27 @@ namespace BDB2
                     return "";
 
                 return $"({mac.SncMac}) {mac.SncSet}";
+            }
+        }
+
+        public int HRnkBas
+        {
+            get
+            {
+                var pprd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", CC.Dnm, HPP).FirstOrDefault();
+                if (pprd != null)
+                    return pprd.RnkBas;
+                return 0;
+            }
+        }
+        public int GRnkBas
+        {
+            get
+            {
+                var pprd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", CC.Dnm, GPP).FirstOrDefault();
+                if (pprd != null)
+                    return pprd.RnkBas;
+                return 0;
             }
         }
 

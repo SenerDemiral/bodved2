@@ -5,13 +5,16 @@
   "CEFs": [
     {
       "CEFoNo": 0,
+      "Tarih": "",
+      "Drm": "",
 
       "HPPoNo": 0,
       "GPPoNo": 0,
       "HPPAd": "",
       "GPPAd": "",
-      "Tarih": "",
-      "Drm": "",
+      "HRnkBas": 0,
+      "GRnkBas": 0,
+      
       "Info": "",
 
       "HWL": "",

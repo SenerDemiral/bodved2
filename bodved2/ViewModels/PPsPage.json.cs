@@ -47,7 +47,20 @@ namespace bodved2.ViewModels
 
             DD dd = Db.SQL<DD>("select r from DD r where r.Dnm = ?", H.DnmRun).FirstOrDefault();
 
-            Hdr = $"Oyuncular ► Toplam {TopPP:n0} ► Son Dönem ► Kayıtlı {RunPP:n0} ♦ Oynamış {dd.ONC:n0}";
+            HashSet<ulong> ppHS = new HashSet<ulong>(); // Toplam Oynamıs Uniqe Oyuncu
+            var macs = Db.SQL<MAC>("select r from MAC r");
+            foreach (var mac in macs)
+            {
+                ppHS.Add(mac.HPP1oNo);     // Oynuyor
+                ppHS.Add(mac.GPP1oNo);     // Oynuyor
+                if (mac.SoD == "D")
+                {
+                    ppHS.Add(mac.HPP2oNo);     // Oynuyor
+                    ppHS.Add(mac.GPP2oNo);     // Oynuyor
+                }
+            }
+
+            Hdr = $"Oyuncular ► Toplam {TopPP:n0} ♦ Oynamış {ppHS.Count:n0} ► Son Dönem ► Kayıtlı {RunPP:n0} ♦ Oynamış {dd.OOC:n0}";
 
         }
     }

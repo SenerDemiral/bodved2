@@ -276,6 +276,7 @@ message CEFProxy {
 	string Drm  = 9;
 	string Yer  = 10;
 	string Info  = 11;
+	string SncOzt = 12;
 }
 
 // Mac

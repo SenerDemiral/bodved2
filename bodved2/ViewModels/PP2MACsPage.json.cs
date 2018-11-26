@@ -12,11 +12,29 @@ namespace bodved2.ViewModels
 
             PP pp = Db.FromId<PP>((ulong)PPoNo);
 
-            PP.RnkBaz = pp.RnkBaz;
+            //PP.RnkBaz = pp.RnkBaz;
 
-            var pprds = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? order by r.Dnm", pp);
+            var pprds = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? order by r.Dnm DESC", pp);
             foreach(var pprd in pprds)  // Son bulunan deger en son 
             {
+                PPRDsElementJson rd = new PPRDsElementJson
+                {
+                    Dnm = pprd.Dnm,
+                    RnkBas = pprd.RnkBas,
+                    TopPX = pprd.TopPX,
+                    RnkSon = pprd.RnkSon,
+                    RnkIdx = pprd.RnkIdx,
+                    SMW = pprd.MW,
+                    SML = pprd.ML,
+                    SSW = pprd.SW,
+                    SSL = pprd.SL,
+                };
+                rd.SMT = rd.SMW + rd.SML;
+                rd.SST = rd.SSW + rd.SSL; 
+
+                PPRDs.Add(rd);
+/*
+
                 PP.Dnm = pprd.Dnm;
                 PP.RnkSon = pprd.RnkSon;
                 PP.RnkIdx = pprd.RnkIdx;
@@ -25,10 +43,11 @@ namespace bodved2.ViewModels
                 PP.SML += pprd.ML;
 
                 PP.SSW += pprd.SW;
-                PP.SSL += pprd.SL;
+                PP.SSL += pprd.SL;*/
             }
+            /*
             PP.SMT = PP.SMW + PP.SML;
-            PP.SST = PP.SSW + PP.SSL;
+            PP.SST = PP.SSW + PP.SSL;*/
 
             Hdr = $"{pp.Ad}  ► Maçları";
 
@@ -49,7 +68,7 @@ namespace bodved2.ViewModels
                     Tarih = mac.Tarih,
                     SoD = mac.SoD,
                     Idx = mac.Idx,
-                    Info = mac.Info,
+                    Info = $"{mac.Info} {mac.CC.Ad}",
                 };
 
                 if (PPoNo == (long)mac.HPP1oNo)  // Home Kendisi, Guest Rakip
@@ -86,6 +105,8 @@ namespace bodved2.ViewModels
 
                     sng.RnkTxt = $"{mac.HRnk}{mac.HRnkPX:+#;-#;⠀} ♦ {mac.GRnk}{mac.GRnkPX:+#;-#;⠀}";
                 }
+
+                sng.Dnm = mac.CC.Dnm;
 
                 Sngls.Add(sng);
             }
