@@ -127,6 +127,18 @@ namespace bodved2.Api
                 return page;
             });
 
+            Handle.GET("/bodved/partials/CF2CEFs/{?}/{?}", (ulong cc, ulong pp) =>
+            {
+                var page = new CF2CEFsPage();
+                page.CCoNo = (long)cc;
+                page.PPoNo = (long)pp;
+                CC CC = Db.FromId<CC>(cc);
+                PP PP = Db.FromId<PP>(pp);
+                page.Hdr = $"{CC.Ad} ► {PP.Ad} ► Fikstür";
+                page.CEFs.Data = Db.SQL<CEF>("SELECT r FROM CEF r WHERE r.CC = ? and (r.HPP = ? or r.GPP = ?) order by r.Trh, r.HPP.Ad, r.GPP.Ad", CC, PP, PP);
+                return page;
+            });
+
             Handle.GET("/bodved/partials/CET2MACs/{?}", (ulong cet) =>
             {
                 var page = new CET2MACsPage();

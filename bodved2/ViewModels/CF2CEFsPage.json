@@ -1,0 +1,29 @@
+{
+  "Html": "/Bodved/ViewModels/CF2CEFsPage.html",
+  "Hdr": "",
+  "CCoNo": 0,
+  "PPoNo": 0,
+
+  "CEFs": [
+    {
+      "CEFoNo": 0,
+      "Tarih": "",
+      "Drm": "",
+
+      "HPPoNo": 0,
+      "GPPoNo": 0,
+      "HPPAd": "",
+      "GPPAd": "",
+      "HRnkBas": 0,
+      "GRnkBas": 0,
+
+      "Info": "",
+
+      "HWL": "",
+      "GWL": "",
+      "HPW": 0,
+      "GPW": 0,
+      "SncOzt": ""
+    }
+  ]
+}
