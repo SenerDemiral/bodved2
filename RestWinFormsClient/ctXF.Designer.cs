@@ -256,6 +256,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
             this.colAd,
@@ -280,6 +282,7 @@
             this.gridView1.GridControl = this.cTGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView1.OptionsSelection.EnableAppearanceHideSelection = false;
             this.gridView1.OptionsView.AutoCalcPreviewLineCount = true;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.PreviewFieldName = "Info";

@@ -99,6 +99,9 @@
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="[[model.Sngls]]">
+                                <template is="dom-if" if="[[item.Break]]">
+                                    <tr style="height:10px" />
+                                </template>
                                 <tr>
                                     <td>[[item.Dnm]]</td>
                                     <td>[[item.Tarih]]</td>
@@ -111,6 +114,7 @@
 
                                     <td class="colInfo">[[item.Info]]</td>
                                 </tr>
+
                             </template>
                         </tbody>
                     </table>

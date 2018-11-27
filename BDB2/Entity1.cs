@@ -204,7 +204,7 @@ namespace BDB2
         public int KW { get; set; }
         public int KL { get; set; }
 
-        public int ET => EW + EL + EB + EX;        // Event  Total, Win, Lost, Beraber, Diskalifiye
+        public int ET => EW + EL + EB;        // Event  Total, Win, Lost, Beraber (Diskalifiyede zaten Maglup oluyor, ekleme)
         public int EW { get; set; }
         public int EL { get; set; }
         public int EB { get; set; }

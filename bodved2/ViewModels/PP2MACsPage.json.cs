@@ -30,7 +30,7 @@ namespace bodved2.ViewModels
                     SSL = pprd.SL,
                 };
                 rd.SMT = rd.SMW + rd.SML;
-                rd.SST = rd.SSW + rd.SSL; 
+                rd.SST = rd.SSW + rd.SSL;
 
                 PPRDs.Add(rd);
 /*
@@ -56,6 +56,7 @@ namespace bodved2.ViewModels
             Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ? or r.HPP2 = ? or r.GPP2 = ?) order by r.Trh DESC", "D", pp, pp, pp, pp);
 
 
+            long pDnm = 0;
             var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.SoD = ? and (r.HPP1 = ? or r.GPP1 = ?) order by r.Trh DESC", "S", pp, pp);
             foreach(var mac in macs)
             {
@@ -109,6 +110,13 @@ namespace bodved2.ViewModels
                 sng.Dnm = mac.CC.Dnm;
 
                 Sngls.Add(sng);
+
+                if (sng.Dnm != pDnm)
+                {
+                    //if(pDnm != 0)
+                        sng.Break = true;
+                    pDnm = sng.Dnm;
+                }
             }
 
         }

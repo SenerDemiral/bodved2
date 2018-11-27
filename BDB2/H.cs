@@ -802,7 +802,7 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CT.RefreshSonuc({cc.Ad})");
+            Console.WriteLine($"{DateTime.Now:dd.MM.yy HH:mm}  {watch.ElapsedMilliseconds,5} ms CT.RefreshSonuc({cc.Ad})");
         }
 
         public static void CT_RefreshSonuc(CT ct)
@@ -811,13 +811,13 @@ namespace BDB2
                 SML = 0,
                 DMW = 0,
                 DML = 0,
-                KW = 0,
+                KW = 0, // Skor Win
                 KL = 0,
-                EW = 0,
+                EW = 0, // Event/Musabaka Win
                 EL = 0,
                 EB = 0,
-                EX = 0,
-                PW = 0,
+                EX = 0, // Hukmen
+                PW = 0, // Puan Win
                 PL = 0;
 
 
@@ -1160,7 +1160,7 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CF.RefreshSonuc()");
+            Console.WriteLine($"{DateTime.Now:dd.MM.yy HH:mm}  {watch.ElapsedMilliseconds,5} ms CF.RefreshSonuc()");
             //Console.WriteLine($"CF.RefreshSonuc(): {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
@@ -1291,7 +1291,7 @@ namespace BDB2
             });
 
             watch.Stop();
-            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms CEF.RefreshSonuc()");
+            Console.WriteLine($"{DateTime.Now:dd.MM.yy HH:mm}  {watch.ElapsedMilliseconds,5} ms CEF.RefreshSonuc()");
             //Console.WriteLine($"CEF.RefreshSonuc(): {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
