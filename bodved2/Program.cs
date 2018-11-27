@@ -63,9 +63,9 @@ namespace bodved2
             H.PPRD_RefreshSonuc(17);
             */
 
-            H.PPRD_Ayarla();            // Bir kere
-            H.PPRD_RefreshSonuc(17);    // Bir kere
-            H.CF_Create();              // Bir kere
+            //H.PPRD_Ayarla();            // Bir kere
+            //H.PPRD_RefreshSonuc(17);    // Bir kere
+            //H.CF_Create();              // Bir kere
 
             H.MAC_RefreshSonuc(H.DnmRun);
             H.CET_RefreshSonuc(H.DnmRun);

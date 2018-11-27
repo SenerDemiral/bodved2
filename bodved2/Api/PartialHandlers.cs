@@ -123,7 +123,7 @@ namespace bodved2.Api
                 var page = new CEFsPage();
                 CC CC = Db.FromId<CC>(cc);
                 page.Hdr = $"{CC.Ad} ► Ferdi Fikstür";
-                page.CEFs.Data = Db.SQL<CEF>("SELECT r FROM CEF r WHERE r.CC = ? order by r.Trh", CC);
+                page.CEFs.Data = Db.SQL<CEF>("SELECT r FROM CEF r WHERE r.CC = ? order by r.Trh, r.HPP.Ad, r.GPP.Ad", CC);
                 return page;
             });
 
