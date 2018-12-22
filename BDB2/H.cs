@@ -309,20 +309,41 @@ namespace BDB2
             });
         }
 
-        public static void PPRD_Ayarla()
+        public static void PPRD_17RankPXgosterme()
         {
+            // 17.Sezonun RnkPX lerini heaplama
+            // 17'in baslangicini 18nin baslangicindan al, 17.Sezonun IsRnkd = false yap, 17.Sezonu tekrar hesaplat
+
+            PPRD rd = null;
             Db.TransactAsync(() =>
             {
                 var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", 17);
                 foreach(var pprd in pprds)
                 {
+                    rd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", 18, pprd.PP).FirstOrDefault();
+                    if (rd != null)
+                        pprd.RnkBas = rd.RnkBas;
+                    else
+                        pprd.RnkBas = pprd.PP.RnkIlk;
+                }
+
+            });
+        }
+
+        public static void PPRD_Ayarla()
+        {
+            Db.TransactAsync(() =>
+            {
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", 17);
+                foreach (var pprd in pprds)
+                {
                     pprd.RnkBas = pprd.PP.RnkIlk;
                 }
 
                 var pps = Db.SQL<PP>("select r from PP r");
-                foreach(var pp in pps)
+                foreach (var pp in pps)
                 {
-                    if(pp.RnkIlk == 0)
+                    if (pp.RnkIlk == 0)
                     {
                         var rd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", 17, pp).FirstOrDefault();
                         if (rd != null)
@@ -343,7 +364,7 @@ namespace BDB2
         public static PPRD PPRD_TryInsert(PP pp, int Dnm)
         {
             // Geldigi yerde transaction baslamis olmali.
-            int prvDnm = DnmRun - 1;
+            int prvDnm = Dnm - 1;
             int prvRnkSon = 0;
 
             var pprd = Db.SQL<PPRD>("select r from PPRD r where r.PP = ? and r.Dnm = ?", pp, Dnm).FirstOrDefault();
@@ -380,7 +401,7 @@ namespace BDB2
                     pprd = new PPRD
                     {
                         PP = pp,
-                        Dnm = DnmRun,
+                        Dnm = Dnm,
                         RnkBas = prvRnkSon,
                     };
                 }
@@ -409,6 +430,13 @@ namespace BDB2
                     }
                 }
             }
+        }
+
+        public static void PPRD_DonemSonuIslemleri(int Dnm)
+        {
+            // pprd.RnkSon'a Ferdi RnkPX eklemek gerek
+            // RnkSon = RnkBas + RnkPX zaten hesaplanmis
+            // RnkPXf alani olmali
         }
 
         public static string PPRD_DonemBasiIslemleri(int Dnm)

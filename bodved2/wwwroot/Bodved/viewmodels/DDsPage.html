@@ -1,15 +1,33 @@
-﻿<link rel="import" href="/sys/polymer/polymer.html">
+﻿<link href="/sys/paper-dialog/paper-dialog.html" rel="import" />
 
 <template>
     <dom-bind>
         <template is="dom-bind">
+            <paper-dialog opened="[[model.DlgOpened]]" modal="true" on-iron-overlay-opened="_myOpenFunction">
+                <div class="mdfRecWrap">
+                    <input placeholder="oNo" type="text" value="{{model.DD.ONo$::change}}" readonly style="text-align:center" />
+                    <input placeholder="Ad" type="text" value="{{model.DD.Ad$::change}}" />
+                    <input placeholder="Sezon" type="text" value="{{model.DD.Dnm$::change}}" />
+                    <input placeholder="Info" type="text" value="{{model.DD.Info$::change}}" />
+                    <div class="mdfRecAction">
+                        <button on-click="_myNewFunction">Insert</button>
+                        <button value="{{model.DlgUpdateTrigger$::click}}" onmousedown="++this.value">Update</button>
+                        <button value="{{model.DlgDeleteTrigger$::click}}" onmousedown="++this.value">Delete</button>
+                    </div>
+                    <button dialog-dismiss autofocus value="{{model.DlgRejectTrigger$::click}}" onmousedown="++this.value" style="width:100%">Vazgeç</button>
+                </div>
+            </paper-dialog>
+
+
             <div class="gridTbl">
                 <div class="gridTbl_header">
                     <div>BODVED Aktiviteleri</div>
+                    <button value="{{model.DlgOpenTrigger$::click}}" onmousedown="++this.value" hidden$="[[!model.canMdfy]]">New</button>
                 </div>
                 <div class="gridTbl_main">
                     <table class="fixTbl">
                         <colgroup>
+                            <col style="width:8rem"  hidden$="[[!model.canMdfy]]"/>
                             <col style="width:14rem" />
                             <col style="width:5rem" />
                             <col style="width:5rem" />
@@ -21,6 +39,7 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th rowspan="2" hidden$="[[!model.canMdfy]]">Edit</th>
                                 <th rowspan="2">Aktivite</th>
                                 <th rowspan="2"><iron-icon icon="vaadin:user"></iron-icon></th>
                                 <th colspan="2">Oyuncu</th>
@@ -36,16 +55,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <template is="dom-repeat" items="[[model.DDs]]">
+                            <template is="dom-repeat" items="{{model.DDs}}">
                                 <tr>
+                                    <td hidden$="[[!model.canMdfy]]"><button class="edit" value="{{item.EditTrigger$::click}}" onmousedown="++this.value"><iron-icon icon="vaadin:edit"></iron-icon>[[item.DDoNo]]</button></td>
                                     <td class="txtLeft"><a href="/bodved/CCs/[[item.Dnm]]">[[item.Ad]]</a></td>
                                     <td><a href="/bodved/PPRDs/[[item.Dnm]]">►►</a></td>
-                                    <td>[[item.KOC]]</td>
-                                    <td>[[item.OOC]]</td>
+                                    <td>[[item.KOC_]]</td>
+                                    <td>[[item.OOC_]]</td>
                                     <td>[[item.Mac]]</td>
                                     <td>[[item.Set]]</td>
                                     <td>[[item.Sayi]]</td>
-                                    <td class="colInfo">[[item.Info]]</td>
+                                    <td class="colInfo" on-tap="doSomething" data-item$="[[index]]">[[item.Info]]</td>
                                 </tr>
                             </template>
                         </tbody>
@@ -64,6 +84,55 @@
                     </table>
                 </div>
             </div>
+
         </template>
     </dom-bind>
+
+    <script>
+        (function () {
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.abcd = tmplt.model.DDs;
+            //tmplt.abcd[0].XX = "xxxxxxx";
+            //ccc = JSON.parse(JSON.stringify(tmplt.model.DDs));
+            //tmplt.abcd = ccc.sort((a, b) => a - b);
+
+            tmplt.doSomething = function (e) {
+                const idx = e.target.dataset.item;
+                console.log('idx', idx);
+                console.log('tmplt.model.DDs[idx]', tmplt.model.DDs[idx]);
+                var find = tmplt.model.DDs.find(obj => { return obj.DDoNo === 6825 });
+                console.log('find by oNo', find);
+                console.log('e.model.item', e.model.item);
+
+                tmplt.mdfRec = e.model.item;
+                e.model.set('item.Ad$', e.model.item.Ad$ + ' 1');
+            }
+
+            tmplt._myOpenFunction = function (e) {
+                console.log('event', e);
+                console.log('_myOpenFunction', tmplt.model.NewNo);
+                var findItem = tmplt.model.DDs.find(obj => { return obj.DDoNo === tmplt.model.NewNo });
+                tmplt.mdfRec = findItem;
+            }
+
+            tmplt._myNewFunction = function (e) {
+                console.log('event.target.value', e.target.value);
+
+                //e.target.value++;
+                tmplt.model.DlgInsertTrigger$++;
+                console.log('tmplt', tmplt);
+                setTimeout(() => {
+                    //tmplt.model.DlgInsertTrigger$++;
+                    console.log('tmplt.model.DlgInsertTrigger$', tmplt.model.DlgInsertTrigger$);
+                    console.log('tmplt.model.NewNo', tmplt.model.NewNo);
+                    console.log('tmplt', tmplt);
+                }, 100);
+
+            }
+        })();
+    </script>
+
 </template>
+

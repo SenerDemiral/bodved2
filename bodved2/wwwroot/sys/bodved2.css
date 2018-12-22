@@ -12,7 +12,7 @@
     --w-MacSet: 20rem;
     --w-SncTxt: 20rem;
     --w-Inf: 20rem;
-    --w-Rnk: 3rem;
+    --w-Rnk: 4rem;
     --w-Idx: 3rem;
     --w-Snc: 3rem;
     --w-Mac: 3rem;
@@ -99,8 +99,8 @@ body {
     justify-items: left;
     align-items: center;
     grid-auto-flow: column;
-    /*grid-template-columns: max-content;*/
-    /*grid-gap: 1rem;*/
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
     /*margin: 0 5px;*/
     padding: 0 5px;
     /*font-weight: bold;*/
@@ -290,3 +290,27 @@ tbody tr:nth-child(even) {
     color: white;
 }
 
+.mdfRecWrap {
+    display: grid;
+    /*grid-template-columns:20em; */
+    justify-content: start;
+    grid-gap: 3px;
+    /*margin-top: 10px;*/
+}
+
+.mdfRecAction {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+}
+
+button.edit {
+    /*
+    padding: 1px 4px;
+    border-radius: 5px;
+    border: 1px solid #73AD21;*/
+    box-shadow: none;
+    background-color: inherit;
+    min-width: unset;
+    margin:0;
+}

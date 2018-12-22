@@ -1,6 +1,6 @@
 {
-  "Html": "/Bodved/viewmodels/MasterPage.html",
-  "ShowMenu": true,
+  "Html": "/bodved/viewmodels/MasterPage.html",
   "EntCntFrmtd": "",
-  "CurrentPage": {}
+ 
+  "CurrentPage": {},
 }

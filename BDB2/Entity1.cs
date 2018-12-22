@@ -62,6 +62,7 @@ namespace BDB2
     [Database]
     public class DD : BB   // Donem
     {
+        public ulong DDoNo => this.GetObjectNo();
         public int Dnm { get; set; }
 
         public int SMC { get; set; } // SingleMacCount
@@ -92,17 +93,30 @@ namespace BDB2
         public int SonPX { get; set; }      // Son Aldigi PX
         public bool IsFerdi { get; set; }   // Ferdi Turnuvaya katilacak?
         public string CurRuns { get; set; }
-
-        public string DrmPX => SonPX == 0 ? "-" : SonPX > 0 ? "▲" : "▼";    // x: SonPX = 0, yani oynamamis henuz
-        public string DrmRnk => RnkSon == RnkBas ? "=" : RnkSon > RnkBas ? "▲" : "▼";
-
-        public string SonPXTxt => $"{SonPX:+#;-#;#}";
-
         public int MW { get; set; }
         public int ML { get; set; }
         public int SW { get; set; }
         public int SL { get; set; }
 
+        public string TopPXs => $"{TopPX:+#;-#;#}";
+        public string SonPXs => $"{SonPX:+#;-#;#}";
+        public string TopPXi => TopPX == 0 ? "=" : TopPX > 0 ? "▲" : "▼"; //RnkSon == RnkBas ? "=" : RnkSon > RnkBas ? "▲" : "▼";
+        public string SonPXi => SonPX == 0 ? "-" : SonPX > 0 ? "▲" : "▼";    // x: SonPX = 0, yani oynamamis henuz
+        public string MWs => $"{MW:#}";
+        public string MLs => $"{ML:#}";
+        public string SWs => $"{SW:#}";
+        public string SLs => $"{SL:#}";
+        public int MO => MW + ML;
+        public string MOs => $"{(MW+ML):#}";
+        public int SO => SW + SL;
+        public string SOs => $"{(SW + SL):#}";
+
+        /*
+        public string DrmPX => SonPX == 0 ? "-" : SonPX > 0 ? "▲" : "▼";    // x: SonPX = 0, yani oynamamis henuz
+        public string DrmRnk => RnkSon == RnkBas ? "=" : RnkSon > RnkBas ? "▲" : "▼";
+
+        public string SonPXTxt => $"{SonPX:+#;-#;#}";
+        */
         public int RnkPX { get; set; }      // SIL
         public int RnkOnc { get; set; }     // SIL
         public int RnkBaz { get; set; }     // SIL

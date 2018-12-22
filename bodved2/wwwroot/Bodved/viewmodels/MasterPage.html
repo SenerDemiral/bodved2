@@ -20,4 +20,69 @@
             </div>
         </template>
     </dom-bind>
+
+    <script>
+        //var decleration = document.styleSheets[0].cssRules[0].style;
+        //decleration.setProperty('--w-TF', '20rem');
+        //console.log('getProp', decleration.getProperty('--w-TF'));
+
+        // Bunu kullan
+        //document.documentElement.style.setProperty('--w-TF', '30rem');
+        //console.log('getPropertyValue', getComputedStyle(document.documentElement).getPropertyValue('--w-TF'));
+
+
+        async function updateLookups() {
+            /*
+            Dexie.delete('LookupDatabase').then(() => {
+            console.log("Database successfully deleted");
+            }).catch((err) => {
+                console.error("Could not delete database");
+            }).finally(() => {
+                // Do what should be done next...
+            });
+            */
+            db = new Dexie("LookupDatabase");
+
+            db.version(1).stores({
+                LastReads: "Id",
+                PPs: "PPoNo",
+            });
+
+            var ccc = await db.LastReads.get('PP');
+            var ticks = 0;
+            if (ccc) {
+                ticks = ccc.Ticks;
+            }
+            //console.log("ticks", ticks);
+
+            try {
+                var response = await fetch(`/bodved/PPjson/${ticks}`);
+                var json = await response.json();
+                //console.log("json", json);
+
+                db.LastReads.put(json.Read).catch(err => {
+                    alert("Ouch... " + err);
+                });
+
+                db.PPs.bulkPut(json.PPs).catch(err => {
+                    alert("Ouch... " + err);
+                });
+
+            } catch (e) {
+                console.log("err", e);
+            }
+            /*
+            CORS Uyarisi geliyor
+            fetch('http://ip-api.com/json').then(function (response) {
+                    console.log('response2', response);
+                    return response.json();
+            }).then(function (myJson) {
+                    console.log('myJson', myJson);
+            }).catch(error => console.error(error));
+            */
+        }
+
+        // updateLookups(); simdilik yapma
+    </script>
+
 </template>

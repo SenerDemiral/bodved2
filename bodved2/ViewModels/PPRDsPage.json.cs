@@ -23,16 +23,20 @@ namespace bodved2.ViewModels
                     PPoNo = (long)pprd.PPoNo,
                     PPAd = pprd.PPAd,
                     RnkBas = pprd.RnkBas,
-                    TopPX = $"{pprd.TopPX:+#;-#;#}",
+                    TopPX = pprd.TopPX,
+                    TopPXs = $"{pprd.TopPX:+#;-#;#}",
+                    TopPXi = pprd.TopPXi,
+                    SonPX = pprd.SonPX,
+                    SonPXs = $"{pprd.SonPX:+#;-#;#}",
+                    SonPXi = pprd.SonPXi,
+
                     RnkSon = pprd.RnkSon,
                     RnkIdx = pprd.RnkIdx,
-                    DrmRnk = pprd.DrmRnk,
-                    SonPXTxt = pprd.SonPXTxt,
-                    DrmPX = pprd.DrmPX,
-                    MW = $"{pprd.MW:#}",
-                    ML = $"{pprd.ML:#}",
-                    SW = $"{pprd.SW:#}",
-                    SL = $"{pprd.SL:#}",
+
+                    MWs = $"{pprd.MW:#}",
+                    MLs = $"{pprd.ML:#}",
+                    SWs = $"{pprd.SW:#}",
+                    SLs = $"{pprd.SL:#}",
 
                     IsFerdi = pprd.IsFerdi,
                     CurRuns = pprd.CurRuns

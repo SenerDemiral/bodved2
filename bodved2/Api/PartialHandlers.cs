@@ -44,11 +44,11 @@ namespace bodved2.Api
             {
                 var page = new PPRDsPage();
                 page.Dnm = dnm;
-                //DD DD = Db.SQL<DD>("select r from DD r where r.Dnm = ?", dnm).FirstOrDefault();
-                //page.Hdr = $"{DD.Ad} ► Oyuncular";
-                //page.PPRDs.Data = Db.SQL<PPRD>("SELECT r FROM PPRD r where r.Dnm = ? order by r.RnkIdx", dnm);
+                DD DD = Db.SQL<DD>("select r from DD r where r.Dnm = ?", dnm).FirstOrDefault();
+                page.Hdr = $"{DD.Ad} ► Oyuncular";
+                page.PPRDs.Data = Db.SQL<PPRD>("SELECT r FROM PPRD r where r.Dnm = ? order by r.RnkIdx", dnm);
 
-                page.Data = null;
+                //page.Data = null;
                 return page;
             });
 

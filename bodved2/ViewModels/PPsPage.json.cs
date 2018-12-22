@@ -18,7 +18,7 @@ namespace bodved2.ViewModels
             int RunPP = 0;
             string info = "";
 
-            var pps = Db.SQL<PP>("select r from PP r order by r.Ad");
+            var pps = Db.SQL<PP>("select r from PP r where r.ObjectNo <> ? order by r.Ad", 584);
             foreach (var pp in pps)
             {
                 TopPP++;
@@ -63,5 +63,6 @@ namespace bodved2.ViewModels
             Hdr = $"Oyuncular ► Toplam {TopPP:n0} ♦ Oynamış {ppHS.Count:n0} ► Son Dönem ► Kayıtlı {RunPP:n0} ♦ Oynamış {dd.OOC:n0}";
 
         }
+
     }
 }

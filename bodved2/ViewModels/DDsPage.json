@@ -1,12 +1,27 @@
 {
-  "Html": "/Bodved/viewmodels/DDsPage.html",
+  "Html": "/bodved/viewmodels/ddspage.html",
   "Hdr": "",
+  "canMdfy": false,
 
   "TopPP": "",
   "RunPP": "",
   "TopMac": "",
   "TopSet": "",
   "TopSayi": "",
+
+  "DD": {
+    "ONo$": 0,
+    "Dnm$": 0,
+    "Ad$": "",
+    "Info$": ""
+  },
+
+  "DlgOpened": false,
+  "DlgOpenTrigger$": 0,
+  "DlgRejectTrigger$": 0,
+  "DlgInsertTrigger$": 0,
+  "DlgUpdateTrigger$": 0,
+  "DlgDeleteTrigger$": 0,
 
   "DDs": [
     {
@@ -16,11 +31,15 @@
       "Ozet": "",
       "Info": "",
 
-      "KOC": "",
-      "OOC": "",
+      "KOC_": "",
+      "OOC_": "",
       "Mac": "",
       "Set": "",
-      "Sayi": ""
+      "Sayi": "",
+
+      "EditTrigger$": 0
     }
   ]
+
+
 }

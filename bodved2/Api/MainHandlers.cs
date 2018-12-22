@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using bodved2.ViewModels;
 using Starcounter;
 using BDB2;
+using System.Globalization;
 
 namespace bodved2.Api
 {
@@ -21,6 +22,10 @@ namespace bodved2.Api
 
             Handle.GET("/bodved2", () =>
             {
+                //MasterPage master = GetMasterPageFromSession();
+                //return master;
+
+                return Self.GET("/bodved/DDs");
                 return Self.GET("/");
             });
 
@@ -72,10 +77,20 @@ namespace bodved2.Api
                 return master;
             });
 
+            Handle.GET("/bodved/PPjson/{?}", (long ticks) =>
+            {
+                var json = new PPsJson();
+                //ticks den sonra degisenleri gonder
+                var dt = new DateTime(ticks);
+                json.PPs.Data = Db.SQL<PP>("SELECT r FROM PP r where r.ObjectNo > ?", 0);
+                json.Read.Ticks = DateTime.Now.Ticks;
+                return json;
+            });
+
             Handle.GET("/bodved/DDs", () =>
             {
                 MasterPage master = GetMasterPageFromSession();
-                if (!(master.CurrentPage is DDsPage))
+                //if (!(master.CurrentPage is DDsPage))
                 {
                     master.CurrentPage = GetLauncherPage("/bodved/partials/DDs");
                 }
@@ -239,7 +254,9 @@ namespace bodved2.Api
             if (dbScope)
                 return Db.Scope(() => Self.GET<Json>(url));
             else
+            {
                 return Self.GET<Json>(url);
+            }
         }
 
         protected static MasterPage GetMasterPageFromSession()
@@ -247,9 +264,17 @@ namespace bodved2.Api
             var session = Session.Ensure();
 
             MasterPage master = null; // session.Store[nameof(MasterPage)] as MasterPage ?? new MasterPage();
+
             if (session.Store[nameof(MasterPage)] == null)
             {
                 master = new MasterPage();
+
+                // https://github.com/Starcounter/Home/issues/455#issuecomment-443884798
+                /*// tr calismiyor
+                CultureInfo culture = CultureInfo.CreateSpecificCulture("tr-TR");
+                session.CurrentCulture = culture;
+                session.CurrentUICulture = culture;
+                */
                 session.Store[nameof(MasterPage)] = master;
                 // increment site entry counter
                 master.EntCntFrmtd = $"{BDB2.STAT.UpdEntCnt():n0}";
@@ -259,7 +284,6 @@ namespace bodved2.Api
                 master = session.Store[nameof(MasterPage)] as MasterPage;
             }
 
-            master.ShowMenu = true;
             return master;
         }
 

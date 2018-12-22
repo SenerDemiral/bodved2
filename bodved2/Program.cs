@@ -14,14 +14,12 @@ namespace bodved2
     {
         static void Main()
         {
-            
+            /*
             CultureInfo culture;
             culture = CultureInfo.CreateSpecificCulture("tr-TR");
-            //Console.WriteLine($"{DateTime.Now:dd.MM.yy ddd}");  // Ingilizce
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
-            //Console.WriteLine($"{DateTime.Now:dd.MM.yy ddd}");  // Turkce, BDB2.Entity de olmuyor!!
-            
+            */
             IHandler[] handlers = new IHandler[]
             {
                 new MainHandlers(),
@@ -34,7 +32,7 @@ namespace bodved2
             {
                 handler.Register();
             }
-            
+
             if (Db.SQL<DD>("select r from DD r").FirstOrDefault() == null)
             {
                 Db.Transact(() =>
@@ -53,7 +51,7 @@ namespace bodved2
             }
 
             Console.WriteLine("------------------");
-            
+
 
             // Bir kerelik
             /*
@@ -62,9 +60,10 @@ namespace bodved2
             H.CTP_RefreshSonuc(17);
             H.PPRD_RefreshSonuc(17);
             */
-            
-            //H.PPRD_Ayarla();            // Bir kere
-            H.PPRD_RefreshSonuc(17);    // Bir kere
+
+            //H.PPRD_17RankPXgosterme();
+            //H.PPRD_Ayarla();          // Bir kere
+            //H.PPRD_RefreshSonuc(17);    // Bir kere
             //H.CF_Create();              // Bir kere
 
             H.MAC_RefreshSonuc(H.DnmRun);
@@ -77,7 +76,7 @@ namespace bodved2
 
             H.CEF_RefreshSonuc();   // Bunlari da Donem/Sezon luk yap.
             H.CF_RefreshSonuc();
-            
+
 
 
             // Bunlara gerek kalmadi
@@ -96,9 +95,6 @@ namespace bodved2
             //H.PerfDeneme();
 
             //H.Deneme2();
-
-
-
         }
     }
 }

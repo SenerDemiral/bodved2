@@ -8,20 +8,34 @@
       "PPoNo": 0,
       "PPAd": "",
       "RnkBas": 0,
-      "TopPX": "",
+
+      "TopPX": 0,
+      "TopPXs": "",
+      "TopPXi": "",
+
       "RnkSon": 0,
       "RnkIdx": 0,
-      "DrmRnk": "",
-      "SonPXTxt": "",
-      "DrmPX": "",
 
-      "MW": "",
-      "ML": "",
-      "SW": "",
-      "SL": "",
+      "SonPX": 0,
+      "SonPXs": "",
+      "SonPXi": "",
+
+      "MO": 0,
+      "MOs": "",
+      "MW": 0,
+      "MWs": "",
+      "ML": 0,
+      "MLs": "",
+
+      "SO": 0,
+      "SOs": "",
+      "SW": 0,
+      "SWs": "",
+      "SL": 0,
+      "SLs": "",
 
       "CurRuns": "",
-      "IsFerdi": false,
+      "IsFerdi": false
     }
   ]
 }
