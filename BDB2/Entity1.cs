@@ -10,6 +10,18 @@ using System.Collections;
 namespace BDB2
 {
     [Database]
+    public class UU
+    {
+        public string Email { get; set; }
+        public string Pwd { get; set; }
+        public string Token { get; set; }
+        public bool IsConfirmed { get; set; }
+        public long EntryCount { get; set; }
+        public DateTime InsTS { get; set; }
+        public DateTime? UpdTS { get; set; }
+    }
+
+    [Database]
     public class STAT
     {
         public int ID { get; set; }

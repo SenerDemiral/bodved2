@@ -64,6 +64,7 @@
             this.colDrm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInfo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSncOzt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -72,7 +73,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colSncOzt = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEFBindingNavigator)).BeginInit();
@@ -260,6 +260,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
             this.colCC,
@@ -272,6 +274,7 @@
             this.colSncOzt});
             this.gridView1.GridControl = this.cEFGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceHideSelection = false;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTrh, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
@@ -414,6 +417,13 @@
             this.colInfo.VisibleIndex = 7;
             this.colInfo.Width = 98;
             // 
+            // colSncOzt
+            // 
+            this.colSncOzt.FieldName = "SncOzt";
+            this.colSncOzt.Name = "colSncOzt";
+            this.colSncOzt.Visible = true;
+            this.colSncOzt.VisibleIndex = 8;
+            // 
             // cFBindingSource
             // 
             this.cFBindingSource.DataMember = "CF";
@@ -493,13 +503,6 @@
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // colSncOzt
-            // 
-            this.colSncOzt.FieldName = "SncOzt";
-            this.colSncOzt.Name = "colSncOzt";
-            this.colSncOzt.Visible = true;
-            this.colSncOzt.VisibleIndex = 8;
             // 
             // cefXF
             // 

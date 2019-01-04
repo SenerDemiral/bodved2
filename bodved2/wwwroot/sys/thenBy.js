@@ -14,6 +14,26 @@
    limitations under the License.
 */
 var firstBy = (function () {
+        /*
+        window.addEventListener("load", function (event) {
+            console.log("All resources finished loading!");
+        });
+        window.addEventListener('dom-change', (e) => {
+            console.log('dom-change', e);
+        });
+        window.addEventListener('storage', (e) => {
+            console.log('storege listener', e);
+        });
+
+    window.addEventListener('view-model-changed', (e) => {
+        console.log('view-model-changed');
+        console.log('view-model-changed', e);
+    });
+    window.addEventListener('stamped', (e) => {
+        console.log('stamped');
+        console.log('stamped', e);
+    });
+        */
 
     function identity(v) { return v; }
 

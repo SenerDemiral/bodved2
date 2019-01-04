@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -2327,6 +2328,63 @@ namespace BDB2
             
             watch.Stop();
             Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms Deneme2() NOR: {nor:n0}");
+        }
+
+        public static string EncodeQueryString(string data)
+        {
+            string encodedData = String.Empty;
+            try
+            {
+                byte[] data_byte = Encoding.UTF8.GetBytes(data);
+                encodedData = System.Net.WebUtility.UrlEncode(Convert.ToBase64String(data_byte));
+            }
+            catch (Exception exception)
+            {
+                //Log exception
+            }
+            return encodedData;
+        }
+
+        public static string DecodeQueryString(string data)
+        {
+            string decodedData = String.Empty;
+            try
+            {
+                //System.Net.WebUtility.UrlEncode
+                //byte[] data_byte = Convert.FromBase64String(HttpUtility.UrlDecode(data));
+                byte[] data_byte = Convert.FromBase64String(System.Net.WebUtility.UrlDecode(data));
+                decodedData = Encoding.UTF8.GetString(data_byte);
+            }
+            catch (Exception exception)
+            {
+                //Log exception
+            }
+            return decodedData;
+        }
+
+        public static void SendMail(string eMail)
+        {
+            // gMail
+            string body = $"<!DOCTYPE html><html><body><a href='http://masatenisi.online/bodved/confirmemail/{eMail}'>BODVED üyeliğiniz için tıklayınız</a></body></html>";
+
+            MailMessage mail = new MailMessage();
+            mail.To.Add("sener.demiral@gmail.com");
+            mail.Subject = "Deneme";
+
+            mail.From = new MailAddress("masatenisi.online@gmail.com", "BODVED");  // gMail
+            mail.IsBodyHtml = true;
+            mail.Body = body;
+
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");   // gMail
+            smtp.Credentials = new System.Net.NetworkCredential("masatenisi.online", "CanDilSen09");  // gMail
+            smtp.EnableSsl = true;    // gMail
+            smtp.Port = 587;
+
+
+            //smtp.Send(mail);
+            object userToken = null;
+            smtp.SendAsync(mail, userToken);
         }
 
     }

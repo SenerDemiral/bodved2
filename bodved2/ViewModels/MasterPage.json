@@ -1,6 +1,20 @@
 {
   "Html": "/bodved/viewmodels/MasterPage.html",
-  "EntCntFrmtd": "",
+  "EntCntFrmtd": "bbb",
+  "Token": "",
+
+  "Sgn": {
+    "Email$": "",
+    "Pwd$": "",
+    "Token$": "",
+    "Mesaj": "",
+
+    "IsOpened$": false,
+    "OpenT$": 0,
+    "SignT$": 0,
+    "CancelT$": 0
+
+  },
  
-  "CurrentPage": {},
+  "CurrentPage": {}
 }

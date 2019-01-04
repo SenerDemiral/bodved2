@@ -49,6 +49,7 @@
     <Reference Include="Starcounter.Hosting, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d2df1e81d0ca3abf" />
     <Reference Include="Starcounter.XSON, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d2df1e81d0ca3abf" />
     <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\HookHandlers.cs" />
@@ -119,6 +120,9 @@
     </Compile>
     <Compile Include="ViewModels\PPsPage.json.cs">
       <DependentUpon>PPsPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\UserInfo.json.cs">
+      <DependentUpon>UserInfo.json</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +202,9 @@
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <TypedJSON Include="PPsJson.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\UserInfo.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\bodved\viewmodels\MasterPage.html" />

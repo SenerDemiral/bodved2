@@ -25,7 +25,7 @@
                     <button value="{{model.DlgOpenTrigger$::click}}" onmousedown="++this.value" hidden$="[[!model.canMdfy]]">New</button>
                 </div>
                 <div class="gridTbl_main">
-                    <table class="fixTbl">
+                    <table id="ddTbl" class="fixTbl">
                         <colgroup>
                             <col style="width:8rem"  hidden$="[[!model.canMdfy]]"/>
                             <col style="width:14rem" />
@@ -89,9 +89,14 @@
     </dom-bind>
 
     <script>
+        console.log('ddTbl 1', document.querySelector('#ddTbl'));
+        console.log('ddTbl', document.querySelector('template'));
+
         (function () {
             var script = document._currentScript || document.currentScript;
             tmplt = script.previousElementSibling;
+
+            console.log('tmplt', tmplt);
 
             tmplt.abcd = tmplt.model.DDs;
             //tmplt.abcd[0].XX = "xxxxxxx";

@@ -8,6 +8,8 @@ using bodved2.ViewModels;
 using Starcounter;
 using BDB2;
 using System.Globalization;
+using System.Web;
+using System.Net.Mail;
 
 namespace bodved2.Api
 {
@@ -38,7 +40,7 @@ namespace bodved2.Api
             {
                 //MasterPage master = GetMasterPageFromSession();
                 //return master;
-
+                
                 return Self.GET("/bodved/DDs");
             });
 
@@ -77,23 +79,14 @@ namespace bodved2.Api
                 return master;
             });
 
-            Handle.GET("/bodved/PPjson/{?}", (long ticks) =>
-            {
-                var json = new PPsJson();
-                //ticks den sonra degisenleri gonder
-                var dt = new DateTime(ticks);
-                json.PPs.Data = Db.SQL<PP>("SELECT r FROM PP r where r.ObjectNo > ?", 0);
-                json.Read.Ticks = DateTime.Now.Ticks;
-                return json;
-            });
-
             Handle.GET("/bodved/DDs", () =>
             {
                 MasterPage master = GetMasterPageFromSession();
-                //if (!(master.CurrentPage is DDsPage))
+                if (!(master.CurrentPage is DDsPage))
                 {
                     master.CurrentPage = GetLauncherPage("/bodved/partials/DDs");
                 }
+                (master.CurrentPage as DDsPage).canMdfy = master.Token == "" ? false : true;
                 return master;
             });
 
@@ -247,6 +240,119 @@ namespace bodved2.Api
                 return master;
             });
 
+            ///////////////////////////////////////////////////
+
+            // Lookup calisma
+            Handle.GET("/bodved/PPjson/{?}", (long ticks) =>
+            {
+                var json = new PPsJson();
+                //ticks den sonra degisenleri gonder
+                var dt = new DateTime(ticks);
+                json.PPs.Data = Db.SQL<PP>("SELECT r FROM PP r where r.ObjectNo > ?", 0);
+                json.Read.Ticks = DateTime.Now.Ticks;
+                return json;
+            });
+
+            Handle.POST("/bodved/PUTjson/{?}", (string unp) =>
+            {
+                var es = ""; // EncodeQueryString("sener.demiral@gmail.com");
+                var ds = ""; // DecodeQueryString(es);
+
+                //SendMail();
+
+                return $"{unp} : {es} {ds}";
+            });
+            /*
+            Handle.PUT("/bodved/Sign", (UserInfo ui) =>
+            {
+                UU uu = null;
+                var aaa = Session.Current;
+                MasterPage master = GetMasterPageFromSession();
+
+                if ( !string.IsNullOrEmpty(ui.token) && string.IsNullOrEmpty(ui.email) && string.IsNullOrEmpty(ui.pwd))  // AutoSignIn
+                {
+                    uu = Db.SQL<UU>("select r from UU r where r.Token = ?", ui.token).FirstOrDefault();
+                    if(uu == null)
+                    {
+                        ui.token = "";
+                        ui.mesaj = "Tekrar Giriş Yapın.";
+                    }
+                    else
+                    {
+                        //var session = Session.Ensure();
+                        //session.Store["bodved"] = ui;
+                        //MasterPage master = GetMasterPageFromSession();
+                        //master.Token = ui.token;
+                        ui.mesaj = "";
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(ui.email) && !string.IsNullOrEmpty(ui.pwd))  // Sign Up/In
+                {
+                    uu = Db.SQL<UU>("select r from UU r where r.Email = ?", ui.email).FirstOrDefault();
+                    if(uu == null)  // SignUp
+                    {
+                        string newToken = EncodeQueryString(ui.email); // CreateToken
+                        Db.Transact(() =>
+                        {
+                            new UU
+                            {
+                                Email = ui.email,
+                                Pwd = ui.pwd,
+                                Token = newToken,
+                                InsTS = DateTime.Now,
+                                IsConfirmed = false,
+                            };
+                        });
+                        var email = EncodeQueryString(ui.email);
+                        SendMail(email);
+                        ui.email = "";
+                        ui.pwd = "";
+                        ui.mesaj = "Mailinize gelen linki tıklayarak doğrulama işlemini tamamlayın.";
+                    }
+                    else  // SignIn
+                    {
+                        if(uu.Pwd == ui.pwd)
+                        {
+                            ui.pwd = "";
+                            ui.token = uu.Token;
+                            ui.mesaj = "LoggedIn";
+                        }
+                        else
+                        {
+                            ui.pwd = "";
+                            ui.token = "";
+                            ui.mesaj = "Hatali eMail/Password";
+                        }
+                    }
+                }
+
+                return ui;
+
+                //return $"{es} {ds}";
+                //return $"{signTxt} : {es} {ds}";
+            });
+            */
+            Handle.GET("/bodved/confirmemail/{?}", (string deMail) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                var eMail = H.DecodeQueryString(deMail);
+
+                master.Token = "";
+
+                UU uu = Db.SQL<UU>("select r from UU r where r.Email = ?", eMail).FirstOrDefault();
+                if(uu != null)
+                {
+                    Db.Transact(() =>
+                    {
+                        uu.IsConfirmed = true;
+                    });
+                    master.Token = uu.Token;
+                    //return master; // Self.GET("/bodved/DDs");
+                }
+                return master;
+            });
+
         }
 
         private static Json GetLauncherPage(string url, bool dbScope = false)
@@ -277,10 +383,16 @@ namespace bodved2.Api
                 */
                 session.Store[nameof(MasterPage)] = master;
                 // increment site entry counter
+
                 master.EntCntFrmtd = $"{BDB2.STAT.UpdEntCnt():n0}";
             }
             else
             {
+                if (session.Store["bodved"] != null)
+                {
+                    var aaa = session.Store["bodved"];
+                    master.Token = (string)aaa["token"];
+                }
                 master = session.Store[nameof(MasterPage)] as MasterPage;
             }
 

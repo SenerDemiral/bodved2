@@ -58,9 +58,9 @@ body {
     background-color: beige;
     grid-area: header;
     /*padding-left: 5px;*/
-    grid-template-columns: 3rem 3rem 3rem 3rem 1fr max-content;
+    /*grid-template-columns: 3rem 3rem 3rem 3rem 1fr max-content;*/
+    grid-auto-flow: column;
     justify-items: center;
-    /*grid-auto-flow: column;*/
 }
 
 .grid_main {
