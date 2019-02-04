@@ -76,110 +76,102 @@ namespace bodved2.ViewModels
             TopSet = $"{topSet:n0}";
             TopSayi = $"{topSayi:n0}";
         }
-
-        /*
-        void Handle(Input.DlgInsertTrigger action)
+    }
+    
+    [DDsPage_json.DD]
+    partial class DDPartial : Json
+    {
+        void Handle(Input.NewTrgr action)
         {
-         //   DlgOpened = true;
-            
-            var dd = new DD()
-            {
-                Ad = "new",
-                Dnm = 20,
-                Info = "info"
-            };
-            NewNo = (long)dd.GetObjectNo();
-            action.Value = NewNo;
-            Dnm = Dnm + 1;
-            //AttachedScope.Commit();
-            //DDs.Data = Db.SQL<DD>("SELECT r FROM DD r");
-            Data = null;
-            
-            // Ise yaramiyor
-            Session.RunTaskForAll((s, id) =>
-            {
-                s.CalculatePatchAndPushOnWebSocket();
-            });
-            
+            ONo = 0;
+            Ad = "";
+            Dnm = 0;
+            Info = "";
+            IsNew = true;
+            Opened = true;
+            PPoNo = 0;
         }
 
-        void Handle(Input.SaveTrigger action)
+        void Handle(Input.InsTrgr Action)
         {
-            //DDs[0].Ad = "yyyyy";
-            AttachedScope.Commit();
-            //Data = null;
-            
-            Session.RunTaskForAll((s, id) =>
-            {
-                s.CalculatePatchAndPushOnWebSocket();
-            });
-        }
-        */
-        void Handle(Input.DlgOpenTrigger action)
-        {
-            DlgOpened = true;
-        }
-
-        void Handle(Input.DlgRejectTrigger A)
-        {
-            DlgOpened = false;
-        }
-
-        void Handle(Input.DlgInsertTrigger Action)
-        {
-            if (!string.IsNullOrWhiteSpace(DD.Ad))
+            if (!string.IsNullOrWhiteSpace(Ad))
             {
                 Db.Transact(() =>
                 {
                     new DD()
                     {
-                        Ad = DD.Ad,
-                        Dnm = (int)DD.Dnm,
-                        Info = DD.Info,
+                        Ad = Ad,
+                        Dnm = (int)Dnm,
+                        Info = Info,
+                        PP = PPoNo == 0 ? null : Db.FromId<PP>((ulong)PPoNo)
                     };
                 });
-                DD.ONo = 0;
+                ONo = 0;
 
-                //PushChanges();
+                //PushChanges();    // Kendisi dahil Diger Clients Insert gormuyor, Refresh gerekli
             }
-            DlgOpened = false;
+            Opened = false;
+            var p = this.Parent as DDsPage;
+
+            //p.DDs.Data = Db.SQL<DD>("SELECT r FROM DD r order by r.Dnm DESC");
+            p.Data = null;
+
+            Session.RunTaskForAll((s, sId) => {
+                var cp = (s.Store[nameof(MasterPage)] as MasterPage).CurrentPage;
+                if (cp is DDsPage)
+                {
+                    (s.Store[nameof(MasterPage)] as MasterPage).CurrentPage.Data = null;
+                    s.CalculatePatchAndPushOnWebSocket();
+                }
+            });
+
         }
 
-        void Handle(Input.DlgUpdateTrigger Action)
+        void Handle(Input.UpdTrgr Action)
         {
-            if (DD.ONo != 0)
+            if (ONo != 0)
             {
                 Db.Transact(() =>
                 {
-                    var r = Db.FromId<DD>((ulong)DD.ONo);
-                    r.Ad = DD.Ad;
-                    r.Dnm = (int)DD.Dnm;
-                    r.Info = DD.Info;
+                    var r = Db.FromId<DD>((ulong)ONo);
+                    r.Ad = Ad.ToUpper();
+                    r.Dnm = (int)Dnm;
+                    r.Info = Info;
+                    r.PP = PPoNo == 0 ? null : Db.FromId<PP>((ulong)PPoNo);
                 });
-                DD.ONo = 0;
+                ONo = 0;
 
-                //PushChanges();
+                Session.RunTaskForAll((s, id) =>
+                {
+                    s.CalculatePatchAndPushOnWebSocket();
+                });
             }
-            DlgOpened = false;
+            Opened = false;
         }
 
-        void Handle(Input.DlgDeleteTrigger Action)
+        void Handle(Input.DelTrgr Action)
         {
-            if (DD.ONo != 0)
+            if (ONo != 0)
             {
                 Db.Transact(() =>
                 {
-                    var r = Db.FromId<DD>((ulong)DD.ONo);
+                    var r = Db.FromId<DD>((ulong)ONo);
                     r.Delete();
                 });
-                DD.ONo = 0;
+                ONo = 0;
 
-                //PushChanges();
+                Session.RunTaskForAll((s, id) =>
+                {
+                    s.CalculatePatchAndPushOnWebSocket();
+                });
             }
-            DlgOpened = false;
+            Opened = false;
         }
 
-
+        void Handle(Input.RejTrgr A)
+        {
+            Opened = false;
+        }
     }
 
     [DDsPage_json.DDs]
@@ -196,7 +188,7 @@ namespace bodved2.ViewModels
 
         }
 
-        void Handle(Input.EditTrigger Action)
+        void Handle(Input.EdtTrgr Action)
         {
             var p = this.Parent.Parent as DDsPage;
             p.DD.ONo = DDoNo;
@@ -204,9 +196,10 @@ namespace bodved2.ViewModels
             p.DD.Dnm = Dnm;
             p.DD.Info = Info;
 
-            p.DlgOpened = true;
+            p.DD.PPoNo = PPoNo;
+            p.DD.IsNew = false; // Edit
+            p.DD.Opened = true;
         }
-
     }
 
 

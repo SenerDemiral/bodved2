@@ -90,6 +90,11 @@ namespace BDB2
         public int OOC { get; set; }    // Oynayan Oyuncu Sayisi (Unique)
 
         public string Ozet => $"Oyuncu {OOC:n0} ♦ Maç {SMC + DMC:n0} ♦ Set {SSC + DSC:n0} ♦ Sayı {SNC + DNC:n0}";
+
+        public PP PP { get; set; }
+        public ulong PPoNo => PP == null ? 0 : PP.GetObjectNo();
+        public string PPAd => PP == null ? "-" : $"{PP.Ad}";
+
     }
 
 

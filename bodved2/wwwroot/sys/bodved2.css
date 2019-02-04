@@ -292,16 +292,17 @@ tbody tr:nth-child(even) {
 
 .mdfRecWrap {
     display: grid;
-    /*grid-template-columns:20em; */
+    grid-template-columns: min-content 1fr;
     justify-content: start;
-    grid-gap: 3px;
+    align-items: center;
+    grid-gap: 3px 10px;
     /*margin-top: 10px;*/
 }
 
 .mdfRecAction {
     display: grid;
     grid-auto-flow: column;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 button.edit {

@@ -1,20 +1,38 @@
 ﻿<link href="/sys/paper-dialog/paper-dialog.html" rel="import" />
+<link rel="import" href="/sys/juicy-select/juicy-select.html">
 
 <template>
-    <dom-bind>
+    <dom-bind id="DDsPage">
         <template is="dom-bind">
-            <paper-dialog opened="[[model.DlgOpened]]" modal="true" on-iron-overlay-opened="_myOpenFunction">
+            <paper-dialog opened="[[model.DD.Opened]]" modal="true">
                 <div class="mdfRecWrap">
+                    <label>Rec#</label>
                     <input placeholder="oNo" type="text" value="{{model.DD.ONo$::change}}" readonly style="text-align:center" />
+                    <label>Ad</label>
                     <input placeholder="Ad" type="text" value="{{model.DD.Ad$::change}}" />
+                    <label>Sezon</label>
                     <input placeholder="Sezon" type="text" value="{{model.DD.Dnm$::change}}" />
+                    <label>Info</label>
                     <input placeholder="Info" type="text" value="{{model.DD.Info$::change}}" />
-                    <div class="mdfRecAction">
-                        <button on-click="_myNewFunction">Insert</button>
-                        <button value="{{model.DlgUpdateTrigger$::click}}" onmousedown="++this.value">Update</button>
-                        <button value="{{model.DlgDeleteTrigger$::click}}" onmousedown="++this.value">Delete</button>
-                    </div>
-                    <button dialog-dismiss autofocus value="{{model.DlgRejectTrigger$::click}}" onmousedown="++this.value" style="width:100%">Vazgeç</button>
+                    <label>PPoNo</label>
+                    <input placeholder="Sezon" type="text" value="{{model.DD.PPoNo$::change}}" />
+                    <label>PPoNo2</label>
+                    <juicy-select caption-text="PPs" value="{{model.DD.PPoNo$}}" options=[[getpps()]] text-property="Ad" value-property="PPoNo"></juicy-select>
+                </div>
+                <div class="mdfRecAction">
+                    <template is="dom-if" if="[[model.DD.IsNew]]">
+                        <button value="{{model.DD.InsTrgr$::click}}" onmousedown="++this.value">Insert</button>
+                        <button value="{{model.DD.UpdTrgr$::click}}" onmousedown="++this.value" style="visibility:hidden">Update</button>
+                        <button value="{{model.DD.DelTrgr$::click}}" onmousedown="++this.value" style="visibility:hidden">Delete</button>
+                    </template>
+                    <template is="dom-if" if="[[!model.DD.IsNew]]">
+                        <button value="{{model.DD.InsTrgr$::click}}" onmousedown="++this.value">Duplicate</button>
+                        <button value="{{model.DD.UpdTrgr$::click}}" onmousedown="++this.value">Update</button>
+                        <button value="{{model.DD.DelTrgr$::click}}" onmousedown="++this.value">Delete</button>
+                    </template>
+                </div>
+                <div class="mdfRecAction">
+                    <button dialog-dismiss value="{{model.DD.RejTrgr$::click}}" onmousedown="++this.value" style="width:100%">Vazgeç</button>
                 </div>
             </paper-dialog>
 
@@ -22,18 +40,21 @@
             <div class="gridTbl">
                 <div class="gridTbl_header">
                     <div>BODVED Aktiviteleri</div>
-                    <button value="{{model.DlgOpenTrigger$::click}}" onmousedown="++this.value" hidden$="[[!model.canMdfy]]">New</button>
+                    <button value="{{model.DD.NewTrgr$::click}}" onmousedown="++this.value" hidden$="[[!model.canMdfy]]">New</button>
                 </div>
                 <div class="gridTbl_main">
                     <table id="ddTbl" class="fixTbl">
                         <colgroup>
-                            <col style="width:8rem"  hidden$="[[!model.canMdfy]]"/>
+                            <col style="width:8rem" hidden$="[[!model.canMdfy]]" />
                             <col style="width:14rem" />
                             <col style="width:5rem" />
                             <col style="width:5rem" />
                             <col style="width:5rem" />
                             <col style="width:5rem" />
                             <col style="width:5rem" />
+                            <col style="width:5rem" />
+                            <col style="width:20rem" />
+
                             <col style="width:5rem" />
                             <col style="width:20rem" />
                         </colgroup>
@@ -57,7 +78,7 @@
                         <tbody>
                             <template is="dom-repeat" items="{{model.DDs}}">
                                 <tr>
-                                    <td hidden$="[[!model.canMdfy]]"><button class="edit" value="{{item.EditTrigger$::click}}" onmousedown="++this.value"><iron-icon icon="vaadin:edit"></iron-icon>[[item.DDoNo]]</button></td>
+                                    <td hidden$="[[!model.canMdfy]]"><button class="edit" value="{{item.EdtTrgr$::click}}" onmousedown="++this.value"><iron-icon icon="vaadin:edit"></iron-icon>[[item.DDoNo]]</button></td>
                                     <td class="txtLeft"><a href="/bodved/CCs/[[item.Dnm]]">[[item.Ad]]</a></td>
                                     <td><a href="/bodved/PPRDs/[[item.Dnm]]">►►</a></td>
                                     <td>[[item.KOC_]]</td>
@@ -66,6 +87,8 @@
                                     <td>[[item.Set]]</td>
                                     <td>[[item.Sayi]]</td>
                                     <td class="colInfo" on-tap="doSomething" data-item$="[[index]]">[[item.Info]]</td>
+                                    <td>[[item.PPoNo]]</td>
+                                    <td>[[item.PPAd]]</td>
                                 </tr>
                             </template>
                         </tbody>
@@ -92,11 +115,32 @@
         console.log('ddTbl 1', document.querySelector('#ddTbl'));
         console.log('ddTbl', document.querySelector('template'));
 
-        (function () {
-            var script = document._currentScript || document.currentScript;
-            tmplt = script.previousElementSibling;
 
-            console.log('tmplt', tmplt);
+        (function () {
+            //const script = document._currentScript || document.currentScript;   // Local scope
+            const tmplt = (document._currentScript || document.currentScript).previousElementSibling;
+
+            tmplt.addEventListener('model-changed', function (e) {
+                //console.log("yey! myobj-changed works! DD", e)
+            });
+
+            tmplt.addEventListener('dom-ready', function () {
+                console.log('dom-ready--', this);
+            });
+
+            // Bu partial aktive oldugunda calisir
+            // 2 sekilde de options set edilebilir
+            tmplt.addEventListener('dom-change', (e) => {
+                //console.log('dom-change--', this);
+                //console.log('juicy-select', document.querySelector('juicy-select'));
+                var juicyselect = document.querySelector('juicy-select');
+                //juicyselect.options = tmpltM.model.PPs;   // 1
+            });
+
+            tmplt.getpps = function () {
+                console.log('getpps-----------------', this);
+                return tmpltM.model.PPs;    // 2
+            }
 
             tmplt.abcd = tmplt.model.DDs;
             //tmplt.abcd[0].XX = "xxxxxxx";

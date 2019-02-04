@@ -13,15 +13,22 @@
     "ONo$": 0,
     "Dnm$": 0,
     "Ad$": "",
-    "Info$": ""
+    "Info$": "",
+    "PPoNo$": 0,
+
+    "Opened": false,
+    "IsNew": false,
+    "NewTrgr$": 0,
+    "InsTrgr$": 0,
+    "UpdTrgr$": 0,
+    "DelTrgr$": 0,
+    "RejTrgr$": 0
   },
 
-  "DlgOpened": false,
-  "DlgOpenTrigger$": 0,
-  "DlgRejectTrigger$": 0,
-  "DlgInsertTrigger$": 0,
-  "DlgUpdateTrigger$": 0,
-  "DlgDeleteTrigger$": 0,
+  "SelectedPP": {
+    "PPoNo$": 0,
+    "Ad$": ""
+  },
 
   "DDs": [
     {
@@ -37,9 +44,10 @@
       "Set": "",
       "Sayi": "",
 
-      "EditTrigger$": 0
+      "PPoNo": 0,
+      "PPAd": "",
+
+      "EdtTrgr$": 0
     }
   ]
-
-
 }

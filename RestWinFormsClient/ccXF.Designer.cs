@@ -315,6 +315,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
             this.colIdx,
@@ -337,6 +339,8 @@
             this.gridView1.GridControl = this.cCGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colIdx, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             // 
             // colRowKey

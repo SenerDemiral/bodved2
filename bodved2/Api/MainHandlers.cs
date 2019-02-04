@@ -385,6 +385,12 @@ namespace bodved2.Api
                 // increment site entry counter
 
                 master.EntCntFrmtd = $"{BDB2.STAT.UpdEntCnt():n0}";
+                master.PPs.Data = Db.SQL<PP>("SELECT r FROM PP r order by r.Ad");
+                master.PPs.Add(new MasterPage.PPsElementJson
+                {
+                    PPoNo = 0,
+                    Ad = "-"
+                });
             }
             else
             {

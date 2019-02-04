@@ -1,0 +1,333 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+package RestLib;		// namespace
+
+// The CRUDs service definition.
+service CRUDs {
+  rpc PerformAction(ActionProxy) returns (ActionProxy) {}
+
+  rpc PPFill (QryProxy) returns (stream PPProxy) {}
+  rpc PPUpdate (PPProxy) returns (PPProxy) {}
+
+  rpc DDFill (QryProxy) returns (stream DDProxy) {}
+  rpc DDUpdate (DDProxy) returns (DDProxy) {}
+
+  rpc CCFill (QryProxy) returns (stream CCProxy) {}
+  rpc CCUpdate (CCProxy) returns (CCProxy) {}
+
+  rpc CTFill (QryProxy) returns (stream CTProxy) {}
+  rpc CTUpdate (CTProxy) returns (CTProxy) {}
+
+  rpc CTPFill (QryProxy) returns (stream CTPProxy) {}
+  rpc CTPUpdate (CTPProxy) returns (CTPProxy) {}
+
+  rpc CETFill (QryProxy) returns (stream CETProxy) {}
+  rpc CETUpdate (CETProxy) returns (CETProxy) {}
+
+  rpc CFFill (QryProxy) returns (stream CFProxy) {}
+  rpc CFUpdate (CFProxy) returns (CFProxy) {}
+
+  rpc CEFFill (QryProxy) returns (stream CEFProxy) {}
+  rpc CEFUpdate (CEFProxy) returns (CEFProxy) {}
+
+  rpc MACFill (QryProxy) returns (stream MACProxy) {}
+  rpc MACUpdate (MACProxy) returns (MACProxy) {}
+
+  rpc PPRDFill (QryProxy) returns (stream PPRDProxy) {}
+  rpc PPRDUpdate (PPRDProxy) returns (PPRDProxy) {}
+
+  rpc PPlookUp (QryProxy) returns (stream PPlookUpProxy) {}
+}
+
+message ActionProxy {
+	string req = 1;
+	string prm1 = 2;
+	string prm2 = 3;
+	string rsp = 4;
+}
+
+message QryProxy {
+	string query = 1;
+	string param = 2;
+}
+
+
+// PlayersLookup
+message PPlookUpProxy {
+	uint64 RowKey = 1;
+	string Ad = 2;
+	string Sex = 3;
+	string CTs = 5;
+	bool IsRun = 6;
+}
+
+// Players
+message PPRDProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	uint64 PP = 5;
+	int32 Dnm = 6;
+	int32 RnkIdx = 7;
+	int32 RnkBas = 8;
+	int32 TopPX = 9;
+	int32 RnkSon = 10;
+	int32 SonPX = 11;
+	bool IsFerdi = 12;
+	string PPTel = 13;
+}
+
+// Players
+message PPProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+	string Ad = 5;
+	string Info = 6;
+	string Sex = 7;
+	string Tel = 8;
+	bool IsRun = 9;
+	bool IsFerdi = 10;
+
+	int32 RnkIlk = 11;
+	int32 RnkBaz = 12;
+	int32 RnkSon = 13;
+	int32 RnkIdx = 14;
+
+	int32 SST = 15;
+	int32 SSW = 16;
+	int32 SSL = 17;
+	int32 SMT = 18;
+	int32 SMW = 19;
+	int32 SML = 20;
+	int32 DST = 21;
+	int32 DSW = 22;
+	int32 DSL = 23;
+	int32 DMT = 24;
+	int32 DMW = 25;
+	int32 DML = 26;
+}
+
+// Competitions
+message DDProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	int32 Dnm = 5;
+	string Ad = 6;
+	string Info = 7;
+}
+
+// Competitions
+message CCProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	int32 Dnm = 5;
+	int32 Idx = 6;
+	string Ad = 7;
+	string Skl = 8;
+	string Info = 9;
+	bool IsRun = 10;
+	bool IsRnkd = 11;
+	
+	int32 TNSM = 12;
+	int32 TNDM = 13;
+	int32 TNSS = 14;
+	int32 TNDS = 15;
+	int32 TSMK = 16;
+	int32 TDMK = 17;
+	int32 TEGP = 18;
+	int32 TEMP = 19;
+	int32 TEBP = 20;
+	int32 TEXP = 21;
+	
+}
+
+// Competition Teams
+message CTProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 K1 = 6;
+	uint64 K2 = 7;
+
+	string Ad    = 8;
+	string Info  = 9;
+	string Adres = 10;
+	bool IsRun   = 11;
+	
+	int32 SMW = 12;
+	int32 SML = 13;
+	int32 DMW = 14;
+	int32 DML = 15;
+	int32 KW  = 16;
+	int32 KL  = 17;
+	int32 KF  = 18;
+	int32 EW  = 19;
+	int32 EL  = 20;
+	int32 EB  = 21;
+	int32 EX  = 22;
+	int32 PW  = 23;
+}
+
+// Competition Team Players
+message CTPProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 CT = 6;
+	uint64 PP = 7;
+	int32 Idx  = 8;
+	bool IsRun = 9;
+	int32 RnkBas = 10;
+	int32 RnkBit = 11;
+	string Info  = 12;
+}
+
+// Competition Team Events
+message CETProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 HCT = 6;
+	uint64 GCT = 7;
+	
+	int64 Trh = 8;
+	string Drm  = 9;
+	string Yer  = 10;
+	string Info  = 11;
+
+	int32 HSSW = 12;
+	int32 GSSW = 13; 
+	int32 HDSW = 14; 
+	int32 GDSW = 15; 
+	
+	int32 HSMW = 16; 
+	int32 GSMW = 17; 
+	int32 HDMW = 18; 
+	int32 GDMW = 19; 
+	
+	int32 HKW  = 20;
+	int32 GKW  = 21;
+	int32 HPW  = 22;
+	int32 GPW  = 23;
+}
+
+// Competition Ferdi
+message CFProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 PP = 6;
+	int32 Idx  = 7;
+	bool IsRun = 8;
+	int32 RnkBas = 9;
+	int32 RnkBit = 10;
+	string Info  = 11;
+}
+
+// Competition Ferdi Events
+message CEFProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC = 5;
+	uint64 HPP = 6;
+	uint64 GPP = 7;
+	
+	int64 Trh = 8;
+	string Drm  = 9;
+	string Yer  = 10;
+	string Info  = 11;
+	string SncOzt = 12;
+}
+
+// Mac
+message MACProxy {
+	string RowSte = 1;
+	string RowErr = 2;
+	uint64 RowUsr = 3;
+	uint64 RowKey = 4;
+
+	uint64 CC  = 5;
+	uint64 CEB = 6;
+
+	uint64 HPP1 = 7;
+	uint64 HPP2 = 8;
+	uint64 GPP1 = 9;
+	uint64 GPP2 = 10;
+	
+	string SoD   = 11;
+	int32  Idx   = 12;
+	int64  Trh   = 13;
+	
+	string Drm   = 14;
+	string Yer   = 15;
+	string Hakem = 16;
+	string Info  = 17;
+	
+	int32 H1W = 18;
+	int32 H2W = 19;
+	int32 H3W = 20;
+	int32 H4W = 21;
+	int32 H5W = 22;
+	int32 H6W = 23;
+	int32 H7W = 24;
+	
+	int32 G1W = 25;
+	int32 G2W = 26;
+	int32 G3W = 27;
+	int32 G4W = 28;
+	int32 G5W = 29;
+	int32 G6W = 30;
+	int32 G7W = 31;
+	
+	int32 HSW = 32;
+	int32 GSW = 33;
+
+	int32 HMW = 34;
+	int32 GMW = 35;
+
+	int32 HXW = 36;
+	int32 GXW = 37;
+	
+	int32 HRnk   = 38;
+	int32 HRnkPX = 39;
+	
+	int32 GRnk   = 40;
+	int32 GRnkPX = 41;
+}

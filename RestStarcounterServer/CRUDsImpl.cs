@@ -182,6 +182,7 @@ namespace RestStarcounterServer
                 {
                     //proxy = ReflectionExample.ToProxy<AHPproxy, AHP>(row);
                     proxy = CRUDsHelper.ToProxy<PPProxy, PP>(row);
+                    
                     /*
                     proxy = new PPProxy
                     {
@@ -510,13 +511,19 @@ namespace RestStarcounterServer
                     }
                     else if (request.RowSte == "D")
                     {
-                        var row = (CTP)Db.FromId(request.RowKey);
+                        var row = Db.FromId(request.RowKey) as CTP;
                         if (row == null)
                         {
                             request.RowErr = "CTP Rec not found";
                         }
-                        else
+                        else  // Silinmesinde sakinca yok 
                         {
+                            PP pp = row.PP;
+                            int dnm = row.CC.Dnm;
+                            row.Delete();
+                            H.PPRD_TryDelete(pp, dnm);
+
+                            /*
                             var mac = Db.SQL<MAC>("select r from MAC r where r.CC = ? and (r.HPP1 = ? or r.HPP2 = ? or r.GPP1 = ? or r.GPP2 = ?)", row.CC, row.PP, row.PP, row.PP, row.PP).FirstOrDefault();
                             if (mac != null)
                                 request.RowErr = "MAC kaydı var. Silemezsiniz";
@@ -526,7 +533,7 @@ namespace RestStarcounterServer
                                 int dnm = row.CC.Dnm;
                                 row.Delete();
                                 H.PPRD_TryDelete(pp, dnm);
-                            }
+                            }*/
                         }
                     }
                 });

@@ -37,6 +37,8 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.pPRDBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.pPRDGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRowKey = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pPRDBindingNavigator)).BeginInit();
             this.pPRDBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pPRDGridControl)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -133,6 +136,7 @@
             // 
             // pPRDGridControl
             // 
+            this.pPRDGridControl.ContextMenuStrip = this.contextMenuStrip;
             this.pPRDGridControl.DataSource = this.pPRDBindingSource;
             this.pPRDGridControl.Location = new System.Drawing.Point(12, 46);
             this.pPRDGridControl.MainView = this.gridView1;
@@ -141,6 +145,20 @@
             this.pPRDGridControl.TabIndex = 0;
             this.pPRDGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(108, 26);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // gridView1
             // 
@@ -196,6 +214,7 @@
             // 
             this.colPP.FieldName = "PP";
             this.colPP.Name = "colPP";
+            this.colPP.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colPP.Visible = true;
             this.colPP.VisibleIndex = 3;
             this.colPP.Width = 120;
@@ -205,6 +224,7 @@
             this.colDnm.FieldName = "Dnm";
             this.colDnm.Name = "colDnm";
             this.colDnm.OptionsColumn.FixedWidth = true;
+            this.colDnm.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colDnm.Visible = true;
             this.colDnm.VisibleIndex = 2;
             this.colDnm.Width = 50;
@@ -363,6 +383,7 @@
             this.pPRDBindingNavigator.ResumeLayout(false);
             this.pPRDBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pPRDGridControl)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -404,5 +425,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraGrid.Columns.GridColumn colPPTel;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
     }
 }

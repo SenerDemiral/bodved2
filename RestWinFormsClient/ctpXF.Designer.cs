@@ -227,6 +227,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRowKey,
             this.colCC,
