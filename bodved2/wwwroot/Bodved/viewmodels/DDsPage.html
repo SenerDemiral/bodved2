@@ -1,4 +1,4 @@
-﻿<link href="/sys/paper-dialog/paper-dialog.html" rel="import" />
+<link href="/sys/paper-dialog/paper-dialog.html" rel="import" />
 <link rel="import" href="/sys/juicy-select/juicy-select.html">
 
 <template>
@@ -54,9 +54,9 @@
                             <col style="width:5rem" />
                             <col style="width:5rem" />
                             <col style="width:20rem" />
-
-                            <col style="width:5rem" />
-                            <col style="width:20rem" />
+                            <!--
+    <col style="width:5rem" />
+    <col style="width:20rem" />-->
                         </colgroup>
                         <thead>
                             <tr>
@@ -87,8 +87,10 @@
                                     <td>[[item.Set]]</td>
                                     <td>[[item.Sayi]]</td>
                                     <td class="colInfo" on-tap="doSomething" data-item$="[[index]]">[[item.Info]]</td>
-                                    <td>[[item.PPoNo]]</td>
-                                    <td>[[item.PPAd]]</td>
+                                    <!--
+    <td>[[item.PPoNo]]</td>
+    <td>[[item.PPAd]]</td>
+                                    -->
                                 </tr>
                             </template>
                         </tbody>

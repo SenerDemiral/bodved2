@@ -1,4 +1,4 @@
-﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
     <dom-bind>
@@ -15,6 +15,8 @@
                             <col style="width:var(--w-Team)" />
 
                             <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:4rem" />
 
                             <col style="width:3rem" />
                             <col style="width:3rem" />
@@ -30,6 +32,8 @@
                                 <th rowspan="2"><iron-icon icon="vaadin:calendar"></iron-icon></th>
                                 <th rowspan="2">Oyuncu</th>
                                 <th rowspan="2">Puan</th>
+                                <th rowspan="2">ƩPX</th>
+                                <th rowspan="2">RnkBaş</th>
                                 <th colspan="3">Mac</th>
                                 <th colspan="3">Set</th>
                             </tr>
@@ -51,6 +55,8 @@
                                     <td class="txtLeft"><a href="/bodved/PP2MACs/[[item.PPoNo]]">[[item.PPAd]]</a></td>
 
                                     <td>[[item.PW]]</td>
+                                    <td>[[item.PX]]</td>
+                                    <td>[[item.RnkBas]]</td>
 
                                     <td>[[item.MT]]</td>
                                     <td>[[item.MW]]</td>

@@ -13,7 +13,7 @@ namespace bodved2.ViewModels
             Hdr = $"{cc.Ad} ► Ferdi Sonuçları";
 
             int i = 1;
-            var cfs = Db.SQL<CF>("SELECT r FROM CF r WHERE r.CC = ? order by r.PP.Ad", cc);
+            var cfs = Db.SQL<CF>("SELECT r FROM CF r WHERE r.CC = ? order by r.PW DESC", cc);
             foreach(var cf in cfs)
             {
                 CFs.Add(new CFsElementJson
@@ -23,8 +23,10 @@ namespace bodved2.ViewModels
                     PPoNo = (long)cf.PPoNo,
                     PPAd = cf.PPAd,
 
-                    PW = $"{cf.PW:#}",
+                    PW = $"{cf.PW}",
                     PL = $"{cf.PL:#}",
+                    PX = cf.PX == -9999 ? "X" : $"{cf.PX}",
+                    RnkBas = $"{cf.RnkBas}",
                     MT = $"{cf.MT:#}",
                     MW = $"{cf.MW:#}",
                     ML = $"{cf.ML:#}",

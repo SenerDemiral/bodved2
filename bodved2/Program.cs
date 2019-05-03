@@ -77,7 +77,7 @@ namespace bodved2
             H.CEF_RefreshSonuc();   // Bunlari da Donem/Sezon luk yap.
             H.CF_RefreshSonuc();
 
-
+            H.CEF_RefreshDnm18();
 
             // Bunlara gerek kalmadi
             /*

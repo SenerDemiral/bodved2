@@ -1942,7 +1942,89 @@ namespace BDB2
             Console.WriteLine($"RefreshGlobalRank {nor}: {watch.ElapsedMilliseconds} ms  {watch.ElapsedTicks} ticks");
         }
 
+        public static void CEF_RefreshDnm18()   //18.Donem FerdiEvent lerin PX lerini hesapla sonrasinda CF topPX
+        {
+            //Donem/Sezon 18 icin
+            int hPX = 0, gPX = 0;
+            ulong ppNo = 0;
 
+            Dictionary<ulong, int> rdDic = new Dictionary<ulong, int>();    // Players Donem Ranks
+            Dictionary<ulong, int> tPXDic = new Dictionary<ulong, int>(); // Players PX toplam
+
+            Db.TransactAsync(() =>
+            {
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", 18);
+                foreach (var pprd in pprds)
+                {
+                    ppNo = pprd.PP.GetObjectNo();
+                    rdDic[ppNo] = pprd.RnkBas;
+                    tPXDic[ppNo] = -9999;
+                }
+
+                var ccs = Db.SQL<CC>("select r from CC r where r.Dnm = ? and r.Skl = ?", 18, "F");
+                foreach (var cc in ccs)
+                {
+                    var cefs = Db.SQL<CEF>("select r from CEF r where r.CC = ?", cc);
+                    foreach (var cef in cefs)
+                    {
+                        if (cef.Drm == "OK")
+                        {
+                            hPX = compHomeRnkPX(cef.HSMW == 0 ? false : true, rdDic[cef.HPPoNo], rdDic[cef.GPPoNo]);
+                            gPX = -hPX;
+
+                            cef.HPX = hPX;
+                            cef.GPX = gPX;
+
+                            if (tPXDic[cef.HPPoNo] == -9999)
+                                tPXDic[cef.HPPoNo] = 0;
+                            tPXDic[cef.HPPoNo] += hPX;
+                            if (tPXDic[cef.GPPoNo] == -9999)
+                                tPXDic[cef.GPPoNo] = 0;
+                            tPXDic[cef.GPPoNo] += gPX;
+                        }
+                        else
+                        {
+                            cef.HPX = 0;
+                            cef.GPX = 0;
+                        }
+                    }
+
+                    var cfs = Db.SQL<CF>("select r from CF r where r.CC = ?", cc);
+                    int ppSay = 0;
+                    int puan = 0, maxPuan = 0, minPuan = 0;
+                    foreach (var cf in cfs)
+                    {
+                        cf.PX = tPXDic[cf.PPoNo];
+                        ppSay++;
+                    }
+                    if (ppSay <= 10)
+                    {
+                        maxPuan = 5;
+                        minPuan = -5;
+                    }
+                    else
+                    {
+                        maxPuan = 10;
+                        minPuan = -10;
+                    }
+                    puan = maxPuan;
+                    cfs = Db.SQL<CF>("select r from CF r where r.CC = ? order by r.PX DESC, r.RnkBas", cc);
+                    foreach (var cf in cfs)
+                    {
+                        cf.PX = tPXDic[cf.PPoNo];
+                        if (tPXDic[cf.PPoNo] == -9999)
+                            cf.PW = minPuan;
+                        else
+                        {
+                            cf.PW = puan;
+                            puan--;
+                            if (puan < minPuan)
+                                puan = minPuan;
+                        }
+                    }
+                }
+            });
+        }
 
         public static void PPRD_RefreshSonuc(int Dnm)
         {

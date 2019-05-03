@@ -325,6 +325,7 @@ namespace BDB2
         public int PW { get; set; }      // Puan Win
         public int PL { get; set; }
 
+        public int PX { get; set; }      // toplam PX
     }
 
     [Database]
@@ -410,6 +411,11 @@ namespace BDB2
         public int HPW { get; set; }         // Home Puan Win
         public int GPW { get; set; }
 
+        public int HPX { get; set; }         // Home PointExchange
+        public int GPX { get; set; }
+        public string HPXs => $"{HPX:+#;-#;#}";
+        public string GPXs => $"{GPX:+#;-#;#}";
+
         public string HR => $"{HSSW} ►{HSMW} ►{HPW}";
         public string GR => $"{GSSW} ►{GSMW} ►{GPW}";
 
@@ -434,7 +440,7 @@ namespace BDB2
         {
             get
             {
-                var pprd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", CC.Dnm, HPP).FirstOrDefault();
+                var pprd = Db.SQL<PPRD>("select r from BDB2.PPRD r where r.Dnm = ? and r.PP = ?", CC.Dnm, HPP).FirstOrDefault();
                 if (pprd != null)
                     return pprd.RnkBas;
                 return 0;
@@ -444,7 +450,7 @@ namespace BDB2
         {
             get
             {
-                var pprd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? and r.PP = ?", CC.Dnm, GPP).FirstOrDefault();
+                var pprd = Db.SQL<PPRD>("select r from BDB2.PPRD r where r.Dnm = ? and r.PP = ?", CC.Dnm, GPP).FirstOrDefault();
                 if (pprd != null)
                     return pprd.RnkBas;
                 return 0;

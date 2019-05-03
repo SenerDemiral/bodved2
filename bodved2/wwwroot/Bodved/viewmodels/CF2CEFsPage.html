@@ -1,4 +1,4 @@
-﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
     <dom-bind>
@@ -14,7 +14,9 @@
                             <col style="width:var(--w-Drm)" />
                             <col style="width:var(--w-Plyr)" />
                             <col style="width:var(--w-Rnk)" />
+                            <col style="width:var(--w-Rnk)" />
                             <col style="width:12rem" />
+                            <col style="width:var(--w-Rnk)" />
                             <col style="width:var(--w-Rnk)" />
                             <col style="width:var(--w-Plyr)" />
                         </colgroup>
@@ -24,8 +26,10 @@
                                 <th>Drm</th>
                                 <th>Home</th>
                                 <th>Rank</th>
+                                <th>PX</th>
                                 <th>Sonuç</th>
                                 <th>Rank</th>
+                                <th>PX</th>
                                 <th>Guest</th>
                             </tr>
                         </thead>
@@ -36,8 +40,10 @@
                                     <td>{{item.Drm}}</td>
                                     <td class="txtLeft" data-WL$="[[item.HWL]]"><a href="/bodved/PP2MACs/[[item.HPPoNo]]">[[item.HPPAd]]</a></td>
                                     <td>[[item.HRnkBas]]</td>
+                                    <td>[[item.HPXs]]</td>
                                     <td class="colSncTxt">{{item.SncOzt}}</td>
                                     <td>[[item.GRnkBas]]</td>
+                                    <td>[[item.GPXs]]</td>
                                     <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/PP2MACs/[[item.GPPoNo]]">[[item.GPPAd]]</a></td>
                                 </tr>
                             </template>
