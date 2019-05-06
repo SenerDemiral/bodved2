@@ -1357,6 +1357,13 @@ namespace BDB2
                         }
                     }
                 }
+                else if (string.IsNullOrEmpty(cef.Drm)) // Drm sonradan OK den NULL/Empty dondurulebilir
+                {
+                    cef.HSSW = 0;
+                    cef.GSSW = 0;
+                    cef.HSMW = 0;
+                    cef.GSMW = 0;
+                }
             });
         }
 
