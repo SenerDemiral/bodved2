@@ -16,7 +16,7 @@ namespace BDB2
 {
     public static class H
     {
-        public static int DnmRun = 18;
+        public static int DnmRun = 18;  // AktifDonem, Maclar basladiginda
 
         public static CultureInfo cultureTR = CultureInfo.CreateSpecificCulture("tr-TR");  // Tarihde gun gostermek icin
 
@@ -438,6 +438,48 @@ namespace BDB2
             // pprd.RnkSon'a Ferdi RnkPX eklemek gerek
             // RnkSon = RnkBas + RnkPX zaten hesaplanmis
             // RnkPXf alani olmali
+        }
+
+        public static string PPRD_YeniDonemIslemleri(int Dnm)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            int nor = 0;
+            int prvDnm = Dnm - 1;
+
+            var rd = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", Dnm).FirstOrDefault();
+            if (rd != null)
+                return $"Dnm:{Dnm} kayıtları var! İşlem yapılmadı.";
+
+            // Bir onceki donemden yeni Donem yarat
+            Db.TransactAsync(() =>
+            {
+                var prvPPRDs = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ?", prvDnm);
+                foreach (var prvPPRD in prvPPRDs)
+                {
+                    nor++;
+                    new PPRD
+                    {
+                        PP = prvPPRD.PP,
+                        Dnm = Dnm,
+                        RnkBas = prvPPRD.RnkSon,
+                        RnkSon = prvPPRD.RnkSon,
+                    };
+                }
+
+                // Sort
+                int idx = 1;
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.Dnm = ? order by r.RnkBas DESC", Dnm);
+                foreach (var pprd in pprds)
+                {
+                    pprd.RnkIdx = idx++;
+                }
+            });
+
+            watch.Stop();
+            Console.WriteLine($"{watch.ElapsedMilliseconds,5} ms YeniDonemIslemleri({Dnm}) NOR: {nor:n0}");
+
+            return "";
         }
 
         public static string PPRD_DonemBasiIslemleri(int Dnm)

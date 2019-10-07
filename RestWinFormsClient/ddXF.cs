@@ -60,7 +60,7 @@ namespace RestWinFormsClient
                 dr = XtraMessageBox.Show("Değişiklik var. Kaydetmek istiyormusunuz?", "Update", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Yes)
                 {
-                    string err = dataSetGnl.CCUpdate();
+                    string err = dataSetGnl.DDUpdate();
                     if (err != string.Empty)
                     {
                         MessageBox.Show(err);
