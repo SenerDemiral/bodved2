@@ -61,7 +61,7 @@ namespace bodved2
             H.PPRD_RefreshSonuc(17);
             */
 
-            //H.PP_RefeshCurrentActivities(18);   // PP.IsRun = T/F Onceki donem de oynamis
+            H.PP_RefeshCurrentActivities(18);   // PP.IsRun = T/F Onceki donem de oynamis
             
             // Yeni donem islemleri, bir kerelik
             H.PPRD_YeniDonemIslemleri(19);
