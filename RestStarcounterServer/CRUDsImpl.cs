@@ -61,16 +61,17 @@ namespace RestStarcounterServer
 
             Type proxyType = typeof(DDProxy);
             PropertyInfo[] proxyProperties = proxyType.GetProperties().Where(x => x.CanRead && x.CanWrite).ToArray();
-
+            
             await Scheduling.RunTask(() =>
             {
+                
                 foreach (var row in Db.SQL<DD>("select r from DD r"))
                 {
                     proxy = CRUDsHelper.ToProxy<DDProxy, DD>(row);
                     proxyList.Add(proxy);
                 }
             });
-
+        
             foreach (var p in proxyList)
             {
                 await responseStream.WriteAsync(p);
@@ -909,5 +910,18 @@ namespace RestStarcounterServer
 
             return Task.FromResult(request);
         }
+
+        // Login, return 0 = not Login
+        public override Task<LgnProxy> Lgn(LgnProxy request, ServerCallContext context)
+        {
+            Scheduling.RunTask(() =>
+            {
+                request.CcOno = H.LoginOp(request.Pwd);
+
+            }).Wait();
+
+            return Task.FromResult(request);
+        }
+
     }
 }

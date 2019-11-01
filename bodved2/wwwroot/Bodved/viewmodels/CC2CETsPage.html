@@ -1,15 +1,28 @@
-﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
     <dom-bind>
         <template is="dom-bind">
+            <paper-dialog opened="[[model.DialogOpened]]" modal="true">
+                <div>
+                    <starcounter-include view-model="{{model.DialogPage}}"></starcounter-include>
+                </div>
+                <div class="mdfRecWrap">
+                    <div class="mdfRecAction">
+                        <button value="{{model.Sgn.SignT$::click}}" onmousedown="++this.value">OK</button>
+                        <button value="{{model.DialogCancelT$::click}}" onmousedown="++this.value">Cancel</button>
+                    </div>
+                </div>
+            </paper-dialog>
+
+
             <div class="gridTbl">
                 <div class="gridTbl_header">
                     <div>[[model.Hdr]]</div>
                     <div><a href="/bodved/CK/[[model.CCoNo]]" style="color: aliceblue;text-decoration: underline;"><iron-icon icon="vaadin:medal"></iron-icon></a></div>
                 </div>
                 <div class="gridTbl_main">
-                    <table class="fixTbl sngLine">
+                    <table id="tbl" class="fixTbl sngLine" on-click="MyFnc2">
                         <colgroup>
                             <col style="width:var(--w-Tarih)" />
                             <col style="width:var(--w-Drm)" />
@@ -17,6 +30,10 @@
                             <col style="width:4rem" />
                             <col style="width:10rem" />
                             <col style="width:20rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
                         </colgroup>
                         <thead>
                             <tr>
@@ -26,6 +43,10 @@
                                 <th>Puan</th>
                                 <th>Guest</th>
                                 <th>Info</th>
+                                <th>OS</th>
+                                <th>HS</th>
+                                <th>GS</th>
+                                <th>ML</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,12 +62,44 @@
                                     <td>[[item.Puan]]</td>
                                     <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
                                     <td class="colInfo">[[item.Info]]</td>
+
+                                    <template is="dom-if" if="[[model.IsYetkili]]">
+                                        <td><button value="{{item.OST$::click}}" onmousedown="++this.value;" style="min-width:0;height:auto;padding:0px 4px">OS</button></td>
+                                        <td><input type="checkbox" checked="{{item.IsHOS}}" disabled></td>
+                                        <td><input type="checkbox" checked="{{item.IsGOS}}" disabled></td>
+                                        <td><a href="/bodved/CET2MACsInp/[[item.CEToNo]]">[[item.CEToNo]]</a></td>
+                                    </template>
                                 </tr>
                             </template>
                         </tbody>
                     </table>
                 </div>
             </div>
+
         </template>
     </dom-bind>
+
+    <script>
+        (function () {
+            var curRowIndex = -1;
+            var script = document._currentScript || document.currentScript;
+            tmplt = script.previousElementSibling;
+
+            tmplt.MyFnc2 = function (e) {
+                var tr = e.target.closest("tr");
+                if (tr === null) // Input Table'da oldugu icin oradan da gelebilit
+                    return;
+
+                if (tr.rowIndex > 0) {     // Mark current Row
+                    if (curRowIndex !== -1) {
+                        tbl.rows[curRowIndex].classList.remove("curRow");
+                    }
+
+                    curRowIndex = tr.rowIndex;
+                    tr.classList.add("curRow");
+                }
+            };
+        })();
+    </script>
+
 </template>

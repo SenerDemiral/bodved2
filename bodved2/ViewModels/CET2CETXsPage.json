@@ -1,0 +1,56 @@
+{
+  "Html": "/Bodved/viewmodels/CET2CETXsPage.html",
+
+  "Hdr": "",
+  "Hata": "",
+  "SngMacSay": 0,
+  "DblMacSay": 0,
+  "CEToNo": 0,
+  "CToNo": 0,
+  "IsYetkili": false,
+
+  "CET": {
+    "CEToNo": 0,
+    "HCTAd": "",
+    "GCTAd": "",
+    "Tarih": "",
+    "Info": "",
+    "HSMW": 0,
+    "GSMW": 0,
+    "HDMW": 0,
+    "GDMW": 0,
+    "HKW": 0,
+    "GKW": 0
+  },
+
+  "CreateT$": 0,
+  "SaveT$": 0,
+  "ConfirmT$": 0,
+  "CancelT$": 0,
+  "MacCreateT$": 0,
+
+  "H_G": "",
+  "HOST$": 0,
+  "GOST$": 0,
+  "IsOS": false,
+  "IsML": false,
+
+  "CETXs": [
+    {
+      "CETXoNo": 0,
+      "CToNo": 0,
+      "H_G": "",
+      "Idx": 0,
+      "Idx2": 0,
+      "SH": "",
+      "PPoNo": 0,
+      "PPAd": "",
+      "SngIdxS$": "",
+      "DblIdxS$": "",
+      "SngIdx": 0,
+      "DblIdx": 0,
+    }
+  ]
+
+
+}

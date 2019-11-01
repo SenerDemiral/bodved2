@@ -10,6 +10,13 @@ namespace bodved2.ViewModels
             base.OnData();
 
             CC cc = Db.FromId<CC>((ulong)CCoNo);
+
+            var session = Session.Ensure();
+            var mp = session.Store[nameof(MasterPage)] as MasterPage;
+            IsYetkili = false;
+            if (!string.IsNullOrEmpty(cc.Pwd) && mp.Pwd == cc.Pwd)
+                IsYetkili = true;
+
             Hdr = $"{cc.Ad} ► Fikstür";
 
             string tarih = "";
@@ -35,7 +42,10 @@ namespace bodved2.ViewModels
                     HPW = cet.HPW,
                     GPW = cet.GPW,
                     Puan = cet.Puan,
-                    Info = cet.Info
+                    Info = cet.Info,
+                    IsHOS = cet.IsHOS,
+                    IsGOS = cet.IsGOS
+                    
                 };
 
                 if (rde.Tarih != tarih)
@@ -47,6 +57,18 @@ namespace bodved2.ViewModels
                 CETs.Add(rde);
             }
         }
+
+        [CC2CETsPage_json.CETs]
+        public partial class CETsElementJson
+        {
+            public void Handle(Input.OST Action)
+            {
+                var p = this.Parent.Parent as CC2CETsPage;
+                p.DialogPage = Self.GET<Json>($"/bodved/partials/CET2CETXs/{this.CEToNo}/1");
+                p.DialogOpened = true;
+            }
+        }
+
 
     }
 }

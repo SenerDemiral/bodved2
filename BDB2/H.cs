@@ -16,9 +16,19 @@ namespace BDB2
 {
     public static class H
     {
-        public static int DnmRun = 18;  // AktifDonem, Maclar basladiginda
+        public static int DnmRun = 19;  // AktifDonem, Maclar basladiginda
 
         public static CultureInfo cultureTR = CultureInfo.CreateSpecificCulture("tr-TR");  // Tarihde gun gostermek icin
+
+        public static ulong LoginOp(string pwd)
+        {
+            // AktifDonem CC lerden Pwd ara
+            var cc = Db.SQL<CC>("select r from CC r where r.Dnm = ? and r.Pwd = ?", DnmRun, pwd).FirstOrDefault();
+
+            if (cc == null)
+                return 0;
+            return cc.CCoNo;
+        }
 
         public static void Write2Log(string Msg)
         {
@@ -328,6 +338,137 @@ namespace BDB2
                         pprd.RnkBas = pprd.PP.RnkIlk;
                 }
 
+            });
+        }
+
+        public static void MAC_Insert(long CEToNo)  // Create from CETX
+        {
+            CET cet = Db.FromId<CET>((ulong)CEToNo);
+            if (cet.IsMLY)
+                return;
+
+            CETX gcetx = null;
+
+            Db.TransactAsync(() =>
+            {
+                // Singles
+                var cetxs = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ? order by r.SngIdx", cet, "H");
+                foreach (var cetx in cetxs)
+                {
+                    if (cetx.SngIdx != 0)
+                    {
+                        gcetx = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ? and r.SngIdx = ?", cet, "G", cetx.SngIdx).FirstOrDefault();
+                        if (gcetx != null)
+                        {
+                            new MAC
+                            {
+                                CC = cet.CC,
+                                CEB = cet,
+                                SoD = "S",
+                                Trh = cet.Trh,
+                                Idx = cetx.SngIdx,
+                                HPP1 = cetx.PP,
+                                GPP1 = gcetx.PP,
+                            };
+                        }
+                    }
+                }
+
+                Dictionary<int, DictDblCETX> dic = new Dictionary<int, DictDblCETX>();
+
+                // Doubles
+                bool first = true;
+                MAC mac = null;
+                cetxs = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ? order by r.DblIdx", cet, "H");
+                foreach (var cetx in cetxs)
+                {
+                    if (cetx.DblIdx != 0)
+                    {
+                        if (first)
+                        {
+                            dic[cetx.DblIdx] = new DictDblCETX { HPP1oNo = cetx.PPoNo };
+                            first = false;
+                        }
+                        else
+                        {
+                            dic[cetx.DblIdx].HPP2oNo = cetx.PPoNo;
+                            first = true;
+                        }
+                    }
+                }
+                first = true;
+                cetxs = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ? order by r.DblIdx", cet, "G");
+                foreach (var cetx in cetxs)
+                {
+                    if (cetx.DblIdx != 0)
+                    {
+                        if (first)
+                        {
+                            dic[cetx.DblIdx].GPP1oNo = cetx.PPoNo;
+                            first = false;
+                        }
+                        else
+                        {
+                            dic[cetx.DblIdx].GPP2oNo = cetx.PPoNo;
+                            first = true;
+                        }
+                    }
+                }
+
+                foreach (var pair in dic)
+                {
+                    mac = new MAC
+                    {
+                        CC = cet.CC,
+                        CEB = cet,
+                        SoD = "D",
+                        Trh = cet.Trh,
+                        Idx = pair.Key,
+                        HPP1 = Db.FromId<PP>(pair.Value.HPP1oNo),
+                        HPP2 = Db.FromId<PP>(pair.Value.HPP2oNo),
+                        GPP1 = Db.FromId<PP>(pair.Value.GPP1oNo),
+                        GPP2 = Db.FromId<PP>(pair.Value.GPP2oNo),
+                    };
+                }
+
+                cet.IsMLY = true;
+            });
+        }
+
+        public static void CETX_Insert(long CEToNo, string H_G)
+        {
+            CET cet = Db.FromId<CET>((ulong)CEToNo);
+            CT ct = null;
+            if (H_G == "H")
+                ct = cet.HCT;
+            else
+                ct = cet.GCT;
+
+            Db.TransactAsync(() =>
+            {
+                var cetx = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ?", cet, H_G).FirstOrDefault();
+                if (cetx == null)   // Kayit yok insert
+                {
+                    var ctps = Db.SQL<CTP>("select r from CTP r where r.CT = ? order by r.Idx", ct);
+                    foreach(var ctp in ctps)
+                    {
+                        if (ctp.Idx < 99)   // 99 olanlar cikti/ayrildi
+                        {
+                            new CETX
+                            {
+                                CC = cet.CC,
+                                CET = cet,
+                                CT = ct,
+                                H_G = H_G,
+                                Idx = ctp.Idx,
+                                Idx2 = 0,
+                                PP = ctp.PP,
+                                SngIdx = 0,
+                                DblIdx = 0
+                            };
+                        }
+                    }
+                }
             });
         }
 

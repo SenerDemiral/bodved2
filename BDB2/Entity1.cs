@@ -193,6 +193,7 @@ namespace BDB2
         public string Grp { get; set; }     // Ligdeki Grup oyuncularini bilmek icin
         public bool IsRun { get; set; }     // Cari, Devam eden (False:Bitti)
         public bool IsRnkd { get; set; }    // Rank hesaplnacak mi?
+        public string Pwd { get; set; }     // Musabaka/Mac Sonuclari girebilecek
 
         public int TNSM { get; set; }        // Takim Nof Single Mac
         public int TNDM { get; set; }        //           Double
@@ -369,6 +370,10 @@ namespace BDB2
         public int HPW { get; set; }         // Home Kazandigi Puan
         public int GPW { get; set; }
 
+        public bool IsHOS { get; set; }       // Home Oyuncu Siralandi
+        public bool IsGOS { get; set; }       // Guest Oyuncu Siralandi
+        public bool IsMLY { get; set; }       // Mac Listesi Yaratildi
+
         public string Puan => $"{HPW:#} - {GPW:#}";
         public string HR => $"{HSMW}S+{HDMW}D ►{HKW,2:D2} ►{HPW}";
         public string GR => $"{GSMW}S+{GDMW}D ►{GKW,2:D2} ►{GPW}";
@@ -377,6 +382,39 @@ namespace BDB2
         public string GWL => HPW == GPW ? "?" : HPW < GPW ? "W" : "L";
 
     }
+
+    [Database]
+    public class CETX   // Event Takim Oyuncu Siralama
+    {
+        public ulong CETXoNo => this.GetObjectNo();
+        public CC CC { get; set; }
+        public CET CET { get; set; }
+        public CT CT { get; set; }          // Takim
+        public string H_G { get; set; }
+        public int Idx { get; set; }        // Oyuncu Rank Sirasi
+        public int Idx2 { get; set; }       // Gelen Oyuncu Rank Sirasi
+
+        public PP PP { get; set; }         
+        public int SngIdx { get; set; }    // Single Mac Sirasi
+        public int DblIdx { get; set; }    // Double Mac Sirasi
+
+        public ulong CToNo => CT?.GetObjectNo() ?? 0;
+        public ulong PPoNo => PP?.GetObjectNo() ?? 0;
+        public string PPAd => PP?.Ad;
+    }
+    /*
+    Oyuncu, SI, DI
+    Sener   1   1
+    Oguz    2   1
+    Tahir   3   2
+    Ahmet   0   2
+    Necla   0   3
+    Mehmet  4   3
+    Maclar bu tablodan olusturulur. Home 1 <> Guest 1
+    1.Lig 6tek+3cift, digerleri 8tek+4cift
+    Tablo bos ise takim oyuncularinin hepsini insert et Sng/Dbl Idx = 0
+    Siralama tamam oldugunda Maclara insert et.
+    */
 
     [Database]
     public class CETP   // EventTakimOyunculari  KULLANILMIYOR
@@ -745,6 +783,14 @@ namespace BDB2
         public int ML;
         public int SW;
         public int SL;
+    }
+
+    public class DictDblCETX
+    {
+        public ulong HPP1oNo;
+        public ulong HPP2oNo;
+        public ulong GPP1oNo;
+        public ulong GPP2oNo;
     }
 
 }

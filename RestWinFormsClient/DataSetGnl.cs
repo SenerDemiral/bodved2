@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Grpc.Core;
 using RestClientWinForm;
 using RestLib;
 
@@ -161,16 +162,30 @@ namespace RestWinFormsClient
             DataRow row;
             int nor = 0;
             Stopwatch sw = new Stopwatch();
+            var ct = new CancellationToken();
+            
 
             dt.BeginLoadData();
             sw.Start();
-            using (var response = grpcService.ClientCRUDs.DDFill(new QryProxy { Query = "", Param = "" }))
+
+            /*
+             using (var call = client.ListFeatures(request))
+                    {
+                        var responseStream = call.ResponseStream;
+                        StringBuilder responseLog = new StringBuilder("Result: ");
+
+                        while (await responseStream.MoveNext())
+            */
+            var rt = grpcService.channel;
+
+            using (var call = grpcService.ClientCRUDs.DDFill(new QryProxy { Query = "", Param = "" }))
             {
-                while (await response.ResponseStream.MoveNext(new CancellationToken()))
+
+                while (await call.ResponseStream.MoveNext(CancellationToken.None))
                 {
                     row = dt.NewRow();
 
-                    ProxyHelper.ProxyToRow(dt, row, response.ResponseStream.Current);
+                    ProxyHelper.ProxyToRow(dt, row, call.ResponseStream.Current);
                     dt.Rows.Add(row);
 
                     nor++;

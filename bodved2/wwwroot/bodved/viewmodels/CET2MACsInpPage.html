@@ -1,0 +1,79 @@
+<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>[[model.Hdr]] </div>
+                </div>
+                <div class="gridTbl_main">
+                    <table id="tbl" class="fixTbl sngLine" on-click="MyFnc">
+                        <colgroup>
+                            <col style="width:2rem" />
+                            <col style="width:2rem" />
+                            <col style="width:10rem" />
+                            <col style="width:10rem" />
+                            <col style="width:4rem" />
+                            <col style="width:4rem" />
+                            <col style="width:4rem" />
+                            <col style="width:4rem" />
+                            <col style="width:4rem" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>S/D</th>
+                                <th>#</th>
+                                <th>[[model.HCTAd]]</th>
+                                <th>[[model.GCTAd]]</th>
+                                <th>S1</th>
+                                <th>S2</th>
+                                <th>S3</th>
+                                <th>S4</th>
+                                <th>S5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="[[model.MACs]]">
+                                <tr>
+                                    <td>[[item.SoD]]</td>
+                                    <td>[[item.Idx]]</td>
+                                    <td class="txtLeft">[[item.HPPAd]]</td>
+                                    <td class="txtLeft">[[item.GPPAd]]</td>
+                                    <td>
+                                        <input type="text" value="{{item.H1W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
+                                        <input type="text" value="{{item.G1W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{item.H2W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
+                                        <input type="text" value="{{item.G2W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{item.H3W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
+                                        <input type="text" value="{{item.G3W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{item.H4W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
+                                        <input type="text" value="{{item.G4W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{item.H5W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
+                                        <input type="text" value="{{item.G5W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <div style="display:flex">
+                        <template is="dom-if" if="[[model.IsEdit]]">
+                            <button value="{{model.SaveT$::click}}" onmousedown="++this.value;">Kaydet</button>
+                            <button value="{{model.ConfirmT$::click}}" onmousedown="++this.value;">Onayla</button>
+                        </template>
+                    </div>
+                    <div style="color:red">[[model.Hata]]</div>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+
+</template>

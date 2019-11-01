@@ -3,6 +3,10 @@
   "EntCntFrmtd": "bbb",
   "Token": "",
 
+  "IsPwdDlgOpnd$": false,
+  "PwdDlgOpnT$": 0,
+  "Pwd$": "",
+
   "Sgn": {
     "Email$": "",
     "Pwd$": "",
@@ -19,9 +23,9 @@
   "PPs": [
     {
       "PPoNo": 555,
-      "Ad": "sener",
+      "Ad": "sener"
     }
   ],
- 
+
   "CurrentPage": {}
 }

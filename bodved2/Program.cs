@@ -61,10 +61,10 @@ namespace bodved2
             H.PPRD_RefreshSonuc(17);
             */
 
-            H.PP_RefeshCurrentActivities(18);   // PP.IsRun = T/F Onceki donem de oynamis
+            //H.PP_RefeshCurrentActivities(18);   // PP.IsRun = T/F Onceki donem de oynamis
             
             // Yeni donem islemleri, bir kerelik
-            H.PPRD_YeniDonemIslemleri(19);
+            //H.PPRD_YeniDonemIslemleri(19);
 
             //H.PPRD_17RankPXgosterme();
             //H.PPRD_Ayarla();          // Bir kere
@@ -79,10 +79,9 @@ namespace bodved2
             H.PPRD_RefreshCurRuns(H.DnmRun);
             H.DD_RefreshSonuc(H.DnmRun);
 
-            H.CEF_RefreshSonuc();   // Bunlari da Donem/Sezon luk yap.
-            H.CF_RefreshSonuc();
-
-            H.CEF_RefreshDnm18();
+            //H.CEF_RefreshSonuc();   // Bunlari da Donem/Sezon luk yap.
+            //H.CF_RefreshSonuc();
+            //H.CEF_RefreshDnm18();
 
             // Bunlara gerek kalmadi
             /*

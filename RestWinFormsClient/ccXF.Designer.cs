@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ccXF));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.cCBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.cCBindingNavigator = new System.Windows.Forms.BindingNavigator();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.cCBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cCBindingSource = new System.Windows.Forms.BindingSource();
             this.dataSetGnl = new RestWinFormsClient.DataSetGnl();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -47,7 +46,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cCBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cCGridControl = new DevExpress.XtraGrid.GridControl();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
             this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +79,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colPwd = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cCBindingNavigator)).BeginInit();
@@ -107,7 +107,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(322, 199, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(713, 396);
+            this.layoutControl1.Size = new System.Drawing.Size(1067, 396);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -139,7 +139,7 @@
             this.cCBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.cCBindingNavigator.Name = "cCBindingNavigator";
             this.cCBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.cCBindingNavigator.Size = new System.Drawing.Size(689, 30);
+            this.cCBindingNavigator.Size = new System.Drawing.Size(1043, 30);
             this.cCBindingNavigator.TabIndex = 1;
             this.cCBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -256,7 +256,7 @@
             this.cCGridControl.Name = "cCGridControl";
             this.cCGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.SKLrepositoryItemImageComboBox1});
-            this.cCGridControl.Size = new System.Drawing.Size(689, 314);
+            this.cCGridControl.Size = new System.Drawing.Size(1043, 314);
             this.cCGridControl.TabIndex = 5;
             this.cCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -326,6 +326,7 @@
             this.colInfo,
             this.colIsRun,
             this.colIsRnkd,
+            this.colPwd,
             this.colTNSM,
             this.colTNDM,
             this.colTNSS,
@@ -430,7 +431,7 @@
             this.colTNSM.OptionsColumn.FixedWidth = true;
             this.colTNSM.ToolTip = "Takım Müsabaka Single Maç Sayısı";
             this.colTNSM.Visible = true;
-            this.colTNSM.VisibleIndex = 8;
+            this.colTNSM.VisibleIndex = 9;
             this.colTNSM.Width = 40;
             // 
             // colTNDM
@@ -442,7 +443,7 @@
             this.colTNDM.OptionsColumn.FixedWidth = true;
             this.colTNDM.ToolTip = "Takım Müsabaka Double Maç Sayısı";
             this.colTNDM.Visible = true;
-            this.colTNDM.VisibleIndex = 9;
+            this.colTNDM.VisibleIndex = 10;
             this.colTNDM.Width = 40;
             // 
             // colTNSS
@@ -454,7 +455,7 @@
             this.colTNSS.OptionsColumn.FixedWidth = true;
             this.colTNSS.ToolTip = "Takım Müsabaka Single Set Sayısı";
             this.colTNSS.Visible = true;
-            this.colTNSS.VisibleIndex = 10;
+            this.colTNSS.VisibleIndex = 11;
             this.colTNSS.Width = 40;
             // 
             // colTNDS
@@ -466,7 +467,7 @@
             this.colTNDS.OptionsColumn.FixedWidth = true;
             this.colTNDS.ToolTip = "Takım Müsabaka Double Set Sayısı";
             this.colTNDS.Visible = true;
-            this.colTNDS.VisibleIndex = 11;
+            this.colTNDS.VisibleIndex = 12;
             this.colTNDS.Width = 40;
             // 
             // colTSMK
@@ -478,7 +479,7 @@
             this.colTSMK.OptionsColumn.FixedWidth = true;
             this.colTSMK.ToolTip = "Takım Müsabaka Single Maç Skor";
             this.colTSMK.Visible = true;
-            this.colTSMK.VisibleIndex = 12;
+            this.colTSMK.VisibleIndex = 13;
             this.colTSMK.Width = 40;
             // 
             // colTDMK
@@ -490,7 +491,7 @@
             this.colTDMK.OptionsColumn.FixedWidth = true;
             this.colTDMK.ToolTip = "Takım Müsabaka Double Maç Skor";
             this.colTDMK.Visible = true;
-            this.colTDMK.VisibleIndex = 13;
+            this.colTDMK.VisibleIndex = 14;
             this.colTDMK.Width = 40;
             // 
             // colTEGP
@@ -502,7 +503,7 @@
             this.colTEGP.OptionsColumn.FixedWidth = true;
             this.colTEGP.ToolTip = "Takım Müsabaka Galibiyet Puanı";
             this.colTEGP.Visible = true;
-            this.colTEGP.VisibleIndex = 14;
+            this.colTEGP.VisibleIndex = 15;
             this.colTEGP.Width = 40;
             // 
             // colTEMP
@@ -514,7 +515,7 @@
             this.colTEMP.OptionsColumn.FixedWidth = true;
             this.colTEMP.ToolTip = "Takım Müsabaka Malubiyet Puanı";
             this.colTEMP.Visible = true;
-            this.colTEMP.VisibleIndex = 15;
+            this.colTEMP.VisibleIndex = 16;
             this.colTEMP.Width = 40;
             // 
             // colTEBP
@@ -526,7 +527,7 @@
             this.colTEBP.OptionsColumn.FixedWidth = true;
             this.colTEBP.ToolTip = "Takım Müsabaka Beraberlik Puanı";
             this.colTEBP.Visible = true;
-            this.colTEBP.VisibleIndex = 16;
+            this.colTEBP.VisibleIndex = 17;
             this.colTEBP.Width = 40;
             // 
             // colTEXP
@@ -538,7 +539,7 @@
             this.colTEXP.OptionsColumn.FixedWidth = true;
             this.colTEXP.ToolTip = "Takım Müsabaka Diskalifiye Puanı";
             this.colTEXP.Visible = true;
-            this.colTEXP.VisibleIndex = 17;
+            this.colTEXP.VisibleIndex = 18;
             this.colTEXP.Width = 40;
             // 
             // SKLrepositoryItemImageComboBox1
@@ -559,7 +560,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 364);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(689, 20);
+            this.statusStrip1.Size = new System.Drawing.Size(1043, 20);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -579,7 +580,7 @@
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(713, 396);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1067, 396);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -587,7 +588,7 @@
             this.layoutControlItem1.Control = this.statusStrip1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 352);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(693, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1047, 24);
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -597,7 +598,7 @@
             this.layoutControlItem3.Control = this.cCBindingNavigator;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(693, 34);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1047, 34);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -606,16 +607,24 @@
             this.layoutControlItem2.Control = this.cCGridControl;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(693, 318);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1047, 318);
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
+            // 
+            // colPwd
+            // 
+            this.colPwd.Caption = "Pwd";
+            this.colPwd.FieldName = "Pwd";
+            this.colPwd.Name = "colPwd";
+            this.colPwd.Visible = true;
+            this.colPwd.VisibleIndex = 8;
             // 
             // ccXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 396);
+            this.ClientSize = new System.Drawing.Size(1067, 396);
             this.Controls.Add(this.layoutControl1);
             this.Name = "ccXF";
             this.Text = "ccXF";
@@ -693,5 +702,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem createEventsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshSonAktiviteleriToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colPwd;
     }
 }

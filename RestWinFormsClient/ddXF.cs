@@ -29,6 +29,7 @@ namespace RestWinFormsClient
             ddGridControl.DataSource = null;
             dataSetGnl.CC.Rows.Clear();
             Task.Run(async () => { res = await dataSetGnl.DDFill(); }).Wait();
+            //dataSetGnl.DDFill().Wait();
             toolStripStatusLabel1.Text = res;
             ddGridControl.DataSource = ddBindingSource;
 

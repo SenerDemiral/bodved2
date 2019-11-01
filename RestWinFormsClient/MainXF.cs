@@ -39,6 +39,7 @@ namespace RestWinFormsClient
         public void FillTanimlar()
         {
             nor = 0;
+            string dnm = "";
 
             Task.Run(async () =>
             {
@@ -49,7 +50,7 @@ namespace RestWinFormsClient
                 dataSetGnl.CC.Rows.Clear();
                 dataSetGnl.CT.Rows.Clear();
 
-                await dataSetGnl.PPlookUp();
+                dnm = await dataSetGnl.PPlookUp();
                 await dataSetGnl.CCFill("", 0);
                 await dataSetGnl.CTFill("", 0);
 
@@ -57,7 +58,7 @@ namespace RestWinFormsClient
                 //InitLookups();
             }).ContinueWith((t) => {
                 
-                toolStripStatusLabel1.Text = $"Lookup recs read in {sw.ElapsedMilliseconds:n0} milisec [{sw.Elapsed}]";
+                toolStripStatusLabel1.Text = $"Lookup recs read in {sw.ElapsedMilliseconds:n0} milisec [{sw.Elapsed}] DNM:{dnm}";
             });
 
         }

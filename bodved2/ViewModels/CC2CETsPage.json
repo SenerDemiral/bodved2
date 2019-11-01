@@ -2,6 +2,11 @@
   "Html": "/Bodved/ViewModels/CC2CETsPage.html",
   "Hdr": "",
   "CCoNo": 0,
+  "DialogPage": {},
+  "DialogOpened": false,
+  "DialogOpenT$": 0,
+  "DialogCancelT$": false,
+  "IsYetkili": false,
 
   "CETs": [
     {
@@ -22,7 +27,11 @@
       "GCTAd": "",
       "Tarih": "",
       "Drm": "",
-      "Info": ""
+      "Info": "",
+
+      "OST$": 0,
+      "IsHOS": false,
+      "IsGOS": false
     }
   ]
 }

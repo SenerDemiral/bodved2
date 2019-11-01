@@ -315,3 +315,10 @@ button.edit {
     min-width: unset;
     margin:0;
 }
+
+[data-zero="0"] {
+    color: lightgray;
+}
+[data-SH="E"] {
+    color: red;
+}

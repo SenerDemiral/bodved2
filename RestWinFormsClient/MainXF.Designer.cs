@@ -502,7 +502,6 @@
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit CCrepositoryItemLookUpEdit;
         private System.Windows.Forms.BindingSource cCBindingSource;
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit CTrepositoryItemLookUpEdit;
-        private System.Windows.Forms.BindingSource cTBindingSource;
         private DevExpress.XtraNavBar.NavBarItem CCnavBarItem;
         private DevExpress.XtraNavBar.NavBarItem CETnavBarItem;
         private DevExpress.XtraNavBar.NavBarItem MACnavBarItem;
@@ -524,5 +523,6 @@
         private DevExpress.XtraNavBar.NavBarItem refreshDnmRunNavBarItem;
         private DevExpress.XtraNavBar.NavBarItem PPRDnavBarItem;
         private DevExpress.XtraNavBar.NavBarItem DDnavBarItem;
+        public System.Windows.Forms.BindingSource cTBindingSource;
     }
 }

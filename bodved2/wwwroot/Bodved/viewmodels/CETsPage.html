@@ -1,4 +1,4 @@
-﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
     <dom-bind>
@@ -17,6 +17,8 @@
                             <col style="width:4rem" />
                             <col style="width:var(--w-Team)" />
                             <col style="width:20rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
                         </colgroup>
                         <thead>
                             <tr>
@@ -36,6 +38,8 @@
                                     <td>[[item.Puan]]</td>
                                     <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
                                     <td class="colInfo">[[item.Info]]</td>
+                                    <td><a href="/bodved/CET2CETXs/[[item.CEToNo]]/[[item.HCToNo]]">HS</a></td>
+                                    <td><a href="/bodved/CET2CETXs/[[item.CEToNo]]/[[item.GCToNo]]">GS</a></td>
 
                                 </tr>
                             </template>

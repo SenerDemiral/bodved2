@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace RestWinFormsClient
 {
@@ -28,6 +29,9 @@ namespace RestWinFormsClient
             colGCT.ColumnEdit = Program.MF.CTrepositoryItemLookUpEdit;
             colTrh.ColumnEdit = Program.MF.TRHrepositoryItemDateEdit;
             colDrm.ColumnEdit = Program.MF.DRMrepositoryItemImageComboBox;
+
+            Program.MF.cTBindingSource.RemoveFilter();
+
         }
 
         private void cetXF_Load(object sender, EventArgs e)
@@ -41,6 +45,7 @@ namespace RestWinFormsClient
                 prm = CCRow.RowKey;
 
                 colCC.Visible = false;
+                Program.MF.cTBindingSource.Filter = $"CC = {CCRow.RowKey}";
             }
             else if (DDRow != null)
             {
@@ -121,6 +126,18 @@ namespace RestWinFormsClient
             frm.HCTAd = gridView1.GetFocusedRowCellDisplayText(colHCT);
             frm.GCTAd = gridView1.GetFocusedRowCellDisplayText(colGCT);
             frm.Show();
+        }
+
+        private void gridView1_ShownEditor(object sender, EventArgs e)
+        {
+            /*
+            ColumnView view = (ColumnView)sender;
+            if (view.FocusedColumn == colHCT)
+            {
+                LookUpEdit editor = (LookUpEdit)view.ActiveEditor;
+                string countryCode = Convert.ToString(view.GetFocusedRowCellValue("CountryCode"));
+                editor.Properties.DataSource = DataContext.GetCitiesByCountryCode(countryCode);
+            }*/
         }
     }
 }

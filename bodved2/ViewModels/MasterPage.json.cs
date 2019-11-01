@@ -7,6 +7,11 @@ namespace bodved2.ViewModels
 {
     partial class MasterPage : Json
     {
+        void Handle(Input.PwdDlgOpnT A)
+        {
+            IsPwdDlgOpnd = true;
+        }
+
         [MasterPage_json.Sgn]
         partial class SgnPartial : Json
         {

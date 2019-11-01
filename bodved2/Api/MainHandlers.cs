@@ -28,7 +28,7 @@ namespace bodved2.Api
                 //return master;
 
                 return Self.GET("/bodved/DDs");
-                return Self.GET("/");
+                //return Self.GET("/");
             });
 
             Handle.GET("/bodved", () =>
@@ -191,6 +191,28 @@ namespace bodved2.Api
                 if (!(master.CurrentPage is CTsPage))
                 {
                     master.CurrentPage = GetLauncherPage($"/bodved/partials/CETs/{cc}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
+            Handle.GET("/bodved/CET2CETXs/{?}/{?}", (ulong cet, ulong ct) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is CET2CETXsPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CET2CETXs/{cet}/{ct}");
+                    //(master.CurrentPage as CCsPage).Init();
+                }
+                return master;
+            });
+
+            Handle.GET("/bodved/CET2MACsInp/{?}", (ulong cet) =>
+            {
+                MasterPage master = GetMasterPageFromSession();
+                if (!(master.CurrentPage is CET2MACsInpPage))
+                {
+                    master.CurrentPage = GetLauncherPage($"/bodved/partials/CET2MACsInp/{cet}");
                     //(master.CurrentPage as CCsPage).Init();
                 }
                 return master;

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWinFormsClient", "RestW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestStarcounterServer", "RestStarcounterServer\RestStarcounterServer.csproj", "{19AE6CF1-66A0-41A1-AA50-026A82C208CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWinFormsClient2", "RestWinFormsClient2\RestWinFormsClient2.csproj", "{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,14 @@ Global
 		{19AE6CF1-66A0-41A1-AA50-026A82C208CC}.Release|Any CPU.ActiveCfg = Release|x64
 		{19AE6CF1-66A0-41A1-AA50-026A82C208CC}.Release|x64.ActiveCfg = Release|x64
 		{19AE6CF1-66A0-41A1-AA50-026A82C208CC}.Release|x64.Build.0 = Release|x64
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Debug|x64.ActiveCfg = Debug|x64
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Debug|x64.Build.0 = Debug|x64
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Release|x64.ActiveCfg = Release|Any CPU
+		{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

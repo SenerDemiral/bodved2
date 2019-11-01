@@ -139,6 +139,30 @@ namespace bodved2.Api
                 return page;
             });
 
+            Handle.GET("/bodved/partials/CET2CETXs/{?}/{?}", (ulong cetono, ulong ctono) =>
+            {
+                var page = new CET2CETXsPage();
+
+                CET cet = Db.FromId<CET>(cetono);
+                page.Hdr = $"{cet.CC.Ad} ► {cet.Trh:dd.MM.yy} ► Sıralama";
+                page.CEToNo = (long)cetono;
+                page.Data = null;
+                /*
+                CET cet = Db.FromId<CET>(cetono);
+                CT ct = Db.FromId<CT>(ctono);
+
+                page.Hdr = $"{cet.CC.Ad} ► {ct.Ad} {cet.Trh:dd.MM.yy} ► Sıralama";
+                page.CEToNo = (long)cetono;
+                page.CToNo = (long)ctono;
+                page.Data = null;
+
+                page.CET.Data = cet;
+                */
+                //page.CETXs.Data = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ? order by r.Idx", cet, ct);
+
+                return page;
+            });
+
             Handle.GET("/bodved/partials/CET2MACs/{?}", (ulong cet) =>
             {
                 var page = new CET2MACsPage();
@@ -149,6 +173,20 @@ namespace bodved2.Api
                 page.CET.Data = CET;
                 page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");
                 page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "D");
+                return page;
+            });
+
+            Handle.GET("/bodved/partials/CET2MACsInp/{?}", (ulong cet) =>
+            {
+                var page = new CET2MACsInpPage();
+                CET CET = Db.FromId<CET>(cet);
+
+                page.CEToNo = (long)cet;
+                page.Hdr = $"{CET.CC.Ad} ► Takım Maçları ► {CET.Trh:dd.MM.yy}";
+                page.Data = null;
+                //page.CET.Data = CET;
+                //page.Sngls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "S");
+                //page.Dbls.Data = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? and r.SoD = ? order by r.Idx", CET, "D");
                 return page;
             });
 

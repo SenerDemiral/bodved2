@@ -1,0 +1,64 @@
+<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <dom-bind>
+        <template is="dom-bind">
+            <div class="gridTbl">
+                <div class="gridTbl_header">
+                    <div>[[model.Hdr]] </div>
+                </div>
+                <div class="gridTbl_main">
+                    <div style="display:flex">
+                        <div style="flex:1">
+                            <input type="radio" name="OS" value="{{model.HOST$::click}}" onmousedown="++this.value;">Home
+                        </div>
+                        <div style="flex:1">
+                            <input type="radio" name="OS" value="{{model.GOST$::click}}" onmousedown="++this.value;">Guest
+                        </div>
+                        <div style="flex:1">
+                            <button style="height:auto;padding:unset" value="{{model.CancelT$::click}}" onmousedown="++this.value;">Çık</button>
+                        </div>
+                    </div>
+                    <table id="tbl" class="sngLine" on-click="MyFnc">
+                        <thead>
+                            <tr>
+                                <th>R#</th>
+                                <th>G#</th>
+                                <th>Oyuncu</th>
+                                <th>S#</th>
+                                <th>D#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template is="dom-repeat" items="[[model.CETXs]]">
+                                <tr>
+                                    <td>[[item.Idx]]</td>
+                                    <td data-zero$="[[item.Idx2]]">[[item.Idx2]]</td>
+                                    <td class="txtLeft" data-SH$="[[item.SH]]">[[item.PPAd]]</td>
+                                    <td><input type="text" value="{{item.SngIdxS$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" /></td>
+                                    <td><input type="text" value="{{item.DblIdxS$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" /></td>
+                                    <!--<td><input type="number" step="1" min="0" max="[[model.SngMacSay]]" value="{{item.SngIdx$::change}}" data-zero$="[[item.SngIdx$]]" style="height:inherit;width:3rem" /></td>-->
+                                    <!--<td><input type="number" step="1" min="0" max="[[model.DblMacSay]]" value="{{item.DblIdx$::change}}" data-zero$="[[item.DblIdx$]]" style="height:inherit;width:3rem" /></td>-->
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <div style="display:flex">
+                        <template is="dom-if" if="[[!model.IsOS]]">
+                            <button value="{{model.CreateT$::click}}" onmousedown="++this.value;">Yarat</button>
+                            <button value="{{model.SaveT$::click}}" onmousedown="++this.value;">Kaydet</button>
+                            <button value="{{model.ConfirmT$::click}}" onmousedown="++this.value;">Onayla</button>
+                        </template>
+                    </div>
+                    <div style="color:red">[[model.Hata]]</div>
+                    <div style="display:flex">
+                        <template is="dom-if" if="[[!model.IsML]]">
+                            <button style="flex:1" value="{{model.MacCreateT$::click}}" onmousedown="++this.value;">Maç Listesi Oluştur</button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </dom-bind>
+
+</template>

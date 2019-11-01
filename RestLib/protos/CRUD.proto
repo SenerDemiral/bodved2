@@ -50,6 +50,9 @@ service CRUDs {
   rpc PPRDUpdate (PPRDProxy) returns (PPRDProxy) {}
 
   rpc PPlookUp (QryProxy) returns (stream PPlookUpProxy) {}
+
+  rpc Lgn (LgnProxy) returns (LgnProxy) {}
+
 }
 
 message ActionProxy {
@@ -62,6 +65,12 @@ message ActionProxy {
 message QryProxy {
 	string query = 1;
 	string param = 2;
+}
+
+message LgnProxy {
+	string id = 1;	
+	string pwd = 2;
+	uint64 ccOno = 3;
 }
 
 
@@ -161,6 +170,7 @@ message CCProxy {
 	int32 TEBP = 20;
 	int32 TEXP = 21;
 	
+	string Pwd = 22;
 }
 
 // Competition Teams

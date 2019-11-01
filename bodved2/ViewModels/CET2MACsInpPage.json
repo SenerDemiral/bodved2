@@ -1,0 +1,42 @@
+{
+  "Html": "/bodved/viewmodels/CET2MACsInpPage.html",
+
+  "Hdr": "",
+  "CEToNo": 0,
+  "HCTAd": "",
+  "GCTAd": "",
+  "IsEdit": false,
+
+  "Hata": "",
+  "SaveT$": 0,
+  "ConfirmT$": 0,
+
+  "MACs": [
+    {
+      "MACoNo": 0,
+      "SoD": "",
+      "Idx": 0,
+
+      "HPPAd": "",
+      "GPPAd": "",
+
+      "HSW": 0,
+      "GSW": 0,
+
+      "H1W$": 0,
+      "G1W$": 0,
+      "H2W$": 0,
+      "G2W$": 0,
+      "H3W$": 0,
+      "G3W$": 0,
+      "H4W$": 0,
+      "G4W$": 0,
+      "H5W$": 0,
+      "G5W$": 0,
+      "H6W$": 0,
+      "G6W$": 0,
+      "H7W$": 0,
+      "G7W$": 0
+    }
+  ]
+}

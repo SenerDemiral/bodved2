@@ -11,10 +11,11 @@ namespace RestStarcounterServer
 {
     class Program
     {
-        const int Port = 6000; //50055;
+        const int Port = 50055; //6000; //50055;
 
         static void Main()
         {
+            /*
             // DROPs
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "PPRD_Idx").FirstOrDefault() != null)
                 Db.SQL("DROP INDEX PPRD_Idx ON PPRD");
@@ -93,7 +94,7 @@ namespace RestStarcounterServer
                 Db.SQL("CREATE INDEX CEF_hPP ON CEF (HPP)");
             if (Db.SQL("SELECT i FROM Starcounter.Metadata.\"Index\" i WHERE Name = ?", "CEF_gPP").FirstOrDefault() == null)
                 Db.SQL("CREATE INDEX CEF_gPP ON CEF (GPP)");
-
+*/
             /*
             Hook<CC>.CommitUpdate += (p, obj) =>
             {
@@ -136,23 +137,24 @@ namespace RestStarcounterServer
 
             //HBR.BackupDB();
 
+
             Server server = new Server
             {
                 Services = { CRUDs.BindService(new CRUDsImpl()) },
-                //Ports = { new ServerPort("127.0.0.1", Port, ServerCredentials.Insecure) }
-                Ports = { new ServerPort("217.160.13.102", Port, ServerCredentials.Insecure) }
+                //Ports = { new ServerPort("localhost", 50055, ServerCredentials.Insecure) }
+                Ports = { new ServerPort("217.160.13.102", 6000, ServerCredentials.Insecure) }
             };
             server.Start();
+            Console.WriteLine("Rest server listening on port " + 6000);
 
-            Console.WriteLine("Rest server listening on port " + Port);
-
+            /*
             Handle.GET("/RestStarcounterServer", () =>
             {
                 Task.Run(async () => { await server.ShutdownAsync(); }).Wait();
                 //server.ShutdownAsync();
                 return "ShutDown gRPC Server OK";
             });
-
+            */
 
         }
     }
