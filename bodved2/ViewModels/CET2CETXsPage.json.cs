@@ -29,8 +29,9 @@ namespace bodved2.ViewModels
 
         private void Read()
         {
-            if (!IsYetkili)
-                return;
+            // Okusun ama islem yapamasin
+            //if (!IsYetkili)   
+            //    return;
 
             CET cet = Db.FromId<CET>((ulong)CEToNo);
             if (H_G == "H")
@@ -132,6 +133,7 @@ namespace bodved2.ViewModels
         public void Handle(Input.SaveT Action)
         {
             Save();
+            Read();
         }
         public void Save()
         {
@@ -165,7 +167,6 @@ namespace bodved2.ViewModels
                     cetx.DblIdx = (int)org.DblIdx;
                 }
             });
-            Read();
         }
 
         public void Handle(Input.MacCreateT Action)
@@ -193,6 +194,7 @@ namespace bodved2.ViewModels
                     else
                         cet.IsGOS = true;
                 });
+                Read();
             }
             else
             {

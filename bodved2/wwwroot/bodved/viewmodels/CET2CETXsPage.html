@@ -44,10 +44,12 @@
                         </tbody>
                     </table>
                     <div style="display:flex">
-                        <template is="dom-if" if="[[!model.IsOS]]">
-                            <button value="{{model.CreateT$::click}}" onmousedown="++this.value;">Yarat</button>
-                            <button value="{{model.SaveT$::click}}" onmousedown="++this.value;">Kaydet</button>
-                            <button value="{{model.ConfirmT$::click}}" onmousedown="++this.value;">Onayla</button>
+                        <template is="dom-if" if="[[model.IsYetkili]]">
+                            <template is="dom-if" if="[[!model.IsOS]]">
+                                <button value="{{model.CreateT$::click}}" onmousedown="++this.value;">Yarat</button>
+                                <button value="{{model.SaveT$::click}}" onmousedown="++this.value;">Kaydet</button>
+                                <button value="{{model.ConfirmT$::click}}" onmousedown="++this.value;">Onayla</button>
+                            </template>
                         </template>
                     </div>
                     <div style="color:red">[[model.Hata]]</div>

@@ -12,6 +12,7 @@
                         <colgroup>
                             <col style="width:2rem" />
                             <col style="width:2rem" />
+                            <col style="width:2rem" />
                             <col style="width:10rem" />
                             <col style="width:10rem" />
                             <col style="width:4rem" />
@@ -22,6 +23,7 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>Drm</th>
                                 <th>S/D</th>
                                 <th>#</th>
                                 <th>[[model.HCTAd]]</th>
@@ -36,6 +38,7 @@
                         <tbody>
                             <template is="dom-repeat" items="[[model.MACs]]">
                                 <tr>
+                                    <td>[[item.Drm]]</td>
                                     <td>[[item.SoD]]</td>
                                     <td>[[item.Idx]]</td>
                                     <td class="txtLeft">[[item.HPPAd]]</td>
