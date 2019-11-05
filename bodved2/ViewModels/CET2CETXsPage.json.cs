@@ -22,6 +22,8 @@ namespace bodved2.ViewModels
             if (!string.IsNullOrEmpty(cet.CC.Pwd) && mp.Pwd == cet.CC.Pwd)
                 IsYetkili = true;
 
+            //IsYetkili = true;   // DENEME
+
             //Read();
         }
 
@@ -56,7 +58,7 @@ namespace bodved2.ViewModels
 
             var cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ? order by r.SngIdx, r.Idx", cet, ct)
                 .OrderBy(x => { int i = x.Idx2; if (i == 0) i = 99; return i; });
-            int si = 0, i2 = 0;
+
             CETXs.Clear();
             foreach (var cetx in cetxs)
             {
@@ -111,12 +113,20 @@ namespace bodved2.ViewModels
 
         public void Handle(Input.CancelT Action)
         {
-            if (this.Parent is CC2CETsPage)
-            {
-                var p = this.Parent as CC2CETsPage;
-                p.DialogOpened = false;
-                p.DialogPage = null;
-            }
+                if (this.Parent is CC2CETsPage prnt)
+                {
+                    prnt.DialogOpened = false;
+                    prnt.DialogPage = null;
+                }
+                else if (this.Parent is CurEventsPage prnt2)
+                {
+                    prnt2.DialogOpened = false;
+                    prnt2.DialogPage = null;
+                }
+
+
+                //p.DialogOpened = false;
+                //p.DialogPage = null;
         }
 
         public void Handle(Input.SaveT Action)

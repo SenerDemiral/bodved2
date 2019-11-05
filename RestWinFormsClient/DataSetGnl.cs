@@ -163,7 +163,7 @@ namespace RestWinFormsClient
             int nor = 0;
             Stopwatch sw = new Stopwatch();
             var ct = new CancellationToken();
-            
+
 
             dt.BeginLoadData();
             sw.Start();

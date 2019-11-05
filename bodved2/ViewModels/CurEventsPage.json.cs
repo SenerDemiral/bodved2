@@ -41,7 +41,11 @@ namespace bodved2.ViewModels
                     HPW = cet.HPW,
                     GPW = cet.GPW,
                     Puan = cet.Puan,
-                    Info = cet.Info
+                    Info = cet.Info,
+
+                    IsHOS = cet.IsHOS,
+                    IsGOS = cet.IsGOS
+
                 };
 
                 if (rde.Tarih != tarih)
@@ -51,6 +55,17 @@ namespace bodved2.ViewModels
                 }
 
                 CETs.Add(rde);
+            }
+        }
+
+        [CurEventsPage_json.CETs]
+        public partial class CETsElementJson
+        {
+            public void Handle(Input.OST Action)
+            {
+                var p = this.Parent.Parent as CurEventsPage;
+                p.DialogPage = Self.GET<Json>($"/bodved/partials/CET2CETXs/{this.CEToNo}/1");
+                p.DialogOpened = true;
             }
         }
 

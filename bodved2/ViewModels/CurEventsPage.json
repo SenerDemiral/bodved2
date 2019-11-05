@@ -2,6 +2,12 @@
   "Html": "/Bodved/ViewModels/CurEventsPage.html",
   "Hdr": "",
 
+  "DialogPage": {},
+  "DialogOpened": false,
+  "DialogOpenT$": 0,
+  "DialogCancelT$": false,
+  "IsYetkili": false,
+
   "CETs": [
     {
       "Break": false,
@@ -22,7 +28,12 @@
       "GCTAd": "",
       "Tarih": "",
       "Drm": "",
-      "Info": ""
+      "Info": "",
+
+      "OST$": 0,
+      "IsHOS": false,
+      "IsGOS": false
+
     }
   ]
 }

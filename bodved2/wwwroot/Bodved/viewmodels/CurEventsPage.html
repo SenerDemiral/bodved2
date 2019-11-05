@@ -1,8 +1,20 @@
-﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
     <dom-bind>
         <template is="dom-bind">
+            <paper-dialog opened="[[model.DialogOpened]]" modal="true">
+                <div>
+                    <starcounter-include view-model="{{model.DialogPage}}"></starcounter-include>
+                </div>
+                <div class="mdfRecWrap">
+                    <div class="mdfRecAction">
+                        <button value="{{model.Sgn.SignT$::click}}" onmousedown="++this.value">OK</button>
+                        <button value="{{model.DialogCancelT$::click}}" onmousedown="++this.value">Cancel</button>
+                    </div>
+                </div>
+            </paper-dialog>
+
             <div class="gridTbl">
                 <div class="gridTbl_header">
                     <div>[[model.Hdr]]</div>
@@ -16,6 +28,11 @@
                             <col style="width:4rem" />
                             <col style="width:10rem" />
                             <col style="width:20rem" />
+
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
+                            <col style="width:3rem" />
                         </colgroup>
                         <thead>
                             <tr>
@@ -40,6 +57,12 @@
                                     <td class="colLnk"><a href="/bodved/CK/[[item.CCoNo]]">[[item.Puan]]</a></td>
                                     <td class="txtLeft" data-WL$="[[item.GWL]]"><a href="/bodved/CTPs/[[item.GCToNo]]">[[item.GCTAd]]</a></td>
                                     <td class="colInfo">[[item.Info]]</td>
+
+                                    <td><button value="{{item.OST$::click}}" onmousedown="++this.value;" style="min-width:0;height:auto;padding:0px 4px">OS</button></td>
+                                    <td><input type="checkbox" checked="{{item.IsHOS}}" disabled></td>
+                                    <td><input type="checkbox" checked="{{item.IsGOS}}" disabled></td>
+                                    <td><a href="/bodved/CET2MACsInp/[[item.CEToNo]]">MG</a></td>
+
                                 </tr>
                             </template>
                         </tbody>

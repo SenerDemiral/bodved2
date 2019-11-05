@@ -201,6 +201,8 @@ message CTProxy {
 	int32 EB  = 21;
 	int32 EX  = 22;
 	int32 PW  = 23;
+
+	string Pwd = 24;
 }
 
 // Competition Team Players

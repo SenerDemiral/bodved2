@@ -222,6 +222,7 @@ namespace BDB2
 
         public int Idx { get; set; }
         public bool IsRun { get; set; }     // Aktif oynuyor mu?
+        public string Pwd { get; set; }     // Musabaka/Mac Sonuclari girebilecek
 
         //--------
         public int SMT => SMW + SML;        // Single Mac Total, Win, Lost

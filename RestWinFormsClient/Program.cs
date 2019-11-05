@@ -29,9 +29,9 @@ namespace RestWinFormsClient
 
     public static class grpcService
     {
-        public static Channel channel = new Channel($"localhost:50055", ChannelCredentials.Insecure);
+        //public static Channel channel = new Channel($"localhost:50055", ChannelCredentials.Insecure);
        
-        //public static Channel channel = new Channel($"217.160.13.102:6000", ChannelCredentials.Insecure);
+        public static Channel channel = new Channel($"217.160.13.102:6000", ChannelCredentials.Insecure);
 
         public static CRUDs.CRUDsClient ClientCRUDs = new CRUDs.CRUDsClient(channel);
     }
