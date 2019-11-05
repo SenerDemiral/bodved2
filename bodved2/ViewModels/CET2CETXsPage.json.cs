@@ -79,7 +79,7 @@ namespace bodved2.ViewModels
                 if (abc.SngIdx != 0)
                 {
                     if ((abc.Idx2 - 2) > abc.SngIdx || (abc.Idx2 + 2) < abc.SngIdx)
-                        abc.SH = "E";
+                        abc.SH = "E";   // SiralamaHatasi bildirim
                 }
                 CETXs.Add(abc);
             }

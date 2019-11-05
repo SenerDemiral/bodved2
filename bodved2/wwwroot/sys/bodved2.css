@@ -322,3 +322,7 @@ button.edit {
 [data-SH="E"] {
     color: red;
 }
+
+[data-Idx="88"] {
+    text-decoration: line-through;
+}

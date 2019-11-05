@@ -789,9 +789,13 @@ namespace BDB2
     public class DictDblCETX
     {
         public ulong HPP1oNo;
+        public int HPP1Idx;
         public ulong HPP2oNo;
+        public int HPP2Idx;
         public ulong GPP1oNo;
+        public int GPP1Idx;
         public ulong GPP2oNo;
+        public int GPP2Idx;
     }
 
 }

@@ -252,6 +252,11 @@ message CETProxy {
 	int32 GKW  = 21;
 	int32 HPW  = 22;
 	int32 GPW  = 23;
+
+	bool IsHOS = 24;
+	bool IsGOS = 25;
+	bool IsMLY = 26;
+
 }
 
 // Competition Ferdi

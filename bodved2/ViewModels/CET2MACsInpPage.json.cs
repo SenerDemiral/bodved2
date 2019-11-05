@@ -27,6 +27,7 @@ namespace bodved2.ViewModels
                 MACsElementJson abc = new MACsElementJson
                 {
                     MACoNo = (long)mac.MACoNo,
+                    Drm = mac.Drm,
                     Idx = mac.Idx,
                     SoD = mac.SoD,
 
@@ -79,18 +80,33 @@ namespace bodved2.ViewModels
                 foreach (var mac in MACs)
                 {
                     MAC = Db.FromId<MAC>((ulong)mac.MACoNo);
-                    MAC.H1W = (int)mac.H1W;
-                    MAC.H2W = (int)mac.H2W;
-                    MAC.H3W = (int)mac.H3W;
-                    MAC.H4W = (int)mac.H4W;
-                    MAC.H5W = (int)mac.H5W;
-                    MAC.G1W = (int)mac.G1W;
-                    MAC.G2W = (int)mac.G2W;
-                    MAC.G3W = (int)mac.G3W;
-                    MAC.G4W = (int)mac.G4W;
-                    MAC.G5W = (int)mac.G5W;
-                    if (ok)
-                        MAC.Drm = "OK";
+                    if (mac.SoD == "D" || mac.Drm == "OK")  // Single MacDrm OK degilse yapma cunki Idx 88 lerin oynamasi yasak, Rnk belli degil
+                    {
+                        MAC.H1W = (int)mac.H1W;
+                        MAC.H2W = (int)mac.H2W;
+                        MAC.H3W = (int)mac.H3W;
+                        MAC.H4W = (int)mac.H4W;
+                        MAC.H5W = (int)mac.H5W;
+                        MAC.G1W = (int)mac.G1W;
+                        MAC.G2W = (int)mac.G2W;
+                        MAC.G3W = (int)mac.G3W;
+                        MAC.G4W = (int)mac.G4W;
+                        MAC.G5W = (int)mac.G5W;
+                    }
+                    if (mac.Drm == "hX")    // Home Diskalifiye
+                    {
+                        MAC.G1W = 11;
+                        MAC.G2W = 11;
+                        MAC.G3W = 11;
+                    }
+                    if (mac.Drm == "gX")    // Guest Diskalifiye
+                    {
+                        MAC.H1W = 11;
+                        MAC.H2W = 11;
+                        MAC.H3W = 11;
+                    }
+                    // mac.Drm == "D" ise yani ikiside Diskalifiye ise zaten sonuclari yazmiyacak ve sifir kalacak
+                    H.MAC_RefreshSonuc(MAC);
                 }
                 if (ok)
                 {
@@ -124,7 +140,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     G1W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         G1W = 11;
@@ -139,7 +155,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     H1W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         H1W = 11;
@@ -155,7 +171,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     G2W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         G2W = 11;
@@ -170,7 +186,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     H2W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         H2W = 11;
@@ -186,7 +202,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     G3W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         G3W = 11;
@@ -201,7 +217,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     H3W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         H3W = 11;
@@ -217,7 +233,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     G4W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         G4W = 11;
@@ -232,7 +248,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     H4W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         H4W = 11;
@@ -248,7 +264,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     G5W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         G5W = 11;
@@ -263,7 +279,7 @@ namespace bodved2.ViewModels
                     A.Value = 0;
                     H5W = 11;
                 }
-                else
+                else if (A.Value > 0)
                 {
                     if (A.Value <= 9)
                         H5W = 11;

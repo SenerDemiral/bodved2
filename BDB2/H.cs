@@ -360,7 +360,7 @@ namespace BDB2
                         gcetx = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ? and r.SngIdx = ?", cet, "G", cetx.SngIdx).FirstOrDefault();
                         if (gcetx != null)
                         {
-                            new MAC
+                            var newMac = new MAC
                             {
                                 CC = cet.CC,
                                 CEB = cet,
@@ -369,7 +369,19 @@ namespace BDB2
                                 Idx = cetx.SngIdx,
                                 HPP1 = cetx.PP,
                                 GPP1 = gcetx.PP,
+                                Drm = "OK"
                             };
+
+                            // RnkSon = 0 ise Idx = 88 yapiliyor ve oynayamaz/diskalifiye
+                            if (cetx.Idx == 88)
+                                newMac.Drm = "hX";
+                            if (gcetx.Idx == 88)
+                            {
+                                if (newMac.Drm == "hX")
+                                    newMac.Drm = "X";
+                                else
+                                   newMac.Drm = "gX";
+                            }
                         }
                     }
                 }
@@ -387,11 +399,13 @@ namespace BDB2
                         if (first)
                         {
                             dic[cetx.DblIdx] = new DictDblCETX { HPP1oNo = cetx.PPoNo };
+                            dic[cetx.DblIdx].HPP1Idx = cetx.Idx;
                             first = false;
                         }
                         else
                         {
                             dic[cetx.DblIdx].HPP2oNo = cetx.PPoNo;
+                            dic[cetx.DblIdx].HPP2Idx = cetx.Idx;
                             first = true;
                         }
                     }
@@ -405,11 +419,13 @@ namespace BDB2
                         if (first)
                         {
                             dic[cetx.DblIdx].GPP1oNo = cetx.PPoNo;
+                            dic[cetx.DblIdx].GPP1Idx = cetx.Idx;
                             first = false;
                         }
                         else
                         {
                             dic[cetx.DblIdx].GPP2oNo = cetx.PPoNo;
+                            dic[cetx.DblIdx].GPP2Idx = cetx.Idx;
                             first = true;
                         }
                     }
@@ -428,7 +444,19 @@ namespace BDB2
                         HPP2 = Db.FromId<PP>(pair.Value.HPP2oNo),
                         GPP1 = Db.FromId<PP>(pair.Value.GPP1oNo),
                         GPP2 = Db.FromId<PP>(pair.Value.GPP2oNo),
+                        Drm = "OK"
                     };
+                    if (pair.Value.HPP1Idx == 88 || pair.Value.HPP2Idx == 88)
+                    {
+                        mac.Drm = "hX";
+                    }
+                    if (pair.Value.GPP1Idx == 88 || pair.Value.GPP2Idx == 88)
+                    {
+                        if (mac.Drm == "hX")
+                            mac.Drm = "X";
+                        else
+                            mac.Drm = "gX";
+                    }
                 }
 
                 cet.IsMLY = true;
@@ -452,7 +480,7 @@ namespace BDB2
                     var ctps = Db.SQL<CTP>("select r from CTP r where r.CT = ? order by r.Idx", ct);
                     foreach(var ctp in ctps)
                     {
-                        if (ctp.Idx < 99)   // 99 olanlar cikti/ayrildi
+                        if (ctp.Idx < 99)   // 99 olanlar cikti/ayrildi, 88 olanlarin Rnkleri belli degil oynayamaz!
                         {
                             new CETX
                             {
@@ -1701,11 +1729,17 @@ namespace BDB2
                 }
                 else if (cet.Drm == "hD")  // Home Diskalifiye
                 {
-
+                    hKW = 0;
+                    gKW = cet.CC.TNSM * TSMK + cet.CC.TNDM * TDMK;
+                    hPW = TEXP;
+                    gPW = TEGP;
                 }
                 else if (cet.Drm == "gD")  // Guest Diskalifiye
                 {
-
+                    hKW = cet.CC.TNSM * TSMK + cet.CC.TNDM * TDMK;
+                    gKW = 0;
+                    hPW = TEGP;
+                    gPW = TEXP;
                 }
 
                 // Update CET
@@ -1862,17 +1896,23 @@ namespace BDB2
                 else if (hSW < gSW)
                     gMW++;
             }
-            else if (mac.Drm == "hX")   // Maca Cıkmadı 
+            else if (mac.Drm == "hX" || mac.Drm == "hD")   // Maca Cıkmadı/Diskalifiye
             {
                 hMX = 1;
+
+                hSW = 0;
                 hMW = 0;
                 gMW = 1;
+                gSW = 3;
             }
-            else if (mac.Drm == "gX")
+            else if (mac.Drm == "gX" || mac.Drm == "gD")
             {
                 gMX = 1;
+
                 hMW = 1;
+                hSW = 3;
                 gMW = 0;
+                gSW = 0;
             }
             else if (mac.Drm == "hH")   // Sıralama Hatası (Set sonuclari aynen kaliyor)
             {
@@ -1880,14 +1920,14 @@ namespace BDB2
                 hMW = 0;
                 gMW = 1;
                 hSW = 0;
-                gSW = 0;
+                gSW = 3;
             }
             else if (mac.Drm == "gH")
             {
                 gMX = 0;
                 hMW = 1;
                 gMW = 0;
-                hSW = 0;
+                hSW = 3;
                 gSW = 0;
             }
 

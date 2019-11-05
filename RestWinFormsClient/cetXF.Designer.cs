@@ -83,6 +83,9 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colIsHOS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsGOS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsMLY = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cETBindingNavigator)).BeginInit();
@@ -160,7 +163,7 @@
             this.cETBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.cETBindingNavigator.Name = "cETBindingNavigator";
             this.cETBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.cETBindingNavigator.Size = new System.Drawing.Size(831, 30);
+            this.cETBindingNavigator.Size = new System.Drawing.Size(937, 30);
             this.cETBindingNavigator.TabIndex = 0;
             this.cETBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -267,7 +270,7 @@
             this.cETGridControl.Name = "cETGridControl";
             this.cETGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.DRMrepositoryItemImageComboBox});
-            this.cETGridControl.Size = new System.Drawing.Size(831, 261);
+            this.cETGridControl.Size = new System.Drawing.Size(937, 261);
             this.cETGridControl.TabIndex = 2;
             this.cETGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -310,7 +313,10 @@
             this.colHKW,
             this.colGKW,
             this.colHPW,
-            this.colGPW});
+            this.colGPW,
+            this.colIsHOS,
+            this.colIsGOS,
+            this.colIsMLY});
             gridFormatRule1.Column = this.colHCT;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -630,7 +636,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(855, 343);
+            this.layoutControl1.Size = new System.Drawing.Size(961, 343);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -642,7 +648,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(12, 311);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(831, 20);
+            this.statusStrip1.Size = new System.Drawing.Size(937, 20);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -662,7 +668,7 @@
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(855, 343);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(961, 343);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -670,7 +676,7 @@
             this.layoutControlItem1.Control = this.cETGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(835, 265);
+            this.layoutControlItem1.Size = new System.Drawing.Size(941, 265);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -679,7 +685,7 @@
             this.layoutControlItem2.Control = this.cETBindingNavigator;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(835, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(941, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -688,15 +694,39 @@
             this.layoutControlItem3.Control = this.statusStrip1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 299);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(835, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(941, 24);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // colIsHOS
+            // 
+            this.colIsHOS.FieldName = "IsHOS";
+            this.colIsHOS.Name = "colIsHOS";
+            this.colIsHOS.Visible = true;
+            this.colIsHOS.VisibleIndex = 11;
+            this.colIsHOS.Width = 51;
+            // 
+            // colIsGOS
+            // 
+            this.colIsGOS.FieldName = "IsGOS";
+            this.colIsGOS.Name = "colIsGOS";
+            this.colIsGOS.Visible = true;
+            this.colIsGOS.VisibleIndex = 12;
+            this.colIsGOS.Width = 48;
+            // 
+            // colIsMLY
+            // 
+            this.colIsMLY.FieldName = "IsMLY";
+            this.colIsMLY.Name = "colIsMLY";
+            this.colIsMLY.Visible = true;
+            this.colIsMLY.VisibleIndex = 13;
+            this.colIsMLY.Width = 47;
             // 
             // cetXF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 343);
+            this.ClientSize = new System.Drawing.Size(961, 343);
             this.Controls.Add(this.layoutControl1);
             this.Name = "cetXF";
             this.Text = "cetXF";
@@ -771,5 +801,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox DRMrepositoryItemImageComboBox;
         private DevExpress.XtraGrid.Columns.GridColumn colHKW;
         private DevExpress.XtraGrid.Columns.GridColumn colGKW;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsHOS;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsGOS;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsMLY;
     }
 }

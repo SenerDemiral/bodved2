@@ -2795,6 +2795,12 @@ namespace RestWinFormsClient {
             
             private global::System.Data.DataColumn columnGPW;
             
+            private global::System.Data.DataColumn columnIsHOS;
+            
+            private global::System.Data.DataColumn columnIsGOS;
+            
+            private global::System.Data.DataColumn columnIsMLY;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CETDataTable() {
@@ -2990,6 +2996,30 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IsHOSColumn {
+                get {
+                    return this.columnIsHOS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IsGOSColumn {
+                get {
+                    return this.columnIsGOS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IsMLYColumn {
+                get {
+                    return this.columnIsMLY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3045,7 +3075,10 @@ namespace RestWinFormsClient {
                         int HKW, 
                         int GKW, 
                         int HPW, 
-                        int GPW) {
+                        int GPW, 
+                        bool IsHOS, 
+                        bool IsGOS, 
+                        bool IsMLY) {
                 CETRow rowCETRow = ((CETRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowKey,
@@ -3067,7 +3100,10 @@ namespace RestWinFormsClient {
                         HKW,
                         GKW,
                         HPW,
-                        GPW};
+                        GPW,
+                        IsHOS,
+                        IsGOS,
+                        IsMLY};
                 rowCETRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCETRow);
                 return rowCETRow;
@@ -3117,6 +3153,9 @@ namespace RestWinFormsClient {
                 this.columnGKW = base.Columns["GKW"];
                 this.columnHPW = base.Columns["HPW"];
                 this.columnGPW = base.Columns["GPW"];
+                this.columnIsHOS = base.Columns["IsHOS"];
+                this.columnIsGOS = base.Columns["IsGOS"];
+                this.columnIsMLY = base.Columns["IsMLY"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3162,6 +3201,12 @@ namespace RestWinFormsClient {
                 base.Columns.Add(this.columnHPW);
                 this.columnGPW = new global::System.Data.DataColumn("GPW", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGPW);
+                this.columnIsHOS = new global::System.Data.DataColumn("IsHOS", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsHOS);
+                this.columnIsGOS = new global::System.Data.DataColumn("IsGOS", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsGOS);
+                this.columnIsMLY = new global::System.Data.DataColumn("IsMLY", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsMLY);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnRowKey}, true));
                 this.columnRowKey.AllowDBNull = false;
@@ -9047,6 +9092,54 @@ namespace RestWinFormsClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsHOS {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCET.IsHOSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsHOS\' in table \'CET\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCET.IsHOSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsGOS {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCET.IsGOSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsGOS\' in table \'CET\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCET.IsGOSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMLY {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCET.IsMLYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsMLY\' in table \'CET\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCET.IsMLYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCCNull() {
                 return this.IsNull(this.tableCET.CCColumn);
             }
@@ -9271,6 +9364,42 @@ namespace RestWinFormsClient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetGPWNull() {
                 this[this.tableCET.GPWColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIsHOSNull() {
+                return this.IsNull(this.tableCET.IsHOSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIsHOSNull() {
+                this[this.tableCET.IsHOSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIsGOSNull() {
+                return this.IsNull(this.tableCET.IsGOSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIsGOSNull() {
+                this[this.tableCET.IsGOSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIsMLYNull() {
+                return this.IsNull(this.tableCET.IsMLYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIsMLYNull() {
+                this[this.tableCET.IsMLYColumn] = global::System.Convert.DBNull;
             }
         }
         
