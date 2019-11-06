@@ -26,7 +26,7 @@ namespace bodved2.ViewModels
         void Read()
         {
             CET cet = Db.FromId<CET>((ulong)CEToNo);
-            var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? order by r.SoD DESC, r.Idx DESC", cet);
+            var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? order by r.SoD DESC, r.Idx", cet);
 
             MACs.Clear();
             string SoD = "S";
