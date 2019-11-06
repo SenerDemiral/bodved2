@@ -516,6 +516,8 @@ namespace BDB2
 
             Db.TransactAsync(() =>
             {
+                Db.SQL("delete from CETX where CET = ? and H_G = ?", cet, H_G);
+
                 var cetx = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ?", cet, H_G).FirstOrDefault();
                 if (cetx == null)   // Kayit yok insert
                 {
