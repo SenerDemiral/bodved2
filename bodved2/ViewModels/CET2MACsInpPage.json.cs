@@ -20,8 +20,16 @@ namespace bodved2.ViewModels
                 if (!string.IsNullOrEmpty(cet.CC.Pwd) && mp.Pwd == cet.CC.Pwd)
                     IsEdit = true;
             }
-            var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? order by r.SoD DESC, r.Idx", cet);
+            Read();
+        }
 
+        void Read()
+        {
+            CET cet = Db.FromId<CET>((ulong)CEToNo);
+            var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? order by r.SoD DESC, r.Idx DESC", cet);
+
+            MACs.Clear();
+            string SoD = "S";
             foreach (var mac in macs)
             {
                 MACsElementJson abc = new MACsElementJson
@@ -36,34 +44,44 @@ namespace bodved2.ViewModels
 
                     HSW = mac.HSW,
                     GSW = mac.GSW,
+                    HWL = mac.HWL,
+                    GWL = mac.GWL,
 
-                    H1W = mac.H1W,
-                    G1W = mac.G1W,
-                    H2W = mac.H2W,
-                    G2W = mac.G2W,
-                    H3W = mac.H3W,
-                    G3W = mac.G3W,
-                    H4W = mac.H4W,
-                    G4W = mac.G4W,
-                    H5W = mac.H5W,
-                    G5W = mac.G5W,
-                    H6W = mac.H6W,
-                    G6W = mac.G6W,
-                    H7W = mac.H7W,
-                    G7W = mac.G7W,
+                    H1W = mac.H1W.ToString("#"),
+                    G1W = mac.G1W.ToString("#"),
+                    H2W = mac.H2W.ToString("#"),
+                    G2W = mac.G2W.ToString("#"),
+                    H3W = mac.H3W.ToString("#"),
+                    G3W = mac.G3W.ToString("#"),
+                    H4W = mac.H4W.ToString("#"),
+                    G4W = mac.G4W.ToString("#"),
+                    H5W = mac.H5W.ToString("#"),
+                    G5W = mac.G5W.ToString("#"),
+                    H6W = mac.H6W.ToString("#"),
+                    G6W = mac.G6W.ToString("#"),
+                    H7W = mac.H7W.ToString("#"),
+                    G7W = mac.G7W.ToString("#"),
                 };
                 if (mac.SoD == "D")
                 {
                     abc.HPPAd = mac.HPP1Ad.Split(' ')[0] + " + " + mac.HPP2Ad.Split(' ')[0];
                     abc.GPPAd = mac.GPP1Ad.Split(' ')[0] + " + " + mac.GPP2Ad.Split(' ')[0];
                 }
+                if (abc.SoD != SoD)
+                {
+                    abc.Break = true;
+                    SoD = abc.SoD;
+                }
+
                 MACs.Add(abc);
             }
         }
 
+
         void Handle(Input.SaveT A)
         {
             Save(false);
+            Read();
         }
 
         void Handle(Input.ConfirmT A)
@@ -80,18 +98,18 @@ namespace bodved2.ViewModels
                 foreach (var mac in MACs)
                 {
                     MAC = Db.FromId<MAC>((ulong)mac.MACoNo);
-                    if (mac.SoD == "D" || mac.Drm == "OK")  // Single MacDrm OK degilse yapma cunki Idx 88 lerin oynamasi yasak, Rnk belli degil
+                    if (mac.Drm == "OK")  // Single MacDrm OK degilse yapma cunki Idx 88 lerin oynamasi yasak, Rnk belli degil
                     {
-                        MAC.H1W = (int)mac.H1W;
-                        MAC.H2W = (int)mac.H2W;
-                        MAC.H3W = (int)mac.H3W;
-                        MAC.H4W = (int)mac.H4W;
-                        MAC.H5W = (int)mac.H5W;
-                        MAC.G1W = (int)mac.G1W;
-                        MAC.G2W = (int)mac.G2W;
-                        MAC.G3W = (int)mac.G3W;
-                        MAC.G4W = (int)mac.G4W;
-                        MAC.G5W = (int)mac.G5W;
+                        MAC.H1W = H.IntParse(mac.H1W);
+                        MAC.H2W = H.IntParse(mac.H2W);
+                        MAC.H3W = H.IntParse(mac.H3W);
+                        MAC.H4W = H.IntParse(mac.H4W);
+                        MAC.H5W = H.IntParse(mac.H5W);
+                        MAC.G1W = H.IntParse(mac.G1W);
+                        MAC.G2W = H.IntParse(mac.G2W);
+                        MAC.G3W = H.IntParse(mac.G3W);
+                        MAC.G4W = H.IntParse(mac.G4W);
+                        MAC.G5W = H.IntParse(mac.G5W);
                     }
                     if (mac.Drm == "hX")    // Home Diskalifiye
                     {
@@ -132,160 +150,71 @@ namespace bodved2.ViewModels
         [CET2MACsInpPage_json.MACs]
         public partial class MACsElementJson
         {
-            
+
+
             void Handle(Input.H1W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    G1W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        G1W = 11;
-                    else
-                        G1W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, G1W);
+                A.Value = res.Item1;
+                G1W = res.Item2;
             }
             void Handle(Input.G1W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    H1W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        H1W = 11;
-                    else
-                        H1W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, H1W);
+                A.Value = res.Item1;
+                H1W = res.Item2;
             }
 
             void Handle(Input.H2W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    G2W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        G2W = 11;
-                    else
-                        G2W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, G2W);
+                A.Value = res.Item1;
+                G2W = res.Item2;
             }
             void Handle(Input.G2W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    H2W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        H2W = 11;
-                    else
-                        H2W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, H2W);
+                A.Value = res.Item1;
+                H2W = res.Item2;
             }
 
             void Handle(Input.H3W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    G3W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        G3W = 11;
-                    else
-                        G3W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, G3W);
+                A.Value = res.Item1;
+                G3W = res.Item2;
             }
             void Handle(Input.G3W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    H3W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        H3W = 11;
-                    else
-                        H3W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, H3W);
+                A.Value = res.Item1;
+                H3W = res.Item2;
             }
 
             void Handle(Input.H4W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    G4W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        G4W = 11;
-                    else
-                        G4W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, G4W);
+                A.Value = res.Item1;
+                G4W = res.Item2;
             }
             void Handle(Input.G4W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    H4W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        H4W = 11;
-                    else
-                        H4W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, H4W);
+                A.Value = res.Item1;
+                H4W = res.Item2;
             }
 
             void Handle(Input.H5W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    G5W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        G5W = 11;
-                    else
-                        G5W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, G5W);
+                A.Value = res.Item1;
+                G5W = res.Item2;
             }
             void Handle(Input.G5W A)
             {
-                if (A.Value < 0)
-                {
-                    A.Value = 0;
-                    H5W = 11;
-                }
-                else if (A.Value > 0)
-                {
-                    if (A.Value <= 9)
-                        H5W = 11;
-                    else
-                        H5W = A.Value + 2;
-                }
+                var res = H.GetSetSayi(A.Value, H5W);
+                A.Value = res.Item1;
+                H5W = res.Item2;
             }
 
         }

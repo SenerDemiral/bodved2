@@ -20,6 +20,48 @@ namespace BDB2
 
         public static CultureInfo cultureTR = CultureInfo.CreateSpecificCulture("tr-TR");  // Tarihde gun gostermek icin
 
+        public static int IntParse(string s)
+        {
+            if (int.TryParse(s, out int a))
+                return a;
+            return 0;
+        }
+
+        public static (string, string) GetSetSayi(string i1, string i2)
+        {
+            int x = 0;
+            string o1 = "", o2 = i2;
+
+            if (int.TryParse(i1, out int a))
+            {
+                if (a == 0)
+                {
+                    a = 0;
+                    x = 11;
+                }
+                else
+                {
+                    if (a <= 9)
+                        x = 11;
+                    else
+                    {
+                        if (a > 97)
+                            a = 97;
+                        x = a + 2;
+                    }
+                }
+                o1 = a.ToString("#");
+                o2 = x.ToString("#");
+            }
+            else
+            {
+                o1 = "";
+                o2 = "";
+            }
+
+            return (o1, o2);
+        }
+
         public static ulong LoginOp(string pwd)
         {
             // AktifDonem CC lerden Pwd ara

@@ -14,6 +14,7 @@
                             <col style="width:2rem" />
                             <col style="width:2rem" />
                             <col style="width:10rem" />
+                            <col style="width:3rem" />
                             <col style="width:10rem" />
                             <col style="width:4rem" />
                             <col style="width:4rem" />
@@ -27,6 +28,7 @@
                                 <th>S/D</th>
                                 <th>#</th>
                                 <th>[[model.HCTAd]]</th>
+                                <th></th>
                                 <th>[[model.GCTAd]]</th>
                                 <th>S1</th>
                                 <th>S2</th>
@@ -37,31 +39,35 @@
                         </thead>
                         <tbody>
                             <template is="dom-repeat" items="[[model.MACs]]">
+                                <template is="dom-if" if="[[item.Break]]">
+                                    <tr style="height:10px" />
+                                </template>
                                 <tr>
                                     <td>[[item.Drm]]</td>
                                     <td>[[item.SoD]]</td>
                                     <td>[[item.Idx]]</td>
-                                    <td class="txtLeft">[[item.HPPAd]]</td>
-                                    <td class="txtLeft">[[item.GPPAd]]</td>
+                                    <td class="txtLeft" data-WL$="[[item.HWL]]">[[item.HPPAd]]</td>
+                                    <td>[[item.HSW]] - [[item.GSW]]</td>
+                                    <td class="txtLeft" data-WL$="[[item.GWL]]">[[item.GPPAd]]</td>
                                     <td>
-                                        <input type="text" value="{{item.H1W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
-                                        <input type="text" value="{{item.G1W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                        <input type="text" value="{{item.H1W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" /> -
+                                        <input type="text" value="{{item.G1W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" />
                                     </td>
                                     <td>
-                                        <input type="text" value="{{item.H2W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
-                                        <input type="text" value="{{item.G2W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                        <input type="text" value="{{item.H2W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" /> -
+                                        <input type="text" value="{{item.G2W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" />
                                     </td>
                                     <td>
-                                        <input type="text" value="{{item.H3W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
-                                        <input type="text" value="{{item.G3W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                        <input type="text" value="{{item.H3W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" /> -
+                                        <input type="text" value="{{item.G3W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" />
                                     </td>
                                     <td>
-                                        <input type="text" value="{{item.H4W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
-                                        <input type="text" value="{{item.G4W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                        <input type="text" value="{{item.H4W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" /> -
+                                        <input type="text" value="{{item.G4W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" />
                                     </td>
                                     <td>
-                                        <input type="text" value="{{item.H5W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" /> ●
-                                        <input type="text" value="{{item.G5W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:right" />
+                                        <input type="text" value="{{item.H5W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" /> -
+                                        <input type="text" value="{{item.G5W$::change}}" style="height:inherit;width:1rem;padding:0;text-align:center" />
                                     </td>
                                 </tr>
                             </template>
