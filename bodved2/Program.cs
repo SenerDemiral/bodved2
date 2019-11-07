@@ -51,8 +51,42 @@ namespace bodved2
             }
 
             Console.WriteLine("------------------");
+            
+            // Aysen OZDEMIR/58 soyadi KONAK olmus ama ben birdaha acmisim 15696 ve yenisine CTP, CETX, MAC, PPRD girmisim (baslangic ranki 1778)
+            Db.Transact(() =>
+            {
+                PP PPsil = (PP)Db.FromId(15696);
+                if (PPsil == null)
+                    return; // Bulunamadi
 
+                PP PPcur = (PP)Db.FromId(58);
+                if (PPcur == null)
+                    return; // Bulunamadi
 
+                var macs = Db.SQL<MAC>("select r from MAC r where r.GPP1 = ? or r.GPP2 = ?", PPsil, PPsil);
+                foreach(var mac in macs)
+                {
+                    if (mac.GPP1?.GetObjectNo() == PPsil.GetObjectNo())
+                        mac.GPP1 = PPcur;
+                    if (mac.GPP2?.GetObjectNo() == PPsil.GetObjectNo())
+                        mac.GPP2 = PPcur;
+                }
+
+                var ctps = Db.SQL<CTP>("select r from CTP r where r.PP = ?", PPsil);
+                foreach (var ctp in ctps)
+                    ctp.PP = PPcur;
+
+                var cetxs = Db.SQL<CETX>("select r from CETX r where r.PP = ?", PPsil);
+                foreach (var cetx in cetxs)
+                    cetx.PP = PPcur;
+
+                var pprds = Db.SQL<PPRD>("select r from PPRD r where r.PP = ?", PPsil);
+                foreach (var pprd in pprds)
+                    pprd.Delete();
+
+                PPsil.Delete();
+            });
+            
             // Bir kerelik
             /*
             H.PPRD_DonemBasiIslemleri(17);
