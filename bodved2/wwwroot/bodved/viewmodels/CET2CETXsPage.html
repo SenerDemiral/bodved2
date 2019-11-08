@@ -23,10 +23,18 @@
                         <thead>
                             <tr>
                                 <th>R#</th>
-                                <th>G#</th>
-                                <th>Oyuncu</th>
-                                <th>S#</th>
-                                <th>D#</th>
+                                <th>
+                                    <button style="height:auto;padding:unset;min-width: unset;" value="{{model.SortIdx2Trigger$::click}}" onmousedown="++this.value;">G#</button>
+                                </th>
+                                <th>
+                                    <button style="height:auto;padding:unset;min-width: unset;" value="{{model.SortAdTrigger$::click}}" onmousedown="++this.value;">Oyuncu</button>
+                                </th>
+                                <th>
+                                    <button style="height:auto;padding:unset;min-width: unset;" value="{{model.SortSngIdxTrigger$::click}}" onmousedown="++this.value;">S#</button>
+                                </th>
+                                <th>
+                                    <button style="height:auto;padding:unset;min-width: unset;" value="{{model.SortDblIdxTrigger$::click}}" onmousedown="++this.value;">D#</button>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>

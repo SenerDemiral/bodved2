@@ -35,6 +35,12 @@
   "IsOS": false,
   "IsML": false,
 
+  "SortFld": "SngIdx", // def:Idx2, Ad, SngIdx, DblIdx
+  "SortIdx2Trigger$": 0,
+  "SortAdTrigger$": 0,
+  "SortSngIdxTrigger$": 0,
+  "SortDblIdxTrigger$": 0,
+
   "CETXs": [
     {
       "CETXoNo": 0,
@@ -48,7 +54,7 @@
       "SngIdxS$": "",
       "DblIdxS$": "",
       "SngIdx": 0,
-      "DblIdx": 0,
+      "DblIdx": 0
     }
   ]
 

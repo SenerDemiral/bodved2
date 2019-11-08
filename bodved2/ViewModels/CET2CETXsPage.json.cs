@@ -57,8 +57,24 @@ namespace bodved2.ViewModels
             SngMacSay = cet.CC.TNSM;
             DblMacSay = cet.CC.TNDM;
 
-            var cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ? order by r.SngIdx, r.Idx", cet, ct)
+            //var cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ? order by r.SngIdx, r.Idx", cet, ct)
+
+            var cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
                 .OrderBy(x => { int i = x.Idx2; if (i == 0) i = 99; return i; });
+
+            if (SortFld == "Ad")
+                cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
+                       .OrderBy(x => x.PPAd);
+            else if(SortFld == "Idx2")
+                cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
+                       .OrderBy(x => { int i = x.Idx2; if (i == 0) i = 99; return i; });
+            else if (SortFld == "SngIdx")
+                cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
+                       .OrderBy(x => { int i = x.SngIdx; if (i == 0) i = 99; return i; });
+            else if (SortFld == "DblIdx")
+                cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
+                       .OrderBy(x => { int i = x.DblIdx; if (i == 0) i = 99; return i; });
+
 
             CETXs.Clear();
             foreach (var cetx in cetxs)
@@ -84,6 +100,43 @@ namespace bodved2.ViewModels
                 }
                 CETXs.Add(abc);
             }
+        }
+
+        public void Handle(Input.SortAdTrigger Action)
+        {
+            SortFld = "Ad";
+            SortIdx2Trigger = 0;
+            SortSngIdxTrigger = 0;
+            SortDblIdxTrigger = 0;
+            if (Action.Value == 1)
+                Read();
+        }
+        public void Handle(Input.SortIdx2Trigger Action)
+        {
+            SortFld = "Idx2";
+            SortAdTrigger = 0;
+            SortSngIdxTrigger = 0;
+            SortDblIdxTrigger = 0;
+            if (Action.Value == 1)
+                Read();
+        }
+        public void Handle(Input.SortSngIdxTrigger Action)
+        {
+            SortFld = "SngIdx";
+            SortAdTrigger = 0;
+            SortIdx2Trigger = 0;
+            SortDblIdxTrigger = 0;
+            if (Action.Value == 1)
+                Read();
+        }
+        public void Handle(Input.SortDblIdxTrigger Action)
+        {
+            SortFld = "DblIdx";
+            SortAdTrigger = 0;
+            SortIdx2Trigger = 0;
+            SortSngIdxTrigger = 0;
+            if (Action.Value == 1)
+                Read();
         }
 
         public void Handle(Input.HOST Action)
@@ -145,7 +198,7 @@ namespace bodved2.ViewModels
             Hata = "";
 
             if (nSngIdx != SngMacSay || nDblIdx != DblMacSay)
-                Hata = "Sng/Dbl Sýralama Hatasý";
+                Hata = "Sng/Dbl SÄ±ralama HatasÄ±";
 
             Db.TransactAsync(() =>
             {
@@ -198,7 +251,7 @@ namespace bodved2.ViewModels
             }
             else
             {
-                Hata = "Sng/Dbl Sýralama Hatasý. ONAYLANMADI";
+                Hata = "Sng/Dbl SÄ±ralama HatasÄ±. ONAYLANMADI";
             }
         }
 

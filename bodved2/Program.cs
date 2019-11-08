@@ -52,6 +52,7 @@ namespace bodved2
 
             Console.WriteLine("------------------");
             
+            /*
             // Aysen OZDEMIR/58 soyadi KONAK olmus ama ben birdaha acmisim 15696 ve yenisine CTP, CETX, MAC, PPRD girmisim (baslangic ranki 1778)
             Db.Transact(() =>
             {
@@ -86,7 +87,8 @@ namespace bodved2
 
                 PPsil.Delete();
             });
-            
+            */
+
             // Bir kerelik
             /*
             H.PPRD_DonemBasiIslemleri(17);
@@ -112,6 +114,7 @@ namespace bodved2
             H.PPRD_RefreshSonuc(H.DnmRun);
             H.PPRD_RefreshCurRuns(H.DnmRun);
             H.DD_RefreshSonuc(H.DnmRun);
+
 
             //H.CEF_RefreshSonuc();   // Bunlari da Donem/Sezon luk yap.
             //H.CF_RefreshSonuc();

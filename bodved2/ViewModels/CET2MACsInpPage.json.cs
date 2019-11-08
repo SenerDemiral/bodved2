@@ -28,6 +28,8 @@ namespace bodved2.ViewModels
             CET cet = Db.FromId<CET>((ulong)CEToNo);
             var macs = Db.SQL<MAC>("SELECT r FROM MAC r WHERE r.CEB = ? order by r.SoD DESC, r.Idx", cet);
 
+            string[] ad1, ad2;
+
             MACs.Clear();
             string SoD = "S";
             foreach (var mac in macs)
@@ -64,8 +66,12 @@ namespace bodved2.ViewModels
                 };
                 if (mac.SoD == "D")
                 {
-                    abc.HPPAd = mac.HPP1Ad.Split(' ')[0] + " + " + mac.HPP2Ad.Split(' ')[0];
-                    abc.GPPAd = mac.GPP1Ad.Split(' ')[0] + " + " + mac.GPP2Ad.Split(' ')[0];
+                    ad1 = mac.HPP1Ad.Split(' ');
+                    ad2 = mac.HPP2Ad.Split(' ');
+                    abc.HPPAd = $"{ad1[0]}{ad1[1].Substring(0, 1)} + {ad2[0]}{ad2[1].Substring(0, 1)}";
+                    ad1 = mac.GPP1Ad.Split(' ');
+                    ad2 = mac.GPP2Ad.Split(' ');
+                    abc.GPPAd = $"{ad1[0]}{ad1[1].Substring(0, 1)} + {ad2[0]}{ad2[1].Substring(0, 1)}";
                 }
                 if (abc.SoD != SoD)
                 {
@@ -123,7 +129,7 @@ namespace bodved2.ViewModels
                         MAC.H2W = 11;
                         MAC.H3W = 11;
                     }
-                    // mac.Drm == "D" ise yani ikiside Diskalifiye ise zaten sonuclari yazmiyacak ve sifir kalacak
+                    // mac.Drm == "X" ise yani ikiside Diskalifiye ise zaten sonuclari yazmiyacak ve sifir kalacak
                     H.MAC_RefreshSonuc(MAC);
                 }
                 if (ok)
@@ -150,8 +156,6 @@ namespace bodved2.ViewModels
         [CET2MACsInpPage_json.MACs]
         public partial class MACsElementJson
         {
-
-
             void Handle(Input.H1W A)
             {
                 var res = H.GetSetSayi(A.Value, G1W);
