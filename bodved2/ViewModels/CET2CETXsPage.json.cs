@@ -23,6 +23,7 @@ namespace bodved2.ViewModels
                 IsYetkili = true;
 
             //IsYetkili = true;   // DENEME
+            SortFld = "Idx";
 
             //Read();
         }
@@ -59,13 +60,15 @@ namespace bodved2.ViewModels
 
             //var cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ? order by r.SngIdx, r.Idx", cet, ct)
 
-            var cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
-                .OrderBy(x => { int i = x.Idx2; if (i == 0) i = 99; return i; });
+            IOrderedEnumerable<CETX> cetxs = null;
 
             if (SortFld == "Ad")
                 cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
-                       .OrderBy(x => x.PPAd);
-            else if(SortFld == "Idx2")
+                       .OrderBy(x => { if (x.PPoNo == H.dskPPoNo) return "zzzz"; return x.PPAd; });
+            else if(SortFld == "Idx")
+                cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
+                       .OrderBy(x => { int i = x.Idx; if (i == 0) i = 99; return i; });
+            else if (SortFld == "Idx2")
                 cetxs = Db.SQL<CETX>("SELECT r FROM CETX r WHERE r.CET = ? and r.CT = ?", cet, ct)
                        .OrderBy(x => { int i = x.Idx2; if (i == 0) i = 99; return i; });
             else if (SortFld == "SngIdx")
@@ -105,6 +108,17 @@ namespace bodved2.ViewModels
         public void Handle(Input.SortAdTrigger Action)
         {
             SortFld = "Ad";
+            SortIdxTrigger = 0;
+            SortIdx2Trigger = 0;
+            SortSngIdxTrigger = 0;
+            SortDblIdxTrigger = 0;
+            if (Action.Value == 1)
+                Read();
+        }
+        public void Handle(Input.SortIdxTrigger Action)
+        {
+            SortFld = "Idx";
+            SortAdTrigger = 0;
             SortIdx2Trigger = 0;
             SortSngIdxTrigger = 0;
             SortDblIdxTrigger = 0;
@@ -115,6 +129,7 @@ namespace bodved2.ViewModels
         {
             SortFld = "Idx2";
             SortAdTrigger = 0;
+            SortIdxTrigger = 0;
             SortSngIdxTrigger = 0;
             SortDblIdxTrigger = 0;
             if (Action.Value == 1)
@@ -124,6 +139,7 @@ namespace bodved2.ViewModels
         {
             SortFld = "SngIdx";
             SortAdTrigger = 0;
+            SortIdxTrigger = 0;
             SortIdx2Trigger = 0;
             SortDblIdxTrigger = 0;
             if (Action.Value == 1)
@@ -133,6 +149,7 @@ namespace bodved2.ViewModels
         {
             SortFld = "DblIdx";
             SortAdTrigger = 0;
+            SortIdxTrigger = 0;
             SortIdx2Trigger = 0;
             SortSngIdxTrigger = 0;
             if (Action.Value == 1)

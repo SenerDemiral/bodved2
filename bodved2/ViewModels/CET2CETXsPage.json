@@ -35,7 +35,8 @@
   "IsOS": false,
   "IsML": false,
 
-  "SortFld": "SngIdx", // def:Idx2, Ad, SngIdx, DblIdx
+  "SortFld": "SngIdx", // def:Idx, Idx2, Ad, SngIdx, DblIdx
+  "SortIdxTrigger$": 0,
   "SortIdx2Trigger$": 0,
   "SortAdTrigger$": 0,
   "SortSngIdxTrigger$": 0,

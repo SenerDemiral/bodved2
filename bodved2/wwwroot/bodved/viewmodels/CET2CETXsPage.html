@@ -22,7 +22,9 @@
                     <table id="tbl" class="sngLine" on-click="MyFnc">
                         <thead>
                             <tr>
-                                <th>R#</th>
+                                <th>
+                                    <button style="height:auto;padding:unset;min-width: unset;" value="{{model.SortIdxTrigger$::click}}" onmousedown="++this.value;">R#</button>
+                                </th>
                                 <th>
                                     <button style="height:auto;padding:unset;min-width: unset;" value="{{model.SortIdx2Trigger$::click}}" onmousedown="++this.value;">G#</button>
                                 </th>

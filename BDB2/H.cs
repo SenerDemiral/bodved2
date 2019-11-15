@@ -17,6 +17,7 @@ namespace BDB2
     public static class H
     {
         public static int DnmRun = 19;  // AktifDonem, Maclar basladiginda
+        public static ulong dskPPoNo = 584;
 
         public static CultureInfo cultureTR = CultureInfo.CreateSpecificCulture("tr-TR");  // Tarihde gun gostermek icin
 
@@ -424,6 +425,16 @@ namespace BDB2
                                 else
                                    newMac.Drm = "gX";
                             }
+
+                            if (cetx.PPoNo == dskPPoNo) // Diskalifye Player
+                                newMac.Drm = "hX";
+                            if (gcetx.PPoNo == dskPPoNo)
+                            {
+                                if (newMac.Drm == "hX")
+                                    newMac.Drm = "X";
+                                else
+                                    newMac.Drm = "gX";
+                            }
                         }
                     }
                 }
@@ -499,6 +510,18 @@ namespace BDB2
                         else
                             mac.Drm = "gX";
                     }
+
+                    if (mac.HPP1oNo == dskPPoNo || mac.HPP2oNo == dskPPoNo)
+                    {
+                        mac.Drm = "hX";
+                    }
+                    if (mac.GPP1oNo == dskPPoNo || mac.GPP2oNo == dskPPoNo)
+                    {
+                        if (mac.Drm == "hX")
+                            mac.Drm = "X";
+                        else
+                            mac.Drm = "gX";
+                    }
                 }
 
                 cet.IsMLY = true;
@@ -514,10 +537,11 @@ namespace BDB2
             else
                 ct = cet.GCT;
 
+            int idx = 1;
             Db.TransactAsync(() =>
             {
                 Db.SQL("delete from CETX where CET = ? and H_G = ?", cet, H_G);
-
+                
                 var cetx = Db.SQL<CETX>("select r from CETX r where r.CET = ? and r.H_G = ?", cet, H_G).FirstOrDefault();
                 if (cetx == null)   // Kayit yok insert
                 {
@@ -538,7 +562,25 @@ namespace BDB2
                                 SngIdx = 0,
                                 DblIdx = 0
                             };
+                            idx++;
                         }
+                    }
+                    var PP = Db.FromId<PP>(H.dskPPoNo);    // Diskalifiye Oyuncu
+                    for (int i = 0; i < 3; i++)
+                    {
+                        new CETX
+                        {
+                            CC = cet.CC,
+                            CET = cet,
+                            CT = ct,
+                            H_G = H_G,
+                            Idx = idx++,
+                            Idx2 = 0,
+                            PP = PP,
+                            SngIdx = 0,
+                            DblIdx = 0
+                        };
+
                     }
                 }
             });

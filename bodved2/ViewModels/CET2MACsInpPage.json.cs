@@ -68,10 +68,12 @@ namespace bodved2.ViewModels
                 {
                     ad1 = mac.HPP1Ad.Split(' ');
                     ad2 = mac.HPP2Ad.Split(' ');
-                    abc.HPPAd = $"{ad1[0]}{ad1[1].Substring(0, 1)} + {ad2[0]}{ad2[1].Substring(0, 1)}";
+                    
+                    abc.HPPAd = $"{ad1[0]}{(ad1.Length == 1 ? "" : ad1[1].Substring(0, 1))} + {ad2[0]}{(ad2.Length == 1 ? "" : ad2[1].Substring(0, 1))}";
                     ad1 = mac.GPP1Ad.Split(' ');
                     ad2 = mac.GPP2Ad.Split(' ');
-                    abc.GPPAd = $"{ad1[0]}{ad1[1].Substring(0, 1)} + {ad2[0]}{ad2[1].Substring(0, 1)}";
+                    abc.GPPAd = $"{ad1[0]}{(ad1.Length == 1 ? "" : ad1[1].Substring(0, 1))} + {ad2[0]}{(ad2.Length == 1 ? "" : ad2[1].Substring(0, 1))}";
+                    //abc.GPPAd = $"{ad1[0]}{ad1[1].Substring(0, 1)} + {ad2[0]}{ad2[1].Substring(0, 1)}";
                 }
                 if (abc.SoD != SoD)
                 {
