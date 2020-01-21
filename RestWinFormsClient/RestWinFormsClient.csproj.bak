@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C6BE8ED-F240-4CC5-B5F5-353C516BEA7B}</ProjectGuid>
+    <ProjectGuid>{EB16AA70-9934-4EBB-A617-08F318EAE1EB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RestWinFormsClient2</RootNamespace>
-    <AssemblyName>RestWinFormsClient2</AssemblyName>
+    <RootNamespace>RestWinFormsClient</RootNamespace>
+    <AssemblyName>RestWinFormsClient</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,18 +54,37 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Printing.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Grpc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
       <HintPath>..\packages\Grpc.Core.1.22.1\lib\net45\Grpc.Core.dll</HintPath>
     </Reference>
@@ -89,11 +108,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ccXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ccXF.Designer.cs">
+      <DependentUpon>ccXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cefXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cefXF.Designer.cs">
+      <DependentUpon>cefXF.cs</DependentUpon>
+    </Compile>
     <Compile Include="cetXF.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cetXF.Designer.cs">
       <DependentUpon>cetXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cfXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cfXF.Designer.cs">
+      <DependentUpon>cfXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctpXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ctpXF.Designer.cs">
+      <DependentUpon>ctpXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ctXF.Designer.cs">
+      <DependentUpon>ctXF.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSetGnl.cs">
       <DependentUpon>DataSetGnl.xsd</DependentUpon>
@@ -103,11 +152,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetGnl.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="ddXF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ddXF.Designer.cs">
+      <DependentUpon>ddXF.cs</DependentUpon>
     </Compile>
     <Compile Include="macXF.cs">
       <SubType>Form</SubType>
@@ -121,20 +170,58 @@
     <Compile Include="MainXF.Designer.cs">
       <DependentUpon>MainXF.cs</DependentUpon>
     </Compile>
+    <Compile Include="pprdXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pprdXF.Designer.cs">
+      <DependentUpon>pprdXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ppXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ppXF.Designer.cs">
+      <DependentUpon>ppXF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyHelper.cs" />
+    <EmbeddedResource Include="ccXF.resx">
+      <DependentUpon>ccXF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cefXF.resx">
+      <DependentUpon>cefXF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="cetXF.resx">
       <DependentUpon>cetXF.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="cfXF.resx">
+      <DependentUpon>cfXF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctpXF.resx">
+      <DependentUpon>ctpXF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctXF.resx">
+      <DependentUpon>ctXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ddXF.resx">
+      <DependentUpon>ddXF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="macXF.resx">
       <DependentUpon>macXF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainXF.resx">
       <DependentUpon>MainXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pprdXF.resx">
+      <DependentUpon>pprdXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ppXF.resx">
+      <DependentUpon>ppXF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -172,6 +259,7 @@
     <ProjectReference Include="..\RestLib\RestLib.csproj">
       <Project>{af2614e6-23d2-402c-b722-6937119d5b59}</Project>
       <Name>RestLib</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
